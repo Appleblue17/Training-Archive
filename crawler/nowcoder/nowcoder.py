@@ -32,7 +32,6 @@ class NOWCODERCrawler(BaseCrawler):
 
         self.driver.get(link)
         for cookie_name, cookie_value in cookies.items():
-            print(f"Adding cookie: {cookie_name}={cookie_value}")  # Debugging line
             self.driver.add_cookie({"name": cookie_name, "value": cookie_value})
         self.driver.refresh()
         self._random_sleep()
@@ -135,7 +134,7 @@ class NOWCODERCrawler(BaseCrawler):
         problem_elements = problem_table.find_all("tr")
 
         problems_infos = []
-        for problem in problem_elements[:1]:
+        for problem in problem_elements:
             cols = problem.find_all("td")
             if len(cols) < 5:
                 continue
@@ -230,7 +229,6 @@ class NOWCODERCrawler(BaseCrawler):
                     continue  # skip text nodes
                 element_type = element.name
                 element_class = element.get("class", [])
-                print(f"Processing element: {element_type}, class: {element_class}")
 
                 if element_type == "div" and "subject-question" in element_class:
                     # This is the main problem statement section
@@ -309,11 +307,16 @@ class NOWCODERCrawler(BaseCrawler):
 
         code_page = self.fetch_page_with_browser(entry["submission_link"])
         code_soup = bs4(code_page, "html.parser")
-        code = (
-            code_soup.find("div", class_="problem-body")
-            .find("textarea", id="code")
-            .text.strip()
+        code_element = (
+            code_soup.find("div", class_="result-subject-item")
+            .find("td", class_="code")
+            .find("div", class_="container")
         )
+
+        code = ""
+        code_lines = code_element.find_all("div", class_="line")
+        for line in code_lines:
+            code += line.get_text().replace("\xa0", " ") + "\n"
         return code
 
     def fetch_submissions_get_submissions(self):
@@ -341,65 +344,93 @@ class NOWCODERCrawler(BaseCrawler):
                 f"Start fetching submissions from {contest_link}.",
             )
 
-            self.login(contest_link)
-            status_link = contest_link.replace("problems", "status")
+            status_link = f'{contest_link}#submit/"onlyMyStatusFilter"%3Atrue'
+            print(f"Fetching status page: {status_link}")
 
-            status_page = self.fetch_page_with_browser(status_link)
-            soup = bs4(status_page, "html.parser")
+            for page in range(1, 20):
+                # Assume there are at most 20 pages of submissions
+                status_link_with_page = f'{status_link}%2C"page"%3A{page}'
 
-            table_body = soup.find("table", class_="page-card-table").find("tbody")
-            if not table_body:
-                self.log("error", "No submissions found on this page.")
-                break
-            submission_elements = table_body.find_all("tr")
+                print(status_link_with_page)
+                status_page = self.fetch_page_with_browser(status_link_with_page)
+                soup = bs4(status_page, "html.parser")
 
-            for submission in submission_elements:
-                cols = submission.find_all("td")
-                if len(cols) < 7:
+                current_page = soup.find("div", class_="pagination").find(
+                    "li", class_="active"
+                )
+                current_page_number = int(current_page.text.strip())
+
+                if current_page_number != page:
                     self.log(
-                        "warning",
-                        "Found submission with less than 9 columns, skipping.",
+                        "info",
+                        "Reached the end of submissions or no more pages to fetch. Stopped.",
                     )
-                    continue
+                    break
 
-                submission_id = cols[0].text.strip()
-                problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
-                submission_link = urljoin(self.base_url, cols[5].find("a")["href"])
+                table_body = (
+                    soup.find("div", class_="module-box")
+                    .find("table", class_="table-hover")
+                    .find("tbody")
+                )
+                if not table_body:
+                    self.log("error", "No submissions found on this page.")
+                    break
+                submission_elements = table_body.find_all("tr")
 
-                # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
-                raw_status = cols[6].text.strip()
-                if raw_status == "Accepted":
-                    status = "AC"
-                elif "Runtime Error" in raw_status:
-                    status = "RE"
-                else:
-                    # only preserve uppercase letters
-                    status = re.sub(r"[^A-Z]", "", raw_status)
+                for submission in submission_elements:
+                    cols = submission.find_all("td")
+                    if len(cols) < 9:
+                        self.log(
+                            "warning",
+                            "Found submission with less than 9 columns, skipping.",
+                        )
+                        continue
 
-                time = cols[3].text.strip()
-                memory = cols[4].text.strip()
-                language = cols[5].text.strip()
+                    submission_id = cols[0].text.strip()
+                    problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
+                    submission_link = urljoin(self.base_url, cols[0].find("a")["href"])
 
-                submit_time = self._convert_iso_to_beijing(cols[1].text.strip())
+                    # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
+                    raw_status = cols[3].text.strip()
+                    if raw_status == "答案正确":
+                        status = "AC"
+                    elif "答案错误" in raw_status:
+                        status = "WA"
+                    elif "运行超时" in raw_status:
+                        status = "TLE"
+                    elif "运行错误" in raw_status:
+                        status = "RE"
+                    elif "编译错误" in raw_status:
+                        status = "CE"
+                    elif "空间" in raw_status:
+                        status = "MLE"
+                    else:
+                        status = "UKE"
 
-                submission_entry = {
-                    "submission_id": submission_id,
-                    "status": status,
-                    "time": time,
-                    "memory": memory,
-                    "language": language,
-                    "submit_time": submit_time.isoformat(),
-                    "problem_link": problem_link,
-                    "submission_link": submission_link,
-                }
-                stop_fetching = self._register_submission(submission_entry)
-                if stop_fetching:
-                    return
+                    time = cols[4].text.strip() + " ms"
+                    memory = cols[5].text.strip() + " KB"
+                    language = cols[7].text.strip()
 
-            self.log(
-                "info",
-                f"Fetched {len(submission_elements)} submissions from {contest_link}.",
-            )
+                    submit_time = self._convert_iso_to_beijing(cols[8].text.strip())
+
+                    submission_entry = {
+                        "submission_id": submission_id,
+                        "status": status,
+                        "time": time,
+                        "memory": memory,
+                        "language": language,
+                        "submit_time": submit_time.isoformat(),
+                        "problem_link": problem_link,
+                        "submission_link": submission_link,
+                    }
+                    stop_fetching = self._register_submission(submission_entry)
+                    if stop_fetching:
+                        return
+
+                self.log(
+                    "info",
+                    f"Fetched {len(submission_elements)} submissions from {contest_link}, page {page}.",
+                )
 
 
 if __name__ == "__main__":
@@ -412,10 +443,10 @@ if __name__ == "__main__":
         )
         crawler.login()
 
-        crawler.fetch_contests()
-        crawler.log("info", "Contests fetched successfully.")
-        # crawler.fetch_submissions()
-        # crawler.log("info", "Submissions fetched successfully.")
+        # crawler.fetch_contests()
+        # crawler.log("info", "Contests fetched successfully.")
+        crawler.fetch_submissions()
+        crawler.log("info", "Submissions fetched successfully.")
         crawler.log(
             "important",
             "nowcoder Crawler finished successfully at "

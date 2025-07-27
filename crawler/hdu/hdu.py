@@ -28,6 +28,12 @@ class HDUCrawler(BaseCrawler):
         return success
 
     def try_login_with_password(self, link, username, password):
+        if self.is_logged_in(link):
+            self.log(
+                "info", "Already logged in with username and password. Skipping login."
+            )
+            return
+
         self.driver.get(link)
         self._random_sleep()
         self.driver.find_element(By.NAME, "username").send_keys(username)

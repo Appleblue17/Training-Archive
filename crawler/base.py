@@ -183,9 +183,9 @@ class BaseCrawler:
     def _load_file(self, path, default=[]):
         if not os.path.exists(path):
             self.log("warning", f"File {path} does not exist, creating a new one.")
-            with open(path, "w") as f:
+            with open(path, "w", encoding="utf-8") as f:
                 json.dump(default, f)
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             try:
                 return json.load(f)
             except Exception:
@@ -194,17 +194,17 @@ class BaseCrawler:
     def _write_file(self, path, entry):
         # ensure file exists and is a json object
         if not os.path.exists(path):
-            with open(path, "w") as f:
+            with open(path, "w", encoding="utf-8") as f:
                 json.dump({}, f)
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             json.dump(entry, f, indent=2)
 
     def _append_file(self, path, entry):
         # ensure file exists and is a json array
         if not os.path.exists(path):
-            with open(path, "w") as f:
+            with open(path, "w", encoding="utf-8") as f:
                 json.dump([], f)
-        with open(path, "r+") as f:
+        with open(path, "r+", encoding="utf-8") as f:
             try:
                 lists = json.load(f)
             except Exception:
@@ -451,7 +451,6 @@ class BaseCrawler:
                         "letter": problem_letter,
                         "name": problem_name,
                         "link": problem_link,
-                        "solved": False,
                     }
                 )
                 # Write problem.json
@@ -494,9 +493,9 @@ class BaseCrawler:
         name_matched = []
         for contest in self.contests:
             for prob in contest.get("problems", []):
-                if prob["link"] == entry.get("problem_link"):
+                if prob["link"] == entry.get("problem_link", "not found"):
                     link_matched.append((contest, prob))
-                if prob["name"] == entry.get("problem_name"):
+                if prob["name"] == entry.get("problem_name", "not found"):
                     name_matched.append((contest, prob))
 
         if link_matched and len(link_matched) == 1:
@@ -574,7 +573,11 @@ class BaseCrawler:
         if not found:
             # Check if the problem already exists in staged submissions
             for staged_entry in self.staged_submissions:
-                if staged_entry["problem_name"] == entry["problem_name"]:
+                if staged_entry.get("problem_link", "staged not found") == entry.get(
+                    "problem_link", "entry not found"
+                ) or staged_entry.get("problem_name", "staged not found") == entry.get(
+                    "problem_name", "entry not found"
+                ):
                     if (
                         entry["status"] == "AC"
                         or not staged_entry.get("status") == "AC"
@@ -608,13 +611,16 @@ class BaseCrawler:
     def fetch_submissions(self):
         # Load last update time and staged submissions
         self.last_update = self._load_file(self.last_update_path, default={})
-        last_update_time_str = self.last_update.get("qoj", "1970-01-01T00:00:00")
+        last_update_time_str = self.last_update.get(
+            self.platform_name, "1970-01-01T00:00:00"
+        )
         self.last_update_time = self._convert_iso_to_beijing(last_update_time_str)
 
         self.contests = self._load_file(self.contests_path)
         self.staged_submissions = self._load_file(self.submissions_path)
 
         # First try updating existing staged submissions
+        self.log("info", "Start updating staged submissions...")
         new_staged = []
         for entry in self.staged_submissions:
             if not self._update_submission_status(entry):
@@ -623,6 +629,7 @@ class BaseCrawler:
         self._write_file(self.submissions_path, self.staged_submissions)
 
         # Fetch new submissions
+        self.log("info", "Start fetching new submissions...")
         self.fetch_submissions_get_submissions()
 
         self.last_update[self.platform_name] = datetime.now(beijing).isoformat()
