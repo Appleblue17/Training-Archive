@@ -262,7 +262,11 @@ class HDUCrawler(BaseCrawler):
 
         code_page = self.fetch_page_with_browser(entry["submission_link"])
         code_soup = bs4(code_page, "html.parser")
-        code = code_soup.find("pre", class_="sh_sourceCode").find("code").get_text()
+        code = (
+            code_soup.find("div", class_="problem-body")
+            .find("textarea", id="code")
+            .text.strip()
+        )
         return code
 
     def fetch_submissions_get_submissions(self):
@@ -271,40 +275,32 @@ class HDUCrawler(BaseCrawler):
         After fetching each submission, call the `_register_submission` method to register the submission. If the return value is True, stop fetching submissions and exit immediately.
         The submission entry should contain the following keys:
         - submission_id: The ID of the submission
-        - problem_name: The name of the problem
-        - problem_link: The link to the problem page
+        - problem_name (optional): The name of the problem
+        - problem_link (optional): The link to the problem page
         - submit_time: The time when the submission was made, in ISO format (YYYY-MM-DDTHH:MM:SS)
+
+        Either `problem_name` or `problem_link` is required.
         """
 
-        username = os.getenv("HDU_USERNAME")
-        if not username:
+        input_contest_list = self._load_file(self.input_contests_path)
+        for input_contest in input_contest_list:
+
+            if "link" not in input_contest:
+                self.log("error", "Input contest does not have a link.")
+                continue
+            contest_link = input_contest["link"]
             self.log(
-                "fatal",
-                "Username not found in environment variables. Cannot fetch submissions.",
+                "info",
+                f"Start fetching submissions from {contest_link}.",
             )
-            return
 
-        # Assuming there are not more than 50 pages of submissions
-        for page in range(1, 50):
-            self.log("info", f"Start fetching submissions from page {page}.")
-            submissions_page = self.fetch_page_with_browser(
-                urljoin(self.base_url, f"submissions?submitter={username}&page={page}")
-            )
-            if not submissions_page:
-                self.log("error", f"Failed to fetch submissions page {page}.")
-                break
+            self.login(contest_link)
+            status_link = contest_link.replace("problems", "status")
 
-            soup = bs4(submissions_page, "html.parser")
-            current_page = (
-                soup.find("li", class_="page-item active").find("a").text.strip()
-            )
-            if current_page != str(page):
-                self.log(
-                    "info", f"Reached the end of submissions at page {current_page}."
-                )
-                break
+            status_page = self.fetch_page_with_browser(status_link)
+            soup = bs4(status_page, "html.parser")
 
-            table_body = soup.find("table", class_="table").find("tbody")
+            table_body = soup.find("table", class_="page-card-table").find("tbody")
             if not table_body:
                 self.log("error", "No submissions found on this page.")
                 break
@@ -312,7 +308,7 @@ class HDUCrawler(BaseCrawler):
 
             for submission in submission_elements:
                 cols = submission.find_all("td")
-                if len(cols) < 9:
+                if len(cols) < 7:
                     self.log(
                         "warning",
                         "Found submission with less than 9 columns, skipping.",
@@ -320,32 +316,27 @@ class HDUCrawler(BaseCrawler):
                     continue
 
                 submission_id = cols[0].text.strip()
-                submission_link = urljoin(self.base_url, cols[0].find("a")["href"])
+                problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
+                submission_link = urljoin(self.base_url, cols[5].find("a")["href"])
 
-                problem_name = cols[1].text.strip()
-                # To extract pure name, re `^#\d+\. (.*)`
-                problem_name_pure = re.match(r"^#\d+\. (.*)", problem_name).group(1)
-                problem_link = urljoin(self.base_url, cols[1].find("a")["href"])
-
-                # Status format: [number] or [AC ✓] or [status]
-                raw_status = cols[3].text.replace(" ✓", "").strip()
-                if raw_status.isdigit():
-                    status = int(raw_status)
-                    if status == 100:
-                        status = "AC"
+                # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
+                raw_status = cols[6].text.strip()
+                if raw_status == "Accepted":
+                    status = "AC"
+                elif "Runtime Error" in raw_status:
+                    status = "RE"
                 else:
                     # only preserve uppercase letters
-                    status = "".join(c for c in raw_status if c.isupper())
+                    status = re.sub(r"[^A-Z]", "", raw_status)
 
-                time = cols[4].text.strip()
-                memory = cols[5].text.strip()
-                language = cols[6].text.strip()
+                time = cols[3].text.strip()
+                memory = cols[4].text.strip()
+                language = cols[5].text.strip()
 
-                submit_time = self._convert_iso_to_beijing(cols[8].text.strip())
+                submit_time = self._convert_iso_to_beijing(cols[1].text.strip())
 
                 submission_entry = {
                     "submission_id": submission_id,
-                    "problem_name": problem_name_pure,
                     "status": status,
                     "time": time,
                     "memory": memory,
@@ -360,7 +351,7 @@ class HDUCrawler(BaseCrawler):
 
             self.log(
                 "info",
-                f"Fetched {len(submission_elements)} submissions from page {page}.",
+                f"Fetched {len(submission_elements)} submissions from {contest_link}.",
             )
 
 
@@ -373,8 +364,8 @@ if __name__ == "__main__":
         )
         crawler.fetch_contests()
         crawler.log("info", "Contests fetched successfully.")
-        # crawler.fetch_submissions()
-        # crawler.log("info", "Submissions fetched successfully.")
+        crawler.fetch_submissions()
+        crawler.log("info", "Submissions fetched successfully.")
         crawler.log(
             "important",
             "hdu Crawler finished successfully at " + datetime.now(beijing).isoformat(),

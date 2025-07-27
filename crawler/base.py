@@ -46,7 +46,12 @@ class BaseCrawler:
 
     def _get_extension_name(self, language):
         language = language.lower()
-        if "c++" in language or "cpp" in language:
+        if (
+            "c++" in language
+            or "cpp" in language
+            or "gcc" in language
+            or "g++" in language
+        ):
             return "cpp"
         if "go" in language:
             return "go"
@@ -380,7 +385,7 @@ class BaseCrawler:
 
             self.log(
                 "info",
-                f"Start processing contest: {contest_name} ({contest_date})",
+                f"Start fetching contest: {contest_name} ({contest_date})",
             )
 
             # Create contest folder
@@ -467,7 +472,7 @@ class BaseCrawler:
 
             self.log(
                 "info",
-                f"Finished processing contest: {contest_name} ({contest_date})",
+                f"Finished fetching contest: {contest_name} ({contest_date})",
             )
 
     def fetch_submissions_fetch_source_code(self, entry):
@@ -484,21 +489,19 @@ class BaseCrawler:
         filename = f"code.{ext}"
 
         # Check if the problem has been recorded in any contest
-        name_and_link_matched = []
+        link_matched = []
         name_matched = []
         for contest in self.contests:
             for prob in contest.get("problems", []):
-                if prob["name"] == entry["problem_name"] and prob["link"] == entry.get(
-                    "problem_link"
-                ):
-                    name_and_link_matched.append((contest, prob))
-                elif prob["name"] == entry["problem_name"]:
+                if prob["link"] == entry.get("problem_link"):
+                    link_matched.append((contest, prob))
+                if prob["name"] == entry.get("problem_name"):
                     name_matched.append((contest, prob))
 
-        if name_and_link_matched:
+        if link_matched and len(link_matched) == 1:
             found = True
-            contest, prob = name_and_link_matched[0]
-        elif name_matched:
+            contest, prob = link_matched[0]
+        elif name_matched and len(name_matched) == 1:
             found = True
             contest, prob = name_matched[0]
         else:
