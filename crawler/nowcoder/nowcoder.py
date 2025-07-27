@@ -361,10 +361,13 @@ class NOWCODERCrawler(BaseCrawler):
                 status_page = self.fetch_page_with_browser(status_link_with_page)
                 soup = bs4(status_page, "html.parser")
 
-                current_page = soup.find("div", class_="pagination").find(
-                    "li", class_="active"
-                )
-                current_page_number = int(current_page.text.strip())
+                current_page = soup.find("div", class_="pagination")
+                if not current_page:
+                    current_page_number = 1
+                else:
+                    current_page_number = int(
+                        current_page.find("li", class_="active").text.strip()
+                    )
 
                 if current_page_number != page:
                     self.log(
