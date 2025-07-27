@@ -31,13 +31,17 @@ function isSolvedInContest(
 // Helper: Get display time for submissions
 function getInContestTime(
   submitTime: string | Date | null,
+  contestStartTime: string | Date | null,
   contestEndTime: string | Date | null,
 ): string {
-  if (submitTime && contestEndTime) {
+  if (submitTime && contestStartTime && contestEndTime) {
     const submitDate = new Date(submitTime);
+    const startDate = new Date(contestStartTime);
     const endDate = new Date(contestEndTime);
-    const timeDiff = endDate.getTime() - submitDate.getTime();
-    if (timeDiff > 0) return convertDurationToHHMMSS(timeDiff / 1000);
+    if (submitDate <= endDate) {
+      const timeDiff = submitDate.getTime() - startDate.getTime();
+      return convertDurationToHHMMSS(timeDiff / 1000);
+    }
   }
   return formatDate(submitTime);
 }
@@ -67,6 +71,7 @@ function FileList({ files, relPath }: { files: FileMetadataType[]; relPath: stri
 function ProblemRow({
   problem,
   idx,
+  contestStartTime,
   contestEndTime,
   problemLetter,
   setSelectedProblemIdx,
@@ -74,6 +79,7 @@ function ProblemRow({
 }: {
   problem: ProblemInfoType;
   idx: number;
+  contestStartTime: string | Date | null;
   contestEndTime: string | Date | null;
   problemLetter: string;
   setSelectedProblemIdx: (idx: number | null) => void;
@@ -88,11 +94,12 @@ function ProblemRow({
   let statusBlock = null;
   if (codeFile) {
     const isInContest = isSolvedInContest(
-      codeFile.submit_time || codeFile.modified_time || null,
+      codeFile.solve_time || codeFile.submit_time || null,
       contestEndTime || null,
     );
     const displayTime = getInContestTime(
-      codeFile.submit_time || codeFile.modified_time || null,
+      codeFile.solve_time || codeFile.submit_time || null,
+      contestStartTime || null,
       contestEndTime || null,
     );
     const submitStatus: string = codeFile.status || "UKN";
@@ -228,6 +235,7 @@ function ContestExpandBlock({
                     key={pIdx}
                     problem={problem}
                     idx={pIdx}
+                    contestStartTime={contest.start_time || null}
                     contestEndTime={contest.end_time || null}
                     problemLetter={problemLetters[pIdx]}
                     setSelectedProblemIdx={setSelectedProblemIdx}
