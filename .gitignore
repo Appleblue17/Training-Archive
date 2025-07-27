@@ -53,9 +53,11 @@ crawler/chrome-linux
 crawler/chromedriver_linux64
 crawler/global.log.json
 crawler/last-update.json
+crawler/config.json
 crawler/*/contests.json
 crawler/*/staged-submissions.json
 crawler/*/log.json
+crawler/*/input_*.json
 
 # test script
 *test.sh
