@@ -3,6 +3,7 @@ import glob
 import json
 import random
 import shutil
+import re
 import time
 from datetime import datetime, timedelta, timezone
 
@@ -35,8 +36,12 @@ class BaseCrawler:
 
         self.init_driver()
 
-    def _random_sleep(self):
-        sleep_time = random.uniform(self.min_wait_time, self.max_wait_time)
+    def _random_sleep(self, min_wait_time=None, max_wait_time=None):
+        if min_wait_time is None:
+            min_wait_time = self.min_wait_time
+        if max_wait_time is None:
+            max_wait_time = self.max_wait_time
+        sleep_time = random.uniform(min_wait_time, max_wait_time)
         time.sleep(sleep_time)
 
     def _get_extension_name(self, language):
@@ -72,6 +77,102 @@ class BaseCrawler:
     def _convert_iso_to_beijing(self, iso_str):
         dt = datetime.fromisoformat(iso_str)
         return self._convert_to_beijing_time(dt)
+
+    def clean_pandoc_markdown(self, md: str) -> str:
+        # 1. Remove ::: block with attributes
+        md = re.sub(r"^:::\s*\{[^\}]*\}\s*$", "", md, flags=re.MULTILINE)
+        md = re.sub(r"^:::\s*$", "", md, flags=re.MULTILINE)
+
+        # 2. Remove { .katex-mathml } { .katex } { .katex-display }
+        md = re.sub(r"\{\.katex-mathml\}", "", md)
+        md = re.sub(r"\{\.katex\}", "", md)
+        md = re.sub(r"\{\.katex-display\}", "", md)
+
+        # 3. Extract and replace math formulas
+        # Block-level [[[...]]] -> $$...$$
+        md = re.sub(
+            r"\[\[\[\s*(.*?)\s*\]\]\]",
+            lambda m: f"\n{m.group(1)}\n",
+            md,
+            flags=re.DOTALL,
+        )
+
+        # Inline [[...]] -> $...$
+        md = re.sub(r"\[\[\s*(.*?)\s*\]\]", lambda m: f"{m.group(1)}", md)
+
+        # Remove endline before $...$ if it's at the beginning of a line
+        md = re.sub(r"\n\s*(\$[^\$]+\$)", r" \1", md)
+
+        # Remove endline after $...$ if it's at the end of a line
+        md = re.sub(r"\s*(\$[^\$]+\$)\n", r"\1 ", md)
+
+        # 4. Remove extra blank lines
+        md = re.sub(r"\n{3,}", "\n\n", md)
+
+        # 5. Fix list dash space
+        md = re.sub(r"^\s*-\s*(\S)", r"- \1", md, flags=re.MULTILINE)
+
+        return md.strip()
+
+    def _convert_html_to_markdown(self, html):
+        """
+        Convert HTML to Markdown using pandoc. Return the Markdown content.
+        Supports KaTeX by replacing <span class="katex">...</span> with <span class="math">...</span>.
+        Requires pandoc to be installed.
+        """
+        import subprocess
+        import tempfile
+        import os
+
+        # --- 1. Write to temporary HTML file ---
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            suffix=".html",
+            dir=self.download_dir,
+            delete=False,
+            encoding="utf-8",
+        ) as html_file:
+            html_file.write(html)
+            html_path = html_file.name
+
+        # --- 2. Generate temporary Markdown file path ---
+        with tempfile.NamedTemporaryFile(
+            mode="w+",
+            suffix=".md",
+            dir=self.download_dir,
+            delete=False,
+            encoding="utf-8",
+        ) as tmp_md_file:
+            tmp_md_path = tmp_md_file.name
+
+        # --- 3. Call pandoc conversion ---
+        try:
+            subprocess.run(
+                [
+                    "pandoc",
+                    html_path,
+                    "-f",
+                    "html",
+                    "-t",
+                    "markdown",
+                    "-o",
+                    tmp_md_path,
+                ],
+                check=True,
+            )
+            # Read temporary md file and clean
+            with open(tmp_md_path, "r", encoding="utf-8") as f:
+                md_content = f.read()
+            md_clean = self.clean_pandoc_markdown(md_content)
+            return md_clean
+        except Exception as e:
+            self.log("error", f"Pandoc conversion failed: {e}")
+        finally:
+            # Clean up temporary files
+            if os.path.exists(html_path):
+                os.remove(html_path)
+            if os.path.exists(tmp_md_path):
+                os.remove(tmp_md_path)
 
     def _load_file(self, path, default=[]):
         if not os.path.exists(path):
@@ -268,6 +369,9 @@ class BaseCrawler:
 
         # Then fetch contests from the website
         contest_list = self.fetch_contests_get_contest_list()
+        if not contest_list:
+            self.log("error", "Failed to fetch contest list. Exiting.")
+            return
 
         for contest_info in contest_list:
             contest_name = contest_info["name"]
