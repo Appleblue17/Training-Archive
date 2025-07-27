@@ -7,14 +7,14 @@
   },
   "hdu": {
     "base_url": "https://acm.hdu.edu.cn",
-    "min_wait_time": 1,
-    "max_wait_time": 2,
+    "min_wait_time": 0.5,
+    "max_wait_time": 1,
     "username": "team0866"
   },
   "nowcoder": {
     "base_url": "https://ac.nowcoder.com",
-    "min_wait_time": 1,
-    "max_wait_time": 2,
+    "min_wait_time": 0.5,
+    "max_wait_time": 1,
     "username": "Appleblue17"
   }
 }

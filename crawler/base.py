@@ -376,7 +376,7 @@ class BaseCrawler:
         # Then fetch contests from the website
         contest_list = self.fetch_contests_get_contest_list()
         if not contest_list:
-            self.log("error", "Failed to fetch contest list. Exiting.")
+            self.log("info", "Contest list is empty, no contests to fetch. Exiting.")
             return
 
         for contest_info in contest_list:

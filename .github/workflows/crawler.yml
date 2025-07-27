@@ -48,6 +48,8 @@ jobs:
         run: ls -l crawler/chromedriver_linux64/
 
       - name: Run QOJ Crawler
+        id: qoj
+        continue-on-error: true
         run: python3 crawler/qoj/qoj.py
         env:
           PYTHONUNBUFFERED: "1"
@@ -57,6 +59,8 @@ jobs:
           QOJ_PASSWORD: ${{ secrets.QOJ_PASSWORD }}
 
       - name: Run HDU Crawler
+        id: hdu
+        continue-on-error: true
         run: python3 crawler/hdu/hdu.py
         env:
           PYTHONUNBUFFERED: "1"
@@ -66,6 +70,8 @@ jobs:
           HDU_PASSWORD: ${{ secrets.HDU_PASSWORD }}
 
       - name: Run NowCoder Crawler
+        id: nowcoder
+        continue-on-error: true
         run: python3 crawler/nowcoder/nowcoder.py
         env:
           PYTHONUNBUFFERED: "1"
@@ -73,6 +79,17 @@ jobs:
           CHROMEDRIVER_PATH: ${{ steps.setup-chrome.outputs.chromedriver-path }}
           NEWCODER_COOKIE_NOWCODERUID: ${{ secrets.NEWCODER_COOKIE_NOWCODERUID }}
           NEWCODER_COOKIE_T: ${{ secrets.NEWCODER_COOKIE_T }}
+
+      - name: Check if all crawlers failed
+        id: all_failed
+        run: |
+          if [ "${{ steps.qoj.outcome }}" = "failure" ] && \
+             [ "${{ steps.hdu.outcome }}" = "failure" ] && \
+             [ "${{ steps.nowcoder.outcome }}" = "failure" ]; then
+            echo "All crawlers failed."
+            exit 1
+          fi
+          echo "At least one crawler succeeded. Continuing with the workflow."
 
       - name: Add and show changes
         run: |
