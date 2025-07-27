@@ -3,7 +3,7 @@ name: Crawler Workflow
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 12 * * *"
+    - cron: "0 20 * * *" # Runs daily at 20:00 UTC (04:00 Asia/Shanghai)
 
 jobs:
   crawl:
@@ -55,6 +55,24 @@ jobs:
           CHROMEDRIVER_PATH: ${{ steps.setup-chrome.outputs.chromedriver-path }}
           QOJ_USERNAME: ${{ secrets.QOJ_USERNAME }}
           QOJ_PASSWORD: ${{ secrets.QOJ_PASSWORD }}
+
+      - name: Run HDU Crawler
+        run: python3 crawler/hdu/hdu.py
+        env:
+          PYTHONUNBUFFERED: "1"
+          CHROME_BINARY: ${{ steps.setup-chrome.outputs.chrome-path }}
+          CHROMEDRIVER_PATH: ${{ steps.setup-chrome.outputs.chromedriver-path }}
+          HDU_USERNAME: ${{ secrets.HDU_USERNAME }}
+          HDU_PASSWORD: ${{ secrets.HDU_PASSWORD }}
+
+      - name: Run NowCoder Crawler
+        run: python3 crawler/nowcoder/nowcoder.py
+        env:
+          PYTHONUNBUFFERED: "1"
+          CHROME_BINARY: ${{ steps.setup-chrome.outputs.chrome-path }}
+          CHROMEDRIVER_PATH: ${{ steps.setup-chrome.outputs.chromedriver-path }}
+          NEWCODER_COOKIE_NOWCODERUID: ${{ secrets.NEWCODER_COOKIE_NOWCODERUID }}
+          NEWCODER_COOKIE_T: ${{ secrets.NEWCODER_COOKIE_T }}
 
       - name: Add and show changes
         run: |
