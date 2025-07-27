@@ -14,6 +14,7 @@ on:
 
 jobs:
   check_contests:
+    if: github.event_name == 'workflow_run'
     runs-on: ubuntu-latest
     outputs:
       should_deploy: ${{ steps.check_commit.outputs.should_deploy }}
