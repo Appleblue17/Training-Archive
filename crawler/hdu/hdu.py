@@ -110,6 +110,14 @@ class HDUCrawler(BaseCrawler):
 
             contest_date = start_time.date().isoformat()
 
+            if start_time > now:
+                # Contest is in the future, skip it
+                self.log(
+                    "info",
+                    f"Contest {contest_name} has not started yet. Skipping.",
+                )
+                continue
+
             contest_info = {
                 "name": contest_name,
                 "date": contest_date,
@@ -301,10 +309,14 @@ class HDUCrawler(BaseCrawler):
             status_page = self.fetch_page_with_browser(status_link)
             soup = bs4(status_page, "html.parser")
 
-            table_body = soup.find("table", class_="page-card-table").find("tbody")
+            table_body = soup.find("table", class_="page-card-table")
             if not table_body:
-                self.log("error", "No submissions found on this page.")
+                self.log(
+                    "warning",
+                    "No submissions found on this page. Probably the contest has not started yet.",
+                )
                 break
+            table_body = table_body.find("tbody")
             submission_elements = table_body.find_all("tr")
 
             for submission in submission_elements:

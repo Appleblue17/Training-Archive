@@ -95,6 +95,14 @@ class NOWCODERCrawler(BaseCrawler):
 
             contest_date = start_time.date().isoformat()
 
+            if start_time > now:
+                # Contest is in the future, skip it
+                self.log(
+                    "info",
+                    f"Contest {contest_name} has not started yet. Skipping.",
+                )
+                continue
+
             contest_info = {
                 "name": contest_name,
                 "date": contest_date,
@@ -345,13 +353,11 @@ class NOWCODERCrawler(BaseCrawler):
             )
 
             status_link = f'{contest_link}#submit/"onlyMyStatusFilter"%3Atrue'
-            print(f"Fetching status page: {status_link}")
 
             for page in range(1, 20):
                 # Assume there are at most 20 pages of submissions
                 status_link_with_page = f'{status_link}%2C"page"%3A{page}'
 
-                print(status_link_with_page)
                 status_page = self.fetch_page_with_browser(status_link_with_page)
                 soup = bs4(status_page, "html.parser")
 
@@ -367,14 +373,16 @@ class NOWCODERCrawler(BaseCrawler):
                     )
                     break
 
-                table_body = (
-                    soup.find("div", class_="module-box")
-                    .find("table", class_="table-hover")
-                    .find("tbody")
+                table_body = soup.find("div", class_="module-box").find(
+                    "table", class_="table-hover"
                 )
                 if not table_body:
-                    self.log("error", "No submissions found on this page.")
+                    self.log(
+                        "warning",
+                        "No submissions found on this page. Probably the contest has not started yet.",
+                    )
                     break
+                table_body = table_body.find("tbody")
                 submission_elements = table_body.find_all("tr")
 
                 for submission in submission_elements:
@@ -443,8 +451,8 @@ if __name__ == "__main__":
         )
         crawler.login()
 
-        # crawler.fetch_contests()
-        # crawler.log("info", "Contests fetched successfully.")
+        crawler.fetch_contests()
+        crawler.log("info", "Contests fetched successfully.")
         crawler.fetch_submissions()
         crawler.log("info", "Submissions fetched successfully.")
         crawler.log(
