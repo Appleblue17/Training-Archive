@@ -1,0 +1,596 @@
+1:"$Sreact.fragment"
+2:I[48521,[],""]
+3:I[31661,[],""]
+5:I[47055,[],"OutletBoundary"]
+7:I[39909,[],"AsyncMetadataOutlet"]
+9:I[47055,[],"ViewportBoundary"]
+b:I[47055,[],"MetadataBoundary"]
+c:"$Sreact.suspense"
+e:I[50939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/59c3f2b7533d2e10.css","style"]
+:HL["/Training-Archive/_next/static/css/e49661117d44c1c5.css","style"]
+0:{"P":null,"b":"7N5deE28IqdsXQlYO5_dk","p":"/Training-Archive","c":["","view","contests","2025-07-24%202025%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A54","problems","E","statement.md"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2025-07-24%202025%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A54","d"],{"children":["problems",{"children":[["problem","E","d"],{"children":[["file","statement.md","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/59c3f2b7533d2e10.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"__className_e3f162 antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2025-07-24%202025%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A54","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["problems",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["problem","E","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["file","statement.md","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/e49661117d44c1c5.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L5",null,{"children":["$L6",["$","$L7",null,{"promise":"$@8"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L9",null,{"children":"$La"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Lb",null,{"children":["$","div",null,{"hidden":true,"children":["$","$c",null,{"fallback":null,"children":"$Ld"}]}]}]]}],false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+4:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2025-07-24 2025牛客暑期多校训练营4",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"E",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"statement.md"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2025-07-24 2025牛客暑期多校训练营4/problems/E/statement.md","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","children":[]}],["$","polyline","1",{"points":"7 10 12 15 17 10","children":[]}],["$","line","2",{"x1":"12","y1":"15","x2":"12","y2":"3","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2025-07-24 2025牛客暑期多校训练营4/problems/E/statement.md","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z","children":[]}],["$","polyline","1",{"points":"14 2 14 8 20 8","children":[]}],["$","line","2",{"x1":"16","y1":"13","x2":"8","y2":"13","children":[]}],["$","line","3",{"x1":"16","y1":"17","x2":"8","y2":"17","children":[]}],["$","polyline","4",{"points":"10 9 9 9 8 9","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-center justify-center","children":["$","main",null,{"className":"flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":"$Lf"}],["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"statement.md"}]]}],["$","div","modified_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Modified Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/27 17:04:17"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"3.425 KB (3507 B)"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Echoes of 24"}]]}],["$","div","modified_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":["$L10"," ","$L11"]}],"$L12","$L13","$L14","$L15","$L16"]}]]}],"$L17"]}]]}]}]]}]}]
+10:["$","span",null,{"className":"text-blue-400","children":["[","Modified Time","]"]}]
+11:["$","span",null,{"className":"text-pink-400","children":"2025/07/27 17:04:17"}]
+12:["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://ac.nowcoder.com/acm/contest/108301/E","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://ac.nowcoder.com/acm/contest/108301/E"}]]}]
+13:["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"3 s"}]]}]
+14:["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}]
+15:["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/24 07:49:45"}]]}]
+16:["$","div","solve_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solve Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/24 07:49:45"}]]}]
+17:["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"2025牛客暑期多校训练营4"}]]}],["$","div","modified_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Modified Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/27 17:04:17"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025-07-24"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"nowcoder"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/24 04:00:00"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/24 09:00:00"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://ac.nowcoder.com/acm/contest/108301","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://ac.nowcoder.com/acm/contest/108301"}]]}]]}]]}]
+18:I[16005,["215","static/chunks/1951f239-4d21ecf47dca0143.js","364","static/chunks/364-510402306c735724.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-ee72e8529fd79a31.js"],"default"]
+19:Tdb3,## E. Echoes of 24
+
+### 题目描述
+
+::::::: {style="text-wrap-mode:wrap;"}
+**Please note the special memory limit of this problem.**\
+
+:::::: {style="text-wrap-mode:wrap;"}
+\
+
+::::: {style="text-wrap-mode:wrap;"}
+![](https://uploadfiles.nowcoder.com/images/20250708/0_1751963254497/F51C29794E630AF10DD08BC2804348B9){style="height:auto;width:236px;"}\
+
+:::: {style="text-wrap-mode:wrap;"}
+This is Tachibana Kanade. She is very cute.\
+
+\
+[In the quiet afterlife, where forgotten memories echo like distant
+bells, a vast Tree connects every soul\'s
+regret.]{style="text-wrap-mode:wrap;"}\
+\
+[Tachibana Kanade, the silent guardian, awakens in the center of this
+realm. Each node on the Tree holds a
+number ]{style="text-wrap-mode:wrap;"}$a_i$[ \-\--
+fragments of emotion, unresolved wishes, and fading
+light.]{style="text-wrap-mode:wrap;"}\
+\
+[To awaken her scattered friends, Kanade must walk from
+node ]{style="text-wrap-mode:wrap;"}$l$[ to
+node ]{style="text-wrap-mode:wrap;"}$r$[,
+tracing a simple path. The values along this path
+are ]{style="text-wrap-mode:wrap;"}$w_1, w_2, \dots, w_k$[.
+She starts with the counter set
+to ]{style="text-wrap-mode:wrap;"}$w_1$[.]{style="text-wrap-mode:wrap;"}\
+\
+[At each of the
+next ]{style="text-wrap-mode:wrap;"}$k-1$[ steps,
+she will:]{style="text-wrap-mode:wrap;"}\
+\ $\bullet$[ Increase the step index by
+1,]{style="text-wrap-mode:wrap;"}\ $\bullet$[ Choose to
+either ]{style="text-wrap-mode:wrap;"}**add**[ or ]{style="text-wrap-mode:wrap;"}**multiply**[ the
+counter by the current
+value ]{style="text-wrap-mode:wrap;"}$w_{id}$[.]{style="text-wrap-mode:wrap;"}\
+\
+[Her mission: reach
+exactly ]{style="text-wrap-mode:wrap;"}$24$[,
+the number that symbolizes a complete day \-\-- 24 hours of precious
+time, 24 echoes of unspoken memories.]{style="text-wrap-mode:wrap;"}\
+\
+[Some queries ask whether such a path can yield 24. Others alter the
+memory fragments themselves.]{style="text-wrap-mode:wrap;"}\
+\
+[Can Kanade rewrite fate and reach that quiet resolution once
+more?]{style="text-wrap-mode:wrap;"}Echoes of 24
+
+::::
+:::::
+::::::
+:::::::
+
+### 输入描述
+
+The first line contains two
+integers $n$ and $q$ $( 1 \le n,q \le 5\times 10^5 )$ \-\--
+the number of nodes in the tree and the number of queries.\
+\
+The second line
+contains $n$ integers $a_1,a_2,\dots,a_{n} (1\le a_i \le 10^9)$ \-\--
+the memory values stored at each node.\
+\
+Then follow $n-1$ lines, each containing two
+integers $u$ and $v$ \-\--
+indicating an undirected edge between
+nodes $u$ and $v$.\
+\
+
+<div>
+
+Then $q$ lines follow, each representing one
+of the following two types of queries:
+
+</div> $\quad \circ$ $\texttt{1 l r}$:
+check if path
+from $l$ to $r$ can
+yield 24,\ $\quad \circ$ $\texttt{2 x d}$:
+update value at
+node $x$ to $d$.
+
+### 输出描述
+
+For each query of type $\texttt{1 l r}$,
+output one line:\ $\bullet$ $\texttt{1}$ if
+the path can reach value 24,\ $\bullet$ $\texttt{0}$ otherwise.
+
+### 示例1
+
+#### 输入
+
+```plain
+9 8
+1 3 1 2 4 6 5 2 2
+1 2
+1 3
+2 4
+2 5
+3 6
+3 7
+6 8
+7 9
+1 4 8
+1 4 9
+1 2 8
+1 6 9
+1 9 6
+2 3 8
+1 6 9
+1 9 6
+```
+
+#### 输出
+
+```plain
+1
+1
+0
+1
+0
+0
+1
+```
+
+### 示例2
+
+#### 输入
+
+```plain
+8 8
+3 2 3 3 1 3 1 2
+2 1
+3 2
+4 1
+5 2
+6 4
+7 6
+8 7
+2 4 4
+1 8 2
+2 5 2
+1 2 4
+1 5 2
+2 1 3
+1 4 8
+2 6 2
+```
+
+#### 输出
+
+```plain
+1
+1
+0
+1
+```
+
+### 备注
+
+<div>
+
+Constraints:
+
+</div>
+
+<div> $\bullet$ $1 \le n,q \le 5\times 10^5$\ $\bullet$ $1 \le a_i,d \le 10^9$\
+
+</div>
+
+<div> $\bullet$$1 \le l,r,x \le n$ 
+</div>
+
+1a:T6a85,
+<h2>E. Echoes of 24</h2>
+<h3>题目描述</h3>
+<p>
+  ::::::: {style="text-wrap-mode:wrap;"}
+  <strong>Please note the special memory limit of this problem.</strong>\
+</p>
+<p>
+  :::::: {style="text-wrap-mode:wrap;"}
+  \
+</p>
+<p>
+  ::::: {style="text-wrap-mode:wrap;"}
+  
+  <img src="https://uploadfiles.nowcoder.com/images/20250708/0_1751963254497/F51C29794E630AF10DD08BC2804348B9" alt="">{style="height:auto;width:236px;"}\
+</p>
+<p>
+  :::: {style="text-wrap-mode:wrap;"}
+  This is Tachibana Kanade. She is very cute.\
+</p>
+<p>
+  <br>[In the quiet afterlife, where forgotten memories echo like distant
+  bells, a vast Tree connects every soul's
+  regret.]{style="text-wrap-mode:wrap;"}<br><br>[Tachibana Kanade, the silent guardian, awakens in the center of this
+  realm. Each node on the Tree holds a
+  number ]{style="text-wrap-mode:wrap;"}<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>a</mi>
+              <mi>i</mi>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">a_i</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>[ ---
+  fragments of emotion, unresolved wishes, and fading
+  light.]{style="text-wrap-mode:wrap;"}<br><br>[To awaken her scattered friends, Kanade must walk from
+  node ]{style="text-wrap-mode:wrap;"}<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>l</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">l</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>[ to
+  node ]{style="text-wrap-mode:wrap;"}<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>r</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">r</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>[,
+  tracing a simple path. The values along this path
+  are ]{style="text-wrap-mode:wrap;"}<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>w</mi>
+              <mn>1</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>w</mi>
+              <mn>2</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <mo>…</mo>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>w</mi>
+              <mi>k</mi>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">w_1, w_2, \dots, w_k</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>[.
+  She starts with the counter set
+  to ]{style="text-wrap-mode:wrap;"}<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>w</mi>
+              <mn>1</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">w_1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>[.]{style="text-wrap-mode:wrap;"}<br><br>[At each of the
+  next ]{style="text-wrap-mode:wrap;"}<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>k</mi>
+            <mo>−</mo>
+            <mn>1</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">k-1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>[ steps,
+  she will:]{style="text-wrap-mode:wrap;"}<br>\ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mo>∙</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">\bullet</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord">∙</span></span></span></span>[ Increase the step index by
+  1,]{style="text-wrap-mode:wrap;"}\ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mo>∙</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">\bullet</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord">∙</span></span></span></span>[ Choose to
+  either ]{style="text-wrap-mode:wrap;"}<strong>add</strong>[ or ]{style="text-wrap-mode:wrap;"}<strong>multiply</strong>[ the
+  counter by the current
+  value ]{style="text-wrap-mode:wrap;"}<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>w</mi>
+              <mrow>
+                <mi>i</mi>
+                <mi>d</mi>
+              </mrow>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">w_{id}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>[.]{style="text-wrap-mode:wrap;"}<br><br>[Her mission: reach
+  exactly ]{style="text-wrap-mode:wrap;"}<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>24</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">24</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">24</span></span></span></span>[,
+  the number that symbolizes a complete day --- 24 hours of precious
+  time, 24 echoes of unspoken memories.]{style="text-wrap-mode:wrap;"}<br><br>[Some queries ask whether such a path can yield 24. Others alter the
+  memory fragments themselves.]{style="text-wrap-mode:wrap;"}<br><br>[Can Kanade rewrite fate and reach that quiet resolution once
+  more?]{style="text-wrap-mode:wrap;"}Echoes of 24
+</p>
+<p>
+  ::::
+  :::::
+  ::::::
+  :::::::
+</p>
+<h3>输入描述</h3>
+<p>
+  The first line contains two
+  integers <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>q</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">q</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>n</mi>
+            <mo separator="true">,</mo>
+            <mi>q</mi>
+            <mo>≤</mo>
+            <mn>5</mn>
+            <mo>×</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>5</mn>
+            </msup>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">( 1 \le n,q \le 5\times 10^5 )</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> ---
+  the number of nodes in the tree and the number of queries.<br><br>The second line
+  contains <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> integers <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>a</mi>
+              <mn>1</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>a</mi>
+              <mn>2</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <mo>…</mo>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>a</mi>
+              <mi>n</mi>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <msub>
+              <mi>a</mi>
+              <mi>i</mi>
+            </msub>
+            <mo>≤</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>9</mn>
+            </msup>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">a_1,a_2,\dots,a_{n} (1\le a_i \le 10^9)</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.786em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> ---
+  the memory values stored at each node.<br><br>Then follow <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+            <mo>−</mo>
+            <mn>1</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">n-1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> lines, each containing two
+  integers <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>u</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">u</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>v</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">v</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> ---
+  indicating an undirected edge between
+  nodes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>u</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">u</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>v</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">v</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>.<br>\
+</p>
+<p>
+  Then <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>q</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">q</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span> lines follow, each representing one
+  of the following two types of queries:
+</p>
+<h3>输出描述</h3>
+<p>
+  For each query of type <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mtext mathvariant="monospace">1</mtext>
+            <mtext> </mtext>
+            <mtext mathvariant="monospace">l</mtext>
+            <mtext> </mtext>
+            <mtext mathvariant="monospace">r</mtext>
+          </mrow>
+          <annotation encoding="application/x-tex">\texttt{1 l r}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6111em;"></span><span class="mord text"><span class="mord texttt">1 l r</span></span></span></span></span>,
+  output one line:\ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mo>∙</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">\bullet</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord">∙</span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mtext mathvariant="monospace">1</mtext>
+          </mrow>
+          <annotation encoding="application/x-tex">\texttt{1}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6111em;"></span><span class="mord text"><span class="mord texttt">1</span></span></span></span></span> if
+  the path can reach value 24,\ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mo>∙</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">\bullet</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord">∙</span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mtext mathvariant="monospace">0</mtext>
+          </mrow>
+          <annotation encoding="application/x-tex">\texttt{0}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6111em;"></span><span class="mord text"><span class="mord texttt">0</span></span></span></span></span> otherwise.
+</p>
+<h3>示例1</h3>
+<h4>输入</h4>
+<pre><code class="hljs language-plain">9 8
+1 3 1 2 4 6 5 2 2
+1 2
+1 3
+2 4
+2 5
+3 6
+3 7
+6 8
+7 9
+1 4 8
+1 4 9
+1 2 8
+1 6 9
+1 9 6
+2 3 8
+1 6 9
+1 9 6
+</code></pre>
+<h4>输出</h4>
+<pre><code class="hljs language-plain">1
+1
+0
+1
+0
+0
+1
+</code></pre>
+<h3>示例2</h3>
+<h4>输入</h4>
+<pre><code class="hljs language-plain">8 8
+3 2 3 3 1 3 1 2
+2 1
+3 2
+4 1
+5 2
+6 4
+7 6
+8 7
+2 4 4
+1 8 2
+2 5 2
+1 2 4
+1 5 2
+2 1 3
+1 4 8
+2 6 2
+</code></pre>
+<h4>输出</h4>
+<pre><code class="hljs language-plain">1
+1
+0
+1
+</code></pre>
+<h3>备注</h3>
+<p>Constraints:</p>
+f:["$","$L18",null,{"raw":"$19","htmlContent":"$1a"}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+8:{"metadata":[],"error":null,"digest":"$undefined"}
+d:"$8:metadata"
