@@ -10,5 +10,11 @@
     "min_wait_time": 1,
     "max_wait_time": 2,
     "username": "team0866"
+  },
+  "nowcoder": {
+    "base_url": "https://ac.nowcoder.com",
+    "min_wait_time": 1,
+    "max_wait_time": 2,
+    "username": "Appleblue17"
   }
 }

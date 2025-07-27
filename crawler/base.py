@@ -75,15 +75,16 @@ class BaseCrawler:
     # Convert to beijing time
     def _convert_to_beijing_time(self, dt):
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
-        return dt.astimezone(beijing)
+            dt = dt.replace(tzinfo=beijing)
+        dt = dt.astimezone(beijing)
+        return dt
 
     # From ISO format to beijing time
     def _convert_iso_to_beijing(self, iso_str):
         dt = datetime.fromisoformat(iso_str)
         return self._convert_to_beijing_time(dt)
 
-    def clean_pandoc_markdown(self, md: str) -> str:
+    def _clean_pandoc_markdown(self, md: str) -> str:
         # 1. Remove ::: block with attributes
         md = re.sub(r"^:::\s*\{[^\}]*\}\s*$", "", md, flags=re.MULTILINE)
         md = re.sub(r"^:::\s*$", "", md, flags=re.MULTILINE)
@@ -168,7 +169,7 @@ class BaseCrawler:
             # Read temporary md file and clean
             with open(tmp_md_path, "r", encoding="utf-8") as f:
                 md_content = f.read()
-            md_clean = self.clean_pandoc_markdown(md_content)
+            md_clean = self._clean_pandoc_markdown(md_content)
             return md_clean
         except Exception as e:
             self.log("error", f"Pandoc conversion failed: {e}")

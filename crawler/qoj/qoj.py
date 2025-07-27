@@ -33,14 +33,13 @@ class QOJCrawler(BaseCrawler):
         self._random_sleep(0.5, 1)
         self.driver.find_element(By.NAME, "password").send_keys(password)
         self._random_sleep(0.5, 1)
-        self.driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+        self.driver.find_element("id", "button-submit").click()
         self._random_sleep()
 
         if not self.is_logged_in():
             self.log("fatal", "Login failed with provided credentials.")
-            return False
         else:
-            return True
+            self.log("info", "Login successful with username and password.")
 
     def login(self):
         username = os.getenv("QOJ_USERNAME")
@@ -52,10 +51,7 @@ class QOJCrawler(BaseCrawler):
             )
             return
 
-        if self.try_login_with_password(username, password):
-            self.log("info", "Login successful with username and password.")
-            return
-        self.log("fatal", "No valid login method found. Please check your credentials.")
+        self.try_login_with_password(username, password)
 
     def fetch_contests_get_contest_list(self):
         """
