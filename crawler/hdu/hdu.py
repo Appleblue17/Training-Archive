@@ -306,66 +306,92 @@ class HDUCrawler(BaseCrawler):
             self.login(contest_link)
             status_link = contest_link.replace("problems", "status")
 
-            status_page = self.fetch_page_with_browser(status_link)
-            soup = bs4(status_page, "html.parser")
+            for page in range(1, 10):
+                # Assume there are at most 10 pages of submissions
+                status_link_with_page = f"{status_link}&page={page}"
 
-            table_body = soup.find("table", class_="page-card-table")
-            if not table_body:
-                self.log(
-                    "warning",
-                    "No submissions found on this page. Probably the contest has not started yet.",
-                )
-                break
-            table_body = table_body.find("tbody")
-            submission_elements = table_body.find_all("tr")
+                status_page = self.fetch_page_with_browser(status_link_with_page)
+                soup = bs4(status_page, "html.parser")
 
-            for submission in submission_elements:
-                cols = submission.find_all("td")
-                if len(cols) < 7:
+                pagination_element = soup.find("ul", class_="pagination")
+
+                isCurrentPage = False
+                if not pagination_element:
+                    if page == 1:
+                        isCurrentPage = True
+                else:
+                    current_pages = pagination_element.find_all(
+                        "li", class_="page-item disabled"
+                    )
+                    for current_page in current_pages:
+                        if current_page.text.strip() == str(page):
+                            isCurrentPage = True
+                            break
+
+                if not isCurrentPage:
+                    self.log(
+                        "info",
+                        "Reached the end of submissions or no more pages to fetch. Stopped.",
+                    )
+                    break
+
+                table_body = soup.find("table", class_="page-card-table")
+                if not table_body:
                     self.log(
                         "warning",
-                        "Found submission with less than 9 columns, skipping.",
+                        "No submissions found on this page. Probably the contest has not started yet.",
                     )
-                    continue
+                    break
+                table_body = table_body.find("tbody")
+                submission_elements = table_body.find_all("tr")
 
-                submission_id = cols[0].text.strip()
-                problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
-                submission_link = urljoin(self.base_url, cols[5].find("a")["href"])
+                for submission in submission_elements:
+                    cols = submission.find_all("td")
+                    if len(cols) < 7:
+                        self.log(
+                            "warning",
+                            "Found submission with less than 9 columns, skipping.",
+                        )
+                        continue
 
-                # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
-                raw_status = cols[6].text.strip()
-                if raw_status == "Accepted":
-                    status = "AC"
-                elif "Runtime Error" in raw_status:
-                    status = "RE"
-                else:
-                    # only preserve uppercase letters
-                    status = re.sub(r"[^A-Z]", "", raw_status)
+                    submission_id = cols[0].text.strip()
+                    problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
+                    submission_link = urljoin(self.base_url, cols[5].find("a")["href"])
 
-                time = cols[3].text.strip()
-                memory = cols[4].text.strip()
-                language = cols[5].text.strip()
+                    # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
+                    raw_status = cols[6].text.strip()
+                    if raw_status == "Accepted":
+                        status = "AC"
+                    elif "Runtime Error" in raw_status:
+                        status = "RE"
+                    else:
+                        # only preserve uppercase letters
+                        status = re.sub(r"[^A-Z]", "", raw_status)
 
-                submit_time = self._convert_iso_to_beijing(cols[1].text.strip())
+                    time = cols[3].text.strip()
+                    memory = cols[4].text.strip()
+                    language = cols[5].text.strip()
 
-                submission_entry = {
-                    "submission_id": submission_id,
-                    "status": status,
-                    "time": time,
-                    "memory": memory,
-                    "language": language,
-                    "submit_time": submit_time.isoformat(),
-                    "problem_link": problem_link,
-                    "submission_link": submission_link,
-                }
-                stop_fetching = self._register_submission(submission_entry)
-                if stop_fetching:
-                    return
+                    submit_time = self._convert_iso_to_beijing(cols[1].text.strip())
 
-            self.log(
-                "info",
-                f"Fetched {len(submission_elements)} submissions from {contest_link}.",
-            )
+                    submission_entry = {
+                        "submission_id": submission_id,
+                        "status": status,
+                        "time": time,
+                        "memory": memory,
+                        "language": language,
+                        "submit_time": submit_time.isoformat(),
+                        "problem_link": problem_link,
+                        "submission_link": submission_link,
+                    }
+                    stop_fetching = self._register_submission(submission_entry)
+                    if stop_fetching:
+                        return
+
+                self.log(
+                    "info",
+                    f"Fetched {len(submission_elements)} submissions from {contest_link}, page {page}.",
+                )
 
 
 if __name__ == "__main__":
