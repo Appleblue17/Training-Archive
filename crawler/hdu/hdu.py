@@ -306,6 +306,7 @@ class HDUCrawler(BaseCrawler):
             self.login(contest_link)
             status_link = contest_link.replace("problems", "status")
 
+            stop_fetching = False
             for page in range(1, 10):
                 # Assume there are at most 10 pages of submissions
                 status_link_with_page = f"{status_link}&page={page}"
@@ -386,12 +387,14 @@ class HDUCrawler(BaseCrawler):
                     }
                     stop_fetching = self._register_submission(submission_entry)
                     if stop_fetching:
-                        return
+                        break
 
                 self.log(
                     "info",
                     f"Fetched {len(submission_elements)} submissions from {contest_link}, page {page}.",
                 )
+                if stop_fetching:
+                    break
 
 
 if __name__ == "__main__":
