@@ -20,6 +20,9 @@ export async function generateStaticParams() {
       const problemPath = path.join(problemsDir, problem);
       const files = fs.readdirSync(problemPath);
       for (const file of files) {
+        // Skip directories and problem metadata files
+        const filePath = path.join(problemPath, file);
+        if (fs.statSync(filePath).isDirectory() || file.endsWith(".json")) continue;
         params.push({
           contest,
           problem,
