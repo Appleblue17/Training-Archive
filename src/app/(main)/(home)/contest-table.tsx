@@ -47,7 +47,7 @@ function getInContestTime(
 }
 
 // File list component
-function FileList({ files, relPath }: { files: FileMetadataType[]; relPath: string }) {
+function ContestFileList({ files, relPath }: { files: FileMetadataType[]; relPath: string }) {
   return (
     <div className="ml-6 flex items-center justify-start gap-6 rounded border border-gray-500 bg-gray-800 px-4 py-2">
       {files.map((file, idx) => (
@@ -63,6 +63,11 @@ function FileList({ files, relPath }: { files: FileMetadataType[]; relPath: stri
           </a>
         </div>
       ))}
+      {files.length === 0 && (
+        <div className="text-gray-400">
+          No contest files available... Add any statement or solution files to the contest folder?
+        </div>
+      )}
     </div>
   );
 }
@@ -216,18 +221,18 @@ function ContestExpandBlock({
 }) {
   return (
     <tr>
-      <td colSpan={18} className={"border-b border-gray-700 p-0"}>
+      <td colSpan={19} className={"border-b border-gray-700 p-0"}>
         <div
-          className={"overflow-auto bg-neutral-900 transition-all duration-500 ease-out"}
+          className="relative overflow-hidden bg-neutral-900 transition-all duration-500 ease-out"
           style={{
             height: showExpandedContent ? "540px" : "0px",
             opacity: showExpandedContent ? 1 : 0,
           }}
         >
-          <div className="my-2 flex h-full w-full">
-            <div className="mt-1 flex flex-grow flex-col gap-3">
+          <div className="my-2 h-[530px] overflow-auto">
+            <div className="mt-1 flex w-3/4 flex-grow flex-col gap-3">
               {/* Contest files */}
-              <FileList files={contest.files} relPath={contest.rel_path} />
+              <ContestFileList files={contest.files} relPath={contest.rel_path} />
               {/* Problems list */}
               <div className="flex flex-col">
                 {contest.problems.map((problem, pIdx) => (
@@ -247,13 +252,13 @@ function ContestExpandBlock({
                 )}
               </div>
             </div>
-            <div className="flex-shrink-0 basis-1/4 px-4">
-              <MetaDataDisplay
-                name={displayMetadataName || undefined}
-                metadata={displayMetadata as FileMetadataType}
-                metadataBanner={displayMetadataBanner}
-              />
-            </div>
+          </div>
+          <div className="absolute right-0 top-2 w-1/4 px-4">
+            <MetaDataDisplay
+              name={displayMetadataName || undefined}
+              metadata={displayMetadata as FileMetadataType}
+              metadataBanner={displayMetadataBanner}
+            />
           </div>
         </div>
       </td>

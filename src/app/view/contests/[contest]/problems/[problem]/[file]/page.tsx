@@ -92,20 +92,18 @@ export default async function FilePage(props: {
             </a>
           </div>
         </header>
-        <main className="mt-4 flex w-full items-center justify-center">
-          <main className="flex w-full items-start justify-center gap-4">
-            <div className="flex-grow">
-              <FileViewer
-                dirPath={path.join("contests", contest, "problems", problem)}
-                fileName={file}
-              />
-            </div>
-            <div className="flex-shrink-0 basis-1/5 space-y-2">
-              <MetaDataDisplay name={"File"} metadata={fileMetadata} />
-              <MetaDataDisplay name={"Problem"} metadata={problemMetadata} />
-              <MetaDataDisplay name={"Contest"} metadata={contestMetadata} />
-            </div>
-          </main>
+        <main className="mt-4 flex w-full items-start justify-center gap-4">
+          <div className="flex-grow">
+            <FileViewer
+              dirPath={path.join("contests", contest, "problems", problem)}
+              fileName={file}
+            />
+          </div>
+          <div className="flex-shrink-0 basis-1/5 space-y-2 overflow-auto">
+            <MetaDataDisplay name={"File"} metadata={fileMetadata} />
+            <MetaDataDisplay name={"Problem"} metadata={problemMetadata} />
+            <MetaDataDisplay name={"Contest"} metadata={contestMetadata} />
+          </div>
         </main>
       </div>
     </div>

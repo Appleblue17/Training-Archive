@@ -26,7 +26,7 @@ export default function FileViewerMarkdown({
   };
 
   return (
-    <div className="relative flex h-[85dvh] w-full min-w-0 max-w-full flex-col rounded border-2 border-gray-600 bg-[#0d1117]">
+    <div className="relative flex h-[85dvh] w-full min-w-0 max-w-full flex-col overflow-hidden rounded border-2 border-gray-600 bg-[#0d1117]">
       <button
         onClick={handleCopy}
         className="absolute right-6 top-4 z-10 rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
