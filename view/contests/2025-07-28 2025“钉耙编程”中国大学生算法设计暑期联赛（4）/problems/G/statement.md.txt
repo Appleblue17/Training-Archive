@@ -1,0 +1,2301 @@
+1:"$Sreact.fragment"
+2:I[48521,[],""]
+3:I[31661,[],""]
+5:I[47055,[],"OutletBoundary"]
+7:I[39909,[],"AsyncMetadataOutlet"]
+a:I[50939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/ac2e9f375fa8be4c.css","style"]
+:HL["/Training-Archive/_next/static/css/e49661117d44c1c5.css","style"]
+0:{"P":null,"b":"xOHqVjE8-30qy82Dcqyhj","p":"/Training-Archive","c":["","view","contests","2025-07-28%202025%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%884%EF%BC%89","problems","G","statement.md"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2025-07-28%202025%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%884%EF%BC%89","d"],{"children":["problems",{"children":[["problem","G","d"],{"children":[["file","statement.md","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/ac2e9f375fa8be4c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"__className_e3f162 antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2025-07-28%202025%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%884%EF%BC%89","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["problems",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["problem","G","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["file","statement.md","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/e49661117d44c1c5.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L5",null,{"children":["$L6",["$","$L7",null,{"promise":"$@8"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],"$L9",false]],"m":"$undefined","G":["$a",[]],"s":false,"S":true}
+b:I[47055,[],"ViewportBoundary"]
+d:I[47055,[],"MetadataBoundary"]
+e:"$Sreact.suspense"
+9:["$","$1","h",{"children":[null,[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Ld",null,{"children":["$","div",null,{"hidden":true,"children":["$","$e",null,{"fallback":null,"children":"$Lf"}]}]}]]}]
+4:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2025-07-28 2025“钉耙编程”中国大学生算法设计暑期联赛（4）",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"G",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"statement.md"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2025-07-28 2025“钉耙编程”中国大学生算法设计暑期联赛（4）/problems/G/statement.md","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","children":[]}],["$","polyline","1",{"points":"7 10 12 15 17 10","children":[]}],["$","line","2",{"x1":"12","y1":"15","x2":"12","y2":"3","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2025-07-28 2025“钉耙编程”中国大学生算法设计暑期联赛（4）/problems/G/statement.md","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z","children":[]}],["$","polyline","1",{"points":"14 2 14 8 20 8","children":[]}],["$","line","2",{"x1":"16","y1":"13","x2":"8","y2":"13","children":[]}],["$","line","3",{"x1":"16","y1":"17","x2":"8","y2":"17","children":[]}],["$","polyline","4",{"points":"10 9 9 9 8 9","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":"$L10"}],["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"statement.md"}]]}],["$","div","modified_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Modified Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 12:01:41"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"38.88 KB"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"咖啡的罪恶"}]]}],["$","div","modified_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":["$L11"," ","$L12"]}],"$L13","$L14","$L15","$L16","$L17"]}]]}],"$L18"]}]]}]]}]}]
+11:["$","span",null,{"className":"text-blue-400","children":["[","Modified Time","]"]}]
+12:["$","span",null,{"className":"text-pink-400","children":"2025/07/28 12:01:41"}]
+13:["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1007","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1007"}]]}]
+14:["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"4000 MS"}]]}]
+15:["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"262144 K"}]]}]
+16:["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"false"}]]}]
+17:["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 11:14:09"}]]}]
+18:["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"2025“钉耙编程”中国大学生算法设计暑期联赛（4）"}]]}],["$","div","modified_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Modified Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 12:01:41"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025-07-28"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"hdu"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 04:00:00"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 09:00:00"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problems?cid=1175","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problems?cid=1175"}]]}]]}]]}]
+19:I[16005,["215","static/chunks/1951f239-4d21ecf47dca0143.js","364","static/chunks/364-510402306c735724.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-e715a016b8ea0070.js"],"default"]
+1a:T9b87,## G. 咖啡的罪恶
+
+### Problem Description
+
+Koyuki
+通过出售梦境转移器赚到了一大笔钱，只可惜她在走廊里不慎撞到了拿着咖啡的
+Noa，导致 Noa 手上的文件洒满了咖啡。更严重的是，这些文件是 Noa
+特意为老师准备的。现在，她决定没收 Koyuki
+的所得，并要求她完成下面的题目。
+
+Noa 定义一个长度为 [[$\epsilon + 1$][[[]{.strut
+style="height: 0.6667em; vertical-align: -0.0833em;"}[ϵ]{.mord
+.mathnormal}[]{.mspace
+style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
+style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}] 的非负整数序列
+[[$a_{\delta},a_{\delta + 1},a_{\delta + 2},\cdots,a_{\delta + \epsilon}$][[[]{.strut
+style="height: 0.6389em; vertical-align: -0.2083em;"}[[a]{.mord
+.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[δ]{.mord
+.mathnormal .mtight style="margin-right: 0.0379em;"}]{.sizing
+.reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[a]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[[δ]{.mord .mathnormal .mtight
+style="margin-right: 0.0379em;"}[+]{.mbin .mtight}[1]{.mord
+.mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[a]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[[δ]{.mord .mathnormal .mtight
+style="margin-right: 0.0379em;"}[+]{.mbin .mtight}[2]{.mord
+.mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+style="margin-right: 0.1667em;"}[]{.mspace
+style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[a]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[[δ]{.mord .mathnormal .mtight
+style="margin-right: 0.0379em;"}[+]{.mbin .mtight}[ϵ]{.mord .mathnormal
+.mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]（[[$\delta$][[[]{.strut
+style="height: 0.6944em;"}[δ]{.mord .mathnormal
+style="margin-right: 0.0379em;"}]{.base}]{.katex-html
+aria-hidden="true"}] 为非负整数）是一个 **咖啡序列**
+当且仅当所有整数 [[$i$][[[]{.strut
+style="height: 0.6595em;"}[i]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}]（[[$0 \leq i \leq \epsilon$][[[]{.strut
+style="height: 0.7804em; vertical-align: -0.136em;"}[0]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.7955em; vertical-align: -0.136em;"}[i]{.mord
+.mathnormal}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.4306em;"}[ϵ]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}]）均满足其在序列中的出现次数恰好为
+[[$a_{\delta + i}$][[[]{.strut
+style="height: 0.6389em; vertical-align: -0.2083em;"}[[a]{.mord
+.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[δ]{.mord
+.mathnormal .mtight style="margin-right: 0.0379em;"}[+]{.mbin
+.mtight}[i]{.mord .mathnormal .mtight}]{.mord .mtight}]{.sizing
+.reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]。
+
+她给定了一个长度为 [[$n$][[[]{.strut
+style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}] 的非负整数序列
+[[$b_{1},b_{2},b_{3},\cdots,b_{n}$][[[]{.strut
+style="height: 0.8889em; vertical-align: -0.1944em;"}[[b]{.mord
+.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+.mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[2]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[3]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+style="margin-right: 0.1667em;"}[]{.mspace
+style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[n]{.mord .mathnormal .mtight}]{.sizing
+.reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]，并要求 Koyuki 完成
+[[$q$][[[]{.strut
+style="height: 0.625em; vertical-align: -0.1944em;"}[q]{.mord
+.mathnormal style="margin-right: 0.0359em;"}]{.base}]{.katex-html
+aria-hidden="true"}] 次操作。每次操作形如：
+
+1.  1 x p（操作 1）：令 [[$b_{x}: = p$][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[x]{.mord
+    .mathnormal .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[:=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.625em; vertical-align: -0.1944em;"}[p]{.mord
+    .mathnormal}]{.base}]{.katex-html aria-hidden="true"}]。
+2.  2 l r（操作 2）：对于所有满足
+    [[$l \leq L \leq R \leq r$][[[]{.strut
+    style="height: 0.8304em; vertical-align: -0.136em;"}[l]{.mord
+    .mathnormal style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8193em; vertical-align: -0.136em;"}[L]{.mord
+    .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8193em; vertical-align: -0.136em;"}[R]{.mord
+    .mathnormal style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.4306em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}]{.base}]{.katex-html
+    aria-hidden="true"}] 的咖啡序列
+    [[$b_{L},b_{L + 1},b_{L + 2},\cdots,b_{R}$][[[]{.strut
+    style="height: 0.9028em; vertical-align: -0.2083em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[L]{.mord
+    .mathnormal .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3283em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[L]{.mord
+    .mathnormal .mtight}[+]{.mbin .mtight}[1]{.mord .mtight}]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3283em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[L]{.mord
+    .mathnormal .mtight}[+]{.mbin .mtight}[2]{.mord .mtight}]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3283em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+    style="margin-right: 0.1667em;"}[]{.mspace
+    style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[R]{.mord
+    .mathnormal .mtight style="margin-right: 0.0077em;"}]{.sizing
+    .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3283em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]，计算它的长度（也就是
+    [[$R - L + 1$][[[]{.strut
+    style="height: 0.7667em; vertical-align: -0.0833em;"}[R]{.mord
+    .mathnormal style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2222em;"}[−]{.mbin}[]{.mspace
+    style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+    style="height: 0.7667em; vertical-align: -0.0833em;"}[L]{.mord
+    .mathnormal}[]{.mspace
+    style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
+    style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]）的最大值。若不存在任何满足条件的咖啡序列，则最大值为
+    [[$0$][[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+
+Koyuki
+注意到身旁的你正在打程序设计竞赛，于是顺手将题目扔给了你。当你转过头时，只隐约看见她跑去的背影。Noa
+向你道了歉，并保证假如你做出了这道题目，她就会带 Koyuki 亲自来道歉。
+
+### Input
+
+**本题包含多组测试数据。**
+
+**来自 Noa 的温馨提示：本题输入输出量较大，对于使用 C++
+语言参加竞赛的选手，强烈建议使用关闭同步流的 cin 和 cout
+完成输入输出。**
+
+首先在第一行输入一个整数 [[$T$][[[]{.strut
+style="height: 0.6833em;"}[T]{.mord .mathnormal
+style="margin-right: 0.1389em;"}]{.base}]{.katex-html
+aria-hidden="true"}]（[[$1 \leq T \leq 10$][[[]{.strut
+style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.8193em; vertical-align: -0.136em;"}[T]{.mord
+.mathnormal style="margin-right: 0.1389em;"}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.6444em;"}[10]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]）表示测试数据组数。
+
+对于每一组测试数据，输入包含 [[$q + 2$][[[]{.strut
+style="height: 0.7778em; vertical-align: -0.1944em;"}[q]{.mord
+.mathnormal style="margin-right: 0.0359em;"}[]{.mspace
+style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
+style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}] 行。
+
+第一行包含两个整数 [[$n,q$][[[]{.strut
+style="height: 0.625em; vertical-align: -0.1944em;"}[n]{.mord
+.mathnormal}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[q]{.mord .mathnormal
+style="margin-right: 0.0359em;"}]{.base}]{.katex-html
+aria-hidden="true"}]（[[$1 \leq n,q \leq 2 \times 10^{5}$][[[]{.strut
+style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.8304em; vertical-align: -0.1944em;"}[n]{.mord
+.mathnormal}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[q]{.mord .mathnormal
+style="margin-right: 0.0359em;"}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.7278em; vertical-align: -0.0833em;"}[2]{.mord}[]{.mspace
+style="margin-right: 0.2222em;"}[×]{.mbin}[]{.mspace
+style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+style="height: 0.8141em;"}[1]{.mord}[[0]{.mord}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[5]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -3.063em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.8141em;"}]{.vlist-r}]{.vlist-t}]{.msupsub}]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]），分别表示序列的长度和操作的次数。
+
+第二行包含 [[$n$][[[]{.strut
+style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}] 个整数
+[[$b_{1},b_{2},b_{3},\cdots,b_{n}$][[[]{.strut
+style="height: 0.8889em; vertical-align: -0.1944em;"}[[b]{.mord
+.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+.mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[2]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[3]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+style="margin-right: 0.1667em;"}[]{.mspace
+style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[n]{.mord .mathnormal .mtight}]{.sizing
+.reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]（[[$0 \leq b_{1},b_{2},b_{3},\cdots,b_{n} \leq n$][[[]{.strut
+style="height: 0.7804em; vertical-align: -0.136em;"}[0]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.8889em; vertical-align: -0.1944em;"}[[b]{.mord
+.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+.mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[2]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[3]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+style="margin-right: 0.1667em;"}[]{.mspace
+style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[n]{.mord .mathnormal .mtight}]{.sizing
+.reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}]）表示序列的元素。
+
+接下来 [[$q$][[[]{.strut
+style="height: 0.625em; vertical-align: -0.1944em;"}[q]{.mord
+.mathnormal style="margin-right: 0.0359em;"}]{.base}]{.katex-html
+aria-hidden="true"}] 行，每行首先包含一个整数
+[[$op$][[[]{.strut
+style="height: 0.625em; vertical-align: -0.1944em;"}[o]{.mord
+.mathnormal}[p]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}]（[[$1 \leq op \leq 2$][[[]{.strut
+style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.8304em; vertical-align: -0.1944em;"}[o]{.mord
+.mathnormal}[p]{.mord .mathnormal}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]）表示操作的类型，接下来包含两个整数
+[[$x,p$][[[]{.strut
+style="height: 0.625em; vertical-align: -0.1944em;"}[x]{.mord
+.mathnormal}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[p]{.mord
+.mathnormal}]{.base}]{.katex-html aria-hidden="true"}] 或
+[[$l,r$][[[]{.strut
+style="height: 0.8889em; vertical-align: -0.1944em;"}[l]{.mord
+.mathnormal style="margin-right: 0.0197em;"}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+style="margin-right: 0.0278em;"}]{.base}]{.katex-html
+aria-hidden="true"}] 表示一次操作。
+
+保证在所有操作 1 中，[[$op = 1$][[[]{.strut
+style="height: 0.625em; vertical-align: -0.1944em;"}[o]{.mord
+.mathnormal}[p]{.mord .mathnormal}[]{.mspace
+style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]，[[$1 \leq x \leq n$][[[]{.strut
+style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.7719em; vertical-align: -0.136em;"}[x]{.mord
+.mathnormal}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}]，[[$0 \leq p \leq n$][[[]{.strut
+style="height: 0.7804em; vertical-align: -0.136em;"}[0]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.8304em; vertical-align: -0.1944em;"}[p]{.mord
+.mathnormal}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}]。保证在所有操作 2
+中，[[$op = 2$][[[]{.strut
+style="height: 0.625em; vertical-align: -0.1944em;"}[o]{.mord
+.mathnormal}[p]{.mord .mathnormal}[]{.mspace
+style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]，[[$1 \leq l \leq r \leq n$][[[]{.strut
+style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.8304em; vertical-align: -0.136em;"}[l]{.mord
+.mathnormal style="margin-right: 0.0197em;"}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.7719em; vertical-align: -0.136em;"}[r]{.mord
+.mathnormal style="margin-right: 0.0278em;"}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}]。
+
+### Output
+
+对于每一组测试数据，对于每一次操作
+2，输出包含一行一个整数表示满足条件的咖啡序列的长度最大值。若不存在，则答案为
+[[$0$][[[]{.strut
+style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]。
+
+### Sample Input
+
+```plain
+1
+12 8
+2 1 2 0 0 3 2 1 1 0 0 0
+2 1 4
+2 1 5
+2 1 6
+2 1 10
+2 1 12
+2 6 12
+1 2 0
+2 1 4
+```
+
+### Sample Output
+
+```plain
+0
+5
+5
+5
+7
+7
+4
+```
+
+### Hint
+
+在样例的测试数据中，共有 [[$8$][[[]{.strut
+style="height: 0.6444em;"}[8]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}] 次操作：
+
+1.  第 [[$1$][[[]{.strut
+    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    2，[[$l = 1,r = 4$][[[]{.strut
+    style="height: 0.6944em;"}[l]{.mord .mathnormal
+    style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。答案为
+    [[$0$][[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+2.  第 [[$2,3,4$][[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[3]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    2，[[$l = 1,r = 5/6/10$][[[]{.strut
+    style="height: 0.6944em;"}[l]{.mord .mathnormal
+    style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 1em; vertical-align: -0.25em;"}[5/6/10]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。在
+    [[$L = 1,R = 5$][[[]{.strut
+    style="height: 0.6833em;"}[L]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8778em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[R]{.mord .mathnormal
+    style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[5]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 时，序列
+    [[$b_{1} = 2,b_{2} = 1,b_{3} = 2,b_{4} = 0,b_{5} = 0$][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[2]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[3]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[4]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[5]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 是咖啡序列。答案均为
+    [[$5$][[[]{.strut
+    style="height: 0.6444em;"}[5]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+3.  第 [[$5,6$][[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[5]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[6]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    2，[[$l = 1/6,r = 12$][[[]{.strut
+    style="height: 0.6944em;"}[l]{.mord .mathnormal
+    style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 1em; vertical-align: -0.25em;"}[1/6]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[12]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。在
+    [[$L = 6,R = 12$][[[]{.strut
+    style="height: 0.6833em;"}[L]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8778em; vertical-align: -0.1944em;"}[6]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[R]{.mord .mathnormal
+    style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[12]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 时，序列
+    [[$b_{6} = 3,b_{7} = 2,b_{8} = 1,b_{9} = 1,b_{10} = 0,b_{11} = 0,b_{12} = 0$][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[6]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[3]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[7]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[8]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[9]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[10]{.mord
+    .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[11]{.mord
+    .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[12]{.mord
+    .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 是咖啡序列。答案均为
+    [[$7$][[[]{.strut
+    style="height: 0.6444em;"}[7]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+4.  第 [[$7$][[[]{.strut
+    style="height: 0.6444em;"}[7]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    1，[[$x = 2,p = 0$][[[]{.strut
+    style="height: 0.4306em;"}[x]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[p]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。此时
+    [[$b_{2}: = 0$][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[2]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[:=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+5.  第 [[$8$][[[]{.strut
+    style="height: 0.6444em;"}[8]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    2，[[$l = 1,r = 4$][[[]{.strut
+    style="height: 0.6944em;"}[l]{.mord .mathnormal
+    style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。在
+    [[$L = 1,R = 4$][[[]{.strut
+    style="height: 0.6833em;"}[L]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8778em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[R]{.mord .mathnormal
+    style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 时，序列
+    [[$b_{1} = 2,b_{2} = 0,b_{3} = 2,b_{4} = 0$][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[2]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[3]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[4]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 是咖啡序列。答案为
+    [[$4$][[[]{.strut
+    style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+
+1b:T1dffc,
+<h2>G. 咖啡的罪恶</h2>
+<h3>Problem Description</h3>
+<p>
+  Koyuki
+  通过出售梦境转移器赚到了一大笔钱，只可惜她在走廊里不慎撞到了拿着咖啡的
+  Noa，导致 Noa 手上的文件洒满了咖啡。更严重的是，这些文件是 Noa
+  特意为老师准备的。现在，她决定没收 Koyuki
+  的所得，并要求她完成下面的题目。
+</p>
+<p>
+  Noa 定义一个长度为 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>ϵ</mi>
+            <mo>+</mo>
+            <mn>1</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">\epsilon + 1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">ϵ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>][[[]{.strut
+  style="height: 0.6667em; vertical-align: -0.0833em;"}[ϵ]{.mord
+  .mathnormal}[]{.mspace
+  style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
+  style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+  style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}] 的非负整数序列
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>a</mi>
+              <mi>δ</mi>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>a</mi>
+              <mrow>
+                <mi>δ</mi>
+                <mo>+</mo>
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>a</mi>
+              <mrow>
+                <mi>δ</mi>
+                <mo>+</mo>
+                <mn>2</mn>
+              </mrow>
+            </msub>
+            <mo separator="true">,</mo>
+            <mo>⋯</mo>
+            <mtext> </mtext>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>a</mi>
+              <mrow>
+                <mi>δ</mi>
+                <mo>+</mo>
+                <mi>ϵ</mi>
+              </mrow>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">a_{\delta},a_{\delta + 1},a_{\delta + 2},\cdots,a_{\delta + \epsilon}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03785em;">δ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03785em;">δ</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03785em;">δ</span><span class="mbin mtight">+</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03785em;">δ</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">ϵ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span>][[[]{.strut
+  style="height: 0.6389em; vertical-align: -0.2083em;"}[[a]{.mord
+  .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[δ]{.mord
+  .mathnormal .mtight style="margin-right: 0.0379em;"}]{.sizing
+  .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[a]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[[δ]{.mord .mathnormal .mtight
+  style="margin-right: 0.0379em;"}[+]{.mbin .mtight}[1]{.mord
+  .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[a]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[[δ]{.mord .mathnormal .mtight
+  style="margin-right: 0.0379em;"}[+]{.mbin .mtight}[2]{.mord
+  .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+  style="margin-right: 0.1667em;"}[]{.mspace
+  style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[a]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[[δ]{.mord .mathnormal .mtight
+  style="margin-right: 0.0379em;"}[+]{.mbin .mtight}[ϵ]{.mord .mathnormal
+  .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]（[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>δ</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">\delta</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span></span></span></span>][[[]{.strut
+  style="height: 0.6944em;"}[δ]{.mord .mathnormal
+  style="margin-right: 0.0379em;"}]{.base}]{.katex-html
+  aria-hidden="true"}] 为非负整数）是一个 <strong>咖啡序列</strong>
+  当且仅当所有整数 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>i</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">i</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>][[[]{.strut
+  style="height: 0.6595em;"}[i]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}]（[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>0</mn>
+            <mo>≤</mo>
+            <mi>i</mi>
+            <mo>≤</mo>
+            <mi>ϵ</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">0 \leq i \leq \epsilon</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7955em;vertical-align:-0.136em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span>][[[]{.strut
+  style="height: 0.7804em; vertical-align: -0.136em;"}[0]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.7955em; vertical-align: -0.136em;"}[i]{.mord
+  .mathnormal}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.4306em;"}[ϵ]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}]）均满足其在序列中的出现次数恰好为
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>a</mi>
+              <mrow>
+                <mi>δ</mi>
+                <mo>+</mo>
+                <mi>i</mi>
+              </mrow>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">a_{\delta + i}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03785em;">δ</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span>][[[]{.strut
+  style="height: 0.6389em; vertical-align: -0.2083em;"}[[a]{.mord
+  .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[δ]{.mord
+  .mathnormal .mtight style="margin-right: 0.0379em;"}[+]{.mbin
+  .mtight}[i]{.mord .mathnormal .mtight}]{.mord .mtight}]{.sizing
+  .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]。
+</p>
+<p>
+  她给定了一个长度为 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>][[[]{.strut
+  style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}] 的非负整数序列
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>b</mi>
+              <mn>1</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>b</mi>
+              <mn>2</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>b</mi>
+              <mn>3</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <mo>⋯</mo>
+            <mtext> </mtext>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>b</mi>
+              <mi>n</mi>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">b_{1},b_{2},b_{3},\cdots,b_{n}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>][[[]{.strut
+  style="height: 0.8889em; vertical-align: -0.1944em;"}[[b]{.mord
+  .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+  .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[2]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[3]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+  style="margin-right: 0.1667em;"}[]{.mspace
+  style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[n]{.mord .mathnormal .mtight}]{.sizing
+  .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]，并要求 Koyuki 完成
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>q</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">q</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>][[[]{.strut
+  style="height: 0.625em; vertical-align: -0.1944em;"}[q]{.mord
+  .mathnormal style="margin-right: 0.0359em;"}]{.base}]{.katex-html
+  aria-hidden="true"}] 次操作。每次操作形如：
+</p>
+<ol>
+  <li>
+    1 x p（操作 1）：令 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>b</mi>
+                <mi>x</mi>
+              </msub>
+              <mo>:</mo>
+              <mo>=</mo>
+              <mi>p</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">b_{x}: = p</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[x]{.mord
+    .mathnormal .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[:=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.625em; vertical-align: -0.1944em;"}[p]{.mord
+    .mathnormal}]{.base}]{.katex-html aria-hidden="true"}]。
+  </li>
+  <li>
+    2 l r（操作 2）：对于所有满足
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>l</mi>
+              <mo>≤</mo>
+              <mi>L</mi>
+              <mo>≤</mo>
+              <mi>R</mi>
+              <mo>≤</mo>
+              <mi>r</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">l \leq L \leq R \leq r</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>][[[]{.strut
+    style="height: 0.8304em; vertical-align: -0.136em;"}[l]{.mord
+    .mathnormal style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8193em; vertical-align: -0.136em;"}[L]{.mord
+    .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8193em; vertical-align: -0.136em;"}[R]{.mord
+    .mathnormal style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.4306em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}]{.base}]{.katex-html
+    aria-hidden="true"}] 的咖啡序列
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>b</mi>
+                <mi>L</mi>
+              </msub>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mrow>
+                  <mi>L</mi>
+                  <mo>+</mo>
+                  <mn>1</mn>
+                </mrow>
+              </msub>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mrow>
+                  <mi>L</mi>
+                  <mo>+</mo>
+                  <mn>2</mn>
+                </mrow>
+              </msub>
+              <mo separator="true">,</mo>
+              <mo>⋯</mo>
+              <mtext> </mtext>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mi>R</mi>
+              </msub>
+            </mrow>
+            <annotation encoding="application/x-tex">b_{L},b_{L + 1},b_{L + 2},\cdots,b_{R}</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9028em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="mbin mtight">+</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>][[[]{.strut
+    style="height: 0.9028em; vertical-align: -0.2083em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[L]{.mord
+    .mathnormal .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3283em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[L]{.mord
+    .mathnormal .mtight}[+]{.mbin .mtight}[1]{.mord .mtight}]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3283em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[L]{.mord
+    .mathnormal .mtight}[+]{.mbin .mtight}[2]{.mord .mtight}]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3283em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.2083em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+    style="margin-right: 0.1667em;"}[]{.mspace
+    style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[R]{.mord
+    .mathnormal .mtight style="margin-right: 0.0077em;"}]{.sizing
+    .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3283em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]，计算它的长度（也就是
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>R</mi>
+              <mo>−</mo>
+              <mi>L</mi>
+              <mo>+</mo>
+              <mn>1</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">R - L + 1</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>][[[]{.strut
+    style="height: 0.7667em; vertical-align: -0.0833em;"}[R]{.mord
+    .mathnormal style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2222em;"}[−]{.mbin}[]{.mspace
+    style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+    style="height: 0.7667em; vertical-align: -0.0833em;"}[L]{.mord
+    .mathnormal}[]{.mspace
+    style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
+    style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]）的最大值。若不存在任何满足条件的咖啡序列，则最大值为
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>0</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">0</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>][[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+  </li>
+</ol>
+<p>
+  Koyuki
+  注意到身旁的你正在打程序设计竞赛，于是顺手将题目扔给了你。当你转过头时，只隐约看见她跑去的背影。Noa
+  向你道了歉，并保证假如你做出了这道题目，她就会带 Koyuki 亲自来道歉。
+</p>
+<h3>Input</h3>
+<p><strong>本题包含多组测试数据。</strong></p>
+<p><strong>来自 Noa 的温馨提示：本题输入输出量较大，对于使用 C++
+语言参加竞赛的选手，强烈建议使用关闭同步流的 cin 和 cout
+完成输入输出。</strong></p>
+<p>
+  首先在第一行输入一个整数 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>T</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">T</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>][[[]{.strut
+  style="height: 0.6833em;"}[T]{.mord .mathnormal
+  style="margin-right: 0.1389em;"}]{.base}]{.katex-html
+  aria-hidden="true"}]（[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>T</mi>
+            <mo>≤</mo>
+            <mn>10</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">1 \leq T \leq 10</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>][[[]{.strut
+  style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.8193em; vertical-align: -0.136em;"}[T]{.mord
+  .mathnormal style="margin-right: 0.1389em;"}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.6444em;"}[10]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]）表示测试数据组数。
+</p>
+<p>
+  对于每一组测试数据，输入包含 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>q</mi>
+            <mo>+</mo>
+            <mn>2</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">q + 2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>][[[]{.strut
+  style="height: 0.7778em; vertical-align: -0.1944em;"}[q]{.mord
+  .mathnormal style="margin-right: 0.0359em;"}[]{.mspace
+  style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
+  style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+  style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}] 行。
+</p>
+<p>
+  第一行包含两个整数 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+            <mo separator="true">,</mo>
+            <mi>q</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n,q</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>][[[]{.strut
+  style="height: 0.625em; vertical-align: -0.1944em;"}[n]{.mord
+  .mathnormal}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[q]{.mord .mathnormal
+  style="margin-right: 0.0359em;"}]{.base}]{.katex-html
+  aria-hidden="true"}]（[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>n</mi>
+            <mo separator="true">,</mo>
+            <mi>q</mi>
+            <mo>≤</mo>
+            <mn>2</mn>
+            <mo>×</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>5</mn>
+            </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">1 \leq n,q \leq 2 \times 10^{5}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></span>][[[]{.strut
+  style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.8304em; vertical-align: -0.1944em;"}[n]{.mord
+  .mathnormal}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[q]{.mord .mathnormal
+  style="margin-right: 0.0359em;"}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.7278em; vertical-align: -0.0833em;"}[2]{.mord}[]{.mspace
+  style="margin-right: 0.2222em;"}[×]{.mbin}[]{.mspace
+  style="margin-right: 0.2222em;"}]{.base}[[]{.strut
+  style="height: 0.8141em;"}[1]{.mord}[[0]{.mord}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[5]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -3.063em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.8141em;"}]{.vlist-r}]{.vlist-t}]{.msupsub}]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]），分别表示序列的长度和操作的次数。
+</p>
+<p>
+  第二行包含 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>][[[]{.strut
+  style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}] 个整数
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>b</mi>
+              <mn>1</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>b</mi>
+              <mn>2</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>b</mi>
+              <mn>3</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <mo>⋯</mo>
+            <mtext> </mtext>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>b</mi>
+              <mi>n</mi>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">b_{1},b_{2},b_{3},\cdots,b_{n}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>][[[]{.strut
+  style="height: 0.8889em; vertical-align: -0.1944em;"}[[b]{.mord
+  .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+  .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[2]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[3]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+  style="margin-right: 0.1667em;"}[]{.mspace
+  style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[n]{.mord .mathnormal .mtight}]{.sizing
+  .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]（[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>0</mn>
+            <mo>≤</mo>
+            <msub>
+              <mi>b</mi>
+              <mn>1</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>b</mi>
+              <mn>2</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>b</mi>
+              <mn>3</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <mo>⋯</mo>
+            <mtext> </mtext>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>b</mi>
+              <mi>n</mi>
+            </msub>
+            <mo>≤</mo>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">0 \leq b_{1},b_{2},b_{3},\cdots,b_{n} \leq n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>][[[]{.strut
+  style="height: 0.7804em; vertical-align: -0.136em;"}[0]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.8889em; vertical-align: -0.1944em;"}[[b]{.mord
+  .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+  .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[2]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[3]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
+  style="margin-right: 0.1667em;"}[]{.mspace
+  style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[b]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[n]{.mord .mathnormal .mtight}]{.sizing
+  .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}]）表示序列的元素。
+</p>
+<p>
+  接下来 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>q</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">q</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>][[[]{.strut
+  style="height: 0.625em; vertical-align: -0.1944em;"}[q]{.mord
+  .mathnormal style="margin-right: 0.0359em;"}]{.base}]{.katex-html
+  aria-hidden="true"}] 行，每行首先包含一个整数
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>o</mi>
+            <mi>p</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">op</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span></span></span></span>][[[]{.strut
+  style="height: 0.625em; vertical-align: -0.1944em;"}[o]{.mord
+  .mathnormal}[p]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}]（[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>o</mi>
+            <mi>p</mi>
+            <mo>≤</mo>
+            <mn>2</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">1 \leq op \leq 2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>][[[]{.strut
+  style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.8304em; vertical-align: -0.1944em;"}[o]{.mord
+  .mathnormal}[p]{.mord .mathnormal}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]）表示操作的类型，接下来包含两个整数
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>x</mi>
+            <mo separator="true">,</mo>
+            <mi>p</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">x,p</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span></span></span></span>][[[]{.strut
+  style="height: 0.625em; vertical-align: -0.1944em;"}[x]{.mord
+  .mathnormal}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[p]{.mord
+  .mathnormal}]{.base}]{.katex-html aria-hidden="true"}] 或
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>l</mi>
+            <mo separator="true">,</mo>
+            <mi>r</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">l,r</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>][[[]{.strut
+  style="height: 0.8889em; vertical-align: -0.1944em;"}[l]{.mord
+  .mathnormal style="margin-right: 0.0197em;"}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+  style="margin-right: 0.0278em;"}]{.base}]{.katex-html
+  aria-hidden="true"}] 表示一次操作。
+</p>
+<p>
+  保证在所有操作 1 中，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>o</mi>
+            <mi>p</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">op = 1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>][[[]{.strut
+  style="height: 0.625em; vertical-align: -0.1944em;"}[o]{.mord
+  .mathnormal}[p]{.mord .mathnormal}[]{.mspace
+  style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>x</mi>
+            <mo>≤</mo>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">1 \leq x \leq n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>][[[]{.strut
+  style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.7719em; vertical-align: -0.136em;"}[x]{.mord
+  .mathnormal}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}]，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>0</mn>
+            <mo>≤</mo>
+            <mi>p</mi>
+            <mo>≤</mo>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">0 \leq p \leq n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>][[[]{.strut
+  style="height: 0.7804em; vertical-align: -0.136em;"}[0]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.8304em; vertical-align: -0.1944em;"}[p]{.mord
+  .mathnormal}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}]。保证在所有操作 2
+  中，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>o</mi>
+            <mi>p</mi>
+            <mo>=</mo>
+            <mn>2</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">op = 2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>][[[]{.strut
+  style="height: 0.625em; vertical-align: -0.1944em;"}[o]{.mord
+  .mathnormal}[p]{.mord .mathnormal}[]{.mspace
+  style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>l</mi>
+            <mo>≤</mo>
+            <mi>r</mi>
+            <mo>≤</mo>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">1 \leq l \leq r \leq n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>][[[]{.strut
+  style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.8304em; vertical-align: -0.136em;"}[l]{.mord
+  .mathnormal style="margin-right: 0.0197em;"}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.7719em; vertical-align: -0.136em;"}[r]{.mord
+  .mathnormal style="margin-right: 0.0278em;"}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}]。
+</p>
+<h3>Output</h3>
+<p>
+  对于每一组测试数据，对于每一次操作
+  2，输出包含一行一个整数表示满足条件的咖啡序列的长度最大值。若不存在，则答案为
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>0</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">0</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>][[[]{.strut
+  style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]。
+</p>
+<h3>Sample Input</h3>
+<pre><code class="hljs language-plain">1
+12 8
+2 1 2 0 0 3 2 1 1 0 0 0
+2 1 4
+2 1 5
+2 1 6
+2 1 10
+2 1 12
+2 6 12
+1 2 0
+2 1 4
+</code></pre>
+<h3>Sample Output</h3>
+<pre><code class="hljs language-plain">0
+5
+5
+5
+7
+7
+4
+</code></pre>
+<h3>Hint</h3>
+<p>
+  在样例的测试数据中，共有 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>8</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">8</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span>][[[]{.strut
+  style="height: 0.6444em;"}[8]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}] 次操作：
+</p>
+<ol>
+  <li>
+    第 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">1</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>][[[]{.strut
+    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    2，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>l</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+              <mo separator="true">,</mo>
+              <mi>r</mi>
+              <mo>=</mo>
+              <mn>4</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">l = 1,r = 4</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>][[[]{.strut
+    style="height: 0.6944em;"}[l]{.mord .mathnormal
+    style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。答案为
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>0</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">0</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>][[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+  </li>
+  <li>
+    第 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>2</mn>
+              <mo separator="true">,</mo>
+              <mn>3</mn>
+              <mo separator="true">,</mo>
+              <mn>4</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">2,3,4</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span></span></span></span>][[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[3]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    2，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>l</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+              <mo separator="true">,</mo>
+              <mi>r</mi>
+              <mo>=</mo>
+              <mn>5</mn>
+              <mi mathvariant="normal">/</mi>
+              <mn>6</mn>
+              <mi mathvariant="normal">/</mi>
+              <mn>10</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">l = 1,r = 5/6/10</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5/6/10</span></span></span></span>][[[]{.strut
+    style="height: 0.6944em;"}[l]{.mord .mathnormal
+    style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 1em; vertical-align: -0.25em;"}[5/6/10]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。在
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>L</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+              <mo separator="true">,</mo>
+              <mi>R</mi>
+              <mo>=</mo>
+              <mn>5</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">L = 1,R = 5</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span>][[[]{.strut
+    style="height: 0.6833em;"}[L]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8778em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[R]{.mord .mathnormal
+    style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[5]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 时，序列
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>b</mi>
+                <mn>1</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>2</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>2</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>1</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>3</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>2</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>4</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>0</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>5</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>0</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">b_{1} = 2,b_{2} = 1,b_{3} = 2,b_{4} = 0,b_{5} = 0</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[2]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[3]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[4]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[5]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 是咖啡序列。答案均为
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>5</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">5</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span>][[[]{.strut
+    style="height: 0.6444em;"}[5]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+  </li>
+  <li>
+    第 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>5</mn>
+              <mo separator="true">,</mo>
+              <mn>6</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">5,6</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span></span></span></span>][[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[5]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[6]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    2，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>l</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+              <mi mathvariant="normal">/</mi>
+              <mn>6</mn>
+              <mo separator="true">,</mo>
+              <mi>r</mi>
+              <mo>=</mo>
+              <mn>12</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">l = 1/6,r = 12</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span>][[[]{.strut
+    style="height: 0.6944em;"}[l]{.mord .mathnormal
+    style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 1em; vertical-align: -0.25em;"}[1/6]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[12]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。在
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>L</mi>
+              <mo>=</mo>
+              <mn>6</mn>
+              <mo separator="true">,</mo>
+              <mi>R</mi>
+              <mo>=</mo>
+              <mn>12</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">L = 6,R = 12</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span>][[[]{.strut
+    style="height: 0.6833em;"}[L]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8778em; vertical-align: -0.1944em;"}[6]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[R]{.mord .mathnormal
+    style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[12]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 时，序列
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>b</mi>
+                <mn>6</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>3</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>7</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>2</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>8</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>1</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>9</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>1</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>10</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>0</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>11</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>0</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>12</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>0</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">b_{6} = 3,b_{7} = 2,b_{8} = 1,b_{9} = 1,b_{10} = 0,b_{11} = 0,b_{12} = 0</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">9</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[6]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[3]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[7]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[8]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[9]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[10]{.mord
+    .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[11]{.mord
+    .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[12]{.mord
+    .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 是咖啡序列。答案均为
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>7</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">7</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>][[[]{.strut
+    style="height: 0.6444em;"}[7]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+  </li>
+  <li>
+    第 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>7</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">7</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>][[[]{.strut
+    style="height: 0.6444em;"}[7]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    1，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>x</mi>
+              <mo>=</mo>
+              <mn>2</mn>
+              <mo separator="true">,</mo>
+              <mi>p</mi>
+              <mo>=</mo>
+              <mn>0</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">x = 2,p = 0</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>][[[]{.strut
+    style="height: 0.4306em;"}[x]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[p]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。此时
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>b</mi>
+                <mn>2</mn>
+              </msub>
+              <mo>:</mo>
+              <mo>=</mo>
+              <mn>0</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">b_{2}: = 0</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[2]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[:=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+  </li>
+  <li>
+    第 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>8</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">8</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span>][[[]{.strut
+    style="height: 0.6444em;"}[8]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 次操作的类型为操作
+    2，[[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>l</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+              <mo separator="true">,</mo>
+              <mi>r</mi>
+              <mo>=</mo>
+              <mn>4</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">l = 1,r = 4</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>][[[]{.strut
+    style="height: 0.6944em;"}[l]{.mord .mathnormal
+    style="margin-right: 0.0197em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8389em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
+    style="margin-right: 0.0278em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。在
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>L</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+              <mo separator="true">,</mo>
+              <mi>R</mi>
+              <mo>=</mo>
+              <mn>4</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">L = 1,R = 4</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>][[[]{.strut
+    style="height: 0.6833em;"}[L]{.mord .mathnormal}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8778em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[R]{.mord .mathnormal
+    style="margin-right: 0.0077em;"}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 时，序列
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>b</mi>
+                <mn>1</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>2</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>2</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>0</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>3</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>2</mn>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>b</mi>
+                <mn>4</mn>
+              </msub>
+              <mo>=</mo>
+              <mn>0</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">b_{1} = 2,b_{2} = 0,b_{3} = 2,b_{4} = 0</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>][[[]{.strut
+    style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[1]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[2]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[3]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.8889em; vertical-align: -0.1944em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
+    style="margin-right: 0.1667em;"}[[b]{.mord
+    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[4]{.mord
+    .mtight}]{.sizing .reset-size6 .size3
+    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+    style="height: 0.3011em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+    .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
+    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}] 是咖啡序列。答案为
+    [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>4</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">4</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>][[[]{.strut
+    style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
+    aria-hidden="true"}]。
+  </li>
+</ol>
+10:["$","$L19",null,{"raw":"$1a","htmlContent":"$1b"}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+8:{"metadata":[],"error":null,"digest":"$undefined"}
+f:"$8:metadata"

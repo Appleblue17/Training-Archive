@@ -1,0 +1,427 @@
+1:"$Sreact.fragment"
+2:I[48521,[],""]
+3:I[31661,[],""]
+5:I[47055,[],"OutletBoundary"]
+7:I[39909,[],"AsyncMetadataOutlet"]
+c:I[50939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/ac2e9f375fa8be4c.css","style"]
+:HL["/Training-Archive/_next/static/css/e49661117d44c1c5.css","style"]
+0:{"P":null,"b":"xOHqVjE8-30qy82Dcqyhj","p":"/Training-Archive","c":["","view","contests","2025-07-28%202025%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%884%EF%BC%89","problems","G","code.cpp"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2025-07-28%202025%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%884%EF%BC%89","d"],{"children":["problems",{"children":[["problem","G","d"],{"children":[["file","code.cpp","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/ac2e9f375fa8be4c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"__className_e3f162 antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2025-07-28%202025%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%884%EF%BC%89","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["problems",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["problem","G","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["file","code.cpp","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/e49661117d44c1c5.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L5",null,{"children":["$L6",["$","$L7",null,{"promise":"$@8"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":["$L9","$La","$Lb"]}],false]],"m":"$undefined","G":["$c",[]],"s":false,"S":true}
+d:I[47055,[],"ViewportBoundary"]
+f:I[47055,[],"MetadataBoundary"]
+10:"$Sreact.suspense"
+9:null
+a:[["$","$Ld",null,{"children":"$Le"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]
+b:["$","$Lf",null,{"children":["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":"$L11"}]}]}]
+12:I[16417,["215","static/chunks/1951f239-4d21ecf47dca0143.js","364","static/chunks/364-510402306c735724.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-e715a016b8ea0070.js"],"default"]
+13:T2451,#pragma GCC optimize(2)
+#include <bits/stdc++.h>
+using namespace std;
+const int N=3e5+5;
+template <typename T>inline void read(T &x){
+	x=0;char c=getchar();bool f=0;
+	for(;c<'0'||c>'9';c=getchar()) f|=(c=='-');
+	for(;c>='0'&&c<='9';c=getchar())
+	x=(x<<1)+(x<<3)+(c^48);
+	x=(f?-x:x);
+}
+int T, n, m;
+int a[N];
+
+int L[N],R[N];
+
+void del(int pos){
+    int x=a[pos];
+    
+    if(x){
+        L[pos]=R[pos]=pos;
+    }
+    else{
+        if(pos-1>=1 && !a[pos-1]){
+            R[pos-1]=pos-1;
+            R[L[pos-1]]=pos-1;
+        }
+        if(pos+1<=n && !a[pos+1]){
+            L[pos+1]=pos+1;
+            L[R[pos+1]]=pos+1;
+        }
+        L[pos]=R[pos]=pos;
+    }
+}
+void add(int pos){
+    int x=a[pos];
+    
+    if(x){
+        L[pos]=R[pos]=pos;
+    }
+    else{
+        L[pos]=R[pos]=pos;
+        if(pos-1>=1 && !a[pos-1]) L[pos]=L[pos-1];
+        if(pos+1<=n && !a[pos+1]) R[pos]=R[pos+1];
+        if(pos-1>=1 && !a[pos-1]){
+            R[pos-1]=R[pos];
+            R[L[pos-1]]=R[pos];
+        }
+        if(pos+1<=n && !a[pos+1]){
+            L[pos+1]=L[pos];
+            L[R[pos+1]]=L[pos];
+        }
+    }
+}
+int ask(int pos){
+    if(pos==n || a[pos+1]) return pos+1;
+    return R[pos+1]+1;
+}
+
+struct Tree{
+    bool tr[N<<2];
+    void build(int p, int l, int r, int tp){
+        if(l==r){
+            tr[p]=0;
+            if(tp==1){
+                if(a[l]==0&&a[l-1]==1&&a[l-2]==2&&a[l-3]==1){
+                    tr[p]=1;
+                }
+            }
+            if(tp==2){
+                if(a[l]==0&&a[l-1]==2&&a[l-2]==0&&a[l-3]==2){
+                    tr[p]=1;
+                }
+            }
+            if(tp==3){
+                if(a[l]==0&&a[l-1]==0&&a[l-2]==2&&a[l-3]==1&&a[l-4]==2){
+                    tr[p]=1;
+                }
+            }
+            return ;
+        }
+        int mid=(l+r)>>1;
+        build(p<<1, l, mid, tp); build(p<<1|1, mid+1, r, tp);
+        tr[p]=tr[p<<1]|tr[p<<1|1];
+    }
+    void mdf(int p, int l, int r, int x, int tp){
+        if(l==r){
+            tr[p]=0;
+            if(tp==1){
+                if(a[l]==0&&a[l-1]==1&&a[l-2]==2&&a[l-3]==1){
+                    tr[p]=1;
+                }
+            }
+            if(tp==2){
+                if(a[l]==0&&a[l-1]==2&&a[l-2]==0&&a[l-3]==2){
+                    tr[p]=1;
+                }
+            }
+            if(tp==3){
+                if(a[l]==0&&a[l-1]==0&&a[l-2]==2&&a[l-3]==1&&a[l-4]==2){
+                    tr[p]=1;
+                }
+            }
+            return ;
+        }
+        int mid=(l+r)>>1;
+        if(x<=mid) mdf(p<<1, l, mid, x, tp);
+        else mdf(p<<1|1, mid+1, r, x, tp);
+        tr[p]=tr[p<<1]|tr[p<<1|1];
+    }
+    bool get(int p, int l, int r, int L, int R){
+        if(L>R) return 0;
+        if(L<=l&&r<=R) return tr[p];
+        int mid=(l+r)>>1, ret=0;
+        if(L<=mid) ret=get(p<<1, l, mid, L, R);
+        if(R>mid) ret|=get(p<<1|1, mid+1, r, L, R);
+        return ret;
+    }
+}T1, T2, T3;
+struct info{
+    int l, r, st, len, ans;
+}tr[N<<2];
+int sz, sz2;
+inline info operator +(info x, info y){
+    info z;
+    z.l=x.l; z.r=y.r;
+    z.ans=max(x.ans, y.ans);
+    if(x.st==0){
+        z.st=y.st;
+        z.len=y.len;
+        return z;
+    }
+    if(x.len==1){
+        if(a[y.l]!=2){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(y.l==y.r){
+            z.st=x.st;
+            z.len=2;
+            return z;
+        }
+        if(a[y.l+1]!=1){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(y.l+1==y.r){
+            z.st=x.st;
+            z.len=3;
+            return z;
+        }
+        sz=min(ask(y.l+1), y.r+1)-(y.l+1)-1;
+        if(sz>x.st-3){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(y.l+2+sz-1==y.r){
+            z.st=x.st;
+            z.len=3+sz;
+            return z;
+        }
+        if(sz!=x.st-3){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(a[y.l+2+sz]!=1){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(y.l+2+sz==y.r){
+            z.st=x.st;
+            z.len=3+sz+1;
+            return z;
+        }
+        sz2=min(ask(y.l+2+sz), y.r+1)-(y.l+2+sz)-1;
+        if(sz2>=3){
+            z.ans=max(z.ans, x.st+4);
+            z.st=y.st; z.len=y.len;
+            return z;
+        }
+        if(y.l+2+sz+1+sz2-1==y.r){
+            z.st=x.st;
+            z.len=3+sz+1+sz2;
+            return z;
+        }
+        z.st=y.st;
+        z.len=y.len;
+        return z;
+    }
+    if(x.len==2){
+        if(a[y.l]!=1){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(y.l==y.r){
+            z.st=x.st;
+            z.len=3;
+            return z;
+        }
+        sz=min(ask(y.l), y.r+1)-(y.l)-1;
+        if(sz>x.st-3){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(y.l+1+sz-1==y.r){
+            z.st=x.st;
+            z.len=3+sz;
+            return z;
+        }
+        if(sz!=x.st-3){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(a[y.l+1+sz]!=1){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(y.l+1+sz==y.r){
+            z.st=x.st;
+            z.len=3+sz+1;
+            return z;
+        }
+        sz2=min(ask(y.l+1+sz), y.r+1)-(y.l+1+sz)-1;
+        if(sz2>=3){
+            z.ans=max(z.ans, x.st+4);
+            z.st=y.st; z.len=y.len;
+            return z;
+        }
+        if(y.l+1+sz+1+sz2-1==y.r){
+            z.st=x.st;
+            z.len=3+sz+1+sz2;
+            return z;
+        }
+        z.st=y.st;
+        z.len=y.len;
+        return z;
+    }
+    if(x.len>=3&&x.len<=x.st){
+        sz=min(ask(x.r), y.r+1)-(x.r)-1;
+        if(sz>x.st-x.len){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(y.l+sz-1==y.r){
+            z.st=x.st;
+            z.len=x.len+sz;
+            return z;
+        }
+        if(sz!=x.st-x.len){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(a[y.l+sz]!=1){
+            z.st=y.st;
+            z.len=y.len;
+            return z;
+        }
+        if(y.l+sz==y.r){
+            z.st=x.st;
+            z.len=x.len+sz+1;
+            return z;
+        }
+        sz2=min(ask(y.l+sz), y.r+1)-(y.l+sz)-1;
+        if(sz2>=3){
+            z.ans=max(z.ans, x.st+4);
+            z.st=y.st; z.len=y.len;
+            return z;
+        }
+        if(y.l+sz+1+sz2-1==y.r){
+            z.st=x.st;
+            z.len=x.len+sz+1+sz2;
+            return z;
+        }
+        z.st=y.st;
+        z.len=y.len;
+        return z;
+    }
+    z.st=x.st; z.len=x.len;
+    sz=min(ask(x.r), y.r+1)-(x.r)-1;
+	if(sz+x.len>=x.st+4){
+		z.ans=max(z.ans, x.st+4);
+		z.st=y.st;
+		z.len=y.len;
+		return z;
+	}
+	if(y.l+sz-1==y.r){
+		z.st=x.st;
+		z.len=x.len+sz;
+		return z;
+	}
+	z.st=y.st;
+	z.len=y.len;
+    return z;
+}
+void build(int p, int l, int r){
+    if(l==r){
+        tr[p].l=tr[p].r=l;
+        if(a[l]>=3) tr[p].st=a[l], tr[p].len=1;
+        else tr[p].st=0, tr[p].len=0;
+        tr[p].ans=0;
+        return ;
+    }
+    int mid=(l+r)>>1;
+    build(p<<1, l, mid); build(p<<1|1, mid+1, r);
+    tr[p]=tr[p<<1]+tr[p<<1|1];
+	// cout<<l<<' '<<r<<' '<<tr[p].st<<' '<<tr[p].len<<' '<<tr[p].ans<<endl;
+}
+void mdf(int p, int l, int r, int x){
+    if(l==r){
+        tr[p].l=tr[p].r=l;
+        if(a[l]>=3) tr[p].st=a[l], tr[p].len=1;
+        else tr[p].st=0, tr[p].len=0;
+        tr[p].ans=0;
+        return ;
+    }
+    int mid=(l+r)>>1;
+    if(x<=mid) mdf(p<<1, l, mid, x);
+    else mdf(p<<1|1, mid+1, r, x);
+    tr[p]=tr[p<<1]+tr[p<<1|1];
+}
+info tem; bool flag;
+void qry(int p, int l, int r, int L, int R){
+    if(L<=l&&r<=R){
+        if(!flag) flag=1, tem=tr[p];
+        else tem=tem+tr[p];
+        return ;
+    }
+    int mid=(l+r)>>1;
+    if(L<=mid) qry(p<<1, l, mid, L, R);
+    if(R>mid) qry(p<<1|1, mid+1, r, L, R);
+}
+void solve(){
+	read(n); read(m);
+    for(int i=1; i<=n; ++i){
+		read(a[i]);
+        L[i]=R[i]=i;
+    }
+    for(int i=1;i<=n;i++) add(i);
+    if(n>=4){
+        T1.build(1, 4, n, 1);
+        T2.build(1, 4, n, 2);
+    }
+    if(n>=5){
+        T3.build(1, 5, n, 3);
+    }
+    build(1, 1, n);
+    int op, l, r; 
+    while(m--){
+		read(op); read(l); read(r);
+        if(op==1){
+            del(l);
+            a[l]=r;
+            add(l);
+            if(n>=4){
+                for(int i=max(l, 4); i<=l+3&&i<=n; ++i) T1.mdf(1, 4, n, i, 1);
+                for(int i=max(l, 4); i<=l+3&&i<=n; ++i) T2.mdf(1, 4, n, i, 2);
+            }
+            if(n>=5){
+                for(int i=max(l, 5); i<=l+4&&i<=n; ++i) T3.mdf(1, 5, n, i, 3);
+            }
+            mdf(1, 1, n, l);
+        }
+        else{
+            int ans=0;
+            if(n>=4){
+                ans=max(ans, 4*T1.get(1, 4, n, l+3, r));
+                ans=max(ans, 4*T2.get(1, 4, n, l+3, r));
+            }
+            if(n>=5){
+                ans=max(ans, 5*T3.get(1, 5, n, l+4, r));
+            }
+            flag=0;
+            qry(1, 1, n, l, r);
+            ans=max(ans, tem.ans);
+            printf("%d\n", ans);
+        }
+    }
+}
+int main(){
+	// freopen("D:\\nya\\acm\\A\\test.in","r",stdin);
+	// freopen("D:\\nya\\acm\\A\\test.out","w",stdout);
+    read(T);
+    while(T--){
+        solve();
+    }
+}4:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2025-07-28 2025“钉耙编程”中国大学生算法设计暑期联赛（4）",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"G",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"code.cpp"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2025-07-28 2025“钉耙编程”中国大学生算法设计暑期联赛（4）/problems/G/code.cpp","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","children":[]}],["$","polyline","1",{"points":"7 10 12 15 17 10","children":[]}],["$","line","2",{"x1":"12","y1":"15","x2":"12","y2":"3","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2025-07-28 2025“钉耙编程”中国大学生算法设计暑期联赛（4）/problems/G/code.cpp","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z","children":[]}],["$","polyline","1",{"points":"14 2 14 8 20 8","children":[]}],["$","line","2",{"x1":"16","y1":"13","x2":"8","y2":"13","children":[]}],["$","line","3",{"x1":"16","y1":"17","x2":"8","y2":"17","children":[]}],["$","polyline","4",{"points":"10 9 9 9 8 9","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":["$","$L12",null,{"code":"$13","ext":".cpp"}]}],"$L14"]}]]}]}]
+14:["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"code.cpp"}]]}],["$","div","modified_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Modified Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 12:01:41"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"9.079 KB (9297 B)"}]]}],["$","div","submission_id",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submission Id","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"12541"}]]}],["$","div","status",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Status","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"WA"}]]}],["$","div","time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"3578 MS"}]]}],["$","div","memory",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"15336 K"}]]}],["$","div","language",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Language","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"G++"}]]}],["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 11:14:09"}]]}],["$","div","problem_link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Problem Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1007","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1007"}]]}],["$","div","submission_link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submission Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/view-code?cid=1175&rid=12541","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/view-code?cid=1175&rid=12541"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"咖啡的罪恶"}]]}],["$","div","modified_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":["$L15"," ","$L16"]}],"$L17","$L18","$L19","$L1a","$L1b"]}]]}],"$L1c"]}]
+15:["$","span",null,{"className":"text-blue-400","children":["[","Modified Time","]"]}]
+16:["$","span",null,{"className":"text-pink-400","children":"2025/07/28 12:01:41"}]
+17:["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1007","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1007"}]]}]
+18:["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"4000 MS"}]]}]
+19:["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"262144 K"}]]}]
+1a:["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"false"}]]}]
+1b:["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 11:14:09"}]]}]
+1c:["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"2025“钉耙编程”中国大学生算法设计暑期联赛（4）"}]]}],["$","div","modified_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Modified Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 12:01:41"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025-07-28"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"hdu"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 04:00:00"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/28 09:00:00"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problems?cid=1175","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problems?cid=1175"}]]}]]}]]}]
+e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+8:{"metadata":[],"error":null,"digest":"$undefined"}
+11:"$8:metadata"
