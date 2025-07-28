@@ -9,17 +9,18 @@ on:
 
 jobs:
   check_contests:
-    if: github.event_name == 'workflow_run'
     runs-on: ubuntu-latest
     outputs:
       should_deploy: ${{ steps.check_commit.outputs.should_deploy }}
     steps:
       - name: Checkout deploy branch
+        if: github.event_name == 'workflow_run'
         uses: actions/checkout@v4
         with:
           ref: deploy
 
       - name: Check if contests changed
+        if: github.event_name == 'workflow_run'
         id: check_commit
         run: |
           git fetch

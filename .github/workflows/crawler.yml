@@ -105,7 +105,7 @@ jobs:
       - name: Check if contests changed
         id: check_contests
         run: |
-          if git diff --cached --name-only | grep '^contests/'; then
+          if git diff --cached --name-only | grep '^"?contests/'; then
             echo "contests_changed=true" >> $GITHUB_ENV
             echo "Detected changes in contests directory."
           else
