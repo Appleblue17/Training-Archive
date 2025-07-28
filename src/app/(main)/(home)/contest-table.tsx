@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import path from "path";
 import clsx from "clsx";
 import { FiCheck, FiChevronRight, FiFileText, FiX } from "react-icons/fi";
+import { VscCode } from "react-icons/vsc";
 import { ProblemInfoType, ContestInfoType, FileMetadataType, CodeFileType } from "@/lib/types";
 import MetaDataDisplay, { formatDate } from "@/components/metadata-display";
 import { PREFIX_URL } from "@/lib/global";
@@ -128,7 +129,7 @@ function ProblemRow({
           rel="noopener noreferrer"
           className="ml-2 text-gray-100 transition-colors hover:text-blue-300"
         >
-          <FiFileText className="inline-block size-5" />
+          <VscCode className="inline-block size-5" />
         </a>
         <div className="flex justify-end">
           {submitStatus === "AC" ? (
@@ -187,7 +188,11 @@ function ProblemRow({
               rel="noopener noreferrer"
               className="p-2 text-gray-100 transition-colors hover:text-blue-300"
             >
-              <FiFileText className="inline-block size-4" />
+              {file.name?.includes("code") ? (
+                <VscCode className="inline-block size-5" />
+              ) : (
+                <FiFileText className="inline-block size-4" />
+              )}
               <span className="ml-1">{file.name}</span>
             </a>
           </div>
@@ -312,6 +317,9 @@ function ContestRow({
     }
   };
 
+  const totalProblems = contest.problems.length;
+  const solvedProblems = contest.problems.filter((p) => p.solved).length;
+
   return (
     <React.Fragment>
       <tr
@@ -321,14 +329,43 @@ function ContestRow({
         <td className="border-r border-gray-600 px-2 py-2 text-center text-gray-100">
           {contest.date}
         </td>
-        <td className="border-r border-gray-600 px-2 py-2 text-center">
+        <td className="relative border-r border-gray-600 px-2 py-2 text-center">
+          {/* Background fill layer */}
+          {totalProblems > 0 && (
+            <div
+              className={clsx("absolute left-0 top-0 z-0 h-full border-r border-gray-700/60", {
+                "bg-emerald-900/20": solvedProblems < totalProblems,
+                "bg-cyan-800/30": solvedProblems === totalProblems,
+              })}
+              style={{
+                width: `${(solvedProblems / totalProblems) * 100}%`,
+                pointerEvents: "none",
+              }}
+            />
+          )}
+          {/* Platform badge */}
+          {contest.platform && (
+            <span
+              className={clsx(
+                "mr-1 select-none rounded-lg bg-gray-600 px-2 py-0.5 text-xs font-normal text-gray-200 opacity-90",
+                {
+                  "bg-indigo-800": contest.platform === "qoj",
+                  "bg-amber-800": contest.platform === "hdu",
+                  "bg-emerald-800": contest.platform === "nowcoder",
+                },
+              )}
+            >
+              {contest.platform}
+            </span>
+          )}
+          {/* Contest name with link */}
           <a
             href={contest.link || ""}
             target="_blank"
             rel="noopener noreferrer"
             title={contest.name}
             onClick={(e) => e.stopPropagation()}
-            className="break-keep text-gray-100 transition-colors hover:text-blue-300"
+            className="relative z-10 break-keep text-gray-100 transition-colors hover:text-blue-300"
           >
             {contest.name}
           </a>
