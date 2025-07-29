@@ -347,11 +347,12 @@ function ContestRow({
           {contest.platform && (
             <span
               className={clsx(
-                "mr-1 select-none rounded-lg bg-gray-600 px-2 py-0.5 text-xs font-normal text-gray-200 opacity-90",
+                "mr-1 select-none rounded-lg  px-2 py-0.5 text-xs font-normal text-gray-200 opacity-90",
                 {
                   "bg-indigo-800": contest.platform === "qoj",
                   "bg-amber-800": contest.platform === "hdu",
                   "bg-emerald-800": contest.platform === "nowcoder",
+                  "bg-gray-600": contest.platform !== "qoj" && contest.platform !== "hdu" && contest.platform !== "nowcoder",
                 },
               )}
             >
