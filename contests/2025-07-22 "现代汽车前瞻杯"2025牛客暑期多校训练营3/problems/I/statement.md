@@ -3,23 +3,23 @@
 ### 题目描述
 
 Let $S_n$ be the set of all $n$-ordered permutations. For $\sigma \in S_n$, let $\nu(\sigma)$ be the number of elements in
-the set $\{ \mu^{-1}\sigma \mu \mid \mu \in S_n \}$.\
-\
+the set $\{ \mu^{-1}\sigma \mu \mid \mu \in S_n \}$.
+
 Given a fixed integer $k$, you have received
 multiple queries of $n$, and for each of the
-values, you must compute\
-\ $\sum_{\sigma \in S_n}\nu(\sigma)^k,$\
-\
-taken modulo $998244353$.\
+values, you must compute
+\ $\sum_{\sigma \in S_n}\nu(\sigma)^k,$
+
+taken modulo $998244353$.
 
 ### 输入描述
 
 The first line of input contains two integers $t$ and$k$ ($1 \leq t \leq 10^3$, $1 \leq k \leq 10^9$) --- the number of test
-cases and the given constant value.\
-\
+cases and the given constant value.
+
 Then $t$ lines follow. Each line contains a
 positive integer$n$ ($1 \leq n \leq 2\cdot 10^5$), representing a
-query.\
+query.
 
 ### 输出描述
 
@@ -82,4 +82,3 @@ modulo $998244353$.
 445104440
 460384381
 ```
-

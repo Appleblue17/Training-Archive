@@ -5,8 +5,8 @@
 There is a grid with $n$ rows and $n$ columns
 ($3 \leq n \leq 200$). For $1 \leq i,j \leq n$, there is an undirected
 edge between the cell in the $i$-th row and $j$-th column and the cell in the $i$-th row and $(j+1)$-th column (the $(n+1)$-th column is considered as the $1$-st column), with a weight of either $1$ or $2$. For $1 \leq i < n$ and $1 \leq j \leq n$, there is an undirected
-edge between the cell in the $i$-th row and $j$-th column and the cell in the $(i+1)$-th row and $j$-th column, also with a weight of either $1$ or $2$.\
-\
+edge between the cell in the $i$-th row and $j$-th column and the cell in the $(i+1)$-th row and $j$-th column, also with a weight of either $1$ or $2$.
+
 For $1 \leq i \leq n$, find the shortest path
 length from the cell in the $1$-st row and $i$-th column to the cell in the $n$-th row and $i$-th column, passing through each column at
 least once.
@@ -15,13 +15,13 @@ least once.
 
 The first line contains a positive integer $T$ representing the number of test cases.
 The sum of $n$ across all test cases does not
-exceed $200$.\
-\
-For each test case, the first line contains a positive integer $n$.\
-\
+exceed $200$.
+
+For each test case, the first line contains a positive integer $n$.
+
 The next $n$ lines each contain $n$ integers, where the $j$-th integer of the $i$-th line represents the weight of the edge
-between the cell in the $i$-th row and $j$-th column and the cell in the $i$-th row and $(j+1)$-th column.\
-\
+between the cell in the $i$-th row and $j$-th column and the cell in the $i$-th row and $(j+1)$-th column.
+
 The following $n-1$ lines each contain $n$ integers, where the $j$-th integer of the $i$-th line represents the weight of the edge
 between the cell in the $i$-th row and $j$-th column and the cell in the $(i+1)$-th row and $j$-th column.
 
@@ -68,4 +68,3 @@ least once.
 11
 11
 ```
-

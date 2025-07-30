@@ -12,8 +12,7 @@ the character sequence ??(()). After receiving the message, Bob tries to
 reconstruct the valid parentheses sequence that Alice transmitted.
 However, Alice knows that in some cases, the reconstruction is not
 unique: for instance, when receiving the character sequence ?(??)?,
-there are two possible reconstructions: (()()) and ((())).\
-\
+there are two possible reconstructions: (()()) and ((())).
 
 <div>
 
@@ -22,8 +21,6 @@ received can uniquely reconstruct the valid parentheses sequence. Output
 the answer modulo $998\,244\,353$.
 
 <div>
-
-\
 
 <div>
 
@@ -36,8 +33,6 @@ of the following holds true:
     where $t$ is a valid parentheses
     sequence;
 - $s = t_1 + t_2$, where $t_1$ and $t_2$ are valid parentheses sequences.
-
-\
 
 </div>
 
@@ -105,4 +100,3 @@ occurring is $\frac{3}{4} \equiv 249\,561\,089 \mod 998\,244\,353$.
 ```plain
 826671105
 ```
-

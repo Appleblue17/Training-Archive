@@ -13,8 +13,8 @@ square matrix $A$ such that:
 - For each $1 \leq i \leq n$, $\operatorname{mex}(A_{i,1}, A_{i,2}, \ldots, A_{i,n}) = \operatorname{mex}(A_{1,i}, A_{2,i}, \ldots, A_{n,i}) = f_i$.
 
 It can be proven that for any valid $f_1, \ldots, f_n$, a solution always
-exists.\
-\
+exists.
+
 Recall that the $\operatorname{mex}$ of a
 sequence $b_1, \ldots, b_m$ is the smallest
 non-negative integer $x$ such that $x$ does not appear in $b$.
@@ -25,16 +25,16 @@ non-negative integer $x$ such that $x$ does not appear in $b$.
 
 Each test contains multiple test cases. The first line of input contains
 a single integer$t$ ($1 \leq t \leq 2\cdot 10^4$) --- the number
-of test cases. The description of the test cases follows.\
-\
+of test cases. The description of the test cases follows.
+
 The first line contains a single integer$n$ ($1 \leq n \leq 1\;414$), denoting the length
-of the sequence.\
-\
+of the sequence.
+
 The second line contains $n$ integers$f_1, \ldots, f_n$ ($1 \leq f_i \leq i$), describing the given
-sequence.\
-\
+sequence.
+
 It is guaranteed that the sum of $n^2$ over
-all test cases does not exceed $2\cdot 10^6$.\
+all test cases does not exceed $2\cdot 10^6$.
 
 ### 输出描述
 
@@ -76,12 +76,11 @@ range $[0, n]$.
 ### 备注
 
 In the first test case, $f = [1, 1, 2]$, and
-a possible square matrix is as follows:\
-\ $A = \begin{bmatrix} 0 &2 &0\\ 0 &0 &0\\ 0 &0 &1\end{bmatrix}.$\
-\
+a possible square matrix is as follows:
+\ $A = \begin{bmatrix} 0 &2 &0\\ 0 &0 &0\\ 0 &0 &1\end{bmatrix}.$
+
 In the first row, $\operatorname{mex}([0, 2, 0]) = f_1 = 1$,
 because $0$ appears in $[0, 2, 0]$, but $1$ does not, so $1$ is the smallest non-negative integer not
 present; in the first column, similarly, $\operatorname{mex}([0, 0, 0]) = f_1 = 1$. It
 is easy to verify that this matrix also satisfies all other
-constraints.\
-
+constraints.

@@ -4,36 +4,35 @@
 
 Xiao Ming and $n$ competitors are
 participating in a \"Ladder\" game. Each competitor has a score, and the
-scores are arranged in strictly increasing order, that is:\ $a_1 < a_2 < \dots < a_n$\
-\
+scores are arranged in strictly increasing order, that is:\ $a_1 < a_2 < \dots < a_n$
+
 Xiao Ming is initially not among these$n$ competitors. Now, Xiao Ming wants to improve his ranking through
-\"challenges.\"\
-\
+\"challenges.\"
+
 Each time he challenges, Xiao Ming will choose the **lowest scoring
 competitor** who has a higher score than him. The rules of the challenge
-are as follows:\
-\
+are as follows:
+
 - Xiao Ming\'s score increases by $1$;
 - The challenged competitor\'s score decreases by $1$.
 
-\
 There are a total of $q$ queries. Each query
 provides Xiao Ming\'s initial score $x$ and
 the target ranking $y$ (ranked by current
 scores, with ties considered as the same rank). You need to determine
 how many challenges Xiao Ming **needs at least** to achieve that
 ranking. Output $0$ if Xiao Ming has already
-achieved (or even above) the target ranking without any challenge.\
+achieved (or even above) the target ranking without any challenge.
 
 ### 输入描述
 
 The first line contains two integers $n$ and $q$, representing the number of competitors
-and the number of queries;\
-\
+and the number of queries;
+
 The second line contains $n$ strictly
 increasing integers $a_1, a_2, \dots, a_n$,
-representing the initial scores of each competitor;\
-\
+representing the initial scores of each competitor;
+
 The following $q$ lines each contain two
 integers $x$ and $y$, representing Xiao Ming\'s initial score
 and his target ranking.
@@ -91,7 +90,5 @@ Constraints:
 
 </div>
 
-<div> $\bullet$ $1 \leq n, q \leq 2 \cdot 10^5$;\ $\bullet$ $1 \leq a_i \leq 10^9$;\ $\bullet$ $0 \leq x \leq 10^9$;\ $\bullet$ $1 \leq y \leq n + 1$.\
-
+<div> $\bullet$ $1 \leq n, q \leq 2 \cdot 10^5$;\ $\bullet$ $1 \leq a_i \leq 10^9$;\ $\bullet$ $0 \leq x \leq 10^9$;\ $\bullet$ $1 \leq y \leq n + 1$.
 </div>
-

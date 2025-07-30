@@ -27,8 +27,6 @@ print it modulo $998244353$.
 
 <div>
 
-\
-
 <div>
 
 Recall that a permutation of length $n$ is an
@@ -51,16 +49,16 @@ array).[]{style="text-wrap-mode:wrap;"}
 
 Each test contains multiple test cases. The first line of input contains
 a single integer$t$ ($1 \leq t \leq 1.8\cdot 10^3$) --- the
-number of test cases. The description of the test cases follows.\
-\
-The first line of input contains a single integer$n$ ($1 \leq n \leq 5\cdot 10^3$).\
-\
+number of test cases. The description of the test cases follows.
+
+The first line of input contains a single integer$n$ ($1 \leq n \leq 5\cdot 10^3$).
+
 The second line of input contains$n$ integers$p'_1, \ldots, p'_n$ ($0 \leq p'_i \leq n$). If $p'_i = 0$, there is currently no information
 about $p_i$; otherwise, there is a testimony
 indicating that $p_i = p'_i$. It\'s
 guaranteed that no pairs $(i, j)$ exist such
-that $1 \leq i < j \leq n$ and $p'_i = p'_j  > 0$.\
-\
+that $1 \leq i < j \leq n$ and $p'_i = p'_j  > 0$.
+
 It\'s guaranteed that the sum of $n$ over all
 test cases does not exceed $10^4$.
 
@@ -124,25 +122,24 @@ might *resemble *$p$, modulo $998244353$.
 
 ### 备注
 
-In the first example test case, there are two possible permutations $p$:\
-\
+In the first example test case, there are two possible permutations $p$:
+
 1. $p = [1, 3, 2]$. The set of prefix maximal
 positions is $\{1, 2\}$. There are $2$ permutations $q$ that
-*resemble *$p$: $[1, 3, 2]$, and $[2, 3, 1]$.\
+_resemble _$p$: $[1, 3, 2]$, and $[2, 3, 1]$.
 2. $p = [3, 1, 2]$. The set of prefix maximal
-positions is $\{1\}$. There are $2$ permutations$q$ that *resemble* $p$: $[3, 1, 2]$, and $[3, 2, 1]$.\
-\
-Thus, the answer is $2 + 2 = 4$.\
-\
+positions is $\{1\}$. There are $2$ permutations$q$ that *resemble* $p$: $[3, 1, 2]$, and $[3, 2, 1]$.
+
+Thus, the answer is $2 + 2 = 4$.
+
 The only possible permutation in the second example test case is $p = [2, 1, 3]$. The set of prefix maximal
 positions is $\{1, 3\}$, and the only
 permutation $q$ that
-*resembles *$p$ is exactly $p$ itself, so the answer is $1$.\
-\
+_resembles _$p$ is exactly $p$ itself, so the answer is $1$.
+
 In the third example test case, all the possible $12$ permutations $q$ that
 might *resemble* $p$ are as follows: $[2, 1, 3, 4]$, $[2, 1, 4, 3]$, $[3, 1, 2, 4]$, $[3, 1, 4, 2]$, $[3, 2, 1, 4]$, $[3, 2, 4, 1]$, $[4, 1, 2, 3]$, $[4, 1, 3, 2]$, $[4, 2, 1, 3]$, $[4, 2, 3, 1]$, $[4, 3, 1, 2]$, and $[4, 3, 2, 1]$. Note that it\'s possible to
 have $p = [3, 2, 1, 4]$ and $p = [3, 1, 2, 4]$, both having the prefix
 maximal set as $\{1, 4\}$, but the
 corresponding resembling permutations $q$ are
 still counted only once.
-

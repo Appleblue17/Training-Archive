@@ -5,7 +5,7 @@
 <div>
 
 Yuki gives you three non-negative integers $a$, $b$, and $c$. You can perform the following operations
-up to $k = 64$ times:\
+up to $k = 64$ times:
 
 1.  $a \gets a \cdot 2$;
 2.  $b \gets \lfloor \frac{b}{2} \rfloor$;
@@ -23,11 +23,11 @@ exists.
 
 Each test contains multiple test cases. The first line of input contains
 a single integer$t$ ($1 \leq t \leq 10^4$) --- the number of test
-cases. The description of the test cases follows.\
-\
+cases. The description of the test cases follows.
+
 The first and only line of input of each test case contains three
 integers $a$, $b$,
-and$c$ ($0 \leq a, b, c < 2^{31}$).\
+and$c$ ($0 \leq a, b, c < 2^{31}$).
 
 ### 输出描述
 
@@ -38,8 +38,6 @@ For each test case:
 </div>
 
 <div>
-
-\
 
 </div>
 
@@ -90,7 +88,6 @@ the indices of the operations you performed.
 In the first test case, initially $a = 3$, $b = 5$, $c = 6$.
 After the first operation, $a = 3$, $b = 6$, $c = 6$;
 after the second operation, $a = b = c = 6$,
-which meets the requirement.\
-\
-In the second test case, regardless of how the operations are performed, $a = b = 0$, which cannot satisfy $a = b = c$.\
+which meets the requirement.
 
+In the second test case, regardless of how the operations are performed, $a = b = 0$, which cannot satisfy $a = b = c$.

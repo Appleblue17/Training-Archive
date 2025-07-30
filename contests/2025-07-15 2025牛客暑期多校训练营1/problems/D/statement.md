@@ -2,20 +2,20 @@
 
 ### 题目描述
 
-*There are lots of things to do in this contest besides this problem, so
-let\'s make it quick.*\
-\
+_There are lots of things to do in this contest besides this problem, so
+let\'s make it quick._
+
 Given two integers $n$ and $p$, where $p$ is
 prime, you need to find the value of $\text{LCM}(1,2,3,\ldots,n) \bmod p$, i.e.,
-the least common multiple of$1,2,3,\ldots,n$ modulo $p$.\
+the least common multiple of$1,2,3,\ldots,n$ modulo $p$.
 
 ### 输入描述
 
-The only line contains two integers $n$ and$p$ ($1 \le n < p < 10^{10}$), where $p$ is prime.\
+The only line contains two integers $n$ and$p$ ($1 \le n < p < 10^{10}$), where $p$ is prime.
 
 ### 输出描述
 
-Output a line containing a single integer, indicating the value of $\text{LCM}(1,2,3,\ldots,n) \bmod p$.\
+Output a line containing a single integer, indicating the value of $\text{LCM}(1,2,3,\ldots,n) \bmod p$.
 
 ### 示例1
 
@@ -66,4 +66,3 @@ For the second sample case, $\text{LCM}(1,2,3,\ldots,30) = 2\,329\,089\,562\,800
 ```plain
 6047288450
 ```
-

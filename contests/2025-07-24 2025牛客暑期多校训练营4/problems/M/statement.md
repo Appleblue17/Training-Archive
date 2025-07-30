@@ -10,23 +10,23 @@ himself** and replace their gold coin counts with the **floor of the
 average** of the selected players\' gold coins. Formally, when Bobo uses
 an Equalization Card, he can choose a non-empty subset $S \subseteq \{1,2,\ldots,N\}$, and let $T = \left\lfloor \frac{\sum_{i \in S} a_i}{|S|}\right\rfloor$.
 For all $i \in S$, the gold coin count of
-player $i$ is set to $T$.\
-\
+player $i$ is set to $T$.
+
 Bobo has an unlimited number of \"Equalization Cards\" and can use any
 number of them in this turn. Bobo wishes to minimize the maximum number
 of gold coins that the other $N$ players can
 have by using the \"Equalization Cards\" in this turn. Please help Bobo
-calculate what this minimum value is.\
+calculate what this minimum value is.
 
 ### 输入描述
 
 The input consists of $T$ test cases
 ($1 \le T \le 1000$). Each test case is
-described as follows.\
-\
+described as follows.
+
 The first line contains a single positive integer$N$ ($2 \le N \le 50$), representing the number
-of other players.\
-\
+of other players.
+
 The next line contains $N$ non-negative
 integers$a_1, a_2, \ldots, a_N$ ($0 \le a_i \le 50$), representing the number
 of gold coins owned by the other players.
@@ -54,4 +54,3 @@ answer.
 3
 1
 ```
-

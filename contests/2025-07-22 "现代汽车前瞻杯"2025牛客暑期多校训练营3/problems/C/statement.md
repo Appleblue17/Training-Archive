@@ -4,11 +4,12 @@
 
 A string $S$ consisting only of lowercase
 English letters is called **Capella-like** if and only if it satisfies
-all of the following conditions:\
+all of the following conditions:
+
 - The number of letters that appear an odd number of times
-    in $S$ is odd;
+  in $S$ is odd;
 - The number of letters that appear a non-zero even number of times
-    in $S$ is even.
+  in $S$ is even.
 
 It can be shown that the string
 \"$\texttt{capella}$\" is Capella-like.
@@ -17,8 +18,7 @@ not Capella-like since there are $4$ letters
 that appear an odd number of times, and
 \"$\texttt{lowiro}$\" is not Capella-like
 either since there is $1$ letter that appears
-a non-zero even number of times and$4$ letters that appear an odd number of times.\
-\
+a non-zero even number of times and$4$ letters that appear an odd number of times.
 
 <div>
 
@@ -30,8 +30,6 @@ before all the $q$ operations and after each
 operation.
 
 <div>
-
-\
 
 <div>
 
@@ -46,15 +44,15 @@ empty prefix and suffix from $S$.
 
 ### 输入描述
 
-The first line contains two integers $n$ and$q$ ($1 \leq n \leq 2 \cdot 10^5$, $1 \leq q \leq 2 \cdot 10^5$).\
-\
+The first line contains two integers $n$ and$q$ ($1 \leq n \leq 2 \cdot 10^5$, $1 \leq q \leq 2 \cdot 10^5$).
+
 The second line contains a string $S$ of
 length $n$ consisting only of lowercase
-English letters.\
-\
+English letters.
+
 Each of the next $q$ lines contains an
 integer$p_i$ ($1 \leq p_i \leq n$) and a lowercase English
-letter $c_i$, representing an operation.\
+letter $c_i$, representing an operation.
 
 ### 输出描述
 
@@ -86,11 +84,9 @@ ababab
 
 ### 备注
 
-For the $q$ operations in the sample:\
+For the $q$ operations in the sample:
 
 <div>
-
-\
 
 </div>
 
@@ -120,4 +116,3 @@ For the $q$ operations in the sample:\
     \"$\texttt{c}$\", with a length of $1$.
 
 </div>
-

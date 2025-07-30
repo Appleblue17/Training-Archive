@@ -9,15 +9,15 @@ She will perform several rounds of operations. In each round, she will
 first pick $a$ petals off the flower, and
 then pick off another $b$ petals. If the
 remaining petals are inadequate, she plucks all. She doesn\'t stop until
-no petals remain.\
-\
+no petals remain.
+
 Yuki once promised that she would leave if and only if the last petal
 she picked belonged to the first $a$ petals
 picked in some round of the operation; otherwise, she would stay.
 Sympathetic, you want to pick off some number of petals first, **but you
 cannot pick all**, to ensure that she stays. You must determine the
 minimum number of petals you need to pick off; in particular, if she
-can\'t stay, output \"$\texttt{Sayonara}$\".\
+can\'t stay, output \"$\texttt{Sayonara}$\".
 
 </div>
 
@@ -25,19 +25,17 @@ can\'t stay, output \"$\texttt{Sayonara}$\".\
 
 Each test contains multiple test cases. The first line of input contains
 a single integer$t$ ($1 \leq t \leq 100$) --- the number of test
-cases. The description of the test cases follows.\
-\
+cases. The description of the test cases follows.
+
 The first and only line of input of each test case contains three
 integers $n$, $a$,
-and$b$ ($1 \leq n \leq 10^9$, $1 \leq a \leq 10^9$, $1 \leq b \leq 10^9$).\
+and$b$ ($1 \leq n \leq 10^9$, $1 \leq a \leq 10^9$, $1 \leq b \leq 10^9$).
 
 ### 输出描述
 
-For each test case, output a single line:\
+For each test case, output a single line:
 
 <div>
-
-\
 
 </div>
 
@@ -73,9 +71,8 @@ Sayonara
 In the first test case, $n = 1$, $a = 2$, $b = 3$.
 You cannot pick any petals, and Yuki will pick all the petals in the
 first round, thus leaving. Therefore, the output is
-\"$\texttt{Sayonara}$\".\
-\
+\"$\texttt{Sayonara}$\".
+
 In the second test case, it is easy to see that even if no petals are
 picked off initially, Yuki will end up picking all the petals after two
-rounds of operations, thus staying, so the answer is $0$.\
-
+rounds of operations, thus staying, so the answer is $0$.

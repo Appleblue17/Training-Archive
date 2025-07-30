@@ -3,53 +3,49 @@
 ### 题目描述
 
 ::::::: {style="text-wrap-mode:wrap;"}
-**Please note the special memory limit of this problem.**\
-
+**Please note the special memory limit of this problem.**
 :::::: {style="text-wrap-mode:wrap;"}
-\
 
 ::::: {style="text-wrap-mode:wrap;"}
-![](https://uploadfiles.nowcoder.com/images/20250708/0_1751963254497/F51C29794E630AF10DD08BC2804348B9){style="height:auto;width:236px;"}\
-
+![](https://uploadfiles.nowcoder.com/images/20250708/0_1751963254497/F51C29794E630AF10DD08BC2804348B9){style="height:auto;width:236px;"}
 :::: {style="text-wrap-mode:wrap;"}
-This is Tachibana Kanade. She is very cute.\
+This is Tachibana Kanade. She is very cute.
 
-\
 [In the quiet afterlife, where forgotten memories echo like distant
 bells, a vast Tree connects every soul\'s
-regret.]{style="text-wrap-mode:wrap;"}\
-\
+regret.]{style="text-wrap-mode:wrap;"}
+
 [Tachibana Kanade, the silent guardian, awakens in the center of this
 realm. Each node on the Tree holds a
 number ]{style="text-wrap-mode:wrap;"}$a_i$[ \-\--
 fragments of emotion, unresolved wishes, and fading
-light.]{style="text-wrap-mode:wrap;"}\
-\
+light.]{style="text-wrap-mode:wrap;"}
+
 [To awaken her scattered friends, Kanade must walk from
 node ]{style="text-wrap-mode:wrap;"}$l$[ to
 node ]{style="text-wrap-mode:wrap;"}$r$[,
 tracing a simple path. The values along this path
 are ]{style="text-wrap-mode:wrap;"}$w_1, w_2, \dots, w_k$[.
 She starts with the counter set
-to ]{style="text-wrap-mode:wrap;"}$w_1$[.]{style="text-wrap-mode:wrap;"}\
-\
+to ]{style="text-wrap-mode:wrap;"}$w_1$[.]{style="text-wrap-mode:wrap;"}
+
 [At each of the
 next ]{style="text-wrap-mode:wrap;"}$k-1$[ steps,
-she will:]{style="text-wrap-mode:wrap;"}\
+she will:]{style="text-wrap-mode:wrap;"}
 \ $\bullet$[ Increase the step index by
 1,]{style="text-wrap-mode:wrap;"}\ $\bullet$[ Choose to
 either ]{style="text-wrap-mode:wrap;"}**add**[ or ]{style="text-wrap-mode:wrap;"}**multiply**[ the
 counter by the current
-value ]{style="text-wrap-mode:wrap;"}$w_{id}$[.]{style="text-wrap-mode:wrap;"}\
-\
+value ]{style="text-wrap-mode:wrap;"}$w_{id}$[.]{style="text-wrap-mode:wrap;"}
+
 [Her mission: reach
 exactly ]{style="text-wrap-mode:wrap;"}$24$[,
 the number that symbolizes a complete day \-\-- 24 hours of precious
-time, 24 echoes of unspoken memories.]{style="text-wrap-mode:wrap;"}\
-\
+time, 24 echoes of unspoken memories.]{style="text-wrap-mode:wrap;"}
+
 [Some queries ask whether such a path can yield 24. Others alter the
-memory fragments themselves.]{style="text-wrap-mode:wrap;"}\
-\
+memory fragments themselves.]{style="text-wrap-mode:wrap;"}
+
 [Can Kanade rewrite fate and reach that quiet resolution once
 more?]{style="text-wrap-mode:wrap;"}Echoes of 24
 
@@ -62,17 +58,16 @@ more?]{style="text-wrap-mode:wrap;"}Echoes of 24
 
 The first line contains two
 integers $n$ and $q$ $( 1 \le n,q \le 5\times 10^5 )$ \-\--
-the number of nodes in the tree and the number of queries.\
-\
+the number of nodes in the tree and the number of queries.
+
 The second line
 contains $n$ integers $a_1,a_2,\dots,a_{n} (1\le a_i \le 10^9)$ \-\--
-the memory values stored at each node.\
-\
+the memory values stored at each node.
+
 Then follow $n-1$ lines, each containing two
 integers $u$ and $v$ \-\--
 indicating an undirected edge between
-nodes $u$ and $v$.\
-\
+nodes $u$ and $v$.
 
 <div>
 
@@ -170,10 +165,8 @@ Constraints:
 
 </div>
 
-<div> $\bullet$ $1 \le n,q \le 5\times 10^5$\ $\bullet$ $1 \le a_i,d \le 10^9$\
-
+<div> $\bullet$ $1 \le n,q \le 5\times 10^5$\ $\bullet$ $1 \le a_i,d \le 10^9$
 </div>
 
 <div> $\bullet$$1 \le l,r,x \le n$ 
 </div>
-

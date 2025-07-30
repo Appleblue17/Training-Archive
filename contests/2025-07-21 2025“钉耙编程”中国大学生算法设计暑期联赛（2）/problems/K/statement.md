@@ -4,18 +4,21 @@
 
 对于一个二进制数 $x(x > 0)$，设 $2^y = \mathrm{lowbit}(x)$，设 $z = \left\lfloor x / 2^{y + 1} \right\rfloor$。
 
-定义$f$ 函数：$f(0) = 0$，当 $x > 0$ 时 
+定义$f$ 函数：$f(0) = 0$，当 $x > 0$ 时
+
 $$
 f(x) =
 \begin{cases}
-y & z = 0\\
-f(z) + 2 & z \neq 0 \land \mathrm{lowbit}(z) = \mathrm{lowbit}(x) \times 2 \\
+y & z = 0\
+f(z) + 2 & z \neq 0 \land \mathrm{lowbit}(z) = \mathrm{lowbit}(x) \times 2 \
 y & z \neq 0 \land \mathrm{lowbit}(z) \neq \mathrm{lowbit}(x) \times 2
 \end{cases}
 $$
- 给出一个长度为 $n$ 的 $01$ 序列 $a$。有$m$ 次操作，每次操作都形如以下的两种：
-- `1 l r`：查询序列 $a$ 的区间 $[l, r]$ 组成的二进制数 $x$ 的$f(x)$     值。
-- `2 x`：令$a_x$     反转（$0$ 变成 $1$，$1$ 变成 $0$）。 $\dagger$ $\mathrm{lowbit}(i)$ 表示 $i$ 在二进制表示下最低位的 $1$ 及其后面所有的 $0$ 构成的数值。 $\dagger$$\land$ 表示逻辑且。
+
+给出一个长度为 $n$ 的 $01$ 序列 $a$。有$m$ 次操作，每次操作都形如以下的两种：
+
+- `1 l r`：查询序列 $a$ 的区间 $[l, r]$ 组成的二进制数 $x$ 的$f(x)$ 值。
+- `2 x`：令$a_x$ 反转（$0$ 变成 $1$，$1$ 变成 $0$）。 $\dagger$ $\mathrm{lowbit}(i)$ 表示 $i$ 在二进制表示下最低位的 $1$ 及其后面所有的 $0$ 构成的数值。 $\dagger$$\land$ 表示逻辑且。
 
 ### Input
 
@@ -26,6 +29,7 @@ $$
 第二行一个长度为 $n$ 的字符串，表示初始的 $01$ 序列 $a$。
 
 接下来 $m$ 行，每行若干个整数，第一个数 $\mathrm{opt}$ 表示操作类型：
+
 - 若 $\mathrm{opt} = 1$，则后面两个数 $l, r(1 \leq l \leq r \leq n)$，表示查询的区间。
 - 若 $\mathrm{opt} = 2$，则后面一个数 $x(1 \leq x \leq n)$，表示修改的位置。
 
@@ -52,4 +56,3 @@ $$
 4
 3
 ```
-

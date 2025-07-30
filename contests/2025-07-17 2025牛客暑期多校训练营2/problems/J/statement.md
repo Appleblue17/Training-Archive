@@ -4,36 +4,33 @@
 
 Sean is glad that he has already finished grading all his students\'
 tests. But he is no longer glad when he sees the final scores. How low
-they are!\
-\
+they are!
+
 Luckily for both Sean and his students, the dean\'s office allows Sean
 to \"curve\" the scores to make the scores \"look better\" as long as
-higher scores are still higher.\
-\
+higher scores are still higher.
+
 The scores are in the range $[1,100]$ , and
-there are two classic operators used in curving:\
-\
-- Type 1: $f_1(x)=kx+b$ , where$10^{-2}\leq k\leq 1, 0\leq b\leq 10^4, k+b\geq 1$     .
+there are two classic operators used in curving:
+
+- Type 1: $f_1(x)=kx+b$ , where$10^{-2}\leq k\leq 1, 0\leq b\leq 10^4, k+b\geq 1$ .
 - Type 2: $f_2(x)=\sqrt{x}$ .
 
-\
 After curving, Sean will map the curved score into the target score
-range, which we don\'t really care for now.\
-\
+range, which we don\'t really care for now.
+
 Sean has an array of operators of length$n$ : $[g_1,g_2,\dots,g_n]$, each of them is
-either Type 1 or Type 2.\
-\
+either Type 1 or Type 2.
+
 Each time, [to test the curving result, Sean tries the functions with a
 new initial
 value ]{style="text-wrap-mode:wrap;"}$x$. He
 chooses a subarray of the operator array $[g_l,g_{l+1},\dots,g_r]$, and uses the
-operators like this:\
-\
+operators like this:
+
 - Initiate $a_0$ with $x$. 
 - Calculate the variables $a_1,a_2,\dots,a_{r-l+1}$ using the
-    following equations: $a_1=g_l(a_0),a_2=g_{l+1}(a_1),\dots,a_{r-l+1}=g_{r}(a_{r-l})$.
-
-\
+  following equations: $a_1=g_l(a_0),a_2=g_{l+1}(a_1),\dots,a_{r-l+1}=g_{r}(a_{r-l})$.
 
 <div>
 
@@ -45,11 +42,7 @@ Can you handle it?
 
 <div>
 
-\
-
 <div>
-
-\
 
 </div>
 
@@ -68,8 +61,6 @@ operator array.
 
 <div>
 
-\
-
 </div>
 
 <div>
@@ -82,8 +73,6 @@ be of two forms:
 </div>
 
 <div>
-
-\
 
 </div>
 
@@ -100,8 +89,6 @@ both $k$ and $b$ .
 
 <div>
 
-\
-
 </div>
 
 <div>
@@ -111,11 +98,9 @@ both $k$ and $b$ .
 
 </div>
 
-\
 The $(n+2)$-th line contains an
 integer $q\ (1\leq q\leq 10^5)$, the number
-of queries.\
-\
+of queries.
 
 <div>
 
@@ -126,8 +111,6 @@ is in one of the given two forms:
 </div>
 
 <div>
-
-\
 
 </div>
 
@@ -141,8 +124,6 @@ operator subarray$[g_l,g_{l+1},\dots,g_r]$ with initial value $x$ . $l, r, x$ ar
 
 <div>
 
-\
-
 </div>
 
 <div>
@@ -154,13 +135,11 @@ where $op$ is given in the form of operators.
 
 </div>
 
-\
-
 ### 输出描述
 
-For each Type 1 query, output two values:\
-\
-Since the answers are not necessarily integers, if the real answer is $ans$, your answer $ans'$ is considered correct if $\frac{|ans-ans'|}{\max(1, ans)}\leq 10^{-4}$.\
+For each Type 1 query, output two values:
+
+Since the answers are not necessarily integers, if the real answer is $ans$, your answer $ans'$ is considered correct if $\frac{|ans-ans'|}{\max(1, ans)}\leq 10^{-4}$.
 
 ### 示例1
 
@@ -190,6 +169,3 @@ Since the answers are not necessarily integers, if the real answer is $ans$, you
 ```
 
 #### 说明
-
-\
-
