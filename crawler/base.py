@@ -112,6 +112,12 @@ class BaseCrawler:
         # Remove endline after $...$ if it's at the end of a line
         md = re.sub(r"\s*(\$[^\$]+\$)\n", r"\1 ", md)
 
+        # Remove `\` at the end of a line
+        md = re.sub(r"\\\n", "", md)
+
+        # Remove html tags
+        md = re.sub(r"<[^>]+>", "", md)
+
         # 4. Remove extra blank lines
         md = re.sub(r"\n{3,}", "\n\n", md)
 
@@ -247,10 +253,13 @@ class BaseCrawler:
             self.driver.quit()
             self.driver = None
 
-    def fetch_page_with_browser(self, url):
+    def fetch_page_with_browser(self, url, wait_time=0):
         try:
             self.driver.get(url)
-            self._random_sleep()
+            if wait_time > 0:
+                time.sleep(wait_time)
+            else:
+                self._random_sleep()
         except Exception as e:
             self.log("error", f"Failed to fetch page {url}: {str(e)}")
             return ""

@@ -359,7 +359,7 @@ class NOWCODERCrawler(BaseCrawler):
                 # Assume there are at most 20 pages of submissions
                 status_link_with_page = f'{status_link}%2C"page"%3A{page}'
 
-                status_page = self.fetch_page_with_browser(status_link_with_page)
+                status_page = self.fetch_page_with_browser(status_link_with_page, 2)
                 soup = bs4(status_page, "html.parser")
 
                 current_page = soup.find("div", class_="pagination")
