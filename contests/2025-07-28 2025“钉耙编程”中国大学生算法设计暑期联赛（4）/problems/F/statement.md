@@ -9,302 +9,30 @@
 Serika，他始终无法忘记她上一次的遭遇。千千万万不要重蹈上一位的覆辙，老师自思道。Serika
 注意到了老师的心思，她决定通过美好的梦境来帮助他重整旗鼓。
 
-老师有 [[$n$][[[]{.strut
-style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}] 个关于学生的梦境，编号为
-[[$1,2,3,\cdots,n$][[[]{.strut
-style="height: 0.8389em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[2]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[3]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
-style="margin-right: 0.1667em;"}[]{.mspace
-style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[n]{.mord
-.mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]。它们作为节点构成了一棵有根树。编号为
-[[$i$][[[]{.strut style="height: 0.6595em;"}[i]{.mord
-.mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]（[[$1 \leq i \leq n$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.7955em; vertical-align: -0.136em;"}[i]{.mord
-.mathnormal}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]）的梦境拥有
-[[$k_{i}$][[[]{.strut
-style="height: 0.8444em; vertical-align: -0.15em;"}[[k]{.mord
-.mathnormal style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: -0.0315em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}] 个儿子梦境，编号分别为
-[[$p_{i,1},p_{i,2},p_{i,3},\cdots,p_{i,k_{i}}$][[[]{.strut
-style="height: 0.7167em; vertical-align: -0.2861em;"}[[p]{.mord
-.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[i]{.mord
-.mathnormal .mtight}[,]{.mpunct .mtight}[1]{.mord .mtight}]{.mord
-.mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[[p]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[,]{.mpunct
-.mtight}[2]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[[p]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[,]{.mpunct
-.mtight}[3]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
-style="margin-right: 0.1667em;"}[]{.mspace
-style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[[p]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[,]{.mpunct
-.mtight}[[k]{.mord .mathnormal .mtight
-style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-style="height: 2.5em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size3 .size1
-.mtight}]{style="top: -2.357em; margin-left: -0.0315em; margin-right: 0.0714em;"}]{.vlist
-style="height: 0.3281em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.143em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord .mtight}]{.mord .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]。
+老师有 $n$ 个关于学生的梦境，编号为 $1,2,3,\cdots,n$。它们作为节点构成了一棵有根树。编号为 $i$（$1\le i\le n$）的梦境拥有 $k_i$ 个儿子梦境，编号分别为 $p_{i,1},p_{i,2},p_{i,3},\cdots,p_{i,k_i}$。
 
-【现在，对于每个编号为 [[$i$][[[]{.strut
-style="height: 0.6595em;"}[i]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]（[[$1 \leq i \leq n$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.7955em; vertical-align: -0.136em;"}[i]{.mord
-.mathnormal}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]）的梦境以及整数
-[[$j$][[[]{.strut
-style="height: 0.854em; vertical-align: -0.1944em;"}[j]{.mord
-.mathnormal style="margin-right: 0.0572em;"}]{.base}]{.katex-html
-aria-hidden="true"}]（[[$1 \leq j \leq k_{i}$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.854em; vertical-align: -0.1944em;"}[j]{.mord
-.mathnormal style="margin-right: 0.0572em;"}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.8444em; vertical-align: -0.15em;"}[[k]{.mord
-.mathnormal style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: -0.0315em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]），记
-[[$a_{i,j} = j$][[[]{.strut
-style="height: 0.7167em; vertical-align: -0.2861em;"}[[a]{.mord
-.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[i]{.mord
-.mathnormal .mtight}[,]{.mpunct .mtight}[j]{.mord .mathnormal .mtight
-style="margin-right: 0.0572em;"}]{.mord .mtight}]{.sizing .reset-size6
-.size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.854em; vertical-align: -0.1944em;"}[j]{.mord
-.mathnormal style="margin-right: 0.0572em;"}]{.base}]{.katex-html
-aria-hidden="true"}]。】
+【现在，对于每个编号为 $i$（$1\le i\le n$）的梦境以及整数 $j$（$1\le j\le k_i$），记 $a_{i,j}=j$。】
 
 老师认为：
 
-1.  编号为 [[$p_{i,a_{i,j}}$][[[]{.strut
-    style="height: 0.7779em; vertical-align: -0.3473em;"}[[p]{.mord
-    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[i]{.mord
-    .mathnormal .mtight}[,]{.mpunct .mtight}[[a]{.mord .mathnormal
-    .mtight}[[[[[[]{.pstrut style="height: 2.5em;"}[[[i]{.mord
-    .mathnormal .mtight}[,]{.mpunct .mtight}[j]{.mord .mathnormal
-    .mtight style="margin-right: 0.0572em;"}]{.mord .mtight}]{.sizing
-    .reset-size3 .size1
-    .mtight}]{style="top: -2.357em; margin-left: 0em; margin-right: 0.0714em;"}]{.vlist
-    style="height: 0.3281em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.2819em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord .mtight}]{.mord .mtight}]{.sizing
-    .reset-size6 .size3
-    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-    style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.3473em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]（[[$1 \leq i \leq n$][[[]{.strut
-    style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.7955em; vertical-align: -0.136em;"}[i]{.mord
-    .mathnormal}[]{.mspace
-    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.4306em;"}[n]{.mord
-    .mathnormal}]{.base}]{.katex-html
-    aria-hidden="true"}]，[[$1 \leq j \leq k_{i}$][[[]{.strut
-    style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.854em; vertical-align: -0.1944em;"}[j]{.mord
-    .mathnormal style="margin-right: 0.0572em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8444em; vertical-align: -0.15em;"}[[k]{.mord
-    .mathnormal style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-    style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-    .reset-size6 .size3
-    .mtight}]{style="top: -2.55em; margin-left: -0.0315em; margin-right: 0.05em;"}]{.vlist
-    style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]）的非根梦境的 **左梦境** 为编号为
-    [[$p_{i,a_{i,\max(j - 1,1)}}$][[[]{.strut
-    style="height: 0.8392em; vertical-align: -0.4086em;"}[[p]{.mord
-    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[i]{.mord
-    .mathnormal .mtight}[,]{.mpunct .mtight}[[a]{.mord .mathnormal
-    .mtight}[[[[[[]{.pstrut style="height: 2.5357em;"}[[[i]{.mord
-    .mathnormal .mtight}[,]{.mpunct
-    .mtight}[[m]{.mtight}[a]{.mtight}[x]{.mtight}]{.mop
-    .mtight}[(]{.mopen .mtight}[j]{.mord .mathnormal .mtight
-    style="margin-right: 0.0572em;"}[−]{.mbin .mtight}[1]{.mord
-    .mtight}[,]{.mpunct .mtight}[1]{.mord .mtight}[)]{.mclose
-    .mtight}]{.mord .mtight}]{.sizing .reset-size3 .size1
-    .mtight}]{style="top: -2.3448em; margin-left: 0em; margin-right: 0.0714em;"}]{.vlist
-    style="height: 0.3448em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.3695em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord .mtight}]{.mord .mtight}]{.sizing
-    .reset-size6 .size3
-    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-    style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.4086em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 的梦境，**右梦境** 为编号为
-    [[$p_{i,a_{i,\min(j + 1,k_{i})}}$][[[]{.strut
-    style="height: 0.8716em; vertical-align: -0.441em;"}[[p]{.mord
-    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[i]{.mord
-    .mathnormal .mtight}[,]{.mpunct .mtight}[[a]{.mord .mathnormal
-    .mtight}[[[[[[]{.pstrut style="height: 2.5357em;"}[[[i]{.mord
-    .mathnormal .mtight}[,]{.mpunct
-    .mtight}[[m]{.mtight}[i]{.mtight}[n]{.mtight}]{.mop
-    .mtight}[(]{.mopen .mtight}[j]{.mord .mathnormal .mtight
-    style="margin-right: 0.0572em;"}[+]{.mbin .mtight}[1]{.mord
-    .mtight}[,]{.mpunct .mtight}[[k]{.mord .mathnormal .mtight
-    style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-    style="height: 2.6595em;"}[i]{.mord .mathnormal
-    .mtight}]{style="top: -2.3448em; margin-left: -0.0315em; margin-right: 0.1em;"}]{.vlist
-    style="height: 0.3448em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.3147em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord .mtight}[)]{.mclose .mtight}]{.mord
-    .mtight}]{.sizing .reset-size3 .size1
-    .mtight}]{style="top: -2.3448em; margin-left: 0em; margin-right: 0.0714em;"}]{.vlist
-    style="height: 0.3448em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.4157em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord .mtight}]{.mord .mtight}]{.sizing
-    .reset-size6 .size3
-    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-    style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.441em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]
-    的梦境。（根据定义，一个非根梦境的左梦境或右梦境均可以是它本身）
-2.  编号为 [[$i$][[[]{.strut
-    style="height: 0.6595em;"}[i]{.mord
-    .mathnormal}]{.base}]{.katex-html
-    aria-hidden="true"}]（[[$1 \leq i \leq n$][[[]{.strut
-    style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.7955em; vertical-align: -0.136em;"}[i]{.mord
-    .mathnormal}[]{.mspace
-    style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.4306em;"}[n]{.mord
-    .mathnormal}]{.base}]{.katex-html
-    aria-hidden="true"}]）的非叶子梦境的 **真儿子梦境** 为编号为
-    [[$p_{i,a_{i,1}}$][[[]{.strut
-    style="height: 0.7779em; vertical-align: -0.3473em;"}[[p]{.mord
-    .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[i]{.mord
-    .mathnormal .mtight}[,]{.mpunct .mtight}[[a]{.mord .mathnormal
-    .mtight}[[[[[[]{.pstrut style="height: 2.5em;"}[[[i]{.mord
-    .mathnormal .mtight}[,]{.mpunct .mtight}[1]{.mord .mtight}]{.mord
-    .mtight}]{.sizing .reset-size3 .size1
-    .mtight}]{style="top: -2.357em; margin-left: 0em; margin-right: 0.0714em;"}]{.vlist
-    style="height: 0.3281em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.2819em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord .mtight}]{.mord .mtight}]{.sizing
-    .reset-size6 .size3
-    .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-    style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-    style="height: 0.3473em;"}]{.vlist-r}]{.vlist-t
-    .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 的梦境。
+1.  编号为 $p_{i,a_{i,j}}$（$1\le i\le n$，$1\le j\le k_i$）的非根梦境的
+    **左梦境** 为编号为$p_{i,a_{i,\max(j-1,1)}}$     的梦境，**右梦境** 为编号为$p_{i,a_{i,\min(j+1,k_i)}}$     的梦境。（根据定义，一个非根梦境的左梦境或右梦境均可以是它本身）
+2.  编号为 $i$（$1\le i\le n$）的非叶子梦境的
+    **真儿子梦境** 为编号为$p_{i,a_{i,1}}$     的梦境。
 
 为了帮助老师重新品味这些梦境，Serika 从 Koyuki 手里购买了三种 Millennium
 Science School 监制的梦境转移器，分别记作 ←、→ 和
 ↓。通过阅读说明书，老师得知了执行这三种梦境转移器所产生的效果：
 
 1.  转移器 ←
-    的效果是：若当前所处梦境是根梦境，**不移动**，否则移动至它的左梦境。【老师有
-    [[$l$][[[]{.strut style="height: 0.6944em;"}[l]{.mord
-    .mathnormal style="margin-right: 0.0197em;"}]{.base}]{.katex-html
-    aria-hidden="true"}] 个这样的转移器。】
+    的效果是：若当前所处梦境是根梦境，**不移动**，否则移动至它的左梦境。【老师有 $l$ 个这样的转移器。】
 2.  转移器 →
-    的效果是：若当前所处梦境是根梦境，**不移动**，否则移动至它的右梦境。【老师有
-    [[$r$][[[]{.strut style="height: 0.4306em;"}[r]{.mord
-    .mathnormal style="margin-right: 0.0278em;"}]{.base}]{.katex-html
-    aria-hidden="true"}] 个这样的转移器。】
+    的效果是：若当前所处梦境是根梦境，**不移动**，否则移动至它的右梦境。【老师有 $r$ 个这样的转移器。】
 3.  转移器 ↓
-    的效果是：若当前所处梦境是叶子梦境，**不移动**，否则移动至它的真儿子梦境。【老师有
-    [[$d$][[[]{.strut style="height: 0.6944em;"}[d]{.mord
-    .mathnormal}]{.base}]{.katex-html aria-hidden="true"}]
-    个这样的转移器。】
+    的效果是：若当前所处梦境是叶子梦境，**不移动**，否则移动至它的真儿子梦境。【老师有 $d$ 个这样的转移器。】
 
-【老师现在处于梦境 [[$s$][[[]{.strut
-style="height: 0.4306em;"}[s]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]，他想要依照某种顺序执行这些转移器，使得最终移动到的梦境编号最大。老师不喜欢浪费，故
-**所有转移器都需要被执行**，不能有剩余。老师会进行
-[[$q$][[[]{.strut
-style="height: 0.625em; vertical-align: -0.1944em;"}[q]{.mord
-.mathnormal style="margin-right: 0.0359em;"}]{.base}]{.katex-html
-aria-hidden="true"}] 次模拟，其中每次他会钦定
-[[$l,r,d$][[[]{.strut
-style="height: 0.8889em; vertical-align: -0.1944em;"}[l]{.mord
-.mathnormal style="margin-right: 0.0197em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-style="margin-right: 0.0278em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[d]{.mord
-.mathnormal}]{.base}]{.katex-html aria-hidden="true"}]
-的值，并找来了你帮忙计算对于每一次模拟，通过他的要求最终可以移动到的梦境编号的最大值。出于一些考虑，他只需要你提供与模拟的答案有关的两个值
-[[$xor,sum$][[[]{.strut
-style="height: 0.625em; vertical-align: -0.1944em;"}[x]{.mord
-.mathnormal}[or]{.mord .mathnormal
-style="margin-right: 0.0278em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[s]{.mord .mathnormal}[u]{.mord
-.mathnormal}[m]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]。】
+【老师现在处于梦境 $s$，他想要依照某种顺序执行这些转移器，使得最终移动到的梦境编号最大。老师不喜欢浪费，故
+**所有转移器都需要被执行**，不能有剩余。老师会进行 $q$ 次模拟，其中每次他会钦定$l,r,d$ 的值，并找来了你帮忙计算对于每一次模拟，通过他的要求最终可以移动到的梦境编号的最大值。出于一些考虑，他只需要你提供与模拟的答案有关的两个值 $xor,sum$。】
 
 ### Input
 
@@ -314,346 +42,29 @@ aria-hidden="true"}]。】
 语言参加竞赛的选手，强烈建议使用关闭同步流的 cin 和 cout
 完成输入输出。**
 
-首先在第一行输入一个整数 [[$T$][[[]{.strut
-style="height: 0.6833em;"}[T]{.mord .mathnormal
-style="margin-right: 0.1389em;"}]{.base}]{.katex-html
-aria-hidden="true"}]（[[$1 \leq T \leq 12$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.8193em; vertical-align: -0.136em;"}[T]{.mord
-.mathnormal style="margin-right: 0.1389em;"}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.6444em;"}[12]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]）表示测试数据组数。
+首先在第一行输入一个整数 $T$（$1\le T\le12$）表示测试数据组数。
 
-对于每一组测试数据，输入包含 [[$n + q + 1$][[[]{.strut
-style="height: 0.6667em; vertical-align: -0.0833em;"}[n]{.mord
-.mathnormal}[]{.mspace
-style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
-style="margin-right: 0.2222em;"}]{.base}[[]{.strut
-style="height: 0.7778em; vertical-align: -0.1944em;"}[q]{.mord
-.mathnormal style="margin-right: 0.0359em;"}[]{.mspace
-style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
-style="margin-right: 0.2222em;"}]{.base}[[]{.strut
-style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}] 行。
+对于每一组测试数据，输入包含 $n+q+1$ 行。
 
-第一行包含三个整数 [[$n,q,s$][[[]{.strut
-style="height: 0.625em; vertical-align: -0.1944em;"}[n]{.mord
-.mathnormal}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[q]{.mord .mathnormal
-style="margin-right: 0.0359em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[s]{.mord
-.mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]（[[$1 \leq n,q \leq 4 \times 10^{4}$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.8304em; vertical-align: -0.1944em;"}[n]{.mord
-.mathnormal}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[q]{.mord .mathnormal
-style="margin-right: 0.0359em;"}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.7278em; vertical-align: -0.0833em;"}[4]{.mord}[]{.mspace
-style="margin-right: 0.2222em;"}[×]{.mbin}[]{.mspace
-style="margin-right: 0.2222em;"}]{.base}[[]{.strut
-style="height: 0.8141em;"}[1]{.mord}[[0]{.mord}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[4]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -3.063em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.8141em;"}]{.vlist-r}]{.vlist-t}]{.msupsub}]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]，[[$1 \leq s \leq n$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.7719em; vertical-align: -0.136em;"}[s]{.mord
-.mathnormal}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]），分别表示梦境的数量，模拟的次数和梦境的起点。
+第一行包含三个整数 $n,q,s$（$1\le n,q\le 4\times10^4$，$1\le s\le n$），分别表示梦境的数量，模拟的次数和梦境的起点。
 
-接下来 [[$n$][[[]{.strut
-style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}] 行，第 [[$i + 1$][[[]{.strut
-style="height: 0.7429em; vertical-align: -0.0833em;"}[i]{.mord
-.mathnormal}[]{.mspace
-style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
-style="margin-right: 0.2222em;"}]{.base}[[]{.strut
-style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]（[[$1 \leq i \leq n$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.7955em; vertical-align: -0.136em;"}[i]{.mord
-.mathnormal}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]）行首先包含一个整数
-[[$k_{i}$][[[]{.strut
-style="height: 0.8444em; vertical-align: -0.15em;"}[[k]{.mord
-.mathnormal style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: -0.0315em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]（[[$0 \leq k_{i} < n$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[0]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.8444em; vertical-align: -0.15em;"}[[k]{.mord
-.mathnormal style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: -0.0315em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[\<]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]）表示梦境 [[$i$][[[]{.strut
-style="height: 0.6595em;"}[i]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}] 的儿子梦境个数。接下来包含
-[[$k_{i}$][[[]{.strut
-style="height: 0.8444em; vertical-align: -0.15em;"}[[k]{.mord
-.mathnormal style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: -0.0315em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}] 个整数
-[[$p_{i,1},p_{i,2},p_{i,3},\cdots,p_{i,k_{i}}$][[[]{.strut
-style="height: 0.7167em; vertical-align: -0.2861em;"}[[p]{.mord
-.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[i]{.mord
-.mathnormal .mtight}[,]{.mpunct .mtight}[1]{.mord .mtight}]{.mord
-.mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[[p]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[,]{.mpunct
-.mtight}[2]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[[p]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[,]{.mpunct
-.mtight}[3]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
-style="margin-right: 0.1667em;"}[]{.mspace
-style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[[p]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[,]{.mpunct
-.mtight}[[k]{.mord .mathnormal .mtight
-style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-style="height: 2.5em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size3 .size1
-.mtight}]{style="top: -2.357em; margin-left: -0.0315em; margin-right: 0.0714em;"}]{.vlist
-style="height: 0.3281em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.143em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord .mtight}]{.mord .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]（[[$1 \leq p_{i,1},p_{i,2},p_{i,3},\cdots,p_{i,k_{i}} \leq n$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[1]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.9221em; vertical-align: -0.2861em;"}[[p]{.mord
-.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[[i]{.mord
-.mathnormal .mtight}[,]{.mpunct .mtight}[1]{.mord .mtight}]{.mord
-.mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[[p]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[,]{.mpunct
-.mtight}[2]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[[p]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[,]{.mpunct
-.mtight}[3]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[⋯]{.minner}[]{.mspace
-style="margin-right: 0.1667em;"}[]{.mspace
-style="margin-right: 0.1667em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[[p]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[,]{.mpunct
-.mtight}[[k]{.mord .mathnormal .mtight
-style="margin-right: 0.0315em;"}[[[[[[]{.pstrut
-style="height: 2.5em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size3 .size1
-.mtight}]{style="top: -2.357em; margin-left: -0.0315em; margin-right: 0.0714em;"}]{.vlist
-style="height: 0.3281em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.143em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord .mtight}]{.mord .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3361em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2861em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]），表示梦境
-[[$i$][[[]{.strut style="height: 0.6595em;"}[i]{.mord
-.mathnormal}]{.base}]{.katex-html aria-hidden="true"}]
-的儿子梦境。
+接下来 $n$ 行，第 $i+1$（$1\le i\le n$）行首先包含一个整数 $k_i$（$0\le k_i\lt n$）表示梦境 $i$ 的儿子梦境个数。接下来包含 $k_i$ 个整数 $p_{i,1},p_{i,2},p_{i,3},\cdots,p_{i,k_i}$（$1\le p_{i,1},p_{i,2},p_{i,3},\cdots,p_{i,k_i}\le n$），表示梦境 $i$ 的儿子梦境。
 
-接下来 [[$q$][[[]{.strut
-style="height: 0.625em; vertical-align: -0.1944em;"}[q]{.mord
-.mathnormal style="margin-right: 0.0359em;"}]{.base}]{.katex-html
-aria-hidden="true"}] 行，每行包含三个整数
-[[$l,r,d$][[[]{.strut
-style="height: 0.8889em; vertical-align: -0.1944em;"}[l]{.mord
-.mathnormal style="margin-right: 0.0197em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-style="margin-right: 0.0278em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[d]{.mord
-.mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]（[[$0 \leq l,r,d \leq l + r + d \leq 4.5 \times 10^{4}$][[[]{.strut
-style="height: 0.7804em; vertical-align: -0.136em;"}[0]{.mord}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.8889em; vertical-align: -0.1944em;"}[l]{.mord
-.mathnormal style="margin-right: 0.0197em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-style="margin-right: 0.0278em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[d]{.mord .mathnormal}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.7778em; vertical-align: -0.0833em;"}[l]{.mord
-.mathnormal style="margin-right: 0.0197em;"}[]{.mspace
-style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
-style="margin-right: 0.2222em;"}]{.base}[[]{.strut
-style="height: 0.6667em; vertical-align: -0.0833em;"}[r]{.mord
-.mathnormal style="margin-right: 0.0278em;"}[]{.mspace
-style="margin-right: 0.2222em;"}[+]{.mbin}[]{.mspace
-style="margin-right: 0.2222em;"}]{.base}[[]{.strut
-style="height: 0.8304em; vertical-align: -0.136em;"}[d]{.mord
-.mathnormal}[]{.mspace
-style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 0.7278em; vertical-align: -0.0833em;"}[4.5]{.mord}[]{.mspace
-style="margin-right: 0.2222em;"}[×]{.mbin}[]{.mspace
-style="margin-right: 0.2222em;"}]{.base}[[]{.strut
-style="height: 0.8141em;"}[1]{.mord}[[0]{.mord}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[4]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -3.063em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.8141em;"}]{.vlist-r}]{.vlist-t}]{.msupsub}]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]），分别表示三种转移器的数量。
+接下来 $q$ 行，每行包含三个整数 $l,r,d$（$0\le l,r,d\le l+r+d\le4.5\times10^4$），分别表示三种转移器的数量。
 
 保证输入的梦境构成一棵有根树。
 
 ### Output
 
-对于每一组测试数据，输出包含一行两个整数
-[[$xor,sum$][[[]{.strut
-style="height: 0.625em; vertical-align: -0.1944em;"}[x]{.mord
-.mathnormal}[or]{.mord .mathnormal
-style="margin-right: 0.0278em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[s]{.mord .mathnormal}[u]{.mord
-.mathnormal}[m]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]，表示特殊的输出方式所需要的两个值。
+对于每一组测试数据，输出包含一行两个整数 $xor,sum$，表示特殊的输出方式所需要的两个值。
 
-具体地，[[$xor,sum$][[[]{.strut
-style="height: 0.625em; vertical-align: -0.1944em;"}[x]{.mord
-.mathnormal}[or]{.mord .mathnormal
-style="margin-right: 0.0278em;"}[,]{.mpunct}[]{.mspace
-style="margin-right: 0.1667em;"}[s]{.mord .mathnormal}[u]{.mord
-.mathnormal}[m]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}] 满足以下条件：
-[[[$$xor = \oplus_{i = 1}^{q}ans_{i} \times i$$][[[]{.strut
-style="height: 0.4306em;"}[x]{.mord .mathnormal}[or]{.mord .mathnormal
-style="margin-right: 0.0278em;"}[]{.mspace
-style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 1.0592em; vertical-align: -0.2769em;"}[[⊕]{.mbin}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[[i]{.mord .mathnormal .mtight}[=]{.mrel
-.mtight}[1]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.4231em; margin-left: 0em; margin-right: 0.05em;"}[[]{.pstrut
-style="height: 2.7em;"}[[[q]{.mord .mathnormal .mtight
-style="margin-right: 0.0359em;"}]{.mord .mtight}]{.sizing .reset-size6
-.size3 .mtight}]{style="top: -3.1809em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.7823em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.2769em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[an]{.mord .mathnormal}[[s]{.mord
-.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[i]{.mord
-.mathnormal .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[]{.mspace
-style="margin-right: 0.2222em;"}[×]{.mbin}[]{.mspace
-style="margin-right: 0.2222em;"}]{.base}[[]{.strut
-style="height: 0.6595em;"}[i]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]]
-[[[$$sum = \sum\limits_{i = 1}^{q}ans_{i} \times i$$][[[]{.strut
-style="height: 0.4306em;"}[s]{.mord .mathnormal}[u]{.mord
-.mathnormal}[m]{.mord .mathnormal}[]{.mspace
-style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-style="height: 2.9762em; vertical-align: -1.2777em;"}[[[[[[]{.pstrut
-style="height: 3.05em;"}[[[i]{.mord .mathnormal .mtight}[=]{.mrel
-.mtight}[1]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
-.mtight}]{style="top: -1.8723em; margin-left: 0em;"}[[]{.pstrut
-style="height: 3.05em;"}[∑]{.mop .op-symbol
-.large-op}]{style="top: -3.05em;"}[[]{.pstrut
-style="height: 3.05em;"}[[[q]{.mord .mathnormal .mtight
-style="margin-right: 0.0359em;"}]{.mord .mtight}]{.sizing .reset-size6
-.size3 .mtight}]{style="top: -4.3471em; margin-left: 0em;"}]{.vlist
-style="height: 1.6985em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 1.2777em;"}]{.vlist-r}]{.vlist-t .vlist-t2}]{.mop
-.op-limits}[]{.mspace style="margin-right: 0.1667em;"}[an]{.mord
-.mathnormal}[[s]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}[]{.mspace
-style="margin-right: 0.2222em;"}[×]{.mbin}[]{.mspace
-style="margin-right: 0.2222em;"}]{.base}[[]{.strut
-style="height: 0.6595em;"}[i]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]] 其中
-[[$ans_{i}$][[[]{.strut
-style="height: 0.5806em; vertical-align: -0.15em;"}[an]{.mord
-.mathnormal}[[s]{.mord .mathnormal}[[[[[[]{.pstrut
-style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
-.reset-size6 .size3
-.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
-style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
-style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
-.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}] 是第 [[$i$][[[]{.strut
-style="height: 0.6595em;"}[i]{.mord .mathnormal}]{.base}]{.katex-html
-aria-hidden="true"}]
-次模拟的答案，[[$\oplus$][[[]{.strut
-style="height: 0.6667em; vertical-align: -0.0833em;"}[⊕]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}] 表示二进制按位异或。
+具体地，$xor,sum$ 满足以下条件：
+
+$$xor=\oplus_{i=1}^{q}ans_i\times i$$
+
+$$sum=\sum_{i=1}^{q}ans_i\times i$$
+
+其中 $ans_i$ 是第$i$ 次模拟的答案，$\oplus$ 表示二进制按位异或。
 
 ### Sample Input
 
@@ -697,202 +108,35 @@ aria-hidden="true"}] 表示二进制按位异或。
 
 这个样例共有两组测试数据。
 
-在第一组测试数据中，梦境共有 [[$3$][[[]{.strut
-style="height: 0.6444em;"}[3]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}] 个，共有 [[$3$][[[]{.strut
-style="height: 0.6444em;"}[3]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}] 次模拟。起点梦境的编号为
-[[$2$][[[]{.strut
-style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]。
+在第一组测试数据中，梦境共有 $3$ 个，共有 $3$ 次模拟。起点梦境的编号为 $2$。
 
-1.  第 [[$1$][[[]{.strut
-    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 次模拟钦定
-    [[$l = 0,r = 1,d = 0$][[[]{.strut
-    style="height: 0.6944em;"}[l]{.mord .mathnormal
-    style="margin-right: 0.0197em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8389em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-    style="margin-right: 0.0278em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8889em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[d]{.mord .mathnormal}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.6444em;"}[0]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。执行 →。答案为
-    [[$2$][[[]{.strut
-    style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。
+1.  第 $1$ 次模拟钦定 $l=0,r=1,d=0$。执行 →。答案为 $2$。
 
     ![figure](https://s2.loli.net/2025/07/21/aptDc6UQMOPqy7L.png)
 
-2.  第 [[$2$][[[]{.strut
-    style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 次模拟钦定
-    [[$l = 1,r = 0,d = 1$][[[]{.strut
-    style="height: 0.6944em;"}[l]{.mord .mathnormal
-    style="margin-right: 0.0197em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8389em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-    style="margin-right: 0.0278em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[d]{.mord .mathnormal}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。执行 ←↓。答案为
-    [[$3$][[[]{.strut
-    style="height: 0.6444em;"}[3]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。（只列出一种达到最大值的方案）
+2.  第 $2$ 次模拟钦定 $l=1,r=0,d=1$。执行 ←↓。答案为 $3$。（只列出一种达到最大值的方案）
 
     ![figure](https://s2.loli.net/2025/07/21/wYxtUC9lrA7L4so.png)
 
-3.  第 [[$3$][[[]{.strut
-    style="height: 0.6444em;"}[3]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 次模拟钦定
-    [[$l = 1,r = 1,d = 1$][[[]{.strut
-    style="height: 0.6944em;"}[l]{.mord .mathnormal
-    style="margin-right: 0.0197em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8389em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-    style="margin-right: 0.0278em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8889em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[d]{.mord .mathnormal}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。执行 →←↓。答案为
-    [[$3$][[[]{.strut
-    style="height: 0.6444em;"}[3]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。（只列出一种达到最大值的方案）
+3.  第 $3$ 次模拟钦定 $l=1,r=1,d=1$。执行 →←↓。答案为 $3$。（只列出一种达到最大值的方案）
 
     ![figure](https://s2.loli.net/2025/07/21/ouwYgEDecsyhKXJ.png)
 
-在第二组测试数据中，梦境共有 [[$11$][[[]{.strut
-style="height: 0.6444em;"}[11]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}] 个，共有 [[$4$][[[]{.strut
-style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}] 次模拟。起点梦境的编号为
-[[$4$][[[]{.strut
-style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
-aria-hidden="true"}]。
+在第二组测试数据中，梦境共有 $11$ 个，共有 $4$ 次模拟。起点梦境的编号为 $4$。
 
-1.  第 [[$1$][[[]{.strut
-    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 次模拟钦定
-    [[$l = 0,r = 0,d = 2$][[[]{.strut
-    style="height: 0.6944em;"}[l]{.mord .mathnormal
-    style="margin-right: 0.0197em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8389em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-    style="margin-right: 0.0278em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8889em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[d]{.mord .mathnormal}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。执行 ↓↓。答案为
-    [[$1$][[[]{.strut
-    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。
+1.  第 $1$ 次模拟钦定 $l=0,r=0,d=2$。执行 ↓↓。答案为 $1$。
 
     ![figure](https://s2.loli.net/2025/07/21/XwvtUqDTx1mgEbi.png)
 
-2.  第 [[$2$][[[]{.strut
-    style="height: 0.6444em;"}[2]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 次模拟钦定
-    [[$l = 0,r = 721,d = 3$][[[]{.strut
-    style="height: 0.6944em;"}[l]{.mord .mathnormal
-    style="margin-right: 0.0197em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8389em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-    style="margin-right: 0.0278em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8889em; vertical-align: -0.1944em;"}[721]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[d]{.mord .mathnormal}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.6444em;"}[3]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。执行 ↓→↓↓，再执行
-    [[$720$][[[]{.strut
-    style="height: 0.6444em;"}[720]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 个 →。答案为
-    [[$11$][[[]{.strut
-    style="height: 0.6444em;"}[11]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。（只列出一种达到最大值的方案）
+2.  第 $2$ 次模拟钦定 $l=0,r=721,d=3$。执行 ↓→↓↓，再执行 $720$ 个 →。答案为 $11$。（只列出一种达到最大值的方案）
 
     ![figure](https://s2.loli.net/2025/07/21/krC59VGzcKAQgP6.png)
 
-3.  第 [[$3$][[[]{.strut
-    style="height: 0.6444em;"}[3]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 次模拟钦定
-    [[$l = 0,r = 1,d = 1$][[[]{.strut
-    style="height: 0.6944em;"}[l]{.mord .mathnormal
-    style="margin-right: 0.0197em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8389em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-    style="margin-right: 0.0278em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8889em; vertical-align: -0.1944em;"}[1]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[d]{.mord .mathnormal}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。执行 →↓。答案为
-    [[$6$][[[]{.strut
-    style="height: 0.6444em;"}[6]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。
+3.  第 $3$ 次模拟钦定 $l=0,r=1,d=1$。执行 →↓。答案为 $6$。
 
     ![figure](https://s2.loli.net/2025/07/21/INjVcu7wB1bEsoG.png)
 
-4.  第 [[$4$][[[]{.strut
-    style="height: 0.6444em;"}[4]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 次模拟钦定
-    [[$l = 0,r = 721,d = 1$][[[]{.strut
-    style="height: 0.6944em;"}[l]{.mord .mathnormal
-    style="margin-right: 0.0197em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8389em; vertical-align: -0.1944em;"}[0]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[r]{.mord .mathnormal
-    style="margin-right: 0.0278em;"}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.8889em; vertical-align: -0.1944em;"}[721]{.mord}[,]{.mpunct}[]{.mspace
-    style="margin-right: 0.1667em;"}[d]{.mord .mathnormal}[]{.mspace
-    style="margin-right: 0.2778em;"}[=]{.mrel}[]{.mspace
-    style="margin-right: 0.2778em;"}]{.base}[[]{.strut
-    style="height: 0.6444em;"}[1]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。执行
-    [[$719$][[[]{.strut
-    style="height: 0.6444em;"}[719]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}] 个 →，再执行 ↓→→。答案为
-    [[$10$][[[]{.strut
-    style="height: 0.6444em;"}[10]{.mord}]{.base}]{.katex-html
-    aria-hidden="true"}]。
+4.  第 $4$ 次模拟钦定 $l=0,r=721,d=1$。执行 $719$ 个 →，再执行 ↓→→。答案为 $10$。
 
     ![figure](https://s2.loli.net/2025/07/21/EldAvT3pzmwYyiq.png)
 
