@@ -2,16 +2,8 @@
 
 ### 题目描述
 
-<div>
-
 In the game VI Civilization, the player needs to achieve a science
 victory: accumulating at least$\textstyle s$ science points in the science victory slot within $\textstyle t$ turns.
-
-<div>
-
-\
-
-<div>
 
 There are $\textstyle n$ technologies in the
 game. Initially, only the first technology, $\textstyle Tech_1$, is unlocked and can be
@@ -22,12 +14,6 @@ all preceding technologies 
 ($\textstyle Tech_1$ to $\textstyle Tech_{i-1}$)  have been
 completed.
 
-<div>
-
-\
-
-<div>
-
 Completing each technology requires a certain amount of science points.
 The player can allocate production to trigger the technology's
 \"Eureka\" moment, which reduces the science points required for
@@ -35,27 +21,15 @@ completion.**Each technology's Eureka can only be triggered once**. Upon
 completing a technology, the science points gained per turn will
 increase.
 
-<div>
-
-\
-
-<div>
-
 Each technology $\textstyle Tech_i$ has four
 parameters: $\textstyle a_i$: The science points required
 to complete this technology. $\textstyle k_i$: The increase in science
 points per turn after completion. $\textstyle b_i$: The production required to
 trigger its Eureka.
 
-<div> $\textstyle c_i$: The reduction in required
+ $\textstyle c_i$: The reduction in required
 science points after triggering the Eureka
-($\textstyle 0 \leq c_i < a_i$).
-
-<div>
-
-\
-
-<div>
+($\textstyle 0 \leq c_i 
 
 VI Civilization is a turn-based game. In each turn, the player first
 gains science points and production, and then allocates them. The
@@ -64,12 +38,6 @@ allocation of science points and production must be **indivisible
 production gained in the current turn **are not saved for the next
 turn**.
 
-<div>
-
-\
-
-<div>
-
 The game proceeds as follows:
 
 At the start of each turn, the player gains:
@@ -77,15 +45,7 @@ At the start of each turn, the player gains:
 Science points $\textstyle m$ (after
 completing technology $\textstyle i$, $\textstyle m$ permanently increases by $\textstyle k_i$).
 
-<div>
-
 A fixed amount of production$\textstyle p$ (remains constant throughout the game).
-
-<div>
-
-\
-
-<div>
 
 Then, the player performs actions:
 
@@ -100,10 +60,6 @@ Then, the player performs actions:
 3.  When allocated to the science victory slot, the points are directly
     added to its total.
 
-<div>
-
-\
-
 **Production Allocation:**
 
 1.  Allocate the entire amount of production $\textstyle p$ gained this turn
@@ -115,80 +71,18 @@ Then, the player performs actions:
     a Eureka is triggered, the science point required to complete the
     corresponding technology is reduced.
 
-<div>
-
-\
-
-<div>
-
 Find the minimum non-negative integer production $\textstyle p$ such that there exists a
 strategy to achieve the science victory (accumulating $\textstyle \geq s$ science points in the
 science victory slot) within$\textstyle t$ turns. If it's impossible to win within $\textstyle t$ turns, output $\textstyle -1$.
 
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 ### 输入描述
-
-<div>
 
 The first line contains three integers $\textstyle m$, $\textstyle s$, and$\textstyle t$ ($\textstyle 1 \leq m \leq 100$, $\textstyle 1 \leq s \leq 10^9$, $\textstyle 1 \leq t \leq 100$).
 
-</div>
-
-<div>
-
-\
-
-</div>
-
 The second line contains an integer$\textstyle n$ ($\textstyle 0 \leq n \leq 100$).
 
-<div>
-
-\
-
-</div>
-
-<div>
-
 The next $\textstyle n$ lines each contain
-four integers $\textstyle a_i$, $\textstyle k_i$, $\textstyle b_i$, and$\textstyle c_i$ ($\textstyle 1 \leq a_i \leq 10^6$, $\textstyle 0 \leq k_i \leq 1000$, $\textstyle 1 \leq b_i \leq 10000$, $\textstyle 0 \leq c_i < a_i$).
-
-</div>
+four integers $\textstyle a_i$, $\textstyle k_i$, $\textstyle b_i$, and$\textstyle c_i$ ($\textstyle 1 \leq a_i \leq 10^6$, $\textstyle 0 \leq k_i \leq 1000$, $\textstyle 1 \leq b_i \leq 10000$, $\textstyle 0 \leq c_i
 
 ### 输出描述
 
@@ -214,17 +108,7 @@ within $\textstyle t$ turns, output $\textstyle -1$.
 
 #### 说明
 
-<div>
-
 In the sample case, a valid strategy for $\textstyle p=4$ is as follows:
-
-</div>
-
-<div>
-
-\
-
-</div>
 
 **Turn 1:** Gain 10 science and 4 production. Allocate production to $\textstyle Tech_1$'s Eureka and science to $\textstyle Tech_1$.
 
@@ -250,24 +134,10 @@ science victory slot.
 **Turn 8:** Gain 20 science and 4 production. Allocate science to the
 science victory slot.
 
-<div>
-
 **Turn 9:** Gain 20 science and 4 production. Allocate science to the
 science victory slot. 
 
-</div>
-
-<div>
-
-\
-
-</div>
-
-<div>
-
 The science victory slot has accumulated a total of$\textstyle 10 (\text{T4}) + 10 (\text{T5}) + 20 (\text{T6}) + 20 (\text{T7}) + 20 (\text{T8}) + 20 (\text{T9}) = 100$ science points. Science victory is achieved!
-
-</div>
 
 ### 示例2
 

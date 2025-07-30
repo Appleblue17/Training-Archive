@@ -2,74 +2,30 @@
 
 ### 题目描述
 
-<div>
-
 Given $\textstyle n$ coins with two sides
 (facing downwards or upwards),$\textstyle s$ of them are facing upwards while the remaining are the opposite.
-
-<div>
-
-\
-
-<div>
 
 You can operate coins **any number of times (including zero)**; in each
 operation, you should arbitrarily choose **exactly** $\textstyle k$ coins to flip (facing up
 becomes facing down and vice versa).
 
-<div>
-
-\
-
 Your goal is to change the number of coins facing up (from $\textstyle s$) to $\textstyle t$ . Output the **minimum**
 number of operations or report that it's impossible.
 
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 ### 输入描述
-
-<div>
 
 The first line contains the number of test cases$\textstyle t$ ($\textstyle 1 \leq t \leq 2 \times 10^5$).
 The description of the test cases follows.
-
-</div>
-
-<div>
-
-\
-
-</div>
 
 Each test case is represented by one line, containing four integers$\textstyle n,k,s,t$ ($\textstyle 1 \leq k \leq n \leq 10^9,0 \leq s,t \leq n$)
 meaning as above.
 
 ### 输出描述
 
-<div>
-
 For each test case, answer it on a full line:
-
-</div>
-
-<div>
-
-\
-
-</div>
-
-<div>
 
 if there exists a solution, output an integer representing the minimum
 number of operations;or if not, output $\textstyle -1$ as the report for impossible.
-
-</div>
 
 ### 示例1
 
@@ -102,5 +58,5 @@ number of operations;or if not, output $\textstyle -1$ as the report for impossi
 
 ### 备注
 
-\
+
 

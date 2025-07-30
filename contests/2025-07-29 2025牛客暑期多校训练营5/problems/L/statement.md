@@ -2,45 +2,21 @@
 
 ### 题目描述
 
-<div>
-
 **赛后数据加强，已经通过的代码不再重测**
-
-<div>
 
 There are $\textstyle n$ levels, the $\textstyle i$-th level allows one traveling
 from point $\textstyle i-1$ to point $\textstyle i$ ; you start at point $\textstyle 0$ , and want to pass through
 each level sequentially to reach point $\textstyle n$. Each time you attempt a
 level, you have a probability$\textstyle p$ of passing and a probability $\textstyle (1-p)$ of failing.
 
-<div>
-
-\
-
-<div>
-
 Initially you have some number of coins, if you fail and have at least
 one coin, you will stay at the current level and retry by consuming one
 coin (you won't leave it unused even if you are at point $\textstyle 0$); and if you fail and have no
 coins left, you will be kicked back to the starting point (point $\textstyle 0$) .
 
-<div>
-
-\
-
 Given $\textstyle m$, calculate the expected
 number of steps to reach the endpoint for every possible initial number
 of coins from $\textstyle 0$ to $\textstyle m$, modulo $\textstyle 998244353$.
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 ### 输入描述
 
@@ -70,7 +46,7 @@ starting with $\textstyle i-1$ coins.
 
 #### 说明
 
-\
+
 
 ### 示例2
 

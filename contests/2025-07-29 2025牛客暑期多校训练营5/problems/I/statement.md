@@ -2,8 +2,6 @@
 
 ### 题目描述
 
-<div>
-
 Given $\textstyle n$ rectangular blocks,
 where the $\textstyle i$-th block has
 dimensions $\textstyle 1 \times i$. You need
@@ -11,20 +9,8 @@ to combine **all** blocks to form a solid rectangle (no overlaps or
 empty spaces allowed). Find the minimal perimeter of the resulting
 rectangle.
 
-<div>
-
-\
-
-<div>
-
 It is guaranteed that you can always form [a solid
-rectangle ]{style="text-wrap-mode:wrap;"}under the problem constraints.\
-
-</div>
-
-</div>
-
-</div>
+rectangle ]{style="text-wrap-mode:wrap;"}under the problem constraints.
 
 ### 输入描述
 

@@ -17,18 +17,8 @@ the middle point of two teammates\' locations, or at least find a place
 where he can see his teammates both, especially when around the corner
 and they can\'t see each other.
 
-<div>
-
-\
-
-<div>
-
 Now SATSKY transformed this into a programming geometry problem, in
 commemoration of the memorable year with them, the treasure of his life.
-
-<div>
-
-\
 
 Formally:
 
@@ -43,10 +33,6 @@ point $\textstyle Y$ (in $\textstyle P$)" **if and only if the whole
 segment connecting two points, **except two endpoints, is inside $\textstyle P$ strictly (and doesn't
 intersect with any of edge of$\textstyle P$ naturally) ;****
 
-<div>
-
-\
-
 You need to find out:
 - For each point of polygon ($\textstyle i$     from $\textstyle 1$ to $\textstyle n$), can it
     ($\textstyle P_i$) be seen from point $\textstyle A$ ?
@@ -55,92 +41,33 @@ You need to find out:
 - Is there a point $\textstyle C$ inside
     the polygon (**boundary not included) to see $\textstyle A$ and $\textstyle B$ simultaneously ?**
 
-</div>
-
-</div>
-
-</div>
-
-</div>
 :::::::
 
 ### 输入描述
 
-<div>
-
 The first line contains the number of test cases$\textstyle t$ ($\textstyle 1 \leq t \leq 2 \times 10^5$).
 The description of the test cases follows.
-
-</div>
-
-<div>
-
-\
-
-</div>
 
 The first line contains two integers$\textstyle n$ ($\textstyle 3 \leq n \leq 2 \times 10^5$),
 indicating the number of points of $\textstyle P$;
 
-<div>
-
-\
-
-</div>
-
-<div>
-
 The second line contains four integers $\textstyle x_A,y_A,x_B,y_B$ , representing
 the x and y coordinates of point $\textstyle A$ and $\textstyle B$;
-
-</div>
-
-<div>
-
-\
-
-</div>
-
-<div>
 
 Then following $\textstyle n$ lines, the $\textstyle i$-th line contains two integers $\textstyle x_{P_i},y_{P_i}$ , representing
 the x and y coordinates of point $\textstyle P_i$.
 
-</div>
-
-<div>
-
-\
-
-</div>
-
-<div>
-
 It's guaranteed that:
-
-</div>
 - $\textstyle P_{1 \sim n}$ are given in
     **counterclockwise order and must form a polygon;**
 - For $\textstyle A$,$\textstyle B$     and each point of$\textstyle P$     ($\textstyle P_{1 \sim n}$), all the
     coordinates satisfy $\textstyle \lvert x \rvert,\lvert y \rvert \leq 10^9$;
-- <div>
-
-    The sum of $\textstyle n$ in each test
+- The sum of $\textstyle n$ in each test
     file doesn't exceed$\textstyle 10^6$     ($\textstyle \sum n \leq 10^6$).
 
-    </div>
-
-<div>
-
-\
-
-</div>
-
-<div>
+    
 
 Some emphasis:
-
-</div>
 - Adjacent edges of $\textstyle P$ may be
     collinear, so are not adjacent pairs;
 - Any three points within $\textstyle A$,$\textstyle B$     and $\textstyle P_{1 \sim n}$ may be on
@@ -150,45 +77,15 @@ Some emphasis:
 
 ### 输出描述
 
-<div>
-
 For each test case, answer it on three lines:
-
-</div>
-
-<div>
-
-\
-
-</div>
 
 In the first line, output$\textstyle n$ integers separated by spaces: the $\textstyle i$-th integer should be 1 if $\textstyle P_i$ can be seen from point $\textstyle A$, or 0 if it can't;
 
-<div>
-
-\
-
-</div>
-
-<div>
-
 In the second line, output$\textstyle n$ integers separated by spaces: the $\textstyle i$-th integer should be 1 if $\textstyle P_i$ can be seen from point $\textstyle B$, or 0 if it can't;
-
-</div>
-
-<div>
-
-\
-
-</div>
-
-<div>
 
 In the third line, if there exists a point $\textstyle C$ meeting the requirements
 above, output a string "Yes" (without quotes); otherwise output a string
 "No" (without quotes).
-
-</div>
 
 ### 示例1
 
@@ -303,87 +200,27 @@ Yes
 
 ### 备注
 
-<div>
-
-Graphs of all samples are shown below in order:\
-\
-sample 1-1:\
-
-</div>
-
-<div>
+Graphs of all samples are shown below in order:sample 1-1:
 
 ![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603158294/6EE7CF07BD6DC5DB395EF3937F0429AE)
 
-</div>
-
-<div>
-
 sample 1-2:
 
-</div>
-
-<div>
-
-![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603255082/8C48DA35E654A5AFEA304DD9994C453C)\
-
-</div>
-
-<div>
+![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603255082/8C48DA35E654A5AFEA304DD9994C453C)
 
 sample 2-1:
 
-</div>
+![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603262982/6C41A6E045994169B09A270749C8DDBB)sample 2-2:
 
-<div>
+![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603272494/0DEE8CF824D43456DC0388C572D3DD13)sample 2-3:
 
-![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603262982/6C41A6E045994169B09A270749C8DDBB)\
-sample 2-2:
-
-</div>
-
-<div>
-
-![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603272494/0DEE8CF824D43456DC0388C572D3DD13)\
-sample 2-3:
-
-</div>
-
-<div>
-
-![](https://uploadfiles.nowcoder.com/images/20250727/0_1753607103004/7B6AB3489727CC25BCCF3F9D874CA47E)\
-
-</div>
-
-<div>
+![](https://uploadfiles.nowcoder.com/images/20250727/0_1753607103004/7B6AB3489727CC25BCCF3F9D874CA47E)
 
 sample 2-4:
 
-</div>
+![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603295708/D6CD89C950A86309B2B04CD3C9D46BEA)sample 3-1:
 
-<div>
+![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603302675/ACB5FAE62F0B664AD09A0D33FBC69341)sample 3-2:
 
-![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603295708/D6CD89C950A86309B2B04CD3C9D46BEA)\
-sample 3-1:
-
-</div>
-
-<div>
-
-![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603302675/ACB5FAE62F0B664AD09A0D33FBC69341)\
-sample 3-2:
-
-</div>
-
-<div>
-
-![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603309509/C60733D4ABD780EE730D67973686F7B5)\
-
-</div>
-
-<div>
-
-\
-
-</div>
+![](https://uploadfiles.nowcoder.com/images/20250727/0_1753603309509/C60733D4ABD780EE730D67973686F7B5)
 

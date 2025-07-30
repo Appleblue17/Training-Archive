@@ -2,31 +2,13 @@
 
 ### 题目描述
 
-<div>
-
 Pigeon aspires to become a string master. Every day he trains extra-hard
 on string problems.
 
-<div>
-
-\
-
-<div>
-
 Today he is solving a problem that goes like this:
-
-<div>
-
-\
-
-<div>
 
 Given a string $\textstyle S$ of length $\textstyle n$. You need to perform the
 following operation exactly$\textstyle k$ times:
-
-<div>
-
-\
 
 For the i-th operation $\textstyle (1 \leq i \leq k)$，Choose a
 substring of $\textstyle S$ as $\textstyle S_i$.$\textstyle S[l_i,r_i]$ is substring of $\textstyle S$. (i.e., the
@@ -34,16 +16,8 @@ contiguous substring of$\textstyle S$ starting at position $\textstyle l_i$ and
 ending at position $\textstyle r_i$ , where $\textstyle 1 \leq l_i \leq r_i \leq n$). In
 additonal, the empty string is also a substring of $\textstyle S$.
 
-<div>
-
-\
-
 Concatenate the chosen substrings $\textstyle S_i(1\leq i \leq k)$ in order to
 form a new string $\textstyle S_1+S_2+...+S_k$.
-
-<div>
-
-\
 
 Let $\textstyle X$ be the number of distinct
 strings that can be formed by
@@ -51,53 +25,17 @@ concatenating $\textstyle k$ substrings in
 this way. Output $\textstyle X$ mod
 998244353.
 
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 ### 输入描述
-
-<div>
 
 The first line contains two
 integers $\textstyle n$ and $\textstyle k$ ($\textstyle 1\leq n \leq 5 \times 10^5, 1\leq k \leq 10^9$).
-
-</div>
-
-<div>
-
-\
-
-</div>
 
 The second line contains a
 string $\textstyle S$ of
 length $\textstyle n$, only consisting of
 both uppercase and lowercase English letters.
 
-<div>
-
-\
-
-</div>
-
-<div>
-
 Note that uppercase and lowercase letters are treated as distinct.
-
-</div>
 
 ### 输出描述
 
@@ -207,5 +145,5 @@ IcePigeon
 
 ### 备注
 
-\
+
 
