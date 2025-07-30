@@ -3,6 +3,7 @@ import path from "path";
 import FileViewer from "@/components/file-viewer/file-viewer";
 import { FiDownload, FiFileText } from "react-icons/fi";
 
+import { FileMetadataType } from "@/lib/types";
 import getFileMetadata from "@/utils/get-file-metadata";
 import MetaDataDisplay from "@/components/metadata-display";
 import { PREFIX_URL } from "@/lib/global";
@@ -44,17 +45,17 @@ export default async function FilePage(props: {
 
   const rawFilePath = path.join(PREFIX_URL, "contests", contest, "problems", problem, file);
 
-  const contestMetadata = getFileMetadata(
+  const contestMetadata: FileMetadataType = getFileMetadata(
     path.join(process.cwd(), "contests", contest),
     path.join(process.cwd(), "contests", contest, "contest.json"),
   );
 
-  const problemMetadata = getFileMetadata(
+  const problemMetadata: FileMetadataType = getFileMetadata(
     path.join(process.cwd(), "contests", contest, "problems", problem),
     path.join(process.cwd(), "contests", contest, "problems", problem, "problem.json"),
   );
 
-  const fileMetadata = getFileMetadata(
+  const fileMetadata: FileMetadataType = getFileMetadata(
     path.join(process.cwd(), "contests", contest, "problems", problem, file),
     path.join(process.cwd(), "contests", contest, "problems", problem, file + ".json"),
   );
