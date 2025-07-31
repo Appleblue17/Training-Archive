@@ -1,5 +1,7 @@
 const isProd = process.env.NODE_ENV === "production";
 
+export const REPO_URL = "https://github.com/appleblue17/Training-Archive";
+
 export const BASE_URL = isProd
   ? "https://appleblue17.github.io/Training-Archive/"
   : "http://localhost:3000/";
