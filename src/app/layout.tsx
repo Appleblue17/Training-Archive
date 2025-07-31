@@ -1,6 +1,7 @@
 import "@/lib/globals.css";
 import { inter } from "@public/fonts/fonts";
 import { FiGithub } from "react-icons/fi";
+import { REPO_URL } from "@/lib/global";
 
 export const experimental_ppr = true;
 
@@ -10,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/x-icon" href="/archive-bot.png" />
+        <link rel="icon" type="image/png" href="archive-bot.png" />
         <title>Training Archive</title>
       </head>
       <body className={`${inter.className} antialiased`}>
@@ -19,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <p className="mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
             © 2025 Training Archive ·{" "}
             <a
-              href="https://github.com/Appleblue17/Training-Archive"
+              href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-blue-300"
