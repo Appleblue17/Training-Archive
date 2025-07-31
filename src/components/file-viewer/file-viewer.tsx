@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import FileViewerPDFWrapper from "./file-viewer-pdf-wrapper";
+import FileViewerPDF from "./file-viewer-pdf";
 import FileViewerSource from "./file-viewer-source";
 import FileViewerMarkdownWrapper from "./file-viewer-markdown-wrapper";
 
@@ -16,7 +16,7 @@ export default function FileViewer({ dirPath, fileName }: { dirPath: string; fil
       if (ext === ".pdf") {
         // For PDF files, use the PDF viewer component
         const pdfPath = path.join(PREFIX_URL, dirPath, fileName);
-        return <FileViewerPDFWrapper pdfPath={pdfPath} />;
+        return <FileViewerPDF pdfPath={pdfPath} />;
       }
       if (ext === ".md") {
         // For Markdown files, use remark to convert to HTML
