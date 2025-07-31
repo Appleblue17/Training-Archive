@@ -325,7 +325,6 @@
 
 .markdown-body ul,
 .markdown-body ol {
-  list-style: revert !important;
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 2em;
@@ -765,8 +764,8 @@
   font-size: 85%;
   line-height: 1.45;
   color: #f0f6fc;
-  background-color: #151b23;
-  border-radius: 6px;
+  background-color: #1e242d !important;
+  border-radius: 6px !important;
 }
 
 .markdown-body pre code,
@@ -1125,4 +1124,10 @@
 
 .markdown-body .highlight pre:has(+ .zeroclipboard-container) {
   min-height: 52px;
+}
+
+.markdown-body pre,
+.markdown-body ul,
+.markdown-body ol {
+  all: revert;
 }
