@@ -23,7 +23,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
   }
 
   const minTimeISO = minTime?.toISOString() ?? null;
-  const actionURL = path.join(REPO_URL, "actions");
+  const actionURL = REPO_URL + "actions";
 
   return (
     <div className="mt-4 flex min-h-screen min-w-[1600px] justify-center">
