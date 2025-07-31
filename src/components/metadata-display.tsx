@@ -56,11 +56,11 @@ export default function MetaDataDisplay({
           let valueDisplay;
           if (key === "size" && typeof value === "number") {
             valueDisplay = <span className="text-yellow-400">{formatSize(value)}</span>;
-          } else if (key.includes("time_limit")) {
+          } else if (key.includes("time_limit") || key === "time") {
             if (typeof value === "number")
               valueDisplay = <span className="text-yellow-400">{value} s</span>;
             else valueDisplay = <span className="text-yellow-400">{String(value)}</span>;
-          } else if (key.includes("memory_limit")) {
+          } else if (key.includes("memory_limit") || key === "memory") {
             if (typeof value === "number")
               valueDisplay = <span className="text-yellow-400">{value} MB</span>;
             else valueDisplay = <span className="text-yellow-400">{String(value)}</span>;

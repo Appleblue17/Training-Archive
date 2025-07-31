@@ -101,7 +101,11 @@ export default async function FilePage(props: {
             />
           </div>
           <div className="flex-shrink-0 basis-1/5 space-y-2 overflow-auto">
-            <MetaDataDisplay name={"File"} metadata={fileMetadata} />
+            <MetaDataDisplay
+              name={"File"}
+              metadata={fileMetadata}
+              metadataBanner={["problem_link"]}
+            />
             <MetaDataDisplay name={"Problem"} metadata={problemMetadata} />
             <MetaDataDisplay name={"Contest"} metadata={contestMetadata} />
           </div>

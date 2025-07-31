@@ -7,7 +7,6 @@ export default function getFileMetadata(filePath: string, metadataPath: string):
 
   const metadata: FileMetadataType = {
     name: path.basename(filePath),
-    modified_time: stats.mtime,
   };
   if (stats.isFile()) {
     metadata.size = stats.size; // Size in bytes
