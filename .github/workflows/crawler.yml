@@ -99,6 +99,9 @@ jobs:
           fi
           echo "At least one crawler succeeded. Continuing with the workflow."
 
+      - name: Clean log files
+        run: python3 crawler/clean-log.py
+
       - name: Add and show changes
         run: |
           git config --global user.name "github-actions[bot]"
