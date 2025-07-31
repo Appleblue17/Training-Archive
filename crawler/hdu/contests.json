@@ -1,0 +1,270 @@
+[
+  {
+    "name": "2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09",
+    "date": "2025-07-18",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1172",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u535a\u5f08",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "\u591c\u4e16\u754c",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "\u5978\u5546",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u4e32\u4e32",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "\u4f20\u9001\u95e8",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u666f\u533a\u5efa\u8bbe",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u6811\u4e0aLCM",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "mod 2",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u5b50\u5e8f\u5217",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u4e2d\u4f4d\u6570",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "\u51b3\u6597",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "\u8bf7\u8f93\u5165\u6587\u672c",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1172&pid=1012"
+      }
+    ]
+  },
+  {
+    "name": "2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff082\uff09",
+    "date": "2025-07-21",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1173",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u9ab0\u5b50",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "\u6570\u4e0a\u7684\u56fe",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "\u56fe\u4e0a\u7684\u6570",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u5b50\u4e32\u7684\u6545\u4e8b\uff082\uff09",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "\u5faa\u73af\u4f4d\u79fb",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u534a",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u8ba1\u6570",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "\u4e95",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u82f9\u679c\u6811",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u5b50\u5e8f\u5217",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "10010",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "\u5b50\u96c6",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1173&pid=1012"
+      }
+    ]
+  },
+  {
+    "name": "2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff083\uff09",
+    "date": "2025-07-25",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1174",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u6c42\u548c",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "\u5c0f\u62b9\u7231\u953b\u70bc",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "\u5149\u7ebf\u6298\u5c04",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u4e09\u5e26\u4e00",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "\u5e73\u8861\u9635\u76d8",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u5de8\u9f99\u5b88\u536b",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u6027\u8d28\u4e0d\u540c\u7684\u6570\u5b57",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "01\u73af",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u7ebf\u6bb5\u67d3\u8272",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u575a\u8239\u5229\u70ae",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "\u96be\u5ea6\u8c03\u6574",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "\u6838\u5fc3\u5171\u632f",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1174&pid=1012"
+      }
+    ]
+  },
+  {
+    "name": "2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff084\uff09",
+    "date": "2025-07-28",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1175",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u7535\u5b50\u5e26\u8d1f\u7535",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "Mon2tr",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "\u7ef4\u4ec0\u6234\u5c14",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u53d6\u77f3\u5b50\u6e38\u620f",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "\u7f8e\u597d\u7684\u68a6\u5883\uff08\u4e00\uff09",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u7f8e\u597d\u7684\u68a6\u5883\uff08\u4e8c\uff09",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u5496\u5561\u7684\u7f6a\u6076",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "\u56de\u5fc6\u4e0e\u5c55\u671b",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u91cf\u5b50\u5f39\u5f13",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u5229\u7269\u6d66\u96c6\u5408",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "\u7edf\u8ba1\u5f3a\u8fde\u901a",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "\u6d77\u4e0a\u7684\u592a\u9633",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1175&pid=1012"
+      }
+    ]
+  }
+]

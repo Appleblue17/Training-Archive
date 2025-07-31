@@ -1,13 +1,13 @@
 import re
 import sys
 import os
-import json
 from bs4 import BeautifulSoup as bs4
-from datetime import datetime, timedelta
-from urllib.parse import urljoin
-from dotenv import load_dotenv
+from datetime import datetime, timedelta, timezone
 
-load_dotenv()
+beijing = timezone(timedelta(hours=8))
+now = datetime.now(beijing)
+from urllib.parse import urljoin
+from selenium.webdriver.common.by import By
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 from crawler.base import BaseCrawler
@@ -29,26 +29,29 @@ class QOJCrawler(BaseCrawler):
     def try_login_with_password(self, username, password):
         self.driver.get("https://qoj.ac/login")
         self._random_sleep()
-        self.driver.find_element("name", "username").send_keys(username)
-        self._random_sleep()
-        self.driver.find_element("name", "password").send_keys(password)
-        self._random_sleep()
+        self.driver.find_element(By.NAME, "username").send_keys(username)
+        self._random_sleep(0.5, 1)
+        self.driver.find_element(By.NAME, "password").send_keys(password)
+        self._random_sleep(0.5, 1)
         self.driver.find_element("id", "button-submit").click()
         self._random_sleep()
 
         if not self.is_logged_in():
             self.log("fatal", "Login failed with provided credentials.")
-            return False
         else:
-            return True
+            self.log("info", "Login successful with username and password.")
 
     def login(self):
         username = os.getenv("QOJ_USERNAME")
         password = os.getenv("QOJ_PASSWORD")
-        if self.try_login_with_password(username, password):
-            self.log("info", "Login successful with username and password.")
+        if not username or not password:
+            self.log(
+                "fatal",
+                "Username or password not found in environment variables. Stopped.",
+            )
             return
-        self.log("fatal", "No valid login method found. Please check your credentials.")
+
+        self.try_login_with_password(username, password)
 
     def fetch_contests_get_contest_list(self):
         """
@@ -84,7 +87,7 @@ class QOJCrawler(BaseCrawler):
             # Contest start time is in cols[1]
             # Format: YYYY-MM-DD HH:MM:SS
             contest_start_time = cols[1].find("a").text.strip()
-            start_time = datetime.strptime(contest_start_time, "%Y-%m-%d %H:%M:%S")
+            start_time = self._convert_iso_to_beijing(contest_start_time)
             date = start_time.date()
 
             # Contest duration is in cols[2]
@@ -332,9 +335,7 @@ class QOJCrawler(BaseCrawler):
                 memory = cols[5].text.strip()
                 language = cols[6].text.strip()
 
-                submit_time = datetime.strptime(
-                    cols[8].text.strip(), "%Y-%m-%d %H:%M:%S"
-                )
+                submit_time = self._convert_iso_to_beijing(cols[8].text.strip())
 
                 submission_entry = {
                     "submission_id": submission_id,
@@ -360,7 +361,9 @@ class QOJCrawler(BaseCrawler):
 if __name__ == "__main__":
     crawler = QOJCrawler()
     try:
-        crawler.log("important", "QOJ Crawler started at " + datetime.now().isoformat())
+        crawler.log(
+            "important", "QOJ Crawler started at " + datetime.now(beijing).isoformat()
+        )
         crawler.login()
         crawler.fetch_contests()
         crawler.log("info", "Contests fetched successfully.")
@@ -368,7 +371,7 @@ if __name__ == "__main__":
         crawler.log("info", "Submissions fetched successfully.")
         crawler.log(
             "important",
-            "QOJ Crawler finished successfully at " + datetime.now().isoformat(),
+            "QOJ Crawler finished successfully at " + datetime.now(beijing).isoformat(),
         )
     except Exception as e:
         crawler.log("fatal", f"An error occurred: {e}")

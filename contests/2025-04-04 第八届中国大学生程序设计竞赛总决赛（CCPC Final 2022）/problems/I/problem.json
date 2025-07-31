@@ -3,5 +3,7 @@
   "name": "Not Another Range Query Problem",
   "time_limit": "3 s",
   "memory_limit": "1024 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2025-07-27T17:09:02+08:00",
+  "solve_time": "2025-07-27T17:09:02+08:00"
 }

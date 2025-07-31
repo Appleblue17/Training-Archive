@@ -7,6 +7,7 @@ export interface FileMetadataType {
 
 export interface CodeFileType extends FileMetadataType {
   status?: "AC" | "WA" | "TLE" | "RE" | "CE";
+  solve_time?: Date; // Time when the problem was first solved
   submit_time?: Date; // Time when the code was submitted
 }
 
