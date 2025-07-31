@@ -34,8 +34,8 @@ export default function FileViewerMarkdown({
         <FiCopy className="mr-1 inline-block" />
         {copyMessage}
       </button>
-      <div className="flex-1 overflow-y-auto">
-        <div className="markdown-body p-12" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <div className="flex-1 overflow-y-auto p-12">
+        <div className="markdown-body" dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </div>
     </div>
   );
