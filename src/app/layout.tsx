@@ -7,7 +7,12 @@ export const experimental_ppr = true;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head></head>
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="/archive-bot.png" />
+        <title>Training Archive</title>
+      </head>
       <body className={`${inter.className} antialiased`}>
         {children}
         <footer className="my-4">
