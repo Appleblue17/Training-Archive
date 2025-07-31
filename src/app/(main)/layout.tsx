@@ -1,23 +1,10 @@
 import Breadcrumb from "./breadcrumb";
 import fs from "fs";
 import path from "path";
-import { FiAlertTriangle, FiCheck, FiGlobe } from "react-icons/fi";
+import { FiGlobe } from "react-icons/fi";
 
 import { REPO_URL } from "@/lib/global";
-
-function getTimeDiffString(date: Date) {
-  const now = new Date();
-  const diffMs = now.getTime() - date.getTime();
-  const diffMin = Math.floor(diffMs / 60000);
-  const diffHour = Math.floor(diffMin / 60);
-  const diffDay = Math.floor(diffHour / 24);
-  if (diffDay > 1) return `${diffDay} days`;
-  else if (diffDay === 1) return "1 day";
-  else if (diffHour > 1) return `${diffHour} hours`;
-  else if (diffHour === 1) return "1 hour";
-  else if (diffMin > 1) return `${diffMin} minutes`;
-  else return "Just now";
-}
+import CrawlerStatus from "./crawler-status";
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const updateTimeDir = path.join(process.cwd(), "crawler", "last-update.json");
@@ -35,13 +22,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
     }
   }
 
-  let statusTime: string = "Unknown";
-  let isUpToDate: boolean = false;
-
-  if (minTime) {
-    statusTime = getTimeDiffString(minTime);
-    isUpToDate = minTime.getTime() > Date.now() - 1000 * 60 * 60 * 24; // 24 hours
-  }
+  const minTimeISO = minTime?.toISOString() ?? null;
   const actionURL = path.join(REPO_URL, "actions");
 
   return (
@@ -58,24 +39,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
           className="absolute right-0 top-4 flex items-center gap-3 rounded-lg bg-zinc-700/80 px-4 py-2 text-sm transition-colors duration-150 hover:bg-zinc-600/80"
         >
           <FiGlobe className="size-5 text-stone-400" />
-          {minTime ? (
-            isUpToDate ? (
-              <span className="text-green-400">
-                Updated {statusTime} ago
-                <FiCheck className="ml-2 inline size-5" />
-              </span>
-            ) : (
-              <span className="text-yellow-400">
-                Updated {statusTime} ago
-                <FiAlertTriangle className="ml-2 inline size-5" />
-              </span>
-            )
-          ) : (
-            <span className="text-red-400">
-              Last update time not available
-              <FiAlertTriangle className="ml-2 inline size-5" />
-            </span>
-          )}
+          <CrawlerStatus minTimeISO={minTimeISO} />
         </a>
         <Breadcrumb />
         <main className="my-4">{children}</main>
