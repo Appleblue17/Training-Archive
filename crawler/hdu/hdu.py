@@ -217,11 +217,7 @@ class HDUCrawler(BaseCrawler):
                 )
 
         # Download the problem statement
-        # 1. print the page as a backup
-        #    This is a fallback in case the HTML to markdown conversion fails.
-        self.print_to_pdf_with_browser(problem_link, "statement.pdf", problem_path)
-
-        # 2. Try to convert the HTML to markdown
+        # Try to convert the HTML to markdown
         try:
             statement_elements = problem_soup.find(
                 "div", class_="problem-body"
@@ -252,7 +248,11 @@ class HDUCrawler(BaseCrawler):
                 f.write(md_content)
 
         except ValueError as e:
-            self.log("warning", str(e) + " Only printing the page as a fallback.")
+            self.log(
+                "error",
+                f"Failed to convert problem statement to markdown for {problem_name}: {e}",
+            )
+            return None
 
         problem_entry = {
             "link": problem_link,
