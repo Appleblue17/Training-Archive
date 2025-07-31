@@ -343,5 +343,77 @@
         "link": "https://ac.nowcoder.com/acm/contest/108302/M"
       }
     ]
+  },
+  {
+    "name": "2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84256",
+    "date": "2025-07-31",
+    "link": "https://ac.nowcoder.com/acm/contest/108303",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Dominoes on Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/A"
+      },
+      {
+        "letter": "B",
+        "name": "Base Conversion Master",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/B"
+      },
+      {
+        "letter": "C",
+        "name": "Stack",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/C"
+      },
+      {
+        "letter": "D",
+        "name": "Beautiful Matrix",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/D"
+      },
+      {
+        "letter": "E",
+        "name": "Array",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/E"
+      },
+      {
+        "letter": "F",
+        "name": "Random Segment Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/F"
+      },
+      {
+        "letter": "G",
+        "name": "Turn around",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/G"
+      },
+      {
+        "letter": "H",
+        "name": "Knapsack Problem",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/H"
+      },
+      {
+        "letter": "I",
+        "name": "Longest Common Substring",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/I"
+      },
+      {
+        "letter": "J",
+        "name": "Game on a Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/J"
+      },
+      {
+        "letter": "K",
+        "name": "Maximum GCD",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/K"
+      },
+      {
+        "letter": "L",
+        "name": "Minimum Parenthesis String",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/L"
+      },
+      {
+        "letter": "M",
+        "name": "Minimum Difference",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/M"
+      }
+    ]
   }
 ]
