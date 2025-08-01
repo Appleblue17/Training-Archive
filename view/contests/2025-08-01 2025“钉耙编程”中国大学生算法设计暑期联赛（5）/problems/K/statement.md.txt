@@ -1,0 +1,818 @@
+1:"$Sreact.fragment"
+2:I[8521,[],""]
+3:I[1661,[],""]
+c:I[939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/0924af805aae82b2.css","style"]
+:HL["/Training-Archive/_next/static/css/9f4210e542df69af.css","style"]
+0:{"P":null,"b":"sFOV7YGCpGE-LCDiqhGU2","p":"/Training-Archive","c":["","view","contests","2025-08-01%202025%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%885%EF%BC%89","problems","K","statement.md"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2025-08-01%202025%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%885%EF%BC%89","d"],{"children":["problems",{"children":[["problem","K","d"],{"children":[["file","statement.md","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/0924af805aae82b2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-1 inline","children":["$undefined",[["$","path","0",{"d":"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":"$L4","templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests","$L5",{"children":[["contest","2025-08-01%202025%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%885%EF%BC%89","d"],"$L6",{"children":["problems","$L7",{"children":[["problem","K","d"],"$L8",{"children":[["file","statement.md","d"],"$L9",{"children":["__PAGE__","$La",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],"$Lb",false]],"m":"$undefined","G":["$c",[]],"s":false,"S":true}
+e:I[7055,[],"OutletBoundary"]
+10:I[9909,[],"AsyncMetadataOutlet"]
+12:I[7055,[],"ViewportBoundary"]
+14:I[7055,[],"MetadataBoundary"]
+15:"$Sreact.suspense"
+4:["$","$L3",null,{}]
+5:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+7:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+8:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+a:["$","$1","c",{"children":["$Ld",[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/9f4210e542df69af.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Le",null,{"children":["$Lf",["$","$L10",null,{"promise":"$@11"}]]}]]}]
+b:["$","$1","h",{"children":[null,[["$","$L12",null,{"children":"$L13"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L14",null,{"children":["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":"$L16"}]}]}]]}]
+d:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2025-08-01 2025“钉耙编程”中国大学生算法设计暑期联赛（5）",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"K",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"statement.md"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2025-08-01 2025“钉耙编程”中国大学生算法设计暑期联赛（5）/problems/K/statement.md","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","children":[]}],["$","polyline","1",{"points":"7 10 12 15 17 10","children":[]}],["$","line","2",{"x1":"12","y1":"15","x2":"12","y2":"3","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2025-08-01 2025“钉耙编程”中国大学生算法设计暑期联赛（5）/problems/K/statement.md","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z","children":[]}],["$","polyline","1",{"points":"14 2 14 8 20 8","children":[]}],["$","line","2",{"x1":"16","y1":"13","x2":"8","y2":"13","children":[]}],["$","line","3",{"x1":"16","y1":"17","x2":"8","y2":"17","children":[]}],["$","polyline","4",{"points":"10 9 9 9 8 9","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":"$L17"}],["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"statement.md"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"2.708 KB (2773 B)"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"营火"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problem?cid=1176&pid=1011","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problem?cid=1176&pid=1011"}]]}],"$L18","$L19","$L1a","$L1b","$L1c"]}]]}],"$L1d"]}]]}]]}]}]
+18:["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"8000 MS"}]]}]
+19:["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"524288 K"}]]}]
+1a:["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}]
+1b:["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/01 16:36:50"}]]}]
+1c:["$","div","solve_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solve Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/01 16:36:50"}]]}]
+1d:["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"2025“钉耙编程”中国大学生算法设计暑期联赛（5）"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025-08-01"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"hdu"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/01 12:00:00"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/01 17:00:00"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problems?cid=1176","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problems?cid=1176"}]]}]]}]]}]
+1e:I[6005,["215","static/chunks/1951f239-b8c7cdd7f0248509.js","81","static/chunks/81-a8569ca32ce37ffc.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-8b159e72c21ca0c8.js"],"default"]
+1f:Tad5,## K. 营火
+
+### Problem Description
+
+在二维平面上，有 $n$ 个火种，其中第 $i$ 个火种的坐标是 $\left(i^3,0\right)$，除了火种之外，还有 $n_1$ 个黑点在$x$ 轴上方，$n_2$ 个白点在$x$ 轴下方，其中黑点和黑点，黑点和火种，白点和白点，白点和火种之间有一些边连接了若干点，但保证黑点和白点之间，火种和火种之间没有任何连边。如果只看黑点和火种，那么保证所有黑点和火种，以及它们之间的边构成一个连通图，白点和火种同样。
+
+小 K 会对这些点施加影响，小 K 会随机选择一个黑点 $A$ 和一个白点$B$ ，把所有 $Y$ 坐标不小于 $Y_A$ 的黑点和$Y$ 坐标不大于$Y_B$ 的白点全部删去（当然，连接的边也会消失），现在小 K
+想知道有多少种选择黑点和白点的方式，使得所有的火种连通。
+
+### Input
+
+第一行一个整数 $T$（$1\le T\le 10^3$），表示数据组数。
+
+对于每组数据：
+
+第一行三个整数 $n,n_1,n_2$（$1\le n,n_1,n_2\le 10^5$），表示火种，黑点，白点的数量。
+
+接下来一行两个正整数 $m_1,m_2$（$1\le m_1,m_2\le 3\cdot 10^5$），分别表示黑点与火种构成的连通图的边数，和白点与火种构成的连通图边数。
+
+接下来 $n_1$ 行，每行两个整数 $x_i,y_i$（$y_i>0$），表示第 $i$ 个黑点的坐标。
+
+接下来 $n_2$ 行，每行两个整数 $x_i,y_i$（$y_i<0$），表示第 $i$ 个白点的坐标。
+
+接下来 $m_1$ 行，每行三个正整数 $op,u,v$，描述一条黑点与火种的边：
+- 如果 $op=1$，则表示有一条连接火种 $u$ 和黑点$v$     的边（$1\le u\le n,1\le v\le n_1$）；
+- 如果 $op=2$，则有一条连接黑点 $u$ 和黑点$v$     的边（$1\le u,v\le n_1,u\neq v$）。
+
+接下来 $m_2$ 行，每行三个正整数 $op,u,v$，描述一条白点与火种的边：
+- 如果 $op=1$，则表示有一条连接火种 $u$ 和白点$v$     的边（$1\le u\le n,1\le v\le n_2$）；
+- 如果 $op=2$，则有一条连接白点 $u$ 和白点$v$     的边（$1\le u,v\le n_2,u\neq v$）。
+
+保证所有黑白点的坐标 $|x_i|,|y_i|\le 10^9$。
+
+保证所有数据的$n$ 之和，$n_1$ 之和，$n_2$ 之和都不超过 $3\cdot 10^5$，所有数据的 $m_1$ 之和，$m_2$ 之和都不超过 $10^6$。
+
+### Output
+
+对于每组数据，输出一个整数表示选择不同的黑点和白点，使得火种连通的方案数。
+
+### Sample Input
+
+```plain
+2
+2 1 2
+2 3
+1 1
+1 -1
+1 -2
+1 1 1
+1 2 1
+1 1 1
+1 2 1
+2 1 2
+3 3 4
+12 11
+-3 9
+-8 1
+1 5
+-3 -8
+-5 -10
+-5 -1
+1 -7
+2 2 1
+2 3 2
+1 1 2
+1 2 1
+1 3 2
+2 2 1
+1 1 3
+2 2 3
+2 2 3
+2 2 3
+2 3 2
+1 2 1
+2 2 1
+2 3 2
+2 4 3
+1 1 2
+1 2 3
+1 3 2
+2 4 2
+1 3 4
+1 2 2
+1 3 2
+1 2 1
+```
+
+### Sample Output
+
+```plain
+1
+4
+```
+
+20:T10188,
+<h2>K. 营火</h2>
+<h3>Problem Description</h3>
+<p>在二维平面上，有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个火种，其中第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>i</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">i</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 个火种的坐标是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mo fence="true">(</mo>
+            <msup>
+              <mi>i</mi>
+              <mn>3</mn>
+            </msup>
+            <mo separator="true">,</mo>
+            <mn>0</mn>
+            <mo fence="true">)</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">\left(i^3,0\right)</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span>，除了火种之外，还有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>n</mi>
+              <mn>1</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">n_1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 个黑点在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>x</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">x</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 轴上方，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>n</mi>
+              <mn>2</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">n_2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 个白点在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>x</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">x</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 轴下方，其中黑点和黑点，黑点和火种，白点和白点，白点和火种之间有一些边连接了若干点，但保证黑点和白点之间，火种和火种之间没有任何连边。如果只看黑点和火种，那么保证所有黑点和火种，以及它们之间的边构成一个连通图，白点和火种同样。</p>
+<p>
+  小 K 会对这些点施加影响，小 K 会随机选择一个黑点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>A</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">A</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 和一个白点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>B</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">B</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> ，把所有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>Y</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">Y</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> 坐标不小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>Y</mi>
+              <mi>A</mi>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">Y_A</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的黑点和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>Y</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">Y</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> 坐标不大于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>Y</mi>
+              <mi>B</mi>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">Y_B</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的白点全部删去（当然，连接的边也会消失），现在小 K
+  想知道有多少种选择黑点和白点的方式，使得所有的火种连通。
+</p>
+<h3>Input</h3>
+<p>第一行一个整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>T</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">T</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>T</mi>
+            <mo>≤</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>3</mn>
+            </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">1\le T\le 10^3</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>），表示数据组数。</p>
+<p>对于每组数据：</p>
+<p>第一行三个整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>n</mi>
+              <mn>1</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>n</mi>
+              <mn>2</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">n,n_1,n_2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>n</mi>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>n</mi>
+              <mn>1</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>n</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>≤</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>5</mn>
+            </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">1\le n,n_1,n_2\le 10^5</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>），表示火种，黑点，白点的数量。</p>
+<p>接下来一行两个正整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>m</mi>
+              <mn>1</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>m</mi>
+              <mn>2</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">m_1,m_2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <msub>
+              <mi>m</mi>
+              <mn>1</mn>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>m</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>≤</mo>
+            <mn>3</mn>
+            <mo>⋅</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>5</mn>
+            </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">1\le m_1,m_2\le 3\cdot 10^5</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>），分别表示黑点与火种构成的连通图的边数，和白点与火种构成的连通图边数。</p>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>n</mi>
+              <mn>1</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">n_1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 行，每行两个整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>x</mi>
+              <mi>i</mi>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>y</mi>
+              <mi>i</mi>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">x_i,y_i</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>y</mi>
+              <mi>i</mi>
+            </msub>
+            <mo>></mo>
+            <mn>0</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">y_i>0</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>），表示第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>i</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">i</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 个黑点的坐标。</p>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>n</mi>
+              <mn>2</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">n_2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 行，每行两个整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>x</mi>
+              <mi>i</mi>
+            </msub>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>y</mi>
+              <mi>i</mi>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">x_i,y_i</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>y</mi>
+              <mi>i</mi>
+            </msub>
+            <mo>&#x3C;</mo>
+            <mn>0</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">y_i&#x3C;0</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x3C;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>），表示第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>i</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">i</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 个白点的坐标。</p>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>m</mi>
+              <mn>1</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">m_1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 行，每行三个正整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>o</mi>
+            <mi>p</mi>
+            <mo separator="true">,</mo>
+            <mi>u</mi>
+            <mo separator="true">,</mo>
+            <mi>v</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">op,u,v</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>，描述一条黑点与火种的边：</p>
+<ul>
+  <li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>o</mi>
+              <mi>p</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">op=1</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，则表示有一条连接火种 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>u</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">u</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 和黑点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>v</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">v</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 的边（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>u</mi>
+              <mo>≤</mo>
+              <mi>n</mi>
+              <mo separator="true">,</mo>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>v</mi>
+              <mo>≤</mo>
+              <msub>
+                <mi>n</mi>
+                <mn>1</mn>
+              </msub>
+            </mrow>
+            <annotation encoding="application/x-tex">1\le u\le n,1\le v\le n_1</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）；</li>
+  <li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>o</mi>
+              <mi>p</mi>
+              <mo>=</mo>
+              <mn>2</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">op=2</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>，则有一条连接黑点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>u</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">u</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 和黑点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>v</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">v</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 的边（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>u</mi>
+              <mo separator="true">,</mo>
+              <mi>v</mi>
+              <mo>≤</mo>
+              <msub>
+                <mi>n</mi>
+                <mn>1</mn>
+              </msub>
+              <mo separator="true">,</mo>
+              <mi>u</mi>
+              <mo mathvariant="normal">≠</mo>
+              <mi>v</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">1\le u,v\le n_1,u\neq v</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>）。</li>
+</ul>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>m</mi>
+              <mn>2</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">m_2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 行，每行三个正整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>o</mi>
+            <mi>p</mi>
+            <mo separator="true">,</mo>
+            <mi>u</mi>
+            <mo separator="true">,</mo>
+            <mi>v</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">op,u,v</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>，描述一条白点与火种的边：</p>
+<ul>
+  <li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>o</mi>
+              <mi>p</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">op=1</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，则表示有一条连接火种 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>u</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">u</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 和白点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>v</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">v</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 的边（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>u</mi>
+              <mo>≤</mo>
+              <mi>n</mi>
+              <mo separator="true">,</mo>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>v</mi>
+              <mo>≤</mo>
+              <msub>
+                <mi>n</mi>
+                <mn>2</mn>
+              </msub>
+            </mrow>
+            <annotation encoding="application/x-tex">1\le u\le n,1\le v\le n_2</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）；</li>
+  <li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>o</mi>
+              <mi>p</mi>
+              <mo>=</mo>
+              <mn>2</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">op=2</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>，则有一条连接白点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>u</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">u</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 和白点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>v</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">v</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 的边（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>u</mi>
+              <mo separator="true">,</mo>
+              <mi>v</mi>
+              <mo>≤</mo>
+              <msub>
+                <mi>n</mi>
+                <mn>2</mn>
+              </msub>
+              <mo separator="true">,</mo>
+              <mi>u</mi>
+              <mo mathvariant="normal">≠</mo>
+              <mi>v</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">1\le u,v\le n_2,u\neq v</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>）。</li>
+</ul>
+<p>保证所有黑白点的坐标 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi mathvariant="normal">∣</mi>
+            <msub>
+              <mi>x</mi>
+              <mi>i</mi>
+            </msub>
+            <mi mathvariant="normal">∣</mi>
+            <mo separator="true">,</mo>
+            <mi mathvariant="normal">∣</mi>
+            <msub>
+              <mi>y</mi>
+              <mi>i</mi>
+            </msub>
+            <mi mathvariant="normal">∣</mi>
+            <mo>≤</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>9</mn>
+            </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">|x_i|,|y_i|\le 10^9</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span>。</p>
+<p>保证所有数据的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 之和，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>n</mi>
+              <mn>1</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">n_1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 之和，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>n</mi>
+              <mn>2</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">n_2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 之和都不超过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>3</mn>
+            <mo>⋅</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>5</mn>
+            </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">3\cdot 10^5</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>，所有数据的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>m</mi>
+              <mn>1</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">m_1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 之和，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>m</mi>
+              <mn>2</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">m_2</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 之和都不超过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msup>
+              <mn>10</mn>
+              <mn>6</mn>
+            </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">10^6</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>。</p>
+<h3>Output</h3>
+<p>对于每组数据，输出一个整数表示选择不同的黑点和白点，使得火种连通的方案数。</p>
+<h3>Sample Input</h3>
+<pre><code class="hljs language-plain">2
+2 1 2
+2 3
+1 1
+1 -1
+1 -2
+1 1 1
+1 2 1
+1 1 1
+1 2 1
+2 1 2
+3 3 4
+12 11
+-3 9
+-8 1
+1 5
+-3 -8
+-5 -10
+-5 -1
+1 -7
+2 2 1
+2 3 2
+1 1 2
+1 2 1
+1 3 2
+2 2 1
+1 1 3
+2 2 3
+2 2 3
+2 2 3
+2 3 2
+1 2 1
+2 2 1
+2 3 2
+2 4 3
+1 1 2
+1 2 3
+1 3 2
+2 4 2
+1 3 4
+1 2 2
+1 3 2
+1 2 1
+</code></pre>
+<h3>Sample Output</h3>
+<pre><code class="hljs language-plain">1
+4
+</code></pre>
+17:["$","$L1e",null,{"raw":"$1f","htmlContent":"$20"}]
+13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+f:null
+11:{"metadata":[],"error":null,"digest":"$undefined"}
+16:"$11:metadata"
