@@ -370,5 +370,41 @@
     "level": "important",
     "platform": "nowcoder",
     "msg": "nowcoder Crawler finished successfully at 2025-08-01T04:29:23.270945+08:00"
+  },
+  {
+    "time": "2025-08-01T18:27:15.552609+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-08-01T18:27:15.552597+08:00"
+  },
+  {
+    "time": "2025-08-01T18:27:29.118839+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-08-01T18:27:29.118833+08:00"
+  },
+  {
+    "time": "2025-08-01T18:27:30.275797+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler started at 2025-08-01T18:27:30.275785+08:00"
+  },
+  {
+    "time": "2025-08-01T18:28:48.265002+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler finished successfully at 2025-08-01T18:28:48.264996+08:00"
+  },
+  {
+    "time": "2025-08-01T18:28:49.514799+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler started at 2025-08-01T18:28:49.514787+08:00"
+  },
+  {
+    "time": "2025-08-01T18:30:12.619925+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler finished successfully at 2025-08-01T18:30:12.619918+08:00"
   }
 ]

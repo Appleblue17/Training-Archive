@@ -3,6 +3,7 @@
   "name": "Palindromic Polygon",
   "time_limit": "1.0 s",
   "memory_limit": "1024 MB",
-  "solved": false,
-  "submit_time": "2024-09-28T18:32:29"
+  "solved": true,
+  "submit_time": "2025-08-01T10:23:39+08:00",
+  "solve_time": "2025-08-01T10:23:39+08:00"
 }

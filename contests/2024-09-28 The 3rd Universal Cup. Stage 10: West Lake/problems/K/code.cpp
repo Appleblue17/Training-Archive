@@ -20,8 +20,7 @@ const int N=1005;
 int Test, n, nn;
 int px[N], py[N];
 int col[N], id[N];
-ll f[N][N];
-int pre[N], suf[N];
+ll f[N][N], g[N][N];
 ll crs[N][N];
 inline ll cross(int i, int j){
 	return (ll)px[i]*py[j]-(ll)px[j]*py[i];
@@ -45,29 +44,18 @@ int main(){
 			id[i+n]=id[i];
 		}
 		for(int i=1; i<=n*2; ++i) for(int j=1; j<=n*2; ++j) crs[i][j]=cross(i, j);
-		for(int i=1; i<=n*2; ++i) for(int j=1; j<=n*2; ++j) f[i][j]=-1e18;
-		for(int i=1; i<n*2; ++i) for(int j=i+1; j<n*2; ++j) if(id[i]==id[j]) f[i][j]=0;
-		for(int i=1; i<n*2; ++i) f[i][i]=0;
-		ll ans=0;
-		for(int len=1; len<n; ++len){
-			for(int l=1, r=len; r<=(n*2)-1; ++l, ++r) if(id[l]==id[r]){
-//				cout<<l<<' '<<r<<' '<<col[id[l]]<<' '<<col[id[r]]<<' '<<f[l][r]<<endl;
-				for(int i=1; i<=nn; ++i) suf[i]=0, pre[i]=0;
-				for(int i=1; i<l; ++i) pre[id[i]]=i;
-				for(int i=2*n-1; i>r; --i) suf[id[i]]=i;
-				for(int i=1; i<l; ++i) {
-					if(suf[id[i]]!=0&&suf[id[i]]-i+1<=n){
-						chkmx(f[i][suf[id[i]]], f[l][r]-crs[r][l]+crs[i][l]+crs[r][suf[id[i]]]+crs[suf[id[i]]][i]);
-					}
-				}
-				for(int i=2*n-1; i>r; --i){
-					if(pre[id[i]]!=0&&i-pre[id[i]]+1<=n){
-						chkmx(f[pre[id[i]]][i], f[l][r]-crs[r][l]+crs[pre[id[i]]][l]+crs[r][i]+crs[i][pre[id[i]]]);
-					}
-				}
-			}
-		}
-		for(int i=1; i<=n*2; ++i) for(int j=1; j<=n*2; ++j) chkmx(ans, f[i][j]);
+		for(int i=0; i<=n*2+1; ++i) for(int j=0; j<=n*2+1; ++j) f[i][j]=g[i][j]=-1e18;
+        ll ans=0;
+		for(int i=2*n; i; --i){
+            for(int j=i+1; j<=2*n&&j<=i+n; ++j){
+                for(int h=i+1; h<j; ++h) g[i][j]=max(g[i][j], f[h][j]+crs[i][h]);
+                if(id[i]==id[j]){
+                    f[i][j]=crs[i][j];
+                    for(int h=i+1; h<j; ++h) f[i][j]=max(f[i][j], g[i][h]+crs[h][j]);
+                    chkmx(ans, f[i][j]-crs[i][j]);
+                }
+            }
+        }
 		printf("%lld\n", ans);
 	}
 	return 0;
