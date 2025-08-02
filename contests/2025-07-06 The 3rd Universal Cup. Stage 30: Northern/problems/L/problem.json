@@ -3,6 +3,7 @@
   "name": "Random Sum",
   "time_limit": "14.0 s",
   "memory_limit": "1024 MB",
-  "solved": false,
-  "submit_time": "2025-07-07T21:02:53"
+  "solved": true,
+  "submit_time": "2025-08-02T18:11:45+08:00",
+  "solve_time": "2025-08-02T18:11:45+08:00"
 }

@@ -23,38 +23,45 @@ inline int rd(){
 
 void gmodn(int &x){ x+=x>>31 & mod; }
 void gmod(int &x) { x%=mod; }
-int pr[N];
 namespace NTT{
-    int A[N],B[N],C[N],rev[N];
-    void pre(){
-		for(int mid = 1;mid < N/2;mid <<= 1){
-			int Wn = ksm(3, (mod-1)/(mid<<1)); pr[mid] = 1;
-			for(int i = 1;i < mid;++ i) pr[mid+i] = 1ll*pr[mid+i-1] * Wn % mod;
-		}
-	}
-	int init(int n){
-		int lim=0;
-		while((1ll<<lim)<=n) lim++;
-		for(int i=0;i<=(1<<lim)-1;i++)
-			rev[i]=(rev[i>>1ll]>>1ll) | ((i & 1ll)<<(lim-1));
-		return lim;
-	}
-	void ntt(int *A,int lim, int op){
-		for(int i = 0;i < lim;++ i)
-			if(i < rev[i]) swap(A[i], A[rev[i]]);
-		for(int mid = 1;mid < lim;mid <<= 1)
-			for(int i = 0;i < lim;i += mid<<1)
-				for(int j = 0;j < mid;++ j){
-					int y = 1ll*A[mid+i+j] * pr[mid+j] % mod;
-					gmodn(A[mid+i+j] = A[i+j] - y); 
-					gmodn(A[i+j] += y - mod);
-				}
-		if(op==-1){
-            reverse(A+1, A+lim);
-            int inv=ksm(lim,mod-2);
-			for(int i = 0;i < lim;++ i) A[i]=1ll*A[i]*inv%mod;
-        }
-	}	
+    int in,g[N];
+    void pre(int tl) {
+        int l=__lg(tl)+1;
+        int n=(1 << l);
+        g[0]=1;
+        g[n]=ksm(31,1 << (21-l));
+        for(int i=l;i;i--) g[1 << (i-1)]=1ll*g[1 << i]*g[1 << i]%mod;
+        for(int i=0;i<n;i++) g[i]=1ll*g[i & (i-1)]*g[i & (-i)]%mod;
+    }
+    int init(int tl) {
+        int l=__lg(tl)+1;
+        in=mod-((mod-1) >> l);
+        return l;
+    }
+    void ntt(int *f, int n) {
+        int v;
+        for(int i=(n>>1);i;i >>= 1)
+            for(int *t=g,*j=f;j!=f+n;j+=(i << 1),t++)
+                for(int *k=j;k!=j+i;k++){
+                    v=1ll*(*t)*k[i]%mod;
+                    gmodn(k[i]=(*k)-v);
+                    gmodn((*k)+=v-mod);
+                }
+    }
+    void intt(int *f, int n) {
+        int v;
+        for(int i=1;i<n;i<<=1)
+            for(int *t=g,*j=f;j!=f+n;j+=(i << 1),t++)
+                for(int *k=j;k!=j+i;k++){
+                    gmodn(v=(*k)+k[i]-mod);
+                    k[i]=1ll*(*t)*(*k-k[i]+mod)%mod;
+                    *k=v;
+                }
+        reverse(f+1,f+n);
+        for(int i=0;i<n;i++) f[i]=1ll*f[i]*in%mod;
+    }
+    
+    int A[N],B[N],C[N];
     void solve(int *s,int* f,int* g,int n,int m){
         if(n+m<=150){
             for(int i=0;i<=n+m;i++) C[i]=0;
@@ -68,10 +75,11 @@ namespace NTT{
         for(int i=0;i<(1<<lim);i++) A[i]=B[i]=0;
         for(int i=0;i<=n;i++) A[i]=f[i];
         for(int i=0;i<=m;i++) B[i]=g[i];
-        ntt(A,(1<<lim),1);
-        ntt(B,(1<<lim),1);
+        ntt(A,(1<<lim));
+        ntt(B,(1<<lim));
+        
         for(int i=0;i<(1<<lim);i++) C[i]=1ll*A[i]*B[i]%mod;
-        ntt(C,(1<<lim),-1);
+        intt(C,(1<<lim));
         for(int i=0;i<=n+m;i++) s[i]=C[i];
     }
 }
@@ -132,7 +140,7 @@ int F[N],G[N],H[N];
 queue <int> q;
 
 signed main(){
-    NTT::pre();
+    NTT::pre((1<<18)-1);
     p=rd(),m=rd();
     int imod=ksm(100000000,mod-2);
     for(int i=1;i<=m;i++){
