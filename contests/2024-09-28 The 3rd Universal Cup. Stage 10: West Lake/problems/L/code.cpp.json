@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1197714",
+  "submission_id": "#1197746",
   "problem_name": "Cosmic Travel",
-  "status": "WA",
-  "time": "728ms",
-  "memory": "305648kb",
+  "status": "AC",
+  "time": "708ms",
+  "memory": "305316kb",
   "language": "C++20",
-  "submit_time": "2025-08-02T18:23:17+08:00",
+  "submit_time": "2025-08-02T18:34:23+08:00",
   "problem_link": "https://qoj.ac/contest/1803/problem/9411",
-  "submission_link": "https://qoj.ac/submission/1197714"
+  "submission_link": "https://qoj.ac/submission/1197746"
 }

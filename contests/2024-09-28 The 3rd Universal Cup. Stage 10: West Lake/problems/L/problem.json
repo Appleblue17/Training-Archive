@@ -3,6 +3,7 @@
   "name": "Cosmic Travel",
   "time_limit": "2.0 s",
   "memory_limit": "1024 MB",
-  "solved": false,
-  "submit_time": "2025-08-02T18:23:17+08:00"
+  "solved": true,
+  "submit_time": "2025-08-02T18:34:23+08:00",
+  "solve_time": "2025-08-02T18:34:23+08:00"
 }

@@ -31,7 +31,7 @@ void dfs(int x, int d){
 		if(i<=sz[tr[x][0]]) f[x][i]=f[tr[x][0]][i];
 		else f[x][i]=(pw[d<<1]+f[tr[x][1]][i-sz[tr[x][0]]])%mod;
 		if(i<=sz[tr[x][1]]) f[x][i]=(f[x][i]+f[tr[x][1]][i])%mod;
-		else f[x][i]=(f[x][i]+pw[d<<1]+f[tr[x][0]][i-sz[tr[x][1]]])%mod;
+		else f[x][i]=((f[x][i]+pw[d<<1])%mod+f[tr[x][0]][i-sz[tr[x][1]]])%mod;
 	}
 }
 int calc(int x, int d, ll bs, int k){
@@ -41,15 +41,15 @@ int calc(int x, int d, ll bs, int k){
 		int ret=0;
 		if(k<=sz[tr[x][0]]) ret=f[tr[x][0]][k];
 		else ret=(f[tr[x][1]][k-sz[tr[x][0]]]+pw[d<<1])%mod;
-		bs&=(1ll<<d)-1;
+		bs&=(1ll<<d)-1ll;
 		if(k<=sz[tr[x][1]]) return (ret+calc(tr[x][1], d, bs, k))%mod;
-		ret=(ret+bs%mod*pw[d])%mod; k-=sz[tr[x][1]];
+		ret=(bs%mod*pw[d]%mod+ret)%mod; k-=sz[tr[x][1]];
 		return (ret+calc(tr[x][0], d, bs, k))%mod;
 	}
 	else{
 		int ret=0;
 		if(k<=sz[tr[x][0]]) return (ret+calc(tr[x][0], d, bs, k))%mod;
-		ret=(ret+bs%mod*pw[d])%mod; k-=sz[tr[x][0]];
+		ret=(bs%mod*pw[d]%mod+ret)%mod; k-=sz[tr[x][0]];
 		return (ret+calc(tr[x][1], d, bs, k))%mod;
 	}
 }
@@ -57,7 +57,7 @@ int main(){
 	// freopen("D:\\nya\\acm\\A\\test.in","r",stdin);
 	// freopen("D:\\nya\\acm\\A\\test.out","w",stdout);
 	pw[0]=1;
-	for(int i=1; i<=60; ++i) pw[i]=(pw[i-1]+pw[i-1])%mod;
+	for(int i=1; i<=120; ++i) pw[i]=(pw[i-1]+pw[i-1])%mod;
 	f[0].push_back(0);
 	read(n); read(m);
 	for(int j=1; j<=n; ++j){
