@@ -1,10 +1,10 @@
 {
-  "submission_id": "14652",
+  "submission_id": "16272",
   "status": "AC",
-  "time": "3390 MS",
-  "memory": "174712 K",
+  "time": "828 MS",
+  "memory": "23868 K",
   "language": "G++",
-  "submit_time": "2025-08-01T22:26:18+08:00",
+  "submit_time": "2025-08-02T18:09:07+08:00",
   "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1176&pid=1003",
-  "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1176&rid=14652"
+  "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1176&rid=16272"
 }

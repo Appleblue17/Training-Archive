@@ -1,10 +1,11 @@
 {
-  "submission_id": "#1143722",
+  "submission_id": "#1197689",
   "problem_name": "Random Sum",
-  "status": "TL",
-  "time": "13830ms",
-  "memory": "543244kb",
-  "language": "C++20",
-  "submit_time": "2025-07-07T21:02:53",
-  "submission_link": "https://qoj.ac/submission/1143722"
+  "status": "AC",
+  "time": "12554ms",
+  "memory": "565792kb",
+  "language": "C++14",
+  "submit_time": "2025-08-02T18:11:45+08:00",
+  "problem_link": "https://qoj.ac/contest/1917/problem/10098",
+  "submission_link": "https://qoj.ac/submission/1197689"
 }
