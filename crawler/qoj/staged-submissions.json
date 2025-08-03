@@ -241,5 +241,16 @@
     "submit_time": "2025-07-31T23:34:21+08:00",
     "problem_link": "https://qoj.ac/contest/1813/problem/9492",
     "submission_link": "https://qoj.ac/submission/1192392"
+  },
+  {
+    "submission_id": "#1198895",
+    "problem_name": "Souvenirs",
+    "status": "AC",
+    "time": "16ms",
+    "memory": "3772kb",
+    "language": "C++20",
+    "submit_time": "2025-08-03T13:14:57+08:00",
+    "problem_link": "https://qoj.ac/contest/2438/problem/13902",
+    "submission_link": "https://qoj.ac/submission/1198895"
   }
 ]
