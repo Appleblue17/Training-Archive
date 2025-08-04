@@ -1,29 +1,5 @@
 [
   {
-    "time": "2025-07-26T18:54:51.421726+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-07-26T18:54:51.421709+08:00"
-  },
-  {
-    "time": "2025-07-26T18:55:19.112356+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-07-26T18:55:19.112349+08:00"
-  },
-  {
-    "time": "2025-07-28T00:14:50.423662+08:00",
-    "level": "important",
-    "platform": "hdu",
-    "msg": "hdu Crawler started at 2025-07-28T00:14:50.423649+08:00"
-  },
-  {
-    "time": "2025-07-28T00:14:52.176948+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Failed to fetch contest list. Exiting."
-  },
-  {
     "time": "2025-07-28T00:14:59.493296+08:00",
     "level": "important",
     "platform": "hdu",
@@ -586,5 +562,41 @@
     "level": "important",
     "platform": "nowcoder",
     "msg": "nowcoder Crawler finished successfully at 2025-08-04T04:28:09.693592+08:00"
+  },
+  {
+    "time": "2025-08-04T18:28:18.169942+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-08-04T18:28:18.169926+08:00"
+  },
+  {
+    "time": "2025-08-04T18:28:28.725816+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-08-04T18:28:28.725811+08:00"
+  },
+  {
+    "time": "2025-08-04T18:28:29.877659+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler started at 2025-08-04T18:28:29.877641+08:00"
+  },
+  {
+    "time": "2025-08-04T18:29:39.382925+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler finished successfully at 2025-08-04T18:29:39.382919+08:00"
+  },
+  {
+    "time": "2025-08-04T18:29:40.606014+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler started at 2025-08-04T18:29:40.606002+08:00"
+  },
+  {
+    "time": "2025-08-04T18:30:52.354307+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler finished successfully at 2025-08-04T18:30:52.354300+08:00"
   }
 ]
