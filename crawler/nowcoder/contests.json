@@ -415,5 +415,62 @@
         "link": "https://ac.nowcoder.com/acm/contest/108303/M"
       }
     ]
+  },
+  {
+    "name": "\"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84257",
+    "date": "2025-08-05",
+    "link": "https://ac.nowcoder.com/acm/contest/108304",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Loopy Laggon",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/A"
+      },
+      {
+        "letter": "B",
+        "name": "A Gift from the Star",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/B"
+      },
+      {
+        "letter": "C",
+        "name": "Forsaken City",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/C"
+      },
+      {
+        "letter": "D",
+        "name": "Lost Woods",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/D"
+      },
+      {
+        "letter": "E",
+        "name": "String",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/E"
+      },
+      {
+        "letter": "F",
+        "name": "The Correlation",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/F"
+      },
+      {
+        "letter": "G",
+        "name": "Nice Doppelgnger",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/G"
+      },
+      {
+        "letter": "H",
+        "name": "Summit Down Side",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/H"
+      },
+      {
+        "letter": "I",
+        "name": "Lava Layer",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/I"
+      },
+      {
+        "letter": "J",
+        "name": "Ivory",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/J"
+      }
+    ]
   }
 ]
