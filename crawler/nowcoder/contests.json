@@ -472,5 +472,67 @@
         "link": "https://ac.nowcoder.com/acm/contest/108304/J"
       }
     ]
+  },
+  {
+    "name": "2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84258",
+    "date": "2025-08-07",
+    "link": "https://ac.nowcoder.com/acm/contest/108305",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Insert One",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/A"
+      },
+      {
+        "letter": "B",
+        "name": "Inversion Number Parity",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/B"
+      },
+      {
+        "letter": "C",
+        "name": "Bernoulli's Principle",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/C"
+      },
+      {
+        "letter": "D",
+        "name": "Christmas Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/D"
+      },
+      {
+        "letter": "E",
+        "name": "Matrix Lottery",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/E"
+      },
+      {
+        "letter": "F",
+        "name": "Broken LED Lights",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/F"
+      },
+      {
+        "letter": "G",
+        "name": "Changing Minimum Spanning Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/G"
+      },
+      {
+        "letter": "H",
+        "name": "Interval LRU",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/H"
+      },
+      {
+        "letter": "I",
+        "name": "Tennis Match",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/I"
+      },
+      {
+        "letter": "J",
+        "name": "Multiplication in Base the Square Root of -2",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/J"
+      },
+      {
+        "letter": "K",
+        "name": "Many Sprinklers!!!",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/K"
+      }
+    ]
   }
 ]
