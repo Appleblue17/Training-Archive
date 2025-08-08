@@ -1,41 +1,5 @@
 [
   {
-    "time": "2025-07-31T18:27:22.818957+08:00",
-    "level": "important",
-    "platform": "hdu",
-    "msg": "hdu Crawler started at 2025-07-31T18:27:22.818945+08:00"
-  },
-  {
-    "time": "2025-07-31T18:28:02.764397+08:00",
-    "level": "important",
-    "platform": "hdu",
-    "msg": "hdu Crawler finished successfully at 2025-07-31T18:28:02.764390+08:00"
-  },
-  {
-    "time": "2025-07-31T18:28:03.906110+08:00",
-    "level": "important",
-    "platform": "nowcoder",
-    "msg": "nowcoder Crawler started at 2025-07-31T18:28:03.906094+08:00"
-  },
-  {
-    "time": "2025-07-31T18:29:31.790416+08:00",
-    "level": "important",
-    "platform": "nowcoder",
-    "msg": "nowcoder Crawler finished successfully at 2025-07-31T18:29:31.790409+08:00"
-  },
-  {
-    "time": "2025-08-01T04:27:18.762439+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-08-01T04:27:18.762422+08:00"
-  },
-  {
-    "time": "2025-08-01T04:27:30.465852+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-08-01T04:27:30.465846+08:00"
-  },
-  {
     "time": "2025-08-01T04:27:31.674482+08:00",
     "level": "important",
     "platform": "hdu",
@@ -598,5 +562,41 @@
     "level": "important",
     "platform": "nowcoder",
     "msg": "nowcoder Crawler finished successfully at 2025-08-08T18:28:40.315637+08:00"
+  },
+  {
+    "time": "2025-08-09T04:26:15.650679+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-08-09T04:26:15.650668+08:00"
+  },
+  {
+    "time": "2025-08-09T04:26:25.673921+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-08-09T04:26:25.673912+08:00"
+  },
+  {
+    "time": "2025-08-09T04:26:26.860537+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler started at 2025-08-09T04:26:26.860525+08:00"
+  },
+  {
+    "time": "2025-08-09T04:26:58.867554+08:00",
+    "level": "fatal",
+    "platform": "hdu",
+    "msg": "An error occurred: 'NoneType' object has no attribute 'find_all'"
+  },
+  {
+    "time": "2025-08-09T04:27:00.060128+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler started at 2025-08-09T04:27:00.060114+08:00"
+  },
+  {
+    "time": "2025-08-09T04:27:49.774092+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler finished successfully at 2025-08-09T04:27:49.774087+08:00"
   }
 ]
