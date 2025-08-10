@@ -8,6 +8,17 @@ import { ProblemInfoType, ContestInfoType, FileMetadataType, CodeFileType } from
 import MetaDataDisplay, { formatDate } from "@/components/metadata-display";
 import { PREFIX_URL } from "@/lib/global";
 
+// Helper: Parse time string to Date object in Beijing time
+function parseToBeijingTime(timeStr: string | Date): Date {
+  if (timeStr instanceof Date) return timeStr;
+  // If the string already has a timezone suffix, parse directly
+  if (timeStr.match(/([Zz]|[+-]\d{2}:?\d{2})$/)) {
+    return new Date(timeStr);
+  }
+  // If no timezone info, assume it's in Beijing time (UTC+8)
+  return new Date(timeStr + "+08:00");
+}
+
 // Helper: Convert seconds to HH:MM:SS
 function convertDurationToHHMMSS(duration: number): string {
   const hours = Math.floor(duration / 3600);
@@ -24,8 +35,8 @@ function isSolvedInContest(
   contestEndTime: string | Date | null,
 ): boolean {
   if (!submitTime || !contestEndTime) return false;
-  const submitDate = new Date(submitTime);
-  const endDate = new Date(contestEndTime);
+  const submitDate = parseToBeijingTime(submitTime);
+  const endDate = parseToBeijingTime(contestEndTime);
   return submitDate <= endDate;
 }
 
@@ -36,10 +47,10 @@ function getInContestTime(
   contestEndTime: string | Date | null,
 ): string {
   if (submitTime && contestStartTime && contestEndTime) {
-    const submitDate = new Date(submitTime);
-    const startDate = new Date(contestStartTime);
-    const endDate = new Date(contestEndTime);
-    if (submitDate <= endDate) {
+    const submitDate = parseToBeijingTime(submitTime);
+    const startDate = parseToBeijingTime(contestStartTime);
+    const endDate = parseToBeijingTime(contestEndTime);
+    if (submitDate && startDate && endDate && submitDate <= endDate) {
       const timeDiff = submitDate.getTime() - startDate.getTime();
       return convertDurationToHHMMSS(timeDiff / 1000);
     }
