@@ -34,3 +34,54 @@ export const allowedExtensions = [
   ".css",
   ".xml",
 ];
+
+export const logFileList = [
+  {
+    name: "Global Log",
+    path: "crawler/global.log.json",
+    type: "log",
+    category: "global",
+  },
+  {
+    name: "Last Update",
+    path: "crawler/last-update.json",
+    type: "json",
+    category: "global",
+  },
+  {
+    name: "Log",
+    path: "crawler/qoj/log.json",
+    type: "log",
+    category: "qoj",
+  },
+  {
+    name: "Staged Submissions",
+    path: "crawler/qoj/staged-submissions.json",
+    type: "json",
+    category: "qoj",
+  },
+  {
+    name: "Log",
+    path: "crawler/hdu/log.json",
+    type: "log",
+    category: "hdu",
+  },
+  {
+    name: "Staged Submissions",
+    path: "crawler/hdu/staged-submissions.json",
+    type: "json",
+    category: "hdu",
+  },
+  {
+    name: "Log",
+    path: "crawler/nowcoder/log.json",
+    type: "log",
+    category: "nowcoder",
+  },
+  {
+    name: "Staged Submissions",
+    path: "crawler/nowcoder/staged-submissions.json",
+    type: "json",
+    category: "nowcoder",
+  },
+];
