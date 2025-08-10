@@ -1,8 +1,13 @@
-### Change log
+### Change Log
 
-[2025/08/10]
+#### 2025/08/10
 
-- Fixed shrunk line height for problem item without file.
-- Remove code file from problem file display as it has been displayed on the right side.
-- Now when hovering over the code file, the display area will also show its detailed information, like other files.
-- Set yellow background color for grids corresponding to problems tried but not solved.
+- Fixed reduced line height for problem items without associated files.
+- Removed duplicate code file display from problem file view; code is now shown on the right side.
+- Enhanced file hover: hovering over a code file now displays its detailed information, consistent with other files.
+- Added yellow background to grids for problems that were attempted but not solved.
+
+#### 2025/08/10
+
+- Implemented log page.
+- Improved breadcrumb styles.

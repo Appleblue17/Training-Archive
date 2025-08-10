@@ -1,7 +1,7 @@
 import "@/lib/globals.css";
 import { inter } from "@public/fonts/fonts";
 import { FiGithub } from "react-icons/fi";
-import { REPO_URL } from "@/lib/global";
+import { BASE_URL, REPO_URL } from "@/lib/global";
 
 export const experimental_ppr = true;
 
@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/png" href="archive-bot.png" />
+        <link rel="icon" type="image/png" href={BASE_URL + "archive-bot.png"} />
         <title>Training Archive</title>
       </head>
       <body className={`${inter.className} antialiased`}>
