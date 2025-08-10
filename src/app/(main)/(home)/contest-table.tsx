@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import path from "path";
 import clsx from "clsx";
-import { FiCheck, FiChevronRight, FiFileText, FiX } from "react-icons/fi";
+import { FiCheck, FiChevronRight, FiFileText, FiLayers, FiX } from "react-icons/fi";
 import { VscCode } from "react-icons/vsc";
 import { ProblemInfoType, ContestInfoType, FileMetadataType, CodeFileType } from "@/lib/types";
 import MetaDataDisplay, { formatDate } from "@/components/metadata-display";
@@ -50,25 +50,30 @@ function getInContestTime(
 // File list component
 function ContestFileList({ files, relPath }: { files: FileMetadataType[]; relPath: string }) {
   return (
-    <div className="ml-6 flex items-center justify-start gap-6 rounded border border-gray-500 bg-gray-800 px-4 py-2">
-      {files.map((file, idx) => (
-        <div key={idx} className="flex items-center justify-between">
-          <a
-            href={path.join(PREFIX_URL, "view", relPath, file.name!)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-100 transition-colors hover:text-blue-300"
-          >
-            <FiFileText className="inline-block size-4" />
-            <span className="ml-1">{file.name}</span>
-          </a>
-        </div>
-      ))}
-      {files.length === 0 && (
-        <div className="text-gray-400">
-          No contest files available... Add any statement or solution files to the contest folder?
-        </div>
-      )}
+    <div className="ml-4 mr-2 flex items-center justify-center gap-1">
+      <div className="flex items-center rounded-lg border border-gray-600 bg-zinc-800 p-2 text-gray-200">
+        <FiLayers className="size-5" />
+      </div>
+      <div className="flex flex-1 items-center justify-start gap-6 rounded-lg border border-gray-500 bg-gray-800 px-4 py-2">
+        {files.map((file, idx) => (
+          <div key={idx} className="flex items-center justify-between">
+            <a
+              href={path.join(PREFIX_URL, "view", relPath, file.name!)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-100 transition-colors hover:text-blue-300"
+            >
+              <FiFileText className="inline-block size-4" />
+              <span className="ml-1">{file.name}</span>
+            </a>
+          </div>
+        ))}
+        {files.length === 0 && (
+          <div className="text-gray-400">
+            No contest files available... Add any statement or solution files to the contest folder?
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -92,9 +97,9 @@ function ProblemRow({
   setSelectedFileIdx: (idx: number | null) => void;
 }) {
   // Find code file for status display
-  const codeFile: CodeFileType | undefined = problem.files.find((f) =>
-    f.name!.startsWith("code"),
-  ) as CodeFileType | undefined;
+  const codeFileIdx = problem.files.findIndex((f) => f.name!.startsWith("code"));
+  const codeFile: CodeFileType | undefined =
+    codeFileIdx !== -1 ? (problem.files[codeFileIdx] as CodeFileType) : undefined;
 
   // Status/time display
   let statusBlock = null;
@@ -109,6 +114,7 @@ function ProblemRow({
       contestEndTime || null,
     );
     const submitStatus: string = codeFile.status || "UKN";
+
     statusBlock = (
       <div className="flex items-center justify-start gap-4 font-mono text-base">
         <span
@@ -128,6 +134,8 @@ function ProblemRow({
           target="_blank"
           rel="noopener noreferrer"
           className="ml-2 text-gray-100 transition-colors hover:text-blue-300"
+          onMouseEnter={() => setSelectedFileIdx(codeFileIdx)}
+          onMouseLeave={() => setSelectedFileIdx(null)}
         >
           <VscCode className="inline-block size-5" />
         </a>
@@ -143,7 +151,7 @@ function ProblemRow({
               })}
             />
           )}
-          <span className="ml-1 inline-block min-w-8 text-gray-400">{codeFile.status}</span>
+          <span className="ml-1 inline-block min-w-8 text-gray-400">{submitStatus}</span>
         </div>
       </div>
     );
@@ -154,7 +162,7 @@ function ProblemRow({
       key={idx}
       onMouseEnter={() => setSelectedProblemIdx(idx)}
       onMouseLeave={() => setSelectedProblemIdx(null)}
-      className="flex items-center justify-between pl-6 hover:bg-gray-700/40"
+      className="flex h-9 items-center justify-between pl-6 hover:bg-gray-700/40"
     >
       {/* Problem name and files */}
       <div className="flex items-center justify-start">
@@ -175,28 +183,30 @@ function ProblemRow({
         </a>
 
         {/* Problem files */}
-        {problem.files.map((file, fileIdx) => (
-          <div
-            key={fileIdx}
-            onMouseEnter={() => setSelectedFileIdx(fileIdx)}
-            onMouseLeave={() => setSelectedFileIdx(null)}
-            className="flex items-center justify-between"
-          >
-            <a
-              href={path.join(PREFIX_URL, "view", problem.rel_path, file.name!)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-100 transition-colors hover:text-blue-300"
+        {problem.files
+          .filter((file) => file.name && !file.name.startsWith("code"))
+          .map((file, fileIdx) => (
+            <div
+              key={fileIdx}
+              onMouseEnter={() => setSelectedFileIdx(fileIdx)}
+              onMouseLeave={() => setSelectedFileIdx(null)}
+              className="flex items-center justify-between"
             >
-              {file.name?.includes("code") ? (
-                <VscCode className="inline-block size-5" />
-              ) : (
-                <FiFileText className="inline-block size-4" />
-              )}
-              <span className="ml-1">{file.name}</span>
-            </a>
-          </div>
-        ))}
+              <a
+                href={path.join(PREFIX_URL, "view", problem.rel_path, file.name!)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-gray-100 transition-colors hover:text-blue-300"
+              >
+                {file.name?.includes("code") ? (
+                  <VscCode className="inline-block size-5" />
+                ) : (
+                  <FiFileText className="inline-block size-4" />
+                )}
+                <span className="ml-1">{file.name}</span>
+              </a>
+            </div>
+          ))}
       </div>
       {/* Submitted file status */}
       {statusBlock}
@@ -235,7 +245,7 @@ function ContestExpandBlock({
           }}
         >
           <div className="my-2 h-[530px] overflow-auto">
-            <div className="mt-1 flex w-3/4 flex-grow flex-col gap-3">
+            <div className="mt-1 flex w-3/4 flex-grow flex-col gap-2">
               {/* Contest files */}
               <ContestFileList files={contest.files} relPath={contest.rel_path} />
               {/* Problems list */}
@@ -299,6 +309,10 @@ function ContestRow({
   displayMetadata: FileMetadataType | ProblemInfoType | ContestInfoType | null;
   displayMetadataBanner: string[];
 }) {
+  if (contest.hidden) {
+    return null; // Skip rendering if contest is hidden
+  }
+
   const handleRowClick = () => {
     if (expandedRow === idx) {
       setShowExpandedContent(false);
@@ -347,12 +361,17 @@ function ContestRow({
           {contest.platform && (
             <span
               className={clsx(
-                "mr-1 select-none rounded-lg  px-2 py-0.5 text-xs font-normal text-gray-200 opacity-90",
+                "mr-1 select-none rounded-lg px-2 py-0.5 text-xs font-normal text-gray-200 opacity-90",
                 {
                   "bg-indigo-800": contest.platform === "qoj",
                   "bg-amber-800": contest.platform === "hdu",
                   "bg-emerald-800": contest.platform === "nowcoder",
-                  "bg-gray-600": contest.platform !== "qoj" && contest.platform !== "hdu" && contest.platform !== "nowcoder",
+                  "bg-lime-800": contest.platform === "codeforces",
+                  "bg-gray-600":
+                    contest.platform !== "qoj" &&
+                    contest.platform !== "hdu" &&
+                    contest.platform !== "nowcoder" &&
+                    contest.platform === "codeforces",
                 },
               )}
             >
@@ -374,7 +393,7 @@ function ContestRow({
         {problemLetters.map((letter: string, pIdx: number) => {
           if (pIdx < contest.problems.length) {
             const solvedInContest = isSolvedInContest(
-              contest.problems[pIdx].solve_time || null,
+              contest.problems[pIdx].solve_time || contest.problems[pIdx].submit_time || null,
               contest.end_time || null,
             );
             return (
@@ -383,6 +402,9 @@ function ContestRow({
                 className={clsx("relative border-r border-gray-700 text-center text-base", {
                   "bg-green-400/40": contest.problems[pIdx].solved && solvedInContest,
                   "bg-emerald-400/30": contest.problems[pIdx].solved && !solvedInContest,
+                  "bg-amber-400/40":
+                    !contest.problems[pIdx].solved &&
+                    (contest.problems[pIdx].solve_time || contest.problems[pIdx].submit_time),
                 })}
               >
                 <a

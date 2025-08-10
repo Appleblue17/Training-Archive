@@ -344,6 +344,11 @@ class HDUCrawler(BaseCrawler):
                     )
                     break
                 table_body = table_body.find("tbody")
+                if not table_body:
+                    self.log(
+                        "warning",
+                        "No submissions found on this page. Probably no submission was made.",
+                    )
                 submission_elements = table_body.find_all("tr")
 
                 for submission in submission_elements:

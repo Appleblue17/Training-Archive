@@ -1,33 +1,8 @@
-# **ICPC训练管理系统**
+### Change log
 
-## 🚀 **项目简介**
-一个为ICPC/CCPC参赛队伍设计的**全流程训练管理平台**，集题目存档、代码管理、训练分析、智能检索于一体，帮助竞赛团队高效备战程序设计竞赛。
+[2025/08/10]
 
-## 📋 **核心需求**
-1. **题目全生命周期管理**  
-   - 比赛题目存档（题面/题解/代码）
-   - 补题状态跟踪
-   - 好题标记与题目类型分类
-
-2. **智能知识库**
-   - 跨比赛题目检索（按算法/难度/平台）
-   - 代码模板集中管理
-   - 团队训练数据分析
-
-3. **自动化工作流**  
-   - 自动爬取比赛题目
-   - 同步在线判题提交记录
-   - 智能生成训练报告
-
-## 🛠 **技术框架**
-| 模块         | 技术选型                          | 说明                          |
-|--------------|----------------------------------|-----------------------------|
-| **前端**      | Next.js + TailwindCSS           | 支持SSG静态导出，适配GitHub Pages |
-| **数据层**    | Git仓库即数据库                  | 文件结构化管理题目数据           |
-| **爬虫**      | Python + GitHub Actions         | 定期自动抓取题目和提交记录       |
-| **代码展示**  | Monaco Editor + PrismJS         | 支持交互式阅读和语法高亮         |
-| **部署**      | GitHub Pages + Actions          | 推送即自动部署                 |
-
-## 🌟 **特色亮点**
-- **零数据库设计**：直接用Git仓库管理结构化数据
-- **双模式协作**：支持手动整理+自动爬取
+- Fixed shrunk line height for problem item without file.
+- Remove code file from problem file display as it has been displayed on the right side.
+- Now when hovering over the code file, the display area will also show its detailed information, like other files.
+- Set yellow background color for grids corresponding to problems tried but not solved.
