@@ -4,5 +4,6 @@
   "platform": "hdu",
   "start_time": "2025-08-08T12:00:00+08:00",
   "end_time": "2025-08-08T17:00:00+08:00",
-  "link": "https://acm.hdu.edu.cn/contest/problems?cid=1178"
+  "link": "https://acm.hdu.edu.cn/contest/problems?cid=1178",
+  "hidden": true
 }

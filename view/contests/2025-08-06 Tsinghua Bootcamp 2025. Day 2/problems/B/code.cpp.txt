@@ -1,0 +1,269 @@
+1:"$Sreact.fragment"
+2:I[8521,[],""]
+3:I[1661,[],""]
+a:I[939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/327018f2bd3f1807.css","style"]
+:HL["/Training-Archive/_next/static/css/9f4210e542df69af.css","style"]
+0:{"P":null,"b":"SX3_ULJHtno5a8GDDc0Sc","p":"/Training-Archive","c":["","view","contests","2025-08-06%20Tsinghua%20Bootcamp%202025.%20Day%202","problems","B","code.cpp"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2025-08-06%20Tsinghua%20Bootcamp%202025.%20Day%202","d"],{"children":["problems",{"children":[["problem","B","d"],{"children":[["file","code.cpp","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/327018f2bd3f1807.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-1 inline","children":["$undefined",[["$","path","0",{"d":"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2025-08-06%20Tsinghua%20Bootcamp%202025.%20Day%202","d"],"$L4",{"children":["problems","$L5",{"children":[["problem","B","d"],"$L6",{"children":[["file","code.cpp","d"],"$L7",{"children":["__PAGE__","$L8",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],"$L9",false]],"m":"$undefined","G":["$a",[]],"s":false,"S":true}
+c:I[7055,[],"OutletBoundary"]
+e:I[9909,[],"AsyncMetadataOutlet"]
+10:I[7055,[],"ViewportBoundary"]
+12:I[7055,[],"MetadataBoundary"]
+13:"$Sreact.suspense"
+4:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+7:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+8:["$","$1","c",{"children":["$Lb",[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/9f4210e542df69af.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Lc",null,{"children":["$Ld",["$","$Le",null,{"promise":"$@f"}]]}]]}]
+9:["$","$1","h",{"children":[null,[["$","$L10",null,{"children":"$L11"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L12",null,{"children":["$","div",null,{"hidden":true,"children":["$","$13",null,{"fallback":null,"children":"$L14"}]}]}]]}]
+15:I[6417,["215","static/chunks/1951f239-0fbbd043bdf13dd3.js","81","static/chunks/81-a8569ca32ce37ffc.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-8b159e72c21ca0c8.js"],"default"]
+16:T20ff,#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define int long long
+const int N=10000;
+const int M=10000;
+const int INF=1e9;
+char s[N];
+
+#define Vector Point
+
+const double eps = 1e-9;
+const double PI = acos(-1);
+
+int dcmp(double x) { return fabs(x) < eps ? 0 : (x < 0 ? -1 : 1); }  
+  
+struct Point {  
+    double x, y;  
+    double Cang;
+    int Cid;
+  
+    //Point(const Point& rhs): x(rhs.x), y(rhs.y) { } //拷贝构造函数  
+    Point(double x = 0.0, double y = 0.0): x(x), y(y) { }   //构造函数  
+  
+    friend istream& operator >> (istream& in, Point& P) { return in >> P.x >> P.y; }  
+    friend ostream& operator << (ostream& out, const Point& P) { return out << P.x << ' ' << P.y; }  
+  
+    friend Vector operator + (const Vector& A, const Vector& B) { return Vector(A.x+B.x, A.y+B.y); }  
+    friend Vector operator - (const Point& A, const Point& B) { return Vector(A.x-B.x, A.y-B.y); }  
+    friend Vector operator * (const Vector& A, const double& p) { return Vector(A.x*p, A.y*p); }  
+    friend Vector operator / (const Vector& A, const double& p) { return Vector(A.x/p, A.y/p); }  
+    friend bool operator == (const Point& A, const Point& B) { return dcmp(A.x-B.x) == 0 && dcmp(A.y-B.y) == 0; }  
+    friend bool operator < (const Point& A, const Point& B) { return A.x < B.x || (A.x == B.x && A.y < B.y); }  
+  
+    void in(void) { scanf("%lf%lf", &x, &y); }  
+    void out(void) { printf("%lf %lf", x, y); }  
+};
+
+vector<Point> p;
+  
+struct Line {  
+    Point P;    //直线上一点  
+    Vector dir; //方向向量(半平面交中该向量左侧表示相应的半平面)  
+    double ang; //极角，即从x正半轴旋转到向量dir所需要的角（弧度）  
+  
+    Line() { }  //构造函数  
+    //Line(const Line& L): P(L.P), dir(L.dir), ang(L.ang) { }  
+    Line(const Point& P, const Vector& dir): P(P), dir(dir) { ang = atan2(dir.y, dir.x); }  
+  
+    bool operator < (const Line& L) const { //极角排序  
+        return ang < L.ang;  
+    }  
+  
+    Point point(double t) { return P + dir*t; }  
+};
+  
+struct Circle {  
+    Point c;    //圆心  
+    double r;   //半径  
+  
+    Circle() { }  
+    //Circle(const Circle& rhs): c(rhs.c), r(rhs.r) { }  
+    Circle(const Point& c, const double& r): c(c), r(r) { }  
+  
+    Point point(double ang) const { return Point(c.x + cos(ang)*r, c.y + sin(ang)*r); } //圆心角所对应的点  
+    double area(void) const { return PI * r * r; }  
+} a[110];
+  
+double Dot(const Vector& A, const Vector& B) { return A.x*B.x + A.y*B.y; }  //点积  
+double Length(const Vector& A){ return sqrt(Dot(A, A)); }  
+double Angle(const Vector& A, const Vector& B) { return acos(Dot(A, B)/Length(A)/Length(B)); }  //向量夹角  
+double Cross(const Vector& A, const Vector& B) { return A.x*B.y - A.y*B.x; }    //叉积  
+double Area(const Point& A, const Point& B, const Point& C) { return fabs(Cross(B-A, C-A)); }  
+
+vector<Point> ConvexHull(vector<Point> p) {  
+    //预处理，删除重复点  
+    sort(p.begin(), p.end());  
+    p.erase(unique(p.begin(), p.end()), p.end());  
+    int n = p.size(), m = 0;  
+    vector<Point> res(n+1);  
+    for(int i = 0; i < n; i++) {  
+        while(m > 1 && Cross(res[m-1]-res[m-2], p[i]-res[m-2]) <= 0) m--;  
+        res[m++] = p[i];  
+
+    }  
+    int k = m;  
+    for(int i = n-2; i >= 0; i--) {  
+        while(m > k && Cross(res[m-1]-res[m-2], p[i]-res[m-2]) <= 0) m--;  
+        res[m++] = p[i];  
+
+    }  
+    m -= n > 1;  
+    res.resize(m);  
+    return res;  
+}
+
+Vector Rotate(const Vector& A, const double& rad) { return Vector(A.x*cos(rad)-A.y*sin(rad), A.x*sin(rad)+A.y*cos(rad)); }  
+
+Vector Polar(double angle) {
+    return Vector(cos(angle), sin(angle));
+}
+vector<Point> resa,resb;
+vector<Point> GetCommonTangents(const Circle& A, const Circle& B) {
+    resa.clear();resb.clear();
+    vector<Point> res;//可以改为vector<Line>等，按需要决定
+    Vector v = B.c - A.c;
+    double d = Length(v);
+    if (dcmp(d) == 0) {
+        if (dcmp(A.r - B.r) == 0) {
+            // 同心且半径相等，有无数条公切线，但无法枚举，返回空
+        }
+        // 同心但半径不等，无公切线
+        return res;
+    }
+    double base = atan2(v.y, v.x);
+    double r_sum = A.r + B.r;
+    double r_diff = fabs(A.r - B.r);
+
+    // 计算外公切线 (d >= |r1 - r2| 时存在)
+    if (dcmp(d - r_diff) >= 0) {
+        double alpha = asin(r_diff / d);
+        double angles[2] = { base + (PI / 2 - alpha), base - (PI / 2 - alpha) };
+        //cout << base << ' ' << alpha << endl;
+        for (int i = 0; i < 2; i++) {
+            Vector unit_vec = Polar(angles[i]);
+            //cout << angles[i] << ' ' << unit_vec << ' ' << A.r << ' ' << B.r << endl;
+            Point p1 = A.c + unit_vec * A.r;
+            Point p2 = B.c + unit_vec * B.r;
+            Line line = Line(p1, p2 - p1);
+            //TangentLine tl;
+            //tl.line = line;
+            //tl.point_on_first = p1;
+            //tl.point_on_second = p2;
+            //tl.type = 0; // external
+            res.push_back(p1);res.push_back(p2);
+            resa.push_back(p1);resb.push_back(p2);
+        }
+    }
+
+    // 计算内公切线
+    if (dcmp(d - r_sum) >= 0) { // 相离或外切
+        double beta = acos(r_sum / d);
+        double angles[2] = { base + (PI / 2 - beta), base - (PI / 2 - beta) };
+        for (int i = 0; i < 2; i++) {
+            Vector unit_vec = Polar(angles[i]);
+            Point p1 = A.c + unit_vec * A.r;
+            Point p2 = B.c - unit_vec * B.r; // 异侧
+            Line line = Line(p1, p2 - p1);
+            //TangentLine tl;
+            //tl.line = line;
+            //tl.point_on_first = p1;
+            //tl.point_on_second = p2;
+            //tl.type = 1; // internal
+            //res.push_back(p1);res.push_back(p2);
+            resa.push_back(p1);resb.push_back(p2);
+        }
+    } else if (dcmp(d - r_diff) == 0) { // 内切
+        Point p = A.c + v * (A.r / d);
+        Vector dir = Rotate(v, PI / 2);
+        Line line = Line(p, dir);
+        //TangentLine tl;
+        //tl.line = line;
+        //tl.point_on_first = p;
+        //tl.point_on_second = p;
+        //tl.type = 1; // internal
+        //res.push_back(p);
+        resa.push_back(p);resb.push_back(p);
+        res.push_back(p);
+    }
+    sort(res.begin(), res.end());
+    // unique将重复元素移至末尾，返回新逻辑结尾，返回点需要进行这个操作，返回边不需要
+    auto last = unique(res.begin(), res.end());
+    res.erase(last, res.end());
+    return res;
+}
+
+double PolygonArea(vector<Point> po) {  
+    int n = po.size();  
+    double area = 0.0;  
+    for(int i = 1; i < n-1; i++) {  
+        area += Cross(po[i]-po[0], po[i+1]-po[0]);  
+    }  
+    return area * 0.5;  
+}  
+
+int n;
+
+signed main(){
+    scanf("%lld",&n);
+    for(int i=1;i<=n;i++){
+        int x,y,r;
+        scanf("%lld%lld%lld",&x,&y,&r);
+        a[i].c = Point(x,y);
+        a[i].r = r;
+    }
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<i;j++){
+            vector<Point> P = GetCommonTangents(a[i],a[j]);
+            for(Point A:P){
+                //printf("tangent points of circle %lld and %lld includes (%.5lf,%.5lf)\n",i,j,A.x,A.y);
+                
+                if(dcmp(Length(A-a[i].c)-a[i].r)==0){
+                    A.Cid = i;
+                    A.Cang = atan2((A-a[i].c).y,(A-a[i].c).x);
+                }
+                else{
+                    A.Cid = j;
+                    A.Cang = atan2((A-a[j].c).y,(A-a[j].c).x);
+                }
+                p.push_back(A);
+
+            }
+        }
+    }
+    //for(Point v:p){
+    //    printf("p includes %.5lf,%.5lf,Cid=%lld\n",v.x,v.y,v.Cid);
+    //}
+    vector<Point> c = ConvexHull(p);
+    double S = PolygonArea(c);
+    ///cout << S << endl;
+    double L = 0;
+    c.push_back(c[0]);
+    //for(Point v:c){
+    //    printf("c includes %.5lf,%.5lf,Cid=%lld\n",v.x,v.y,v.Cid);
+    //}
+    for(int i=1;i<c.size();i++){
+        if(c[i].Cid == c[i-1].Cid){
+            //printf("Cang = %.5lf,%.5lf\n",c[i-1].Cang,c[i].Cang);
+            double an = c[i].Cang - c[i-1].Cang;
+            double r = a[c[i].Cid].r;
+            Point cc = a[c[i].Cid].c;
+            if(c[i].Cang < c[i-1].Cang)an = c[i].Cang - c[i-1].Cang + 2*PI;
+            L += an*r;
+            S += an*r*r*0.5-0.5*Cross(c[i-1]-cc,c[i]-cc);
+        }
+        else{
+            L += Length(c[i]-c[i-1]);
+        }
+    }
+    printf("%.10lf %.10lf\n",L,S);
+}b:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2025-08-06 Tsinghua Bootcamp 2025. Day 2",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"B",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"code.cpp"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2025-08-06 Tsinghua Bootcamp 2025. Day 2/problems/B/code.cpp","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","children":[]}],["$","polyline","1",{"points":"7 10 12 15 17 10","children":[]}],["$","line","2",{"x1":"12","y1":"15","x2":"12","y2":"3","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2025-08-06 Tsinghua Bootcamp 2025. Day 2/problems/B/code.cpp","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z","children":[]}],["$","polyline","1",{"points":"14 2 14 8 20 8","children":[]}],["$","line","2",{"x1":"16","y1":"13","x2":"8","y2":"13","children":[]}],["$","line","3",{"x1":"16","y1":"17","x2":"8","y2":"17","children":[]}],["$","polyline","4",{"points":"10 9 9 9 8 9","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":["$","$L15",null,{"code":"$16","ext":".cpp"}]}],"$L17"]}]]}]}]
+17:["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"code.cpp"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"8.249 KB (8447 B)"}]]}],["$","div","status",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Status","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"WA"}]]}],["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/07 09:49:37"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Forcefield"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://tsinghua2025.contest.codeforces.com/group/gtDllGnZc0/contest/627437/problem/B","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://tsinghua2025.contest.codeforces.com/group/gtDllGnZc0/contest/627437/problem/B"}]]}],["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"false"}]]}],["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/07 09:49:37"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Tsinghua Bootcamp 2025. Day 2"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025-08-06"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"codeforces"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/06 10:00:00"}]]}],"$L18","$L19","$L1a"]}]]}]]}]
+18:["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/06 15:00:00"}]]}]
+19:["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://tsinghua2025.contest.codeforces.com/group/gtDllGnZc0/contest/627437","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://tsinghua2025.contest.codeforces.com/group/gtDllGnZc0/contest/627437"}]]}]
+1a:["$","div","manual",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Manual","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}]
+11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+d:null
+f:{"metadata":[],"error":null,"digest":"$undefined"}
+14:"$f:metadata"
