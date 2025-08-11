@@ -33,23 +33,16 @@ const links = [
 
 export default function Breadcrumb() {
   const pathname: string = usePathname();
-  // const [isHovered, setIsHovered] = useState<{ [key: string]: boolean }>({
-  //   home: false,
-  //   dashboard: false,
-  //   log: false,
-  //   readme: false,
-  // });
-  console.log(pathname);
 
   return (
-    <nav className="flex h-12 w-full items-center space-x-4 overflow-y-visible rounded-lg bg-gray-700 px-6 py-2 text-sm shadow">
+    <nav className="flex h-10 w-full items-center space-x-4 overflow-y-visible rounded-lg bg-gray-700 px-6 py-2 text-sm shadow">
       {links.map((link) => {
         const isActive =
           pathname === link.href || (link.name !== "home" && pathname.startsWith(link.href));
         return (
           <button
             className={clsx("border-b-1 flex flex-none justify-center px-4 py-1", {
-              "relative h-14 rounded-lg bg-gray-600 text-white": isActive,
+              "relative h-12 rounded-lg bg-gray-600 text-white": isActive,
             })}
             key={link.title}
           >
