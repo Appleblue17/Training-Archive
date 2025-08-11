@@ -1,11 +1,15 @@
 #include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace std;
+using namespace __gnu_pbds;
 using namespace std;
 #define MP make_pair
-const int N=1e5+5,mod=1e9+7,bas=1e9+1;
+const int N=1e5+5,mod=1e9+7,bas=1e4+7;
 int T,n,k,id;
 
 int pw[N];
-char S[N],SS[N];
+char S[55],SS[55];
 
 int p[N],rk[N];
 
@@ -14,15 +18,13 @@ string STR[N];
 unordered_map <int,int> mp;
 int ghas(){
     int len=strlen(S),tot=0;
-    for(int i=0;i<len;i++) tot=(tot+1ll*(S[i]-'a')*pw[i]%mod)%mod;
+    for(int i=0;i<len;i++) tot=(tot+1ll*S[i]*pw[i]%mod)%mod;
     if(!mp[tot]) mp[tot]=++id;
     return mp[tot];
 }
 
 int team[N],bel[N],col[N];
 bool isteam[N];
-vector <int> COL[4];
-
 
 map <pair<int,int>, int> game;
 int gid;
@@ -40,68 +42,55 @@ struct abc{
 };
 queue <abc> Q[N];
 
-
 int msg[N],mid;
 
-void del(abc u);
-void add(abc u);
-int query(int x);
 
-void update(int gameid){
-    if(!Q[gameid].size()) return ;
-    abc u=Q[gameid].front();
-    del(u);
-    
-    while(Q[gameid].size()){
-        abc u=Q[gameid].front();
-        if(valid[u.num]){
-            add(u);
-            break;
-        }
-        Q[gameid].pop();
-    }
-}
-
+/* ----------------------------------- */
 
 int win[N],score[N];
+struct def{
+    int win,score,rk;
+};
+bool operator <(def X,def Y){
+    if(X.win!=Y.win) return X.win<Y.win;
+    if(X.score!=Y.score) return X.score<Y.score;
+    return X.rk>Y.rk;
+}
+tree<def,null_type,less<def>,rb_tree_tag,tree_order_statistics_node_update> bbt[3];
 
 void del(abc u){
     // cout<<"del "<<u.X<<" "<<u.Y<<" "<<u.x<<" "<<u.y<<endl;
     int X=u.X,Y=u.Y,x=u.x,y=u.y;
+    bbt[col[X]].erase((def){win[X],score[X],rk[X]});
+    bbt[col[Y]].erase((def){win[Y],score[Y],rk[Y]});
     if(x<y) win[Y]--;
     else win[X]--;
-    score[x]-=X-Y;
-    score[y]-=Y-X;
-    
+    score[X]-=x-y;
+    score[Y]-=y-x;
+    bbt[col[X]].insert((def){win[X],score[X],rk[X]});
+    bbt[col[Y]].insert((def){win[Y],score[Y],rk[Y]});
 }
 void add(abc u){
     // cout<<"add "<<u.X<<" "<<u.Y<<" "<<u.x<<" "<<u.y<<endl;
     int X=u.X,Y=u.Y,x=u.x,y=u.y;
+    bbt[col[X]].erase((def){win[X],score[X],rk[X]});
+    bbt[col[Y]].erase((def){win[Y],score[Y],rk[Y]});
     if(x<y) win[Y]++;
     else win[X]++;
-    score[x]+=X-Y;
-    score[y]+=Y-X;
+    score[X]+=x-y;
+    score[Y]+=y-x;
+    bbt[col[X]].insert((def){win[X],score[X],rk[X]});
+    bbt[col[Y]].insert((def){win[Y],score[Y],rk[Y]});
 }
 
-int query(int x){
-    int tot=0;
-    int c=col[x];
-    // cout<<"col "<<c<<endl;
-    
-    for(int y: COL[c]){
-        // cout<<"compare "<<x<<" "<<y<<endl;
-        // cout<<win[y]<<" "<<score[y]<<" "<<rk[y]<<endl;
-        if(win[y]>win[x] || (win[y]==win[x] && score[y]>score[x]) || (win[y]==win[x] && score[y]==score[x] && rk[y]>rk[x])){
-            tot++;
-        }
-    }
-    return tot+1;
+int query(int X){
+    return n-bbt[col[X]].order_of_key((def){win[X],score[X],rk[X]});
 }
-
 
 int main(){
+    // freopen("1.txt","w",stdout);
     pw[0]=1;
-    for(int i=1;i<N;i++) pw[i]=1ll*pw[i-1]*bas%mod;
+    for(int i=1;i<=50;i++) pw[i]=1ll*pw[i-1]*bas%mod;
     
     scanf("%d",&T);
     while(T--){
@@ -115,10 +104,14 @@ int main(){
         for(int i=0;i<N;i++){
             while(Q[i].size()) Q[i].pop();
         }
-        for(int t=1;t<=3;t++) COL[t].clear();
+        for(int t=0;t<3;t++) bbt[t].clear();
         
         mid=0;
         memset(msg,0,sizeof(msg));
+        
+        memset(win,0,sizeof(win));
+        memset(score,0,sizeof(score));
+        memset(rk,0,sizeof(rk));
         
         for(int t=1;t<=3*n;t++){
             scanf("\n%s",S);
@@ -139,17 +132,22 @@ int main(){
             }
             
             int c;
-            scanf("%d",&c);
+            scanf("%d",&c); c--;
             col[team[t]]=c;
             // cout<<c<<endl;
-            COL[c].push_back(team[t]);
         }
+        // cout<<id<<endl;
         
         for(int i=1;i<=3*n;i++) p[i]=i;
         sort(p+1,p+3*n+1,[&](int x,int y){
             return STR[x]<STR[y];
         });
         for(int i=1;i<=3*n;i++) rk[team[p[i]]]=i;
+        for(int i=1;i<=3*n;i++){
+            int x=team[i];
+            // cout<<col[x]<<" "<<rk[x]<<endl;
+            bbt[col[x]].insert((def){0,0,rk[x]});
+        }
         // for(int i=1;i<=3*n;i++) cout<<rk[i]<<" "; cout<<endl;
         
         while(k--){
@@ -173,10 +171,10 @@ int main(){
                 int gameid=getgameid(X,Y);
                 msg[++mid]=gameid;
                 
-                if(col[X]==col[Y]){
+                if(X!=Y && col[X]==col[Y]){
                     abc u={X,Y,x,y,mid};
+                    if(!Q[gameid].size()) add(u);
                     Q[gameid].push(u);
-                    add(u);
                     valid[mid]=1;
                 }
             }
@@ -185,7 +183,19 @@ int main(){
                 int gameid=msg[x];
                 valid[x]=0;
                 
-                update(gameid);
+                if(Q[gameid].size() && Q[gameid].front().num==x){
+                    abc u=Q[gameid].front(); Q[gameid].pop();
+                    del(u);
+                    
+                    while(Q[gameid].size()){
+                        abc u=Q[gameid].front();
+                        if(valid[u.num]){
+                            add(u);
+                            break;
+                        }
+                        Q[gameid].pop();
+                    }
+                }
             }
             else if(opt==3){
                 int x; scanf("%d",&x);
