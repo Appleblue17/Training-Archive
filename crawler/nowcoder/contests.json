@@ -534,5 +534,77 @@
         "link": "https://ac.nowcoder.com/acm/contest/108305/K"
       }
     ]
+  },
+  {
+    "name": "\"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84259",
+    "date": "2025-08-12",
+    "link": "https://ac.nowcoder.com/acm/contest/108306",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "AVL tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/A"
+      },
+      {
+        "letter": "B",
+        "name": "Date",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/B"
+      },
+      {
+        "letter": "C",
+        "name": "Epoch-making",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/C"
+      },
+      {
+        "letter": "D",
+        "name": "Kiritorisen",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/D"
+      },
+      {
+        "letter": "E",
+        "name": "Tournament",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/E"
+      },
+      {
+        "letter": "F",
+        "name": "Military Training",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/F"
+      },
+      {
+        "letter": "G",
+        "name": "Permutation",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/G"
+      },
+      {
+        "letter": "H",
+        "name": "Counter Streak",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/H"
+      },
+      {
+        "letter": "I",
+        "name": "Tree Construction",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/I"
+      },
+      {
+        "letter": "J",
+        "name": "Too many catgirls nya",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/J"
+      },
+      {
+        "letter": "K",
+        "name": "Reversed Hanged Man",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/K"
+      },
+      {
+        "letter": "L",
+        "name": "Ping Pong",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/L"
+      },
+      {
+        "letter": "M",
+        "name": "Digit Sum",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/M"
+      }
+    ]
   }
 ]
