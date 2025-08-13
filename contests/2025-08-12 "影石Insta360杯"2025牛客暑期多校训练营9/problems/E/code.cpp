@@ -129,6 +129,10 @@ signed main() {
     int lim=200;
     for(int i=0;i<=lim;i++) pre(lim,lim,i);
      
+    int totx=0,toty=0;
+    for(int i=1;i<=n;i++) totx+=X[i],toty+=Y[i];
+    if(totx!=toty) no();
+     
     int k=0,ans=1;
     for(int i=1;i<=n;i++){
         if(k<0) no();
