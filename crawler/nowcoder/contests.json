@@ -606,5 +606,72 @@
         "link": "https://ac.nowcoder.com/acm/contest/108306/M"
       }
     ]
+  },
+  {
+    "name": "\"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u842510",
+    "date": "2025-08-14",
+    "link": "https://ac.nowcoder.com/acm/contest/108307",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "The Spacy Language (spacy)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/A"
+      },
+      {
+        "letter": "B",
+        "name": "Trimming Palindrome (trim)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/B"
+      },
+      {
+        "letter": "C",
+        "name": "Hexagis (hexagis)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/C"
+      },
+      {
+        "letter": "D",
+        "name": "Grammar Test (grammar)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/D"
+      },
+      {
+        "letter": "E",
+        "name": "Sensei and Affection (affection)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/E"
+      },
+      {
+        "letter": "F",
+        "name": "Sensei and Yuuka Going Shopping (yuuka)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/F"
+      },
+      {
+        "letter": "G",
+        "name": "Starlight (starlight)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/G"
+      },
+      {
+        "letter": "H",
+        "name": "Rev Equation (NOI-tAUqe ver.) (equation)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/H"
+      },
+      {
+        "letter": "I",
+        "name": "Matrix (matrix)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/I"
+      },
+      {
+        "letter": "J",
+        "name": "Segments (segments)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/J"
+      },
+      {
+        "letter": "K",
+        "name": "Amazing Sets (amazing)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/K"
+      },
+      {
+        "letter": "L",
+        "name": "Desertrium (desertrium)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/L"
+      }
+    ]
   }
 ]
