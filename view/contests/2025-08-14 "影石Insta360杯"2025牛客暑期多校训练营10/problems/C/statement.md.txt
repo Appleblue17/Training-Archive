@@ -1,0 +1,725 @@
+1:"$Sreact.fragment"
+2:I[8521,[],""]
+3:I[1661,[],""]
+b:I[939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/dd3bbe79ef28f60a.css","style"]
+:HL["/Training-Archive/_next/static/css/9f4210e542df69af.css","style"]
+0:{"P":null,"b":"1cuNBnSf_nV_tElsy3K3b","p":"/Training-Archive","c":["","view","contests","2025-08-14%20%22%E5%BD%B1%E7%9F%B3Insta360%E6%9D%AF%222025%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A510","problems","C","statement.md"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2025-08-14%20%22%E5%BD%B1%E7%9F%B3Insta360%E6%9D%AF%222025%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A510","d"],{"children":["problems",{"children":[["problem","C","d"],{"children":[["file","statement.md","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/dd3bbe79ef28f60a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-1 inline","children":["$undefined",[["$","path","0",{"d":"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests","$L4",{"children":[["contest","2025-08-14%20%22%E5%BD%B1%E7%9F%B3Insta360%E6%9D%AF%222025%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A510","d"],"$L5",{"children":["problems","$L6",{"children":[["problem","C","d"],"$L7",{"children":[["file","statement.md","d"],"$L8",{"children":["__PAGE__","$L9",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],"$La",false]],"m":"$undefined","G":["$b",[]],"s":false,"S":true}
+d:I[7055,[],"OutletBoundary"]
+f:I[9909,[],"AsyncMetadataOutlet"]
+11:I[7055,[],"ViewportBoundary"]
+13:I[7055,[],"MetadataBoundary"]
+14:"$Sreact.suspense"
+4:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+7:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+8:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":["$Lc",[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/9f4210e542df69af.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Ld",null,{"children":["$Le",["$","$Lf",null,{"promise":"$@10"}]]}]]}]
+a:["$","$1","h",{"children":[null,[["$","$L11",null,{"children":"$L12"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L13",null,{"children":["$","div",null,{"hidden":true,"children":["$","$14",null,{"fallback":null,"children":"$L15"}]}]}]]}]
+c:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2025-08-14 \"影石Insta360杯\"2025牛客暑期多校训练营10",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"C",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"statement.md"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2025-08-14 \"影石Insta360杯\"2025牛客暑期多校训练营10/problems/C/statement.md","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","children":[]}],["$","polyline","1",{"points":"7 10 12 15 17 10","children":[]}],["$","line","2",{"x1":"12","y1":"15","x2":"12","y2":"3","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2025-08-14 \"影石Insta360杯\"2025牛客暑期多校训练营10/problems/C/statement.md","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z","children":[]}],["$","polyline","1",{"points":"14 2 14 8 20 8","children":[]}],["$","line","2",{"x1":"16","y1":"13","x2":"8","y2":"13","children":[]}],["$","line","3",{"x1":"16","y1":"17","x2":"8","y2":"17","children":[]}],["$","polyline","4",{"points":"10 9 9 9 8 9","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":"$L16"}],["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"statement.md"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"5.794 KB (5933 B)"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Hexagis (hexagis)"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://ac.nowcoder.com/acm/contest/108307/C","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://ac.nowcoder.com/acm/contest/108307/C"}]]}],"$L17","$L18"]}]]}],"$L19"]}]]}]]}]}]
+17:["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"6 s"}]]}]
+18:["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"false"}]]}]
+19:["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"\"影石Insta360杯\"2025牛客暑期多校训练营10"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025-08-14"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"nowcoder"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/14 12:00:00"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/08/14 17:00:00"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://ac.nowcoder.com/acm/contest/108307","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://ac.nowcoder.com/acm/contest/108307"}]]}]]}]]}]
+1a:I[6005,["215","static/chunks/1951f239-e4c7a40f4938f7cd.js","81","static/chunks/81-d563b76c84969650.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-8b159e72c21ca0c8.js"],"default"]
+1b:T172d,## C. Hexagis (hexagis)
+
+### 题目描述
+
+Here are some definitions before the problem statement.
+- Two squares in the square grid are **adjacent** iff they share
+    exactly one side.
+- Two squares in the square grid are **reachable** iff there exists a
+    sequence of squares, where the two squares are the first and the
+    last term of the sequence respectively, and each pair of adjacent
+    squares in the sequence is adjacent in the square grid.
+- A subset of the square grid is **4-connected** iff every pair of
+    squares in the subset is reachable in the subset after deleting all
+    squares not included in the subset. A 4-connected subset is also
+    called a **block**.
+
+There are seven kinds of **tetrominoes** in the popular game \'tetris\'.
+They are all the possible shapes of four 4-connected squares in the
+square grid, where shapes that are able to coincide after some
+translation and rotation are considered the same.
+
+![](https://uploadfiles.nowcoder.com/images/20250810/0_1754803277411/0BB019BEE24E0AEADD76439E006874C4){style="height:auto;width:240px;"}
+
+(seven kinds of tetrominoes in \'tetris\')
+
+However, you consider \'tetris\' too easy. That\'s because there are few
+kinds of tetrominoes used in \'tetris\'. As a result, few combinations
+of tetrominoes can be formed, making the game quite simple. Now, you\'ve
+made up your mind to play a similar but more difficult game:
+\'hexagis\'.There are $60$ kinds of **hexominoes** in the
+game \'hexagis\'. They are all the possible shapes of six 4-connected
+squares in the square grid, where shapes that are able to coincide after
+some translation and rotation are considered the same.The goal is to fit these hexominoes in a $19 \times 19$ square grid, using exactly one
+hexomino of each kind. At the same time, every square except the central
+square should be covered by exactly one hexomino.This game is significantly harder, as you scratched your head but found
+no solution. So you decided to share the game with your friend. To your
+surprise, he claimed that he solved the game as soon as he saw it. To
+prove his words, he gave you $T$ solutions he
+found. Unfortunately, you discovered that all of his solutions were
+wrong by finding out how many hexominoes of each kind were used in each
+of his solutions.Now he begins to believe that no solution exists. Can you find one to
+prove him wrong?
+
+### 输入描述
+
+The input contains $19T+1$ lines:
+- The first line
+    contains $T$ ($1\le T\le500$),
+    indicating the number of your friend\'s solutions.
+- After the first line follow $19T$ lines,
+    the $19k+i-18$ -th
+    ($1\le k\le T,1\le i\le19$) line of the
+    input contains a
+    string $S_{k,i}$ consisting
+    of $19$ characters, indicating
+    the $i$ -th row of
+    the $k$ -th solution of your friend.
+
+In the $k$ -th solution, the tenth character
+of $S_{k,10}$ ($1\le k\le T$)
+is \'.\', while the rest of the characters are number digits.
+4-connected characters with the same number represent a block of your
+friend\'s solution.
+
+### 输出描述
+
+Your output should contain $T+19$ lines:
+- If the $k$ -th
+    ($1\le k\le T$) solution of your friend
+    contains a block that is not a hexomino,
+    output $-1$ in
+    the $k$ -th line. Otherwise,
+    output $60$ non-negative
+    integers $a_{k,1},a_{k,2},a_{k,3},\cdots,a_{k,60}$,
+    indicating the numbers of the $60$ types
+    of hexominoes used in the solution in **non-increasing order**.
+- Then you should output $19$ more lines,
+    the $T+i$ -th line in your output
+    ($1\le i\le19$) should contain a
+    string $R_i$ consisting
+    of $19$ characters, indicating
+    the $i$ -th row of your solution.
+
+You have to make sure that the tenth character
+of $R_{10}$ is \'.\', while the rest of the
+characters are number digits. 4-connected characters with the same
+number represent a block of your solution. Any output violating the form
+above or not satisfying the requirements of a real solution will be
+considered as Wrong Answer.If multiple solutions exist, output any.
+
+### 示例1
+
+#### 输入
+
+```plain
+2
+0001114545454001100
+0001114545454001100
+1110004545454001100
+1110004545454110011
+0001114545454110011
+0001114545454110011
+4444443222222444444
+5555553001113555555
+4444443001113444444
+555555300.003555555
+4444443111003444444
+5555553111003555555
+4444442222223444444
+1100114545454111000
+1100114545454111000
+1100114545454000111
+0011004545454000111
+0011004545454111000
+0011004545454111000
+3141592653589793238
+4626433832795028841
+9716939937510582097
+4944592307816406286
+2089986280348253421
+1706798214808651328
+2306647093844609550
+5822317253594081284
+8111745028410270193
+852110555.964462294
+8954930381964428810
+9756659334461284756
+4823378678316527120
+1909145648566923460
+3486104543266482133
+9360726024914127372
+4587006606315588174
+8815209209628292540
+9171536436789259036
+```
+
+#### 输出
+
+```plain
+32 28 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+-1
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+000000000.000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+```
+
+#### 说明
+
+The first solution of your friend
+contains $32$ hexominoes on the left
+and $28$ hexominoes on the right shown in the
+image below.
+
+![](https://uploadfiles.nowcoder.com/images/20250810/0_1754803679056/D37AF07FFF6F6393980676013C7C2975){style="height:auto;width:240px;"}
+
+The second solution of your friend contains blocks that are not
+hexominoes.However, in the sample output, your solution does **not** satisfy the
+requirements of a real solution. Thus, the sample output will be
+considered as Wrong Answer.
+
+1c:T8ceb,
+<h2>C. Hexagis (hexagis)</h2>
+<h3>题目描述</h3>
+<p>Here are some definitions before the problem statement.</p>
+<ul>
+  <li>
+    Two squares in the square grid are <strong>adjacent</strong> iff they share
+    exactly one side.
+  </li>
+  <li>
+    Two squares in the square grid are <strong>reachable</strong> iff there exists a
+    sequence of squares, where the two squares are the first and the
+    last term of the sequence respectively, and each pair of adjacent
+    squares in the sequence is adjacent in the square grid.
+  </li>
+  <li>
+    A subset of the square grid is <strong>4-connected</strong> iff every pair of
+    squares in the subset is reachable in the subset after deleting all
+    squares not included in the subset. A 4-connected subset is also
+    called a <strong>block</strong>.
+  </li>
+</ul>
+<p>
+  There are seven kinds of <strong>tetrominoes</strong> in the popular game 'tetris'.
+  They are all the possible shapes of four 4-connected squares in the
+  square grid, where shapes that are able to coincide after some
+  translation and rotation are considered the same.
+</p>
+<p>
+  <img src="https://uploadfiles.nowcoder.com/images/20250810/0_1754803277411/0BB019BEE24E0AEADD76439E006874C4" alt="">{style="height:auto;width:240px;"}
+</p>
+<p>(seven kinds of tetrominoes in 'tetris')</p>
+<p>
+  However, you consider 'tetris' too easy. That's because there are few
+  kinds of tetrominoes used in 'tetris'. As a result, few combinations
+  of tetrominoes can be formed, making the game quite simple. Now, you've
+  made up your mind to play a similar but more difficult game:
+  'hexagis'.There are <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>60</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">60</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span></span></span></span> kinds of <strong>hexominoes</strong> in the
+  game 'hexagis'. They are all the possible shapes of six 4-connected
+  squares in the square grid, where shapes that are able to coincide after
+  some translation and rotation are considered the same.The goal is to fit these hexominoes in a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>19</mn>
+            <mo>×</mo>
+            <mn>19</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">19 \times 19</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">19</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">19</span></span></span></span> square grid, using exactly one
+  hexomino of each kind. At the same time, every square except the central
+  square should be covered by exactly one hexomino.This game is significantly harder, as you scratched your head but found
+  no solution. So you decided to share the game with your friend. To your
+  surprise, he claimed that he solved the game as soon as he saw it. To
+  prove his words, he gave you <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>T</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">T</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> solutions he
+  found. Unfortunately, you discovered that all of his solutions were
+  wrong by finding out how many hexominoes of each kind were used in each
+  of his solutions.Now he begins to believe that no solution exists. Can you find one to
+  prove him wrong?
+</p>
+<h3>输入描述</h3>
+<p>The input contains <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>19</mn>
+            <mi>T</mi>
+            <mo>+</mo>
+            <mn>1</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">19T+1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord">19</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> lines:</p>
+<ul>
+  <li>
+    The first line
+    contains <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>T</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">T</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>T</mi>
+              <mo>≤</mo>
+              <mn>500</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">1\le T\le500</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">500</span></span></span></span>),
+    indicating the number of your friend's solutions.
+  </li>
+  <li>
+    After the first line follow <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>19</mn>
+              <mi>T</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">19T</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">19</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> lines,
+    the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>19</mn>
+              <mi>k</mi>
+              <mo>+</mo>
+              <mi>i</mi>
+              <mo>−</mo>
+              <mn>18</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">19k+i-18</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord">19</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">18</span></span></span></span> -th
+    (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>k</mi>
+              <mo>≤</mo>
+              <mi>T</mi>
+              <mo separator="true">,</mo>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>i</mi>
+              <mo>≤</mo>
+              <mn>19</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">1\le k\le T,1\le i\le19</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7955em;vertical-align:-0.136em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">19</span></span></span></span>) line of the
+    input contains a
+    string <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>S</mi>
+                <mrow>
+                  <mi>k</mi>
+                  <mo separator="true">,</mo>
+                  <mi>i</mi>
+                </mrow>
+              </msub>
+            </mrow>
+            <annotation encoding="application/x-tex">S_{k,i}</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> consisting
+    of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>19</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">19</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">19</span></span></span></span> characters, indicating
+    the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>i</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">i</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> -th row of
+    the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>k</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">k</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> -th solution of your friend.
+  </li>
+</ul>
+<p>
+  In the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>k</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">k</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> -th solution, the tenth character
+  of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>S</mi>
+              <mrow>
+                <mi>k</mi>
+                <mo separator="true">,</mo>
+                <mn>10</mn>
+              </mrow>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">S_{k,10}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>k</mi>
+            <mo>≤</mo>
+            <mi>T</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">1\le k\le T</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>)
+  is '.', while the rest of the characters are number digits.
+  4-connected characters with the same number represent a block of your
+  friend's solution.
+</p>
+<h3>输出描述</h3>
+<p>Your output should contain <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>T</mi>
+            <mo>+</mo>
+            <mn>19</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">T+19</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">19</span></span></span></span> lines:</p>
+<ul>
+  <li>
+    If the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>k</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">k</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> -th
+    (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>k</mi>
+              <mo>≤</mo>
+              <mi>T</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">1\le k\le T</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>) solution of your friend
+    contains a block that is not a hexomino,
+    output <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mo>−</mo>
+              <mn>1</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">-1</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span> in
+    the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>k</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">k</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> -th line. Otherwise,
+    output <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>60</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">60</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span></span></span></span> non-negative
+    integers <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>a</mi>
+                <mrow>
+                  <mi>k</mi>
+                  <mo separator="true">,</mo>
+                  <mn>1</mn>
+                </mrow>
+              </msub>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>a</mi>
+                <mrow>
+                  <mi>k</mi>
+                  <mo separator="true">,</mo>
+                  <mn>2</mn>
+                </mrow>
+              </msub>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>a</mi>
+                <mrow>
+                  <mi>k</mi>
+                  <mo separator="true">,</mo>
+                  <mn>3</mn>
+                </mrow>
+              </msub>
+              <mo separator="true">,</mo>
+              <mo>⋯</mo>
+              <mtext> </mtext>
+              <mo separator="true">,</mo>
+              <msub>
+                <mi>a</mi>
+                <mrow>
+                  <mi>k</mi>
+                  <mo separator="true">,</mo>
+                  <mn>60</mn>
+                </mrow>
+              </msub>
+            </mrow>
+            <annotation encoding="application/x-tex">a_{k,1},a_{k,2},a_{k,3},\cdots,a_{k,60}</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mtight">60</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>,
+    indicating the numbers of the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>60</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">60</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span></span></span></span> types
+    of hexominoes used in the solution in <strong>non-increasing order</strong>.
+  </li>
+  <li>
+    Then you should output <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>19</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">19</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">19</span></span></span></span> more lines,
+    the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>T</mi>
+              <mo>+</mo>
+              <mi>i</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">T+i</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> -th line in your output
+    (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>i</mi>
+              <mo>≤</mo>
+              <mn>19</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">1\le i\le19</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7955em;vertical-align:-0.136em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">19</span></span></span></span>) should contain a
+    string <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>R</mi>
+                <mi>i</mi>
+              </msub>
+            </mrow>
+            <annotation encoding="application/x-tex">R_i</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> consisting
+    of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>19</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">19</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">19</span></span></span></span> characters, indicating
+    the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>i</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">i</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> -th row of your solution.
+  </li>
+</ul>
+<p>
+  You have to make sure that the tenth character
+  of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>R</mi>
+              <mn>10</mn>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">R_{10}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is '.', while the rest of the
+  characters are number digits. 4-connected characters with the same
+  number represent a block of your solution. Any output violating the form
+  above or not satisfying the requirements of a real solution will be
+  considered as Wrong Answer.If multiple solutions exist, output any.
+</p>
+<h3>示例1</h3>
+<h4>输入</h4>
+<pre><code class="hljs language-plain">2
+0001114545454001100
+0001114545454001100
+1110004545454001100
+1110004545454110011
+0001114545454110011
+0001114545454110011
+4444443222222444444
+5555553001113555555
+4444443001113444444
+555555300.003555555
+4444443111003444444
+5555553111003555555
+4444442222223444444
+1100114545454111000
+1100114545454111000
+1100114545454000111
+0011004545454000111
+0011004545454111000
+0011004545454111000
+3141592653589793238
+4626433832795028841
+9716939937510582097
+4944592307816406286
+2089986280348253421
+1706798214808651328
+2306647093844609550
+5822317253594081284
+8111745028410270193
+852110555.964462294
+8954930381964428810
+9756659334461284756
+4823378678316527120
+1909145648566923460
+3486104543266482133
+9360726024914127372
+4587006606315588174
+8815209209628292540
+9171536436789259036
+</code></pre>
+<h4>输出</h4>
+<pre><code class="hljs language-plain">32 28 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+-1
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+000000000.000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+0000000000000000000
+</code></pre>
+<h4>说明</h4>
+<p>
+  The first solution of your friend
+  contains <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>32</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">32</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span></span></span></span> hexominoes on the left
+  and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>28</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">28</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">28</span></span></span></span> hexominoes on the right shown in the
+  image below.
+</p>
+<p>
+  <img src="https://uploadfiles.nowcoder.com/images/20250810/0_1754803679056/D37AF07FFF6F6393980676013C7C2975" alt="">{style="height:auto;width:240px;"}
+</p>
+<p>
+  The second solution of your friend contains blocks that are not
+  hexominoes.However, in the sample output, your solution does <strong>not</strong> satisfy the
+  requirements of a real solution. Thus, the sample output will be
+  considered as Wrong Answer.
+</p>
+16:["$","$L1a",null,{"raw":"$1b","htmlContent":"$1c"}]
+12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+e:null
+10:{"metadata":[],"error":null,"digest":"$undefined"}
+15:"$10:metadata"
