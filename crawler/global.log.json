@@ -1,41 +1,5 @@
 [
   {
-    "time": "2025-08-13T18:27:01.101982+08:00",
-    "level": "important",
-    "platform": "nowcoder",
-    "msg": "nowcoder Crawler started at 2025-08-13T18:27:01.101965+08:00"
-  },
-  {
-    "time": "2025-08-13T18:27:57.572554+08:00",
-    "level": "important",
-    "platform": "nowcoder",
-    "msg": "nowcoder Crawler finished successfully at 2025-08-13T18:27:57.572548+08:00"
-  },
-  {
-    "time": "2025-08-14T04:25:57.616890+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-08-14T04:25:57.616878+08:00"
-  },
-  {
-    "time": "2025-08-14T04:26:08.547551+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-08-14T04:26:08.547545+08:00"
-  },
-  {
-    "time": "2025-08-14T04:26:09.103110+08:00",
-    "level": "important",
-    "platform": "hdu",
-    "msg": "hdu Crawler started at 2025-08-14T04:26:09.103096+08:00"
-  },
-  {
-    "time": "2025-08-14T04:26:57.132860+08:00",
-    "level": "important",
-    "platform": "hdu",
-    "msg": "hdu Crawler finished successfully at 2025-08-14T04:26:57.132854+08:00"
-  },
-  {
     "time": "2025-08-14T04:26:58.284373+08:00",
     "level": "important",
     "platform": "nowcoder",
@@ -118,5 +82,41 @@
     "level": "important",
     "platform": "nowcoder",
     "msg": "nowcoder Crawler finished successfully at 2025-08-15T04:27:55.370190+08:00"
+  },
+  {
+    "time": "2025-08-15T18:24:07.558412+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-08-15T18:24:07.558393+08:00"
+  },
+  {
+    "time": "2025-08-15T18:24:19.001382+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-08-15T18:24:19.001376+08:00"
+  },
+  {
+    "time": "2025-08-15T18:24:19.606120+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler started at 2025-08-15T18:24:19.606085+08:00"
+  },
+  {
+    "time": "2025-08-15T18:25:29.619589+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler finished successfully at 2025-08-15T18:25:29.619584+08:00"
+  },
+  {
+    "time": "2025-08-15T18:25:30.856686+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler started at 2025-08-15T18:25:30.856669+08:00"
+  },
+  {
+    "time": "2025-08-15T18:26:40.915062+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler finished successfully at 2025-08-15T18:26:40.915054+08:00"
   }
 ]
