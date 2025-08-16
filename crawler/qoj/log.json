@@ -1,71 +1,5 @@
 [
   {
-    "time": "2025-08-14T18:26:37.455069+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-08-14T18:26:37.457233+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-08-14T18:26:37.457769+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-08-14T18:26:38.688512+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1198895), stopping."
-  },
-  {
-    "time": "2025-08-14T18:26:38.689325+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-08-14T18:26:38.689933+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-08-14T18:26:38.689926+08:00"
-  },
-  {
-    "time": "2025-08-15T04:25:57.401529+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2025-08-15T04:25:57.819078+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-08-15T04:25:57.819035+08:00"
-  },
-  {
-    "time": "2025-08-15T04:26:05.095612+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-08-15T04:26:07.174111+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contest list is empty, no contests to fetch. Exiting."
-  },
-  {
-    "time": "2025-08-15T04:26:07.174826+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
     "time": "2025-08-15T04:26:07.176002+08:00",
     "level": "info",
     "platform": "qoj",
@@ -298,5 +232,71 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-08-16T18:21:54.436122+08:00"
+  },
+  {
+    "time": "2025-08-17T04:22:54.340522+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Download directory does not exist, creating it."
+  },
+  {
+    "time": "2025-08-17T04:22:54.627612+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-08-17T04:22:54.627597+08:00"
+  },
+  {
+    "time": "2025-08-17T04:23:00.628323+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-08-17T04:23:02.713139+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contest list is empty, no contests to fetch. Exiting."
+  },
+  {
+    "time": "2025-08-17T04:23:02.713803+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-08-17T04:23:02.714928+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-08-17T04:23:02.717132+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-08-17T04:23:02.717669+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-08-17T04:23:04.654563+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1198895), stopping."
+  },
+  {
+    "time": "2025-08-17T04:23:04.655383+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-08-17T04:23:04.655974+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-08-17T04:23:04.655967+08:00"
   }
 ]

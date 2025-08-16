@@ -1,10 +1,10 @@
 {
-  "submission_id": "78865132",
-  "status": "TLE",
-  "time": "2001 ms",
-  "memory": "0 KB",
+  "submission_id": "78888421",
+  "status": "AC",
+  "time": "1189 ms",
+  "memory": "11700 KB",
   "language": "C++",
-  "submit_time": "2025-08-14T16:41:08+08:00",
+  "submit_time": "2025-08-16T23:24:14+08:00",
   "problem_link": "https://ac.nowcoder.com/acm/contest/108307/G",
-  "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78865132"
+  "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78888421"
 }
