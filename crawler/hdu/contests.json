@@ -601,5 +601,77 @@
         "link": "https://acm.hdu.edu.cn/contest/problem?cid=1180&pid=1012"
       }
     ]
+  },
+  {
+    "name": "2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff0810\uff09",
+    "date": "2025-08-18",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1181",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Submission",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "Multiple and Factor",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "Matrix Equation",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "Stocks Trading",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "Range Convex Checker",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "Oden VS Genshin Impact",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "Message Spreading",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "Repeater",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "PalindromemordnilaP",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "Cut Check Bit",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "Worst Problem Of All Time",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "Counting Colorful Sequence",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1012"
+      },
+      {
+        "letter": "M",
+        "name": "Spring River Flower Moon Night",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1181&pid=1013"
+      }
+    ]
   }
 ]
