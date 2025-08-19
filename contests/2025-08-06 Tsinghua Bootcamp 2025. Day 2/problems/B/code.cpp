@@ -20,7 +20,7 @@ struct Point {
     int Cid;
   
     //Point(const Point& rhs): x(rhs.x), y(rhs.y) { } //拷贝构造函数  
-    Point(double x = 0.0, double y = 0.0): x(x), y(y) { }   //构造函数  
+    Point(double x = 0.0, double y = 0.0): x(x), y(y) {Cang=0;Cid=0; }   //构造函数  
   
     friend istream& operator >> (istream& in, Point& P) { return in >> P.x >> P.y; }  
     friend ostream& operator << (ostream& out, const Point& P) { return out << P.x << ' ' << P.y; }  
@@ -72,6 +72,15 @@ double Angle(const Vector& A, const Vector& B) { return acos(Dot(A, B)/Length(A)
 double Cross(const Vector& A, const Vector& B) { return A.x*B.y - A.y*B.x; }    //叉积  
 double Area(const Point& A, const Point& B, const Point& C) { return fabs(Cross(B-A, C-A)); }  
 
+void Prin(vector<Point> p,string s=""){
+    cout << s;
+    printf(": ");
+    for(Point u:p){
+        printf("(%.3lf,%.3lf) ",u.x,u.y);
+    }
+    putchar('\n');
+}
+
 vector<Point> ConvexHull(vector<Point> p) {  
     //预处理，删除重复点  
     sort(p.begin(), p.end());  
@@ -101,6 +110,7 @@ Vector Polar(double angle) {
 }
 vector<Point> resa,resb;
 vector<Point> GetCommonTangents(const Circle& A, const Circle& B) {
+    if(A.r < B.r)return GetCommonTangents(B,A);
     resa.clear();resb.clear();
     vector<Point> res;//可以改为vector<Line>等，按需要决定
     Vector v = B.c - A.c;
@@ -112,26 +122,27 @@ vector<Point> GetCommonTangents(const Circle& A, const Circle& B) {
         // 同心但半径不等，无公切线
         return res;
     }
-    double base = atan2(v.y, v.x);
     double r_sum = A.r + B.r;
     double r_diff = fabs(A.r - B.r);
-
+    if (dcmp(d - r_diff) == 0) { // 内切，只有一条外公切线
+        Point p = A.c + v * (A.r / d);
+        Vector dir = Rotate(v, PI / 2);
+        Line line = Line(p, dir);
+        //resa.push_back(p);resb.push_back(p);
+        //res.push_back(p);
+    }
     // 计算外公切线 (d >= |r1 - r2| 时存在)
-    if (dcmp(d - r_diff) >= 0) {
-        double alpha = asin(r_diff / d);
-        double angles[2] = { base + (PI / 2 - alpha), base - (PI / 2 - alpha) };
+    if (dcmp(d - r_diff) > 0) {//内切已经讨论过了
+        double alpha = acos(r_diff / d);
+        double angles[2] = {alpha,-alpha};
         //cout << base << ' ' << alpha << endl;
         for (int i = 0; i < 2; i++) {
-            Vector unit_vec = Polar(angles[i]);
+            Vector unit_vec = Rotate(v,angles[i]);
+            unit_vec = unit_vec * (1.0/Length(unit_vec));
             //cout << angles[i] << ' ' << unit_vec << ' ' << A.r << ' ' << B.r << endl;
             Point p1 = A.c + unit_vec * A.r;
             Point p2 = B.c + unit_vec * B.r;
             Line line = Line(p1, p2 - p1);
-            //TangentLine tl;
-            //tl.line = line;
-            //tl.point_on_first = p1;
-            //tl.point_on_second = p2;
-            //tl.type = 0; // external
             res.push_back(p1);res.push_back(p2);
             resa.push_back(p1);resb.push_back(p2);
         }
@@ -140,34 +151,18 @@ vector<Point> GetCommonTangents(const Circle& A, const Circle& B) {
     // 计算内公切线
     if (dcmp(d - r_sum) >= 0) { // 相离或外切
         double beta = acos(r_sum / d);
-        double angles[2] = { base + (PI / 2 - beta), base - (PI / 2 - beta) };
+        double angles[2] = {beta,-beta};
         for (int i = 0; i < 2; i++) {
-            Vector unit_vec = Polar(angles[i]);
+            Vector unit_vec = Rotate(v,angles[i]);
             Point p1 = A.c + unit_vec * A.r;
             Point p2 = B.c - unit_vec * B.r; // 异侧
             Line line = Line(p1, p2 - p1);
-            //TangentLine tl;
-            //tl.line = line;
-            //tl.point_on_first = p1;
-            //tl.point_on_second = p2;
-            //tl.type = 1; // internal
             //res.push_back(p1);res.push_back(p2);
-            resa.push_back(p1);resb.push_back(p2);
+            //resa.push_back(p1);resb.push_back(p2);
         }
-    } else if (dcmp(d - r_diff) == 0) { // 内切
-        Point p = A.c + v * (A.r / d);
-        Vector dir = Rotate(v, PI / 2);
-        Line line = Line(p, dir);
-        //TangentLine tl;
-        //tl.line = line;
-        //tl.point_on_first = p;
-        //tl.point_on_second = p;
-        //tl.type = 1; // internal
-        //res.push_back(p);
-        resa.push_back(p);resb.push_back(p);
-        res.push_back(p);
     }
     sort(res.begin(), res.end());
+    //Prin(res,"res");
     // unique将重复元素移至末尾，返回新逻辑结尾，返回点需要进行这个操作，返回边不需要
     auto last = unique(res.begin(), res.end());
     res.erase(last, res.end());
@@ -196,6 +191,8 @@ signed main(){
     for(int i=1;i<=n;i++){
         for(int j=1;j<i;j++){
             vector<Point> P = GetCommonTangents(a[i],a[j]);
+            //printf("i=%lld,j=%lld,",i,j);
+            //Prin(P,"tangents");
             for(Point A:P){
                 //printf("tangent points of circle %lld and %lld includes (%.5lf,%.5lf)\n",i,j,A.x,A.y);
                 
@@ -217,21 +214,33 @@ signed main(){
     //}
     vector<Point> c = ConvexHull(p);
     double S = PolygonArea(c);
-    ///cout << S << endl;
+    //cout << S << endl;
     double L = 0;
     c.push_back(c[0]);
-    //for(Point v:c){
-    //    printf("c includes %.5lf,%.5lf,Cid=%lld\n",v.x,v.y,v.Cid);
-    //}
+    //Prin(c,"c");
     for(int i=1;i<c.size();i++){
+        if(c[i].Cid == 0 || c[i-1].Cid == 0){
+            exit(-1);
+        }
         if(c[i].Cid == c[i-1].Cid){
-            //printf("Cang = %.5lf,%.5lf\n",c[i-1].Cang,c[i].Cang);
+            //printf("Cang = %.5lf,%.5lf,r=%.5lf\n",c[i-1].Cang,c[i].Cang,a[c[i].Cid].r);
             double an = c[i].Cang - c[i-1].Cang;
             double r = a[c[i].Cid].r;
             Point cc = a[c[i].Cid].c;
-            if(c[i].Cang < c[i-1].Cang)an = c[i].Cang - c[i-1].Cang + 2*PI;
+            
+            if(c[i].Cang < c[i-1].Cang){
+                an = c[i].Cang - c[i-1].Cang + 2*PI;
+            }
+            /*if(an > PI){
+                S += an*r*r*0.5+0.5*abs(Cross(c[i-1]-cc,c[i]-cc));
+            }
+            else{
+                S += an*r*r*0.5-0.5*abs(Cross(c[i-1]-cc,c[i]-cc));
+            }*/
+            S += r*r*0.5*(an-sin(an));//弓形面积公式
+            //cout << an << endl;
             L += an*r;
-            S += an*r*r*0.5-0.5*Cross(c[i-1]-cc,c[i]-cc);
+            
         }
         else{
             L += Length(c[i]-c[i-1]);
