@@ -3,5 +3,7 @@
   "name": "Worst Problem Of All Time",
   "time_limit": "7000 MS",
   "memory_limit": "524288 K",
-  "solved": false
+  "solved": true,
+  "submit_time": "2025-08-21T17:17:56+08:00",
+  "solve_time": "2025-08-21T17:17:56+08:00"
 }
