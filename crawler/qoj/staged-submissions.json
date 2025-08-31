@@ -252,5 +252,16 @@
     "submit_time": "2025-08-03T13:14:57+08:00",
     "problem_link": "https://qoj.ac/contest/2438/problem/13902",
     "submission_link": "https://qoj.ac/submission/1198895"
+  },
+  {
+    "submission_id": "#1275252",
+    "problem_name": "Subway",
+    "status": "AC",
+    "time": "140ms",
+    "memory": "66756kb",
+    "language": "C++20",
+    "submit_time": "2025-08-31T17:51:40+08:00",
+    "problem_link": "https://qoj.ac/contest/1828/problem/9569",
+    "submission_link": "https://qoj.ac/submission/1275252"
   }
 ]
