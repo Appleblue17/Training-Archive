@@ -3,5 +3,7 @@
   "name": "Fire",
   "time_limit": "1 s",
   "memory_limit": "256 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2025-08-31T14:56:14+08:00",
+  "solve_time": "2025-08-31T14:56:14+08:00"
 }

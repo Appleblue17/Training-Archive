@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1126444",
+  "submission_id": "#1274948",
   "problem_name": "Bingo",
   "status": "AC",
-  "time": "173ms",
-  "memory": "16052kb",
-  "language": "C++14",
-  "submit_time": "2025-06-28T10:38:15",
-  "problem_link": "https://qoj.ac/contest/1780/problem/8932",
-  "submission_link": "https://qoj.ac/submission/1126444"
+  "time": "100ms",
+  "memory": "40804kb",
+  "language": "C++20",
+  "submit_time": "2025-08-31T16:04:24+08:00",
+  "problem_link": "https://qoj.ac/contest/1828/problem/9572",
+  "submission_link": "https://qoj.ac/submission/1274948"
 }
