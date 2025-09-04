@@ -1,107 +1,5 @@
 [
   {
-    "time": "2025-09-02T04:22:13.098618+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-09-02T04:22:13.100935+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-09-02T04:22:13.101514+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-09-02T04:22:14.281783+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1275252), stopping."
-  },
-  {
-    "time": "2025-09-02T04:22:14.282610+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-09-02T04:22:14.283209+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-09-02T04:22:14.283203+08:00"
-  },
-  {
-    "time": "2025-09-02T18:23:30.297714+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2025-09-02T18:23:30.515568+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-09-02T18:23:30.515552+08:00"
-  },
-  {
-    "time": "2025-09-02T18:23:37.530037+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-09-02T18:23:39.553541+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contest list is empty, no contests to fetch. Exiting."
-  },
-  {
-    "time": "2025-09-02T18:23:39.554248+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2025-09-02T18:23:39.555346+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-09-02T18:23:39.557644+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-09-02T18:23:39.558264+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-09-02T18:23:41.323315+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1275252), stopping."
-  },
-  {
-    "time": "2025-09-02T18:23:41.324138+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-09-02T18:23:41.324694+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-09-02T18:23:41.324688+08:00"
-  },
-  {
     "time": "2025-09-03T04:21:21.278324+08:00",
     "level": "warning",
     "platform": "qoj",
@@ -298,5 +196,107 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-09-04T04:23:26.978547+08:00"
+  },
+  {
+    "time": "2025-09-04T18:21:24.294034+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Download directory does not exist, creating it."
+  },
+  {
+    "time": "2025-09-04T18:21:24.507573+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-09-04T18:21:24.507558+08:00"
+  },
+  {
+    "time": "2025-09-04T18:21:29.633142+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-09-04T18:21:32.520830+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 3rd Universal Cup Semifinals (2025-09-04)"
+  },
+  {
+    "time": "2025-09-04T18:21:32.521702+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2025-09-04 The 3rd Universal Cup Semifinals"
+  },
+  {
+    "time": "2025-09-04T18:22:38.427805+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: The 3rd Universal Cup Semifinals (2025-09-04)"
+  },
+  {
+    "time": "2025-09-04T18:22:38.428647+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-09-04T18:22:38.452689+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-09-04T18:22:38.455662+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-09-04T18:22:38.456324+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-09-04T18:22:44.902423+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 1."
+  },
+  {
+    "time": "2025-09-04T18:22:44.903128+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 2."
+  },
+  {
+    "time": "2025-09-04T18:22:54.874812+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 2."
+  },
+  {
+    "time": "2025-09-04T18:22:54.875619+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 3."
+  },
+  {
+    "time": "2025-09-04T18:22:56.154371+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1281951), stopping."
+  },
+  {
+    "time": "2025-09-04T18:22:56.155296+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-09-04T18:22:56.156062+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-09-04T18:22:56.156057+08:00"
   }
 ]

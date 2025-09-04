@@ -2623,5 +2623,77 @@
         "solved": false
       }
     ]
+  },
+  {
+    "name": "The 3rd Universal Cup Semifinals",
+    "date": "2025-09-04",
+    "link": "https://qoj.ac/contest/2506",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Iridescent Universe 2",
+        "link": "https://qoj.ac/contest/2506/problem/14014"
+      },
+      {
+        "letter": "B",
+        "name": "Queue Editor",
+        "link": "https://qoj.ac/contest/2506/problem/14015"
+      },
+      {
+        "letter": "C",
+        "name": "Adjacent Add",
+        "link": "https://qoj.ac/contest/2506/problem/14016"
+      },
+      {
+        "letter": "D",
+        "name": "Circular Matching",
+        "link": "https://qoj.ac/contest/2506/problem/14017"
+      },
+      {
+        "letter": "E",
+        "name": "Circular Convolution 2",
+        "link": "https://qoj.ac/contest/2506/problem/14018"
+      },
+      {
+        "letter": "F",
+        "name": "Even Circuit",
+        "link": "https://qoj.ac/contest/2506/problem/14019"
+      },
+      {
+        "letter": "G",
+        "name": "Master of Cards",
+        "link": "https://qoj.ac/contest/2506/problem/14020"
+      },
+      {
+        "letter": "H",
+        "name": "Shortcut on Tree",
+        "link": "https://qoj.ac/contest/2506/problem/14021"
+      },
+      {
+        "letter": "I",
+        "name": "Ethanol",
+        "link": "https://qoj.ac/contest/2506/problem/14022"
+      },
+      {
+        "letter": "J",
+        "name": "International Olympiad in Fishing",
+        "link": "https://qoj.ac/contest/2506/problem/14023"
+      },
+      {
+        "letter": "K",
+        "name": "Degree Sequence 3",
+        "link": "https://qoj.ac/contest/2506/problem/14024"
+      },
+      {
+        "letter": "L",
+        "name": "Bot Friends 2",
+        "link": "https://qoj.ac/contest/2506/problem/14025"
+      },
+      {
+        "letter": "M",
+        "name": "Traveling in Cells 3",
+        "link": "https://qoj.ac/contest/2506/problem/14026"
+      }
+    ]
   }
 ]
