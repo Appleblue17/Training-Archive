@@ -2695,5 +2695,72 @@
         "link": "https://qoj.ac/contest/2506/problem/14026"
       }
     ]
+  },
+  {
+    "name": "The 2022 ICPC Asia Hong Kong Regional Contest",
+    "date": "2025-09-06",
+    "link": "https://qoj.ac/contest/1099",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "TreeScript",
+        "link": "https://qoj.ac/contest/1099/problem/5455"
+      },
+      {
+        "letter": "B",
+        "name": "Big Picture",
+        "link": "https://qoj.ac/contest/1099/problem/5456"
+      },
+      {
+        "letter": "C",
+        "name": "Painting Grid",
+        "link": "https://qoj.ac/contest/1099/problem/5457"
+      },
+      {
+        "letter": "D",
+        "name": "Shortest Path Query",
+        "link": "https://qoj.ac/contest/1099/problem/5458"
+      },
+      {
+        "letter": "E",
+        "name": "Goose, goose, DUCK?",
+        "link": "https://qoj.ac/contest/1099/problem/5459"
+      },
+      {
+        "letter": "F",
+        "name": "Sum of Numbers",
+        "link": "https://qoj.ac/contest/1099/problem/5460"
+      },
+      {
+        "letter": "G",
+        "name": "Paddle Star",
+        "link": "https://qoj.ac/contest/1099/problem/5461"
+      },
+      {
+        "letter": "H",
+        "name": "Another Goose Goose Duck Problem",
+        "link": "https://qoj.ac/contest/1099/problem/5462"
+      },
+      {
+        "letter": "I",
+        "name": "Range Closest Pair of Points Query",
+        "link": "https://qoj.ac/contest/1099/problem/5463"
+      },
+      {
+        "letter": "J",
+        "name": "Dice Game",
+        "link": "https://qoj.ac/contest/1099/problem/5464"
+      },
+      {
+        "letter": "K",
+        "name": "Maximum GCD",
+        "link": "https://qoj.ac/contest/1099/problem/5465"
+      },
+      {
+        "letter": "L",
+        "name": "Permutation Compression",
+        "link": "https://qoj.ac/contest/1099/problem/5466"
+      }
+    ]
   }
 ]
