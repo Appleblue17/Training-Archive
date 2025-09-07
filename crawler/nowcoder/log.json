@@ -1,302 +1,302 @@
 [
   {
-    "time": "2025-09-07T18:21:07.985310+08:00",
+    "time": "2025-09-08T04:22:12.053121+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-17 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84252. Skipped."
   },
   {
-    "time": "2025-09-07T18:21:07.985833+08:00",
+    "time": "2025-09-08T04:22:12.053656+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: \"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84253 (2025-07-22)"
   },
   {
-    "time": "2025-09-07T18:21:07.986365+08:00",
+    "time": "2025-09-08T04:22:12.054215+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-22 \"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84253. Skipped."
   },
   {
-    "time": "2025-09-07T18:21:07.986881+08:00",
+    "time": "2025-09-08T04:22:12.054781+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84254 (2025-07-24)"
   },
   {
-    "time": "2025-09-07T18:21:07.987500+08:00",
+    "time": "2025-09-08T04:22:12.055349+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-24 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84254. Skipped."
   },
   {
-    "time": "2025-09-07T18:21:07.988019+08:00",
+    "time": "2025-09-08T04:22:12.055922+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84255 (2025-07-29)"
   },
   {
-    "time": "2025-09-07T18:21:07.988567+08:00",
+    "time": "2025-09-08T04:22:12.056495+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-29 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84255. Skipped."
   },
   {
-    "time": "2025-09-07T18:21:07.989100+08:00",
+    "time": "2025-09-08T04:22:12.057162+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84256 (2025-07-31)"
   },
   {
-    "time": "2025-09-07T18:21:07.989661+08:00",
+    "time": "2025-09-08T04:22:12.057773+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-31 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84256. Skipped."
   },
   {
-    "time": "2025-09-07T18:21:07.990202+08:00",
+    "time": "2025-09-08T04:22:12.058349+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: \"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84257 (2025-08-05)"
   },
   {
-    "time": "2025-09-07T18:21:07.990788+08:00",
+    "time": "2025-09-08T04:22:12.058953+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-08-05 \"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84257. Skipped."
   },
   {
-    "time": "2025-09-07T18:21:07.991436+08:00",
+    "time": "2025-09-08T04:22:12.059545+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84258 (2025-08-07)"
   },
   {
-    "time": "2025-09-07T18:21:07.992064+08:00",
+    "time": "2025-09-08T04:22:12.060165+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-08-07 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84258. Skipped."
   },
   {
-    "time": "2025-09-07T18:21:07.992684+08:00",
+    "time": "2025-09-08T04:22:12.060789+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84259 (2025-08-12)"
   },
   {
-    "time": "2025-09-07T18:21:07.993634+08:00",
+    "time": "2025-09-08T04:22:12.061406+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-08-12 \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84259. Skipped."
   },
   {
-    "time": "2025-09-07T18:21:07.994611+08:00",
+    "time": "2025-09-08T04:22:12.062036+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u842510 (2025-08-14)"
   },
   {
-    "time": "2025-09-07T18:21:07.995751+08:00",
+    "time": "2025-09-08T04:22:12.062669+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-08-14 \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u842510. Skipped."
   },
   {
-    "time": "2025-09-07T18:21:07.996873+08:00",
+    "time": "2025-09-08T04:22:12.063314+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Contests fetched successfully."
   },
   {
-    "time": "2025-09-07T18:21:07.998387+08:00",
+    "time": "2025-09-08T04:22:12.064181+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start updating staged submissions..."
   },
   {
-    "time": "2025-09-07T18:21:07.999611+08:00",
+    "time": "2025-09-08T04:22:12.064986+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching new submissions..."
   },
   {
-    "time": "2025-09-07T18:21:08.000781+08:00",
+    "time": "2025-09-08T04:22:12.065691+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108298."
   },
   {
-    "time": "2025-09-07T18:21:11.531271+08:00",
+    "time": "2025-09-08T04:22:15.120541+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78239197), stopping."
   },
   {
-    "time": "2025-09-07T18:21:11.532107+08:00",
+    "time": "2025-09-08T04:22:15.121358+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108298, page 1."
   },
   {
-    "time": "2025-09-07T18:21:11.532841+08:00",
+    "time": "2025-09-08T04:22:15.122045+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108299."
   },
   {
-    "time": "2025-09-07T18:21:14.580859+08:00",
+    "time": "2025-09-08T04:22:18.188109+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78282935), stopping."
   },
   {
-    "time": "2025-09-07T18:21:14.581731+08:00",
+    "time": "2025-09-08T04:22:18.188998+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108299, page 1."
   },
   {
-    "time": "2025-09-07T18:21:14.582531+08:00",
+    "time": "2025-09-08T04:22:18.189805+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108300."
   },
   {
-    "time": "2025-09-07T18:21:17.617995+08:00",
+    "time": "2025-09-08T04:22:21.246776+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78393143), stopping."
   },
   {
-    "time": "2025-09-07T18:21:17.619457+08:00",
+    "time": "2025-09-08T04:22:21.247679+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108300, page 1."
   },
   {
-    "time": "2025-09-07T18:21:17.620938+08:00",
+    "time": "2025-09-08T04:22:21.248490+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108301."
   },
   {
-    "time": "2025-09-07T18:21:20.658789+08:00",
+    "time": "2025-09-08T04:22:24.540124+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78634159), stopping."
   },
   {
-    "time": "2025-09-07T18:21:20.659718+08:00",
+    "time": "2025-09-08T04:22:24.541084+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108301, page 1."
   },
   {
-    "time": "2025-09-07T18:21:20.660481+08:00",
+    "time": "2025-09-08T04:22:24.541917+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108302."
   },
   {
-    "time": "2025-09-07T18:21:23.726034+08:00",
+    "time": "2025-09-08T04:22:27.592403+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78560328), stopping."
   },
   {
-    "time": "2025-09-07T18:21:23.726996+08:00",
+    "time": "2025-09-08T04:22:27.593304+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108302, page 1."
   },
   {
-    "time": "2025-09-07T18:21:23.727811+08:00",
+    "time": "2025-09-08T04:22:27.594103+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108303."
   },
   {
-    "time": "2025-09-07T18:21:26.757615+08:00",
+    "time": "2025-09-08T04:22:30.643265+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78631296), stopping."
   },
   {
-    "time": "2025-09-07T18:21:26.758550+08:00",
+    "time": "2025-09-08T04:22:30.644168+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108303, page 1."
   },
   {
-    "time": "2025-09-07T18:21:26.759362+08:00",
+    "time": "2025-09-08T04:22:30.644950+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108304."
   },
   {
-    "time": "2025-09-07T18:21:29.798948+08:00",
+    "time": "2025-09-08T04:22:33.689134+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "No submissions found on this page. Probably the contest has not started yet."
   },
   {
-    "time": "2025-09-07T18:21:29.799865+08:00",
+    "time": "2025-09-08T04:22:33.690179+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108305."
   },
   {
-    "time": "2025-09-07T18:21:32.875784+08:00",
+    "time": "2025-09-08T04:22:36.757093+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "No submissions found on this page. Probably the contest has not started yet."
   },
   {
-    "time": "2025-09-07T18:21:32.876721+08:00",
+    "time": "2025-09-08T04:22:36.758035+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108306."
   },
   {
-    "time": "2025-09-07T18:21:35.918941+08:00",
+    "time": "2025-09-08T04:22:39.832927+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78843710), stopping."
   },
   {
-    "time": "2025-09-07T18:21:35.920006+08:00",
+    "time": "2025-09-08T04:22:39.833910+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108306, page 1."
   },
   {
-    "time": "2025-09-07T18:21:35.920931+08:00",
+    "time": "2025-09-08T04:22:39.834710+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108307."
   },
   {
-    "time": "2025-09-07T18:21:38.987314+08:00",
+    "time": "2025-09-08T04:22:42.887516+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78889966), stopping."
   },
   {
-    "time": "2025-09-07T18:21:38.988366+08:00",
+    "time": "2025-09-08T04:22:42.888559+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108307, page 1."
   },
   {
-    "time": "2025-09-07T18:21:38.989457+08:00",
+    "time": "2025-09-08T04:22:42.889636+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Submissions fetched successfully."
   },
   {
-    "time": "2025-09-07T18:21:38.990471+08:00",
+    "time": "2025-09-08T04:22:42.890586+08:00",
     "level": "important",
     "platform": "nowcoder",
-    "msg": "nowcoder Crawler finished successfully at 2025-09-07T18:21:38.990465+08:00"
+    "msg": "nowcoder Crawler finished successfully at 2025-09-08T04:22:42.890579+08:00"
   }
 ]
