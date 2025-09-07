@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1285557",
+  "submission_id": "#1295385",
   "problem_name": "Circular Matching",
-  "status": "TL",
-  "time": "116ms",
-  "memory": "947772kb",
-  "language": "C++14",
-  "submit_time": "2025-09-04T14:05:52+08:00",
+  "status": "AC",
+  "time": "125ms",
+  "memory": "93148kb",
+  "language": "C++20",
+  "submit_time": "2025-09-07T09:52:59+08:00",
   "problem_link": "https://qoj.ac/contest/2506/problem/14017",
-  "submission_link": "https://qoj.ac/submission/1285557"
+  "submission_link": "https://qoj.ac/submission/1295385"
 }
