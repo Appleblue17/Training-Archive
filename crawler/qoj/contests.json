@@ -2762,5 +2762,72 @@
         "link": "https://qoj.ac/contest/1099/problem/5466"
       }
     ]
+  },
+  {
+    "name": "The 2024 ICPC Asia Seoul Regional Contest",
+    "date": "2025-09-08",
+    "link": "https://qoj.ac/contest/1989",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Bottles",
+        "link": "https://qoj.ac/contest/1989/problem/10535"
+      },
+      {
+        "letter": "B",
+        "name": "Card Flipping",
+        "link": "https://qoj.ac/contest/1989/problem/10536"
+      },
+      {
+        "letter": "C",
+        "name": "Colorful Quadrants",
+        "link": "https://qoj.ac/contest/1989/problem/10537"
+      },
+      {
+        "letter": "D",
+        "name": "Ladder Update",
+        "link": "https://qoj.ac/contest/1989/problem/10538"
+      },
+      {
+        "letter": "E",
+        "name": "Mausoleum",
+        "link": "https://qoj.ac/contest/1989/problem/10539"
+      },
+      {
+        "letter": "F",
+        "name": "Pair Sorting",
+        "link": "https://qoj.ac/contest/1989/problem/10540"
+      },
+      {
+        "letter": "G",
+        "name": "Palindromic Length",
+        "link": "https://qoj.ac/contest/1989/problem/10541"
+      },
+      {
+        "letter": "H",
+        "name": "Protecting Kingdom",
+        "link": "https://qoj.ac/contest/1989/problem/10542"
+      },
+      {
+        "letter": "I",
+        "name": "Square Stamping",
+        "link": "https://qoj.ac/contest/1989/problem/10543"
+      },
+      {
+        "letter": "J",
+        "name": "Street Development",
+        "link": "https://qoj.ac/contest/1989/problem/10544"
+      },
+      {
+        "letter": "K",
+        "name": "String Rank",
+        "link": "https://qoj.ac/contest/1989/problem/10545"
+      },
+      {
+        "letter": "L",
+        "name": "Triangle",
+        "link": "https://qoj.ac/contest/1989/problem/10546"
+      }
+    ]
   }
 ]
