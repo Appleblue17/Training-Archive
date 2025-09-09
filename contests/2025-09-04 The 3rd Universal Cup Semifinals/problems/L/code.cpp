@@ -19,13 +19,28 @@ template <typename T>inline void read(T &x){
 }
 const int N=1e6+5;
 int T, n, m;
-ll a[N], dis[N], dis2[N];
+ll a[N], dis[N]; int fr[N];
 vector<pii> e[N];
+bool v[N];
+struct node{
+	int x, y; ll z;
+};
+vector<node> vec;
+int fa[N];
+int get(int x){
+	if(x==fa[x]) return x;
+	return fa[x]=get(fa[x]);
+}
+bool merge(int x, int y){
+	x=get(x); y=get(y);
+	if(x==y) return false;
+	fa[x]=y; return true;
+}
 void solve(){
 	read(n); read(m);
 	priority_queue<pair<ll, int> > pq;
 	for(int i=1; i<=n; ++i) {
-		read(dis[i]); dis2[i]=1e18;
+		read(dis[i]); fr[i]=i; fa[i]=i; v[i]=0;
 		a[i]=dis[i];
 		e[i].clear();
 		pq.push(mapa(-dis[i], i));
@@ -35,35 +50,48 @@ void solve(){
 		e[x].ep(y, z); e[y].ep(x, z);
 	}
 	while(!pq.empty()){
-		int x=pq.top().se; ll cur=-pq.top().fi; pq.pop();
-		if(cur>dis2[x]) continue;
+		int x=pq.top().se; pq.pop();
+		if(v[x]) continue;
+		v[x]=1;
 		for(auto edg:e[x]){
 			int y=edg.fi, z=edg.se;
-			if(dis[y]>cur+z){
-				dis2[y]=dis[y];
-				dis[y]=cur+z;
+			if(dis[y]>dis[x]+z){
+				fr[y]=fr[x];
+				dis[y]=dis[x]+z;
 				pq.push(mapa(-dis[y], y));
 			}
-			else if(dis2[y]>cur+z){
-				dis2[y]=cur+z;
-				pq.push(mapa(-dis2[y], y));
+		}
+	}
+	ll ans=0;
+	for(int i=1; i<=n; ++i){
+		if(fr[i]!=i){
+			ans+=dis[i]+a[i];
+			assert(merge(i, fr[i]));
+		}
+	}
+	vec.clear();
+	for(int x=1; x<=n; ++x){
+		for(auto edg:e[x]) {
+			int y=edg.fi;
+			if(x>y) continue;
+			if(fr[x]!=fr[y]){
+				vec.ep((node){fr[x], fr[y], dis[x]+dis[y]+edg.se});
 			}
 		}
 	}
-	vector<ll> vec;
-	for(int i=1; i<=n; ++i){
-		if(dis[i]==a[i]){
-			vec.ep(dis2[i]);
-		}
-		else{
-			vec.ep(dis[i]);
+	sort(vec.begin(), vec.end(), [&](node x, node y){return x.z<y.z;});
+	for(auto t:vec){
+		if(merge(t.x, t.y)){
+			ans+=t.z;
 		}
 	}
-	sort(vec.begin(), vec.end());
-	vec.pop_back();
-	ll sum=0;
-	for(auto t:vec) sum+=t;
-	printf("%lld\n", sum);
+	a[0]=a[1];
+	for(int i=1; i<=n; ++i){
+		ans-=a[i];
+		a[0]=min(a[0], a[i]);
+	}
+	ans+=a[0];
+	printf("%lld\n", ans);
 }
 int main(){
 	// freopen("D:\\nya\\acm\\B\\test.in","r",stdin);

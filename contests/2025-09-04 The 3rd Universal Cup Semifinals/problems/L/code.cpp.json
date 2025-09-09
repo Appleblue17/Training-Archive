@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1307445",
+  "submission_id": "#1310927",
   "problem_name": "Bot Friends 2",
-  "status": "WA",
-  "time": "141ms",
-  "memory": "10192kb",
+  "status": "AC",
+  "time": "625ms",
+  "memory": "103880kb",
   "language": "C++20",
-  "submit_time": "2025-09-09T14:01:34+08:00",
+  "submit_time": "2025-09-09T21:18:05+08:00",
   "problem_link": "https://qoj.ac/contest/2506/problem/14025",
-  "submission_link": "https://qoj.ac/submission/1307445"
+  "submission_link": "https://qoj.ac/submission/1310927"
 }
