@@ -2829,5 +2829,67 @@
         "link": "https://qoj.ac/contest/1989/problem/10546"
       }
     ]
+  },
+  {
+    "name": "The 2022 ICPC World Finals Luxor",
+    "date": "2025-09-11",
+    "link": "https://qoj.ac/contest/1661",
+    "problems": [
+      {
+        "letter": "P",
+        "name": "Turning Red",
+        "link": "https://qoj.ac/contest/1661/problem/8680"
+      },
+      {
+        "letter": "Q",
+        "name": "Doing the Container Shuffle",
+        "link": "https://qoj.ac/contest/1661/problem/8685"
+      },
+      {
+        "letter": "R",
+        "name": "Zoo Management",
+        "link": "https://qoj.ac/contest/1661/problem/8686"
+      },
+      {
+        "letter": "S",
+        "name": "Bridging the Gap",
+        "link": "https://qoj.ac/contest/1661/problem/8683"
+      },
+      {
+        "letter": "T",
+        "name": "Carl\u2019s Vacation",
+        "link": "https://qoj.ac/contest/1661/problem/8677"
+      },
+      {
+        "letter": "U",
+        "name": "Toy Train Tracks",
+        "link": "https://qoj.ac/contest/1661/problem/8687"
+      },
+      {
+        "letter": "V",
+        "name": "Three Kinds of Dice",
+        "link": "https://qoj.ac/contest/1661/problem/8676"
+      },
+      {
+        "letter": "W",
+        "name": "Riddle of the Sphinx",
+        "link": "https://qoj.ac/contest/1661/problem/8674"
+      },
+      {
+        "letter": "X",
+        "name": "Quartets",
+        "link": "https://qoj.ac/contest/1661/problem/8688"
+      },
+      {
+        "letter": "Y",
+        "name": "Compression",
+        "link": "https://qoj.ac/contest/1661/problem/8689"
+      },
+      {
+        "letter": "Z",
+        "name": "Archaeological Recovery",
+        "link": "https://qoj.ac/contest/1661/problem/8690"
+      }
+    ]
   }
 ]
