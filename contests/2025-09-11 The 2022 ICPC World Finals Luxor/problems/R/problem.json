@@ -3,6 +3,7 @@
   "name": "Zoo Management",
   "time_limit": "5 s",
   "memory_limit": "2048 MB",
-  "solved": false,
-  "submit_time": "2025-09-11T14:07:13+08:00"
+  "solved": true,
+  "submit_time": "2025-09-12T11:30:47+08:00",
+  "solve_time": "2025-09-12T11:30:47+08:00"
 }

@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1323756",
+  "submission_id": "#1327641",
   "problem_name": "Zoo Management",
-  "status": "WA",
-  "time": "3ms",
-  "memory": "40960kb",
-  "language": "C++14",
-  "submit_time": "2025-09-11T14:07:13+08:00",
+  "status": "AC",
+  "time": "361ms",
+  "memory": "107232kb",
+  "language": "C++20",
+  "submit_time": "2025-09-12T11:30:47+08:00",
   "problem_link": "https://qoj.ac/contest/1661/problem/8686",
-  "submission_link": "https://qoj.ac/submission/1323756"
+  "submission_link": "https://qoj.ac/submission/1327641"
 }

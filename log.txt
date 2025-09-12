@@ -1,83 +1,11 @@
 1:"$Sreact.fragment"
 2:I[8521,[],""]
 3:I[1661,[],""]
-5:I[8211,["215","static/chunks/1951f239-e4c7a40f4938f7cd.js","81","static/chunks/81-a8569ca32ce37ffc.js","754","static/chunks/app/(main)/log/page-4366f62d550d562a.js"],"default"]
+5:I[8211,["215","static/chunks/1951f239-e4c7a40f4938f7cd.js","81","static/chunks/81-d563b76c84969650.js","754","static/chunks/app/(main)/log/page-d8d1109e8a935233.js"],"default"]
 d:I[939,[],""]
 :HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/Training-Archive/_next/static/css/dd3bbe79ef28f60a.css","style"]
 6:Te8a,[
-  {
-    "time": "2025-09-10T04:23:55.481986+08:00",
-    "level": "important",
-    "platform": "nowcoder",
-    "msg": "nowcoder Crawler started at 2025-09-10T04:23:55.481966+08:00"
-  },
-  {
-    "time": "2025-09-10T04:24:57.914593+08:00",
-    "level": "important",
-    "platform": "nowcoder",
-    "msg": "nowcoder Crawler finished successfully at 2025-09-10T04:24:57.914586+08:00"
-  },
-  {
-    "time": "2025-09-10T18:21:43.772128+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-09-10T18:21:43.772110+08:00"
-  },
-  {
-    "time": "2025-09-10T18:21:53.096166+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-09-10T18:21:53.096160+08:00"
-  },
-  {
-    "time": "2025-09-10T18:21:54.216859+08:00",
-    "level": "important",
-    "platform": "hdu",
-    "msg": "hdu Crawler started at 2025-09-10T18:21:54.216843+08:00"
-  },
-  {
-    "time": "2025-09-10T18:22:44.448430+08:00",
-    "level": "important",
-    "platform": "hdu",
-    "msg": "hdu Crawler finished successfully at 2025-09-10T18:22:44.448423+08:00"
-  },
-  {
-    "time": "2025-09-10T18:22:45.639685+08:00",
-    "level": "important",
-    "platform": "nowcoder",
-    "msg": "nowcoder Crawler started at 2025-09-10T18:22:45.639672+08:00"
-  },
-  {
-    "time": "2025-09-10T18:23:47.406856+08:00",
-    "level": "important",
-    "platform": "nowcoder",
-    "msg": "nowcoder Crawler finished successfully at 2025-09-10T18:23:47.406850+08:00"
-  },
-  {
-    "time": "2025-09-11T04:23:19.812932+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-09-11T04:23:19.812917+08:00"
-  },
-  {
-    "time": "2025-09-11T04:23:31.873182+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-09-11T04:23:31.873177+08:00"
-  },
-  {
-    "time": "2025-09-11T04:23:32.977276+08:00",
-    "level": "important",
-    "platform": "hdu",
-    "msg": "hdu Crawler started at 2025-09-11T04:23:32.977261+08:00"
-  },
-  {
-    "time": "2025-09-11T04:24:16.549206+08:00",
-    "level": "important",
-    "platform": "hdu",
-    "msg": "hdu Crawler finished successfully at 2025-09-11T04:24:16.549200+08:00"
-  },
   {
     "time": "2025-09-11T04:24:17.678465+08:00",
     "level": "important",
@@ -125,152 +53,80 @@ d:I[939,[],""]
     "level": "important",
     "platform": "nowcoder",
     "msg": "nowcoder Crawler finished successfully at 2025-09-11T18:24:54.866746+08:00"
+  },
+  {
+    "time": "2025-09-12T04:19:59.927182+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-09-12T04:19:59.927170+08:00"
+  },
+  {
+    "time": "2025-09-12T04:20:08.924414+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-09-12T04:20:08.924408+08:00"
+  },
+  {
+    "time": "2025-09-12T04:20:10.040881+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler started at 2025-09-12T04:20:10.040868+08:00"
+  },
+  {
+    "time": "2025-09-12T04:20:58.321940+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler finished successfully at 2025-09-12T04:20:58.321934+08:00"
+  },
+  {
+    "time": "2025-09-12T04:20:59.432632+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler started at 2025-09-12T04:20:59.432615+08:00"
+  },
+  {
+    "time": "2025-09-12T04:21:59.163065+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler finished successfully at 2025-09-12T04:21:59.163059+08:00"
+  },
+  {
+    "time": "2025-09-12T18:21:58.049308+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-09-12T18:21:58.049294+08:00"
+  },
+  {
+    "time": "2025-09-12T18:22:13.009090+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-09-12T18:22:13.009084+08:00"
+  },
+  {
+    "time": "2025-09-12T18:22:14.171859+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler started at 2025-09-12T18:22:14.171847+08:00"
+  },
+  {
+    "time": "2025-09-12T18:23:02.651479+08:00",
+    "level": "important",
+    "platform": "hdu",
+    "msg": "hdu Crawler finished successfully at 2025-09-12T18:23:02.651473+08:00"
+  },
+  {
+    "time": "2025-09-12T18:23:03.751877+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler started at 2025-09-12T18:23:03.751865+08:00"
+  },
+  {
+    "time": "2025-09-12T18:24:03.605350+08:00",
+    "level": "important",
+    "platform": "nowcoder",
+    "msg": "nowcoder Crawler finished successfully at 2025-09-12T18:24:03.605344+08:00"
   }
-]7:T1f90,[
-  {
-    "time": "2025-09-10T04:22:51.791633+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2025-09-10T04:22:52.073515+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-09-10T04:22:52.073497+08:00"
-  },
-  {
-    "time": "2025-09-10T04:22:58.034942+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-09-10T04:23:00.864153+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contest list is empty, no contests to fetch. Exiting."
-  },
-  {
-    "time": "2025-09-10T04:23:00.864884+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2025-09-10T04:23:00.866070+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-09-10T04:23:00.868718+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-09-10T04:23:00.869310+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-09-10T04:23:02.988554+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1307445), stopping."
-  },
-  {
-    "time": "2025-09-10T04:23:02.989258+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-09-10T04:23:02.989854+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-09-10T04:23:02.989848+08:00"
-  },
-  {
-    "time": "2025-09-10T18:21:43.204579+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2025-09-10T18:21:43.772128+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-09-10T18:21:43.772110+08:00"
-  },
-  {
-    "time": "2025-09-10T18:21:49.304973+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-09-10T18:21:52.059987+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contest list is empty, no contests to fetch. Exiting."
-  },
-  {
-    "time": "2025-09-10T18:21:52.060680+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2025-09-10T18:21:52.061875+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-09-10T18:21:52.064365+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-09-10T18:21:52.064979+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-09-10T18:21:53.094831+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1310927), stopping."
-  },
-  {
-    "time": "2025-09-10T18:21:53.095596+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-09-10T18:21:53.096166+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-09-10T18:21:53.096160+08:00"
-  },
-  {
-    "time": "2025-09-11T04:23:19.506019+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2025-09-11T04:23:19.812932+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-09-11T04:23:19.812917+08:00"
-  },
+]7:T1f6c,[
   {
     "time": "2025-09-11T04:23:27.105527+08:00",
     "level": "info",
@@ -426,8 +282,152 @@ d:I[939,[],""]
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-09-11T18:23:07.407690+08:00"
+  },
+  {
+    "time": "2025-09-12T04:19:59.673654+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Download directory does not exist, creating it."
+  },
+  {
+    "time": "2025-09-12T04:19:59.927182+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-09-12T04:19:59.927170+08:00"
+  },
+  {
+    "time": "2025-09-12T04:20:05.145239+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-09-12T04:20:07.214411+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contest list is empty, no contests to fetch. Exiting."
+  },
+  {
+    "time": "2025-09-12T04:20:07.215057+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-09-12T04:20:07.216183+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-09-12T04:20:07.218650+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-09-12T04:20:07.219220+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-09-12T04:20:08.923048+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1324528), stopping."
+  },
+  {
+    "time": "2025-09-12T04:20:08.923826+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-09-12T04:20:08.924414+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-09-12T04:20:08.924408+08:00"
+  },
+  {
+    "time": "2025-09-12T18:21:57.343518+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Download directory does not exist, creating it."
+  },
+  {
+    "time": "2025-09-12T18:21:58.049308+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-09-12T18:21:58.049294+08:00"
+  },
+  {
+    "time": "2025-09-12T18:22:04.255152+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-09-12T18:22:07.716849+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contest list is empty, no contests to fetch. Exiting."
+  },
+  {
+    "time": "2025-09-12T18:22:07.717467+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-09-12T18:22:07.718580+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-09-12T18:22:07.721046+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-09-12T18:22:07.721604+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-09-12T18:22:11.900937+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 1."
+  },
+  {
+    "time": "2025-09-12T18:22:11.901595+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 2."
+  },
+  {
+    "time": "2025-09-12T18:22:13.007663+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1324528), stopping."
+  },
+  {
+    "time": "2025-09-12T18:22:13.008443+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-09-12T18:22:13.009090+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-09-12T18:22:13.009084+08:00"
   }
-]8:T205f,[
+]8:T21c3,[
   {
     "submission_id": "#1171358",
     "problem_name": "\u7edd\u5bf9\u9632\u5fa1",
@@ -714,610 +714,621 @@ d:I[939,[],""]
     "submit_time": "2025-09-08T21:17:00+08:00",
     "problem_link": "https://qoj.ac/contest/2513/problem/14308",
     "submission_link": "https://qoj.ac/submission/1304980"
+  },
+  {
+    "submission_id": "#1329093",
+    "problem_name": "Ordainer of Inexorable Judgment",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4356kb",
+    "language": "C++14",
+    "submit_time": "2025-09-12T17:20:07+08:00",
+    "problem_link": "https://qoj.ac/contest/1828/problem/9576",
+    "submission_link": "https://qoj.ac/submission/1329093"
   }
 ]9:T2565,[
   {
-    "time": "2025-09-11T18:23:20.649512+08:00",
+    "time": "2025-09-12T18:22:26.308014+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching contest: 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff088\uff09 (2025-08-11)"
   },
   {
-    "time": "2025-09-11T18:23:20.650238+08:00",
+    "time": "2025-09-12T18:22:26.308716+08:00",
     "level": "warning",
     "platform": "hdu",
     "msg": "Contest folder already exists: contests/2025-08-11 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff088\uff09. Skipped."
   },
   {
-    "time": "2025-09-11T18:23:20.650997+08:00",
+    "time": "2025-09-12T18:22:26.309626+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching contest: 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff089\uff09 (2025-08-15)"
   },
   {
-    "time": "2025-09-11T18:23:20.651718+08:00",
+    "time": "2025-09-12T18:22:26.310320+08:00",
     "level": "warning",
     "platform": "hdu",
     "msg": "Contest folder already exists: contests/2025-08-15 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff089\uff09. Skipped."
   },
   {
-    "time": "2025-09-11T18:23:20.652412+08:00",
+    "time": "2025-09-12T18:22:26.311072+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching contest: 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff0810\uff09 (2025-08-18)"
   },
   {
-    "time": "2025-09-11T18:23:20.653116+08:00",
+    "time": "2025-09-12T18:22:26.311889+08:00",
     "level": "warning",
     "platform": "hdu",
     "msg": "Contest folder already exists: contests/2025-08-18 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff0810\uff09. Skipped."
   },
   {
-    "time": "2025-09-11T18:23:20.653857+08:00",
+    "time": "2025-09-12T18:22:26.312659+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Contests fetched successfully."
   },
   {
-    "time": "2025-09-11T18:23:20.654855+08:00",
+    "time": "2025-09-12T18:22:26.313625+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start updating staged submissions..."
   },
   {
-    "time": "2025-09-11T18:23:20.655703+08:00",
+    "time": "2025-09-12T18:22:26.314485+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching new submissions..."
   },
   {
-    "time": "2025-09-11T18:23:20.656518+08:00",
+    "time": "2025-09-12T18:22:26.315442+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1172."
   },
   {
-    "time": "2025-09-11T18:23:24.664669+08:00",
+    "time": "2025-09-12T18:22:29.315766+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:23:25.276413+08:00",
+    "time": "2025-09-12T18:22:29.683167+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 22174), stopping."
   },
   {
-    "time": "2025-09-11T18:23:25.277232+08:00",
+    "time": "2025-09-12T18:22:29.683982+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 27 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1172, page 1."
   },
   {
-    "time": "2025-09-11T18:23:25.277916+08:00",
+    "time": "2025-09-12T18:22:29.684696+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1173."
   },
   {
-    "time": "2025-09-11T18:23:28.504484+08:00",
+    "time": "2025-09-12T18:22:32.827670+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:23:29.107717+08:00",
+    "time": "2025-09-12T18:22:33.444175+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 21160), stopping."
   },
   {
-    "time": "2025-09-11T18:23:29.108620+08:00",
+    "time": "2025-09-12T18:22:33.445037+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 50 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1173, page 1."
   },
   {
-    "time": "2025-09-11T18:23:29.109434+08:00",
+    "time": "2025-09-12T18:22:33.445845+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1174."
   },
   {
-    "time": "2025-09-11T18:23:31.938631+08:00",
+    "time": "2025-09-12T18:22:36.438544+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:23:32.330641+08:00",
+    "time": "2025-09-12T18:22:37.142046+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 23157), stopping."
   },
   {
-    "time": "2025-09-11T18:23:32.331468+08:00",
+    "time": "2025-09-12T18:22:37.142865+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 44 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1174, page 1."
   },
   {
-    "time": "2025-09-11T18:23:32.332199+08:00",
+    "time": "2025-09-12T18:22:37.143586+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1175."
   },
   {
-    "time": "2025-09-11T18:23:35.854417+08:00",
+    "time": "2025-09-12T18:22:40.335271+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:23:36.697045+08:00",
+    "time": "2025-09-12T18:22:40.891963+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 16091), stopping."
   },
   {
-    "time": "2025-09-11T18:23:36.697912+08:00",
+    "time": "2025-09-12T18:22:40.892899+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 50 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1175, page 1."
   },
   {
-    "time": "2025-09-11T18:23:36.698673+08:00",
+    "time": "2025-09-12T18:22:40.893756+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1176."
   },
   {
-    "time": "2025-09-11T18:23:40.409343+08:00",
+    "time": "2025-09-12T18:22:44.453603+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:23:41.138041+08:00",
+    "time": "2025-09-12T18:22:44.841934+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 16272), stopping."
   },
   {
-    "time": "2025-09-11T18:23:41.138949+08:00",
+    "time": "2025-09-12T18:22:44.842849+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 31 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1176, page 1."
   },
   {
-    "time": "2025-09-11T18:23:41.139761+08:00",
+    "time": "2025-09-12T18:22:44.843615+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1177."
   },
   {
-    "time": "2025-09-11T18:23:44.473700+08:00",
+    "time": "2025-09-12T18:22:47.620785+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:23:45.099698+08:00",
+    "time": "2025-09-12T18:22:47.976610+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 9879), stopping."
   },
   {
-    "time": "2025-09-11T18:23:45.100646+08:00",
+    "time": "2025-09-12T18:22:47.977540+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 21 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1177, page 1."
   },
   {
-    "time": "2025-09-11T18:23:45.101475+08:00",
+    "time": "2025-09-12T18:22:47.978386+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1178."
   },
   {
-    "time": "2025-09-11T18:23:48.154548+08:00",
+    "time": "2025-09-12T18:22:51.014723+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:23:48.897322+08:00",
+    "time": "2025-09-12T18:22:51.772506+08:00",
     "level": "warning",
     "platform": "hdu",
     "msg": "No submissions found on this page. Probably no submission was made."
   },
   {
-    "time": "2025-09-11T18:23:48.898363+08:00",
+    "time": "2025-09-12T18:22:51.773464+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1179."
   },
   {
-    "time": "2025-09-11T18:23:52.768584+08:00",
+    "time": "2025-09-12T18:22:55.093062+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:23:53.179411+08:00",
+    "time": "2025-09-12T18:22:55.635774+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 14213), stopping."
   },
   {
-    "time": "2025-09-11T18:23:53.180389+08:00",
+    "time": "2025-09-12T18:22:55.636791+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 44 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1179, page 1."
   },
   {
-    "time": "2025-09-11T18:23:53.181308+08:00",
+    "time": "2025-09-12T18:22:55.637662+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1180."
   },
   {
-    "time": "2025-09-11T18:23:55.999369+08:00",
+    "time": "2025-09-12T18:22:58.496035+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:23:56.508877+08:00",
+    "time": "2025-09-12T18:22:59.197052+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 15269), stopping."
   },
   {
-    "time": "2025-09-11T18:23:56.510019+08:00",
+    "time": "2025-09-12T18:22:59.198127+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 50 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1180, page 1."
   },
   {
-    "time": "2025-09-11T18:23:56.511008+08:00",
+    "time": "2025-09-12T18:22:59.199114+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1181."
   },
   {
-    "time": "2025-09-11T18:23:59.564136+08:00",
+    "time": "2025-09-12T18:23:02.259846+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-11T18:24:00.265067+08:00",
+    "time": "2025-09-12T18:23:02.648401+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 9561), stopping."
   },
   {
-    "time": "2025-09-11T18:24:00.266078+08:00",
+    "time": "2025-09-12T18:23:02.649434+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 50 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1181, page 1."
   },
   {
-    "time": "2025-09-11T18:24:00.267118+08:00",
+    "time": "2025-09-12T18:23:02.650514+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Submissions fetched successfully."
   },
   {
-    "time": "2025-09-11T18:24:00.268051+08:00",
+    "time": "2025-09-12T18:23:02.651479+08:00",
     "level": "important",
     "platform": "hdu",
-    "msg": "hdu Crawler finished successfully at 2025-09-11T18:24:00.268045+08:00"
+    "msg": "hdu Crawler finished successfully at 2025-09-12T18:23:02.651473+08:00"
   }
-]a:T28e1,[
+]a:T290d,[
   {
-    "time": "2025-09-11T18:24:23.419022+08:00",
+    "time": "2025-09-12T18:23:31.793245+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84251 (2025-07-15)"
+  },
+  {
+    "time": "2025-09-12T18:23:31.793857+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-15 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84251. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.419582+08:00",
+    "time": "2025-09-12T18:23:31.794354+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84252 (2025-07-17)"
   },
   {
-    "time": "2025-09-11T18:24:23.420121+08:00",
+    "time": "2025-09-12T18:23:31.795033+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-17 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84252. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.420666+08:00",
+    "time": "2025-09-12T18:23:31.795869+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: \"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84253 (2025-07-22)"
   },
   {
-    "time": "2025-09-11T18:24:23.421218+08:00",
+    "time": "2025-09-12T18:23:31.796728+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-22 \"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84253. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.421788+08:00",
+    "time": "2025-09-12T18:23:31.797581+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84254 (2025-07-24)"
   },
   {
-    "time": "2025-09-11T18:24:23.422348+08:00",
+    "time": "2025-09-12T18:23:31.798412+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-24 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84254. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.422924+08:00",
+    "time": "2025-09-12T18:23:31.798998+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84255 (2025-07-29)"
   },
   {
-    "time": "2025-09-11T18:24:23.423503+08:00",
+    "time": "2025-09-12T18:23:31.799561+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-29 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84255. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.424102+08:00",
+    "time": "2025-09-12T18:23:31.800138+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84256 (2025-07-31)"
   },
   {
-    "time": "2025-09-11T18:24:23.424709+08:00",
+    "time": "2025-09-12T18:23:31.800793+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-07-31 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84256. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.425303+08:00",
+    "time": "2025-09-12T18:23:31.801553+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: \"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84257 (2025-08-05)"
   },
   {
-    "time": "2025-09-11T18:24:23.425976+08:00",
+    "time": "2025-09-12T18:23:31.802505+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-08-05 \"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84257. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.426586+08:00",
+    "time": "2025-09-12T18:23:31.803206+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84258 (2025-08-07)"
   },
   {
-    "time": "2025-09-11T18:24:23.427228+08:00",
+    "time": "2025-09-12T18:23:31.803850+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-08-07 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84258. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.428002+08:00",
+    "time": "2025-09-12T18:23:31.804453+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84259 (2025-08-12)"
   },
   {
-    "time": "2025-09-11T18:24:23.428987+08:00",
+    "time": "2025-09-12T18:23:31.805433+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-08-12 \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84259. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.430055+08:00",
+    "time": "2025-09-12T18:23:31.806414+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching contest: \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u842510 (2025-08-14)"
   },
   {
-    "time": "2025-09-11T18:24:23.431138+08:00",
+    "time": "2025-09-12T18:23:31.807440+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "Contest folder already exists: contests/2025-08-14 \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u842510. Skipped."
   },
   {
-    "time": "2025-09-11T18:24:23.432215+08:00",
+    "time": "2025-09-12T18:23:31.808321+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Contests fetched successfully."
   },
   {
-    "time": "2025-09-11T18:24:23.433684+08:00",
+    "time": "2025-09-12T18:23:31.809156+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start updating staged submissions..."
   },
   {
-    "time": "2025-09-11T18:24:23.435011+08:00",
+    "time": "2025-09-12T18:23:31.809908+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching new submissions..."
   },
   {
-    "time": "2025-09-11T18:24:23.436249+08:00",
+    "time": "2025-09-12T18:23:31.810598+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108298."
   },
   {
-    "time": "2025-09-11T18:24:26.647496+08:00",
-    "level": "info",
+    "time": "2025-09-12T18:23:34.942490+08:00",
+    "level": "warning",
     "platform": "nowcoder",
-    "msg": "Reached last update (Submission 78239197), stopping."
+    "msg": "No submissions found on this page. Probably the contest has not started yet."
   },
   {
-    "time": "2025-09-11T18:24:26.648340+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108298, page 1."
-  },
-  {
-    "time": "2025-09-11T18:24:26.649136+08:00",
+    "time": "2025-09-12T18:23:34.943262+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108299."
   },
   {
-    "time": "2025-09-11T18:24:29.785487+08:00",
+    "time": "2025-09-12T18:23:38.478149+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78282935), stopping."
   },
   {
-    "time": "2025-09-11T18:24:29.786423+08:00",
+    "time": "2025-09-12T18:23:38.479620+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108299, page 1."
   },
   {
-    "time": "2025-09-11T18:24:29.787231+08:00",
+    "time": "2025-09-12T18:23:38.480346+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108300."
   },
   {
-    "time": "2025-09-11T18:24:32.918134+08:00",
-    "level": "warning",
+    "time": "2025-09-12T18:23:41.622564+08:00",
+    "level": "info",
     "platform": "nowcoder",
-    "msg": "No submissions found on this page. Probably the contest has not started yet."
+    "msg": "Reached last update (Submission 78393143), stopping."
   },
   {
-    "time": "2025-09-11T18:24:32.919055+08:00",
+    "time": "2025-09-12T18:23:41.623454+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108300, page 1."
+  },
+  {
+    "time": "2025-09-12T18:23:41.624274+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108301."
   },
   {
-    "time": "2025-09-11T18:24:36.055706+08:00",
+    "time": "2025-09-12T18:23:44.768075+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78634159), stopping."
   },
   {
-    "time": "2025-09-11T18:24:36.056623+08:00",
+    "time": "2025-09-12T18:23:44.768982+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108301, page 1."
   },
   {
-    "time": "2025-09-11T18:24:36.057441+08:00",
+    "time": "2025-09-12T18:23:44.769815+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108302."
   },
   {
-    "time": "2025-09-11T18:24:39.191593+08:00",
-    "level": "info",
+    "time": "2025-09-12T18:23:47.906161+08:00",
+    "level": "warning",
     "platform": "nowcoder",
-    "msg": "Reached last update (Submission 78560328), stopping."
+    "msg": "No submissions found on this page. Probably the contest has not started yet."
   },
   {
-    "time": "2025-09-11T18:24:39.192562+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108302, page 1."
-  },
-  {
-    "time": "2025-09-11T18:24:39.193405+08:00",
+    "time": "2025-09-12T18:23:47.907022+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108303."
   },
   {
-    "time": "2025-09-11T18:24:42.325865+08:00",
+    "time": "2025-09-12T18:23:51.042009+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 79124032), stopping."
   },
   {
-    "time": "2025-09-11T18:24:42.326811+08:00",
+    "time": "2025-09-12T18:23:51.042903+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108303, page 1."
   },
   {
-    "time": "2025-09-11T18:24:42.327625+08:00",
+    "time": "2025-09-12T18:23:51.043650+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108304."
   },
   {
-    "time": "2025-09-11T18:24:45.444421+08:00",
+    "time": "2025-09-12T18:23:54.174891+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "No submissions found on this page. Probably the contest has not started yet."
   },
   {
-    "time": "2025-09-11T18:24:45.445421+08:00",
+    "time": "2025-09-12T18:23:54.175858+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108305."
   },
   {
-    "time": "2025-09-11T18:24:48.585500+08:00",
+    "time": "2025-09-12T18:23:57.318475+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "No submissions found on this page. Probably the contest has not started yet."
   },
   {
-    "time": "2025-09-11T18:24:48.586438+08:00",
+    "time": "2025-09-12T18:23:57.319409+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108306."
   },
   {
-    "time": "2025-09-11T18:24:51.725334+08:00",
+    "time": "2025-09-12T18:24:00.462697+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Reached last update (Submission 78843710), stopping."
   },
   {
-    "time": "2025-09-11T18:24:51.726306+08:00",
+    "time": "2025-09-12T18:24:00.463595+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Fetched 20 submissions from https://ac.nowcoder.com/acm/contest/108306, page 1."
   },
   {
-    "time": "2025-09-11T18:24:51.727164+08:00",
+    "time": "2025-09-12T18:24:00.464435+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108307."
   },
   {
-    "time": "2025-09-11T18:24:54.864629+08:00",
+    "time": "2025-09-12T18:24:03.603419+08:00",
     "level": "warning",
     "platform": "nowcoder",
     "msg": "No submissions found on this page. Probably the contest has not started yet."
   },
   {
-    "time": "2025-09-11T18:24:54.865822+08:00",
+    "time": "2025-09-12T18:24:03.604504+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Submissions fetched successfully."
   },
   {
-    "time": "2025-09-11T18:24:54.866752+08:00",
+    "time": "2025-09-12T18:24:03.605350+08:00",
     "level": "important",
     "platform": "nowcoder",
-    "msg": "nowcoder Crawler finished successfully at 2025-09-11T18:24:54.866746+08:00"
+    "msg": "nowcoder Crawler finished successfully at 2025-09-12T18:24:03.605344+08:00"
   }
-]0:{"P":null,"b":"c_bXOfcyuvsrHILnOHslR","p":"/Training-Archive","c":["","log"],"i":false,"f":[[["",{"children":["(main)",{"children":["log",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/dd3bbe79ef28f60a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-1 inline","children":["$undefined",[["$","path","0",{"d":"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L4"]}],{"children":["log",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L5",null,{"fileContentList":["$6","{\n  \"qoj\": \"2025-09-11T18:23:07.406934+08:00\",\n  \"nowcoder\": \"2025-09-11T18:24:54.865685+08:00\",\n  \"hdu\": \"2025-09-11T18:24:00.266981+08:00\"\n}","$7","$8","$9","[]","$a","[]"]}],null,"$Lb"]}],{},null,false]},null,false]},null,false]},null,false],"$Lc",false]],"m":"$undefined","G":["$d",[]],"s":false,"S":true}
+]0:{"P":null,"b":"zTptqrZqJLsrZYFi73cMM","p":"/Training-Archive","c":["","log"],"i":false,"f":[[["",{"children":["(main)",{"children":["log",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/dd3bbe79ef28f60a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-1 inline","children":["$undefined",[["$","path","0",{"d":"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L4"]}],{"children":["log",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L5",null,{"fileContentList":["$6","{\n  \"qoj\": \"2025-09-12T18:22:13.008341+08:00\",\n  \"nowcoder\": \"2025-09-12T18:24:03.604369+08:00\",\n  \"hdu\": \"2025-09-12T18:23:02.650374+08:00\"\n}","$7","$8","$9","[]","$a","[]"]}],null,"$Lb"]}],{},null,false]},null,false]},null,false]},null,false],"$Lc",false]],"m":"$undefined","G":["$d",[]],"s":false,"S":true}
 e:I[7055,[],"OutletBoundary"]
 10:I[9909,[],"AsyncMetadataOutlet"]
 12:I[7055,[],"ViewportBoundary"]
@@ -1327,7 +1338,7 @@ e:I[7055,[],"OutletBoundary"]
 18:I[4525,["215","static/chunks/1951f239-e4c7a40f4938f7cd.js","76","static/chunks/app/(main)/layout-327320a184a08585.js"],"default"]
 b:["$","$Le",null,{"children":["$Lf",["$","$L10",null,{"promise":"$@11"}]]}]
 c:["$","$1","h",{"children":[null,[["$","$L12",null,{"children":"$L13"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L14",null,{"children":["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":"$L16"}]}]}]]}]
-4:["$","div",null,{"className":"mt-4 flex min-h-screen min-w-[1600px] justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/4 -translate-x-10","children":[["$","header",null,{"className":"w-full rounded-lg py-4 text-slate-300","children":["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]}],["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/actions","target":"_blank","rel":"noopener noreferrer","className":"absolute right-0 top-4 flex items-center gap-3 rounded-lg bg-zinc-700/80 px-4 py-2 text-sm transition-colors duration-150 hover:bg-zinc-600/80","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"size-5 text-stone-400","children":["$undefined",[["$","circle","0",{"cx":"12","cy":"12","r":"10","children":[]}],["$","line","1",{"x1":"2","y1":"12","x2":"22","y2":"12","children":[]}],["$","path","2",{"d":"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],["$","$L17",null,{"minTimeISO":"2025-09-11T10:23:07.406Z"}]]}],["$","$L18",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
+4:["$","div",null,{"className":"mt-4 flex min-h-screen min-w-[1600px] justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/4 -translate-x-10","children":[["$","header",null,{"className":"w-full rounded-lg py-4 text-slate-300","children":["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]}],["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/actions","target":"_blank","rel":"noopener noreferrer","className":"absolute right-0 top-4 flex items-center gap-3 rounded-lg bg-zinc-700/80 px-4 py-2 text-sm transition-colors duration-150 hover:bg-zinc-600/80","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"size-5 text-stone-400","children":["$undefined",[["$","circle","0",{"cx":"12","cy":"12","r":"10","children":[]}],["$","line","1",{"x1":"2","y1":"12","x2":"22","y2":"12","children":[]}],["$","path","2",{"d":"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],["$","$L17",null,{"minTimeISO":"2025-09-12T10:22:13.008Z"}]]}],["$","$L18",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
 13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 f:null
 11:{"metadata":[],"error":null,"digest":"$undefined"}
