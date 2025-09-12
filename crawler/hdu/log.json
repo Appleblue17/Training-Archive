@@ -1,302 +1,302 @@
 [
   {
-    "time": "2025-09-12T04:20:21.241918+08:00",
+    "time": "2025-09-12T18:22:26.308014+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching contest: 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff088\uff09 (2025-08-11)"
   },
   {
-    "time": "2025-09-12T04:20:21.242591+08:00",
+    "time": "2025-09-12T18:22:26.308716+08:00",
     "level": "warning",
     "platform": "hdu",
     "msg": "Contest folder already exists: contests/2025-08-11 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff088\uff09. Skipped."
   },
   {
-    "time": "2025-09-12T04:20:21.243181+08:00",
+    "time": "2025-09-12T18:22:26.309626+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching contest: 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff089\uff09 (2025-08-15)"
   },
   {
-    "time": "2025-09-12T04:20:21.243774+08:00",
+    "time": "2025-09-12T18:22:26.310320+08:00",
     "level": "warning",
     "platform": "hdu",
     "msg": "Contest folder already exists: contests/2025-08-15 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff089\uff09. Skipped."
   },
   {
-    "time": "2025-09-12T04:20:21.244371+08:00",
+    "time": "2025-09-12T18:22:26.311072+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching contest: 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff0810\uff09 (2025-08-18)"
   },
   {
-    "time": "2025-09-12T04:20:21.244980+08:00",
+    "time": "2025-09-12T18:22:26.311889+08:00",
     "level": "warning",
     "platform": "hdu",
     "msg": "Contest folder already exists: contests/2025-08-18 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff0810\uff09. Skipped."
   },
   {
-    "time": "2025-09-12T04:20:21.245631+08:00",
+    "time": "2025-09-12T18:22:26.312659+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Contests fetched successfully."
   },
   {
-    "time": "2025-09-12T04:20:21.246471+08:00",
+    "time": "2025-09-12T18:22:26.313625+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start updating staged submissions..."
   },
   {
-    "time": "2025-09-12T04:20:21.247283+08:00",
+    "time": "2025-09-12T18:22:26.314485+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching new submissions..."
   },
   {
-    "time": "2025-09-12T04:20:21.247935+08:00",
+    "time": "2025-09-12T18:22:26.315442+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1172."
   },
   {
-    "time": "2025-09-12T04:20:24.900185+08:00",
+    "time": "2025-09-12T18:22:29.315766+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:25.286751+08:00",
+    "time": "2025-09-12T18:22:29.683167+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 22174), stopping."
   },
   {
-    "time": "2025-09-12T04:20:25.287632+08:00",
+    "time": "2025-09-12T18:22:29.683982+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 27 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1172, page 1."
   },
   {
-    "time": "2025-09-12T04:20:25.288449+08:00",
+    "time": "2025-09-12T18:22:29.684696+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1173."
   },
   {
-    "time": "2025-09-12T04:20:28.662203+08:00",
+    "time": "2025-09-12T18:22:32.827670+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:29.282510+08:00",
+    "time": "2025-09-12T18:22:33.444175+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 21160), stopping."
   },
   {
-    "time": "2025-09-12T04:20:29.283414+08:00",
+    "time": "2025-09-12T18:22:33.445037+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 50 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1173, page 1."
   },
   {
-    "time": "2025-09-12T04:20:29.284127+08:00",
+    "time": "2025-09-12T18:22:33.445845+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1174."
   },
   {
-    "time": "2025-09-12T04:20:32.518347+08:00",
+    "time": "2025-09-12T18:22:36.438544+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:33.278009+08:00",
+    "time": "2025-09-12T18:22:37.142046+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 23157), stopping."
   },
   {
-    "time": "2025-09-12T04:20:33.278854+08:00",
+    "time": "2025-09-12T18:22:37.142865+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 44 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1174, page 1."
   },
   {
-    "time": "2025-09-12T04:20:33.279622+08:00",
+    "time": "2025-09-12T18:22:37.143586+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1175."
   },
   {
-    "time": "2025-09-12T04:20:36.270605+08:00",
+    "time": "2025-09-12T18:22:40.335271+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:36.900930+08:00",
+    "time": "2025-09-12T18:22:40.891963+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 16091), stopping."
   },
   {
-    "time": "2025-09-12T04:20:36.901879+08:00",
+    "time": "2025-09-12T18:22:40.892899+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 50 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1175, page 1."
   },
   {
-    "time": "2025-09-12T04:20:36.902752+08:00",
+    "time": "2025-09-12T18:22:40.893756+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1176."
   },
   {
-    "time": "2025-09-12T04:20:40.051529+08:00",
+    "time": "2025-09-12T18:22:44.453603+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:40.702211+08:00",
+    "time": "2025-09-12T18:22:44.841934+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 16272), stopping."
   },
   {
-    "time": "2025-09-12T04:20:40.703176+08:00",
+    "time": "2025-09-12T18:22:44.842849+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 31 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1176, page 1."
   },
   {
-    "time": "2025-09-12T04:20:40.704072+08:00",
+    "time": "2025-09-12T18:22:44.843615+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1177."
   },
   {
-    "time": "2025-09-12T04:20:43.317190+08:00",
+    "time": "2025-09-12T18:22:47.620785+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:44.052606+08:00",
+    "time": "2025-09-12T18:22:47.976610+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 9879), stopping."
   },
   {
-    "time": "2025-09-12T04:20:44.053624+08:00",
+    "time": "2025-09-12T18:22:47.977540+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 21 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1177, page 1."
   },
   {
-    "time": "2025-09-12T04:20:44.054537+08:00",
+    "time": "2025-09-12T18:22:47.978386+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1178."
   },
   {
-    "time": "2025-09-12T04:20:46.597791+08:00",
+    "time": "2025-09-12T18:22:51.014723+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:47.011468+08:00",
+    "time": "2025-09-12T18:22:51.772506+08:00",
     "level": "warning",
     "platform": "hdu",
     "msg": "No submissions found on this page. Probably no submission was made."
   },
   {
-    "time": "2025-09-12T04:20:47.012420+08:00",
+    "time": "2025-09-12T18:22:51.773464+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1179."
   },
   {
-    "time": "2025-09-12T04:20:50.117317+08:00",
+    "time": "2025-09-12T18:22:55.093062+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:50.801048+08:00",
+    "time": "2025-09-12T18:22:55.635774+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 14213), stopping."
   },
   {
-    "time": "2025-09-12T04:20:50.802090+08:00",
+    "time": "2025-09-12T18:22:55.636791+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 44 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1179, page 1."
   },
   {
-    "time": "2025-09-12T04:20:50.803038+08:00",
+    "time": "2025-09-12T18:22:55.637662+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1180."
   },
   {
-    "time": "2025-09-12T04:20:53.920327+08:00",
+    "time": "2025-09-12T18:22:58.496035+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:54.691734+08:00",
+    "time": "2025-09-12T18:22:59.197052+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 15269), stopping."
   },
   {
-    "time": "2025-09-12T04:20:54.692818+08:00",
+    "time": "2025-09-12T18:22:59.198127+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 50 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1180, page 1."
   },
   {
-    "time": "2025-09-12T04:20:54.693805+08:00",
+    "time": "2025-09-12T18:22:59.199114+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1181."
   },
   {
-    "time": "2025-09-12T04:20:57.542713+08:00",
+    "time": "2025-09-12T18:23:02.259846+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2025-09-12T04:20:58.318676+08:00",
+    "time": "2025-09-12T18:23:02.648401+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached last update (Submission 9561), stopping."
   },
   {
-    "time": "2025-09-12T04:20:58.319786+08:00",
+    "time": "2025-09-12T18:23:02.649434+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Fetched 50 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1181, page 1."
   },
   {
-    "time": "2025-09-12T04:20:58.320937+08:00",
+    "time": "2025-09-12T18:23:02.650514+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Submissions fetched successfully."
   },
   {
-    "time": "2025-09-12T04:20:58.321940+08:00",
+    "time": "2025-09-12T18:23:02.651479+08:00",
     "level": "important",
     "platform": "hdu",
-    "msg": "hdu Crawler finished successfully at 2025-09-12T04:20:58.321934+08:00"
+    "msg": "hdu Crawler finished successfully at 2025-09-12T18:23:02.651473+08:00"
   }
 ]
