@@ -296,5 +296,16 @@
     "submit_time": "2025-09-12T17:20:07+08:00",
     "problem_link": "https://qoj.ac/contest/1828/problem/9576",
     "submission_link": "https://qoj.ac/submission/1329093"
+  },
+  {
+    "submission_id": "#1333588",
+    "problem_name": "cover",
+    "status": "AC",
+    "time": "1219ms",
+    "memory": "174828kb",
+    "language": "C++20",
+    "submit_time": "2025-09-13T16:34:05+08:00",
+    "problem_link": "https://qoj.ac/contest/2513/problem/14312",
+    "submission_link": "https://qoj.ac/submission/1333588"
   }
 ]
