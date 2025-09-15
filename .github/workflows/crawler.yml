@@ -3,7 +3,7 @@ name: Crawler Workflow
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 10,20 * * *" # Runs daily at 08:00 and 20:00 UTC (04:00 and 18:00 Asia/Shanghai)
+    - cron: "0 20 * * *" # Runs daily at 20:00 UTC (18:00 Asia/Shanghai)
 
 jobs:
   crawl:
@@ -125,7 +125,7 @@ jobs:
         run: |
           if [ "$contests_changed" = "true" ]; then
             git commit -m "[auto] [contests-changed] Update contest and submission data"
+            git push
           else
-            git commit -m "[auto] Update contest and submission data"
+            echo "No contest changes detected. Skipping commit and push."
           fi
-          git push
