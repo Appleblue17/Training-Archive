@@ -19,7 +19,7 @@ export default async function FileViewerMarkdownWrapper({
   dirPath: string;
   raw: string;
 }) {
-  const mathRegex = /\$\$([^$\n]*)\$\$/;
+  const mathRegex = /\$\$([^$\n]*)\$\$/g;
   const rawWithMath = raw.replace(mathRegex, "$$$$\n$1\n$$$$\n");
 
   const file = await unified()
