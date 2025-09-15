@@ -307,5 +307,38 @@
     "submit_time": "2025-09-13T16:34:05+08:00",
     "problem_link": "https://qoj.ac/contest/2513/problem/14312",
     "submission_link": "https://qoj.ac/submission/1333588"
+  },
+  {
+    "submission_id": "#1343121",
+    "problem_name": "Square Permutation II",
+    "status": "AC",
+    "time": "359ms",
+    "memory": "119140kb",
+    "language": "C++20",
+    "submit_time": "2025-09-15T17:25:02+08:00",
+    "problem_link": "https://qoj.ac/contest/2524/problem/14320",
+    "submission_link": "https://qoj.ac/submission/1343121"
+  },
+  {
+    "submission_id": "#1341184",
+    "problem_name": "Xor Mirror",
+    "status": "AC",
+    "time": "250ms",
+    "memory": "15336kb",
+    "language": "C++20",
+    "submit_time": "2025-09-15T13:01:11+08:00",
+    "problem_link": "https://qoj.ac/contest/2524/problem/14325",
+    "submission_link": "https://qoj.ac/submission/1341184"
+  },
+  {
+    "submission_id": "#1339996",
+    "problem_name": "Zero",
+    "status": "AC",
+    "time": "5ms",
+    "memory": "3996kb",
+    "language": "C++14",
+    "submit_time": "2025-09-15T09:32:15+08:00",
+    "problem_link": "https://qoj.ac/contest/2524/problem/14318",
+    "submission_link": "https://qoj.ac/submission/1339996"
   }
 ]
