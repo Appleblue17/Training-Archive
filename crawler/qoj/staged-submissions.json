@@ -340,5 +340,16 @@
     "submit_time": "2025-09-15T09:32:15+08:00",
     "problem_link": "https://qoj.ac/contest/2524/problem/14318",
     "submission_link": "https://qoj.ac/submission/1339996"
+  },
+  {
+    "submission_id": "#1347338",
+    "problem_name": "\u53e6\u4e00\u4e2a\u6e38\u620f",
+    "status": "AC",
+    "time": "506ms",
+    "memory": "12652kb",
+    "language": "C++20",
+    "submit_time": "2025-09-16T14:28:34+08:00",
+    "problem_link": "https://qoj.ac/contest/2530/problem/14529",
+    "submission_link": "https://qoj.ac/submission/1347338"
   }
 ]
