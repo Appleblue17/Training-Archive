@@ -3,5 +3,7 @@
   "name": "Period of a String",
   "time_limit": "1.0 s",
   "memory_limit": "1024 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2025-09-16T21:19:56+08:00",
+  "solve_time": "2025-09-16T21:19:56+08:00"
 }
