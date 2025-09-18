@@ -2891,5 +2891,72 @@
         "link": "https://qoj.ac/contest/1661/problem/8690"
       }
     ]
+  },
+  {
+    "name": "The 2025 ICPC World Finals Baku",
+    "date": "2025-09-18",
+    "link": "https://qoj.ac/contest/2522",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "A-Skew-ed Reasoning",
+        "link": "https://qoj.ac/contest/2522/problem/14601"
+      },
+      {
+        "letter": "B",
+        "name": "Blackboard Game",
+        "link": "https://qoj.ac/contest/2522/problem/14602"
+      },
+      {
+        "letter": "C",
+        "name": "Bride of Pipe Stream",
+        "link": "https://qoj.ac/contest/2522/problem/14603"
+      },
+      {
+        "letter": "D",
+        "name": "Buggy Rover",
+        "link": "https://qoj.ac/contest/2522/problem/14604"
+      },
+      {
+        "letter": "E",
+        "name": "Delivery Service",
+        "link": "https://qoj.ac/contest/2522/problem/14605"
+      },
+      {
+        "letter": "F",
+        "name": "Herding Cats",
+        "link": "https://qoj.ac/contest/2522/problem/14606"
+      },
+      {
+        "letter": "G",
+        "name": "Lava Moat",
+        "link": "https://qoj.ac/contest/2522/problem/14607"
+      },
+      {
+        "letter": "H",
+        "name": "Score Values",
+        "link": "https://qoj.ac/contest/2522/problem/14608"
+      },
+      {
+        "letter": "I",
+        "name": "Slot Machine",
+        "link": "https://qoj.ac/contest/2522/problem/14609"
+      },
+      {
+        "letter": "J",
+        "name": "Stacking Cups",
+        "link": "https://qoj.ac/contest/2522/problem/14610"
+      },
+      {
+        "letter": "K",
+        "name": "Treasure Map",
+        "link": "https://qoj.ac/contest/2522/problem/14611"
+      },
+      {
+        "letter": "L",
+        "name": "Walking on Sunshine",
+        "link": "https://qoj.ac/contest/2522/problem/14612"
+      }
+    ]
   }
 ]
