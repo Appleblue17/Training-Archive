@@ -1,65 +1,88 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
-const int N=2e5+5,M=4e5+5,INF=1e9;
-
-int n,m;
-
-int fa[M];
-int getf(int x){
-    if(x==fa[x]) return x;
-    return fa[x]=getf(fa[x]);
+typedef long long ll;
+typedef double dou;
+typedef pair<int,int> pii;
+#define fi first
+#define se second
+#define mapa make_pair
+typedef long double ld;
+typedef unsigned long long ull;
+#define ep emplace_back
+template <typename T>inline void read(T &x){
+	x=0;char c=getchar();bool f=0;
+	for(;c<'0'||c>'9';c=getchar()) f|=(c=='-');
+	for(;c>='0'&&c<='9';c=getchar())
+	x=(x<<1)+(x<<3)+(c^48);
+	x=(f?-x:x);
 }
-
-vector <int> S[M];
-set <int> R[M];
-
-vector <int> in[N],out[N];
+const int N=1e6+5;
+int T, n, m;
+int fa[N], sz[N];
+ll hs(int x, int y){
+	if(x>y) swap(x, y);
+	return 10000000ll*x+y;
+}
+unordered_map<ll, int> h;
+vector<int> bin[N];
+int rx(int x){
+	if(x>n) return x-n;
+	return x;
+}
 ll ans;
-ll cal(int x){
-    return 1ll*x*(x-1)/2;
+void del(int x){
+	int f1=fa[x], f2=fa[x+n];
+	if(f1==f2){
+		sz[f1]--;
+		ans-=sz[f1];
+		return ;
+	}
+	--sz[f1]; --sz[f2]; --h[hs(f1, f2)];
+	ans-=sz[f1]+sz[f2]-h[hs(f1, f2)];
 }
-
-int merge(int x,int y){
-    if(x==y) return x;
-    
-    if(S[x].size()<S[y].size()) swap(x,y);
-    ans-=cal(R[x].size());
-    ans-=cal(R[y].size());
-    
-    for(int t: R[y]) R[x].insert(t);
-    ans+=cal(R[x].size());
-    
-    for(int t: S[y]) S[x].push_back(t);
-    fa[y]=x;
-    return x;
+void add(int x){
+	int f1=fa[x], f2=fa[x+n];
+	if(f1==f2){
+		ans+=sz[f1];
+		sz[f1]++;
+		return ;
+	}
+	ans+=sz[f1]+sz[f2]-h[hs(f1, f2)];
+	++sz[f1]; ++sz[f2]; ++h[hs(f1, f2)];
 }
-
+void merge(int x, int y){
+	x=fa[x]; y=fa[y];
+	if(x==y) return ;
+	if(bin[y].size()>bin[x].size()) swap(x, y);
+	for(auto t:bin[y]){
+		del(rx(t));
+		fa[t]=x;
+		bin[x].ep(t);
+		add(rx(t));
+	}
+	bin[y].clear();
+}
+void solve(){
+	read(n); read(m);
+	for(int i=1; i<=n*2; ++i){
+		fa[i]=i;
+		sz[i]=1;
+		bin[i].ep(i);
+	}
+	for(int i=1; i<=n; ++i) h[hs(i, i+n)]=1;
+	for(int i=1, x, y; i<=m; ++i){
+		read(x); read(y);
+		merge(x, y+n);
+		printf("%lld\n", ans);
+	}
+}
 int main(){
-    // freopen("1.txt","w",stdout);
-    scanf("%d%d",&n,&m);
-    for(int i=1;i<=m;i++) fa[i]=i;
-    
-    for(int t=1;t<=m;t++){
-        int u,v; scanf("%d%d",&u,&v);
-        
-        S[t]={t};
-        R[t].insert(u),R[t].insert(v);
-        ans++;
-        
-        int y=t;
-        for(int x: in[v]){
-            x=getf(x);
-            y=merge(y,x);
-        }
-        for(int x: out[u]){
-            x=getf(x);
-            y=merge(y,x);
-        }
-        
-        in[v].push_back(y);
-        out[u].push_back(y);
-        
-        printf("%lld\n",ans);
-    }
+	// freopen("D:\\nya\\acm\\B\\test.in","r",stdin);
+	// freopen("D:\\nya\\acm\\B\\test.out","w",stdout);
+	T=1;
+	while(T--){
+		solve();
+	}
+	return 0;
 }
+
