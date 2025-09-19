@@ -3,6 +3,7 @@
   "name": "Delivery Service",
   "time_limit": "12 s",
   "memory_limit": "2048 MB",
-  "solved": false,
-  "submit_time": "2025-09-18T17:23:22+08:00"
+  "solved": true,
+  "submit_time": "2025-09-19T10:23:29+08:00",
+  "solve_time": "2025-09-19T10:23:29+08:00"
 }
