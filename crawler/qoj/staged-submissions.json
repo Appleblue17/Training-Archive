@@ -362,5 +362,71 @@
     "submit_time": "2025-09-17T12:29:51+08:00",
     "problem_link": "https://qoj.ac/contest/2316/problem/13083",
     "submission_link": "https://qoj.ac/submission/1351727"
+  },
+  {
+    "submission_id": "#1385430",
+    "problem_name": "\u77e9\u5f62",
+    "status": "TL",
+    "time": "4ms",
+    "memory": "59236kb",
+    "language": "C++20",
+    "submit_time": "2025-09-22T19:22:06+08:00",
+    "problem_link": "https://qoj.ac/contest/2534/problem/14555",
+    "submission_link": "https://qoj.ac/submission/1385430"
+  },
+  {
+    "submission_id": "#1374733",
+    "problem_name": "\u9b54\u5854",
+    "status": "WA",
+    "time": "2ms",
+    "memory": "19620kb",
+    "language": "C++14",
+    "submit_time": "2025-09-20T20:58:05+08:00",
+    "problem_link": "https://qoj.ac/contest/2534/problem/14548",
+    "submission_link": "https://qoj.ac/submission/1374733"
+  },
+  {
+    "submission_id": "#1374552",
+    "problem_name": "\u901a\u914d\u7b26\u5339\u914d",
+    "status": "AC",
+    "time": "47ms",
+    "memory": "174632kb",
+    "language": "C++14",
+    "submit_time": "2025-09-20T20:41:00+08:00",
+    "problem_link": "https://qoj.ac/contest/2534/problem/14550",
+    "submission_link": "https://qoj.ac/submission/1374552"
+  },
+  {
+    "submission_id": "#1373596",
+    "problem_name": "\u8fde\u7ebf\u535a\u5f08",
+    "status": "AC",
+    "time": "65ms",
+    "memory": "21988kb",
+    "language": "C++20",
+    "submit_time": "2025-09-20T19:16:34+08:00",
+    "problem_link": "https://qoj.ac/contest/2534/problem/14552",
+    "submission_link": "https://qoj.ac/submission/1373596"
+  },
+  {
+    "submission_id": "#1373289",
+    "problem_name": "\u6559\u5e08",
+    "status": "AC",
+    "time": "367ms",
+    "memory": "26540kb",
+    "language": "C++20",
+    "submit_time": "2025-09-20T18:50:19+08:00",
+    "problem_link": "https://qoj.ac/contest/2534/problem/14554",
+    "submission_link": "https://qoj.ac/submission/1373289"
+  },
+  {
+    "submission_id": "#1373192",
+    "problem_name": "\u9020\u6865\u4e0e\u780d\u6811",
+    "status": "AC",
+    "time": "873ms",
+    "memory": "41448kb",
+    "language": "C++20",
+    "submit_time": "2025-09-20T18:43:24+08:00",
+    "problem_link": "https://qoj.ac/contest/2534/problem/14549",
+    "submission_link": "https://qoj.ac/submission/1373192"
   }
 ]

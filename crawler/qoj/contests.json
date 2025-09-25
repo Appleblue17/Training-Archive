@@ -2958,5 +2958,67 @@
         "link": "https://qoj.ac/contest/2522/problem/14612"
       }
     ]
+  },
+  {
+    "name": "The 2021 ICPC Asia Macau Regional Contest",
+    "date": "2025-09-25",
+    "link": "https://qoj.ac/contest/911",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "So I'll Max Out My Constructive Algorithm Skills",
+        "link": "https://qoj.ac/contest/911/problem/3836"
+      },
+      {
+        "letter": "B",
+        "name": "The Matching System",
+        "link": "https://qoj.ac/contest/911/problem/3837"
+      },
+      {
+        "letter": "C",
+        "name": "Laser Trap",
+        "link": "https://qoj.ac/contest/911/problem/3838"
+      },
+      {
+        "letter": "D",
+        "name": "Shortest Path Fast Algorithm",
+        "link": "https://qoj.ac/contest/911/problem/3839"
+      },
+      {
+        "letter": "E",
+        "name": "Pass the Ball!",
+        "link": "https://qoj.ac/contest/911/problem/3840"
+      },
+      {
+        "letter": "F",
+        "name": "Sandpile on Clique",
+        "link": "https://qoj.ac/contest/911/problem/3841"
+      },
+      {
+        "letter": "G",
+        "name": "Cyclic Buffer",
+        "link": "https://qoj.ac/contest/911/problem/3842"
+      },
+      {
+        "letter": "H",
+        "name": "Permutation on Tree",
+        "link": "https://qoj.ac/contest/911/problem/3843"
+      },
+      {
+        "letter": "I",
+        "name": "LCS Spanning Tree",
+        "link": "https://qoj.ac/contest/911/problem/3844"
+      },
+      {
+        "letter": "J",
+        "name": "Colorful Tree",
+        "link": "https://qoj.ac/contest/911/problem/3845"
+      },
+      {
+        "letter": "K",
+        "name": "Link-Cut Tree",
+        "link": "https://qoj.ac/contest/911/problem/3846"
+      }
+    ]
   }
 ]
