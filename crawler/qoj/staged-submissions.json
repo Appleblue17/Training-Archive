@@ -364,15 +364,15 @@
     "submission_link": "https://qoj.ac/submission/1351727"
   },
   {
-    "submission_id": "#1385430",
+    "submission_id": "#1473021",
     "problem_name": "\u77e9\u5f62",
-    "status": "TL",
-    "time": "4ms",
-    "memory": "59236kb",
+    "status": "AC",
+    "time": "691ms",
+    "memory": "133056kb",
     "language": "C++20",
-    "submit_time": "2025-09-22T19:22:06+08:00",
+    "submit_time": "2025-10-08T17:55:11+08:00",
     "problem_link": "https://qoj.ac/contest/2534/problem/14555",
-    "submission_link": "https://qoj.ac/submission/1385430"
+    "submission_link": "https://qoj.ac/submission/1473021"
   },
   {
     "submission_id": "#1374733",
@@ -428,5 +428,27 @@
     "submit_time": "2025-09-20T18:43:24+08:00",
     "problem_link": "https://qoj.ac/contest/2534/problem/14549",
     "submission_link": "https://qoj.ac/submission/1373192"
+  },
+  {
+    "submission_id": "#1464178",
+    "problem_name": "LIS on Grid",
+    "status": "AC",
+    "time": "4ms",
+    "memory": "13256kb",
+    "language": "C++20",
+    "submit_time": "2025-10-07T14:09:32+08:00",
+    "problem_link": "https://qoj.ac/problem/7943",
+    "submission_link": "https://qoj.ac/submission/1464178"
+  },
+  {
+    "submission_id": "#1458978",
+    "problem_name": "Haitang and Game",
+    "status": "AC",
+    "time": "123ms",
+    "memory": "23088kb",
+    "language": "C++20",
+    "submit_time": "2025-10-06T13:53:44+08:00",
+    "problem_link": "https://qoj.ac/problem/9928",
+    "submission_link": "https://qoj.ac/submission/1458978"
   }
 ]

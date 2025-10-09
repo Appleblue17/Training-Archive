@@ -3020,5 +3020,325 @@
         "link": "https://qoj.ac/contest/911/problem/3846"
       }
     ]
+  },
+  {
+    "name": "The 4th Universal Cup. Stage 1: Grand Prix of Korolyov",
+    "date": "2025-10-04",
+    "link": "https://qoj.ac/contest/2539",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Grid Problem",
+        "link": "https://qoj.ac/contest/2539/problem/14426"
+      },
+      {
+        "letter": "B",
+        "name": "Domain Compression",
+        "link": "https://qoj.ac/contest/2539/problem/14427"
+      },
+      {
+        "letter": "C",
+        "name": "Staple Stable",
+        "link": "https://qoj.ac/contest/2539/problem/14428"
+      },
+      {
+        "letter": "D",
+        "name": "Sequence Is Not Subsequence",
+        "link": "https://qoj.ac/contest/2539/problem/14429"
+      },
+      {
+        "letter": "E",
+        "name": "Coffee Shops",
+        "link": "https://qoj.ac/contest/2539/problem/14430"
+      },
+      {
+        "letter": "F",
+        "name": "Yet Another MST Problem",
+        "link": "https://qoj.ac/contest/2539/problem/14431"
+      },
+      {
+        "letter": "G",
+        "name": "Cyclic Topsort",
+        "link": "https://qoj.ac/contest/2539/problem/14432"
+      },
+      {
+        "letter": "H",
+        "name": "Misread Problem",
+        "link": "https://qoj.ac/contest/2539/problem/14433"
+      },
+      {
+        "letter": "I",
+        "name": "troS XEM",
+        "link": "https://qoj.ac/contest/2539/problem/14434"
+      },
+      {
+        "letter": "J",
+        "name": "Yet Another Constructive Problem",
+        "link": "https://qoj.ac/contest/2539/problem/14435"
+      },
+      {
+        "letter": "K",
+        "name": "Robot Construction",
+        "link": "https://qoj.ac/contest/2539/problem/14436"
+      }
+    ]
+  },
+  {
+    "name": "The 3rd Universal Cup. Stage 28: Haidian Huangzhuang",
+    "date": "2025-10-02",
+    "link": "https://qoj.ac/contest/1903",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Iron Warrior",
+        "link": "https://qoj.ac/contest/1903/problem/9690"
+      },
+      {
+        "letter": "B",
+        "name": "Little, Cyan, Fish!",
+        "link": "https://qoj.ac/contest/1903/problem/9691"
+      },
+      {
+        "letter": "C",
+        "name": "Currency",
+        "link": "https://qoj.ac/contest/1903/problem/9692"
+      },
+      {
+        "letter": "D",
+        "name": "Widely Known Problem",
+        "link": "https://qoj.ac/contest/1903/problem/9693"
+      },
+      {
+        "letter": "E",
+        "name": "Light Drinking and Low Singing",
+        "link": "https://qoj.ac/contest/1903/problem/9694"
+      },
+      {
+        "letter": "F",
+        "name": "Trash Problem",
+        "link": "https://qoj.ac/contest/1903/problem/9695"
+      },
+      {
+        "letter": "G",
+        "name": "Analysis",
+        "link": "https://qoj.ac/contest/1903/problem/9696"
+      },
+      {
+        "letter": "H",
+        "name": "Algebra",
+        "link": "https://qoj.ac/contest/1903/problem/9697"
+      },
+      {
+        "letter": "I",
+        "name": "Twenty-two",
+        "link": "https://qoj.ac/contest/1903/problem/9698"
+      },
+      {
+        "letter": "J",
+        "name": "Loving You in My Humble Way",
+        "link": "https://qoj.ac/contest/1903/problem/9699"
+      },
+      {
+        "letter": "K",
+        "name": "Ying\u2019s Cup",
+        "link": "https://qoj.ac/contest/1903/problem/9700"
+      }
+    ]
+  },
+  {
+    "name": "Petrozavodsk Summer 2023. Day 7. PKU Contest",
+    "date": "2025-09-28",
+    "link": "https://qoj.ac/contest/1376",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Simple Game",
+        "link": "https://qoj.ac/contest/1376/problem/7501"
+      },
+      {
+        "letter": "B",
+        "name": "Painting the Roads",
+        "link": "https://qoj.ac/contest/1376/problem/7502"
+      },
+      {
+        "letter": "C",
+        "name": "Too Many Edges",
+        "link": "https://qoj.ac/contest/1376/problem/7503"
+      },
+      {
+        "letter": "D",
+        "name": "HearthStone",
+        "link": "https://qoj.ac/contest/1376/problem/7504"
+      },
+      {
+        "letter": "E",
+        "name": "Billiard",
+        "link": "https://qoj.ac/contest/1376/problem/7505"
+      },
+      {
+        "letter": "F",
+        "name": "StrCartesian",
+        "link": "https://qoj.ac/contest/1376/problem/7506"
+      },
+      {
+        "letter": "G",
+        "name": "Ald",
+        "link": "https://qoj.ac/contest/1376/problem/7507"
+      },
+      {
+        "letter": "H",
+        "name": "Fast Debugger",
+        "link": "https://qoj.ac/contest/1376/problem/7508"
+      },
+      {
+        "letter": "I",
+        "name": "01tree",
+        "link": "https://qoj.ac/contest/1376/problem/7509"
+      },
+      {
+        "letter": "J",
+        "name": "Independent Set",
+        "link": "https://qoj.ac/contest/1376/problem/7510"
+      },
+      {
+        "letter": "K",
+        "name": "Planar Graph",
+        "link": "https://qoj.ac/contest/1376/problem/7511"
+      }
+    ]
+  },
+  {
+    "name": "The 2nd Universal Cup. Stage 2: SPb",
+    "date": "2025-09-27",
+    "link": "https://qoj.ac/contest/1356",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Mixed Messages",
+        "link": "https://qoj.ac/contest/1356/problem/7175"
+      },
+      {
+        "letter": "B",
+        "name": "I Flipped The Calendar...",
+        "link": "https://qoj.ac/contest/1356/problem/7176"
+      },
+      {
+        "letter": "C",
+        "name": "Many Many Cycles",
+        "link": "https://qoj.ac/contest/1356/problem/7177"
+      },
+      {
+        "letter": "D",
+        "name": "Bishops",
+        "link": "https://qoj.ac/contest/1356/problem/7178"
+      },
+      {
+        "letter": "E",
+        "name": "Fischer's Chess Guessing Game",
+        "link": "https://qoj.ac/contest/1356/problem/7179"
+      },
+      {
+        "letter": "F",
+        "name": "Forward-Capturing Pawns",
+        "link": "https://qoj.ac/contest/1356/problem/7180"
+      },
+      {
+        "letter": "G",
+        "name": "Graph Cuts",
+        "link": "https://qoj.ac/contest/1356/problem/7181"
+      },
+      {
+        "letter": "H",
+        "name": "Very Sparse Table",
+        "link": "https://qoj.ac/contest/1356/problem/7182"
+      },
+      {
+        "letter": "I",
+        "name": "Password",
+        "link": "https://qoj.ac/contest/1356/problem/7183"
+      },
+      {
+        "letter": "J",
+        "name": "Transport Pluses",
+        "link": "https://qoj.ac/contest/1356/problem/7184"
+      },
+      {
+        "letter": "K",
+        "name": "Poor Students",
+        "link": "https://qoj.ac/contest/1356/problem/7185"
+      },
+      {
+        "letter": "L",
+        "name": "\"Memo\" Game With a Hint",
+        "link": "https://qoj.ac/contest/1356/problem/7186"
+      },
+      {
+        "letter": "M",
+        "name": "Hardcore String Counting",
+        "link": "https://qoj.ac/contest/1356/problem/7187"
+      }
+    ]
+  },
+  {
+    "name": "Petrozavodsk Winter 2022. Day 6. ICPC Camp Day 1",
+    "date": "2025-10-09",
+    "link": "https://qoj.ac/contest/824",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Soccer Match",
+        "link": "https://qoj.ac/contest/824/problem/2605"
+      },
+      {
+        "letter": "B",
+        "name": "Gachapon",
+        "link": "https://qoj.ac/contest/824/problem/2606"
+      },
+      {
+        "letter": "C",
+        "name": "Survey",
+        "link": "https://qoj.ac/contest/824/problem/2607"
+      },
+      {
+        "letter": "D",
+        "name": "Station",
+        "link": "https://qoj.ac/contest/824/problem/2608"
+      },
+      {
+        "letter": "E",
+        "name": "Number Guessing",
+        "link": "https://qoj.ac/contest/824/problem/2609"
+      },
+      {
+        "letter": "F",
+        "name": "Build a City",
+        "link": "https://qoj.ac/contest/824/problem/2610"
+      },
+      {
+        "letter": "G",
+        "name": "Trans",
+        "link": "https://qoj.ac/contest/824/problem/2611"
+      },
+      {
+        "letter": "H",
+        "name": "Blind Box",
+        "link": "https://qoj.ac/contest/824/problem/2612"
+      },
+      {
+        "letter": "I",
+        "name": "EIP1559",
+        "link": "https://qoj.ac/contest/824/problem/2613"
+      },
+      {
+        "letter": "J",
+        "name": "Three Countries",
+        "link": "https://qoj.ac/contest/824/problem/2614"
+      },
+      {
+        "letter": "K",
+        "name": "Surround the Cat",
+        "link": "https://qoj.ac/contest/824/problem/2615"
+      }
+    ]
   }
 ]

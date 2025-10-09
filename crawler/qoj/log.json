@@ -1,302 +1,302 @@
 [
   {
-    "time": "2025-09-19T04:13:34.737945+08:00",
+    "time": "2025-10-09T17:23:06.801949+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Submissions fetched successfully."
+    "msg": "Start fetching contest: Petrozavodsk Summer 2023. Day 7. PKU Contest (2025-09-28)"
   },
   {
-    "time": "2025-09-19T04:13:34.738581+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-09-19T04:13:34.738575+08:00"
-  },
-  {
-    "time": "2025-09-20T04:11:38.233217+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2025-09-20T04:11:38.819410+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-09-20T04:11:38.819394+08:00"
-  },
-  {
-    "time": "2025-09-20T04:11:43.163457+08:00",
+    "time": "2025-10-09T17:23:06.802677+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Login successful with username and password."
+    "msg": "Created contest folder: contests/2025-09-28 Petrozavodsk Summer 2023. Day 7. PKU Contest"
   },
   {
-    "time": "2025-09-20T04:11:45.947820+08:00",
+    "time": "2025-10-09T17:24:04.376903+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Contest list is empty, no contests to fetch. Exiting."
+    "msg": "Finished fetching contest: Petrozavodsk Summer 2023. Day 7. PKU Contest (2025-09-28)"
   },
   {
-    "time": "2025-09-20T04:11:45.948540+08:00",
+    "time": "2025-10-09T17:24:04.377555+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Contests fetched successfully."
+    "msg": "Start fetching contest: The 2nd Universal Cup. Stage 2: SPb (2025-09-27)"
   },
   {
-    "time": "2025-09-20T04:11:45.949763+08:00",
+    "time": "2025-10-09T17:24:04.378192+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Start updating staged submissions..."
+    "msg": "Created contest folder: contests/2025-09-27 The 2nd Universal Cup. Stage 2: SPb"
   },
   {
-    "time": "2025-09-20T04:11:45.952782+08:00",
+    "time": "2025-10-09T17:25:22.505322+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Start fetching new submissions..."
+    "msg": "Finished fetching contest: The 2nd Universal Cup. Stage 2: SPb (2025-09-27)"
   },
   {
-    "time": "2025-09-20T04:11:45.953405+08:00",
+    "time": "2025-10-09T17:25:22.506093+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
+    "msg": "Start fetching contest: Petrozavodsk Winter 2022. Day 6. ICPC Camp Day 1 (2025-10-09)"
   },
   {
-    "time": "2025-09-20T04:11:48.951247+08:00",
+    "time": "2025-10-09T17:25:22.506834+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Reached last update (Submission #1359155), stopping."
+    "msg": "Created contest folder: contests/2025-10-09 Petrozavodsk Winter 2022. Day 6. ICPC Camp Day 1"
   },
   {
-    "time": "2025-09-20T04:11:48.951968+08:00",
+    "time": "2025-10-09T17:26:22.592757+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Submissions fetched successfully."
+    "msg": "Finished fetching contest: Petrozavodsk Winter 2022. Day 6. ICPC Camp Day 1 (2025-10-09)"
   },
   {
-    "time": "2025-09-20T04:11:48.952547+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-09-20T04:11:48.952541+08:00"
-  },
-  {
-    "time": "2025-09-26T04:12:54.251653+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2025-09-26T04:12:54.793568+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-09-26T04:12:54.793551+08:00"
-  },
-  {
-    "time": "2025-09-26T04:12:59.801321+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-09-26T04:13:02.616653+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 2021 ICPC Asia Macau Regional Contest (2025-09-25)"
-  },
-  {
-    "time": "2025-09-26T04:13:02.617462+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Created contest folder: contests/2025-09-25 The 2021 ICPC Asia Macau Regional Contest"
-  },
-  {
-    "time": "2025-09-26T04:13:59.895399+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Finished fetching contest: The 2021 ICPC Asia Macau Regional Contest (2025-09-25)"
-  },
-  {
-    "time": "2025-09-26T04:13:59.896082+08:00",
+    "time": "2025-10-09T17:26:22.593440+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Contests fetched successfully."
   },
   {
-    "time": "2025-09-26T04:13:59.897258+08:00",
+    "time": "2025-10-09T17:26:22.594721+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start updating staged submissions..."
   },
   {
-    "time": "2025-09-26T04:13:59.900400+08:00",
+    "time": "2025-10-09T17:26:22.598558+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching new submissions..."
   },
   {
-    "time": "2025-09-26T04:13:59.901008+08:00",
+    "time": "2025-10-09T17:26:22.599187+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 1."
   },
   {
-    "time": "2025-09-26T04:14:05.239797+08:00",
+    "time": "2025-10-09T17:26:33.717250+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 1."
   },
   {
-    "time": "2025-09-26T04:14:05.240386+08:00",
+    "time": "2025-10-09T17:26:33.717929+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 2."
   },
   {
-    "time": "2025-09-26T04:14:07.147902+08:00",
+    "time": "2025-10-09T17:26:39.168932+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 2."
   },
   {
-    "time": "2025-09-26T04:14:07.148486+08:00",
+    "time": "2025-10-09T17:26:39.169666+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 3."
   },
   {
-    "time": "2025-09-26T04:14:08.504187+08:00",
+    "time": "2025-10-09T17:26:41.564017+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 3."
   },
   {
-    "time": "2025-09-26T04:14:08.505183+08:00",
+    "time": "2025-10-09T17:26:41.564823+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 4."
   },
   {
-    "time": "2025-09-26T04:14:09.909359+08:00",
+    "time": "2025-10-09T17:26:44.575626+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 4."
   },
   {
-    "time": "2025-09-26T04:14:09.910049+08:00",
+    "time": "2025-10-09T17:26:44.576496+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 5."
   },
   {
-    "time": "2025-09-26T04:14:15.402744+08:00",
+    "time": "2025-10-09T17:26:51.740375+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 5."
   },
   {
-    "time": "2025-09-26T04:14:15.403449+08:00",
+    "time": "2025-10-09T17:26:51.741132+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 6."
   },
   {
-    "time": "2025-09-26T04:14:25.097863+08:00",
+    "time": "2025-10-09T17:27:03.403527+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 6."
   },
   {
-    "time": "2025-09-26T04:14:25.098563+08:00",
+    "time": "2025-10-09T17:27:03.404369+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 7."
   },
   {
-    "time": "2025-09-26T04:14:27.123378+08:00",
+    "time": "2025-10-09T17:27:04.379854+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 7."
   },
   {
-    "time": "2025-09-26T04:14:27.124113+08:00",
+    "time": "2025-10-09T17:27:04.380623+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 8."
   },
   {
-    "time": "2025-09-26T04:14:28.911875+08:00",
+    "time": "2025-10-09T17:27:10.373258+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 8."
   },
   {
-    "time": "2025-09-26T04:14:28.912603+08:00",
+    "time": "2025-10-09T17:27:10.374115+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 9."
   },
   {
-    "time": "2025-09-26T04:14:29.613105+08:00",
+    "time": "2025-10-09T17:27:18.608306+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 9."
   },
   {
-    "time": "2025-09-26T04:14:29.613908+08:00",
+    "time": "2025-10-09T17:27:18.609082+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 10."
   },
   {
-    "time": "2025-09-26T04:14:30.504344+08:00",
+    "time": "2025-10-09T17:27:26.905906+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 10."
   },
   {
-    "time": "2025-09-26T04:14:30.505045+08:00",
+    "time": "2025-10-09T17:27:26.906736+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 11."
   },
   {
-    "time": "2025-09-26T04:14:31.167579+08:00",
+    "time": "2025-10-09T17:27:31.479119+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 11."
   },
   {
-    "time": "2025-09-26T04:14:31.168369+08:00",
+    "time": "2025-10-09T17:27:31.479949+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 12."
   },
   {
-    "time": "2025-09-26T04:14:32.847057+08:00",
+    "time": "2025-10-09T17:27:38.457608+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Fetched 10 submissions from page 12."
   },
   {
-    "time": "2025-09-26T04:14:32.847845+08:00",
+    "time": "2025-10-09T17:27:38.458519+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 13."
   },
   {
-    "time": "2025-09-26T04:14:34.561589+08:00",
+    "time": "2025-10-09T17:27:50.731680+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Reached last update (Submission #1363219), stopping."
+    "msg": "Fetched 10 submissions from page 13."
   },
   {
-    "time": "2025-09-26T04:14:34.562623+08:00",
+    "time": "2025-10-09T17:27:50.732534+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 14."
+  },
+  {
+    "time": "2025-10-09T17:27:54.001369+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 14."
+  },
+  {
+    "time": "2025-10-09T17:27:54.002287+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 15."
+  },
+  {
+    "time": "2025-10-09T17:27:58.662613+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 15."
+  },
+  {
+    "time": "2025-10-09T17:27:58.663501+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 16."
+  },
+  {
+    "time": "2025-10-09T17:28:08.777829+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 16."
+  },
+  {
+    "time": "2025-10-09T17:28:08.778832+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 17."
+  },
+  {
+    "time": "2025-10-09T17:28:13.836739+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 17."
+  },
+  {
+    "time": "2025-10-09T17:28:13.837670+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 18."
+  },
+  {
+    "time": "2025-10-09T17:28:14.870067+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1399202), stopping."
+  },
+  {
+    "time": "2025-10-09T17:28:14.871176+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Submissions fetched successfully."
   },
   {
-    "time": "2025-09-26T04:14:34.563424+08:00",
+    "time": "2025-10-09T17:28:14.872109+08:00",
     "level": "important",
     "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-09-26T04:14:34.563418+08:00"
+    "msg": "QOJ Crawler finished successfully at 2025-10-09T17:28:14.872101+08:00"
   }
 ]
