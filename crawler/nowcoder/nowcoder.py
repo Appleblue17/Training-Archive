@@ -450,24 +450,26 @@ class NOWCODERCrawler(BaseCrawler):
 
 if __name__ == "__main__":
     crawler = NOWCODERCrawler()
+    crawler.log("info", "Nowcoder Crawler is disabled.")
+    raise RuntimeError("Nowcoder Crawler is disabled.")
 
-    try:
-        crawler.log(
-            "important",
-            "nowcoder Crawler started at " + datetime.now(beijing).isoformat(),
-        )
-        crawler.login()
+    # try:
+    #     crawler.log(
+    #         "important",
+    #         "nowcoder Crawler started at " + datetime.now(beijing).isoformat(),
+    #     )
+    #     crawler.login()
 
-        crawler.fetch_contests()
-        crawler.log("info", "Contests fetched successfully.")
-        crawler.fetch_submissions()
-        crawler.log("info", "Submissions fetched successfully.")
-        crawler.log(
-            "important",
-            "nowcoder Crawler finished successfully at "
-            + datetime.now(beijing).isoformat(),
-        )
-    except Exception as e:
-        crawler.log("fatal", f"An error occurred: {e}")
-    finally:
-        crawler.deinit_driver()
+    #     crawler.fetch_contests()
+    #     crawler.log("info", "Contests fetched successfully.")
+    #     crawler.fetch_submissions()
+    #     crawler.log("info", "Submissions fetched successfully.")
+    #     crawler.log(
+    #         "important",
+    #         "nowcoder Crawler finished successfully at "
+    #         + datetime.now(beijing).isoformat(),
+    #     )
+    # except Exception as e:
+    #     crawler.log("fatal", f"An error occurred: {e}")
+    # finally:
+    #     crawler.deinit_driver()
