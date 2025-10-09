@@ -1,0 +1,410 @@
+1:"$Sreact.fragment"
+2:I[8521,[],""]
+3:I[1661,[],""]
+a:I[939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/dd3bbe79ef28f60a.css","style"]
+:HL["/Training-Archive/_next/static/css/9f4210e542df69af.css","style"]
+0:{"P":null,"b":"0IZWCtTiDmyj1l51fzcDe","p":"/Training-Archive","c":["","view","contests","2025-09-28%20Petrozavodsk%20Summer%202023.%20Day%207.%20PKU%20Contest","problems","G","code.cpp"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2025-09-28%20Petrozavodsk%20Summer%202023.%20Day%207.%20PKU%20Contest","d"],{"children":["problems",{"children":[["problem","G","d"],{"children":[["file","code.cpp","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/dd3bbe79ef28f60a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-1 inline","children":["$undefined",[["$","path","0",{"d":"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2025-09-28%20Petrozavodsk%20Summer%202023.%20Day%207.%20PKU%20Contest","d"],"$L4",{"children":["problems","$L5",{"children":[["problem","G","d"],"$L6",{"children":[["file","code.cpp","d"],"$L7",{"children":["__PAGE__","$L8",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],"$L9",false]],"m":"$undefined","G":["$a",[]],"s":false,"S":true}
+c:I[7055,[],"OutletBoundary"]
+e:I[9909,[],"AsyncMetadataOutlet"]
+10:I[7055,[],"ViewportBoundary"]
+12:I[7055,[],"MetadataBoundary"]
+13:"$Sreact.suspense"
+4:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+7:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+8:["$","$1","c",{"children":["$Lb",[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/9f4210e542df69af.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Lc",null,{"children":["$Ld",["$","$Le",null,{"promise":"$@f"}]]}]]}]
+9:["$","$1","h",{"children":[null,[["$","$L10",null,{"children":"$L11"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L12",null,{"children":["$","div",null,{"hidden":true,"children":["$","$13",null,{"fallback":null,"children":"$L14"}]}]}]]}]
+15:I[6417,["215","static/chunks/1951f239-e4c7a40f4938f7cd.js","81","static/chunks/81-d563b76c84969650.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-8b159e72c21ca0c8.js"],"default"]
+16:T292d,#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef double dou;
+typedef pair<int,int> pii;
+#define fi first
+#define se second
+#define mapa make_pair
+typedef long double ld;
+typedef unsigned long long ull;
+#define ep emplace_back
+template <typename T>inline void read(T &x){
+	x=0;char c=getchar();bool f=0;
+	for(;c<'0'||c>'9';c=getchar()) f|=(c=='-');
+	for(;c>='0'&&c<='9';c=getchar())
+	x=(x<<1)+(x<<3)+(c^48);
+	x=(f?-x:x);
+}
+const int N=1e5+5;
+int T, n, m;
+int ans[N];
+vector<int> e[N];
+struct Neighbors{
+    bool v[N];
+    int get_s(int x, int fa){
+        if(v[x]) return 0;
+        int ret=1;
+        for(auto y:e[x]) if(y!=fa) 
+            ret+=get_s(y, x);
+        return ret;
+    }
+    int get_rt(int x, int fa, int siz, int &rt){
+        if(v[x]) return 0;
+        int sum=1, mx=0;
+        for(auto y:e[x]){
+            if(y==fa) continue;
+            int t=get_rt(y, x, siz, rt);
+            mx=max(mx,t); sum+=t;
+        }
+        mx=max(mx, siz-sum);
+        if(mx<=siz/2) rt=x;
+        return sum;
+    }
+    int rt, fa[N];
+    void devide(int x){
+        v[x]=1;
+        for(auto y:e[x]){
+            if(v[y]) continue;
+            int nrt=-1;
+            get_rt(y, -1, get_s(y, -1), nrt); devide(nrt); fa[nrt]=x;
+        }
+    }
+    int dfn, st[20][N<<1], pos[N], lg[N<<1], dep[N];
+    void dis_pre(int x, int fa, int cd){
+        st[0][++dfn]=x; pos[x]=dfn; dep[x]=cd;
+        for(auto y:e[x]){
+            if(y==fa) continue;
+            dis_pre(y, x, cd+1);
+            st[0][++dfn]=x;
+        }
+    }
+    void lca_pre(){
+        for(int i=2; i<=dfn; i++) lg[i]=lg[i>>1]+1;
+        for(int i=1; i<=lg[dfn]; i++){
+            for(int j=1; j+(1<<i)-1<=dfn; j++){
+                st[i][j]=dep[st[i-1][j]]<dep[st[i-1][j+(1<<(i-1))]]?
+                st[i-1][j]:st[i-1][j+(1<<(i-1))];
+            }
+        }
+    }
+    int lca(int x, int y){
+        x=pos[x], y=pos[y];
+        if(x>y) swap(x, y);
+        int t=lg[y-x+1];
+        return dep[st[t][x]]<dep[st[t][y-(1<<t)+1]]?
+        st[t][x]:st[t][y-(1<<t)+1];
+    } 
+    int get_dis(int x, int y){
+        return dep[x]+dep[y]-2*dep[lca(x, y)];
+    }
+    vector<int> item[2][N];
+    void ins(int x){
+        for(int i=x; i; i=fa[i]){
+            item[0][i].ep(get_dis(x, i));
+            if(fa[i]) {
+                item[1][i].ep(get_dis(x, fa[i]));
+            }
+        }
+    }
+    int get(int x, int k){
+        int ret=0;
+        int pre=0;
+        for(int i=x; i; pre=i, i=fa[i]){
+            int len=k-get_dis(x, i);
+            if(len<0) continue;
+            ret+=upper_bound(item[0][i].begin(), item[0][i].end(), len)-item[0][i].begin();
+            if(pre) ret-=upper_bound(item[1][pre].begin(), item[1][pre].end(), len)-item[1][pre].begin();
+        }
+        return ret;
+    }
+    void build(){
+        dfn=0;
+        for(int i=1; i<=n; ++i) v[i]=0, item[0][i].clear(), item[1][i].clear();
+        get_rt(1, -1, n, rt);
+        fa[rt]=0;
+        devide(rt);
+        dis_pre(rt, -1, 1);
+        lca_pre();
+        for(int i=1; i<=n; ++i) ins(i);
+        for(int i=1; i<=n; ++i) sort(item[0][i].begin(), item[0][i].end()), sort(item[1][i].begin(), item[1][i].end());
+    }
+}D1;
+struct Neighbors2{
+    struct node{
+        int id, k, mul;
+    };
+    int dfn[N], son[N], seq[N], top[N], len[N], sz[N], f[N], dep[N];
+    int timer;
+    vector<node> qry[N];
+    void dfs(int x, int fa){
+        f[x]=fa; sz[x]=1; son[x]=0; dep[x]=dep[fa]+1;
+        for(auto y:e[x]) if(y^fa){
+            dfs(y, x);
+            sz[x]+=sz[y];
+            if(sz[y]>sz[son[x]]) son[x]=y;
+        }
+    }
+    void dfs2(int x, int tp){
+        top[x]=tp; ++len[tp]; dfn[x]=++timer; seq[timer]=x;
+        if(son[x]) dfs2(son[x], tp);
+        for(auto y:e[x]) if(y!=f[x]&&y!=son[x]){
+            len[y]=0;
+            dfs2(y, y);
+        }
+    }
+    void build(){
+        for(int i=1; i<=n; ++i) qry[i].clear();
+        timer=0;
+        dfs(1, 0);
+        len[1]=0;
+        dfs2(1, 1);
+    }
+    void ins(int x, node tem){
+        while(x){
+            qry[x].ep(tem);
+            x=f[top[x]];
+        }
+    }
+    int tr[N<<1];
+    vector<pii> back;
+    void add(int x, int v, bool flag){
+        if(flag) back.ep(x, -v);
+        ++x;
+        for(; x<=n*2; x+=(x&-x)) tr[x]+=v;
+    }
+    int get(int x){
+        int ret=0;
+        for(x=min(x+1, n*2); x>0; x-=(x&-x)) ret+=tr[x];
+        return ret;
+    }
+    void solve(){
+        //calculated at lca exactly once
+        for(int i=1; i<=n; ++i) if(i==top[i]){
+            //到链顶，不含重链子树，提前在链顶轻重切换处容斥
+            for(int j=0; j<len[i]; ++j){
+                int x=seq[dfn[i]+j];
+                //i's subtree 
+                add(0, 1, 1); 
+                //i's father
+                add(dep[x]-dep[i]+1, -1, 1);
+                if(son[x]){
+                    for(int k=dfn[son[x]]+sz[son[x]]; k<dfn[x]+sz[x]; ++k){
+                        //i's subtree 
+                        add(dep[seq[k]]-dep[x], 1, 1);
+                        //i's father
+                        add(dep[seq[k]]-dep[i]+1, -1, 1);
+                    }
+                }
+                for(auto t:qry[x]) ans[t.id]+=t.mul*get(t.k);
+            }
+            for(auto t:back) add(t.fi, t.se, 0);
+            back.clear();
+            //重链子树，仍需容斥
+            for(int j=len[i]-1; j>0; --j){
+                int x=seq[dfn[i]+j];
+                add(dep[x]-dep[i], 1, 1);
+                if(son[x]){
+                    for(int k=dfn[son[x]]+sz[son[x]]; k<dfn[x]+sz[x]; ++k){
+                        add(dep[seq[k]]-dep[i], 1, 1);
+                    }
+                }
+                for(auto t:qry[f[x]]) ans[t.id]+=t.mul*(get(t.k+dep[x]-dep[i]-1)-get(t.k-1));
+            }
+            for(auto t:back) add(t.fi, t.se, 0);
+            back.clear();
+        }
+    }
+}D2;
+int f[N][20], dep[N];
+void dfs(int x, int fa){
+    f[x][0]=fa; dep[x]=dep[fa]+1;
+    for(int i=1; i<20; ++i) f[x][i]=f[f[x][i-1]][i-1];
+    for(auto y:e[x]) if(y^fa){
+        dfs(y, x);
+    }
+}
+inline int lca(int x, int y){
+    if(dep[x]<dep[y]) swap(x, y);
+    for(int i=19; i>=0; --i) if(dep[f[x][i]]>=dep[y]) x=f[x][i];
+    if(x==y) return x;
+    for(int i=19; i>=0; --i) if(f[x][i]^f[y][i]) x=f[x][i], y=f[y][i];
+    return f[x][0];
+}
+inline int dis(int x, int y){
+    return dep[x]+dep[y]-2*dep[lca(x, y)];
+}
+inline int jump(int x, int d){
+    for(int i=19; i>=0; --i) if((d>>i)&1){
+        x=f[x][i];
+    }
+    return x;
+}
+int qtp[N], qx[N], qy[N];
+inline ll path_hash(int x, int y){
+    if(x>y) swap(x, y);
+    return 1000000000ll*x+y;
+}
+int px[N], py[N], idx;
+vector<int> item[N<<2];
+void ins(int p, int l, int r, int L, int R, int x){
+    if(L<=l&&r<=R){
+        item[p].ep(x);
+        return ;
+    }
+    int mid=(l+r)>>1;
+    if(L<=mid) ins(p<<1, l, mid, L, R, x);
+    if(R>mid) ins(p<<1|1, mid+1, r, L, R, x);
+}
+struct tree_info{
+    int state, px, py, len;
+}info[30];
+inline int fnd(int x, int y, int z){
+    int u=lca(x, y), v=lca(x, z), w=lca(y, z);
+    if(dep[u]<dep[v]) swap(u, v);
+    if(dep[u]<dep[w]) swap(u, w);
+    return u;
+}
+inline tree_info operator +(tree_info cur, int t){
+    if(cur.state==0){
+        cur.state=1;
+        cur.px=px[t]; cur.py=py[t];
+        cur.len=0;
+        return cur;
+    }
+    int lca1=fnd(cur.px, px[t], py[t]), lca2=fnd(cur.py, px[t], py[t]);
+    if(lca1!=lca2){
+        if(cur.state==1){
+            cur.px=lca1; cur.py=lca2;
+            return cur;
+        }
+        return cur;
+    }
+    if(cur.state==1){
+        int top=fnd(cur.px, cur.py, lca1);
+        if(top==lca1){
+            cur.px=cur.py=top;
+            return cur;
+        }
+        cur.state=2;
+        cur.px=top; cur.py=lca1; cur.len=dis(top, lca1);
+        return cur;
+    }
+    int d1=dis(cur.px, lca1), d2=dis(cur.py, lca1);
+    if(cur.len>=d1&&cur.len>=d2){
+        return cur;
+    }
+    if(d1>=d2){
+        cur.len=d1; cur.py=lca1;
+    }
+    else{
+        cur.len=d2; cur.px=lca1;
+    }
+    return cur;
+}
+void solve(int o, int p, int l, int r){
+    for(auto t:item[p]){
+        info[o]=info[o]+t;
+    }
+    if(l==r){
+        if(qtp[l]!=3) return ;
+        if(info[o].state==0){
+            ans[l]=0;
+            return ;
+        }
+        if(dep[info[o].px]<dep[info[o].py]) swap(info[o].px, info[o].py);
+        if(info[o].state==1){
+            int w=lca(info[o].px, info[o].py);
+            ans[l]=D1.get(w, qx[l]);
+            D2.ins(info[o].px, (Neighbors2::node){l, qx[l], 1});
+            D2.ins(info[o].py, (Neighbors2::node){l, qx[l], 1});
+            D2.ins(w, (Neighbors2::node){l, qx[l], -2});
+        }
+        else {
+            if(qx[l]*2<info[o].len){
+                ans[l]=0;
+                return ;
+            }
+            if(info[o].len&1){
+                int p1=jump(info[o].px, info[o].len/2), p2=f[p1][0];
+                ans[l]=D1.get(p2, qx[l]-info[o].len/2-1);
+                D2.ins(p1, (Neighbors2::node){l, qx[l]-info[o].len/2-1, 1});
+                D2.ins(p2, (Neighbors2::node){l, qx[l]-info[o].len/2-1, -1});
+            }
+            else{
+                ans[l]=D1.get(jump(info[o].px, info[o].len/2), qx[l]-info[o].len/2);
+            }
+        }
+        return ;
+    }
+    int mid=(l+r)>>1;
+    info[o+1]=info[o];
+    solve(o+1, p<<1, l, mid);
+    info[o+1]=info[o];
+    solve(o+1, p<<1|1, mid+1, r);
+}
+void solve(){
+    read(n); read(m);
+    for(int i=1; i<=n; ++i) e[i].clear();
+    for(int i=1, x, y; i<n; ++i){
+        read(x); read(y);
+        e[x].ep(y); e[y].ep(x);
+    }
+    D1.build(); D2.build();
+    dfs(1, 0);
+    unordered_map<ll, vector<pii> > h;
+    idx=0;
+    for(int i=1; i<=m*4; ++i) item[i].clear();
+    for(int i=1; i<=m; ++i){
+        read(qtp[i]);
+        if(qtp[i]==3){
+            read(qx[i]);
+            ans[i]=0;
+            continue;
+        }
+        read(qx[i]); read(qy[i]);
+        if(qtp[i]==1){
+            ++idx;
+            px[idx]=qx[i]; py[idx]=qy[i];
+            h[path_hash(qx[i], qy[i])].ep(idx, i);
+        }
+        else{
+            pii tem=h[path_hash(qx[i], qy[i])].back();
+            h[path_hash(qx[i], qy[i])].pop_back();
+            ins(1, 1, m, tem.se, i, tem.fi);
+        }
+    }
+    for(auto t:h){
+        for(auto tt:t.se){
+            ins(1, 1, m, tt.se, m, tt.fi);
+        }
+    }
+    info[0].state=0;
+    solve(0, 1, 1, m);
+    D2.solve();
+    for(int i=1; i<=m; ++i) if(qtp[i]==3){
+        printf("%d\n", ans[i]);
+    }
+}
+int main(){
+	// freopen("D:\\nya\\acm\\A\\test.in","r",stdin);
+	// freopen("D:\\nya\\acm\\A\\test.out","w",stdout);
+	read(T);
+	while(T--){
+		solve();
+	}
+	return 0;
+}
+
+b:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2025-09-28 Petrozavodsk Summer 2023. Day 7. PKU Contest",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"G",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"code.cpp"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2025-09-28 Petrozavodsk Summer 2023. Day 7. PKU Contest/problems/G/code.cpp","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","children":[]}],["$","polyline","1",{"points":"7 10 12 15 17 10","children":[]}],["$","line","2",{"x1":"12","y1":"15","x2":"12","y2":"3","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2025-09-28 Petrozavodsk Summer 2023. Day 7. PKU Contest/problems/G/code.cpp","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z","children":[]}],["$","polyline","1",{"points":"14 2 14 8 20 8","children":[]}],["$","line","2",{"x1":"16","y1":"13","x2":"8","y2":"13","children":[]}],["$","line","3",{"x1":"16","y1":"17","x2":"8","y2":"17","children":[]}],["$","polyline","4",{"points":"10 9 9 9 8 9","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":["$","$L15",null,{"code":"$16","ext":".cpp"}]}],"$L17"]}]]}]}]
+17:["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"code.cpp"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"10.29 KB"}]]}],["$","div","submission_id",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submission Id","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"#1426373"}]]}],["$","div","problem_name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Problem Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Ald"}]]}],["$","div","status",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Status","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"AC"}]]}],["$","div","time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"1004ms"}]]}],["$","div","memory",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"101644kb"}]]}],["$","div","language",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Language","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"C++20"}]]}],["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/10/01 16:31:14"}]]}],null,["$","div","submission_link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submission Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/submission/1426373","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/submission/1426373"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Ald"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/1376/problem/7507","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/1376/problem/7507"}]]}],["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"4 s"}]]}],["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":["$L18"," ","$L19"]}],"$L1a","$L1b","$L1c"]}]]}],"$L1d"]}]
+18:["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]
+19:["$","span",null,{"className":"text-yellow-400","children":"512 MB"}]
+1a:["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}]
+1b:["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/10/01 16:31:14"}]]}]
+1c:["$","div","solve_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solve Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/10/01 16:31:14"}]]}]
+1d:["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Petrozavodsk Summer 2023. Day 7. PKU Contest"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025-09-28"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"qoj"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/09/28 09:14:51"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/09/28 14:14:51"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/1376","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/1376"}]]}]]}]]}]
+11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+d:null
+f:{"metadata":[],"error":null,"digest":"$undefined"}
+14:"$f:metadata"
