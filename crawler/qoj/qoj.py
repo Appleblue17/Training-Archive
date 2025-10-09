@@ -373,7 +373,7 @@ if __name__ == "__main__":
             "important",
             "QOJ Crawler finished successfully at " + datetime.now(beijing).isoformat(),
         )
+        crawler.finish()
     except Exception as e:
         crawler.log("fatal", f"An error occurred: {e}")
-    finally:
         crawler.deinit_driver()

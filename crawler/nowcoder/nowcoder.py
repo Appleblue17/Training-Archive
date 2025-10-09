@@ -451,6 +451,7 @@ class NOWCODERCrawler(BaseCrawler):
 if __name__ == "__main__":
     crawler = NOWCODERCrawler()
     crawler.log("info", "Nowcoder Crawler is disabled.")
+    crawler.finish()
     raise RuntimeError("Nowcoder Crawler is disabled.")
 
     # try:
@@ -469,7 +470,7 @@ if __name__ == "__main__":
     #         "nowcoder Crawler finished successfully at "
     #         + datetime.now(beijing).isoformat(),
     #     )
+    #     crawler.finish()
     # except Exception as e:
     #     crawler.log("fatal", f"An error occurred: {e}")
-    # finally:
     #     crawler.deinit_driver()

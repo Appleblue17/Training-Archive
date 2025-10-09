@@ -641,5 +641,8 @@ class BaseCrawler:
         self.log("info", "Start fetching new submissions...")
         self.fetch_submissions_get_submissions()
 
+    def finish(self):
+        self.deinit_driver()
+        self.last_update = self._load_file(self.last_update_path, default={})
         self.last_update[self.platform_name] = datetime.now(beijing).isoformat()
         self._write_file(self.last_update_path, self.last_update)

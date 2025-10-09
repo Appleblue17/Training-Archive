@@ -406,8 +406,9 @@ class HDUCrawler(BaseCrawler):
 if __name__ == "__main__":
     crawler = HDUCrawler()
     crawler.log("info", "HDU Crawler is disabled.")
+    crawler.finish()
     raise RuntimeError("HDU Crawler is disabled.")
-    
+
     # try:
     #     crawler.log(
     #         "important", "hdu Crawler started at " + datetime.now(beijing).isoformat()
@@ -420,7 +421,7 @@ if __name__ == "__main__":
     #         "important",
     #         "hdu Crawler finished successfully at " + datetime.now(beijing).isoformat(),
     #     )
+    #     crawler.finish()
     # except Exception as e:
     #     crawler.log("fatal", f"An error occurred: {e}")
-    # finally:
     #     crawler.deinit_driver()
