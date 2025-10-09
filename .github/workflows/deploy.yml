@@ -25,13 +25,22 @@ jobs:
         run: |
           git fetch
           git log -1 --pretty=%B > last_commit_msg.txt
+          git log -1 --format=%ci > last_commit_date.txt
           cat last_commit_msg.txt
-          if grep -q '\[contests-changed\]' last_commit_msg.txt; then
+          commit_date=$(cut -d' ' -f1 last_commit_date.txt)
+          # Use UTC "today"
+          today=$(date -u +%Y-%m-%d)
+          echo "Last commit date: $commit_date (UTC today: $today)"
+          if grep -q '\[contests-changed\]' last_commit_msg.txt && [ "$commit_date" = "$today" ]; then
             echo "should_deploy=true" >> $GITHUB_OUTPUT
-            echo "Detected changes in contests directory. Will proceed with deployment."
+            echo "Detected today's contests-changed commit. Will proceed with deployment."
           else
             echo "should_deploy=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in contests directory. Will skip deployment."
+            if grep -q '\[contests-changed\]' last_commit_msg.txt; then
+              echo "Commit contains [contests-changed] but is not from today. Skipping deployment."
+            else
+              echo "No changes detected in contests directory. Will skip deployment."
+            fi
           fi
 
   deploy:
