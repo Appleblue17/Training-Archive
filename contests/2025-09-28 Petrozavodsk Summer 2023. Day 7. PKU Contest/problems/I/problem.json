@@ -3,6 +3,7 @@
   "name": "01tree",
   "time_limit": "1 s",
   "memory_limit": "1024 MB",
-  "solved": false,
-  "submit_time": "2025-09-28T14:12:51+08:00"
+  "solved": true,
+  "submit_time": "2025-10-10T18:18:24+08:00",
+  "solve_time": "2025-10-10T18:18:24+08:00"
 }

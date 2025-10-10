@@ -3,5 +3,7 @@
   "name": "Soccer Match",
   "time_limit": "2 s",
   "memory_limit": "512 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2025-10-10T12:33:03+08:00",
+  "solve_time": "2025-10-09T20:18:19+08:00"
 }
