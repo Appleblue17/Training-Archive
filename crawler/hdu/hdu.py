@@ -8,6 +8,8 @@ beijing = timezone(timedelta(hours=8))
 now = datetime.now(beijing)
 from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 from crawler.base import BaseCrawler
@@ -35,10 +37,19 @@ class HDUCrawler(BaseCrawler):
             return
 
         self.driver.get(link)
-        self._random_sleep()
-        self.driver.find_element(By.NAME, "username").send_keys(username)
-        self.driver.find_element(By.NAME, "password").send_keys(password)
-        self.driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+        
+        wait = WebDriverWait(self.driver, 30)
+        
+        username_input = wait.until(EC.presence_of_element_located((By.NAME, "username")))
+        username_input.send_keys(username)
+        self._random_sleep(0.5, 1)
+        
+        password_input = wait.until(EC.presence_of_element_located((By.NAME, "password")))
+        password_input.send_keys(password)
+        self._random_sleep(0.5, 1)
+
+        submit_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']")))
+        submit_button.click()
         self._random_sleep()
 
         if not self.is_logged_in(link):
