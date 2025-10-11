@@ -8,6 +8,8 @@ beijing = timezone(timedelta(hours=8))
 now = datetime.now(beijing)
 from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 from crawler.base import BaseCrawler
@@ -28,12 +30,19 @@ class QOJCrawler(BaseCrawler):
 
     def try_login_with_password(self, username, password):
         self.driver.get("https://qoj.ac/login")
-        self._random_sleep()
-        self.driver.find_element(By.NAME, "username").send_keys(username)
+        
+        wait = WebDriverWait(self.driver, 30)
+        
+        username_input = wait.until(EC.presence_of_element_located((By.NAME, "username")))
+        username_input.send_keys(username)
         self._random_sleep(0.5, 1)
-        self.driver.find_element(By.NAME, "password").send_keys(password)
+        
+        password_input = wait.until(EC.presence_of_element_located((By.NAME, "password")))
+        password_input.send_keys(password)
         self._random_sleep(0.5, 1)
-        self.driver.find_element("id", "button-submit").click()
+
+        submit_button = wait.until(EC.element_to_be_clickable((By.ID, "button-submit")))
+        submit_button.click()
         self._random_sleep()
 
         if not self.is_logged_in():
