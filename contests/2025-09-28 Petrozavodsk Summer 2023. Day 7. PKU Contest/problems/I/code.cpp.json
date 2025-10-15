@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1413497",
+  "submission_id": "#1483343",
   "problem_name": "01tree",
-  "status": "TL",
-  "time": "28ms",
-  "memory": "16620kb",
+  "status": "AC",
+  "time": "75ms",
+  "memory": "76832kb",
   "language": "C++14",
-  "submit_time": "2025-09-28T14:12:51+08:00",
+  "submit_time": "2025-10-10T18:18:24+08:00",
   "problem_link": "https://qoj.ac/contest/1376/problem/7509",
-  "submission_link": "https://qoj.ac/submission/1413497"
+  "submission_link": "https://qoj.ac/submission/1483343"
 }

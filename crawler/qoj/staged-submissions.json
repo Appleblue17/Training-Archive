@@ -450,5 +450,38 @@
     "submit_time": "2025-10-06T13:53:44+08:00",
     "problem_link": "https://qoj.ac/problem/9928",
     "submission_link": "https://qoj.ac/submission/1458978"
+  },
+  {
+    "submission_id": "#1505547",
+    "problem_name": "Rainbow Graph",
+    "status": "AC",
+    "time": "9ms",
+    "memory": "26636kb",
+    "language": "C++20",
+    "submit_time": "2025-10-13T20:23:24+08:00",
+    "problem_link": "https://qoj.ac/problem/3020",
+    "submission_link": "https://qoj.ac/submission/1505547"
+  },
+  {
+    "submission_id": "#1504692",
+    "problem_name": "Pick Your Own Nim",
+    "status": "AC",
+    "time": "1400ms",
+    "memory": "20068kb",
+    "language": "C++20",
+    "submit_time": "2025-10-13T17:49:50+08:00",
+    "problem_link": "https://qoj.ac/problem/12304",
+    "submission_link": "https://qoj.ac/submission/1504692"
+  },
+  {
+    "submission_id": "#1483773",
+    "problem_name": "LCA Counting",
+    "status": "AC",
+    "time": "27ms",
+    "memory": "15096kb",
+    "language": "C++20",
+    "submit_time": "2025-10-10T19:42:09+08:00",
+    "problem_link": "https://qoj.ac/contest/1487/problem/8134",
+    "submission_link": "https://qoj.ac/submission/1483773"
   }
 ]

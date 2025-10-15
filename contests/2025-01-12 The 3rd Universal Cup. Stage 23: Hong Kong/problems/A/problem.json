@@ -3,5 +3,7 @@
   "name": "General Symmetry",
   "time_limit": "2.0 s",
   "memory_limit": "256 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2025-10-14T21:48:18+08:00",
+  "solve_time": "2025-10-14T21:48:18+08:00"
 }

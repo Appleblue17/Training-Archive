@@ -3340,5 +3340,77 @@
         "link": "https://qoj.ac/contest/824/problem/2615"
       }
     ]
+  },
+  {
+    "name": "The 4th Universal Cup. Stage 2: Grand Prix of Paris",
+    "date": "2025-10-12",
+    "link": "https://qoj.ac/contest/2551",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Apple Tree",
+        "link": "https://qoj.ac/contest/2551/problem/14130"
+      },
+      {
+        "letter": "B",
+        "name": "Balatro",
+        "link": "https://qoj.ac/contest/2551/problem/14131"
+      },
+      {
+        "letter": "C",
+        "name": "Classement Nationale",
+        "link": "https://qoj.ac/contest/2551/problem/14132"
+      },
+      {
+        "letter": "D",
+        "name": "Digit Division",
+        "link": "https://qoj.ac/contest/2551/problem/14133"
+      },
+      {
+        "letter": "E",
+        "name": "Euclid in Manhattan",
+        "link": "https://qoj.ac/contest/2551/problem/14134"
+      },
+      {
+        "letter": "F",
+        "name": "Framboise 2",
+        "link": "https://qoj.ac/contest/2551/problem/14135"
+      },
+      {
+        "letter": "G",
+        "name": "Goofy Songs",
+        "link": "https://qoj.ac/contest/2551/problem/14136"
+      },
+      {
+        "letter": "H",
+        "name": "Heure de Rush",
+        "link": "https://qoj.ac/contest/2551/problem/14137"
+      },
+      {
+        "letter": "I",
+        "name": "Infrared",
+        "link": "https://qoj.ac/contest/2551/problem/14138"
+      },
+      {
+        "letter": "J",
+        "name": "JamBrains",
+        "link": "https://qoj.ac/contest/2551/problem/14139"
+      },
+      {
+        "letter": "K",
+        "name": "kk Operations",
+        "link": "https://qoj.ac/contest/2551/problem/14140"
+      },
+      {
+        "letter": "L",
+        "name": "Lice Hopping",
+        "link": "https://qoj.ac/contest/2551/problem/14141"
+      },
+      {
+        "letter": "M",
+        "name": "Manhattan Graph",
+        "link": "https://qoj.ac/contest/2551/problem/14142"
+      }
+    ]
   }
 ]
