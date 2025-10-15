@@ -3,5 +3,7 @@
   "name": "Surround the Cat",
   "time_limit": "1 s",
   "memory_limit": "512 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2025-10-13T11:40:40+08:00",
+  "solve_time": "2025-10-13T11:40:40+08:00"
 }
