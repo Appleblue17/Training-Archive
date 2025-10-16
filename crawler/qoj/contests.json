@@ -3412,5 +3412,77 @@
         "link": "https://qoj.ac/contest/2551/problem/14142"
       }
     ]
+  },
+  {
+    "name": "The 4th Universal Cup. Stage 0: Trial Contest",
+    "date": "2025-10-16",
+    "link": "https://qoj.ac/contest/2041",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "A Totient Quotient",
+        "link": "https://qoj.ac/contest/2041/problem/11356"
+      },
+      {
+        "letter": "B",
+        "name": "Circle of Leaf",
+        "link": "https://qoj.ac/contest/2041/problem/11357"
+      },
+      {
+        "letter": "C",
+        "name": "Entrapment",
+        "link": "https://qoj.ac/contest/2041/problem/11358"
+      },
+      {
+        "letter": "D",
+        "name": "Geometry Rush",
+        "link": "https://qoj.ac/contest/2041/problem/11359"
+      },
+      {
+        "letter": "E",
+        "name": "Humans vs AI",
+        "link": "https://qoj.ac/contest/2041/problem/11360"
+      },
+      {
+        "letter": "F",
+        "name": "Mob Grinder",
+        "link": "https://qoj.ac/contest/2041/problem/11361"
+      },
+      {
+        "letter": "G",
+        "name": "Most Scenic Cycle",
+        "link": "https://qoj.ac/contest/2041/problem/11362"
+      },
+      {
+        "letter": "H",
+        "name": "Ornaments on a Tree",
+        "link": "https://qoj.ac/contest/2041/problem/11363"
+      },
+      {
+        "letter": "I",
+        "name": "Polygon Partition",
+        "link": "https://qoj.ac/contest/2041/problem/11364"
+      },
+      {
+        "letter": "J",
+        "name": "Popping Balloons",
+        "link": "https://qoj.ac/contest/2041/problem/11365"
+      },
+      {
+        "letter": "K",
+        "name": "SLA Tomography",
+        "link": "https://qoj.ac/contest/2041/problem/11366"
+      },
+      {
+        "letter": "L",
+        "name": "Solar Farm",
+        "link": "https://qoj.ac/contest/2041/problem/11367"
+      },
+      {
+        "letter": "M",
+        "name": "This Is Sparta!",
+        "link": "https://qoj.ac/contest/2041/problem/11368"
+      }
+    ]
   }
 ]

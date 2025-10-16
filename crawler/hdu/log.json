@@ -1,11 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:14:46.427239+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2025\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff089\uff09 (2025-08-15)"
-  },
-  {
     "time": "2025-09-26T04:14:46.427884+08:00",
     "level": "warning",
     "platform": "hdu",
@@ -295,6 +289,12 @@
   },
   {
     "time": "2025-10-15T18:30:29.294050+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "HDU Crawler is disabled."
+  },
+  {
+    "time": "2025-10-16T18:30:17.894263+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "HDU Crawler is disabled."

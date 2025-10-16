@@ -1,0 +1,119 @@
+#include <bits/stdc++.h>
+//using namespace std;
+#define double long double
+const int N=1e5+5;
+
+int n,m,w,h,u[N],d[N];
+double x[N],y[N];
+
+int cnt[N];
+
+int fl(double x){
+    return floor(x);
+    //if(x >= 0)return floor(x);
+    //else return (x);
+}
+const double eps = 1e-7;
+void add(double x0,double y0,double x1,double y1){
+    // printf("in add %Lf %Lf %Lf %Lf\n",x0,y0,x1,y1);
+    int st,ed;
+    if(x0 < x1){
+        st=ceil(x0);ed=floor(x1);
+    }
+    else{
+        st=ceil(x1);ed=floor(x0);
+    }
+    for(int j=st;j<=ed;j++){
+        double y = y0+(j-x0)*(y1-y0)/(x1-x0);
+        cnt[fl(y)+500]++;
+        // printf("add cnt %d,j=%d,y=%Lf\n",fl(y)+500,j,y);
+    }
+    if(y0<y1){
+        st=ceil(y0);ed=floor(y1);
+    }
+    else{
+        st=ceil(y1);ed=floor(y0);
+    }
+    for(int j=st;j<=ed;j++){
+        double x = x0+(x1-x0)*(j-y0)/(y1-y0);
+        cnt[fl(x)+500]++;
+        // printf("add cnt %d,j=%d,x=%Lf\n",fl(x)+500,j,x);
+    }
+    
+}
+
+void solve(){
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++){
+        scanf("%Lf%Lf",&x[i],&y[i]);
+    }
+    x[n+1]=x[1];y[n+1]=y[1];
+    for(int i=1;i<=n;i++){
+        add(x[i],y[i],x[i+1],y[i+1]);
+    }
+    
+}
+std::bitset<500000> f[30020];
+const int pls=250000;
+int sz[N], tot;
+std::vector<int> ans;
+void back(int i, int j){
+    if(i==0) return ;
+    if(f[i-1][j]) back(i-1, j);
+    else if(f[i-1][j-sz[i]]){
+        ans.push_back(sz[i]);
+        back(i-1, j-sz[i]);
+    }
+    else {
+        while(1);
+    }
+}
+void solve2(){
+    int sum=0;
+    for(int i=-500; i<=500; ++i){
+        if(cnt[i+500]==0) continue;
+        if(cnt[i+500]&1){
+            for(int j=30; j<=cnt[i+500]; j+=2){
+                ans.push_back(i);
+            }
+            for(int j=1; j<=29&&j<=cnt[i+500]; ++j){
+                sum+=i; sz[++tot]=i;
+            }
+        }
+        else{
+            for(int j=31; j<=cnt[i+500]; j+=2){
+                ans.push_back(i);
+            }
+            for(int j=1; j<=30&&j<=cnt[i+500]; ++j){
+                sum+=i; sz[++tot]=i;
+            }
+        }
+    }
+    if(sum&1){
+        printf("-1\n");
+        return ;
+    }
+    f[0][pls]=1;
+    for(int i=1; i<=tot; ++i){
+        if(sz[i]>0){
+            f[i]=f[i-1]|(f[i-1]<<sz[i]);
+        }
+        else{
+            f[i]=f[i-1]|(f[i-1]>>(-sz[i]));
+        }
+    }
+    if(!f[tot][sum/2+pls]){
+        printf("-1\n");
+        return ;
+    }
+    back(tot, sum/2+pls);
+    printf("%d\n", (int)ans.size());
+    for(auto t:ans){
+        printf("%d\n", t);
+    }
+}
+signed main(){
+    solve();
+    solve2();
+}
+
