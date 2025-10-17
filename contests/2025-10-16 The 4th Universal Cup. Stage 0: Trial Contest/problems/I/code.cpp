@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 //using namespace std;
+//#define int long long
 #define double long double
 const int N=1e5+5;
 
@@ -13,9 +14,11 @@ int fl(double x){
     //if(x >= 0)return floor(x);
     //else return (x);
 }
+std::vector<int> ans1,ans2;
+
 const double eps = 1e-7;
 void add(double x0,double y0,double x1,double y1){
-    // printf("in add %Lf %Lf %Lf %Lf\n",x0,y0,x1,y1);
+    //printf("in add %lf %lf %lf %lf\n",x0,y0,x1,y1);
     int st,ed;
     if(x0 < x1){
         st=ceil(x0);ed=floor(x1);
@@ -25,8 +28,10 @@ void add(double x0,double y0,double x1,double y1){
     }
     for(int j=st;j<=ed;j++){
         double y = y0+(j-x0)*(y1-y0)/(x1-x0);
+        if(x0 > x1)ans1.push_back(fl(y)+500);
+        else ans2.push_back(fl(y)+500);
         cnt[fl(y)+500]++;
-        // printf("add cnt %d,j=%d,y=%Lf\n",fl(y)+500,j,y);
+        //printf("add cnt %d,y=%Lf\n",fl(y)+500,y);
     }
     if(y0<y1){
         st=ceil(y0);ed=floor(y1);
@@ -37,7 +42,9 @@ void add(double x0,double y0,double x1,double y1){
     for(int j=st;j<=ed;j++){
         double x = x0+(x1-x0)*(j-y0)/(y1-y0);
         cnt[fl(x)+500]++;
-        // printf("add cnt %d,j=%d,x=%Lf\n",fl(x)+500,j,x);
+        if(y0 < y1)ans2.push_back(fl(x)+500);
+        else ans1.push_back(fl(x)+500);
+        //printf("add cnt %d,j=%d,x=%Lf\n",fl(x)+500,j,x);
     }
     
 }
@@ -51,10 +58,13 @@ void solve(){
     for(int i=1;i<=n;i++){
         add(x[i],y[i],x[i+1],y[i+1]);
     }
-    
+    printf("%lld\n",ans1.size());
+    for(int v:ans1){
+        printf("%d\n",v-500);
+    }
 }
-std::bitset<500000> f[30020];
-const int pls=250000;
+/*std::bitset<3005000> f[3005];
+const int pls=1502000;
 int sz[N], tot;
 std::vector<int> ans;
 void back(int i, int j){
@@ -65,26 +75,29 @@ void back(int i, int j){
         back(i-1, j-sz[i]);
     }
     else {
-        while(1);
+        std::cout<<"??????"<<std::endl;
     }
+}*/
+void solve3(){
+
 }
-void solve2(){
+/*void solve2(){
     int sum=0;
     for(int i=-500; i<=500; ++i){
         if(cnt[i+500]==0) continue;
         if(cnt[i+500]&1){
-            for(int j=30; j<=cnt[i+500]; j+=2){
+            for(int j=4; j<=cnt[i+500]; j+=2){
                 ans.push_back(i);
             }
-            for(int j=1; j<=29&&j<=cnt[i+500]; ++j){
+            for(int j=1; j<=3&&j<=cnt[i+500]; ++j){
                 sum+=i; sz[++tot]=i;
             }
         }
         else{
-            for(int j=31; j<=cnt[i+500]; j+=2){
+            for(int j=4; j<=cnt[i+500]; j+=2){
                 ans.push_back(i);
             }
-            for(int j=1; j<=30&&j<=cnt[i+500]; ++j){
+            for(int j=1; j<=2&&j<=cnt[i+500]; ++j){
                 sum+=i; sz[++tot]=i;
             }
         }
@@ -111,9 +124,8 @@ void solve2(){
     for(auto t:ans){
         printf("%d\n", t);
     }
-}
+}*/
 signed main(){
     solve();
-    solve2();
+    //solve2();
 }
-
