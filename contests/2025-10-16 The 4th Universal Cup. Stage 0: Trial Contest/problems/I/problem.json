@@ -3,6 +3,7 @@
   "name": "Polygon Partition",
   "time_limit": "3 s",
   "memory_limit": "2048 MB",
-  "solved": false,
-  "submit_time": "2025-10-16T13:57:48+08:00"
+  "solved": true,
+  "submit_time": "2025-10-17T16:38:02+08:00",
+  "solve_time": "2025-10-17T16:38:02+08:00"
 }
