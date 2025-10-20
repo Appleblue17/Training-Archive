@@ -3484,5 +3484,144 @@
         "link": "https://qoj.ac/contest/2041/problem/11368"
       }
     ]
+  },
+  {
+    "name": "The 3rd Universal Cup. Stage 18: Southeastern Europe",
+    "date": "2025-10-18",
+    "link": "https://qoj.ac/contest/1849",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "All-Star",
+        "link": "https://qoj.ac/contest/1849/problem/9781"
+      },
+      {
+        "letter": "B",
+        "name": "NonZero PrefSuf Sums",
+        "link": "https://qoj.ac/contest/1849/problem/9782"
+      },
+      {
+        "letter": "C",
+        "name": "Duloc Network",
+        "link": "https://qoj.ac/contest/1849/problem/9783"
+      },
+      {
+        "letter": "D",
+        "name": "Donkey and Puss in Boots",
+        "link": "https://qoj.ac/contest/1849/problem/9784"
+      },
+      {
+        "letter": "E",
+        "name": "Shrooks",
+        "link": "https://qoj.ac/contest/1849/problem/9785"
+      },
+      {
+        "letter": "F",
+        "name": "Magical Bags",
+        "link": "https://qoj.ac/contest/1849/problem/9786"
+      },
+      {
+        "letter": "G",
+        "name": "Shrek's Song of the Swamp",
+        "link": "https://qoj.ac/contest/1849/problem/9787"
+      },
+      {
+        "letter": "H",
+        "name": "Shreckless",
+        "link": "https://qoj.ac/contest/1849/problem/9788"
+      },
+      {
+        "letter": "I",
+        "name": "Donkey, Keep Watch",
+        "link": "https://qoj.ac/contest/1849/problem/9789"
+      },
+      {
+        "letter": "J",
+        "name": "Make Swamp Great Again",
+        "link": "https://qoj.ac/contest/1849/problem/9790"
+      },
+      {
+        "letter": "K",
+        "name": "Intrusive Donkey",
+        "link": "https://qoj.ac/contest/1849/problem/9791"
+      },
+      {
+        "letter": "L",
+        "name": "Ogre Sort",
+        "link": "https://qoj.ac/contest/1849/problem/9792"
+      },
+      {
+        "letter": "M",
+        "name": "Enchanted Lawns Quest",
+        "link": "https://qoj.ac/contest/1849/problem/9793"
+      }
+    ]
+  },
+  {
+    "name": "2022-2023 ICPC Southwestern Europe Regional Contest",
+    "date": "2025-10-19",
+    "link": "https://qoj.ac/contest/1123",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Walking Boy",
+        "link": "https://qoj.ac/contest/1123/problem/5645"
+      },
+      {
+        "letter": "B",
+        "name": "Uniform Chemistry",
+        "link": "https://qoj.ac/contest/1123/problem/5646"
+      },
+      {
+        "letter": "C",
+        "name": "Another Wine Tasting Event",
+        "link": "https://qoj.ac/contest/1123/problem/5647"
+      },
+      {
+        "letter": "D",
+        "name": "Crossing the Railways",
+        "link": "https://qoj.ac/contest/1123/problem/5648"
+      },
+      {
+        "letter": "E",
+        "name": "Spinach Pizza",
+        "link": "https://qoj.ac/contest/1123/problem/5649"
+      },
+      {
+        "letter": "F",
+        "name": "Beppa and SwerChat",
+        "link": "https://qoj.ac/contest/1123/problem/5650"
+      },
+      {
+        "letter": "G",
+        "name": "Parmigiana With Seafood",
+        "link": "https://qoj.ac/contest/1123/problem/5651"
+      },
+      {
+        "letter": "H",
+        "name": "Controllers",
+        "link": "https://qoj.ac/contest/1123/problem/5652"
+      },
+      {
+        "letter": "I",
+        "name": "Library game",
+        "link": "https://qoj.ac/contest/1123/problem/5653"
+      },
+      {
+        "letter": "J",
+        "name": "Italian Data Centers",
+        "link": "https://qoj.ac/contest/1123/problem/5654"
+      },
+      {
+        "letter": "K",
+        "name": "Train Splitting",
+        "link": "https://qoj.ac/contest/1123/problem/5655"
+      },
+      {
+        "letter": "L",
+        "name": "Vittorio Plays with LEGO Bricks",
+        "link": "https://qoj.ac/contest/1123/problem/5656"
+      }
+    ]
   }
 ]
