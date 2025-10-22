@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1541067",
+  "submission_id": "#1551653",
   "problem_name": "Crossing the Railways",
-  "status": "WA",
-  "time": "2ms",
-  "memory": "4088kb",
+  "status": "AC",
+  "time": "411ms",
+  "memory": "47900kb",
   "language": "C++14",
-  "submit_time": "2025-10-19T14:09:59+08:00",
+  "submit_time": "2025-10-20T23:00:30+08:00",
   "problem_link": "https://qoj.ac/contest/1123/problem/5648",
-  "submission_link": "https://qoj.ac/submission/1541067"
+  "submission_link": "https://qoj.ac/submission/1551653"
 }
