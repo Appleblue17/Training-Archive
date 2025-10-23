@@ -400,5 +400,113 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-10-22T18:39:27.849544+08:00"
+  },
+  {
+    "time": "2025-10-23T19:47:19.012324+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-10-23T19:47:19.012307+08:00"
+  },
+  {
+    "time": "2025-10-23T19:47:25.592949+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-10-23T19:47:28.543600+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 2nd Universal Cup. Stage 17: Jinan (2025-10-23)"
+  },
+  {
+    "time": "2025-10-23T19:47:28.544165+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2025-10-23 The 2nd Universal Cup. Stage 17: Jinan"
+  },
+  {
+    "time": "2025-10-23T19:48:43.902219+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: The 2nd Universal Cup. Stage 17: Jinan (2025-10-23)"
+  },
+  {
+    "time": "2025-10-23T19:48:43.902891+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-10-23T19:48:43.904757+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-10-23T19:48:43.909158+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-10-23T19:48:43.909894+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-10-23T19:48:48.227217+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 1."
+  },
+  {
+    "time": "2025-10-23T19:48:48.227869+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 2."
+  },
+  {
+    "time": "2025-10-23T19:48:54.928166+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 2."
+  },
+  {
+    "time": "2025-10-23T19:48:54.928908+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 3."
+  },
+  {
+    "time": "2025-10-23T19:49:09.994058+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 3."
+  },
+  {
+    "time": "2025-10-23T19:49:09.994749+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 4."
+  },
+  {
+    "time": "2025-10-23T19:49:15.754072+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1553394), stopping."
+  },
+  {
+    "time": "2025-10-23T19:49:15.754906+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-10-23T19:49:15.755571+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-10-23T19:49:15.755567+08:00"
   }
 ]

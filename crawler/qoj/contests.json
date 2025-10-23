@@ -3623,5 +3623,77 @@
         "link": "https://qoj.ac/contest/1123/problem/5656"
       }
     ]
+  },
+  {
+    "name": "The 2nd Universal Cup. Stage 17: Jinan",
+    "date": "2025-10-23",
+    "link": "https://qoj.ac/contest/1472",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Many Many Heads",
+        "link": "https://qoj.ac/contest/1472/problem/7894"
+      },
+      {
+        "letter": "B",
+        "name": "Graph Partitioning 2",
+        "link": "https://qoj.ac/contest/1472/problem/7895"
+      },
+      {
+        "letter": "C",
+        "name": "Turn on the Light 2",
+        "link": "https://qoj.ac/contest/1472/problem/7896"
+      },
+      {
+        "letter": "D",
+        "name": "Largest Digit",
+        "link": "https://qoj.ac/contest/1472/problem/7897"
+      },
+      {
+        "letter": "E",
+        "name": "I Just Want... One More...",
+        "link": "https://qoj.ac/contest/1472/problem/7898"
+      },
+      {
+        "letter": "F",
+        "name": "Say Hello to the Future",
+        "link": "https://qoj.ac/contest/1472/problem/7899"
+      },
+      {
+        "letter": "G",
+        "name": "Gifts from Knowledge",
+        "link": "https://qoj.ac/contest/1472/problem/7900"
+      },
+      {
+        "letter": "H",
+        "name": "Basic Substring Structure",
+        "link": "https://qoj.ac/contest/1472/problem/7901"
+      },
+      {
+        "letter": "I",
+        "name": "Strange Sorting",
+        "link": "https://qoj.ac/contest/1472/problem/7902"
+      },
+      {
+        "letter": "J",
+        "name": "Computational Intelligence",
+        "link": "https://qoj.ac/contest/1472/problem/7903"
+      },
+      {
+        "letter": "K",
+        "name": "Rainbow Subarray",
+        "link": "https://qoj.ac/contest/1472/problem/7904"
+      },
+      {
+        "letter": "L",
+        "name": "Ticket to Ride",
+        "link": "https://qoj.ac/contest/1472/problem/7905"
+      },
+      {
+        "letter": "M",
+        "name": "Almost Convex",
+        "link": "https://qoj.ac/contest/1472/problem/7906"
+      }
+    ]
   }
 ]
