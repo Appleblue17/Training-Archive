@@ -3695,5 +3695,77 @@
         "link": "https://qoj.ac/contest/1472/problem/7906"
       }
     ]
+  },
+  {
+    "name": "The 2021 ICPC Asia Nanjing Regional Contest",
+    "date": "2025-10-24",
+    "link": "https://qoj.ac/contest/1236",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Oops, It's Yesterday Twice More",
+        "link": "https://qoj.ac/contest/1236/problem/6431"
+      },
+      {
+        "letter": "B",
+        "name": "Puzzle in Inazuma",
+        "link": "https://qoj.ac/contest/1236/problem/6432"
+      },
+      {
+        "letter": "C",
+        "name": "Klee in Solitary Confinement",
+        "link": "https://qoj.ac/contest/1236/problem/6433"
+      },
+      {
+        "letter": "D",
+        "name": "Paimon Sorting",
+        "link": "https://qoj.ac/contest/1236/problem/6434"
+      },
+      {
+        "letter": "E",
+        "name": "Paimon Segment Tree",
+        "link": "https://qoj.ac/contest/1236/problem/6435"
+      },
+      {
+        "letter": "F",
+        "name": "Paimon Polygon",
+        "link": "https://qoj.ac/contest/1236/problem/6436"
+      },
+      {
+        "letter": "G",
+        "name": "Paimon's Tree",
+        "link": "https://qoj.ac/contest/1236/problem/6437"
+      },
+      {
+        "letter": "H",
+        "name": "Crystalfly",
+        "link": "https://qoj.ac/contest/1236/problem/6438"
+      },
+      {
+        "letter": "I",
+        "name": "Cloud Retainer's Game",
+        "link": "https://qoj.ac/contest/1236/problem/6439"
+      },
+      {
+        "letter": "J",
+        "name": "Xingqiu's Joke",
+        "link": "https://qoj.ac/contest/1236/problem/6440"
+      },
+      {
+        "letter": "K",
+        "name": "Ancient Magic Circle in Teyvat",
+        "link": "https://qoj.ac/contest/1236/problem/6441"
+      },
+      {
+        "letter": "L",
+        "name": "Secret of Tianqiu Valley",
+        "link": "https://qoj.ac/contest/1236/problem/6442"
+      },
+      {
+        "letter": "M",
+        "name": "Windblume Festival",
+        "link": "https://qoj.ac/contest/1236/problem/6443"
+      }
+    ]
   }
 ]

@@ -1,11 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:15:39.528632+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Start fetching contest: 2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84254 (2025-07-24)"
-  },
-  {
     "time": "2025-09-26T04:15:39.529283+08:00",
     "level": "warning",
     "platform": "nowcoder",
@@ -295,6 +289,12 @@
   },
   {
     "time": "2025-10-20T18:31:41.964644+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2025-10-24T18:30:37.587509+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Nowcoder Crawler is disabled."
