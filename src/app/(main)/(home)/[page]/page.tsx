@@ -9,6 +9,16 @@ import { allowedExtensions } from "@/lib/global";
 
 import { ITEMS_PER_PAGE } from "@/lib/global";
 
+export async function generateStaticParams() {
+  const contestsDir = path.join(process.cwd(), "contests");
+  const contestFolders = fs.readdirSync(contestsDir);
+  const totalPages = Math.ceil(contestFolders.length / ITEMS_PER_PAGE);
+
+  return Array.from({ length: totalPages }, (_, i) => ({
+    page: `page${i + 1}`,
+  }));
+}
+
 function getFilesInfo(directory: string) {
   const files = fs.readdirSync(directory);
   // only show files with allowed extensions and not .json
@@ -82,17 +92,16 @@ function getContests(): ContestInfoType[] {
 }
 
 type PageProps = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export default async function HomePage({ searchParams }: PageProps) {
-  const { page } = await searchParams;
+export default async function HomePage(props: { params: Promise<{ page: string }> }) {
+  const params = await props.params;
+  const pageParam = params.page;
+
+  const pageNum = pageParam.replace("page", "") ? parseInt(pageParam.replace("page", "")) : 1;
   const contests = getContests().reverse();
   const totalPages = Math.ceil(contests.length / ITEMS_PER_PAGE);
-
-  let pageNum = Number(page) || 1;
-  pageNum = Math.min(pageNum, totalPages);
-  pageNum = Math.max(pageNum, 1);
 
   const start = (pageNum - 1) * ITEMS_PER_PAGE;
   const end = start + ITEMS_PER_PAGE;
@@ -104,7 +113,7 @@ export default async function HomePage({ searchParams }: PageProps) {
       <div className="mt-6 flex justify-center">
         <nav className="inline-flex items-center space-x-2">
           <Link
-            href={`?page=${pageNum - 1}`}
+            href={`/page${pageNum - 1}`}
             className={`rounded-l bg-slate-700 px-4 py-2 text-white hover:bg-gray-600 ${
               pageNum === 1 ? "pointer-events-none opacity-50" : ""
             }`}
@@ -115,7 +124,7 @@ export default async function HomePage({ searchParams }: PageProps) {
           {Array.from({ length: totalPages }, (_, i) => (
             <Link
               key={i + 1}
-              href={`?page=${i + 1}`}
+              href={`/page${i + 1}`}
               className={`px-4 py-2 text-white hover:bg-gray-600 ${
                 pageNum === i + 1 ? "bg-blue-800" : "bg-slate-700"
               }`}
@@ -124,7 +133,7 @@ export default async function HomePage({ searchParams }: PageProps) {
             </Link>
           ))}
           <Link
-            href={`?page=${pageNum + 1}`}
+            href={`/page${pageNum + 1}`}
             className={`rounded-r bg-slate-700 px-4 py-2 text-white hover:bg-gray-600 ${
               pageNum === totalPages ? "pointer-events-none opacity-50" : ""
             }`}
