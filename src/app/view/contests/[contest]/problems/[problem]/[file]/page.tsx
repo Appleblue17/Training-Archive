@@ -65,7 +65,7 @@ export default async function FilePage(props: {
     <div className="flex min-h-screen justify-center py-4">
       <div className="mx-auto w-4/5">
         <header className="relative w-full rounded-lg py-2 text-slate-300">
-          <Link href={path.join(PREFIX_URL)}>
+          <Link href={"/"}>
             <FiHome className="absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400" />
           </Link>
           <h1 className="text-2xl font-semibold tracking-wide">File Viewer</h1>
