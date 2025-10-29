@@ -1,10 +1,13 @@
 import fs from "fs";
 import path from "path";
 import ContestTable from "./contest-table";
+import Link from "next/link";
 
 import { ProblemInfoType, ContestInfoType } from "@/lib/types";
 import getFileMetadata from "@/utils/get-file-metadata";
 import { allowedExtensions } from "@/lib/global";
+
+import { ITEMS_PER_PAGE } from "@/lib/global";
 
 function getFilesInfo(directory: string) {
   const files = fs.readdirSync(directory);
@@ -78,8 +81,59 @@ function getContests(): ContestInfoType[] {
   return contests;
 }
 
-export default function HomePage() {
-  const contests = getContests().reverse(); // Reverse to show the latest contests first
+type PageProps = {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
-  return <ContestTable contests={contests} />;
+export default async function HomePage({ searchParams }: PageProps) {
+  const { page } = await searchParams;
+  const contests = getContests().reverse();
+  const totalPages = Math.ceil(contests.length / ITEMS_PER_PAGE);
+
+  let pageNum = Number(page) || 1;
+  pageNum = Math.min(pageNum, totalPages);
+  pageNum = Math.max(pageNum, 1);
+
+  const start = (pageNum - 1) * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const pagedContests = contests.slice(start, end);
+
+  return (
+    <>
+      <ContestTable contests={pagedContests} />
+      <div className="mt-6 flex justify-center">
+        <nav className="inline-flex items-center space-x-2">
+          <Link
+            href={`?page=${pageNum - 1}`}
+            className={`rounded-l bg-slate-700 px-4 py-2 text-white hover:bg-gray-600 ${
+              pageNum === 1 ? "pointer-events-none opacity-50" : ""
+            }`}
+            aria-disabled={pageNum === 1}
+          >
+            Previous
+          </Link>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <Link
+              key={i + 1}
+              href={`?page=${i + 1}`}
+              className={`px-4 py-2 text-white hover:bg-gray-600 ${
+                pageNum === i + 1 ? "bg-blue-800" : "bg-slate-700"
+              }`}
+            >
+              {i + 1}
+            </Link>
+          ))}
+          <Link
+            href={`?page=${pageNum + 1}`}
+            className={`rounded-r bg-slate-700 px-4 py-2 text-white hover:bg-gray-600 ${
+              pageNum === totalPages ? "pointer-events-none opacity-50" : ""
+            }`}
+            aria-disabled={pageNum === totalPages}
+          >
+            Next
+          </Link>
+        </nav>
+      </div>
+    </>
+  );
 }
