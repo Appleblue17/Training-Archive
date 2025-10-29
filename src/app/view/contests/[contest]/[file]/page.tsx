@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
+import Link from "next/link";
 import FileViewer from "@/components/file-viewer/file-viewer";
-import { FiDownload, FiFileText } from "react-icons/fi";
+import { FiDownload, FiFileText, FiHome } from "react-icons/fi";
 
 import getFileMetadata from "@/utils/get-file-metadata";
 import MetaDataDisplay from "@/components/metadata-display";
@@ -52,6 +53,9 @@ export default async function FilePage(props: {
     <div className="flex min-h-screen justify-center py-4">
       <div className="mx-auto w-4/5">
         <header className="relative w-full rounded-lg py-2 text-slate-300">
+          <Link href={path.join(PREFIX_URL)}>
+            <FiHome className="absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400" />
+          </Link>
           <h1 className="text-2xl font-semibold tracking-wide">File Viewer</h1>
           <p className="ml-4 mt-2 text-base text-gray-400">
             <span className="px-2 text-lg text-gray-200">/</span>
