@@ -39,7 +39,7 @@ export default function CrawlerStatus({ minTimeISO }: { minTimeISO: string | nul
       setIsUpToDate(d.getTime() > Date.now() - 1000 * 60 * 60 * 24);
     };
     update();
-    const timer = setInterval(update, 60 * 1000); // 每分钟刷新
+    const timer = setInterval(update, 60 * 1000); // Update every minute
     return () => clearInterval(timer);
   }, [minTimeISO]);
 
@@ -52,14 +52,12 @@ export default function CrawlerStatus({ minTimeISO }: { minTimeISO: string | nul
     );
   }
   return isUpToDate ? (
-    <span className="text-green-400">
+    <span className="text-green-400" title={minTimeISO}>
       Updated {statusTime} ago
-      <FiCheck className="ml-2 inline size-5" />
     </span>
   ) : (
-    <span className="text-yellow-400">
+    <span className="text-gray-300" title={minTimeISO}>
       Updated {statusTime} ago
-      <FiAlertTriangle className="ml-2 inline size-5" />
     </span>
   );
 }
