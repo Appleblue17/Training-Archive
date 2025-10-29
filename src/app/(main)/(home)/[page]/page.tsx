@@ -91,10 +91,6 @@ function getContests(): ContestInfoType[] {
   return contests;
 }
 
-type PageProps = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
 export default async function HomePage(props: { params: Promise<{ page: string }> }) {
   const params = await props.params;
   const pageParam = params.page;

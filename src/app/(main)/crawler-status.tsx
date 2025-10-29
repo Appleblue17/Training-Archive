@@ -1,5 +1,5 @@
 "use client";
-import { FiAlertTriangle, FiCheck } from "react-icons/fi";
+import { FiAlertTriangle } from "react-icons/fi";
 import { useEffect, useState } from "react";
 
 function getTimeDiffString(date: Date) {
