@@ -8,6 +8,8 @@ export const BASE_URL = isProd
 
 export const PREFIX_URL = isProd ? "/Training-Archive" : "/";
 
+export const ITEMS_PER_PAGE = 20;
+
 export const allowedExtensions = [
   ".pdf",
   ".md",

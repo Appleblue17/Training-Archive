@@ -26,7 +26,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
   const actionURL = REPO_URL + "actions";
 
   return (
-    <div className="mt-4 flex min-h-screen min-w-[1600px] justify-center">
+    <div className="mt-4 flex min-w-[1600px] justify-center">
       <div className="relative mx-auto w-3/4 -translate-x-10">
         <header className="w-full rounded-lg py-4 text-slate-300">
           <h1 className="text-3xl font-semibold tracking-wide">Training Archive</h1>
