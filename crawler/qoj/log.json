@@ -298,5 +298,77 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-10-24T18:30:35.386986+08:00"
+  },
+  {
+    "time": "2025-10-29T10:40:07.965387+08:00",
+    "level": "fatal",
+    "platform": "qoj",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2025-10-29T10:40:16.033636+08:00",
+    "level": "fatal",
+    "platform": "qoj",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2025-10-29T10:40:55.315347+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-10-29T10:40:55.315324+08:00"
+  },
+  {
+    "time": "2025-10-29T10:41:01.767761+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-10-29T10:41:05.061005+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contest list is empty, no contests to fetch. Exiting."
+  },
+  {
+    "time": "2025-10-29T10:41:05.061759+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-10-29T10:41:05.063221+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-10-29T10:41:05.066722+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-10-29T10:41:05.067183+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-10-29T10:41:10.118936+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1574628), stopping."
+  },
+  {
+    "time": "2025-10-29T10:41:10.119728+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-10-29T10:41:10.120282+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-10-29T10:41:10.120276+08:00"
   }
 ]
