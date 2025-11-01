@@ -3767,5 +3767,67 @@
         "link": "https://qoj.ac/contest/1236/problem/6443"
       }
     ]
+  },
+  {
+    "name": "The 4th Universal Cup. Stage 3: Polar Grand Prix",
+    "date": "2025-10-30",
+    "link": "https://qoj.ac/contest/2559",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Two Spanning Trees",
+        "link": "https://qoj.ac/contest/2559/problem/14415"
+      },
+      {
+        "letter": "B",
+        "name": "Christmas Tree",
+        "link": "https://qoj.ac/contest/2559/problem/14416"
+      },
+      {
+        "letter": "C",
+        "name": "Roman Numerals",
+        "link": "https://qoj.ac/contest/2559/problem/14417"
+      },
+      {
+        "letter": "D",
+        "name": "Disjoint Set Splitting",
+        "link": "https://qoj.ac/contest/2559/problem/14418"
+      },
+      {
+        "letter": "E",
+        "name": "Maximum Segment Sum",
+        "link": "https://qoj.ac/contest/2559/problem/14419"
+      },
+      {
+        "letter": "F",
+        "name": "This Time I Will Be Lucky",
+        "link": "https://qoj.ac/contest/2559/problem/14420"
+      },
+      {
+        "letter": "G",
+        "name": "Far Away",
+        "link": "https://qoj.ac/contest/2559/problem/14421"
+      },
+      {
+        "letter": "H",
+        "name": "Absolutely Flat",
+        "link": "https://qoj.ac/contest/2559/problem/14422"
+      },
+      {
+        "letter": "I",
+        "name": "Two Permutations",
+        "link": "https://qoj.ac/contest/2559/problem/14423"
+      },
+      {
+        "letter": "J",
+        "name": "One Permutation",
+        "link": "https://qoj.ac/contest/2559/problem/14424"
+      },
+      {
+        "letter": "K",
+        "name": "Game on Board",
+        "link": "https://qoj.ac/contest/2559/problem/14425"
+      }
+    ]
   }
 ]

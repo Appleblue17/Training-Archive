@@ -1,17 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:14:46.429765+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2025-09-26T04:14:46.430668+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start updating staged submissions..."
-  },
-  {
     "time": "2025-09-26T04:14:46.431453+08:00",
     "level": "info",
     "platform": "hdu",
@@ -295,6 +283,18 @@
   },
   {
     "time": "2025-10-24T18:30:36.419255+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "HDU Crawler is disabled."
+  },
+  {
+    "time": "2025-11-01T10:27:16.563544+08:00",
+    "level": "fatal",
+    "platform": "hdu",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2025-11-01T10:29:00.547474+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "HDU Crawler is disabled."
