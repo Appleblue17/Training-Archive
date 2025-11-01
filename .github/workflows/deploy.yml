@@ -25,10 +25,9 @@ jobs:
         run: |
           git fetch
           git log -1 --pretty=%B > last_commit_msg.txt
-          git log -1 --format=%ci > last_commit_date.txt
+          git log -1 --date=format:'%Y-%m-%d' --format='%cd' > last_commit_date.txt
           cat last_commit_msg.txt
-          commit_date=$(cut -d' ' -f1 last_commit_date.txt)
-          # Use UTC "today"
+          commit_date=$(cat last_commit_date.txt)
           today=$(date -u +%Y-%m-%d)
           echo "Last commit date: $commit_date (UTC today: $today)"
           if grep -q '\[contests-changed\]' last_commit_msg.txt && [ "$commit_date" = "$today" ]; then
