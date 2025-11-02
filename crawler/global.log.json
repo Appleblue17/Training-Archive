@@ -1,35 +1,5 @@
 [
   {
-    "time": "2025-10-17T18:27:03.145555+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-10-17T18:27:03.145543+08:00"
-  },
-  {
-    "time": "2025-10-17T18:27:15.292411+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-10-17T18:27:15.292405+08:00"
-  },
-  {
-    "time": "2025-10-20T18:28:32.381612+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-10-20T18:28:32.381599+08:00"
-  },
-  {
-    "time": "2025-10-20T18:31:40.122674+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-10-20T18:31:40.122668+08:00"
-  },
-  {
-    "time": "2025-10-22T18:39:01.029865+08:00",
-    "level": "fatal",
-    "platform": "qoj",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
     "time": "2025-10-22T18:39:08.167191+08:00",
     "level": "important",
     "platform": "qoj",
@@ -118,5 +88,35 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-11-01T10:28:59.786790+08:00"
+  },
+  {
+    "time": "2025-11-03T04:10:01.616566+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-11-03T04:10:01.616554+08:00"
+  },
+  {
+    "time": "2025-11-03T04:10:13.119406+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
+  },
+  {
+    "time": "2025-11-03T04:10:13.120583+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
+  },
+  {
+    "time": "2025-11-03T04:10:13.121683+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
+  },
+  {
+    "time": "2025-11-03T04:10:13.124000+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-11-03T04:10:13.123994+08:00"
   }
 ]

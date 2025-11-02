@@ -1,89 +1,5 @@
 [
   {
-    "time": "2025-10-23T19:49:15.754906+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-10-23T19:49:15.755571+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-10-23T19:49:15.755567+08:00"
-  },
-  {
-    "time": "2025-10-24T18:28:54.109942+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2025-10-24T18:28:54.579511+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-10-24T18:28:54.579496+08:00"
-  },
-  {
-    "time": "2025-10-24T18:29:00.158803+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-10-24T18:29:03.117071+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 2021 ICPC Asia Nanjing Regional Contest (2025-10-24)"
-  },
-  {
-    "time": "2025-10-24T18:29:03.118072+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Created contest folder: contests/2025-10-24 The 2021 ICPC Asia Nanjing Regional Contest"
-  },
-  {
-    "time": "2025-10-24T18:30:12.275951+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Finished fetching contest: The 2021 ICPC Asia Nanjing Regional Contest (2025-10-24)"
-  },
-  {
-    "time": "2025-10-24T18:30:12.276801+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2025-10-24T18:30:12.298332+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-10-24T18:30:12.303473+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-10-24T18:30:12.304284+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-10-24T18:30:21.596379+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 1."
-  },
-  {
-    "time": "2025-10-24T18:30:21.597229+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 2."
-  },
-  {
     "time": "2025-10-24T18:30:29.431605+08:00",
     "level": "info",
     "platform": "qoj",
@@ -298,5 +214,89 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-11-01T10:28:59.786790+08:00"
+  },
+  {
+    "time": "2025-11-03T04:10:01.018770+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Download directory does not exist, creating it."
+  },
+  {
+    "time": "2025-11-03T04:10:01.616566+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-11-03T04:10:01.616554+08:00"
+  },
+  {
+    "time": "2025-11-03T04:10:06.826410+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-11-03T04:10:10.028493+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contest list is empty, no contests to fetch. Exiting."
+  },
+  {
+    "time": "2025-11-03T04:10:10.029145+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-11-03T04:10:10.030530+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-11-03T04:10:10.035127+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-11-03T04:10:10.035734+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-11-03T04:10:13.119406+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
+  },
+  {
+    "time": "2025-11-03T04:10:13.120583+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
+  },
+  {
+    "time": "2025-11-03T04:10:13.121683+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
+  },
+  {
+    "time": "2025-11-03T04:10:13.122744+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1621946), stopping."
+  },
+  {
+    "time": "2025-11-03T04:10:13.123387+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-11-03T04:10:13.124000+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-11-03T04:10:13.123994+08:00"
   }
 ]

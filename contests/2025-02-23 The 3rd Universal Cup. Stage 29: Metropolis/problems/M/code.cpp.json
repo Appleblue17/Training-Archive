@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1404648",
+  "submission_id": "#1632930",
   "problem_name": "Machine Learning with Penguins",
   "status": "AC",
-  "time": "111ms",
-  "memory": "23360kb",
+  "time": "110ms",
+  "memory": "22112kb",
   "language": "C++23",
-  "submit_time": "2025-09-26T21:17:36+08:00",
+  "submit_time": "2025-11-01T19:42:55+08:00",
   "problem_link": "https://qoj.ac/contest/1913/problem/9049",
-  "submission_link": "https://qoj.ac/submission/1404648"
+  "submission_link": "https://qoj.ac/submission/1632930"
 }
