@@ -127,6 +127,7 @@ int AinCircleP(vector<Point> p, Point a) {
     for (int i = 0; i < 3; i++)
         det += __int128(Dot(p[i],p[i]) - Dot(a,a)) * ori(a, p[(i + 1) % 3], p[(i + 2) % 3]);
     //printf("det = %lld\n",(long long)det);
+    //cout << (long long)det << endl;
     return dcmp(det); // in:1, on:0, out:-1
 }
 
@@ -167,7 +168,7 @@ bool isInPolygon(const Point& p, const vector<Point>& poly) {
         if (Cross(poly[(i+1)%n]-poly[i], p-poly[i]) < 0) return false;  
     }  
     return true;  
-}  
+}
 
 void solve(){
 	ans=0;
@@ -247,6 +248,8 @@ void solve(){
         swap(v1.x,v1.y);
         v1.y = -v1.y;
         vector<ld> to_left,to_right;
+        Point lm,rm;
+        ld minpos=1e18,maxpos=-1e18;
         for(Point u:b){
             if(OnSegment(u,m[0],m[1]))continue;
             else if(OnLineOutSegment(u,m[0],m[1])){
@@ -274,10 +277,17 @@ void solve(){
             }
             //printf("pos=%Lf\n",pos);
             if(dcmp(DistanceToLine(u,m[0],m[1]))>0 ){// on the left, ans <= pos
-                
+                if(pos < minpos){
+                    minpos = pos;
+                    lm = u;
+                }
                 to_left.push_back(pos);
             }
             else{
+                if(pos > maxpos){
+                    maxpos = pos;
+                    rm = u;
+                }
                 to_right.push_back(pos);
             }
         }
@@ -287,10 +297,19 @@ void solve(){
         }
         sort(to_left.begin(),to_left.end());
         sort(to_right.begin(),to_right.end());
-        if(dcmp(to_left[0] - to_right[to_right.size()-1])>=0){
+        vector<Point> ps;
+        ps.push_back(lm);ps.push_back(m[0]);ps.push_back(m[1]);
+        //cout << '*' << endl;
+        //cout << (long double)lm.x << ' ' << (long double)lm.y << endl;
+        //cout << (long double)rm.x << ' ' << (long double)rm.y << endl;
+        if(AinCircleP(ps,rm)>=0){
             printf("probably\n");
         }
         else printf("not a penguin\n");
+        //if(dcmp(to_left[0] - to_right[to_right.size()-1])>=0){
+        //    
+        //}
+        //else printf("not a penguin\n");
     }
     else if(m.size()==1){
         Point o = m[0];
