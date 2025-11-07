@@ -3829,5 +3829,77 @@
         "link": "https://qoj.ac/contest/2559/problem/14425"
       }
     ]
+  },
+  {
+    "name": "The 4th Universal Cup. Stage 4: Grand Prix of Chengdu",
+    "date": "2025-11-06",
+    "link": "https://qoj.ac/contest/2567",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "A Lot of Paintings",
+        "link": "https://qoj.ac/contest/2567/problem/14706"
+      },
+      {
+        "letter": "B",
+        "name": "Blood Memories",
+        "link": "https://qoj.ac/contest/2567/problem/14707"
+      },
+      {
+        "letter": "C",
+        "name": "Crossing River",
+        "link": "https://qoj.ac/contest/2567/problem/14708"
+      },
+      {
+        "letter": "D",
+        "name": "Deductive Snooker Scoring",
+        "link": "https://qoj.ac/contest/2567/problem/14709"
+      },
+      {
+        "letter": "E",
+        "name": "Escaping from Trap",
+        "link": "https://qoj.ac/contest/2567/problem/14710"
+      },
+      {
+        "letter": "F",
+        "name": "Following Arrows",
+        "link": "https://qoj.ac/contest/2567/problem/14711"
+      },
+      {
+        "letter": "G",
+        "name": "GCD of Subsets",
+        "link": "https://qoj.ac/contest/2567/problem/14712"
+      },
+      {
+        "letter": "H",
+        "name": "Heuristic Knapsack",
+        "link": "https://qoj.ac/contest/2567/problem/14713"
+      },
+      {
+        "letter": "I",
+        "name": "Inside Triangle",
+        "link": "https://qoj.ac/contest/2567/problem/14714"
+      },
+      {
+        "letter": "J",
+        "name": "Judging Papers",
+        "link": "https://qoj.ac/contest/2567/problem/14715"
+      },
+      {
+        "letter": "K",
+        "name": "K-Coverage",
+        "link": "https://qoj.ac/contest/2567/problem/14716"
+      },
+      {
+        "letter": "L",
+        "name": "Label Matching",
+        "link": "https://qoj.ac/contest/2567/problem/14717"
+      },
+      {
+        "letter": "M",
+        "name": "Meeting for Meals",
+        "link": "https://qoj.ac/contest/2567/problem/14718"
+      }
+    ]
   }
 ]

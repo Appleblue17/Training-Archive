@@ -1,119 +1,5 @@
 [
   {
-    "time": "2025-10-24T18:30:29.431605+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 2."
-  },
-  {
-    "time": "2025-10-24T18:30:29.432443+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 3."
-  },
-  {
-    "time": "2025-10-24T18:30:35.385360+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1569360), stopping."
-  },
-  {
-    "time": "2025-10-24T18:30:35.386194+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-10-24T18:30:35.386991+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-10-24T18:30:35.386986+08:00"
-  },
-  {
-    "time": "2025-10-29T10:40:07.965387+08:00",
-    "level": "fatal",
-    "platform": "qoj",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2025-10-29T10:40:16.033636+08:00",
-    "level": "fatal",
-    "platform": "qoj",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2025-10-29T10:40:55.315347+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-10-29T10:40:55.315324+08:00"
-  },
-  {
-    "time": "2025-10-29T10:41:01.767761+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-10-29T10:41:05.061005+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contest list is empty, no contests to fetch. Exiting."
-  },
-  {
-    "time": "2025-10-29T10:41:05.061759+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2025-10-29T10:41:05.063221+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-10-29T10:41:05.066722+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-10-29T10:41:05.067183+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-10-29T10:41:10.118936+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1574628), stopping."
-  },
-  {
-    "time": "2025-10-29T10:41:10.119728+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-10-29T10:41:10.120282+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-10-29T10:41:10.120276+08:00"
-  },
-  {
-    "time": "2025-11-01T10:27:16.163873+08:00",
-    "level": "fatal",
-    "platform": "qoj",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2025-11-01T10:27:22.291712+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-01T10:27:22.291693+08:00"
-  },
-  {
     "time": "2025-11-01T10:27:27.108164+08:00",
     "level": "info",
     "platform": "qoj",
@@ -298,5 +184,119 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-11-03T04:10:13.123994+08:00"
+  },
+  {
+    "time": "2025-11-08T04:11:59.771008+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Download directory does not exist, creating it."
+  },
+  {
+    "time": "2025-11-08T04:12:00.407394+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-11-08T04:12:00.407382+08:00"
+  },
+  {
+    "time": "2025-11-08T04:12:06.100131+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-11-08T04:12:08.640921+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Stage 4: Grand Prix of Chengdu (2025-11-06)"
+  },
+  {
+    "time": "2025-11-08T04:12:08.641726+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2025-11-06 The 4th Universal Cup. Stage 4: Grand Prix of Chengdu"
+  },
+  {
+    "time": "2025-11-08T04:13:16.227174+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: The 4th Universal Cup. Stage 4: Grand Prix of Chengdu (2025-11-06)"
+  },
+  {
+    "time": "2025-11-08T04:13:16.227860+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-11-08T04:13:16.250336+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-11-08T04:13:16.255838+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-11-08T04:13:16.256440+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-11-08T04:13:19.223541+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 1."
+  },
+  {
+    "time": "2025-11-08T04:13:19.224208+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 2."
+  },
+  {
+    "time": "2025-11-08T04:13:31.082760+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 2."
+  },
+  {
+    "time": "2025-11-08T04:13:31.083512+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 3."
+  },
+  {
+    "time": "2025-11-08T04:13:36.755026+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 3."
+  },
+  {
+    "time": "2025-11-08T04:13:36.755684+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 4."
+  },
+  {
+    "time": "2025-11-08T04:13:37.553728+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1632930), stopping."
+  },
+  {
+    "time": "2025-11-08T04:13:37.554405+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-11-08T04:13:37.555029+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-11-08T04:13:37.555024+08:00"
   }
 ]
