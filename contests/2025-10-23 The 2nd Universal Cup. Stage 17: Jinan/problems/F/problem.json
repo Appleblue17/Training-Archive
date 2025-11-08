@@ -3,5 +3,7 @@
   "name": "Say Hello to the Future",
   "time_limit": "1.0 s",
   "memory_limit": "1024 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2025-11-04T13:47:06+08:00",
+  "solve_time": "2025-11-04T13:47:06+08:00"
 }
