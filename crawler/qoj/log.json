@@ -1,107 +1,5 @@
 [
   {
-    "time": "2025-11-01T10:27:27.108164+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-11-01T10:27:29.971903+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 4th Universal Cup. Stage 3: Polar Grand Prix (2025-10-30)"
-  },
-  {
-    "time": "2025-11-01T10:27:29.972727+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Created contest folder: contests/2025-10-30 The 4th Universal Cup. Stage 3: Polar Grand Prix"
-  },
-  {
-    "time": "2025-11-01T10:28:33.608932+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Finished fetching contest: The 4th Universal Cup. Stage 3: Polar Grand Prix (2025-10-30)"
-  },
-  {
-    "time": "2025-11-01T10:28:33.609444+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2025-11-01T10:28:33.610580+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-11-01T10:28:33.614368+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-11-01T10:28:33.615135+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-11-01T10:28:40.102776+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 1."
-  },
-  {
-    "time": "2025-11-01T10:28:40.103280+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 2."
-  },
-  {
-    "time": "2025-11-01T10:28:45.765153+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 2."
-  },
-  {
-    "time": "2025-11-01T10:28:45.765657+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 3."
-  },
-  {
-    "time": "2025-11-01T10:28:51.200231+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 3."
-  },
-  {
-    "time": "2025-11-01T10:28:51.200737+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 4."
-  },
-  {
-    "time": "2025-11-01T10:28:59.785733+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1605373), stopping."
-  },
-  {
-    "time": "2025-11-01T10:28:59.786296+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-11-01T10:28:59.786795+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-11-01T10:28:59.786790+08:00"
-  },
-  {
     "time": "2025-11-03T04:10:01.018770+08:00",
     "level": "warning",
     "platform": "qoj",
@@ -298,5 +196,107 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-11-08T04:13:37.555024+08:00"
+  },
+  {
+    "time": "2025-11-18T04:12:11.451972+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Download directory does not exist, creating it."
+  },
+  {
+    "time": "2025-11-18T04:12:11.813420+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-11-18T04:12:11.813403+08:00"
+  },
+  {
+    "time": "2025-11-18T04:12:17.421101+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-11-18T04:12:20.471287+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 2023 ICPC China Shandong Provincial Programming Contest (2025-11-13)"
+  },
+  {
+    "time": "2025-11-18T04:12:20.472029+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2025-11-13 The 2023 ICPC China Shandong Provincial Programming Contest"
+  },
+  {
+    "time": "2025-11-18T04:13:34.747604+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: The 2023 ICPC China Shandong Provincial Programming Contest (2025-11-13)"
+  },
+  {
+    "time": "2025-11-18T04:13:34.748304+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-11-18T04:13:34.749609+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-11-18T04:13:34.754750+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-11-18T04:13:34.755373+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-11-18T04:13:44.917413+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 1."
+  },
+  {
+    "time": "2025-11-18T04:13:44.918090+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 2."
+  },
+  {
+    "time": "2025-11-18T04:13:53.689111+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 2."
+  },
+  {
+    "time": "2025-11-18T04:13:53.689820+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 3."
+  },
+  {
+    "time": "2025-11-18T04:14:01.825544+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1667763), stopping."
+  },
+  {
+    "time": "2025-11-18T04:14:01.826149+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-11-18T04:14:01.826729+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-11-18T04:14:01.826723+08:00"
   }
 ]

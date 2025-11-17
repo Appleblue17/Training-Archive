@@ -1,17 +1,5 @@
 [
   {
-    "time": "2025-10-23T19:47:19.012324+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-10-23T19:47:19.012307+08:00"
-  },
-  {
-    "time": "2025-10-23T19:49:15.755571+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-10-23T19:49:15.755567+08:00"
-  },
-  {
     "time": "2025-10-24T18:28:54.579511+08:00",
     "level": "important",
     "platform": "qoj",
@@ -118,5 +106,17 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-11-08T04:13:37.555024+08:00"
+  },
+  {
+    "time": "2025-11-18T04:12:11.813420+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-11-18T04:12:11.813403+08:00"
+  },
+  {
+    "time": "2025-11-18T04:14:01.826729+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-11-18T04:14:01.826723+08:00"
   }
 ]

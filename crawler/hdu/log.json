@@ -1,11 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:14:49.671941+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
     "time": "2025-09-26T04:14:50.142599+08:00",
     "level": "info",
     "platform": "hdu",
@@ -295,6 +289,12 @@
   },
   {
     "time": "2025-11-08T04:13:38.697272+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "HDU Crawler is disabled."
+  },
+  {
+    "time": "2025-11-18T04:14:02.974494+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "HDU Crawler is disabled."

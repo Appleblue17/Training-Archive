@@ -3901,5 +3901,77 @@
         "link": "https://qoj.ac/contest/2567/problem/14718"
       }
     ]
+  },
+  {
+    "name": "The 2023 ICPC China Shandong Provincial Programming Contest",
+    "date": "2025-11-13",
+    "link": "https://qoj.ac/contest/1280",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Orders",
+        "link": "https://qoj.ac/contest/1280/problem/6691"
+      },
+      {
+        "letter": "B",
+        "name": "Building Company",
+        "link": "https://qoj.ac/contest/1280/problem/6692"
+      },
+      {
+        "letter": "C",
+        "name": "Trie",
+        "link": "https://qoj.ac/contest/1280/problem/6684"
+      },
+      {
+        "letter": "D",
+        "name": "Fast and Fat",
+        "link": "https://qoj.ac/contest/1280/problem/6693"
+      },
+      {
+        "letter": "E",
+        "name": "Math Problem",
+        "link": "https://qoj.ac/contest/1280/problem/6694"
+      },
+      {
+        "letter": "F",
+        "name": "Colorful Segments",
+        "link": "https://qoj.ac/contest/1280/problem/6672"
+      },
+      {
+        "letter": "G",
+        "name": "Matching",
+        "link": "https://qoj.ac/contest/1280/problem/6695"
+      },
+      {
+        "letter": "H",
+        "name": "Be Careful 2",
+        "link": "https://qoj.ac/contest/1280/problem/6673"
+      },
+      {
+        "letter": "I",
+        "name": "Three Dice",
+        "link": "https://qoj.ac/contest/1280/problem/6696"
+      },
+      {
+        "letter": "J",
+        "name": "Not Another Path Query Problem",
+        "link": "https://qoj.ac/contest/1280/problem/6679"
+      },
+      {
+        "letter": "K",
+        "name": "Difficult Constructive Problem",
+        "link": "https://qoj.ac/contest/1280/problem/6683"
+      },
+      {
+        "letter": "L",
+        "name": "Puzzle: Sashigane",
+        "link": "https://qoj.ac/contest/1280/problem/6677"
+      },
+      {
+        "letter": "M",
+        "name": "Computational Geometry",
+        "link": "https://qoj.ac/contest/1280/problem/6676"
+      }
+    ]
   }
 ]
