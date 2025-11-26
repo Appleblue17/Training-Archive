@@ -1,0 +1,247 @@
+1:"$Sreact.fragment"
+2:I[8521,[],""]
+3:I[1661,[],""]
+c:I[939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/f46a16dd4ad90ea1.css","style"]
+:HL["/Training-Archive/_next/static/css/9f4210e542df69af.css","style"]
+0:{"P":null,"b":"7MBbGvaYym9JmYuGzqZKq","p":"/Training-Archive","c":["","view","contests","2025-11-20%20%E7%AC%AC%E5%8D%81%E4%B8%80%E5%B1%8A%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%20%E5%93%88%E5%B0%94%E6%BB%A8%E7%AB%99%EF%BC%88CCPC%202025%20Harbin%20Site%EF%BC%89","problems","C","code.cpp"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2025-11-20%20%E7%AC%AC%E5%8D%81%E4%B8%80%E5%B1%8A%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%20%E5%93%88%E5%B0%94%E6%BB%A8%E7%AB%99%EF%BC%88CCPC%202025%20Harbin%20Site%EF%BC%89","d"],{"children":["problems",{"children":[["problem","C","d"],{"children":[["file","code.cpp","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/f46a16dd4ad90ea1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-1 inline","children":["$undefined",[["$","path","0",{"d":"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view","$L4",{"children":["contests","$L5",{"children":[["contest","2025-11-20%20%E7%AC%AC%E5%8D%81%E4%B8%80%E5%B1%8A%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%20%E5%93%88%E5%B0%94%E6%BB%A8%E7%AB%99%EF%BC%88CCPC%202025%20Harbin%20Site%EF%BC%89","d"],"$L6",{"children":["problems","$L7",{"children":[["problem","C","d"],"$L8",{"children":[["file","code.cpp","d"],"$L9",{"children":["__PAGE__","$La",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],"$Lb",false]],"m":"$undefined","G":["$c",[]],"s":false,"S":true}
+e:I[7055,[],"OutletBoundary"]
+10:I[9909,[],"AsyncMetadataOutlet"]
+12:I[7055,[],"ViewportBoundary"]
+14:I[7055,[],"MetadataBoundary"]
+15:"$Sreact.suspense"
+4:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+7:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+8:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+a:["$","$1","c",{"children":["$Ld",[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/9f4210e542df69af.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Le",null,{"children":["$Lf",["$","$L10",null,{"promise":"$@11"}]]}]]}]
+b:["$","$1","h",{"children":[null,[["$","$L12",null,{"children":"$L13"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L14",null,{"children":["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":"$L16"}]}]}]]}]
+17:I[2236,["215","static/chunks/1951f239-e4c7a40f4938f7cd.js","903","static/chunks/903-580aa120588c94fd.js","314","static/chunks/314-bdd16cf32a728af3.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-45187987e20c318a.js"],""]
+18:I[6417,["215","static/chunks/1951f239-e4c7a40f4938f7cd.js","903","static/chunks/903-580aa120588c94fd.js","314","static/chunks/314-bdd16cf32a728af3.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-45187987e20c318a.js"],"default"]
+19:T1a95,#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+const int N=5500,mod=998244353,INF=1e9;
+
+int ksm(int a,int x){
+    int tot=1;
+    while(x){
+        if(x & 1ll) tot=tot*a%mod;
+        a=a*a%mod;
+        x>>=1ll;
+    }
+    return tot;
+}
+void gmod(int &x){
+    x%=mod;
+}
+
+int mul[N],inv[N];
+void init(int lim){
+    mul[0]=inv[0]=1;
+    for(int i=1;i<=lim;i++) mul[i]=mul[i-1]*i%mod;
+    inv[lim]=ksm(mul[lim],mod-2);
+    for(int i=lim-1;i>=1;i--) inv[i]=inv[i+1]*(i+1)%mod;
+}
+int binom(int m,int n){
+    if(m<0 || n<0 || m<n) return 0;
+    return mul[m]*inv[n]%mod*inv[m-n]%mod;
+}
+int S2(int x){
+    return x*(x+1)/2;
+}
+
+int n,a[N],b[N],c[N],d[N],e[N];
+
+int f[N][N],g[N][N];
+int F0[N],F1[N],F2[N];
+int G0[N],G1[N],G2[N];
+
+int CB[N],CC[N],SB[N],SC[N],CD[N],CE[N];
+int C0[N],C1[N];
+
+int cal1(int d,int t){
+    if(d>=0) return (d>=t);
+    else return max((-d)-t+1,0ll);
+}
+bool check(int d,int t){
+    if(t<0) return 0;
+    if(d>=0) return (d==t);
+    return t<=(-d);
+}
+int getval(int *s,int l,int r){
+    if(l>0) return (s[r]+mod-s[l-1])%mod;
+    else return s[r];
+}
+
+signed main(){
+    init(N-5);
+    cin>>n;
+    int m=0;
+    for(int i=1;i<=n;i++) scanf("%lld",&a[i]),m=max(m,abs(a[i]));
+    for(int i=1;i<=n;i++) scanf("%lld",&b[i]);
+    for(int i=1;i<=n;i++) scanf("%lld",&c[i]);
+    for(int i=1;i<=n;i++) scanf("%lld",&d[i]);
+    for(int i=1;i<=n;i++) scanf("%lld",&e[i]);
+    
+    int alc=1;
+    for(int i=0;i<=n+1;i++){
+        if(b[i]>=0) CB[i]=1,SB[i]=b[i];
+        else CB[i]=-b[i]+1,SB[i]=S2(-b[i]);
+        
+        if(c[i]>=0) CC[i]=1,SC[i]=c[i];
+        else CC[i]=-c[i]+1,SC[i]=S2(-c[i]);
+        
+        if(d[i]>=0) CD[i]=1;
+        else CD[i]=-d[i]+1;
+        
+        if(e[i]>=0) CE[i]=1;
+        else CE[i]=-e[i]+1;
+        
+        C0[i]=CB[i]*CD[i]%mod;
+        C1[i]=CC[i]*CE[i]%mod;
+        
+        int CA=(a[i]>=0)?1:(-a[i]+1);
+        alc=alc*C0[i]%mod*C1[i]%mod*CA%mod;
+    }
+    
+    e[0]=INF; d[n+1]=INF;
+    
+    f[0][0]=1;
+    for(int i=1;i<=n+1;i++){
+        
+        for(int j=0;j<=m;j++){
+            F0[j]=F1[j]=F2[j]=0;
+            G0[j]=G1[j]=G2[j]=0;
+        }
+        F0[0]=f[i-1][0];
+        G0[0]=g[i-1][0];
+        for(int j=1;j<=m;j++){
+            gmod(F0[j]=F0[j-1]+f[i-1][j]);
+            gmod(F1[j]=F1[j-1]+f[i-1][j]*j%mod);
+            gmod(F2[j]=F2[j-1]+f[i-1][j]*j%mod*j%mod);
+            
+            gmod(G0[j]=G0[j-1]+g[i-1][j]);
+            gmod(G1[j]=G1[j-1]+g[i-1][j]*j%mod);
+            gmod(G2[j]=G2[j-1]+g[i-1][j]*j%mod*j%mod);
+        }
+        
+        
+        for(int j=0;j<=m;j++){
+            if(!check(a[i],j)) continue;
+            
+            if(d[i]>=0){
+                int L=j-min(j,d[i]),R=j;
+                
+                int val1=C1[i-1]*CB[i]%mod;
+                gmod(f[i][j]+=getval(F0,L,R)*val1%mod);
+                gmod(g[i][j]+=getval(G0,L,R)*val1%mod);
+                
+                int val2=C1[i-1]*SB[i]%mod;
+                gmod(g[i][j]+=getval(F0,L,R)*val2%mod*j%mod);
+                gmod(g[i][j]+=mod-getval(F1,L,R)*val2%mod);
+                
+                // for(int t=0;t<=min(j,d[i]);t++){
+                //     int val1=C1[i-1]*CB[i]%mod;
+                //     int val2=C1[i-1]*SB[i]%mod*(-(j-t)+j)%mod;
+                    
+                //     gmod(f[i][j]+=f[i-1][j-t]*val1%mod);
+                //     gmod(g[i][j]+=g[i-1][j-t]*val1%mod);
+                //     gmod(g[i][j]+=f[i-1][j-t]*val2%mod);
+                // }
+            }
+            else{
+                int x=-d[i];
+                int L=j-min(j,x),R=j;
+                
+                int val1=C1[i-1]*CB[i]%mod;
+                gmod(f[i][j]+=getval(F0,L,R)*val1%mod*(x+mod-j+1)%mod);
+                gmod(f[i][j]+=getval(F1,L,R)*val1%mod);
+                
+                gmod(g[i][j]+=getval(G0,L,R)*val1%mod*(x+mod-j+1)%mod);
+                gmod(g[i][j]+=getval(G1,L,R)*val1%mod);
+                
+                int val2=C1[i-1]*SB[i]%mod;
+                gmod(g[i][j]+=getval(F0,L,R)*val2%mod*j%mod*(x+mod-j+1)%mod);
+                gmod(g[i][j]+=getval(F1,L,R)*val2%mod*(2*j-x-1+mod)%mod);
+                gmod(g[i][j]+=mod-getval(F2,L,R)*val2%mod);
+                
+                // for(int t=0;t<=min(j,x);t++){
+                //     int s=j-t;
+                //     int val1=C1[i-1]*CB[i]%mod*(s+(x-j+1))%mod;
+                //     int val2=C1[i-1]%mod*SB[i]%mod*(-s*s%mod+s*(2*j-x-1)+j*(x-j+1))%mod;
+                    
+                //     gmod(f[i][j]+=f[i-1][j-t]*val1%mod);
+                //     gmod(g[i][j]+=g[i-1][j-t]*val1%mod);
+                //     gmod(g[i][j]+=f[i-1][j-t]*val2%mod);
+                // }
+            }
+            
+            if(e[i-1]>=0){
+                int L=j+1,R=j+min(m-j,e[i-1]);
+                
+                int val1=C0[i]*CC[i-1]%mod;
+                gmod(f[i][j]+=getval(F0,L,R)*val1%mod);
+                gmod(g[i][j]+=getval(G0,L,R)*val1%mod);
+                
+                int val2=C0[i]*SC[i-1]%mod;
+                gmod(g[i][j]+=mod-getval(F0,L,R)*val2%mod*j%mod);
+                gmod(g[i][j]+=getval(F1,L,R)*val2%mod);
+                
+                // for(int t=1;t<=min(m-j,e[i-1]);t++){
+                //     int val1=C0[i]*CC[i-1]%mod;
+                //     int val2=C0[i]*SC[i-1]%mod*((j+t)-j)%mod;
+                    
+                //     gmod(f[i][j]+=f[i-1][j+t]*val1%mod);
+                //     gmod(g[i][j]+=g[i-1][j+t]*val1%mod);
+                //     gmod(g[i][j]+=f[i-1][j+t]*val2%mod);
+                // }
+            }
+            else{
+                int x=-e[i-1];
+                int L=j+1,R=j+min(m-j,x);
+                
+                int val1=C0[i]*CC[i-1]%mod;
+                gmod(f[i][j]+=getval(F0,L,R)*val1%mod*(x+j+1)%mod);
+                gmod(f[i][j]+=mod-getval(F1,L,R)*val1%mod);
+                
+                gmod(g[i][j]+=getval(G0,L,R)*val1%mod*(x+j+1)%mod);
+                gmod(g[i][j]+=mod-getval(G1,L,R)*val1%mod);
+                
+                int val2=C0[i]*SC[i-1]%mod;
+                gmod(g[i][j]+=mod-getval(F0,L,R)*val2%mod*j%mod*(x+j+1)%mod);
+                gmod(g[i][j]+=getval(F1,L,R)*val2%mod*(x+2*j+1)%mod);
+                gmod(g[i][j]+=mod-getval(F2,L,R)*val2%mod);
+                
+                // for(int t=1;t<=min(m-j,x);t++){
+                //     int s=j+t;
+                //     int val1=C0[i]*CC[i-1]%mod*(x-s+j+1)%mod;
+                //     int val2=C0[i]*SC[i-1]%mod*(mod-s*s%mod+s*(x+2*j+1)%mod+mod-j*(x+j+1)%mod)%mod;
+                    
+                //     gmod(f[i][j]+=f[i-1][j+t]*val1%mod);
+                //     gmod(g[i][j]+=g[i-1][j+t]*val1%mod);
+                //     gmod(g[i][j]+=f[i-1][j+t]*val2%mod);
+                // }
+            }
+            
+        }
+    }
+    
+    cout<<g[n+1][0]<<" "<<(alc+mod-f[n+1][0])%mod;
+    
+}
+d:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","$L17",null,{"href":"/","children":["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400","children":["$undefined",[["$","path","0",{"d":"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z","children":[]}],["$","polyline","1",{"points":"9 22 9 12 15 12 15 22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}]}],["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2025-11-20 第十一届中国大学生程序设计竞赛 哈尔滨站（CCPC 2025 Harbin Site）",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"C",["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"code.cpp"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2025-11-20 第十一届中国大学生程序设计竞赛 哈尔滨站（CCPC 2025 Harbin Site）/problems/C/code.cpp","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","children":[]}],["$","polyline","1",{"points":"7 10 12 15 17 10","children":[]}],["$","line","2",{"x1":"12","y1":"15","x2":"12","y2":"3","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2025-11-20 第十一届中国大学生程序设计竞赛 哈尔滨站（CCPC 2025 Harbin Site）/problems/C/code.cpp","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-2 inline-block text-base","children":["$undefined",[["$","path","0",{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z","children":[]}],["$","polyline","1",{"points":"14 2 14 8 20 8","children":[]}],["$","line","2",{"x1":"16","y1":"13","x2":"8","y2":"13","children":[]}],["$","line","3",{"x1":"16","y1":"17","x2":"8","y2":"17","children":[]}],["$","polyline","4",{"points":"10 9 9 9 8 9","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":["$","$L18",null,{"code":"$19","ext":".cpp"}]}],"$L1a"]}]]}]}]
+1a:["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"code.cpp"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"6.646 KB (6805 B)"}]]}],["$","div","submission_id",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submission Id","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"#1754305"}]]}],["$","div","problem_name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Problem Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Many Many Sequence Covering Problems"}]]}],["$","div","status",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Status","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"AC"}]]}],["$","div","time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"1442ms"}]]}],["$","div","memory",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"437108kb"}]]}],["$","div","language",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Language","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"C++14"}]]}],["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/11/20 17:29:26"}]]}],null,["$","div","submission_link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submission Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/submission/1754305","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/submission/1754305"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Many Many Sequence Covering Problems"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/2575/problem/14816","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/2575/problem/14816"}]]}],["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ","$L1b"]}],"$L1c","$L1d","$L1e","$L1f"]}]]}],"$L20"]}]
+1b:["$","span",null,{"className":"text-yellow-400","children":"4.0 s"}]
+1c:["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"512 MB"}]]}]
+1d:["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}]
+1e:["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/11/20 17:29:26"}]]}]
+1f:["$","div","solve_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solve Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/11/20 17:29:26"}]]}]
+20:["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"第十一届中国大学生程序设计竞赛 哈尔滨站（CCPC 2025 Harbin Site）"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025-11-20"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"qoj"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/11/20 09:05:30"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/11/20 14:05:30"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/2575","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/2575"}]]}],["$","div","difficulty",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Difficulty","]"]}]," ",["$","span",null,{"className":"text-yellow-300","children":4.5}]]}]]}]]}]
+13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+f:null
+11:{"metadata":[],"error":null,"digest":"$undefined"}
+16:"$11:metadata"
