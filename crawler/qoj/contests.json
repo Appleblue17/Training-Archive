@@ -3973,5 +3973,77 @@
         "link": "https://qoj.ac/contest/1280/problem/6676"
       }
     ]
+  },
+  {
+    "name": "\u7b2c\u5341\u4e00\u5c4a\u4e2d\u56fd\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b \u54c8\u5c14\u6ee8\u7ad9\uff08CCPC 2025 Harbin Site\uff09",
+    "date": "2025-11-20",
+    "link": "https://qoj.ac/contest/2575",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "k-\u5b50\u96c6\u548c\u6700\u5927\u516c\u7ea6\u6570\u95ee\u9898",
+        "link": "https://qoj.ac/contest/2575/problem/14814"
+      },
+      {
+        "letter": "B",
+        "name": "\u6db2\u538b\u673a",
+        "link": "https://qoj.ac/contest/2575/problem/14815"
+      },
+      {
+        "letter": "C",
+        "name": "Many Many Sequence Covering Problems",
+        "link": "https://qoj.ac/contest/2575/problem/14816"
+      },
+      {
+        "letter": "D",
+        "name": "\u6bd4\u8d5b",
+        "link": "https://qoj.ac/contest/2575/problem/14817"
+      },
+      {
+        "letter": "E",
+        "name": "\u51fd\u6570\u6c42\u548c",
+        "link": "https://qoj.ac/contest/2575/problem/14818"
+      },
+      {
+        "letter": "F",
+        "name": "1-2-\u6309\u4f4d\u6216\u5b50\u5e8f\u5217\u95ee\u9898",
+        "link": "https://qoj.ac/contest/2575/problem/14819"
+      },
+      {
+        "letter": "G",
+        "name": "\u626b\u96ea",
+        "link": "https://qoj.ac/contest/2575/problem/14820"
+      },
+      {
+        "letter": "H",
+        "name": "\u5339\u914d",
+        "link": "https://qoj.ac/contest/2575/problem/14821"
+      },
+      {
+        "letter": "I",
+        "name": "\u516d\u8fb9\u5f62\u7ffb\u8f6c",
+        "link": "https://qoj.ac/contest/2575/problem/14822"
+      },
+      {
+        "letter": "J",
+        "name": "\u5e7b\u60f3\u4e61\u7684\u88c1\u5224\u957f",
+        "link": "https://qoj.ac/contest/2575/problem/14823"
+      },
+      {
+        "letter": "K",
+        "name": "01 \u80cc\u5305",
+        "link": "https://qoj.ac/contest/2575/problem/14824"
+      },
+      {
+        "letter": "L",
+        "name": "\u7f51\u683c\u907f\u969c",
+        "link": "https://qoj.ac/contest/2575/problem/14825"
+      },
+      {
+        "letter": "M",
+        "name": "\u8fde\u901a\u7684\u6b63\u4e09\u89d2\u5f62",
+        "link": "https://qoj.ac/contest/2575/problem/14826"
+      }
+    ]
   }
 ]

@@ -496,15 +496,15 @@
     "submission_link": "https://qoj.ac/submission/1525857"
   },
   {
-    "submission_id": "#1647202",
+    "submission_id": "#1779870",
     "problem_name": "ICPC",
     "status": "AC",
-    "time": "1759ms",
-    "memory": "404388kb",
+    "time": "1504ms",
+    "memory": "367448kb",
     "language": "C++14",
-    "submit_time": "2025-11-03T22:58:23+08:00",
-    "problem_link": "https://qoj.ac/contest/2568/problem/14730",
-    "submission_link": "https://qoj.ac/submission/1647202"
+    "submit_time": "2025-11-26T11:03:46+08:00",
+    "problem_link": "https://qoj.ac/contest/2609/problem/14730",
+    "submission_link": "https://qoj.ac/submission/1779870"
   },
   {
     "submission_id": "#1693367",
@@ -527,5 +527,38 @@
     "submit_time": "2025-11-09T00:38:17+08:00",
     "problem_link": "https://qoj.ac/contest/1828/problem/9564",
     "submission_link": "https://qoj.ac/submission/1683424"
+  },
+  {
+    "submission_id": "#1777883",
+    "problem_name": "I Love CCPC",
+    "status": "AC",
+    "time": "262ms",
+    "memory": "448956kb",
+    "language": "C++20",
+    "submit_time": "2025-11-25T20:44:41+08:00",
+    "problem_link": "https://qoj.ac/contest/2607/problem/15040",
+    "submission_link": "https://qoj.ac/submission/1777883"
+  },
+  {
+    "submission_id": "#1748959",
+    "problem_name": "\u54c8\u5e0c",
+    "status": "AC",
+    "time": "293ms",
+    "memory": "81432kb",
+    "language": "C++14",
+    "submit_time": "2025-11-19T19:35:46+08:00",
+    "problem_link": "https://qoj.ac/contest/2607/problem/15039",
+    "submission_link": "https://qoj.ac/submission/1748959"
+  },
+  {
+    "submission_id": "#1741504",
+    "problem_name": "A+B Problem",
+    "status": "RE",
+    "time": "0ms",
+    "memory": "0kb",
+    "language": "C++14",
+    "submit_time": "2025-11-18T17:09:20+08:00",
+    "problem_link": "https://qoj.ac/problem/7113",
+    "submission_link": "https://qoj.ac/submission/1741504"
   }
 ]
