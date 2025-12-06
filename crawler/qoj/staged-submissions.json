@@ -560,5 +560,27 @@
     "submit_time": "2025-11-18T17:09:20+08:00",
     "problem_link": "https://qoj.ac/problem/7113",
     "submission_link": "https://qoj.ac/submission/1741504"
+  },
+  {
+    "submission_id": "#1798879",
+    "problem_name": "The Lone Gladiator",
+    "status": "AC",
+    "time": "14ms",
+    "memory": "3892kb",
+    "language": "C++20",
+    "submit_time": "2025-12-01T18:40:55+08:00",
+    "problem_link": "https://qoj.ac/contest/2665/problem/15357",
+    "submission_link": "https://qoj.ac/submission/1798879"
+  },
+  {
+    "submission_id": "#1781676",
+    "problem_name": "Basic Counting Practice Problems",
+    "status": "AC",
+    "time": "2503ms",
+    "memory": "13972kb",
+    "language": "C++14",
+    "submit_time": "2025-11-26T16:52:18+08:00",
+    "problem_link": "https://qoj.ac/contest/2661/problem/15303",
+    "submission_link": "https://qoj.ac/submission/1781676"
   }
 ]

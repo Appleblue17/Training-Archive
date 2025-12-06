@@ -4045,5 +4045,77 @@
         "link": "https://qoj.ac/contest/2575/problem/14826"
       }
     ]
+  },
+  {
+    "name": "The 4th Universal Cup. Extra Stage 1: Xi'an (Unrated)",
+    "date": "2025-11-27",
+    "link": "https://qoj.ac/contest/2562",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Azalea Garden",
+        "link": "https://qoj.ac/contest/2562/problem/14681"
+      },
+      {
+        "letter": "B",
+        "name": "Beautiful Dangos",
+        "link": "https://qoj.ac/contest/2562/problem/14682"
+      },
+      {
+        "letter": "C",
+        "name": "Catch the Monster",
+        "link": "https://qoj.ac/contest/2562/problem/14683"
+      },
+      {
+        "letter": "D",
+        "name": "Directed Acyclic Graph",
+        "link": "https://qoj.ac/contest/2562/problem/14684"
+      },
+      {
+        "letter": "E",
+        "name": "Epilogue of Happiness",
+        "link": "https://qoj.ac/contest/2562/problem/14685"
+      },
+      {
+        "letter": "F",
+        "name": "Follow the Penguins",
+        "link": "https://qoj.ac/contest/2562/problem/14686"
+      },
+      {
+        "letter": "G",
+        "name": "Grand Voting",
+        "link": "https://qoj.ac/contest/2562/problem/14687"
+      },
+      {
+        "letter": "H",
+        "name": "Heart of Darkness",
+        "link": "https://qoj.ac/contest/2562/problem/14688"
+      },
+      {
+        "letter": "I",
+        "name": "Imagined Holly",
+        "link": "https://qoj.ac/contest/2562/problem/14689"
+      },
+      {
+        "letter": "J",
+        "name": "January's Color",
+        "link": "https://qoj.ac/contest/2562/problem/14690"
+      },
+      {
+        "letter": "K",
+        "name": "Killing Bits",
+        "link": "https://qoj.ac/contest/2562/problem/14691"
+      },
+      {
+        "letter": "L",
+        "name": "Let's Make a Convex!",
+        "link": "https://qoj.ac/contest/2562/problem/14692"
+      },
+      {
+        "letter": "M",
+        "name": "Mystique as Iris",
+        "link": "https://qoj.ac/contest/2562/problem/14693"
+      }
+    ]
   }
 ]
