@@ -4117,5 +4117,72 @@
         "link": "https://qoj.ac/contest/2562/problem/14693"
       }
     ]
+  },
+  {
+    "name": "The 4th Universal Cup. Extra Stage 3: Osijek",
+    "date": "2025-12-24",
+    "link": "https://qoj.ac/contest/2757",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Magician",
+        "link": "https://qoj.ac/contest/2757/problem/15517"
+      },
+      {
+        "letter": "B",
+        "name": "Word Generator",
+        "link": "https://qoj.ac/contest/2757/problem/15518"
+      },
+      {
+        "letter": "C",
+        "name": "Glitch",
+        "link": "https://qoj.ac/contest/2757/problem/15519"
+      },
+      {
+        "letter": "D",
+        "name": "Electi Lamps",
+        "link": "https://qoj.ac/contest/2757/problem/15520"
+      },
+      {
+        "letter": "E",
+        "name": "XOR Again?",
+        "link": "https://qoj.ac/contest/2757/problem/15521"
+      },
+      {
+        "letter": "F",
+        "name": "Binary Permutation",
+        "link": "https://qoj.ac/contest/2757/problem/15522"
+      },
+      {
+        "letter": "G",
+        "name": "Amoeba Tree",
+        "link": "https://qoj.ac/contest/2757/problem/15523"
+      },
+      {
+        "letter": "H",
+        "name": "Magical Puzzles",
+        "link": "https://qoj.ac/contest/2757/problem/15524"
+      },
+      {
+        "letter": "I",
+        "name": "Bobs Rating",
+        "link": "https://qoj.ac/contest/2757/problem/15525"
+      },
+      {
+        "letter": "J",
+        "name": "AND Components",
+        "link": "https://qoj.ac/contest/2757/problem/15526"
+      },
+      {
+        "letter": "K",
+        "name": "Hidden Digits",
+        "link": "https://qoj.ac/contest/2757/problem/15527"
+      },
+      {
+        "letter": "L",
+        "name": "Robots",
+        "link": "https://qoj.ac/contest/2757/problem/15528"
+      }
+    ]
   }
 ]

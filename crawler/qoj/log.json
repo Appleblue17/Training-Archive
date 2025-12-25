@@ -1,167 +1,5 @@
 [
   {
-    "time": "2025-11-18T04:13:53.689111+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 2."
-  },
-  {
-    "time": "2025-11-18T04:13:53.689820+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 3."
-  },
-  {
-    "time": "2025-11-18T04:14:01.825544+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1667763), stopping."
-  },
-  {
-    "time": "2025-11-18T04:14:01.826149+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-11-18T04:14:01.826729+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-11-18T04:14:01.826723+08:00"
-  },
-  {
-    "time": "2025-11-26T16:19:52.063230+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-26T16:19:52.063217+08:00"
-  },
-  {
-    "time": "2025-11-26T16:19:59.376448+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-11-26T16:20:02.037944+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
-  },
-  {
-    "time": "2025-11-26T16:20:02.038539+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Created contest folder: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan"
-  },
-  {
-    "time": "2025-11-26T16:20:21.669553+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-26T16:20:21.669538+08:00"
-  },
-  {
-    "time": "2025-11-26T16:20:28.756739+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-11-26T16:20:32.263544+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
-  },
-  {
-    "time": "2025-11-26T16:20:32.264126+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
-  },
-  {
-    "time": "2025-11-26T16:20:32.264485+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: \u7b2c\u5341\u4e00\u5c4a\u4e2d\u56fd\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b \u54c8\u5c14\u6ee8\u7ad9\uff08CCPC 2025 Harbin Site\uff09 (2025-11-20)"
-  },
-  {
-    "time": "2025-11-26T16:20:32.264954+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Created contest folder: contests/2025-11-20 \u7b2c\u5341\u4e00\u5c4a\u4e2d\u56fd\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b \u54c8\u5c14\u6ee8\u7ad9\uff08CCPC 2025 Harbin Site\uff09"
-  },
-  {
-    "time": "2025-11-26T16:21:43.700147+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Finished fetching contest: \u7b2c\u5341\u4e00\u5c4a\u4e2d\u56fd\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b \u54c8\u5c14\u6ee8\u7ad9\uff08CCPC 2025 Harbin Site\uff09 (2025-11-20)"
-  },
-  {
-    "time": "2025-11-26T16:21:43.700635+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2025-11-26T16:21:43.701584+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-11-26T16:21:43.705549+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-11-26T16:21:43.706334+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-11-26T16:21:45.105835+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 1."
-  },
-  {
-    "time": "2025-11-26T16:21:45.106320+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 2."
-  },
-  {
-    "time": "2025-11-26T16:21:51.126829+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 2."
-  },
-  {
-    "time": "2025-11-26T16:21:51.127450+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 3."
-  },
-  {
-    "time": "2025-11-26T16:21:55.211825+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 3."
-  },
-  {
-    "time": "2025-11-26T16:21:55.212264+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 4."
-  },
-  {
-    "time": "2025-11-26T16:22:08.623478+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 4."
-  },
-  {
     "time": "2025-11-26T16:22:08.624081+08:00",
     "level": "info",
     "platform": "qoj",
@@ -298,5 +136,167 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-12-07T04:12:38.601034+08:00"
+  },
+  {
+    "time": "2025-12-26T04:12:34.632581+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Download directory does not exist, creating it."
+  },
+  {
+    "time": "2025-12-26T04:12:35.145463+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-12-26T04:12:35.145451+08:00"
+  },
+  {
+    "time": "2025-12-26T04:12:39.710608+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2025-12-26T04:12:42.714209+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 3: Osijek (2025-12-24)"
+  },
+  {
+    "time": "2025-12-26T04:12:42.715048+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2025-12-24 The 4th Universal Cup. Extra Stage 3: Osijek"
+  },
+  {
+    "time": "2025-12-26T04:13:41.394334+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: The 4th Universal Cup. Extra Stage 3: Osijek (2025-12-24)"
+  },
+  {
+    "time": "2025-12-26T04:13:41.395032+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
+  },
+  {
+    "time": "2025-12-26T04:13:41.395659+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
+  },
+  {
+    "time": "2025-12-26T04:13:41.396303+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2025-12-26T04:13:41.397643+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2025-12-26T04:13:41.403520+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2025-12-26T04:13:41.404161+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2025-12-26T04:13:44.393850+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 1."
+  },
+  {
+    "time": "2025-12-26T04:13:44.394503+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 2."
+  },
+  {
+    "time": "2025-12-26T04:13:46.262016+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 2."
+  },
+  {
+    "time": "2025-12-26T04:13:46.262711+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 3."
+  },
+  {
+    "time": "2025-12-26T04:13:48.364147+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 3."
+  },
+  {
+    "time": "2025-12-26T04:13:48.364786+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 4."
+  },
+  {
+    "time": "2025-12-26T04:13:54.157241+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 4."
+  },
+  {
+    "time": "2025-12-26T04:13:54.157942+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 5."
+  },
+  {
+    "time": "2025-12-26T04:14:01.115009+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 5."
+  },
+  {
+    "time": "2025-12-26T04:14:01.115712+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 6."
+  },
+  {
+    "time": "2025-12-26T04:14:03.944365+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 6."
+  },
+  {
+    "time": "2025-12-26T04:14:03.945078+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 7."
+  },
+  {
+    "time": "2025-12-26T04:14:05.474466+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1798879), stopping."
+  },
+  {
+    "time": "2025-12-26T04:14:05.475175+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2025-12-26T04:14:05.475812+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-12-26T04:14:05.475806+08:00"
   }
 ]

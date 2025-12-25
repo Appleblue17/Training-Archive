@@ -582,5 +582,82 @@
     "submit_time": "2025-11-26T16:52:18+08:00",
     "problem_link": "https://qoj.ac/contest/2661/problem/15303",
     "submission_link": "https://qoj.ac/submission/1781676"
+  },
+  {
+    "submission_id": "#1855043",
+    "problem_name": "Dumb Problem",
+    "status": "AC",
+    "time": "128ms",
+    "memory": "31932kb",
+    "language": "C++20",
+    "submit_time": "2025-12-21T19:56:02+08:00",
+    "problem_link": "https://qoj.ac/contest/2666/problem/15435",
+    "submission_link": "https://qoj.ac/submission/1855043"
+  },
+  {
+    "submission_id": "#1853777",
+    "problem_name": "Watering System",
+    "status": "AC",
+    "time": "230ms",
+    "memory": "61200kb",
+    "language": "C++20",
+    "submit_time": "2025-12-21T10:56:53+08:00",
+    "problem_link": "https://qoj.ac/contest/2666/problem/15438",
+    "submission_link": "https://qoj.ac/submission/1853777"
+  },
+  {
+    "submission_id": "#1852960",
+    "problem_name": "Find the Circuit",
+    "status": "AC",
+    "time": "563ms",
+    "memory": "374228kb",
+    "language": "C++20",
+    "submit_time": "2025-12-20T19:19:10+08:00",
+    "problem_link": "https://qoj.ac/contest/2666/problem/15437",
+    "submission_link": "https://qoj.ac/submission/1852960"
+  },
+  {
+    "submission_id": "#1851468",
+    "problem_name": "Asian Soul",
+    "status": "AC",
+    "time": "3748ms",
+    "memory": "282160kb",
+    "language": "C++20",
+    "submit_time": "2025-12-20T12:51:56+08:00",
+    "problem_link": "https://qoj.ac/contest/2756/problem/15876",
+    "submission_link": "https://qoj.ac/submission/1851468"
+  },
+  {
+    "submission_id": "#1850681",
+    "problem_name": "\u751f\u547d\u7ebf",
+    "status": "AC",
+    "time": "66ms",
+    "memory": "121468kb",
+    "language": "C++20",
+    "submit_time": "2025-12-19T23:43:44+08:00",
+    "problem_link": "https://qoj.ac/problem/15880",
+    "submission_link": "https://qoj.ac/submission/1850681"
+  },
+  {
+    "submission_id": "#1849823",
+    "problem_name": "\u56de\u54cd\u5f62\u6001",
+    "status": "AC",
+    "time": "159ms",
+    "memory": "30236kb",
+    "language": "C++20",
+    "submit_time": "2025-12-19T18:23:25+08:00",
+    "problem_link": "https://qoj.ac/contest/2756/problem/15877",
+    "submission_link": "https://qoj.ac/submission/1849823"
+  },
+  {
+    "submission_id": "#1830221",
+    "problem_name": "\u56fe\uff0c\u8ddd\u79bb\uff0c\u6700\u4f18\u5316",
+    "status": "AC",
+    "time": "113ms",
+    "memory": "13512kb",
+    "language": "C++20",
+    "submit_time": "2025-12-13T13:27:26+08:00",
+    "problem_link": "https://qoj.ac/contest/1957/problem/10280",
+    "submission_link": "https://qoj.ac/submission/1830221"
   }
 ]
