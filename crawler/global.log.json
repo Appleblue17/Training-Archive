@@ -1,17 +1,5 @@
 [
   {
-    "time": "2025-11-01T10:27:16.563544+08:00",
-    "level": "fatal",
-    "platform": "hdu",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2025-11-01T10:27:16.950436+08:00",
-    "level": "fatal",
-    "platform": "nowcoder",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
     "time": "2025-11-01T10:27:22.291712+08:00",
     "level": "important",
     "platform": "qoj",
@@ -118,5 +106,17 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-12-26T04:14:05.475806+08:00"
+  },
+  {
+    "time": "2025-12-27T04:11:48.133462+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2025-12-27T04:11:48.133448+08:00"
+  },
+  {
+    "time": "2025-12-27T04:11:59.187446+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2025-12-27T04:11:59.187439+08:00"
   }
 ]
