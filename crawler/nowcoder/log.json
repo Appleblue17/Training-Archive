@@ -1,17 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:15:39.535251+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Start fetching contest: \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84259 (2025-08-12)"
-  },
-  {
-    "time": "2025-09-26T04:15:39.536011+08:00",
-    "level": "warning",
-    "platform": "nowcoder",
-    "msg": "Contest folder already exists: contests/2025-08-12 \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84259. Skipped."
-  },
-  {
     "time": "2025-09-26T04:15:39.536708+08:00",
     "level": "info",
     "platform": "nowcoder",
@@ -295,6 +283,18 @@
   },
   {
     "time": "2025-12-27T04:12:00.915250+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-02T18:19:03.257806+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-04T00:50:18.928383+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Nowcoder Crawler is disabled."

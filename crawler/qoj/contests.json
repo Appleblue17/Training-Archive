@@ -4184,5 +4184,139 @@
         "link": "https://qoj.ac/contest/2757/problem/15528"
       }
     ]
+  },
+  {
+    "name": "Petrozavodsk Winter 2019. Day 1. 300iq Contest",
+    "date": "2025-12-30",
+    "link": "https://qoj.ac/contest/2078",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Angle Beats",
+        "link": "https://qoj.ac/contest/2078/problem/12211"
+      },
+      {
+        "letter": "B",
+        "name": "Best Subsequence",
+        "link": "https://qoj.ac/contest/2078/problem/12212"
+      },
+      {
+        "letter": "C",
+        "name": "Cool pairs",
+        "link": "https://qoj.ac/contest/2078/problem/12213"
+      },
+      {
+        "letter": "D",
+        "name": "Dates",
+        "link": "https://qoj.ac/contest/2078/problem/12214"
+      },
+      {
+        "letter": "E",
+        "name": "Expected Value",
+        "link": "https://qoj.ac/contest/2078/problem/12215"
+      },
+      {
+        "letter": "F",
+        "name": "Free Edges",
+        "link": "https://qoj.ac/contest/2078/problem/12216"
+      },
+      {
+        "letter": "G",
+        "name": "Graph Counting",
+        "link": "https://qoj.ac/contest/2078/problem/12217"
+      },
+      {
+        "letter": "H",
+        "name": "Hall's Theorem",
+        "link": "https://qoj.ac/contest/2078/problem/12218"
+      },
+      {
+        "letter": "I",
+        "name": "Interesting Graph",
+        "link": "https://qoj.ac/contest/2078/problem/12219"
+      },
+      {
+        "letter": "J",
+        "name": "Jealous Split",
+        "link": "https://qoj.ac/contest/2078/problem/12220"
+      },
+      {
+        "letter": "K",
+        "name": "Knowledge",
+        "link": "https://qoj.ac/contest/2078/problem/12221"
+      }
+    ]
+  },
+  {
+    "name": "The 3rd Universal Cup. Stage 36: Wulin",
+    "date": "2026-01-01",
+    "link": "https://qoj.ac/contest/2021",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Outer LIS",
+        "link": "https://qoj.ac/contest/2021/problem/10723"
+      },
+      {
+        "letter": "B",
+        "name": "Turn on the Light 3",
+        "link": "https://qoj.ac/contest/2021/problem/10724"
+      },
+      {
+        "letter": "C",
+        "name": "RDDCCD",
+        "link": "https://qoj.ac/contest/2021/problem/10725"
+      },
+      {
+        "letter": "D",
+        "name": "Too Clever by Half",
+        "link": "https://qoj.ac/contest/2021/problem/10726"
+      },
+      {
+        "letter": "E",
+        "name": "Gold Miner",
+        "link": "https://qoj.ac/contest/2021/problem/10727"
+      },
+      {
+        "letter": "F",
+        "name": "Challenge NPC III",
+        "link": "https://qoj.ac/contest/2021/problem/10728"
+      },
+      {
+        "letter": "G",
+        "name": "Tariff-ied",
+        "link": "https://qoj.ac/contest/2021/problem/10729"
+      },
+      {
+        "letter": "H",
+        "name": "Sweet Sugar IV",
+        "link": "https://qoj.ac/contest/2021/problem/10730"
+      },
+      {
+        "letter": "I",
+        "name": "Version Number",
+        "link": "https://qoj.ac/contest/2021/problem/10731"
+      },
+      {
+        "letter": "J",
+        "name": "Chocolate Sweet",
+        "link": "https://qoj.ac/contest/2021/problem/10732"
+      },
+      {
+        "letter": "K",
+        "name": "Wavelike Finding",
+        "link": "https://qoj.ac/contest/2021/problem/10733"
+      },
+      {
+        "letter": "L",
+        "name": "Nailoongs Always Lie",
+        "link": "https://qoj.ac/contest/2021/problem/10734"
+      },
+      {
+        "letter": "M",
+        "name": "Master of Both VII",
+        "link": "https://qoj.ac/contest/2021/problem/10735"
+      }
+    ]
   }
 ]

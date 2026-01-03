@@ -3,6 +3,7 @@
   "name": "Magical Puzzles",
   "time_limit": "4.0 s",
   "memory_limit": "256 MB",
-  "solved": false,
-  "submit_time": "2025-12-25T09:33:04+08:00"
+  "solved": true,
+  "submit_time": "2026-01-03T18:57:59+08:00",
+  "solve_time": "2026-01-03T18:57:59+08:00"
 }

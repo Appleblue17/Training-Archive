@@ -22,7 +22,7 @@ template <typename T>inline void read(T &x){
 }
 const int mo=1e9+7;
 using namespace std;
-ll deg[N],typ[N],siz[N],heavy[N];
+ll deg[N],typ[N],siz[N],heavy[N],dep[N];
 ll t,n,m,x,y,k,q;
 const int wid[30] = {0,0,0,0,2,3,3,5,5,7,7,9,9,11,13,13,15,15,17,17,19,19,21,21,23,23,25,25,0,0};
 vector<int> g[N],l[N];
@@ -39,6 +39,13 @@ void dfs0(int u,int fa){
         if((siz[v]>siz[heavy[u]]) || (siz[v] == siz[heavy[u]] && v > heavy[u])){
             heavy[u]=v;
         }
+    }
+}
+void dfsg(int u,int fa){
+    for(int v:g[u]){
+        if(v==fa)continue;
+        dep[v]=dep[u]+1;
+        dfsg(v,u);
     }
 }
 void node(int x,int y,int id,int tp){
@@ -67,18 +74,20 @@ void dfs(int u,int fa,int x,int y,int lo,int hi){
     if(siz[u]==4){
         ny++;
         ans[nx][ny]=0;
-        nx+=dir;
-        node(nx,ny,l[u][0],leaf2col);
+        node(nx+dir,ny,l[u][0],leaf2col);
         //while(lo <= nx && nx <= hi){
         //    ans[nx][ny]=0;
         //    nx+=dir;
         //}
         ny++;
         ans[nx][ny]=0;
+        node(nx+dir,ny,l[u][1],nxcol);
         ny++;
-        node(nx,ny,l[u][1],typ[u]);
-        nx -= dir;
-        node(nx,ny,l[u][2],nxcol);
+        ans[nx][ny]=0;
+        ny++;
+        ans[nx][ny]=0;
+        
+        node(nx+dir,ny,l[u][2],nxcol);
         //for(int i=0;i<g[u].size();i++){
         //    int v = g[u][i];
         //    if(v == fa)continue;
@@ -198,11 +207,24 @@ void solve(){
         g[v].push_back(u);
         deg[u]++;deg[v]++;
 	}
-    int rt=0;
+    int rt=0,mn=n;
     deg[0]=0;
-	for(int i=1;i<=n;i++){
-		if(deg[i]>deg[rt])rt=i;
-	}
+	//for(int i=1;i<=n;i++){
+	//	if(deg[i]>deg[rt])rt=i;
+	//}
+    for(int i=1;i<=n;i++){
+        memset(dep,0,sizeof(dep));
+        dfsg(i,0);
+        int mxd=0;
+        for(int j=1;j<=n;j++){
+            mxd = max(mxd,dep[j]);
+        }
+        if(mxd < mn){
+            mn = mxd;
+            rt = i;
+        }
+        
+    }
     //if(n == 49)rt=5;
     for(int i=0;i<=n+1;i++){
         for(int j=0;j<=n+1;j++){

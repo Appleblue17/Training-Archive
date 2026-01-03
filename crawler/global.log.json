@@ -1,29 +1,5 @@
 [
   {
-    "time": "2025-11-01T10:27:22.291712+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-01T10:27:22.291693+08:00"
-  },
-  {
-    "time": "2025-11-01T10:28:59.786795+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-11-01T10:28:59.786790+08:00"
-  },
-  {
-    "time": "2025-11-03T04:10:01.616566+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-03T04:10:01.616554+08:00"
-  },
-  {
-    "time": "2025-11-03T04:10:13.119406+08:00",
-    "level": "error",
-    "platform": "qoj",
-    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
-  },
-  {
     "time": "2025-11-03T04:10:13.120583+08:00",
     "level": "error",
     "platform": "qoj",
@@ -118,5 +94,29 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2025-12-27T04:11:59.187439+08:00"
+  },
+  {
+    "time": "2026-01-02T18:15:23.120949+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-02T18:15:23.120934+08:00"
+  },
+  {
+    "time": "2026-01-02T18:19:01.262607+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-02T18:19:01.262591+08:00"
+  },
+  {
+    "time": "2026-01-04T00:49:57.845469+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-04T00:49:57.845451+08:00"
+  },
+  {
+    "time": "2026-01-04T00:50:17.014255+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-04T00:50:17.014250+08:00"
   }
 ]

@@ -659,5 +659,38 @@
     "submit_time": "2025-12-13T13:27:26+08:00",
     "problem_link": "https://qoj.ac/contest/1957/problem/10280",
     "submission_link": "https://qoj.ac/submission/1830221"
+  },
+  {
+    "submission_id": "#1880418",
+    "problem_name": "\u5b57\u7b26\u4e32",
+    "status": "AC",
+    "time": "236ms",
+    "memory": "33692kb",
+    "language": "C++20",
+    "submit_time": "2025-12-31T18:23:05+08:00",
+    "problem_link": "https://qoj.ac/problem/6759",
+    "submission_link": "https://qoj.ac/submission/1880418"
+  },
+  {
+    "submission_id": "#1879749",
+    "problem_name": "Border",
+    "status": "AC",
+    "time": "625ms",
+    "memory": "48616kb",
+    "language": "C++20",
+    "submit_time": "2025-12-31T10:02:49+08:00",
+    "problem_link": "https://qoj.ac/problem/8701",
+    "submission_link": "https://qoj.ac/submission/1879749"
+  },
+  {
+    "submission_id": "#1879225",
+    "problem_name": "Range Periodicity Query",
+    "status": "AC",
+    "time": "529ms",
+    "memory": "120424kb",
+    "language": "C++20",
+    "submit_time": "2025-12-30T22:12:23+08:00",
+    "problem_link": "https://qoj.ac/contest/1485/problem/8079",
+    "submission_link": "https://qoj.ac/submission/1879225"
   }
 ]
