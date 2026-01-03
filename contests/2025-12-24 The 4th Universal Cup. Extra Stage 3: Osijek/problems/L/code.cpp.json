@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1870391",
+  "submission_id": "#1873807",
   "problem_name": "Robots",
   "status": "WA",
-  "time": "7ms",
-  "memory": "4016kb",
+  "time": "16ms",
+  "memory": "4140kb",
   "language": "C++23",
-  "submit_time": "2025-12-26T23:04:20+08:00",
+  "submit_time": "2025-12-28T07:44:32+08:00",
   "problem_link": "https://qoj.ac/contest/2757/problem/15528",
-  "submission_link": "https://qoj.ac/submission/1870391"
+  "submission_link": "https://qoj.ac/submission/1873807"
 }
