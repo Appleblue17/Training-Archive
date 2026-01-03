@@ -2,8 +2,8 @@ name: Crawler Workflow
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 20 * * *" # Runs daily at 20:00 UTC (4:00 Asia/Shanghai)
+  # schedule:
+  #   - cron: "0 20 * * *" # Runs daily at 20:00 UTC (4:00 Asia/Shanghai)
 
 jobs:
   crawl:
