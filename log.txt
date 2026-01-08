@@ -5,55 +5,7 @@
 d:I[939,[],""]
 :HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/Training-Archive/_next/static/css/f46a16dd4ad90ea1.css","style"]
-6:Te8e,[
-  {
-    "time": "2025-11-03T04:10:13.120583+08:00",
-    "level": "error",
-    "platform": "qoj",
-    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
-  },
-  {
-    "time": "2025-11-03T04:10:13.121683+08:00",
-    "level": "error",
-    "platform": "qoj",
-    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
-  },
-  {
-    "time": "2025-11-03T04:10:13.124000+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-11-03T04:10:13.123994+08:00"
-  },
-  {
-    "time": "2025-11-08T04:12:00.407394+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-08T04:12:00.407382+08:00"
-  },
-  {
-    "time": "2025-11-08T04:13:37.555029+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-11-08T04:13:37.555024+08:00"
-  },
-  {
-    "time": "2025-11-18T04:12:11.813420+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-18T04:12:11.813403+08:00"
-  },
-  {
-    "time": "2025-11-18T04:14:01.826729+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-11-18T04:14:01.826723+08:00"
-  },
-  {
-    "time": "2025-11-26T16:19:52.063230+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-26T16:19:52.063217+08:00"
-  },
+6:Ted4,[
   {
     "time": "2025-11-26T16:20:21.669553+08:00",
     "level": "important",
@@ -125,212 +77,56 @@ d:I[939,[],""]
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2026-01-04T00:50:17.014250+08:00"
+  },
+  {
+    "time": "2026-01-08T15:28:07.290447+08:00",
+    "level": "fatal",
+    "platform": "qoj",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:07.682945+08:00",
+    "level": "fatal",
+    "platform": "hdu",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:08.060089+08:00",
+    "level": "fatal",
+    "platform": "nowcoder",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:09.807653+08:00",
+    "level": "fatal",
+    "platform": "qoj",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:10.192144+08:00",
+    "level": "fatal",
+    "platform": "hdu",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:10.562071+08:00",
+    "level": "fatal",
+    "platform": "nowcoder",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:32.152706+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-08T15:28:32.152691+08:00"
+  },
+  {
+    "time": "2026-01-08T15:33:10.713028+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-08T15:33:10.713021+08:00"
   }
-]7:T20ca,[
-  {
-    "time": "2025-12-27T04:11:53.244464+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-12-27T04:11:55.729753+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
-  },
-  {
-    "time": "2025-12-27T04:11:55.730465+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
-  },
-  {
-    "time": "2025-12-27T04:11:55.731037+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2025-12-27T04:11:55.732453+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2025-12-27T04:11:55.739002+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2025-12-27T04:11:55.739633+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2025-12-27T04:11:59.186098+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1864999), stopping."
-  },
-  {
-    "time": "2025-12-27T04:11:59.186793+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2025-12-27T04:11:59.187446+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-12-27T04:11:59.187439+08:00"
-  },
-  {
-    "time": "2026-01-02T18:15:23.120949+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-02T18:15:23.120934+08:00"
-  },
-  {
-    "time": "2026-01-02T18:15:28.122718+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-01-02T18:15:31.925091+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
-  },
-  {
-    "time": "2026-01-02T18:15:31.925697+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
-  },
-  {
-    "time": "2026-01-02T18:15:31.926130+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: Petrozavodsk Winter 2019. Day 1. 300iq Contest (2025-12-30)"
-  },
-  {
-    "time": "2026-01-02T18:15:31.927245+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Created contest folder: contests/2025-12-30 Petrozavodsk Winter 2019. Day 1. 300iq Contest"
-  },
-  {
-    "time": "2026-01-02T18:16:36.118573+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Finished fetching contest: Petrozavodsk Winter 2019. Day 1. 300iq Contest (2025-12-30)"
-  },
-  {
-    "time": "2026-01-02T18:16:36.119155+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 3rd Universal Cup. Stage 36: Wulin (2026-01-01)"
-  },
-  {
-    "time": "2026-01-02T18:16:36.119715+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Created contest folder: contests/2026-01-01 The 3rd Universal Cup. Stage 36: Wulin"
-  },
-  {
-    "time": "2026-01-02T18:17:55.614137+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Finished fetching contest: The 3rd Universal Cup. Stage 36: Wulin (2026-01-01)"
-  },
-  {
-    "time": "2026-01-02T18:17:55.614819+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2026-01-02T18:17:55.616159+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2026-01-02T18:17:55.622814+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2026-01-02T18:17:55.623407+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2026-01-02T18:18:06.663105+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 1."
-  },
-  {
-    "time": "2026-01-02T18:18:06.663675+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 2."
-  },
-  {
-    "time": "2026-01-02T18:18:14.560617+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 2."
-  },
-  {
-    "time": "2026-01-02T18:18:14.561296+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 3."
-  },
-  {
-    "time": "2026-01-02T18:18:27.710149+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 3."
-  },
-  {
-    "time": "2026-01-02T18:18:27.711107+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 4."
-  },
-  {
-    "time": "2026-01-02T18:18:46.338851+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 4."
-  },
-  {
-    "time": "2026-01-02T18:18:46.339450+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 5."
-  },
-  {
-    "time": "2026-01-02T18:19:01.261287+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1870391), stopping."
-  },
-  {
-    "time": "2026-01-02T18:19:01.261936+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
+]7:T2358,[
   {
     "time": "2026-01-02T18:19:01.262607+08:00",
     "level": "important",
@@ -426,8 +222,212 @@ d:I[939,[],""]
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2026-01-04T00:50:17.014250+08:00"
+  },
+  {
+    "time": "2026-01-08T15:28:07.290447+08:00",
+    "level": "fatal",
+    "platform": "qoj",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:09.807653+08:00",
+    "level": "fatal",
+    "platform": "qoj",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:32.152706+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-08T15:28:32.152691+08:00"
+  },
+  {
+    "time": "2026-01-08T15:28:37.870439+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2026-01-08T15:28:40.581539+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Stage 11: Grand Prix of Southeastern Europe (2026-01-06)"
+  },
+  {
+    "time": "2026-01-08T15:28:40.582113+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2026-01-06 The 4th Universal Cup. Stage 11: Grand Prix of Southeastern Europe"
+  },
+  {
+    "time": "2026-01-08T15:29:50.525805+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: The 4th Universal Cup. Stage 11: Grand Prix of Southeastern Europe (2026-01-06)"
+  },
+  {
+    "time": "2026-01-08T15:29:50.526319+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Stage 10: Grand Prix of Wroc\u0142aw (2026-01-08)"
+  },
+  {
+    "time": "2026-01-08T15:29:50.526881+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2026-01-08 The 4th Universal Cup. Stage 10: Grand Prix of Wroc\u0142aw"
+  },
+  {
+    "time": "2026-01-08T15:30:57.247756+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: The 4th Universal Cup. Stage 10: Grand Prix of Wroc\u0142aw (2026-01-08)"
+  },
+  {
+    "time": "2026-01-08T15:30:57.248454+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
+  },
+  {
+    "time": "2026-01-08T15:30:57.249004+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
+  },
+  {
+    "time": "2026-01-08T15:30:57.249525+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: \u201c\u534e\u4e3a\u667a\u8054\u676f\u201d\u65e0\u7ebf\u7a0b\u5e8f\u8bbe\u8ba1\u5927\u8d5b\u66a82025\u5e74\u4e0a\u6d77\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b (2026-01-04)"
+  },
+  {
+    "time": "2026-01-08T15:30:57.250134+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2026-01-04 \u201c\u534e\u4e3a\u667a\u8054\u676f\u201d\u65e0\u7ebf\u7a0b\u5e8f\u8bbe\u8ba1\u5927\u8d5b\u66a82025\u5e74\u4e0a\u6d77\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b"
+  },
+  {
+    "time": "2026-01-08T15:32:06.943393+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: \u201c\u534e\u4e3a\u667a\u8054\u676f\u201d\u65e0\u7ebf\u7a0b\u5e8f\u8bbe\u8ba1\u5927\u8d5b\u66a82025\u5e74\u4e0a\u6d77\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b (2026-01-04)"
+  },
+  {
+    "time": "2026-01-08T15:32:06.943971+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2026-01-08T15:32:06.950521+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2026-01-08T15:32:06.960128+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2026-01-08T15:32:06.961101+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2026-01-08T15:32:15.077477+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 1."
+  },
+  {
+    "time": "2026-01-08T15:32:15.077934+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 2."
+  },
+  {
+    "time": "2026-01-08T15:32:30.160088+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 2."
+  },
+  {
+    "time": "2026-01-08T15:32:30.160709+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 3."
+  },
+  {
+    "time": "2026-01-08T15:32:38.360912+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 3."
+  },
+  {
+    "time": "2026-01-08T15:32:38.361577+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 4."
+  },
+  {
+    "time": "2026-01-08T15:32:41.468311+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 4."
+  },
+  {
+    "time": "2026-01-08T15:32:41.469001+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 5."
+  },
+  {
+    "time": "2026-01-08T15:32:54.605738+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 5."
+  },
+  {
+    "time": "2026-01-08T15:32:54.606307+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 6."
+  },
+  {
+    "time": "2026-01-08T15:33:08.551310+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 6."
+  },
+  {
+    "time": "2026-01-08T15:33:08.552050+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 7."
+  },
+  {
+    "time": "2026-01-08T15:33:10.711891+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1887773), stopping."
+  },
+  {
+    "time": "2026-01-08T15:33:10.712485+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2026-01-08T15:33:10.713028+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-08T15:33:10.713021+08:00"
   }
-]8:T51fa,[
+]8:T5350,[
   {
     "submission_id": "#1171358",
     "problem_name": "\u7edd\u5bf9\u9632\u5fa1",
@@ -1121,26 +1121,19 @@ d:I[939,[],""]
     "submit_time": "2025-12-30T22:12:23+08:00",
     "problem_link": "https://qoj.ac/contest/1485/problem/8079",
     "submission_link": "https://qoj.ac/submission/1879225"
+  },
+  {
+    "submission_id": "#1892656",
+    "problem_name": "Build the String",
+    "status": "AC",
+    "time": "41ms",
+    "memory": "12252kb",
+    "language": "C++20",
+    "submit_time": "2026-01-05T23:45:53+08:00",
+    "problem_link": "https://qoj.ac/contest/975/problem/2486",
+    "submission_link": "https://qoj.ac/submission/1892656"
   }
-]9:T2094,[
-  {
-    "time": "2025-09-26T04:14:53.853376+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1174."
-  },
-  {
-    "time": "2025-09-26T04:14:56.871936+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-09-26T04:14:57.817071+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Reached last update (Submission 23157), stopping."
-  },
+]9:T20b4,[
   {
     "time": "2025-09-26T04:14:57.818078+08:00",
     "level": "info",
@@ -1422,26 +1415,26 @@ d:I[939,[],""]
     "level": "info",
     "platform": "hdu",
     "msg": "HDU Crawler is disabled."
+  },
+  {
+    "time": "2026-01-08T15:28:07.682945+08:00",
+    "level": "fatal",
+    "platform": "hdu",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:10.192144+08:00",
+    "level": "fatal",
+    "platform": "hdu",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:33:11.505111+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "HDU Crawler is disabled."
   }
-]a:T22c5,[
-  {
-    "time": "2025-09-26T04:15:39.536708+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Start fetching contest: \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u842510 (2025-08-14)"
-  },
-  {
-    "time": "2025-09-26T04:15:39.537427+08:00",
-    "level": "warning",
-    "platform": "nowcoder",
-    "msg": "Contest folder already exists: contests/2025-08-14 \"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u842510. Skipped."
-  },
-  {
-    "time": "2025-09-26T04:15:39.538166+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Contests fetched successfully."
-  },
+]a:T2261,[
   {
     "time": "2025-09-26T04:15:39.539062+08:00",
     "level": "info",
@@ -1723,8 +1716,26 @@ d:I[939,[],""]
     "level": "info",
     "platform": "nowcoder",
     "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-08T15:28:08.060089+08:00",
+    "level": "fatal",
+    "platform": "nowcoder",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:10.562071+08:00",
+    "level": "fatal",
+    "platform": "nowcoder",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:33:12.193089+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
   }
-]0:{"P":null,"b":"HXvUDT0jFNXbWveY1Wfgu","p":"/Training-Archive","c":["","log"],"i":false,"f":[[["",{"children":["(main)",{"children":["log",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/f46a16dd4ad90ea1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-1 inline","children":["$undefined",[["$","path","0",{"d":"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L4"]}],{"children":["log",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L5",null,{"fileContentList":["$6","{\n  \"qoj\": \"2026-01-04T00:50:17.123129+08:00\",\n  \"nowcoder\": \"2026-01-04T00:50:18.932134+08:00\",\n  \"hdu\": \"2026-01-04T00:50:18.357084+08:00\"\n}","$7","$8","$9","[]","$a","[]"]}],null,"$Lb"]}],{},null,false]},null,false]},null,false]},null,false],"$Lc",false]],"m":"$undefined","G":["$d",[]],"s":false,"S":true}
+]0:{"P":null,"b":"HutZKl58N5knql3GgxEIg","p":"/Training-Archive","c":["","log"],"i":false,"f":[[["",{"children":["(main)",{"children":["log",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/f46a16dd4ad90ea1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"mr-1 inline","children":["$undefined",[["$","path","0",{"d":"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L4"]}],{"children":["log",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L5",null,{"fileContentList":["$6","{\n  \"qoj\": \"2026-01-08T15:33:10.731514+08:00\",\n  \"nowcoder\": \"2026-01-08T15:33:12.196989+08:00\",\n  \"hdu\": \"2026-01-08T15:33:11.508656+08:00\"\n}","$7","$8","$9","[]","$a","[]"]}],null,"$Lb"]}],{},null,false]},null,false]},null,false]},null,false],"$Lc",false]],"m":"$undefined","G":["$d",[]],"s":false,"S":true}
 e:I[7055,[],"OutletBoundary"]
 10:I[9909,[],"AsyncMetadataOutlet"]
 12:I[7055,[],"ViewportBoundary"]
@@ -1734,7 +1745,7 @@ e:I[7055,[],"OutletBoundary"]
 18:I[4525,["215","static/chunks/1951f239-e4c7a40f4938f7cd.js","903","static/chunks/903-580aa120588c94fd.js","76","static/chunks/app/(main)/layout-cb133a6aa331ed2d.js"],"default"]
 b:["$","$Le",null,{"children":["$Lf",["$","$L10",null,{"promise":"$@11"}]]}]
 c:["$","$1","h",{"children":[null,[["$","$L12",null,{"children":"$L13"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L14",null,{"children":["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":"$L16"}]}]}]]}]
-4:["$","div",null,{"className":"mt-4 flex min-w-[1600px] justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/4 -translate-x-10","children":[["$","header",null,{"className":"w-full rounded-lg py-4 text-slate-300","children":["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]}],["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/actions","target":"_blank","rel":"noopener noreferrer","className":"absolute right-0 top-4 flex items-center gap-3 rounded-lg bg-zinc-700/80 px-4 py-2 text-sm transition-colors duration-150 hover:bg-zinc-600/80","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"size-5 text-stone-400","children":["$undefined",[["$","circle","0",{"cx":"12","cy":"12","r":"10","children":[]}],["$","line","1",{"x1":"2","y1":"12","x2":"22","y2":"12","children":[]}],["$","path","2",{"d":"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],["$","$L17",null,{"minTimeISO":"2026-01-03T16:50:17.123Z"}]]}],["$","$L18",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
+4:["$","div",null,{"className":"mt-4 flex min-w-[1600px] justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/4 -translate-x-10","children":[["$","header",null,{"className":"w-full rounded-lg py-4 text-slate-300","children":["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]}],["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/actions","target":"_blank","rel":"noopener noreferrer","className":"absolute right-0 top-4 flex items-center gap-3 rounded-lg bg-zinc-700/80 px-4 py-2 text-sm transition-colors duration-150 hover:bg-zinc-600/80","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","className":"size-5 text-stone-400","children":["$undefined",[["$","circle","0",{"cx":"12","cy":"12","r":"10","children":[]}],["$","line","1",{"x1":"2","y1":"12","x2":"22","y2":"12","children":[]}],["$","path","2",{"d":"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],["$","$L17",null,{"minTimeISO":"2026-01-08T07:33:10.731Z"}]]}],["$","$L18",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
 13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 f:null
 11:{"metadata":[],"error":null,"digest":"$undefined"}
