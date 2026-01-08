@@ -1,53 +1,5 @@
 [
   {
-    "time": "2025-11-03T04:10:13.120583+08:00",
-    "level": "error",
-    "platform": "qoj",
-    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
-  },
-  {
-    "time": "2025-11-03T04:10:13.121683+08:00",
-    "level": "error",
-    "platform": "qoj",
-    "msg": "Problem JSON not found for Dolls in contests/2024-12-07 The 3rd Universal Cup. Stage 20: Kunming/problems/D."
-  },
-  {
-    "time": "2025-11-03T04:10:13.124000+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-11-03T04:10:13.123994+08:00"
-  },
-  {
-    "time": "2025-11-08T04:12:00.407394+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-08T04:12:00.407382+08:00"
-  },
-  {
-    "time": "2025-11-08T04:13:37.555029+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-11-08T04:13:37.555024+08:00"
-  },
-  {
-    "time": "2025-11-18T04:12:11.813420+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-18T04:12:11.813403+08:00"
-  },
-  {
-    "time": "2025-11-18T04:14:01.826729+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-11-18T04:14:01.826723+08:00"
-  },
-  {
-    "time": "2025-11-26T16:19:52.063230+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-11-26T16:19:52.063217+08:00"
-  },
-  {
     "time": "2025-11-26T16:20:21.669553+08:00",
     "level": "important",
     "platform": "qoj",
@@ -118,5 +70,53 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2026-01-04T00:50:17.014250+08:00"
+  },
+  {
+    "time": "2026-01-08T15:28:07.290447+08:00",
+    "level": "fatal",
+    "platform": "qoj",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:07.682945+08:00",
+    "level": "fatal",
+    "platform": "hdu",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:08.060089+08:00",
+    "level": "fatal",
+    "platform": "nowcoder",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:09.807653+08:00",
+    "level": "fatal",
+    "platform": "qoj",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:10.192144+08:00",
+    "level": "fatal",
+    "platform": "hdu",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:10.562071+08:00",
+    "level": "fatal",
+    "platform": "nowcoder",
+    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
+  },
+  {
+    "time": "2026-01-08T15:28:32.152706+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-08T15:28:32.152691+08:00"
+  },
+  {
+    "time": "2026-01-08T15:33:10.713028+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-08T15:33:10.713021+08:00"
   }
 ]

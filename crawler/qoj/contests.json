@@ -4318,5 +4318,211 @@
         "link": "https://qoj.ac/contest/2021/problem/10735"
       }
     ]
+  },
+  {
+    "name": "The 4th Universal Cup. Stage 11: Grand Prix of Southeastern Europe",
+    "date": "2026-01-06",
+    "link": "https://qoj.ac/contest/2828",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Sum Game",
+        "link": "https://qoj.ac/contest/2828/problem/16115"
+      },
+      {
+        "letter": "B",
+        "name": "AND Reconstruction",
+        "link": "https://qoj.ac/contest/2828/problem/16116"
+      },
+      {
+        "letter": "C",
+        "name": "XOR-Excluding Sets",
+        "link": "https://qoj.ac/contest/2828/problem/16117"
+      },
+      {
+        "letter": "D",
+        "name": "Two Options",
+        "link": "https://qoj.ac/contest/2828/problem/16118"
+      },
+      {
+        "letter": "E",
+        "name": "Phone Company",
+        "link": "https://qoj.ac/contest/2828/problem/16119"
+      },
+      {
+        "letter": "F",
+        "name": "Language Barrier",
+        "link": "https://qoj.ac/contest/2828/problem/16120"
+      },
+      {
+        "letter": "G",
+        "name": "Intervals from Triplets",
+        "link": "https://qoj.ac/contest/2828/problem/16121"
+      },
+      {
+        "letter": "H",
+        "name": "Sorted Pairs",
+        "link": "https://qoj.ac/contest/2828/problem/16122"
+      },
+      {
+        "letter": "I",
+        "name": "Colorful Components",
+        "link": "https://qoj.ac/contest/2828/problem/16123"
+      },
+      {
+        "letter": "J",
+        "name": "Triangle Hull",
+        "link": "https://qoj.ac/contest/2828/problem/16124"
+      },
+      {
+        "letter": "K",
+        "name": "Connect the Points",
+        "link": "https://qoj.ac/contest/2828/problem/16125"
+      },
+      {
+        "letter": "L",
+        "name": "Neo-Nim",
+        "link": "https://qoj.ac/contest/2828/problem/16126"
+      }
+    ]
+  },
+  {
+    "name": "The 4th Universal Cup. Stage 10: Grand Prix of Wroc\u0142aw",
+    "date": "2026-01-08",
+    "link": "https://qoj.ac/contest/2814",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Automatized Mineral Classification",
+        "link": "https://qoj.ac/contest/2814/problem/16000"
+      },
+      {
+        "letter": "B",
+        "name": "Bit Recovery",
+        "link": "https://qoj.ac/contest/2814/problem/16001"
+      },
+      {
+        "letter": "C",
+        "name": "Connecting Railway Stations",
+        "link": "https://qoj.ac/contest/2814/problem/16002"
+      },
+      {
+        "letter": "D",
+        "name": "DNA",
+        "link": "https://qoj.ac/contest/2814/problem/16003"
+      },
+      {
+        "letter": "E",
+        "name": "Easy Tetris",
+        "link": "https://qoj.ac/contest/2814/problem/16004"
+      },
+      {
+        "letter": "F",
+        "name": "Foxes",
+        "link": "https://qoj.ac/contest/2814/problem/16005"
+      },
+      {
+        "letter": "G",
+        "name": "Game of Darts",
+        "link": "https://qoj.ac/contest/2814/problem/16006"
+      },
+      {
+        "letter": "H",
+        "name": "Hiking",
+        "link": "https://qoj.ac/contest/2814/problem/16007"
+      },
+      {
+        "letter": "I",
+        "name": "Identical Fences",
+        "link": "https://qoj.ac/contest/2814/problem/16008"
+      },
+      {
+        "letter": "J",
+        "name": "Joyful Guided Tour",
+        "link": "https://qoj.ac/contest/2814/problem/16009"
+      },
+      {
+        "letter": "K",
+        "name": "Key Properties",
+        "link": "https://qoj.ac/contest/2814/problem/16010"
+      },
+      {
+        "letter": "L",
+        "name": "Letters on T-shirts",
+        "link": "https://qoj.ac/contest/2814/problem/16011"
+      }
+    ]
+  },
+  {
+    "name": "\u201c\u534e\u4e3a\u667a\u8054\u676f\u201d\u65e0\u7ebf\u7a0b\u5e8f\u8bbe\u8ba1\u5927\u8d5b\u66a82025\u5e74\u4e0a\u6d77\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b",
+    "date": "2026-01-04",
+    "link": "https://qoj.ac/contest/2238",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u5e8f\u5217",
+        "link": "https://qoj.ac/contest/2238/problem/12559"
+      },
+      {
+        "letter": "B",
+        "name": "\u5ba1\u5224",
+        "link": "https://qoj.ac/contest/2238/problem/12560"
+      },
+      {
+        "letter": "C",
+        "name": "\u997a\u5b50",
+        "link": "https://qoj.ac/contest/2238/problem/12561"
+      },
+      {
+        "letter": "D",
+        "name": "\u4e0e\u6216\u535a\u5f08",
+        "link": "https://qoj.ac/contest/2238/problem/12562"
+      },
+      {
+        "letter": "E",
+        "name": "Djangle \u7684\u6570\u636e\u7ed3\u6784",
+        "link": "https://qoj.ac/contest/2238/problem/12563"
+      },
+      {
+        "letter": "F",
+        "name": "No explanation",
+        "link": "https://qoj.ac/contest/2238/problem/12564"
+      },
+      {
+        "letter": "G",
+        "name": "\u77e9\u9635",
+        "link": "https://qoj.ac/contest/2238/problem/12565"
+      },
+      {
+        "letter": "H",
+        "name": "V \u6211 112.5",
+        "link": "https://qoj.ac/contest/2238/problem/12566"
+      },
+      {
+        "letter": "I",
+        "name": "\u771f\u76f8",
+        "link": "https://qoj.ac/contest/2238/problem/12567"
+      },
+      {
+        "letter": "J",
+        "name": "\u753b\u5708",
+        "link": "https://qoj.ac/contest/2238/problem/12568"
+      },
+      {
+        "letter": "K",
+        "name": "\u795e\u4e4b\u4e00\u624b",
+        "link": "https://qoj.ac/contest/2238/problem/12569"
+      },
+      {
+        "letter": "L",
+        "name": "\u8ff7\u5bab",
+        "link": "https://qoj.ac/contest/2238/problem/12570"
+      },
+      {
+        "letter": "M",
+        "name": "\u9b54\u6cd5\u4f7f\u8003\u6838",
+        "link": "https://qoj.ac/contest/2238/problem/12571"
+      }
+    ]
   }
 ]
