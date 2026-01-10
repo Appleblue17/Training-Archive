@@ -1,71 +1,5 @@
 [
   {
-    "time": "2026-01-02T18:19:01.262607+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-02T18:19:01.262591+08:00"
-  },
-  {
-    "time": "2026-01-04T00:49:57.845469+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-04T00:49:57.845451+08:00"
-  },
-  {
-    "time": "2026-01-04T00:50:03.260350+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-01-04T00:50:06.213872+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
-  },
-  {
-    "time": "2026-01-04T00:50:06.214356+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
-  },
-  {
-    "time": "2026-01-04T00:50:06.214672+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2026-01-04T00:50:06.220070+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2026-01-04T00:50:06.225495+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2026-01-04T00:50:06.227070+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2026-01-04T00:50:11.547877+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 1."
-  },
-  {
-    "time": "2026-01-04T00:50:11.548384+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 2."
-  },
-  {
     "time": "2026-01-04T00:50:15.302682+08:00",
     "level": "info",
     "platform": "qoj",
@@ -298,5 +232,71 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2026-01-08T15:33:10.713021+08:00"
+  },
+  {
+    "time": "2026-01-10T11:33:02.190515+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-10T11:33:02.190496+08:00"
+  },
+  {
+    "time": "2026-01-10T11:33:09.376776+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2026-01-10T11:33:12.885700+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
+  },
+  {
+    "time": "2026-01-10T11:33:12.886150+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
+  },
+  {
+    "time": "2026-01-10T11:33:12.886489+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2026-01-10T11:33:12.892455+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2026-01-10T11:33:12.896972+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2026-01-10T11:33:12.897374+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2026-01-10T11:33:18.382768+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1897924), stopping."
+  },
+  {
+    "time": "2026-01-10T11:33:18.383329+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2026-01-10T11:33:18.383826+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-10T11:33:18.383820+08:00"
   }
 ]
