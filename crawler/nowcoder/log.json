@@ -1,11 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:15:39.539889+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Start fetching new submissions..."
-  },
-  {
     "time": "2025-09-26T04:15:39.540650+08:00",
     "level": "info",
     "platform": "nowcoder",
@@ -295,6 +289,12 @@
   },
   {
     "time": "2026-01-10T11:33:20.956531+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-14T15:35:38.794284+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Nowcoder Crawler is disabled."

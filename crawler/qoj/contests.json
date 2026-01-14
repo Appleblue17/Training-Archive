@@ -4524,5 +4524,72 @@
         "link": "https://qoj.ac/contest/2238/problem/12571"
       }
     ]
+  },
+  {
+    "name": "The 2024 ICPC Asia Yokohama Regional Contest",
+    "date": "2026-01-13",
+    "link": "https://qoj.ac/contest/1987",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Ribbon on the Christmas Present",
+        "link": "https://qoj.ac/contest/1987/problem/10474"
+      },
+      {
+        "letter": "B",
+        "name": "The Sparsest Number in Between",
+        "link": "https://qoj.ac/contest/1987/problem/10475"
+      },
+      {
+        "letter": "C",
+        "name": "Omnes Viae Yokohamam Ducunt?",
+        "link": "https://qoj.ac/contest/1987/problem/10476"
+      },
+      {
+        "letter": "D",
+        "name": "Tree Generators",
+        "link": "https://qoj.ac/contest/1987/problem/10477"
+      },
+      {
+        "letter": "E",
+        "name": "E-Circuit Is Now on Sale!",
+        "link": "https://qoj.ac/contest/1987/problem/10478"
+      },
+      {
+        "letter": "F",
+        "name": "The Farthest Point",
+        "link": "https://qoj.ac/contest/1987/problem/10479"
+      },
+      {
+        "letter": "G",
+        "name": "Beyond the Former Explorer",
+        "link": "https://qoj.ac/contest/1987/problem/10480"
+      },
+      {
+        "letter": "H",
+        "name": "Remodeling the Dungeon 2",
+        "link": "https://qoj.ac/contest/1987/problem/10481"
+      },
+      {
+        "letter": "I",
+        "name": "Greatest of the Greatest Common Divisors",
+        "link": "https://qoj.ac/contest/1987/problem/10482"
+      },
+      {
+        "letter": "J",
+        "name": "Mixing Solutions",
+        "link": "https://qoj.ac/contest/1987/problem/10483"
+      },
+      {
+        "letter": "K",
+        "name": "Scheduling Two Meetings",
+        "link": "https://qoj.ac/contest/1987/problem/10484"
+      },
+      {
+        "letter": "L",
+        "name": "Peculiar Protocol",
+        "link": "https://qoj.ac/contest/1987/problem/10485"
+      }
+    ]
   }
 ]

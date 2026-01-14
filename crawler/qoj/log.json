@@ -1,113 +1,5 @@
 [
   {
-    "time": "2026-01-04T00:50:15.302682+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 2."
-  },
-  {
-    "time": "2026-01-04T00:50:15.303223+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 3."
-  },
-  {
-    "time": "2026-01-04T00:50:17.013216+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1881708), stopping."
-  },
-  {
-    "time": "2026-01-04T00:50:17.013736+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Submissions fetched successfully."
-  },
-  {
-    "time": "2026-01-04T00:50:17.014255+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-04T00:50:17.014250+08:00"
-  },
-  {
-    "time": "2026-01-08T15:28:07.290447+08:00",
-    "level": "fatal",
-    "platform": "qoj",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2026-01-08T15:28:09.807653+08:00",
-    "level": "fatal",
-    "platform": "qoj",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2026-01-08T15:28:32.152706+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-08T15:28:32.152691+08:00"
-  },
-  {
-    "time": "2026-01-08T15:28:37.870439+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-01-08T15:28:40.581539+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 4th Universal Cup. Stage 11: Grand Prix of Southeastern Europe (2026-01-06)"
-  },
-  {
-    "time": "2026-01-08T15:28:40.582113+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Created contest folder: contests/2026-01-06 The 4th Universal Cup. Stage 11: Grand Prix of Southeastern Europe"
-  },
-  {
-    "time": "2026-01-08T15:29:50.525805+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Finished fetching contest: The 4th Universal Cup. Stage 11: Grand Prix of Southeastern Europe (2026-01-06)"
-  },
-  {
-    "time": "2026-01-08T15:29:50.526319+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 4th Universal Cup. Stage 10: Grand Prix of Wroc\u0142aw (2026-01-08)"
-  },
-  {
-    "time": "2026-01-08T15:29:50.526881+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Created contest folder: contests/2026-01-08 The 4th Universal Cup. Stage 10: Grand Prix of Wroc\u0142aw"
-  },
-  {
-    "time": "2026-01-08T15:30:57.247756+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Finished fetching contest: The 4th Universal Cup. Stage 10: Grand Prix of Wroc\u0142aw (2026-01-08)"
-  },
-  {
-    "time": "2026-01-08T15:30:57.248454+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
-  },
-  {
-    "time": "2026-01-08T15:30:57.249004+08:00",
-    "level": "warning",
-    "platform": "qoj",
-    "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
-  },
-  {
-    "time": "2026-01-08T15:30:57.249525+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching contest: \u201c\u534e\u4e3a\u667a\u8054\u676f\u201d\u65e0\u7ebf\u7a0b\u5e8f\u8bbe\u8ba1\u5927\u8d5b\u66a82025\u5e74\u4e0a\u6d77\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b (2026-01-04)"
-  },
-  {
     "time": "2026-01-08T15:30:57.250134+08:00",
     "level": "info",
     "platform": "qoj",
@@ -298,5 +190,113 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2026-01-10T11:33:18.383820+08:00"
+  },
+  {
+    "time": "2026-01-14T15:33:47.339690+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-14T15:33:47.339673+08:00"
+  },
+  {
+    "time": "2026-01-14T15:33:53.169069+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2026-01-14T15:33:56.804694+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
+  },
+  {
+    "time": "2026-01-14T15:33:56.805283+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
+  },
+  {
+    "time": "2026-01-14T15:33:56.805675+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 2024 ICPC Asia Yokohama Regional Contest (2026-01-13)"
+  },
+  {
+    "time": "2026-01-14T15:33:56.806126+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2026-01-13 The 2024 ICPC Asia Yokohama Regional Contest"
+  },
+  {
+    "time": "2026-01-14T15:35:10.694504+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: The 2024 ICPC Asia Yokohama Regional Contest (2026-01-13)"
+  },
+  {
+    "time": "2026-01-14T15:35:10.695036+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Contests fetched successfully."
+  },
+  {
+    "time": "2026-01-14T15:35:10.700475+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2026-01-14T15:35:10.706994+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2026-01-14T15:35:10.707564+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 1."
+  },
+  {
+    "time": "2026-01-14T15:35:21.627138+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 1."
+  },
+  {
+    "time": "2026-01-14T15:35:21.627652+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 2."
+  },
+  {
+    "time": "2026-01-14T15:35:31.316238+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Fetched 10 submissions from page 2."
+  },
+  {
+    "time": "2026-01-14T15:35:31.316728+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching submissions from page 3."
+  },
+  {
+    "time": "2026-01-14T15:35:36.343943+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Reached last update (Submission #1900404), stopping."
+  },
+  {
+    "time": "2026-01-14T15:35:36.344657+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Submissions fetched successfully."
+  },
+  {
+    "time": "2026-01-14T15:35:36.345323+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-14T15:35:36.345317+08:00"
   }
 ]

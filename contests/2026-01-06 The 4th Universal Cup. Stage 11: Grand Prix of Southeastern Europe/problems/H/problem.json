@@ -3,5 +3,7 @@
   "name": "Sorted Pairs",
   "time_limit": "2.0 s",
   "memory_limit": "512 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2026-01-10T20:35:35+08:00",
+  "solve_time": "2026-01-10T20:35:35+08:00"
 }
