@@ -1,107 +1,5 @@
 [
   {
-    "time": "2025-12-26T04:12:35.145463+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-12-26T04:12:35.145451+08:00"
-  },
-  {
-    "time": "2025-12-26T04:14:05.475812+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-12-26T04:14:05.475806+08:00"
-  },
-  {
-    "time": "2025-12-27T04:11:48.133462+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2025-12-27T04:11:48.133448+08:00"
-  },
-  {
-    "time": "2025-12-27T04:11:59.187446+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2025-12-27T04:11:59.187439+08:00"
-  },
-  {
-    "time": "2026-01-02T18:15:23.120949+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-02T18:15:23.120934+08:00"
-  },
-  {
-    "time": "2026-01-02T18:19:01.262607+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-02T18:19:01.262591+08:00"
-  },
-  {
-    "time": "2026-01-04T00:49:57.845469+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-04T00:49:57.845451+08:00"
-  },
-  {
-    "time": "2026-01-04T00:50:17.014255+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-04T00:50:17.014250+08:00"
-  },
-  {
-    "time": "2026-01-08T15:28:07.290447+08:00",
-    "level": "fatal",
-    "platform": "qoj",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2026-01-08T15:28:07.682945+08:00",
-    "level": "fatal",
-    "platform": "hdu",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2026-01-08T15:28:08.060089+08:00",
-    "level": "fatal",
-    "platform": "nowcoder",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2026-01-08T15:28:09.807653+08:00",
-    "level": "fatal",
-    "platform": "qoj",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2026-01-08T15:28:10.192144+08:00",
-    "level": "fatal",
-    "platform": "hdu",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2026-01-08T15:28:10.562071+08:00",
-    "level": "fatal",
-    "platform": "nowcoder",
-    "msg": "Failed to start Chromium: Message: 'chromedriver' executable may have wrong permissions.\n"
-  },
-  {
-    "time": "2026-01-08T15:28:32.152706+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-08T15:28:32.152691+08:00"
-  },
-  {
-    "time": "2026-01-08T15:33:10.713028+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-08T15:33:10.713021+08:00"
-  },
-  {
-    "time": "2026-01-10T11:33:02.190515+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-10T11:33:02.190496+08:00"
-  },
-  {
     "time": "2026-01-10T11:33:18.383826+08:00",
     "level": "important",
     "platform": "qoj",
@@ -118,5 +16,107 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2026-01-14T15:35:36.345317+08:00"
+  },
+  {
+    "time": "2026-01-20T18:27:47.993037+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-20T18:27:47.993024+08:00"
+  },
+  {
+    "time": "2026-01-20T18:28:13.138133+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-20T18:28:13.138127+08:00"
+  },
+  {
+    "time": "2026-01-20T18:28:20.508473+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-20T18:28:20.508458+08:00"
+  },
+  {
+    "time": "2026-01-20T18:28:39.325510+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7986."
+  },
+  {
+    "time": "2026-01-20T18:28:40.424634+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7987."
+  },
+  {
+    "time": "2026-01-20T18:28:42.239567+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7988."
+  },
+  {
+    "time": "2026-01-20T18:28:44.086539+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7989."
+  },
+  {
+    "time": "2026-01-20T18:28:45.274752+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7990."
+  },
+  {
+    "time": "2026-01-20T18:28:47.167821+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7991."
+  },
+  {
+    "time": "2026-01-20T18:28:48.524308+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7992."
+  },
+  {
+    "time": "2026-01-20T18:28:49.593271+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7993."
+  },
+  {
+    "time": "2026-01-20T18:28:51.807742+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7994."
+  },
+  {
+    "time": "2026-01-20T18:28:53.644259+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7995."
+  },
+  {
+    "time": "2026-01-20T18:28:55.898590+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7996."
+  },
+  {
+    "time": "2026-01-20T18:29:09.920640+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-20T18:29:09.920634+08:00"
+  },
+  {
+    "time": "2026-01-20T18:29:22.440390+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-20T18:29:22.440372+08:00"
+  },
+  {
+    "time": "2026-01-20T18:32:20.232487+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-20T18:32:20.232474+08:00"
   }
 ]

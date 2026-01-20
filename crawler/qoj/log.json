@@ -1,302 +1,302 @@
 [
   {
-    "time": "2026-01-08T15:30:57.250134+08:00",
+    "time": "2026-01-20T18:28:12.156949+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Created contest folder: contests/2026-01-04 \u201c\u534e\u4e3a\u667a\u8054\u676f\u201d\u65e0\u7ebf\u7a0b\u5e8f\u8bbe\u8ba1\u5927\u8d5b\u66a82025\u5e74\u4e0a\u6d77\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b"
+    "msg": "Start fetching submissions from page 10."
   },
   {
-    "time": "2026-01-08T15:32:06.943393+08:00",
+    "time": "2026-01-20T18:28:13.136957+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Finished fetching contest: \u201c\u534e\u4e3a\u667a\u8054\u676f\u201d\u65e0\u7ebf\u7a0b\u5e8f\u8bbe\u8ba1\u5927\u8d5b\u66a82025\u5e74\u4e0a\u6d77\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b (2026-01-04)"
+    "msg": "Reached last update (Submission #1915584), stopping."
   },
   {
-    "time": "2026-01-08T15:32:06.943971+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Contests fetched successfully."
-  },
-  {
-    "time": "2026-01-08T15:32:06.950521+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2026-01-08T15:32:06.960128+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2026-01-08T15:32:06.961101+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 1."
-  },
-  {
-    "time": "2026-01-08T15:32:15.077477+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 1."
-  },
-  {
-    "time": "2026-01-08T15:32:15.077934+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 2."
-  },
-  {
-    "time": "2026-01-08T15:32:30.160088+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 2."
-  },
-  {
-    "time": "2026-01-08T15:32:30.160709+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 3."
-  },
-  {
-    "time": "2026-01-08T15:32:38.360912+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 3."
-  },
-  {
-    "time": "2026-01-08T15:32:38.361577+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 4."
-  },
-  {
-    "time": "2026-01-08T15:32:41.468311+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 4."
-  },
-  {
-    "time": "2026-01-08T15:32:41.469001+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 5."
-  },
-  {
-    "time": "2026-01-08T15:32:54.605738+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 5."
-  },
-  {
-    "time": "2026-01-08T15:32:54.606307+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 6."
-  },
-  {
-    "time": "2026-01-08T15:33:08.551310+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 6."
-  },
-  {
-    "time": "2026-01-08T15:33:08.552050+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 7."
-  },
-  {
-    "time": "2026-01-08T15:33:10.711891+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1887773), stopping."
-  },
-  {
-    "time": "2026-01-08T15:33:10.712485+08:00",
+    "time": "2026-01-20T18:28:13.137597+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Submissions fetched successfully."
   },
   {
-    "time": "2026-01-08T15:33:10.713028+08:00",
+    "time": "2026-01-20T18:28:13.138133+08:00",
     "level": "important",
     "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-08T15:33:10.713021+08:00"
+    "msg": "QOJ Crawler finished successfully at 2026-01-20T18:28:13.138127+08:00"
   },
   {
-    "time": "2026-01-10T11:33:02.190515+08:00",
+    "time": "2026-01-20T18:28:20.508473+08:00",
     "level": "important",
     "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-10T11:33:02.190496+08:00"
+    "msg": "QOJ Crawler started at 2026-01-20T18:28:20.508458+08:00"
   },
   {
-    "time": "2026-01-10T11:33:09.376776+08:00",
+    "time": "2026-01-20T18:28:26.597126+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2026-01-10T11:33:12.885700+08:00",
+    "time": "2026-01-20T18:28:29.309909+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Stage 13: Grand Prix of \u014cokayama (2026-01-17)"
+  },
+  {
+    "time": "2026-01-20T18:28:29.310415+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Contest folder already exists: contests/2026-01-17 The 4th Universal Cup. Stage 13: Grand Prix of \u014cokayama. Skipped."
+  },
+  {
+    "time": "2026-01-20T18:28:29.310833+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
   },
   {
-    "time": "2026-01-10T11:33:12.886150+08:00",
+    "time": "2026-01-20T18:28:29.311227+08:00",
     "level": "warning",
     "platform": "qoj",
     "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
   },
   {
-    "time": "2026-01-10T11:33:12.886489+08:00",
+    "time": "2026-01-20T18:28:29.311589+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: 2024 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b (2026-01-16)"
+  },
+  {
+    "time": "2026-01-20T18:28:29.311969+08:00",
+    "level": "warning",
+    "platform": "qoj",
+    "msg": "Contest folder already exists: contests/2026-01-16 2024 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b. Skipped."
+  },
+  {
+    "time": "2026-01-20T18:28:29.312327+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: 2023 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b (2026-01-20)"
+  },
+  {
+    "time": "2026-01-20T18:28:29.312769+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2026-01-20 2023 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b"
+  },
+  {
+    "time": "2026-01-20T18:28:39.325510+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7986."
+  },
+  {
+    "time": "2026-01-20T18:28:40.424634+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7987."
+  },
+  {
+    "time": "2026-01-20T18:28:42.239567+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7988."
+  },
+  {
+    "time": "2026-01-20T18:28:44.086539+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7989."
+  },
+  {
+    "time": "2026-01-20T18:28:45.274752+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7990."
+  },
+  {
+    "time": "2026-01-20T18:28:47.167821+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7991."
+  },
+  {
+    "time": "2026-01-20T18:28:48.524308+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7992."
+  },
+  {
+    "time": "2026-01-20T18:28:49.593271+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7993."
+  },
+  {
+    "time": "2026-01-20T18:28:51.807742+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7994."
+  },
+  {
+    "time": "2026-01-20T18:28:53.644259+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7995."
+  },
+  {
+    "time": "2026-01-20T18:28:55.898590+08:00",
+    "level": "error",
+    "platform": "qoj",
+    "msg": "Did not find pdf in https://qoj.ac/contest/1464/problem/7996."
+  },
+  {
+    "time": "2026-01-20T18:28:55.902011+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: 2023 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b (2026-01-20)"
+  },
+  {
+    "time": "2026-01-20T18:28:55.902487+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Contests fetched successfully."
   },
   {
-    "time": "2026-01-10T11:33:12.892455+08:00",
+    "time": "2026-01-20T18:28:55.903515+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start updating staged submissions..."
   },
   {
-    "time": "2026-01-10T11:33:12.896972+08:00",
+    "time": "2026-01-20T18:29:08.983723+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching new submissions..."
   },
   {
-    "time": "2026-01-10T11:33:12.897374+08:00",
+    "time": "2026-01-20T18:29:08.984358+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 1."
   },
   {
-    "time": "2026-01-10T11:33:18.382768+08:00",
+    "time": "2026-01-20T18:29:09.919596+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Reached last update (Submission #1897924), stopping."
+    "msg": "Reached last update (Submission #1936833), stopping."
   },
   {
-    "time": "2026-01-10T11:33:18.383329+08:00",
+    "time": "2026-01-20T18:29:09.920164+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Submissions fetched successfully."
   },
   {
-    "time": "2026-01-10T11:33:18.383826+08:00",
+    "time": "2026-01-20T18:29:09.920640+08:00",
     "level": "important",
     "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-10T11:33:18.383820+08:00"
+    "msg": "QOJ Crawler finished successfully at 2026-01-20T18:29:09.920634+08:00"
   },
   {
-    "time": "2026-01-14T15:33:47.339690+08:00",
+    "time": "2026-01-20T18:29:22.440390+08:00",
     "level": "important",
     "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-14T15:33:47.339673+08:00"
+    "msg": "QOJ Crawler started at 2026-01-20T18:29:22.440372+08:00"
   },
   {
-    "time": "2026-01-14T15:33:53.169069+08:00",
+    "time": "2026-01-20T18:29:29.440526+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Login successful with username and password."
   },
   {
-    "time": "2026-01-14T15:33:56.804694+08:00",
+    "time": "2026-01-20T18:29:32.403346+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Start fetching contest: The 4th Universal Cup. Stage 13: Grand Prix of \u014cokayama (2026-01-17)"
+  },
+  {
+    "time": "2026-01-20T18:29:32.403939+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Created contest folder: contests/2026-01-17 The 4th Universal Cup. Stage 13: Grand Prix of \u014cokayama"
+  },
+  {
+    "time": "2026-01-20T18:30:44.526051+08:00",
+    "level": "info",
+    "platform": "qoj",
+    "msg": "Finished fetching contest: The 4th Universal Cup. Stage 13: Grand Prix of \u014cokayama (2026-01-17)"
+  },
+  {
+    "time": "2026-01-20T18:30:44.526580+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching contest: The 4th Universal Cup. Extra Stage 2: Wuhan (2025-11-19)"
   },
   {
-    "time": "2026-01-14T15:33:56.805283+08:00",
+    "time": "2026-01-20T18:30:44.527094+08:00",
     "level": "warning",
     "platform": "qoj",
     "msg": "Contest folder already exists: contests/2025-11-19 The 4th Universal Cup. Extra Stage 2: Wuhan. Skipped."
   },
   {
-    "time": "2026-01-14T15:33:56.805675+08:00",
+    "time": "2026-01-20T18:30:44.527546+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Start fetching contest: The 2024 ICPC Asia Yokohama Regional Contest (2026-01-13)"
+    "msg": "Start fetching contest: 2024 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b (2026-01-16)"
   },
   {
-    "time": "2026-01-14T15:33:56.806126+08:00",
+    "time": "2026-01-20T18:30:44.528068+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Created contest folder: contests/2026-01-13 The 2024 ICPC Asia Yokohama Regional Contest"
+    "msg": "Created contest folder: contests/2026-01-16 2024 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b"
   },
   {
-    "time": "2026-01-14T15:35:10.694504+08:00",
+    "time": "2026-01-20T18:31:45.751344+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Finished fetching contest: The 2024 ICPC Asia Yokohama Regional Contest (2026-01-13)"
+    "msg": "Finished fetching contest: 2024 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b (2026-01-16)"
   },
   {
-    "time": "2026-01-14T15:35:10.695036+08:00",
+    "time": "2026-01-20T18:31:45.752240+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Contests fetched successfully."
   },
   {
-    "time": "2026-01-14T15:35:10.700475+08:00",
+    "time": "2026-01-20T18:31:45.755073+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start updating staged submissions..."
   },
   {
-    "time": "2026-01-14T15:35:10.706994+08:00",
+    "time": "2026-01-20T18:32:18.724114+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching new submissions..."
   },
   {
-    "time": "2026-01-14T15:35:10.707564+08:00",
+    "time": "2026-01-20T18:32:18.724715+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Start fetching submissions from page 1."
   },
   {
-    "time": "2026-01-14T15:35:21.627138+08:00",
+    "time": "2026-01-20T18:32:20.186812+08:00",
     "level": "info",
     "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 1."
+    "msg": "Reached last update (Submission #1936833), stopping."
   },
   {
-    "time": "2026-01-14T15:35:21.627652+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 2."
-  },
-  {
-    "time": "2026-01-14T15:35:31.316238+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Fetched 10 submissions from page 2."
-  },
-  {
-    "time": "2026-01-14T15:35:31.316728+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Start fetching submissions from page 3."
-  },
-  {
-    "time": "2026-01-14T15:35:36.343943+08:00",
-    "level": "info",
-    "platform": "qoj",
-    "msg": "Reached last update (Submission #1900404), stopping."
-  },
-  {
-    "time": "2026-01-14T15:35:36.344657+08:00",
+    "time": "2026-01-20T18:32:20.231654+08:00",
     "level": "info",
     "platform": "qoj",
     "msg": "Submissions fetched successfully."
   },
   {
-    "time": "2026-01-14T15:35:36.345323+08:00",
+    "time": "2026-01-20T18:32:20.232487+08:00",
     "level": "important",
     "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-14T15:35:36.345317+08:00"
+    "msg": "QOJ Crawler finished successfully at 2026-01-20T18:32:20.232474+08:00"
   }
 ]

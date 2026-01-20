@@ -4591,5 +4591,201 @@
         "link": "https://qoj.ac/contest/1987/problem/10485"
       }
     ]
+  },
+  {
+    "name": "2023 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b",
+    "date": "2026-01-20",
+    "link": "https://qoj.ac/contest/1464",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u6e38\u620f",
+        "link": "https://qoj.ac/contest/1464/problem/7986"
+      },
+      {
+        "letter": "B",
+        "name": "\u66ff\u6362",
+        "link": "https://qoj.ac/contest/1464/problem/7987"
+      },
+      {
+        "letter": "C",
+        "name": "\u53f2\u83b1\u59c6\u5de5\u5382",
+        "link": "https://qoj.ac/contest/1464/problem/7988"
+      },
+      {
+        "letter": "D",
+        "name": "\u4e09\u67d3\u8272",
+        "link": "https://qoj.ac/contest/1464/problem/7989"
+      },
+      {
+        "letter": "E",
+        "name": "\u5e7f\u64ad",
+        "link": "https://qoj.ac/contest/1464/problem/7990"
+      },
+      {
+        "letter": "F",
+        "name": "\u6700\u5c0f\u73af",
+        "link": "https://qoj.ac/contest/1464/problem/7991"
+      },
+      {
+        "letter": "G",
+        "name": "\u3010\u6a21\u677f\u3011\u7ebf\u6bb5\u6811",
+        "link": "https://qoj.ac/contest/1464/problem/7992"
+      },
+      {
+        "letter": "H",
+        "name": "\u54c8\u5bc6\u987f",
+        "link": "https://qoj.ac/contest/1464/problem/7993"
+      },
+      {
+        "letter": "I",
+        "name": "\u52ff\u8e56\u5ba0\u7269",
+        "link": "https://qoj.ac/contest/1464/problem/7994"
+      },
+      {
+        "letter": "J",
+        "name": "\u56fe",
+        "link": "https://qoj.ac/contest/1464/problem/7995"
+      },
+      {
+        "letter": "K",
+        "name": "\u62a5\u6570 IV",
+        "link": "https://qoj.ac/contest/1464/problem/7996"
+      }
+    ]
+  },
+  {
+    "name": "The 4th Universal Cup. Stage 13: Grand Prix of \u014cokayama",
+    "date": "2026-01-17",
+    "link": "https://qoj.ac/contest/2921",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Depth of Interval",
+        "link": "https://qoj.ac/contest/2921/problem/16226"
+      },
+      {
+        "letter": "B",
+        "name": "Increasing Swaps",
+        "link": "https://qoj.ac/contest/2921/problem/16227"
+      },
+      {
+        "letter": "C",
+        "name": "Sum of Three Inversions",
+        "link": "https://qoj.ac/contest/2921/problem/16228"
+      },
+      {
+        "letter": "D",
+        "name": "Grid Path Tree",
+        "link": "https://qoj.ac/contest/2921/problem/16229"
+      },
+      {
+        "letter": "E",
+        "name": "Max Twice Subsequences",
+        "link": "https://qoj.ac/contest/2921/problem/16230"
+      },
+      {
+        "letter": "F",
+        "name": "Decimal Pyramid",
+        "link": "https://qoj.ac/contest/2921/problem/16231"
+      },
+      {
+        "letter": "G",
+        "name": "Don't Make Zero",
+        "link": "https://qoj.ac/contest/2921/problem/16232"
+      },
+      {
+        "letter": "H",
+        "name": "Akari Counting",
+        "link": "https://qoj.ac/contest/2921/problem/16233"
+      },
+      {
+        "letter": "I",
+        "name": "Subgrid Connected Components",
+        "link": "https://qoj.ac/contest/2921/problem/16234"
+      },
+      {
+        "letter": "J",
+        "name": "Divide Polygon",
+        "link": "https://qoj.ac/contest/2921/problem/16235"
+      },
+      {
+        "letter": "K",
+        "name": "Two-Way Communication",
+        "link": "https://qoj.ac/contest/2921/problem/16236"
+      },
+      {
+        "letter": "L",
+        "name": "Colorful Quadrilateral",
+        "link": "https://qoj.ac/contest/2921/problem/16237"
+      },
+      {
+        "letter": "M",
+        "name": "Many Approaches",
+        "link": "https://qoj.ac/contest/2921/problem/16238"
+      }
+    ]
+  },
+  {
+    "name": "2024 \u5317\u4eac\u5e02\u5927\u5b66\u751f\u7a0b\u5e8f\u8bbe\u8ba1\u7ade\u8d5b",
+    "date": "2026-01-16",
+    "link": "https://qoj.ac/contest/1668",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u4e0d\u8981\u73a9\u5f04\u5b57\u7b26\u4e32",
+        "link": "https://qoj.ac/contest/1668/problem/8713"
+      },
+      {
+        "letter": "B",
+        "name": "\u7ec4\u5408\u6570",
+        "link": "https://qoj.ac/contest/1668/problem/8714"
+      },
+      {
+        "letter": "C",
+        "name": "\u653e\u82f9\u679c",
+        "link": "https://qoj.ac/contest/1668/problem/8715"
+      },
+      {
+        "letter": "D",
+        "name": "\u6811",
+        "link": "https://qoj.ac/contest/1668/problem/8716"
+      },
+      {
+        "letter": "E",
+        "name": "\u9ab0\u5b50",
+        "link": "https://qoj.ac/contest/1668/problem/8717"
+      },
+      {
+        "letter": "F",
+        "name": "\u4fdd\u533a\u95f4\u6700\u5c0f\u503c\u4e00\u6b21\u56de\u5f52\u95ee\u9898",
+        "link": "https://qoj.ac/contest/1668/problem/8718"
+      },
+      {
+        "letter": "G",
+        "name": "\u540e\u7ee7",
+        "link": "https://qoj.ac/contest/1668/problem/8719"
+      },
+      {
+        "letter": "H",
+        "name": "BFS \u5e8f 0",
+        "link": "https://qoj.ac/contest/1668/problem/8720"
+      },
+      {
+        "letter": "I",
+        "name": "\u62ec\u53f7\u5e8f\u5217",
+        "link": "https://qoj.ac/contest/1668/problem/8721"
+      },
+      {
+        "letter": "J",
+        "name": "\u5361\u724c\u6e38\u620f",
+        "link": "https://qoj.ac/contest/1668/problem/8722"
+      },
+      {
+        "letter": "K",
+        "name": "\u4e58\u4e8c",
+        "link": "https://qoj.ac/contest/1668/problem/8723"
+      }
+    ]
   }
 ]
