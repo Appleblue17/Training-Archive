@@ -237,16 +237,15 @@ class QOJCrawler(BaseCrawler):
                 "error",
                 f"Did not find pdf in {problem_link}.",
             )
-            return None
-
-        problem_pdf_link = urljoin(self.base_url, problem_pdf["src"].strip())
-        if not self.download_file_with_browser(
-            problem_pdf_link, "statement.pdf", problem_path
-        ):
-            self.log(
-                "error",
-                f"Failed to download pdf from {problem_pdf_link}.",
-            )
+        else:
+            problem_pdf_link = urljoin(self.base_url, problem_pdf["src"].strip())
+            if not self.download_file_with_browser(
+                problem_pdf_link, "statement.pdf", problem_path
+            ):
+                self.log(
+                    "error",
+                    f"Failed to download pdf from {problem_pdf_link}.",
+                )
 
         problem_entry = {
             "link": problem_link,
