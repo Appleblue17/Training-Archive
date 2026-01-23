@@ -1,17 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:15:43.018289+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108299."
-  },
-  {
-    "time": "2025-09-26T04:15:45.992595+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Reached last update (Submission 78282935), stopping."
-  },
-  {
     "time": "2025-09-26T04:15:45.994015+08:00",
     "level": "info",
     "platform": "nowcoder",
@@ -295,6 +283,18 @@
   },
   {
     "time": "2026-01-20T18:32:22.783986+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-23T00:47:08.479126+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-23T00:50:43.520910+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Nowcoder Crawler is disabled."

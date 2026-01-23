@@ -4787,5 +4787,82 @@
         "link": "https://qoj.ac/contest/1668/problem/8723"
       }
     ]
+  },
+  {
+    "name": "2022 Shanghai Collegiate Programming Contest",
+    "date": "2026-01-22",
+    "link": "https://qoj.ac/contest/1304",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Another A+B Problem",
+        "link": "https://qoj.ac/contest/1304/problem/6821"
+      },
+      {
+        "letter": "B",
+        "name": "Bracket Query",
+        "link": "https://qoj.ac/contest/1304/problem/6822"
+      },
+      {
+        "letter": "C",
+        "name": "Coffee Overdose",
+        "link": "https://qoj.ac/contest/1304/problem/6823"
+      },
+      {
+        "letter": "D",
+        "name": "Demonstrational Sequences",
+        "link": "https://qoj.ac/contest/1304/problem/6824"
+      },
+      {
+        "letter": "E",
+        "name": "Expenditure Reduction",
+        "link": "https://qoj.ac/contest/1304/problem/6825"
+      },
+      {
+        "letter": "F",
+        "name": "Forest of Magic",
+        "link": "https://qoj.ac/contest/1304/problem/6826"
+      },
+      {
+        "letter": "G",
+        "name": "Gua!",
+        "link": "https://qoj.ac/contest/1304/problem/6827"
+      },
+      {
+        "letter": "H",
+        "name": "Heirloom Painting",
+        "link": "https://qoj.ac/contest/1304/problem/6828"
+      },
+      {
+        "letter": "I",
+        "name": "It Takes Two of Two",
+        "link": "https://qoj.ac/contest/1304/problem/6829"
+      },
+      {
+        "letter": "J",
+        "name": "Just Some Bad Memory",
+        "link": "https://qoj.ac/contest/1304/problem/6830"
+      },
+      {
+        "letter": "K",
+        "name": "Known as the Fruit Brother",
+        "link": "https://qoj.ac/contest/1304/problem/6831"
+      },
+      {
+        "letter": "L",
+        "name": "Last Warning of the Competition Finance Officer",
+        "link": "https://qoj.ac/contest/1304/problem/6832"
+      },
+      {
+        "letter": "M",
+        "name": "My University Is Better Than Yours",
+        "link": "https://qoj.ac/contest/1304/problem/6833"
+      },
+      {
+        "letter": "N",
+        "name": "Nine Is Greater Than Ten",
+        "link": "https://qoj.ac/contest/1304/problem/6834"
+      }
+    ]
   }
 ]

@@ -1,29 +1,5 @@
 [
   {
-    "time": "2026-01-10T11:33:18.383826+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-10T11:33:18.383820+08:00"
-  },
-  {
-    "time": "2026-01-14T15:33:47.339690+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-14T15:33:47.339673+08:00"
-  },
-  {
-    "time": "2026-01-14T15:35:36.345323+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler finished successfully at 2026-01-14T15:35:36.345317+08:00"
-  },
-  {
-    "time": "2026-01-20T18:27:47.993037+08:00",
-    "level": "important",
-    "platform": "qoj",
-    "msg": "QOJ Crawler started at 2026-01-20T18:27:47.993024+08:00"
-  },
-  {
     "time": "2026-01-20T18:28:13.138133+08:00",
     "level": "important",
     "platform": "qoj",
@@ -118,5 +94,29 @@
     "level": "important",
     "platform": "qoj",
     "msg": "QOJ Crawler finished successfully at 2026-01-20T18:32:20.232474+08:00"
+  },
+  {
+    "time": "2026-01-23T00:47:06.982433+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-23T00:47:06.982416+08:00"
+  },
+  {
+    "time": "2026-01-23T00:47:07.139210+08:00",
+    "level": "fatal",
+    "platform": "qoj",
+    "msg": "An error occurred: Message: unknown error: net::ERR_PROXY_CONNECTION_FAILED\n  (Session info: chrome=114.0.5731.0)\nStacktrace:\n#0 0x62014da0d4e3 <unknown>\n#1 0x62014d73cc76 <unknown>\n#2 0x62014d734c7f <unknown>\n#3 0x62014d726ca2 <unknown>\n#4 0x62014d728412 <unknown>\n#5 0x62014d7270ca <unknown>\n#6 0x62014d726168 <unknown>\n#7 0x62014d725fa0 <unknown>\n#8 0x62014d7249bf <unknown>\n#9 0x62014d724fed <unknown>\n#10 0x62014d73eb06 <unknown>\n#11 0x62014d7b09e5 <unknown>\n#12 0x62014d798012 <unknown>\n#13 0x62014d7b030e <unknown>\n#14 0x62014d797de3 <unknown>\n#15 0x62014d76d2dd <unknown>\n#16 0x62014d76e34e <unknown>\n#17 0x62014d9cd3e4 <unknown>\n#18 0x62014d9d13d7 <unknown>\n#19 0x62014d9dbb20 <unknown>\n#20 0x62014d9d2023 <unknown>\n#21 0x62014d9a01aa <unknown>\n#22 0x62014d9f66b8 <unknown>\n#23 0x62014d9f6847 <unknown>\n#24 0x62014da06243 <unknown>\n#25 0x7bac62c9caa4 <unknown>\n#26 0x7bac62d29c6c <unknown>\n"
+  },
+  {
+    "time": "2026-01-23T00:47:58.728902+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler started at 2026-01-23T00:47:58.728890+08:00"
+  },
+  {
+    "time": "2026-01-23T00:50:41.614082+08:00",
+    "level": "important",
+    "platform": "qoj",
+    "msg": "QOJ Crawler finished successfully at 2026-01-23T00:50:41.614073+08:00"
   }
 ]
