@@ -1,11 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:15:04.082645+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Reached last update (Submission 16272), stopping."
-  },
-  {
     "time": "2025-09-26T04:15:04.083607+08:00",
     "level": "info",
     "platform": "hdu",
@@ -295,6 +289,12 @@
   },
   {
     "time": "2026-01-23T00:50:42.970630+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "HDU Crawler is disabled."
+  },
+  {
+    "time": "2026-01-24T17:56:49.731621+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "HDU Crawler is disabled."

@@ -1,5 +1,7 @@
+#pragma GCC optimize(2)
 #include<bits/stdc++.h>
-#define double long double
+
+//#define double long double
 
 using namespace std;
 
@@ -124,6 +126,7 @@ bool vis[N];
 queue <int> q;
 
 signed main(){
+    //cout << segmentPI(p2(0,0),p2(0,2),p2(0,1),p2(0,2)) << endl;
     scanf("%d%d%d",&n,&m,&R);
     for(int i=1;i<=n;i++){
         int x,y,X,Y;
@@ -213,6 +216,6 @@ signed main(){
         //printf("dis[%d]=%.5lf\n",i,dis[i]);
     }
     
-    printf("%.9Lf\n",dis[edid]);
+    printf("%.9lf\n",dis[edid]);
     
 }

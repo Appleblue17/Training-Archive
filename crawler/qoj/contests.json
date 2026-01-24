@@ -4864,5 +4864,72 @@
         "link": "https://qoj.ac/contest/1304/problem/6834"
       }
     ]
+  },
+  {
+    "name": "Petrozavodsk Winter 2024. Day 7. Kazakhstan Contest",
+    "date": "2026-01-24",
+    "link": "https://qoj.ac/contest/1931",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Anime",
+        "link": "https://qoj.ac/contest/1931/problem/10166"
+      },
+      {
+        "letter": "B",
+        "name": "Random Interactive MST Bot",
+        "link": "https://qoj.ac/contest/1931/problem/10167"
+      },
+      {
+        "letter": "C",
+        "name": "Dota 322 for Droids",
+        "link": "https://qoj.ac/contest/1931/problem/10168"
+      },
+      {
+        "letter": "D",
+        "name": "Nomad Camp",
+        "link": "https://qoj.ac/contest/1931/problem/10169"
+      },
+      {
+        "letter": "E",
+        "name": "Data Structures Master",
+        "link": "https://qoj.ac/contest/1931/problem/10170"
+      },
+      {
+        "letter": "F",
+        "name": "Poisonous Labyrinth",
+        "link": "https://qoj.ac/contest/1931/problem/10171"
+      },
+      {
+        "letter": "G",
+        "name": "Geometry Enjoyer",
+        "link": "https://qoj.ac/contest/1931/problem/10172"
+      },
+      {
+        "letter": "H",
+        "name": "Hocolate Hame",
+        "link": "https://qoj.ac/contest/1931/problem/10173"
+      },
+      {
+        "letter": "I",
+        "name": "Lost Table",
+        "link": "https://qoj.ac/contest/1931/problem/10174"
+      },
+      {
+        "letter": "J",
+        "name": "Team Training",
+        "link": "https://qoj.ac/contest/1931/problem/10175"
+      },
+      {
+        "letter": "K",
+        "name": "Reachability in a Matrix",
+        "link": "https://qoj.ac/contest/1931/problem/10176"
+      },
+      {
+        "letter": "L",
+        "name": "Bitvzhuh",
+        "link": "https://qoj.ac/contest/1931/problem/10177"
+      }
+    ]
   }
 ]

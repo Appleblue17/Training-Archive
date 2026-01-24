@@ -3,5 +3,7 @@
   "name": "Expected Value",
   "time_limit": "1.5 s",
   "memory_limit": "256 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2026-01-23T14:38:00+08:00",
+  "solve_time": "2026-01-23T14:38:00+08:00"
 }
