@@ -1,11 +1,11 @@
 {
-  "submission_id": "#1948129",
+  "submission_id": "#1949592",
   "problem_name": "Known as the Fruit Brother",
-  "status": "TL",
-  "time": "1229ms",
-  "memory": "10344kb",
+  "status": "WA",
+  "time": "689ms",
+  "memory": "10368kb",
   "language": "C++23",
-  "submit_time": "2026-01-23T00:14:17+08:00",
+  "submit_time": "2026-01-23T13:49:00+08:00",
   "problem_link": "https://qoj.ac/contest/1304/problem/6831",
-  "submission_link": "https://qoj.ac/submission/1948129"
+  "submission_link": "https://qoj.ac/submission/1949592"
 }

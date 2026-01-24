@@ -3,5 +3,7 @@
   "name": "Forest of Magic",
   "time_limit": "8.0 s",
   "memory_limit": "1024 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2026-01-23T16:31:13+08:00",
+  "solve_time": "2026-01-23T16:31:13+08:00"
 }
