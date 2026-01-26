@@ -3,5 +3,7 @@
   "name": "Geometry Enjoyer",
   "time_limit": "7.0 s",
   "memory_limit": "512 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2026-01-26T10:14:57+08:00",
+  "solve_time": "2026-01-26T10:14:57+08:00"
 }

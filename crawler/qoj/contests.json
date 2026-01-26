@@ -4931,5 +4931,67 @@
         "link": "https://qoj.ac/contest/1931/problem/10177"
       }
     ]
+  },
+  {
+    "name": "The 2025 ICPC Europe Championship",
+    "date": "2026-01-25",
+    "link": "https://qoj.ac/contest/1964",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Condorcet Elections",
+        "link": "https://qoj.ac/contest/1964/problem/10310"
+      },
+      {
+        "letter": "B",
+        "name": "Urban Planning",
+        "link": "https://qoj.ac/contest/1964/problem/10311"
+      },
+      {
+        "letter": "C",
+        "name": "Ads",
+        "link": "https://qoj.ac/contest/1964/problem/10312"
+      },
+      {
+        "letter": "D",
+        "name": "Morse Code",
+        "link": "https://qoj.ac/contest/1964/problem/10313"
+      },
+      {
+        "letter": "E",
+        "name": "Porto Vs. Benfica",
+        "link": "https://qoj.ac/contest/1964/problem/10314"
+      },
+      {
+        "letter": "F",
+        "name": "Mascot Naming",
+        "link": "https://qoj.ac/contest/1964/problem/10315"
+      },
+      {
+        "letter": "G",
+        "name": "A Very Long Hike",
+        "link": "https://qoj.ac/contest/1964/problem/10316"
+      },
+      {
+        "letter": "H",
+        "name": "Statues",
+        "link": "https://qoj.ac/contest/1964/problem/10317"
+      },
+      {
+        "letter": "I",
+        "name": "Pinball",
+        "link": "https://qoj.ac/contest/1964/problem/10318"
+      },
+      {
+        "letter": "J",
+        "name": "The Ultimate Wine Tasting Event",
+        "link": "https://qoj.ac/contest/1964/problem/10319"
+      },
+      {
+        "letter": "K",
+        "name": "Amusement Park Rides",
+        "link": "https://qoj.ac/contest/1964/problem/10320"
+      }
+    ]
   }
 ]

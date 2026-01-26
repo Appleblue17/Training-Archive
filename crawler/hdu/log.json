@@ -1,29 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:15:04.083607+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Fetched 31 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1176, page 1."
-  },
-  {
-    "time": "2025-09-26T04:15:04.084479+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1177."
-  },
-  {
-    "time": "2025-09-26T04:15:06.597134+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2025-09-26T04:15:06.914578+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Reached last update (Submission 9879), stopping."
-  },
-  {
     "time": "2025-09-26T04:15:06.915518+08:00",
     "level": "info",
     "platform": "hdu",
@@ -295,6 +271,30 @@
   },
   {
     "time": "2026-01-24T17:56:49.731621+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "HDU Crawler is disabled."
+  },
+  {
+    "time": "2026-01-24T19:12:46.507450+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "HDU Crawler is disabled."
+  },
+  {
+    "time": "2026-01-25T08:59:57.626477+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "HDU Crawler is disabled."
+  },
+  {
+    "time": "2026-01-25T09:03:57.677019+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "HDU Crawler is disabled."
+  },
+  {
+    "time": "2026-01-26T11:00:34.782366+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "HDU Crawler is disabled."

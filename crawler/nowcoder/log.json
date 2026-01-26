@@ -1,29 +1,5 @@
 [
   {
-    "time": "2025-09-26T04:15:45.994691+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108300."
-  },
-  {
-    "time": "2025-09-26T04:15:48.964093+08:00",
-    "level": "warning",
-    "platform": "nowcoder",
-    "msg": "No submissions found on this page. Probably the contest has not started yet."
-  },
-  {
-    "time": "2025-09-26T04:15:48.965013+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Start fetching submissions from https://ac.nowcoder.com/acm/contest/108301."
-  },
-  {
-    "time": "2025-09-26T04:15:51.953156+08:00",
-    "level": "info",
-    "platform": "nowcoder",
-    "msg": "Reached last update (Submission 78634159), stopping."
-  },
-  {
     "time": "2025-09-26T04:15:51.954019+08:00",
     "level": "info",
     "platform": "nowcoder",
@@ -295,6 +271,30 @@
   },
   {
     "time": "2026-01-24T17:56:50.278357+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-24T19:12:47.083357+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-25T08:59:58.353278+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-25T09:03:58.425229+08:00",
+    "level": "info",
+    "platform": "nowcoder",
+    "msg": "Nowcoder Crawler is disabled."
+  },
+  {
+    "time": "2026-01-26T11:00:36.389759+08:00",
     "level": "info",
     "platform": "nowcoder",
     "msg": "Nowcoder Crawler is disabled."
