@@ -1,9 +1,9 @@
-name: Crawler Workflow
+name: Crawler Scheduled
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 20 * * *" # Runs daily at 20:00 UTC (4:00 Asia/Shanghai)
+    - cron: "*/30 * * * *" # Every 30 minutes: task A (scheduled contests + reviews)
 
 concurrency:
   group: crawler
@@ -56,9 +56,9 @@ jobs:
       - name: Ensure chromedriver is executable
         run: chmod +x crawler/chromedriver_linux64/chromedriver
 
-      - name: "Run scheduled task (task B: daily submissions sync)"
+      - name: "Run scheduled task (task A: fetch contests + sync submissions + reviews)"
         id: crawl
-        run: python3 crawler/scheduled_task.py --submissions-only
+        run: python3 crawler/scheduled_task.py
         env:
           PYTHONUNBUFFERED: "1"
           CHROME_BINARY: ${{ steps.setup-chrome.outputs.chrome-path }}
@@ -69,6 +69,7 @@ jobs:
           HDU_PASSWORD: ${{ secrets.HDU_PASSWORD }}
           NEWCODER_COOKIE_NOWCODERUID: ${{ secrets.NEWCODER_COOKIE_NOWCODERUID }}
           NEWCODER_COOKIE_T: ${{ secrets.NEWCODER_COOKIE_T }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
 
       - name: Clean log files
         run: python3 crawler/clean-log.py
