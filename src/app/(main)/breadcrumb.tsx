@@ -1,6 +1,6 @@
 "use client";
+import { BarChart2, Edit3, Home, Info, Search } from "lucide-react";
 import Link from "next/link";
-import { FiBarChart2, FiEdit3, FiHome, FiInfo, FiSearch } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
@@ -9,31 +9,31 @@ const links = [
     title: "Home",
     name: "home",
     href: "/",
-    icon: FiHome,
+    icon: Home,
   },
   {
     title: "Dashboard",
     name: "dashboard",
     href: "/dashboard",
-    icon: FiBarChart2,
+    icon: BarChart2,
   },
   {
     title: "Search",
     name: "search",
     href: "/search",
-    icon: FiSearch,
+    icon: Search,
   },
   {
     title: "Log",
     name: "log",
     href: "/log",
-    icon: FiEdit3,
+    icon: Edit3,
   },
   {
     title: "README.md",
     name: "readme",
     href: "/readme",
-    icon: FiInfo,
+    icon: Info,
   },
 ];
 

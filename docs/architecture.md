@@ -88,6 +88,8 @@ contests/
 | `src/utils/render-markdown.ts` | 服务端 Markdown→HTML（unified 流水线，与文件查看器共用；复盘报告渲染） |
 | `src/components/metadata-display.tsx` | 元数据面板（格式化函数见 `src/utils/format.ts`） |
 | `src/components/platform-badge.tsx` | 平台徽章（qoj / hdu / nowcoder / codeforces） |
+| `src/components/ui/` | 基础 UI 组件（shadcn/ui 风格）：`button` / `card` / `badge` / `input`；`Card` 支持 `asChild`（@radix-ui/react-slot） |
+| `src/lib/utils.ts` | `cn()`：tailwind-merge + clsx 合并 className（客户端工具） |
 | `src/components/file-viewer/` | 文件查看器（见下） |
 
 ### 3.3 文件查看器（`file-viewer/`）
@@ -109,6 +111,12 @@ contests/
 - 搜索索引：`pnpm build` 先运行 `scripts/generate-search-index.mjs` 生成 `public/search-index.json`，搜索页在构建时读取该索引并传给客户端组件过滤（**方案 A**：构建索引 + 前端过滤，不引搜索库，数据量小；必要时可加 Fuse.js）。动态版（v0.3.0）改用服务端 API + DB 查询，搜索页 UI 复用。
 - `deploy.yml` 先将 `contests/` 复制到 `public/contests/`，再执行 `pnpm build`，最后由 `actions-gh-pages` 发布 `out/`。
 - 主分支（`main`）不含 `contests/` 数据；实际爬取与部署都在 `deploy` 分支进行。
+
+### 3.5 UI 组件与图标
+
+- 基础组件采用 shadcn/ui 风格（自行维护 `src/components/ui/`，基于 `class-variance-authority` + `tailwind-merge` + `@radix-ui/react-slot`），依赖 `src/lib/utils.ts` 的 `cn()` 合并样式。
+- 图标统一使用 **lucide-react**（替代 react-icons）。注意：lucide 已移除品牌图标（如 Github），品牌链接改用 `ExternalLink` 等通用图标。
+- 已应用 `Card` 的页面：Dashboard、复盘时间轴、搜索页、复盘详情页（比赛信息卡 + 报告区）；搜索输入框用 `Input`。
 
 ## 4. 爬虫架构
 

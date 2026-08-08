@@ -1,8 +1,7 @@
 "use client";
+import { Check, ChevronRight, Code, FileText, Layers, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
-import { FiCheck, FiChevronRight, FiFileText, FiLayers, FiX } from "react-icons/fi";
-import { VscCode } from "react-icons/vsc";
 import { ProblemInfoType, ContestInfoType, FileMetadataType, CodeFileType } from "@/lib/types";
 import MetaDataDisplay from "@/components/metadata-display";
 import { formatDate } from "@/utils/format";
@@ -65,7 +64,7 @@ function ContestFileList({ files, relPath }: { files: FileMetadataType[]; relPat
   return (
     <div className="ml-4 mr-2 flex items-center justify-center gap-1">
       <div className="flex items-center rounded-lg border border-gray-600 bg-zinc-800 p-2 text-gray-200">
-        <FiLayers className="size-5" />
+        <Layers className="size-5" />
       </div>
       <div className="flex flex-1 items-center justify-start gap-6 rounded-lg border border-gray-500 bg-gray-800 px-4 py-2">
         {files.map((file, idx) => (
@@ -76,7 +75,7 @@ function ContestFileList({ files, relPath }: { files: FileMetadataType[]; relPat
               rel="noopener noreferrer"
               className="text-gray-100 transition-colors hover:text-blue-300"
             >
-              <FiFileText className="inline-block size-4" />
+              <FileText className="inline-block size-4" />
               <span className="ml-1">{file.name}</span>
             </a>
           </div>
@@ -150,13 +149,13 @@ function ProblemRow({
           onMouseEnter={() => setSelectedFileIdx(codeFileIdx)}
           onMouseLeave={() => setSelectedFileIdx(null)}
         >
-          <VscCode className="inline-block size-5" />
+          <Code className="inline-block size-5" />
         </a>
         <div className="flex justify-end">
           {submitStatus === "AC" ? (
-            <FiCheck className="inline-block size-5 text-green-400" />
+            <Check className="inline-block size-5 text-green-400" />
           ) : (
-            <FiX
+            <X
               className={clsx("inline-block size-5 text-gray-400/80", {
                 "text-red-400/80": submitStatus === "WA",
                 "text-purple-400/80": submitStatus === "RE",
@@ -180,9 +179,9 @@ function ProblemRow({
       {/* Problem name and files */}
       <div className="flex items-center justify-start">
         {problem.solved ? (
-          <FiCheck className="inline-block size-4 text-green-400" />
+          <Check className="inline-block size-4 text-green-400" />
         ) : (
-          <FiChevronRight className="inline-block size-4 text-gray-200" />
+          <ChevronRight className="inline-block size-4 text-gray-200" />
         )}
 
         <a
@@ -212,9 +211,9 @@ function ProblemRow({
                 className="p-2 text-gray-100 transition-colors hover:text-blue-300"
               >
                 {file.name?.includes("code") ? (
-                  <VscCode className="inline-block size-5" />
+                  <Code className="inline-block size-5" />
                 ) : (
-                  <FiFileText className="inline-block size-4" />
+                  <FileText className="inline-block size-4" />
                 )}
                 <span className="ml-1">{file.name}</span>
               </a>
@@ -436,7 +435,7 @@ function ContestRow({
                   {letter}
                 </a>
                 {problem.solved && (
-                  <FiCheck className="absolute bottom-0 right-0 size-4" />
+                  <Check className="absolute bottom-0 right-0 size-4" />
                 )}
               </td>
             );

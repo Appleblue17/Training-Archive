@@ -1,6 +1,6 @@
 "use client";
+import { Code, Copy } from "lucide-react";
 import { useState } from "react";
-import { FiCode, FiCopy } from "react-icons/fi";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
@@ -24,13 +24,13 @@ export default function FileViewerSource({ code, ext }: { code: string; ext: str
         onClick={handleCopy}
         className="absolute right-6 top-4 z-10 rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
       >
-        <FiCopy className="mr-1 inline-block" />
+        <Copy className="mr-1 inline-block" />
         {copyMessage}
       </button>
 
       <div className="relative flex-1 overflow-y-auto">
         <div className="absolute left-4 top-0">
-          <FiCode className="mr-1 inline-block text-gray-200" />
+          <Code className="mr-1 inline-block text-gray-200" />
           <span className="text-sm text-gray-400">{ext.slice(1)}</span>
         </div>
         <div className="flex-1 py-5">

@@ -19,6 +19,8 @@
 - Dashboard（C3）：统计卡片（比赛/题目/已解决/提交/AC + 平台分布）、最近比赛、最近完成题目、contribution 绿点图（52 周，按提交日期聚合）、复盘报告区（当前报告全文 + 往期列表）；数据在构建时从 `contests/` 聚合
 - 复盘时间轴页（C4）：`/review/[contest]` 按 `submit_time` 展示每次提交（状态着色、语言、耗时/内存、源码与平台链接）+ LLM 复盘报告全文
 - 共享服务端数据模块 `src/lib/contests-data.ts`（`getContests`/`getAllSubmissions`/`getReviews`）与 Markdown 渲染工具 `src/utils/render-markdown.ts`（文件查看器与复盘报告共用同一 unified 流水线）
+- UI 库落地（C5）：引入 shadcn/ui 风格基础组件（`src/components/ui/`：`button` / `card` / `badge` / `input`，基于 `class-variance-authority` + `tailwind-merge` + `@radix-ui/react-slot`）与 `src/lib/utils.ts`（`cn()`）；`Card` 支持 `asChild`；Dashboard / 复盘时间轴 / 搜索 / 复盘详情页逐步应用 `Card`，搜索输入框应用 `Input`
+- 图标库迁移（C5）：`react-icons` → **lucide-react**，全量替换 13 个文件中的图标引用（品牌图标如 Github 改用 `ExternalLink`）
 
 ### Changed
 

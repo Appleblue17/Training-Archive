@@ -1,7 +1,7 @@
+import { Download, FileText, Home } from "lucide-react";
 import path from "path";
 import Link from "next/link";
 import FileViewer from "./file-viewer";
-import { FiDownload, FiFileText, FiHome } from "react-icons/fi";
 import { FileMetadataType } from "@/lib/types";
 import MetaDataDisplay from "@/components/metadata-display";
 import { PREFIX_URL } from "@/lib/global";
@@ -47,7 +47,7 @@ export default function FileViewerPage({
       <div className="mx-auto w-4/5">
         <header className="relative w-full rounded-lg py-2 text-slate-300">
           <Link href={PREFIX_URL}>
-            <FiHome className="absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400" />
+            <Home className="absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400" />
           </Link>
           <h1 className="text-2xl font-semibold tracking-wide">File Viewer</h1>
           <p className="ml-4 mt-2 text-base text-gray-400">
@@ -68,7 +68,7 @@ export default function FileViewerPage({
               download
               className="rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
             >
-              <FiDownload className="mr-2 inline-block text-base" />
+              <Download className="mr-2 inline-block text-base" />
               Download
             </a>
             <a
@@ -77,7 +77,7 @@ export default function FileViewerPage({
               rel="noopener noreferrer"
               className="rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
             >
-              <FiFileText className="mr-2 inline-block text-base" />
+              <FileText className="mr-2 inline-block text-base" />
               Raw File
             </a>
           </div>

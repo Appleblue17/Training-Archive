@@ -7,6 +7,7 @@ import renderMarkdown from "@/utils/render-markdown";
 import { PREFIX_URL } from "@/lib/global";
 import { joinUrl } from "@/utils/url";
 import PlatformBadge from "@/components/platform-badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ReviewTimeline from "./review-timeline";
 
 interface ContestData {
@@ -138,7 +139,7 @@ export default async function ReviewPage(props: {
   return (
     <div className="w-full space-y-6">
       {/* 比赛信息 */}
-      <div className="rounded-lg border border-gray-700 bg-gray-800/60 p-4">
+      <Card className="p-4">
         <div className="flex flex-wrap items-center gap-2">
           <h1 className="text-xl font-semibold text-slate-100">{name}</h1>
           <PlatformBadge platform={platform} />
@@ -158,7 +159,7 @@ export default async function ReviewPage(props: {
           <span>{Object.keys(data.problems).length} problems</span>
           <span>{sortedSubmissions.length} submissions</span>
         </div>
-      </div>
+      </Card>
 
       {/* 提交时间轴 */}
       <ReviewTimeline
@@ -179,23 +180,27 @@ export default async function ReviewPage(props: {
 
       {/* LLM 复盘报告 */}
       {reviewHtml && (
-        <section aria-label="Review report" className="rounded-lg border border-gray-700 bg-gray-800/60 p-4">
-          <h2 className="mb-3 flex items-center gap-2 text-base font-semibold text-slate-200">
-            Review Report
-          </h2>
-          <div
-            className="markdown-body rounded border border-gray-700 p-4"
-            dangerouslySetInnerHTML={{ __html: reviewHtml }}
-          />
-          <div className="mt-3 text-right">
-            <Link
-              href={joinUrl(PREFIX_URL, "view", contestFolder, "review.md")}
-              className="text-sm text-blue-300 hover:text-blue-200"
-            >
-              View raw markdown ↗
-            </Link>
-          </div>
-        </section>
+        <Card asChild>
+          <section aria-label="Review report">
+            <CardHeader className="pb-2">
+              <CardTitle>Review Report</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div
+                className="markdown-body rounded border border-gray-700 p-4"
+                dangerouslySetInnerHTML={{ __html: reviewHtml }}
+              />
+              <div className="mt-3 text-right">
+                <Link
+                  href={joinUrl(PREFIX_URL, "view", contestFolder, "review.md")}
+                  className="text-sm text-blue-300 hover:text-blue-200"
+                >
+                  View raw markdown ↗
+                </Link>
+              </div>
+            </CardContent>
+          </section>
+        </Card>
       )}
     </div>
   );

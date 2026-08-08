@@ -27,7 +27,8 @@
 - [x] 搜索（构建时 `search-index.json` + `/search` 页，关键词 + 标签过滤）
 - [x] Dashboard（统计 + 最近动态 + contribution 绿点图 + 复盘报告区，构建时聚合）
 - [x] 复盘时间轴页（`/review/[contest]`：提交时间轴 + LLM 报告）
-- [ ] UI 库迁移到 shadcn/ui；图标库迁移到 lucide-react
+- [x] UI 库迁移到 shadcn/ui；图标库迁移到 lucide-react
+- [ ] C6 收尾：错误边界、骨架屏、无障碍复查（readme 页仍占位）
 - [ ] 响应式与可访问性改造
 - [ ] 验收：`pnpm lint` + `pnpm build` 全通过
 

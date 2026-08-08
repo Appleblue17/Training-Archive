@@ -1,13 +1,14 @@
 "use client";
+import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { FiSearch } from "react-icons/fi";
-import clsx from "clsx";
 
 import { SearchIndexEntryType } from "@/lib/types";
 import { PREFIX_URL } from "@/lib/global";
 import { joinUrl } from "@/utils/url";
+import { cn } from "@/lib/utils";
 import PlatformBadge from "@/components/platform-badge";
+import { Input } from "@/components/ui/input";
 
 // Fields that are searched, in priority order.
 const SEARCH_FIELDS: (keyof SearchIndexEntryType)[] = [
@@ -65,14 +66,14 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
 
       {/* Search input */}
       <div className="relative mb-4">
-        <FiSearch className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-gray-400" />
-        <input
+        <Search className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-gray-400" />
+        <Input
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search problems, contests, tags, platforms..."
           aria-label="Search problems"
-          className="w-full rounded-lg border border-gray-600 bg-gray-800 py-2.5 pl-10 pr-4 text-slate-100 placeholder-gray-400 outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30"
+          className="pl-10"
         />
       </div>
 
@@ -90,7 +91,7 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
                     active ? prev.filter((t) => t !== tag) : [...prev, tag],
                   )
                 }
-                className={clsx(
+                className={cn(
                   "rounded-full px-2.5 py-0.5 text-xs transition-colors",
                   active
                     ? "bg-indigo-600 text-white"

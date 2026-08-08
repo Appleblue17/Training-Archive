@@ -1,9 +1,9 @@
 "use client";
+import { Copy } from "lucide-react";
 import { useState } from "react";
 import "@public/github-markdown-dark.css";
 import "@public/katex.min.css";
 import "@public/github-dark.css";
-import { FiCopy } from "react-icons/fi";
 
 export default function FileViewerMarkdown({
   raw,
@@ -31,7 +31,7 @@ export default function FileViewerMarkdown({
         onClick={handleCopy}
         className="absolute right-6 top-4 z-10 rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
       >
-        <FiCopy className="mr-1 inline-block" />
+        <Copy className="mr-1 inline-block" />
         {copyMessage}
       </button>
       <div className="flex-1 overflow-y-auto p-12">
