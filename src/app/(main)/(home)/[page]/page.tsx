@@ -9,6 +9,15 @@ import { allowedExtensions } from "@/lib/global";
 
 import { ITEMS_PER_PAGE } from "@/lib/global";
 
+function safeParseJson(filePath: string): Record<string, unknown> | null {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  } catch (e) {
+    console.warn(`Failed to parse JSON metadata: ${filePath}`, e);
+    return null;
+  }
+}
+
 export async function generateStaticParams() {
   const contestsDir = path.join(process.cwd(), "contests");
   const contestFolders = fs.readdirSync(contestsDir);
@@ -43,9 +52,8 @@ function getProblemInfo(problemPath: string, relProblemPath: string): ProblemInf
   if (fs.existsSync(problemPath)) {
     const jsonPath = path.join(problemPath, "problem.json");
     if (fs.existsSync(jsonPath)) {
-      const content = fs.readFileSync(jsonPath, "utf-8");
-      const json = JSON.parse(content);
-      Object.assign(problemInfo, json);
+      const json = safeParseJson(jsonPath);
+      if (json) Object.assign(problemInfo, json);
     }
   }
   return problemInfo;
@@ -70,9 +78,8 @@ function getContests(): ContestInfoType[] {
 
     const jsonPath = path.join(contestPath, "contest.json");
     if (fs.existsSync(jsonPath)) {
-      const content = fs.readFileSync(jsonPath, "utf-8");
-      const json = JSON.parse(content);
-      Object.assign(contestInfo, json);
+      const json = safeParseJson(jsonPath);
+      if (json) Object.assign(contestInfo, json);
     }
 
     const problemsPath = path.join(contestPath, "problems");
@@ -91,16 +98,16 @@ function getContests(): ContestInfoType[] {
   return contests;
 }
 
-type PageProps = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
 export default async function HomePage(props: { params: Promise<{ page: string }> }) {
   const params = await props.params;
   const pageParam = params.page;
 
-  const pageNum = pageParam.replace("page", "") ? parseInt(pageParam.replace("page", "")) : 1;
-  const contests = getContests().reverse();
+  // 解析页码：page1 -> 1；非法/0 值回退到 1
+  const pageNum = Math.max(1, parseInt(pageParam.replace("page", ""), 10) || 1);
+  // 显式按日期降序排序（最新在前），不依赖 readdir 的目录顺序
+  const contests = getContests().sort((a, b) =>
+    `${b.date} ${b.name}`.localeCompare(`${a.date} ${a.name}`),
+  );
   const totalPages = Math.ceil(contests.length / ITEMS_PER_PAGE);
 
   const start = (pageNum - 1) * ITEMS_PER_PAGE;
@@ -109,7 +116,9 @@ export default async function HomePage(props: { params: Promise<{ page: string }
 
   return (
     <>
-      <ContestTable contests={pagedContests} />
+      <div className="overflow-x-auto">
+        <ContestTable contests={pagedContests} />
+      </div>
       <div className="mt-6 flex justify-center">
         <nav className="inline-flex items-center space-x-2">
           <Link

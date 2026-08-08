@@ -1,11 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import path from "path";
 import clsx from "clsx";
 import { FiCheck, FiChevronRight, FiFileText, FiLayers, FiX } from "react-icons/fi";
 import { VscCode } from "react-icons/vsc";
 import { ProblemInfoType, ContestInfoType, FileMetadataType, CodeFileType } from "@/lib/types";
-import MetaDataDisplay, { formatDate } from "@/components/metadata-display";
+import MetaDataDisplay from "@/components/metadata-display";
+import { formatDate } from "@/utils/format";
+import { joinUrl } from "@/utils/url";
 import { PREFIX_URL } from "@/lib/global";
 import PlatformBadge from "@/components/platform-badge";
 
@@ -70,7 +71,7 @@ function ContestFileList({ files, relPath }: { files: FileMetadataType[]; relPat
         {files.map((file, idx) => (
           <div key={idx} className="flex items-center justify-between">
             <a
-              href={path.join(PREFIX_URL, "view", relPath, file.name!)}
+              href={joinUrl(PREFIX_URL, "view", relPath, file.name!)}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-100 transition-colors hover:text-blue-300"
@@ -142,7 +143,7 @@ function ProblemRow({
           <span className="ml-1 text-gray-400">B</span>
         </span>
         <a
-          href={path.join(PREFIX_URL, "view", problem.rel_path, codeFile.name!)}
+          href={joinUrl(PREFIX_URL, "view", problem.rel_path, codeFile.name!)}
           target="_blank"
           rel="noopener noreferrer"
           className="ml-2 text-gray-100 transition-colors hover:text-blue-300"
@@ -205,7 +206,7 @@ function ProblemRow({
               className="flex items-center justify-between"
             >
               <a
-                href={path.join(PREFIX_URL, "view", problem.rel_path, file.name!)}
+                href={joinUrl(PREFIX_URL, "view", problem.rel_path, file.name!)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-gray-100 transition-colors hover:text-blue-300"
@@ -236,6 +237,7 @@ function ContestExpandBlock({
   displayMetadataName,
   displayMetadata,
   displayMetadataBanner,
+  colSpan,
 }: {
   contest: ContestInfoType;
   showExpandedContent: boolean;
@@ -245,10 +247,11 @@ function ContestExpandBlock({
   displayMetadataName: string | null;
   displayMetadata: FileMetadataType | ProblemInfoType | ContestInfoType | null;
   displayMetadataBanner: string[];
+  colSpan: number;
 }) {
   return (
     <tr>
-      <td colSpan={19} className={"border-b border-gray-700 p-0"}>
+      <td colSpan={colSpan} className={"border-b border-gray-700 p-0"}>
         <div
           className="relative overflow-hidden bg-neutral-900 transition-all duration-500 ease-out"
           style={{
@@ -307,6 +310,7 @@ function ContestRow({
   displayMetadataName,
   displayMetadata,
   displayMetadataBanner,
+  colSpan,
 }: {
   contest: ContestInfoType;
   idx: number;
@@ -320,6 +324,7 @@ function ContestRow({
   displayMetadataName: string | null;
   displayMetadata: FileMetadataType | ProblemInfoType | ContestInfoType | null;
   displayMetadataBanner: string[];
+  colSpan: number;
 }) {
   if (contest.hidden) {
     return null; // Skip rendering if contest is hidden
@@ -349,8 +354,18 @@ function ContestRow({
   return (
     <React.Fragment>
       <tr
+        role="button"
+        tabIndex={0}
+        aria-expanded={expandedRow === idx}
+        aria-label={contest.name}
         className="cursor-pointer border-b border-gray-700 bg-zinc-800/80 hover:bg-gray-700/40"
         onClick={handleRowClick}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleRowClick();
+          }
+        }}
       >
         <td className="border-r border-gray-600 px-2 py-2 text-center text-gray-100">
           {contest.date}
@@ -385,33 +400,42 @@ function ContestRow({
         </td>
         {problemLetters.map((letter: string, pIdx: number) => {
           if (pIdx < contest.problems.length) {
+            const problem = contest.problems[pIdx];
             const solvedInContest = isSolvedInContest(
-              contest.problems[pIdx].solve_time || contest.problems[pIdx].submit_time || null,
+              problem.solve_time || problem.submit_time || null,
               contest.end_time || null,
             );
+            const attempted = !!(problem.solve_time || problem.submit_time);
+            const statusTitle = problem.solved
+              ? solvedInContest
+                ? "Solved in contest"
+                : "Solved after contest"
+              : attempted
+                ? "Attempted but not solved"
+                : "Not attempted";
             return (
               <td
                 key={letter}
+                title={statusTitle}
+                aria-label={`Problem ${letter}: ${statusTitle}`}
                 className={clsx("relative border-r border-gray-700 text-center text-base", {
-                  "bg-green-400/40": contest.problems[pIdx].solved && solvedInContest,
-                  "bg-emerald-400/30": contest.problems[pIdx].solved && !solvedInContest,
-                  "bg-amber-400/40":
-                    !contest.problems[pIdx].solved &&
-                    (contest.problems[pIdx].solve_time || contest.problems[pIdx].submit_time),
+                  "bg-green-400/40": problem.solved && solvedInContest,
+                  "bg-emerald-400/30": problem.solved && !solvedInContest,
+                  "bg-amber-400/40": !problem.solved && attempted,
                 })}
               >
                 <a
-                  href={contest.problems[pIdx].link || ""}
+                  href={problem.link || ""}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
                   className={clsx("text-gray-100 transition-colors hover:text-blue-300", {
-                    "text-white": contest.problems[pIdx].solved,
+                    "text-white": problem.solved,
                   })}
                 >
                   {letter}
                 </a>
-                {contest.problems[pIdx].solved && (
+                {problem.solved && (
                   <FiCheck className="absolute bottom-0 right-0 size-4" />
                 )}
               </td>
@@ -439,6 +463,7 @@ function ContestRow({
           displayMetadataName={displayMetadataName}
           displayMetadata={displayMetadata}
           displayMetadataBanner={displayMetadataBanner}
+          colSpan={colSpan}
         />
       )}
     </React.Fragment>
@@ -484,10 +509,18 @@ export default function ContestTable({ contests }: { contests: ContestInfoType[]
     }
   }, [expandedRow, selectedProblemIdx, selectedFileIdx, contests]);
 
-  const problemLetters = Array.from({ length: 17 }, (_, i) => String.fromCharCode(65 + i));
+  // 根据所有竞赛的最大题目数动态生成题号列，避免固定 17 列（A–Q）放不下更多题目
+  const maxProblems = Math.max(1, ...contests.map((c) => c.problems.length));
+  const problemLetters = Array.from({ length: maxProblems }, (_, i) =>
+    String.fromCharCode(65 + i),
+  );
+  const colSpan = maxProblems + 2;
 
   return (
-    <table className="w-[calc(100%+144px)] table-fixed border-2 border-gray-600 text-sm">
+    <table
+      aria-label="Contests"
+      className="w-[calc(100%+144px)] table-fixed border-2 border-gray-600 text-sm"
+    >
       <thead>
         <tr className="border-b-2 border-gray-500">
           <th className="w-32 whitespace-nowrap border-r border-gray-600 bg-gray-800 px-2 py-2 text-center text-gray-200">
@@ -522,6 +555,7 @@ export default function ContestTable({ contests }: { contests: ContestInfoType[]
             displayMetadataName={displayMetadataName}
             displayMetadata={displayMetadata}
             displayMetadataBanner={displayMetadataBanner}
+            colSpan={colSpan}
           />
         ))}
       </tbody>
