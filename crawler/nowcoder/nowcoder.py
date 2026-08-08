@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup as bs4, Tag
 from datetime import datetime, timedelta, timezone
 
 beijing = timezone(timedelta(hours=8))
-now = datetime.now(beijing)
 from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
 
@@ -46,6 +45,12 @@ class NOWCODERCrawler(BaseCrawler):
             "NOWCODERUID": os.getenv("NEWCODER_COOKIE_NOWCODERUID"),
             "t": os.getenv("NEWCODER_COOKIE_T"),
         }
+        if not cookies["NOWCODERUID"] or not cookies["t"]:
+            self.log(
+                "fatal",
+                "Nowcoder cookies not found in environment variables. Stopped.",
+            )
+            return
 
         self.try_login_with_cookie(cookies)
 
@@ -95,7 +100,7 @@ class NOWCODERCrawler(BaseCrawler):
 
             contest_date = start_time.date().isoformat()
 
-            if start_time > now:
+            if start_time > datetime.now(beijing):
                 # Contest is in the future, skip it
                 self.log(
                     "info",
@@ -376,6 +381,7 @@ class NOWCODERCrawler(BaseCrawler):
                         "info",
                         "Reached the end of submissions or no more pages to fetch. Stopped.",
                     )
+                    self._mark_submissions_complete()
                     break
 
                 table_body = soup.find("div", class_="module-box").find(
@@ -438,6 +444,7 @@ class NOWCODERCrawler(BaseCrawler):
                     }
                     stop_fetching = self._register_submission(submission_entry)
                     if stop_fetching:
+                        self._mark_submissions_complete()
                         break
 
                 self.log(
@@ -451,7 +458,7 @@ class NOWCODERCrawler(BaseCrawler):
 if __name__ == "__main__":
     crawler = NOWCODERCrawler()
     crawler.log("info", "Nowcoder Crawler is disabled.")
-    crawler.finish()
+    crawler.deinit_driver()
     raise RuntimeError("Nowcoder Crawler is disabled.")
 
     # try:

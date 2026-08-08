@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup as bs4
 from datetime import datetime, timedelta, timezone
 
 beijing = timezone(timedelta(hours=8))
-now = datetime.now(beijing)
 from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -305,6 +304,7 @@ class QOJCrawler(BaseCrawler):
                 self.log(
                     "info", f"Reached the end of submissions at page {current_page}."
                 )
+                self._mark_submissions_complete()
                 break
 
             table_body = soup.find("table", class_="table").find("tbody")
@@ -333,9 +333,8 @@ class QOJCrawler(BaseCrawler):
                 # Status format: [number] or [AC ✓] or [status]
                 raw_status = cols[3].text.replace(" ✓", "").strip()
                 if raw_status.isdigit():
-                    status = int(raw_status)
-                    if status == 100:
-                        status = "AC"
+                    # 数字状态统一为字符串（100 表示 AC），与前端字符串比对保持一致
+                    status = "AC" if int(raw_status) == 100 else raw_status
                 else:
                     # only preserve uppercase letters
                     status = "".join(c for c in raw_status if c.isupper())
@@ -359,6 +358,7 @@ class QOJCrawler(BaseCrawler):
                 }
                 stop_fetching = self._register_submission(submission_entry)
                 if stop_fetching:
+                    self._mark_submissions_complete()
                     return
 
             self.log(

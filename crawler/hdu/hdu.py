@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup as bs4
 from datetime import datetime, timedelta, timezone
 
 beijing = timezone(timedelta(hours=8))
-now = datetime.now(beijing)
 from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -13,6 +12,27 @@ from selenium.webdriver.support import expected_conditions as EC
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 from crawler.base import BaseCrawler
+
+# HDU 时间格式形如 "Jul 18, 2025 12:00:00"。
+# 显式映射英文月份，避免依赖系统 locale（非英文环境 %b 会解析失败）。
+HDU_MONTHS = {
+    "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+    "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12,
+}
+
+
+def _parse_hdu_time(s):
+    """Parse 'Jul 18, 2025 12:00:00' into a naive datetime."""
+    parts = s.strip().split()
+    if len(parts) != 4:
+        raise ValueError(f"Unexpected HDU time format: {s}")
+    month = HDU_MONTHS.get(parts[0])
+    if month is None:
+        raise ValueError(f"Unknown month in HDU time format: {s}")
+    day = int(parts[1].rstrip(","))
+    year = int(parts[2])
+    hour, minute, second = (int(x) for x in parts[3].split(":"))
+    return datetime(year, month, day, hour, minute, second)
 
 
 class HDUCrawler(BaseCrawler):
@@ -114,14 +134,12 @@ class HDUCrawler(BaseCrawler):
                 continue
             start_time_str = contest_time_parts[0].strip()
             end_time_str = contest_time_parts[1].strip()
-            start_time = datetime.strptime(start_time_str, "%b %d, %Y %H:%M:%S")
-            end_time = datetime.strptime(end_time_str, "%b %d, %Y %H:%M:%S")
-            start_time = start_time.replace(tzinfo=beijing)
-            end_time = end_time.replace(tzinfo=beijing)
+            start_time = _parse_hdu_time(start_time_str).replace(tzinfo=beijing)
+            end_time = _parse_hdu_time(end_time_str).replace(tzinfo=beijing)
 
             contest_date = start_time.date().isoformat()
 
-            if start_time > now:
+            if start_time > datetime.now(beijing):
                 # Contest is in the future, skip it
                 self.log(
                     "info",
@@ -345,6 +363,7 @@ class HDUCrawler(BaseCrawler):
                         "info",
                         "Reached the end of submissions or no more pages to fetch. Stopped.",
                     )
+                    self._mark_submissions_complete()
                     break
 
                 table_body = soup.find("table", class_="page-card-table")
@@ -404,6 +423,7 @@ class HDUCrawler(BaseCrawler):
                     }
                     stop_fetching = self._register_submission(submission_entry)
                     if stop_fetching:
+                        self._mark_submissions_complete()
                         break
 
                 self.log(
@@ -417,7 +437,7 @@ class HDUCrawler(BaseCrawler):
 if __name__ == "__main__":
     crawler = HDUCrawler()
     crawler.log("info", "HDU Crawler is disabled.")
-    crawler.finish()
+    crawler.deinit_driver()
     raise RuntimeError("HDU Crawler is disabled.")
 
     # try:

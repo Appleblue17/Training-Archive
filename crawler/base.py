@@ -7,10 +7,12 @@ import re
 import time
 from datetime import datetime, timedelta, timezone
 
-beijing = timezone(timedelta(hours=8))
-now = datetime.now(beijing)
 import os
 import undetected_chromedriver as uc
+
+# 北京时间（UTC+8）。所有时间统一使用该时区。
+# 注意：不要在模块导入时缓存 now，长任务跨午夜会用到过期时间，需实时获取。
+beijing = timezone(timedelta(hours=8))
 
 
 class BaseCrawler:
@@ -33,6 +35,9 @@ class BaseCrawler:
         if not os.path.exists(self.download_dir):
             self.log("warning", f"Download directory does not exist, creating it.")
             os.makedirs(self.download_dir)
+
+        # 提交抓取是否完整结束（只有完整抓取才推进 last-update，避免静默丢提交）
+        self._submissions_fetch_complete = False
 
         self.init_driver()
 
@@ -74,6 +79,8 @@ class BaseCrawler:
 
     # Convert to beijing time
     def _convert_to_beijing_time(self, dt):
+        # 约定：naive（无时区）datetime 按北京时间墙钟时间解释（replace），
+        # aware datetime 则做真正的时区转换（astimezone）。
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=beijing)
         dt = dt.astimezone(beijing)
@@ -81,6 +88,10 @@ class BaseCrawler:
 
     # From ISO format to beijing time
     def _convert_iso_to_beijing(self, iso_str):
+        iso_str = str(iso_str).strip()
+        # Python < 3.11 的 fromisoformat 不接受 'Z'，统一替换为 +00:00
+        if iso_str.endswith("Z") or iso_str.endswith("z"):
+            iso_str = iso_str[:-1] + "+00:00"
         dt = datetime.fromisoformat(iso_str)
         return self._convert_to_beijing_time(dt)
 
@@ -158,6 +169,7 @@ class BaseCrawler:
             tmp_md_path = tmp_md_file.name
 
         # --- 3. Call pandoc conversion ---
+        md_clean = ""
         try:
             subprocess.run(
                 [
@@ -176,7 +188,6 @@ class BaseCrawler:
             with open(tmp_md_path, "r", encoding="utf-8") as f:
                 md_content = f.read()
             md_clean = self._clean_pandoc_markdown(md_content)
-            return md_clean
         except Exception as e:
             self.log("error", f"Pandoc conversion failed: {e}")
         finally:
@@ -185,8 +196,11 @@ class BaseCrawler:
                 os.remove(html_path)
             if os.path.exists(tmp_md_path):
                 os.remove(tmp_md_path)
+        return md_clean
 
-    def _load_file(self, path, default=[]):
+    def _load_file(self, path, default=None):
+        if default is None:
+            default = []
         if not os.path.exists(path):
             self.log("warning", f"File {path} does not exist, creating a new one.")
             with open(path, "w", encoding="utf-8") as f:
@@ -228,7 +242,9 @@ class BaseCrawler:
         else:
             # Specify the path to the Chromium executable
             options.binary_location = os.path.abspath("crawler/chrome-linux/chrome")
-        chromedriver_path = os.path.abspath("crawler/chromedriver_linux64/chromedriver")
+        chromedriver_path = os.environ.get(
+            "CHROMEDRIVER_PATH"
+        ) or os.path.abspath("crawler/chromedriver_linux64/chromedriver")
 
         # Set preferences
         prefs = {
@@ -641,8 +657,22 @@ class BaseCrawler:
         self.log("info", "Start fetching new submissions...")
         self.fetch_submissions_get_submissions()
 
+    def _mark_submissions_complete(self):
+        """标记提交抓取已完整结束（到达 last-update 或遍历完所有页）。
+
+        仅在确认完整时调用；任何异常 break / 提前退出都不得调用，
+        否则 last-update 被提前推进会导致提交永久漏抓。
+        """
+        self._submissions_fetch_complete = True
+
     def finish(self):
         self.deinit_driver()
+        if not self._submissions_fetch_complete:
+            self.log(
+                "warning",
+                "Submissions fetch was not marked complete; last-update not advanced.",
+            )
+            return
         self.last_update = self._load_file(self.last_update_path, default={})
         self.last_update[self.platform_name] = datetime.now(beijing).isoformat()
         self._write_file(self.last_update_path, self.last_update)
