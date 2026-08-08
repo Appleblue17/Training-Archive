@@ -2,8 +2,9 @@ name: Crawler Scheduled
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/30 * * * *" # Every 30 minutes: task A (scheduled contests + reviews)
+  # 定时尚未启用：工作流未实测通过前先手动触发验证
+  # schedule:
+  #   - cron: "*/30 * * * *" # Every 30 minutes: task A (scheduled contests + reviews)
 
 concurrency:
   group: crawler

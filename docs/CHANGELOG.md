@@ -13,7 +13,7 @@
 - 复盘报告生成：`crawler/report.py` 调用 DeepSeek 生成 `review.md`（存在即跳过，幂等），支持对已结束且有提交的比赛生成
 - 定时任务入口：`crawler/scheduled_task.py` 任务 A（抓订阅比赛 + 增量同步 + 报告）与任务 B（`--submissions-only` 每日增量同步）；单平台失败不阻断；`finish()` 仅在完整同步时推进 `last-update.json`
 - deploy 分支专用 `.gitignore.deploy`（contests/ 与爬虫增量状态纳入版本控制，保证增量同步跨运行生效，手动上传代码可正常跟踪）
-- 双定时工作流：`crawler-scheduled.yml`（任务 A，每 30 分钟）与 `crawler.yml`（任务 B，每日 20:00 UTC），共享 `concurrency` 组，提交时用 `.gitignore.deploy` 覆盖 `.gitignore`
+- 双定时工作流：`crawler-scheduled.yml`（任务 A，每 30 分钟）与 `crawler.yml`（任务 B，每日 20:00 UTC），共享 `concurrency` 组，提交时用 `.gitignore.deploy` 覆盖 `.gitignore`；**定时未启用**（未实测前手动触发验证）
 - 题目标签支持：`problem.json` 新增 `tags`，QOJ 爬虫 best-effort 提取，前端以彩色徽章渲染
 
 ### Changed

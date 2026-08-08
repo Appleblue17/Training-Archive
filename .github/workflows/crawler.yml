@@ -2,8 +2,9 @@ name: Crawler Workflow
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 20 * * *" # Runs daily at 20:00 UTC (4:00 Asia/Shanghai)
+  # 定时尚未启用：工作流未实测通过前先手动触发验证
+  # schedule:
+  #   - cron: "0 20 * * *" # Runs daily at 20:00 UTC (4:00 Asia/Shanghai)
 
 concurrency:
   group: crawler
