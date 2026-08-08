@@ -8,22 +8,28 @@
 
 - 2026-08-08：完成 v0.2.0 规划讨论，记录至 `docs/roadmap.md`（含双版本架构、功能分级、爬虫触发机制、报告生成、账号系统等决策）。选定 UI 库 **shadcn/ui**、图标库 **lucide-react**。
 - 2026-08-08：文档体系完善 —— 补充 `docs/CHANGELOG.md`（v0.1.0）、重写 `README.md`、新增 `docs/architecture.md` 与 `docs/notes.md`、更新 `docs/agent-workflow.md`。
+- 2026-08-08：v0.2.0 爬虫与 CI 改造完成：前端代码审查修复、订阅模型、全量提交采集、DeepSeek 复盘报告、定时任务 A/B、`.gitignore.deploy` 与双定时工作流、题目标签支持。前端 C 阶段剩余：搜索、Dashboard、复盘时间轴、UI 库迁移、收尾。
 
 ## 当前状态
 
-- 主功能（竞赛列表、文件查看、日志页）可用；爬虫已停用（仅手动触发），HDU / NowCoder 爬虫停用（代码保留）。
-- `contests/` 数据目录为空（git 忽略），本地开发如需查看效果需准备数据或运行爬虫。
-- **准备开发 v0.2.0**：详细规划见 `docs/roadmap.md`，开工前先在 `dev/v0.2.0` 分支上实施。
+- 主功能（竞赛列表、文件查看、日志页）可用；爬虫改为双任务定时运行（任务 A 每 30 分钟，任务 B 每日），HDU / NowCoder 爬虫停用（代码保留）。
+- `contests/` 数据目录为空（git 忽略），本地开发如需查看效果需准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
+- **v0.2.0 开发中**：爬虫/CI 部分完成，前端 C 阶段进行中，详细规划见 `docs/roadmap.md`。
 
 ## 待办
 
 ### v0.2.0（开发中，见 `docs/roadmap.md`）
 
-- [ ] 代码质量/健壮性修复清单（`docs/roadmap.md` §8）
-- [ ] 爬虫数据层：订阅模型、任务 A/B、全量提交采集、报告生成模块
-- [ ] 前端：标签、搜索、Dashboard（含报告区+contribution）、复盘时间轴页
+- [x] 代码质量/健壮性修复清单（`docs/roadmap.md` §8）
+- [x] 爬虫数据层：订阅模型、任务 A/B、全量提交采集、报告生成模块
+- [x] CI 工作流：`.gitignore.deploy`、`crawler-scheduled.yml`（任务 A）、`crawler.yml`（任务 B）、`deploy.yml` 触发扩展
+- [x] 题目标签支持（problem.json `tags` + 前端徽章渲染）
+- [ ] 搜索（`search-index.json` + 搜索页）
+- [ ] Dashboard（最近动态 + 统计 + contribution 绿点图 + 复盘报告区）
+- [ ] 复盘时间轴页
 - [ ] UI 库迁移到 shadcn/ui；图标库迁移到 lucide-react
 - [ ] 响应式与可访问性改造
+- [ ] 验收：`pnpm lint` + `pnpm build` 全通过
 
 ### 常规
 
