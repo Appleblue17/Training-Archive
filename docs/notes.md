@@ -10,6 +10,8 @@
 - 2026-08-08：文档体系完善 —— 补充 `docs/CHANGELOG.md`（v0.1.0）、重写 `README.md`、新增 `docs/architecture.md` 与 `docs/notes.md`、更新 `docs/agent-workflow.md`。
 - 2026-08-08：v0.2.0 爬虫与 CI 改造完成：前端代码审查修复、订阅模型、全量提交采集、DeepSeek 复盘报告、定时任务 A/B、`.gitignore.deploy` 与双定时工作流、题目标签支持。前端 C 阶段剩余：搜索、Dashboard、复盘时间轴、UI 库迁移、收尾。
 - 2026-08-08：前端 C 阶段完成：搜索（构建时 `search-index.json` + `/search` 页）、Dashboard、复盘时间轴页、UI 库迁移（shadcn/ui + lucide-react 落地）。C6 收尾完成：全局错误边界 `error.tsx`、自定义 `not-found.tsx`、全局 `loading.tsx` 骨架屏、无障碍复查。待 D 验收（readme 页仍占位）。
+- 2026-08-08：`/readme` 页实现（构建时渲染仓库根 `README.md`，替换占位页）。v0.2.0 全部占位页清零。
+- 2026-08-08：验收修复 4 项——根路径 `/` 404（抽 `home-view.tsx` + 根 `page.tsx`）；竞赛列表横向滚动条（容器 `overflow-hidden` 恢复 v0.1.0 右侧溢出裁切）；面包屑 Home 高亮；Markdown 样式缺失（katex/github-markdown CSS 移入根布局全局加载，review/readme/dashboard 渲染统一）。
 
 ## 当前状态
 

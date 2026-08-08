@@ -31,6 +31,13 @@
 - 前端代码审查修复：格式化工具抽离到 `src/utils/format.ts`、URL 拼接抽离到 `src/utils/url.ts`；文件查看器重构为公共组件 + 页面薄封装；平台徽章修复 fallback；竞赛表格题号列数动态自适应（`maxProblems`）并提升键盘可访问性；首页分页边界、日期排序、横向滚动容器；布局响应式（`w-full max-w-6xl px-4`）
 - QOJ 比赛列表跳过未开始的比赛（与 HDU / NowCoder 行为一致）
 
+### Fixed
+
+- 根路径 `/` 404：首页逻辑抽到共享 `home-view.tsx`，新增 `(main)/page.tsx` 渲染第 1 页（静态导出生成 `index.html`），`/pageN` 复用同一视图
+- 竞赛列表横向滚动条：表格容器 `overflow-x-auto` → `overflow-hidden`，过多的题目列溢出到框右侧被裁掉（恢复 v0.1.0 行为），body 加 `overflow-x: hidden` 兜底
+- 面包屑 Home 不高亮：`isActive` 对 Home 特判 `/` 与 `/pageN` 前缀
+- Markdown 样式缺失：`github-markdown-dark.css` / `katex.min.css` / `github-dark.css` 原只在文件查看器客户端组件 import，按 chunk 切分后 review / readme / dashboard 等页不加载 → 移入根布局全局加载，所有页面统一渲染样式
+
 ## [0.1.0] - 2026-01-04
 
 包含 contest 归档 Web 应用（Next.js 静态站点）与 QOJ / HDU / NowCoder 三平台爬虫。此部分变更均按 Git 历史整理。

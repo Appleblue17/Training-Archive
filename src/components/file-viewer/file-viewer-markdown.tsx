@@ -1,9 +1,6 @@
 "use client";
 import { Copy } from "lucide-react";
 import { useState } from "react";
-import "@public/github-markdown-dark.css";
-import "@public/katex.min.css";
-import "@public/github-dark.css";
 
 export default function FileViewerMarkdown({
   raw,

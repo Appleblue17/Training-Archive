@@ -43,8 +43,11 @@ export default function Breadcrumb() {
   return (
     <nav className="flex h-10 w-full items-center space-x-4 overflow-y-visible rounded-lg bg-gray-700 px-6 py-2 text-sm shadow">
       {links.map((link) => {
+        // Home 命中 `/` 及所有 `/pageN`；其余按前缀匹配
         const isActive =
-          pathname === link.href || (link.name !== "home" && pathname.startsWith(link.href));
+          link.name === "home"
+            ? pathname === "/" || pathname.startsWith("/page")
+            : pathname === link.href || pathname.startsWith(link.href);
         return (
           <button
             className={clsx("border-b-1 flex flex-none justify-center px-4 py-1", {

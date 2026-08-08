@@ -59,9 +59,10 @@ contests/
 
 | 路由 | 职责 |
 |------|------|
-| `layout.tsx` | 根布局：全局字体、页脚、favicon |
+| `layout.tsx` | 根布局：全局字体、页脚、favicon、markdown 样式（github-markdown-dark / katex / github-dark 全局加载） |
 | `(main)/layout.tsx` | 主布局：标题、爬虫状态徽章、面包屑导航 |
-| `(main)/(home)/[page]/page.tsx` | 竞赛列表（服务端取数 + 分页），每页 20 条 |
+| `(main)/page.tsx` | 根路径 `/`：竞赛列表第 1 页 |
+| `(main)/(home)/[page]/page.tsx` | 竞赛列表 `/pageN`（服务端取数 + 分页），每页 20 条；与根路径共用 `home-view.tsx` |
 | `(main)/(home)/[page]/contest-table.tsx` | 竞赛表格（客户端）：可展开行、题目状态、悬停元数据面板 |
 | `(main)/search/page.tsx` | 搜索页（服务端读索引） |
 | `(main)/search/search-client.tsx` | 搜索交互（客户端）：关键词 + 标签过滤、结果列表 |

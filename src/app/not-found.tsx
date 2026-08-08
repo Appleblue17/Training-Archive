@@ -14,7 +14,7 @@ export default function NotFound() {
         The page you are looking for does not exist or has been moved.
       </p>
       <Button asChild>
-        <Link href={joinUrl(PREFIX_URL, "page1")}>Back to contest list</Link>
+        <Link href={joinUrl(PREFIX_URL, "")}>Back to contest list</Link>
       </Button>
     </div>
   );
