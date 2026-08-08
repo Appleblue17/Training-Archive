@@ -508,8 +508,8 @@ export default function ContestTable({ contests }: { contests: ContestInfoType[]
     }
   }, [expandedRow, selectedProblemIdx, selectedFileIdx, contests]);
 
-  // 根据所有竞赛的最大题目数动态生成题号列，避免固定 17 列（A–Q）放不下更多题目
-  const maxProblems = Math.max(1, ...contests.map((c) => c.problems.length));
+  // 题号列数：至少 17 列（v0.1.0 行为，保证表格结构稳定），超出 17 题的比赛动态扩展
+  const maxProblems = Math.max(17, ...contests.map((c) => c.problems.length));
   const problemLetters = Array.from({ length: maxProblems }, (_, i) =>
     String.fromCharCode(65 + i),
   );

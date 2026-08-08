@@ -22,10 +22,8 @@ export default async function HomeView({ pageNum }: { pageNum: number }) {
 
   return (
     <>
-      {/* overflow-hidden：过多的题目列溢出到框的右侧并被裁掉，不产生横向滚动条 */}
-      <div className="overflow-hidden">
-        <ContestTable contests={pagedContests} />
-      </div>
+      {/* v0.1.0 样式：表格比容器宽 144px，题目列自然延伸到框右侧（可见），不包裹 overflow 容器 */}
+      <ContestTable contests={pagedContests} />
       <div className="mt-6 flex justify-center">
         <nav className="inline-flex items-center space-x-2">
           <Link

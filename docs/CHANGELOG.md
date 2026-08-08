@@ -34,7 +34,7 @@
 ### Fixed
 
 - 根路径 `/` 404：首页逻辑抽到共享 `home-view.tsx`，新增 `(main)/page.tsx` 渲染第 1 页（静态导出生成 `index.html`），`/pageN` 复用同一视图
-- 竞赛列表横向滚动条：表格容器 `overflow-x-auto` → `overflow-hidden`，过多的题目列溢出到框右侧被裁掉（恢复 v0.1.0 行为），body 加 `overflow-x: hidden` 兜底
+- 竞赛列表表格布局恢复 v0.1.0 样式：移除 `overflow-x-auto`/`overflow-hidden` 包裹（表格直接渲染），表格 `w-[calc(100%+144px)] table-fixed`，题目列自然延伸到框右侧可见；题号列保底 17 列（A–Q）兼容 >17 题比赛动态扩展；展开块随表格完整渲染不再被截断
 - 面包屑 Home 不高亮：`isActive` 对 Home 特判 `/` 与 `/pageN` 前缀
 - Markdown 样式缺失：`github-markdown-dark.css` / `katex.min.css` / `github-dark.css` 原只在文件查看器客户端组件 import，按 chunk 切分后 review / readme / dashboard 等页不加载 → 移入根布局全局加载，所有页面统一渲染样式
 
