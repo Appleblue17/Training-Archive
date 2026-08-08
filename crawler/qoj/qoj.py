@@ -112,6 +112,14 @@ class QOJCrawler(BaseCrawler):
             start_time = self._convert_iso_to_beijing(contest_start_time)
             date = start_time.date()
 
+            if start_time > datetime.now(beijing):
+                # Contest is in the future, skip it
+                self.log(
+                    "info",
+                    f"Contest {contest_name} has not started yet. Skipping.",
+                )
+                continue
+
             # Contest duration is in cols[2]
             # Format: [X hours] or [X hours Y minutes]
             contest_duration = cols[2].text.strip()
