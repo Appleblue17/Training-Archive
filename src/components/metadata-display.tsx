@@ -39,6 +39,19 @@ export default function MetaDataDisplay({
             typeof value === "string"
           ) {
             valueDisplay = <span className="text-pink-400">{value}</span>;
+          } else if (key === "tags" && Array.isArray(value)) {
+            valueDisplay = (
+              <span className="inline-flex flex-wrap gap-1">
+                {value.map((tag) => (
+                  <span
+                    key={String(tag)}
+                    className="rounded bg-indigo-900/60 px-1.5 py-0.5 text-xs text-indigo-200"
+                  >
+                    {String(tag)}
+                  </span>
+                ))}
+              </span>
+            );
           } else if (key.includes("link") && typeof value === "string") {
             valueDisplay = (
               <a

@@ -252,6 +252,9 @@ class QOJCrawler(BaseCrawler):
             if "Memory Limit" in badge_content:
                 memory_limit = badge_content.split(":")[1].strip()
 
+        # Best-effort tag extraction; non-fatal if the page has no tags.
+        tags = self._extract_problem_tags(problem_soup)
+
         problem_pdf = problem_soup.find("iframe", id="statements-pdf")
         if not problem_pdf:
             self.log(
@@ -273,11 +276,42 @@ class QOJCrawler(BaseCrawler):
             "link": problem_link,
             "name": problem_name,
         }
+        if tags:
+            problem_entry["tags"] = tags
         if "time_limit" in locals():
             problem_entry["time_limit"] = time_limit
         if "memory_limit" in locals():
             problem_entry["memory_limit"] = memory_limit
         return problem_entry
+
+    def _extract_problem_tags(self, problem_soup):
+        """
+        Extract tags from a UOJ/QOJ-style problem page.
+
+        Best-effort: returns [] if the structure is unexpected, so a tag
+        parsing failure never blocks contest fetching. On QOJ tags live in a
+        panel whose heading contains "Tags"/"标签", each tag being a link with
+        "tag=" in its href.
+        """
+        tags = []
+        try:
+            for panel in problem_soup.select("div.panel"):
+                title_el = panel.select_one(".panel-heading .panel-title")
+                if not title_el:
+                    continue
+                if "tag" not in title_el.get_text(strip=True).lower():
+                    continue
+                for a in panel.select("a[href]"):
+                    if "tag" not in a["href"].lower():
+                        continue
+                    text = a.get_text(strip=True)
+                    if text:
+                        tags.append(text)
+                if tags:
+                    break
+        except Exception:
+            self.log("warning", "Failed to parse problem tags; continuing without tags.")
+        return tags
 
     def fetch_submissions_fetch_source_code(self, entry):
         """

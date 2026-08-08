@@ -18,6 +18,7 @@ export interface ProblemInfoType {
   solved?: boolean;
   submit_time?: Date;
   solve_time?: Date;
+  tags?: string[]; // Problem tags (e.g. from QOJ), optional
   files: FileMetadataType[];
   [key: string]: unknown; // Allow additional properties
 }
