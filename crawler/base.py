@@ -573,19 +573,28 @@ class BaseCrawler:
                 problem_json = json.load(f)
             problem_solved = problem_json.get("solved", False)
 
+            # 全量提交归档：submissions.json + problems/<letter>/submissions/<id>.<ext>
+            # 每次提交都抓取源码并落盘（供复盘报告使用）。源码抓取失败不阻断元数据流程。
+            try:
+                code = self.fetch_submissions_fetch_source_code(entry)
+            except Exception as e:
+                self.log(
+                    "error",
+                    f"Failed to fetch source code for submission {entry.get('submission_id')}: {e}",
+                )
+                code = None
+            self._archive_submission(contest, prob, entry, ext, code)
+
             # Update "submit_time" and code file
             is_newer = self._convert_iso_to_beijing(
                 entry["submit_time"]
             ) > self._convert_iso_to_beijing(
                 problem_json.get("submit_time", "1970-01-01T00:00:00")
             )
-            if not (entry["status"] != "AC" and problem_solved) and (
+            if code is not None and not (entry["status"] != "AC" and problem_solved) and (
                 is_newer or (entry.get("status") == "AC" and not problem_solved)
             ):
                 problem_json["submit_time"] = entry["submit_time"]
-
-                # Fetch code file
-                code = self.fetch_submissions_fetch_source_code(entry)
 
                 # Update source code file
                 os.makedirs(problem_folder, exist_ok=True)
@@ -635,6 +644,38 @@ class BaseCrawler:
                 self.staged_submissions.append(entry)
                 self._write_file(self.submissions_path, self.staged_submissions)
             return False
+
+    def _archive_submission(self, contest, prob, entry, ext, code):
+        """把一份提交完整归档（幂等，按 submission_id 去重）。
+
+        - 元数据追加到 contests/<date> <name>/submissions.json
+        - 源码写入 problems/<letter>/submissions/<id>.<ext>
+        源码抓取失败不阻断元数据记录（完整性问题由 last-update 机制兜底）。
+        """
+        contest_folder = os.path.join(
+            self.repo_dir, f"{contest['date']} {contest['name']}"
+        )
+        os.makedirs(contest_folder, exist_ok=True)
+        submissions_path = os.path.join(contest_folder, "submissions.json")
+        submissions = self._load_file(submissions_path, default=[])
+        if any(
+            s.get("submission_id") == entry.get("submission_id") for s in submissions
+        ):
+            return
+
+        if code is not None:
+            submissions_dir = os.path.join(
+                contest_folder, "problems", prob["letter"], "submissions"
+            )
+            os.makedirs(submissions_dir, exist_ok=True)
+            submission_file = os.path.join(
+                submissions_dir, f"{entry['submission_id']}.{ext}"
+            )
+            with open(submission_file, "w", encoding="utf-8") as f:
+                f.write(code)
+
+        submissions.append(entry)
+        self._write_file(submissions_path, submissions)
 
     def _register_submission(self, submission_entry):
         """
