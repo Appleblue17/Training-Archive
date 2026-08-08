@@ -40,7 +40,6 @@ class HDUCrawler(BaseCrawler):
         super().__init__("hdu", local_log_path)
         self.contests_path = "crawler/hdu/contests.json"
         self.submissions_path = "crawler/hdu/staged-submissions.json"
-        self.input_contests_path = "crawler/hdu/input_contests.json"
 
     def is_logged_in(self, link):
         main_page = self.fetch_page_with_browser(link)
@@ -101,7 +100,7 @@ class HDUCrawler(BaseCrawler):
         - link: The link to the contest
         """
 
-        input_contest_list = self._load_file(self.input_contests_path)
+        input_contest_list = self._load_subscriptions(self.platform_name)
         contest_infos = []
         for input_contest in input_contest_list:
             if "link" not in input_contest:
@@ -320,7 +319,7 @@ class HDUCrawler(BaseCrawler):
         Either `problem_name` or `problem_link` is required.
         """
 
-        input_contest_list = self._load_file(self.input_contests_path)
+        input_contest_list = self._load_subscriptions(self.platform_name)
         for input_contest in input_contest_list:
 
             if "link" not in input_contest:

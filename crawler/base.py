@@ -24,6 +24,7 @@ class BaseCrawler:
         self.global_log_path = "crawler/global.log.json"
         self.config_path = "crawler/config.json"
         self.last_update_path = "crawler/last-update.json"
+        self.subscriptions_path = "crawler/subscriptions.json"
         self.driver = None
 
         # Load configuration
@@ -210,6 +211,26 @@ class BaseCrawler:
                 return json.load(f)
             except Exception:
                 return default
+
+    def _load_subscriptions(self, platform=None):
+        """加载订阅配置。
+
+        subscriptions.json 是统一的比赛订阅源（取代各平台零散的 input_contests.json）：
+        [
+          {"platform": "hdu", "link": "https://...", "name": "可选备注", "enabled": true}
+        ]
+        - platform 为 None：返回全部条目。
+        - platform 指定时：仅返回该平台且 enabled != false 的订阅。
+        链接由用户维护（文件被 gitignore，不随仓库同步）。
+        """
+        subs = self._load_file(self.subscriptions_path, default=[])
+        if platform is not None:
+            return [
+                s
+                for s in subs
+                if s.get("platform") == platform and s.get("enabled", True)
+            ]
+        return subs
 
     def _write_file(self, path, entry):
         # ensure file exists and is a json object

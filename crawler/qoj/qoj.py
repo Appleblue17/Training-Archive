@@ -74,6 +74,15 @@ class QOJCrawler(BaseCrawler):
         """
         contest_page = self.fetch_page_with_browser("https://qoj.ac/contests")
 
+        # 订阅驱动：只抓取 subscriptions.json 中启用的 QOJ 比赛
+        subscribed_links = {
+            s.get("link", "").rstrip("/")
+            for s in self._load_subscriptions(self.platform_name)
+        }
+        if not subscribed_links:
+            self.log("info", "No subscribed QOJ contests, skipping contest list fetch.")
+            return []
+
         soup = bs4(contest_page, "html.parser")
         contest_elements = soup.find_all("tr", class_="table-success")
 
@@ -87,6 +96,11 @@ class QOJCrawler(BaseCrawler):
             # Contest link is the first href in cols[0]
             contest_link = urljoin(self.base_url, cols[0].find("a")["href"])
             contest_name = cols[0].find("a").text.strip()
+
+            # 未订阅的比赛跳过
+            if contest_link.rstrip("/") not in subscribed_links:
+                self.log("info", f"Contest {contest_name} is not subscribed, skipping.")
+                continue
 
             # If the contest already exists, skip it
             if any(c["link"] == contest_link for c in self.contests):

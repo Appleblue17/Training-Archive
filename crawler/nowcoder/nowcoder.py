@@ -346,7 +346,7 @@ class NOWCODERCrawler(BaseCrawler):
         Either `problem_name` or `problem_link` is required.
         """
 
-        input_contest_list = self._load_file(self.input_contests_path)
+        input_contest_list = self._load_subscriptions(self.platform_name)
         for input_contest in input_contest_list:
 
             if "link" not in input_contest:

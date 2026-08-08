@@ -54,6 +54,7 @@ crawler/chromedriver_linux64
 crawler/global.log.json
 crawler/last-update.json
 crawler/config.json
+crawler/subscriptions.json
 crawler/*/contests.json
 crawler/*/staged-submissions.json
 crawler/*/log.json
