@@ -43,6 +43,9 @@ next-env.d.ts
 # contest source
 /public/contests
 
+# build-time generated search index (scripts/generate-search-index.mjs)
+/public/search-index.json
+
 # python
 .venv
 __pycache__/

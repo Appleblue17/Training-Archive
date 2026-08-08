@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { FiBarChart2, FiEdit3, FiHome, FiInfo } from "react-icons/fi";
+import { FiBarChart2, FiEdit3, FiHome, FiInfo, FiSearch } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
@@ -16,6 +16,12 @@ const links = [
     name: "dashboard",
     href: "/dashboard",
     icon: FiBarChart2,
+  },
+  {
+    title: "Search",
+    name: "search",
+    href: "/search",
+    icon: FiSearch,
   },
   {
     title: "Log",

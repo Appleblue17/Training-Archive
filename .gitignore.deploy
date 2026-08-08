@@ -50,6 +50,9 @@ next-env.d.ts
 # contest source (deploy 时复制到 public 的目录，不提交)
 /public/contests
 
+# build-time generated search index (scripts/generate-search-index.mjs)
+/public/search-index.json
+
 # python
 .venv
 __pycache__/

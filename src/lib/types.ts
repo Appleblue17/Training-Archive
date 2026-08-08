@@ -35,3 +35,20 @@ export interface ContestInfoType {
   files: FileMetadataType[];
   [key: string]: unknown; // Allow additional properties
 }
+
+// One entry in the build-time search index (scripts/generate-search-index.mjs).
+export interface SearchIndexEntryType {
+  type: "problem";
+  contest: string;
+  date: string;
+  platform: string;
+  contestLink?: string;
+  letter: string;
+  name: string;
+  link?: string;
+  tags: string[];
+  viewFile: string;
+  contestFolder: string;
+  contestPath: string;
+  relPath: string;
+}
