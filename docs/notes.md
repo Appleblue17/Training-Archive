@@ -14,6 +14,7 @@
 - 2026-08-08：验收修复 4 项——根路径 `/` 404（抽 `home-view.tsx` + 根 `page.tsx`）；竞赛列表横向滚动条（容器 `overflow-hidden` 恢复 v0.1.0 右侧溢出裁切）；面包屑 Home 高亮；Markdown 样式缺失（katex/github-markdown CSS 移入根布局全局加载，review/readme/dashboard 渲染统一）。
 - 2026-08-08：竞赛列表布局按用户要求恢复 v0.1.0 样式——移除 overflow 包裹（此前 overflow-hidden 导致 >L 题目列被裁、展开栏截断），表格直接渲染 `w-[calc(100%+144px)] table-fixed`，题目列延伸框右侧可见；题号列保底 17 列；移除 body overflow-x hidden。
 - 2026-08-08：爬虫验收修复——跨赛季复用题目导致历史提交被误归档（E 题负时间）：`_update_submission_status` 增加提交时间窗口校验（早于 start_time 1 天以上 → 不匹配落入 staged）；前端 `getInContestTime` 早于开始时间的提交显示日期、时长负数取 0。Log 页面本地无日志文件属预期（gitignore + 未跑爬虫），路径/格式与爬虫一致未变。
+- 2026-08-08：新增 `crawler/fetch_recent.py` 测试脚本（只爬最近 N 天提交，不推进 last-update）。本地环境缺 undetected_chromedriver / chrome / 登录凭据，无法本地实测；语法已 py_compile 验证，需在 CI 或装好依赖的环境运行。
 
 ## 当前状态
 
