@@ -109,28 +109,28 @@
 
 ## 8. 代码评审修复清单（v0.2.0 前置）
 
-### 前端
-- [ ] `platform-badge.tsx` fallback 分支误用 `platform === "codeforces"`，导致未知平台无背景色
-- [ ] `contest-table.tsx` 固定 17 列题号（A–Q）与魔法数 `colSpan={19}`
-- [ ] 竞赛列表未显式排序（依赖 `readdirSync` 顺序）；`page0` 等分页边界脆弱
-- [ ] 客户端组件 `import path` 依赖 polyfill，建议服务端传入或轻量 join
-- [ ] `metadata-display.tsx` 纯工具函数（`formatDate`/`formatSize`/`formatKey`）应抽到 `src/utils/format.ts`
-- [ ] 两个文件查看页逻辑重复，抽公共组件
-- [ ] `JSON.parse` 无运行时校验
-- [ ] `(main)/layout.tsx` 强制 `min-w-[1600px]`，无响应式
-- [ ] 可访问性：整行点击不可键盘操作；状态仅靠颜色区分（色盲不可用）；表格无 caption/aria
+### 前端（已在 08c3f721 全部修复）
+- [x] `platform-badge.tsx` fallback 分支误用 `platform === "codeforces"`，导致未知平台无背景色
+- [x] `contest-table.tsx` 固定 17 列题号（A–Q）与魔法数 `colSpan={19}`
+- [x] 竞赛列表未显式排序（依赖 `readdirSync` 顺序）；`page0` 等分页边界脆弱
+- [x] 客户端组件 `import path` 依赖 polyfill，统一用 `src/utils/url.ts` 的 `joinUrl`
+- [x] `metadata-display.tsx` 纯工具函数抽到 `src/utils/format.ts`
+- [x] 两个文件查看页逻辑重复，抽公共组件 `file-viewer-page.tsx`
+- [x] `JSON.parse` 无运行时校验（首页 `safeParseJson` 保护）
+- [x] `(main)/layout.tsx` 强制 `min-w-[1600px]`，无响应式
+- [x] 可访问性：整行可键盘操作（Enter/Space）、题目格 `title`/`aria-label`、表格 `aria-label`
 
-### 爬虫
-- [ ] HDU 时间解析 `%b` 依赖英文 locale，非英文环境抛异常
-- [ ] 时区约定需明确：naive 时间按北京时间墙钟解释；带时区后缀（`Z`/`+08:00`）的来源应正确转换
-- [ ] `now = datetime.now(beijing)` 模块导入时求值，长任务跨午夜过期
-- [ ] `finish()` 无条件推进 `last-update`，抓取不完整会永久丢提交（与 §4 完整性校验联动）
-- [ ] `init_driver()` 忽略 `CHROMEDRIVER_PATH` 环境变量，硬编码本地路径（CI 脆弱）
-- [ ] `_convert_html_to_markdown` 失败返回 `None`，HDU/NowCoder 拼接 `None` 抛 TypeError
-- [ ] QOJ 数字状态（如 80）与字符串状态混用，前端类型不一致
-- [ ] NowCoder cookie 未校验非空
-- [ ] `_load_file(default=[])` 可变默认参数反模式
-- [ ] 分页上限硬编码（50/10/20 页），超限即丢
+### 爬虫（已在 4253f1b1 修复）
+- [x] HDU 时间解析 `%b` 依赖英文 locale，非英文环境抛异常
+- [x] 时区约定需明确：naive 时间按北京时间墙钟解释；带时区后缀（`Z`/`+08:00`）的来源应正确转换
+- [x] `now = datetime.now(beijing)` 模块导入时求值，长任务跨午夜过期
+- [x] `finish()` 无条件推进 `last-update`，抓取不完整会永久丢提交（与 §4 完整性校验联动）
+- [x] `init_driver()` 忽略 `CHROMEDRIVER_PATH` 环境变量，硬编码本地路径（CI 脆弱）
+- [x] `_convert_html_to_markdown` 失败返回 `None`，HDU/NowCoder 拼接 `None` 抛 TypeError
+- [x] QOJ 数字状态（如 80）与字符串状态混用，前端类型不一致
+- [x] NowCoder cookie 未校验非空
+- [x] `_load_file(default=[])` 可变默认参数反模式
+- [x] 分页上限硬编码（50/10/20 页）：已由完整性保护兜底（到上限未遇终止条件则标记不完整，不推进 last-update，下次重跑），不再静默丢数据
 
 ---
 
