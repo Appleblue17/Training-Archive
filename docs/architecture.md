@@ -63,8 +63,13 @@ contests/
 | `(main)/layout.tsx` | 主布局：标题、爬虫状态徽章、面包屑导航 |
 | `(main)/(home)/[page]/page.tsx` | 竞赛列表（服务端取数 + 分页），每页 20 条 |
 | `(main)/(home)/[page]/contest-table.tsx` | 竞赛表格（客户端）：可展开行、题目状态、悬停元数据面板 |
+| `(main)/search/page.tsx` | 搜索页（服务端读索引） |
+| `(main)/search/search-client.tsx` | 搜索交互（客户端）：关键词 + 标签过滤、结果列表 |
+| `(main)/dashboard/page.tsx` | 数据看板（服务端聚合统计/最近动态/contribution/复盘报告） |
+| `(main)/dashboard/dashboard-client.tsx` | 数据看板展示（客户端）：统计卡片、绿点图、最近动态、报告区 |
+| `(main)/review/[contest]/page.tsx` | 复盘时间轴页：按 `submit_time` 展示提交序列 + LLM 报告 |
+| `(main)/review/[contest]/review-timeline.tsx` | 提交时间轴（客户端）：状态着色、源码链接 |
 | `(main)/log/page.tsx` + `log-page.tsx` | 日志页：按平台展示日志与 staged submissions |
-| `(main)/dashboard/page.tsx` | 数据看板（占位，未实现） |
 | `(main)/readme/page.tsx` | README 页（占位，未实现） |
 | `view/contests/[contest]/[file]/page.tsx` | 竞赛级文件查看页 |
 | `view/contests/[contest]/problems/[problem]/[file]/page.tsx` | 题目级文件查看页 |
@@ -73,11 +78,14 @@ contests/
 
 | 模块 | 职责 |
 |------|------|
-| `src/lib/types.ts` | 数据类型：`FileMetadataType` / `CodeFileType` / `ProblemInfoType` / `ContestInfoType` |
+| `src/lib/types.ts` | 数据类型：`FileMetadataType` / `CodeFileType` / `ProblemInfoType` / `ContestInfoType` / `SearchIndexEntryType` |
 | `src/lib/global.ts` | 全局配置：`BASE_URL` / `PREFIX_URL` / `REPO_URL`、`allowedExtensions`、`logFileList`、`ITEMS_PER_PAGE` |
+| `src/lib/contests-data.ts` | 服务端数据读取（仅服务端 import）：`getContests` / `getAllSubmissions` / `getReviews` / `safeParseJson`；首页与 Dashboard 共用 |
+| `scripts/generate-search-index.mjs` | 构建时扫描 `contests/` 生成 `public/search-index.json`（问题级索引：题目/标签/比赛/平台/日期 + 跳转文件） |
 | `src/utils/get-file-metadata.ts` | 读取文件元数据，合并 `<file>.json` 侧车文件 |
 | `src/utils/format.ts` | 格式化工具：`formatKey` / `formatSize` / `formatDate` |
 | `src/utils/url.ts` | 轻量 URL 拼接 `joinUrl`（客户端组件替代 `path.join`） |
+| `src/utils/render-markdown.ts` | 服务端 Markdown→HTML（unified 流水线，与文件查看器共用；复盘报告渲染） |
 | `src/components/metadata-display.tsx` | 元数据面板（格式化函数见 `src/utils/format.ts`） |
 | `src/components/platform-badge.tsx` | 平台徽章（qoj / hdu / nowcoder / codeforces） |
 | `src/components/file-viewer/` | 文件查看器（见下） |
@@ -88,7 +96,7 @@ contests/
 
 - `file-viewer.tsx`：入口，按 `allowedExtensions` 分发到 PDF / Markdown / 源码 / 不支持类型（提供下载）。
 - `file-viewer-pdf.tsx`：PDF 渲染（react-pdf）。
-- `file-viewer-markdown-wrapper.tsx`：**服务端**用 unified 流水线把 Markdown 转为 HTML（remark-parse → remark-math → remark-gfm → remark-img-links → remark-rehype → rehype-sanitize → rehype-highlight → rehype-katex → rehype-format → rehype-stringify）。
+- `file-viewer-markdown-wrapper.tsx`：**服务端**调用共享 `render-markdown.ts` 的 unified 流水线把 Markdown 转为 HTML（remark-parse → remark-math → remark-gfm → remark-img-links → remark-rehype → rehype-sanitize → rehype-highlight → rehype-katex → rehype-format → rehype-stringify）。
 - `file-viewer-markdown.tsx`：**客户端**渲染 HTML（`dangerouslySetInnerHTML`）并提供复制按钮。
 - `file-viewer-source.tsx`：**客户端**源码高亮（react-syntax-highlighter）并提供复制按钮。
 
@@ -98,6 +106,7 @@ contests/
 
 - 所有页面通过 `generateStaticParams` + 构建时 `fs` 扫描 `contests/` 生成静态路由。
 - 生产构建（`NODE_ENV=production`）时 `next.config.ts` 启用 `output: "export"`、`basePath: "/Training-Archive"`；`BASE_URL` / `PREFIX_URL` 据此切换（见 `src/lib/global.ts`）。
+- 搜索索引：`pnpm build` 先运行 `scripts/generate-search-index.mjs` 生成 `public/search-index.json`，搜索页在构建时读取该索引并传给客户端组件过滤（**方案 A**：构建索引 + 前端过滤，不引搜索库，数据量小；必要时可加 Fuse.js）。动态版（v0.3.0）改用服务端 API + DB 查询，搜索页 UI 复用。
 - `deploy.yml` 先将 `contests/` 复制到 `public/contests/`，再执行 `pnpm build`，最后由 `actions-gh-pages` 发布 `out/`。
 - 主分支（`main`）不含 `contests/` 数据；实际爬取与部署都在 `deploy` 分支进行。
 
@@ -192,10 +201,11 @@ contests/
 
 ## 6. 已知限制
 
-- `dashboard`、`readme` 页面为占位（v0.2.0 计划实现 Dashboard，含复盘报告区与 contribution 图）。
+- `readme` 页面为占位（可考虑渲染仓库根 README）。
 - 前端无自动化测试；目前仅靠 `pnpm lint` 与人工验收。
 - HDU/NowCoder 爬虫停用，当前只有 QOJ 在运行。
 - `report.py` 提示词有长度上限（`MAX_PROMPT_CHARS`），超限时旧提交源码会被省略（元数据保留）。
+- Dashboard 复盘报告区与复盘时间轴页依赖 `review.md`（任务 A 生成）；`submissions.json` 为空时统计与绿点图显示零值。
 
 ## 7. 相关文档
 

@@ -24,9 +24,9 @@
 - [x] 爬虫数据层：订阅模型、任务 A/B、全量提交采集、报告生成模块
 - [x] CI 工作流：`.gitignore.deploy`、`crawler-scheduled.yml`（任务 A）、`crawler.yml`（任务 B）、`deploy.yml` 触发扩展
 - [x] 题目标签支持（problem.json `tags` + 前端徽章渲染）
-- [ ] 搜索（`search-index.json` + 搜索页）
-- [ ] Dashboard（最近动态 + 统计 + contribution 绿点图 + 复盘报告区）
-- [ ] 复盘时间轴页
+- [x] 搜索（构建时 `search-index.json` + `/search` 页，关键词 + 标签过滤）
+- [x] Dashboard（统计 + 最近动态 + contribution 绿点图 + 复盘报告区，构建时聚合）
+- [x] 复盘时间轴页（`/review/[contest]`：提交时间轴 + LLM 报告）
 - [ ] UI 库迁移到 shadcn/ui；图标库迁移到 lucide-react
 - [ ] 响应式与可访问性改造
 - [ ] 验收：`pnpm lint` + `pnpm build` 全通过

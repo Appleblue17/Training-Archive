@@ -15,6 +15,10 @@
 - deploy 分支专用 `.gitignore.deploy`（contests/ 与爬虫增量状态纳入版本控制，保证增量同步跨运行生效，手动上传代码可正常跟踪）
 - 双定时工作流：`crawler-scheduled.yml`（任务 A，每 30 分钟）与 `crawler.yml`（任务 B，每日 20:00 UTC），共享 `concurrency` 组，提交时用 `.gitignore.deploy` 覆盖 `.gitignore`；**定时未启用**（未实测前手动触发验证）
 - 题目标签支持：`problem.json` 新增 `tags`，QOJ 爬虫 best-effort 提取，前端以彩色徽章渲染
+- 搜索功能：构建时脚本 `scripts/generate-search-index.mjs` 扫描 `contests/` 生成 `public/search-index.json`（问题级索引），新增 `/search` 页支持关键词（多词 AND）+ 标签过滤，结果按平台徽章/比赛/日期展示并链接到文件查看页；`pnpm build` 前置生成索引
+- Dashboard（C3）：统计卡片（比赛/题目/已解决/提交/AC + 平台分布）、最近比赛、最近完成题目、contribution 绿点图（52 周，按提交日期聚合）、复盘报告区（当前报告全文 + 往期列表）；数据在构建时从 `contests/` 聚合
+- 复盘时间轴页（C4）：`/review/[contest]` 按 `submit_time` 展示每次提交（状态着色、语言、耗时/内存、源码与平台链接）+ LLM 复盘报告全文
+- 共享服务端数据模块 `src/lib/contests-data.ts`（`getContests`/`getAllSubmissions`/`getReviews`）与 Markdown 渲染工具 `src/utils/render-markdown.ts`（文件查看器与复盘报告共用同一 unified 流水线）
 
 ### Changed
 
