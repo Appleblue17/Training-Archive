@@ -51,7 +51,9 @@ function getInContestTime(
     const submitDate = parseToBeijingTime(submitTime);
     const startDate = parseToBeijingTime(contestStartTime);
     const endDate = parseToBeijingTime(contestEndTime);
-    if (submitDate && startDate && endDate && submitDate <= endDate) {
+    // 仅当提交时间落在比赛窗口内才计算赛内耗时；
+    // 早于开始时间的数据（如跨赛季复用题目的历史提交）fallback 显示日期
+    if (submitDate && startDate && endDate && submitDate >= startDate && submitDate <= endDate) {
       const timeDiff = submitDate.getTime() - startDate.getTime();
       return convertDurationToHHMMSS(timeDiff / 1000);
     }

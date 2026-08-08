@@ -37,6 +37,7 @@
 - 竞赛列表表格布局恢复 v0.1.0 样式：移除 `overflow-x-auto`/`overflow-hidden` 包裹（表格直接渲染），表格 `w-[calc(100%+144px)] table-fixed`，题目列自然延伸到框右侧可见；题号列保底 17 列（A–Q）兼容 >17 题比赛动态扩展；展开块随表格完整渲染不再被截断
 - 面包屑 Home 不高亮：`isActive` 对 Home 特判 `/` 与 `/pageN` 前缀
 - Markdown 样式缺失：`github-markdown-dark.css` / `katex.min.css` / `github-dark.css` 原只在文件查看器客户端组件 import，按 chunk 切分后 review / readme / dashboard 等页不加载 → 移入根布局全局加载，所有页面统一渲染样式
+- 跨赛季提交错误归档：QOJ 提交列表按用户全部历史提交遍历，Universal Cup 等题目跨赛季复用（同名/同链接）会产生早于比赛开始的历史提交被误归档。`_update_submission_status` 增加时间窗口校验（早于 `start_time` 1 天以上视为不匹配，落入 staged）；前端 `getInContestTime` 对早于比赛开始的提交 fallback 显示日期、`convertDurationToHHMMSS` 对负数取 0（修复 E 题显示 -1817:-27:-42 的问题）
 
 ## [0.1.0] - 2026-01-04
 

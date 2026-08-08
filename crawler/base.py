@@ -554,75 +554,92 @@ class BaseCrawler:
             found = False
 
         if found:
-            problem_folder = os.path.join(
-                self.repo_dir,
-                f"{contest['date']} {contest['name']}",
-                "problems",
-                prob["letter"],
+            # 校验提交时间是否在比赛时间窗口内。
+            # QOJ 提交列表是用户全部历史提交（submitter=<user> 分页遍历），
+            # Universal Cup 等题目跨赛季复用（同名/同链接），会产生早于比赛开始的
+            # 历史提交。这类提交不属于这场比赛，不应归档，交给 staged 流程处理。
+            contest_start = self._convert_iso_to_beijing(
+                contest.get("start_time", "1970-01-01T00:00:00")
             )
-            # Get if the problem is solved
-            problem_json_path = os.path.join(problem_folder, "problem.json")
-            if not os.path.exists(problem_json_path):
+            submit_time = self._convert_iso_to_beijing(entry["submit_time"])
+            if submit_time < contest_start - timedelta(days=1):
                 self.log(
-                    "error",
-                    f"Problem JSON not found for {prob['name']} in {problem_folder}.",
+                    "warning",
+                    f"Submission {entry.get('submission_id')} at {entry['submit_time']} "
+                    f"is before contest start {contest.get('start_time')} for "
+                    f"{prob.get('letter')}.{prob.get('name')}; treating as unmatched.",
                 )
-                return False
-
-            with open(problem_json_path, "r", encoding="utf-8") as f:
-                problem_json = json.load(f)
-            problem_solved = problem_json.get("solved", False)
-
-            # 全量提交归档：submissions.json + problems/<letter>/submissions/<id>.<ext>
-            # 每次提交都抓取源码并落盘（供复盘报告使用）。源码抓取失败不阻断元数据流程。
-            try:
-                code = self.fetch_submissions_fetch_source_code(entry)
-            except Exception as e:
-                self.log(
-                    "error",
-                    f"Failed to fetch source code for submission {entry.get('submission_id')}: {e}",
+                found = False
+            else:
+                problem_folder = os.path.join(
+                    self.repo_dir,
+                    f"{contest['date']} {contest['name']}",
+                    "problems",
+                    prob["letter"],
                 )
-                code = None
-            self._archive_submission(contest, prob, entry, ext, code)
+                # Get if the problem is solved
+                problem_json_path = os.path.join(problem_folder, "problem.json")
+                if not os.path.exists(problem_json_path):
+                    self.log(
+                        "error",
+                        f"Problem JSON not found for {prob['name']} in {problem_folder}.",
+                    )
+                    return False
 
-            # Update "submit_time" and code file
-            is_newer = self._convert_iso_to_beijing(
-                entry["submit_time"]
-            ) > self._convert_iso_to_beijing(
-                problem_json.get("submit_time", "1970-01-01T00:00:00")
-            )
-            if code is not None and not (entry["status"] != "AC" and problem_solved) and (
-                is_newer or (entry.get("status") == "AC" and not problem_solved)
-            ):
-                problem_json["submit_time"] = entry["submit_time"]
+                with open(problem_json_path, "r", encoding="utf-8") as f:
+                    problem_json = json.load(f)
+                problem_solved = problem_json.get("solved", False)
 
-                # Update source code file
-                os.makedirs(problem_folder, exist_ok=True)
-                file_path = os.path.join(problem_folder, filename)
-                with open(file_path, "w", encoding="utf-8") as f:
-                    f.write(code)
+                # 全量提交归档：submissions.json + problems/<letter>/submissions/<id>.<ext>
+                # 每次提交都抓取源码并落盘（供复盘报告使用）。源码抓取失败不阻断元数据流程。
+                try:
+                    code = self.fetch_submissions_fetch_source_code(entry)
+                except Exception as e:
+                    self.log(
+                        "error",
+                        f"Failed to fetch source code for submission {entry.get('submission_id')}: {e}",
+                    )
+                    code = None
+                self._archive_submission(contest, prob, entry, ext, code)
 
-                # Update code.{ext}.json
-                self._write_file(
-                    os.path.join(problem_folder, f"code.{ext}.json"),
-                    entry,
-                )
-
-            # Update problem.json "solved" and "solve_time"
-            if entry["status"] == "AC":
-                problem_json["solved"] = True
-
-                # If problem_json["solve_time"] is not set or later than entry["submit_time"], update it
-
-                if "solve_time" not in problem_json or self._convert_iso_to_beijing(
+                # Update "submit_time" and code file
+                is_newer = self._convert_iso_to_beijing(
                     entry["submit_time"]
-                ) < self._convert_iso_to_beijing(
-                    problem_json.get("solve_time", "1970-01-01T00:00:00")
+                ) > self._convert_iso_to_beijing(
+                    problem_json.get("submit_time", "1970-01-01T00:00:00")
+                )
+                if code is not None and not (entry["status"] != "AC" and problem_solved) and (
+                    is_newer or (entry.get("status") == "AC" and not problem_solved)
                 ):
-                    problem_json["solve_time"] = entry["submit_time"]
+                    problem_json["submit_time"] = entry["submit_time"]
 
-            self._write_file(problem_json_path, problem_json)
-            return True
+                    # Update source code file
+                    os.makedirs(problem_folder, exist_ok=True)
+                    file_path = os.path.join(problem_folder, filename)
+                    with open(file_path, "w", encoding="utf-8") as f:
+                        f.write(code)
+
+                    # Update code.{ext}.json
+                    self._write_file(
+                        os.path.join(problem_folder, f"code.{ext}.json"),
+                        entry,
+                    )
+
+                # Update problem.json "solved" and "solve_time"
+                if entry["status"] == "AC":
+                    problem_json["solved"] = True
+
+                    # If problem_json["solve_time"] is not set or later than entry["submit_time"], update it
+
+                    if "solve_time" not in problem_json or self._convert_iso_to_beijing(
+                        entry["submit_time"]
+                    ) < self._convert_iso_to_beijing(
+                        problem_json.get("solve_time", "1970-01-01T00:00:00")
+                    ):
+                        problem_json["solve_time"] = entry["submit_time"]
+
+                self._write_file(problem_json_path, problem_json)
+                return True
 
         # If not found, update to staged-submissions.json
         if not found:
