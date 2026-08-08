@@ -21,6 +21,7 @@
 - 共享服务端数据模块 `src/lib/contests-data.ts`（`getContests`/`getAllSubmissions`/`getReviews`）与 Markdown 渲染工具 `src/utils/render-markdown.ts`（文件查看器与复盘报告共用同一 unified 流水线）
 - UI 库落地（C5）：引入 shadcn/ui 风格基础组件（`src/components/ui/`：`button` / `card` / `badge` / `input`，基于 `class-variance-authority` + `tailwind-merge` + `@radix-ui/react-slot`）与 `src/lib/utils.ts`（`cn()`）；`Card` 支持 `asChild`；Dashboard / 复盘时间轴 / 搜索 / 复盘详情页逐步应用 `Card`，搜索输入框应用 `Input`
 - 图标库迁移（C5）：`react-icons` → **lucide-react**，全量替换 13 个文件中的图标引用（品牌图标如 Github 改用 `ExternalLink`）
+- 前端收尾（C6）：全局错误边界 `error.tsx`（渲染错误可重置）、自定义 `not-found.tsx`（404 页 + 返回入口）、全局 `loading.tsx` 骨架屏；无障碍复查确认表格展开行 `aria-expanded`、搜索/看板/报告区 `aria-label`、复制按钮自带文本均覆盖
 
 ### Changed
 

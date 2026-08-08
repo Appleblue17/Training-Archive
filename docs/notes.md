@@ -9,6 +9,7 @@
 - 2026-08-08：完成 v0.2.0 规划讨论，记录至 `docs/roadmap.md`（含双版本架构、功能分级、爬虫触发机制、报告生成、账号系统等决策）。选定 UI 库 **shadcn/ui**、图标库 **lucide-react**。
 - 2026-08-08：文档体系完善 —— 补充 `docs/CHANGELOG.md`（v0.1.0）、重写 `README.md`、新增 `docs/architecture.md` 与 `docs/notes.md`、更新 `docs/agent-workflow.md`。
 - 2026-08-08：v0.2.0 爬虫与 CI 改造完成：前端代码审查修复、订阅模型、全量提交采集、DeepSeek 复盘报告、定时任务 A/B、`.gitignore.deploy` 与双定时工作流、题目标签支持。前端 C 阶段剩余：搜索、Dashboard、复盘时间轴、UI 库迁移、收尾。
+- 2026-08-08：前端 C 阶段完成：搜索（构建时 `search-index.json` + `/search` 页）、Dashboard、复盘时间轴页、UI 库迁移（shadcn/ui + lucide-react 落地）。C6 收尾完成：全局错误边界 `error.tsx`、自定义 `not-found.tsx`、全局 `loading.tsx` 骨架屏、无障碍复查。待 D 验收（readme 页仍占位）。
 
 ## 当前状态
 
@@ -28,7 +29,7 @@
 - [x] Dashboard（统计 + 最近动态 + contribution 绿点图 + 复盘报告区，构建时聚合）
 - [x] 复盘时间轴页（`/review/[contest]`：提交时间轴 + LLM 报告）
 - [x] UI 库迁移到 shadcn/ui；图标库迁移到 lucide-react
-- [ ] C6 收尾：错误边界、骨架屏、无障碍复查（readme 页仍占位）
+- [x] C6 收尾：错误边界（`error.tsx`）、骨架屏（`loading.tsx`）、自定义 404（`not-found.tsx`）、无障碍复查（readme 页仍占位）
 - [ ] 响应式与可访问性改造
 - [ ] 验收：`pnpm lint` + `pnpm build` 全通过
 
