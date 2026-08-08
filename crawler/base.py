@@ -262,10 +262,10 @@ class BaseCrawler:
             options.binary_location = os.environ.get("CHROME_BINARY")
         else:
             # Specify the path to the Chromium executable
-            options.binary_location = os.path.abspath("crawler/chrome-linux/chrome")
+            options.binary_location = os.path.abspath("crawler/chrome-linux64/chrome")
         chromedriver_path = os.environ.get(
             "CHROMEDRIVER_PATH"
-        ) or os.path.abspath("crawler/chromedriver_linux64/chromedriver")
+        ) or os.path.abspath("crawler/chromedriver-linux64/chromedriver")
 
         # Set preferences
         prefs = {

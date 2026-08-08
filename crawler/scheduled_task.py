@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""爬虫任务入口（任务A：预订比赛抓取+复盘；任务B：提交记录周期同步）。
+"""爬虫任务入口（任务A：预订比赛抓取；任务B：提交记录周期同步）。
 
 任务A（默认）：
-    某场预订的比赛结束后 → 抓取整场比赛数据 → 立即生成复盘报告。
-    实现：fetch_contests（抓订阅的、已开始的比赛）+ fetch_submissions（增量同步提交，
-    含 staged 映射）+ report.generate_reviews_for_all（对已结束且缺 review.md 的比赛生成报告）。
-    幂等：比赛目录存在即跳过抓取；review.md 存在即跳过报告。
+    某场预订的比赛结束后 → 抓取整场比赛数据 → 增量同步提交（含 staged 映射）。
+    幂等：比赛目录存在即跳过抓取。
 
 任务B（--submissions-only）：
     每天一次对所有已开始/进行中的比赛做增量提交抓取（沿用 last-update.json）。
+
+复盘报告由独立脚本生成，不在此入口内调用：
+    python3 crawler/report.py                   # 扫描所有已结束且缺 review.md 的比赛
+    python3 crawler/report.py <contest_folder>  # 只生成指定比赛
 
 用法：
     python3 crawler/scheduled_task.py               # 任务A（GitHub Actions 每 15~30 分钟）
@@ -17,8 +19,6 @@
 import importlib
 import os
 import sys
-
-import report
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -80,11 +80,6 @@ def main():
     if not ok_platforms:
         print("[task] All platforms failed. Exiting with error.")
         sys.exit(1)
-
-    # 任务A：对所有已结束且缺 review.md 的比赛生成复盘报告
-    if not submissions_only:
-        count = report.generate_reviews_for_all()
-        print(f"[task] Generated {count} review(s).")
 
     print(f"[task] Completed platforms: {', '.join(ok_platforms)}")
 

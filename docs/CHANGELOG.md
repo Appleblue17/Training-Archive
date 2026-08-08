@@ -11,7 +11,7 @@
 - 爬虫订阅模型：`crawler/subscriptions.json` 统一订阅配置（QOJ / HDU / NowCoder 按 `platform` + `enabled` 过滤），替换 `input_contests.json`
 - 全量提交采集：`_archive_submission()` 按 `submission_id` 幂等归档到 `submissions.json` 与 `problems/<letter>/submissions/<id>.<ext>`；源码抓取失败不阻断元数据记录
 - 复盘报告生成：`crawler/report.py` 调用 DeepSeek 生成 `review.md`（存在即跳过，幂等），支持对已结束且有提交的比赛生成
-- 定时任务入口：`crawler/scheduled_task.py` 任务 A（抓订阅比赛 + 增量同步 + 报告）与任务 B（`--submissions-only` 每日增量同步）；单平台失败不阻断；`finish()` 仅在完整同步时推进 `last-update.json`
+- 定时任务入口：`crawler/scheduled_task.py` 任务 A（抓订阅比赛 + 增量同步）与任务 B（`--submissions-only` 每日增量同步）；单平台失败不阻断；`finish()` 仅在完整同步时推进 `last-update.json`
 - deploy 分支专用 `.gitignore.deploy`（contests/ 与爬虫增量状态纳入版本控制，保证增量同步跨运行生效，手动上传代码可正常跟踪）
 - 双定时工作流：`crawler-scheduled.yml`（任务 A，每 30 分钟）与 `crawler.yml`（任务 B，每日 20:00 UTC），共享 `concurrency` 组，提交时用 `.gitignore.deploy` 覆盖 `.gitignore`；**定时未启用**（未实测前手动触发验证）
 - 题目标签支持：`problem.json` 新增 `tags`，QOJ 爬虫 best-effort 提取，前端以彩色徽章渲染
@@ -26,6 +26,10 @@
 
 ### Changed
 
+- 爬虫与复盘报告解耦：`crawler/scheduled_task.py` 不再调用报告生成（只负责抓取与提交同步）；`crawler/report.py` 作为独立总结脚本运行；两个爬虫工作流均追加独立的报告生成步骤（`python3 crawler/report.py`），爬虫失败不生成报告，报告失败不阻断提交/部署
+- 依赖加固：`crawler/requirements.txt` 新增 `setuptools`（Python 3.12+ 移除标准库 distutils，而 `undetected_chromedriver` 3.5.5 仍依赖 `distutils.version`，CI ubuntu-latest 导入即报错）
+- 新增 `.env.example`（QOJ/HDU 凭据、NowCoder Cookie、`DEEPSEEK_API_KEY` 模板；`.gitignore` 例外保留该模板可提交）
+- 本地浏览器驱动路径统一命名：`crawler/chrome-linux` → `crawler/chrome-linux64`、`crawler/chromedriver_linux64` → `crawler/chromedriver-linux64`（`base.py`、两个 `.gitignore`、`docs/notes.md` 同步）
 - 完善文档体系：README 文档索引新增 roadmap；`docs/notes.md` 补充 v0.2.0 待办与技术栈决策
 - 爬虫统一改为经 `crawler/scheduled_task.py` 入口运行；`deploy.yml` 触发条件扩展为同时监听两个爬虫工作流
 - 前端代码审查修复：格式化工具抽离到 `src/utils/format.ts`、URL 拼接抽离到 `src/utils/url.ts`；文件查看器重构为公共组件 + 页面薄封装；平台徽章修复 fallback；竞赛表格题号列数动态自适应（`maxProblems`）并提升键盘可访问性；首页分页边界、日期排序、横向滚动容器；布局响应式（`w-full max-w-6xl px-4`）

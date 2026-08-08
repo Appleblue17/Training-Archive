@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   # 定时尚未启用：工作流未实测通过前先手动触发验证
   # schedule:
-  #   - cron: "*/30 * * * *" # Every 30 minutes: task A (scheduled contests + reviews)
+  #   - cron: "*/30 * * * *" # Every 30 minutes: task A (scheduled contests + submissions)
 
 concurrency:
   group: crawler
@@ -55,9 +55,9 @@ jobs:
           pip install -r crawler/requirements.txt
 
       - name: Ensure chromedriver is executable
-        run: chmod +x crawler/chromedriver_linux64/chromedriver
+        run: chmod +x crawler/chromedriver-linux64/chromedriver
 
-      - name: "Run scheduled task (task A: fetch contests + sync submissions + reviews)"
+      - name: "Run scheduled task (task A: fetch contests + sync submissions)"
         id: crawl
         run: python3 crawler/scheduled_task.py
         env:
@@ -70,6 +70,11 @@ jobs:
           HDU_PASSWORD: ${{ secrets.HDU_PASSWORD }}
           NEWCODER_COOKIE_NOWCODERUID: ${{ secrets.NEWCODER_COOKIE_NOWCODERUID }}
           NEWCODER_COOKIE_T: ${{ secrets.NEWCODER_COOKIE_T }}
+
+      - name: "Generate review reports (summary, independent of crawler)"
+        run: python3 crawler/report.py
+        env:
+          PYTHONUNBUFFERED: "1"
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
 
       - name: Clean log files
@@ -83,7 +88,7 @@ jobs:
           # 保证增量同步跨运行生效，手动上传代码也能被正常跟踪。
           cp .gitignore.deploy .gitignore
           git add .gitignore crawler contests
-          git reset HEAD crawler/chromedriver_linux64/chromedriver 2>/dev/null || true
+          git reset HEAD crawler/chromedriver-linux64/chromedriver 2>/dev/null || true
           git diff --cached --stat
           if git diff --cached --quiet; then
             echo "No changes to commit."

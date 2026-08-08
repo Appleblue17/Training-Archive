@@ -16,7 +16,7 @@
 └──────────────────┘
 ```
 
-- **爬虫子系统**：定时（任务A：预订比赛抓取+复盘，每 30 分钟；任务B：提交周期同步，每天）抓取竞赛、题目、提交与代码，写入 `contests/` 目录和各类日志。
+- **爬虫子系统**：定时（任务A：预订比赛抓取，每 30 分钟；任务B：提交周期同步，每天）抓取竞赛、题目、提交与代码，写入 `contests/` 目录和各类日志；复盘报告由独立脚本 `crawler/report.py` 生成。
 - **前端子系统**：Next.js 静态导出。构建时通过 `fs` 读取 `contests/` 目录与 JSON 元数据，生成竞赛列表、题目详情、文件查看与复盘页面。
 - **CI/CD**：`crawler-scheduled.yml`（任务A）与 `crawler.yml`（任务B）在 `deploy` 分支上运行爬虫并提交数据；`deploy.yml` 检测到当日数据变更后构建并发布到 GitHub Pages。
 
@@ -143,7 +143,7 @@ contests/
 
 其他基础设施：
 
-- **浏览器**：`undetected_chromedriver`，无头模式；GitHub Actions 上使用 `CHROME_BINARY` / `CHROMEDRIVER_PATH` 环境变量，本地使用 `crawler/chrome-linux` 与 `crawler/chromedriver_linux64`。
+- **浏览器**：`undetected_chromedriver`，无头模式；GitHub Actions 上使用 `CHROME_BINARY` / `CHROMEDRIVER_PATH` 环境变量，本地使用 `crawler/chrome-linux64` 与 `crawler/chromedriver-linux64`。
 - **日志**：`log()` 写平台日志（`crawler/<platform>/log.json`），`important`/`error`/`fatal` 同时写全局日志（`crawler/global.log.json`）；`fatal` 抛出异常终止。
 - **HTML→Markdown**：`_convert_html_to_markdown()` 调用 **pandoc**（HDU/NowCoder 题目），随后 `_clean_pandoc_markdown()` 清理 KaTeX 标记、数学公式与多余空行。
 - **时间**：`beijing = timezone(timedelta(hours=8))`，所有时间解析与写入统一北京时间。
@@ -169,14 +169,18 @@ contests/
 
 三个平台均以订阅为唯一来源：QOJ 比赛列表按订阅链接过滤，HDU/NowCoder 遍历订阅链接解析比赛信息。
 
-`crawler/scheduled_task.py` 提供两个任务入口：
+`crawler/scheduled_task.py` 提供两个任务入口（**只负责爬虫**，复盘报告由 `crawler/report.py` 独立生成，见 4.4）：
 
 | 任务 | 命令 | 调度 | 职责 |
 |------|------|------|------|
-| 任务A（预订比赛抓取+复盘） | `python3 crawler/scheduled_task.py` | `crawler-scheduled.yml`，每 30 分钟 | 抓订阅的已开始比赛 → 增量同步提交 → 对已结束且缺 `review.md` 的比赛生成复盘报告 |
+| 任务A（预订比赛抓取） | `python3 crawler/scheduled_task.py` | `crawler-scheduled.yml`，每 30 分钟 | 抓订阅的已开始比赛 → 增量同步提交 |
 | 任务B（提交周期同步） | `python3 crawler/scheduled_task.py --submissions-only` | `crawler.yml`，每天 20:00 UTC | 对所有已开始/进行中的比赛做增量提交抓取 |
 
-### 4.4 复盘报告（`crawler/report.py`）
+两个爬虫工作流在爬虫步骤之后均追加独立的报告生成步骤（`python3 crawler/report.py`），与爬虫解耦：爬虫失败不生成报告，报告失败不阻断提交/部署。
+
+### 4.4 复盘报告（`crawler/report.py`，独立总结脚本）
+
+- 独立于爬虫入口运行：`python3 crawler/report.py`（扫描所有已结束且缺 `review.md` 的比赛）或 `python3 crawler/report.py <contest_folder>`（只生成指定比赛）。
 
 - 读取 `contest.json`、`submissions.json`、`problems/<letter>/submissions/<id>.<ext>`，**不做分析性预处理**，原始提交序列（含代码与时间戳）直接送 DeepSeek（OpenAI 兼容接口，`deepseek-chat`）。
 - 输出 `contests/<date> <name>/review.md`；`review.md` 已存在即跳过（幂等）。
@@ -205,7 +209,7 @@ contests/
 | 订阅模型 `subscriptions.json` | 统一管理预订比赛，取代各平台零散的 `input_contests.json` | 三平台均为订阅驱动；订阅文件 gitignore，由用户维护 |
 | 全量提交采集（`submissions/` + `submissions.json`） | 复盘报告需要完整提交序列（含每份源码） | 每次提交都抓源码，初始同步耗时更长 |
 | LLM 复盘报告（DeepSeek） | 每场一份 `review.md`，原始提交序列直接送 LLM，不做预处理 | 依赖 `DEEPSEEK_API_KEY`；存在即跳过（幂等） |
-| 爬虫调度恢复为定时（两个任务） | 任务A（预订抓取+复盘，每 30 分钟）与任务B（提交周期同步，每天）分离 | `crawler-scheduled.yml` + `crawler.yml`，`concurrency` 串行防冲突 |
+| 爬虫调度恢复为定时（两个任务） | 任务A（预订抓取，每 30 分钟）与任务B（提交周期同步，每天）分离；复盘报告由 `report.py` 独立运行 | `crawler-scheduled.yml` + `crawler.yml`，`concurrency` 串行防冲突 |
 | HDU/NowCoder 爬虫停用 | 平台结构变动/登录不稳定，维护成本高 | 代码保留，未删除 |
 
 ## 6. 已知限制
@@ -214,7 +218,7 @@ contests/
 - 前端无自动化测试；目前仅靠 `pnpm lint` 与人工验收。
 - HDU/NowCoder 爬虫停用，当前只有 QOJ 在运行。
 - `report.py` 提示词有长度上限（`MAX_PROMPT_CHARS`），超限时旧提交源码会被省略（元数据保留）。
-- Dashboard 复盘报告区与复盘时间轴页依赖 `review.md`（任务 A 生成）；`submissions.json` 为空时统计与绿点图显示零值。
+- Dashboard 复盘报告区与复盘时间轴页依赖 `review.md`（`crawler/report.py` 独立生成）；`submissions.json` 为空时统计与绿点图显示零值。
 
 ## 7. 相关文档
 

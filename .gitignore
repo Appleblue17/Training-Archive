@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# 但保留 .env.example 作为模板提交
+!.env.example
 
 # vercel
 .vercel
@@ -54,8 +56,8 @@ __pycache__/
 # 开发分支忽略爬虫数据与增量状态；deploy 分支使用 .gitignore.deploy（CI 提交前
 # 覆盖 .gitignore），将 contests/ 与状态文件纳入版本控制，保证增量同步生效。
 /contests/
-crawler/chrome-linux
-crawler/chromedriver_linux64
+crawler/chrome-linux64
+crawler/chromedriver-linux64
 crawler/global.log.json
 crawler/last-update.json
 crawler/config.json

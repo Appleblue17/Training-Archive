@@ -58,8 +58,8 @@ next-env.d.ts
 __pycache__/
 
 # crawler
-crawler/chrome-linux
-crawler/chromedriver_linux64
+crawler/chrome-linux64
+crawler/chromedriver-linux64
 crawler/global.log.json
 crawler/*/log.json
 crawler/*/input_*.json
