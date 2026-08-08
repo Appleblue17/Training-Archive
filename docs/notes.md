@@ -30,15 +30,15 @@
 - [x] 复盘时间轴页（`/review/[contest]`：提交时间轴 + LLM 报告）
 - [x] UI 库迁移到 shadcn/ui；图标库迁移到 lucide-react
 - [x] C6 收尾：错误边界（`error.tsx`）、骨架屏（`loading.tsx`）、自定义 404（`not-found.tsx`）、无障碍复查（readme 页仍占位）
-- [ ] 响应式与可访问性改造
-- [ ] 验收：`pnpm lint` + `pnpm build` 全通过
+- [x] 响应式与可访问性改造（`docs/roadmap.md` §8 已覆盖：布局响应式、表格键盘操作、`aria-label`/`aria-expanded`）
+- [x] 验收：`pnpm lint` + `pnpm build` 全通过（2026-08-08，仅 readme 占位页存在已知 img 警告）
 
 ### 常规
 
-- [ ] `dashboard` 页面实现（当前占位，v0.2.0 范畴）
+- [ ] `dashboard` 页面实现（已实现于 C3，此条可忽略）
 - [ ] `readme` 页面实现（当前占位，可考虑渲染仓库根 README）
-- [ ] 清理 `platform-badge.tsx` 冗余条件（fallback 分支误用 `platform === "codeforces"`）
-- [ ] 评估 `contest-table.tsx` 固定 17 列题号（A–Q）的横向自适应方案
+- [ ] 清理 `platform-badge.tsx` 冗余条件（已修复于 §8，此条可忽略）
+- [ ] 评估 `contest-table.tsx` 固定 17 列题号（已修复为动态自适应于 §8，此条可忽略）
 - [ ] 评估是否引入前端测试（当前仅 lint）
 - [ ] 文档工作流中提及的 `clang-format` 等模板残留是否彻底清理
 
