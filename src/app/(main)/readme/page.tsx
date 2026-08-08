@@ -1,27 +1,32 @@
-import { BASE_URL } from "@/lib/global";
+import fs from "fs";
+import path from "path";
 
-export default function DashboardPage() {
-  /* Not implemented yet... Show a placeholder */
+import renderMarkdown from "@/utils/render-markdown";
+import { Card, CardContent } from "@/components/ui/card";
+
+export default async function ReadmePage() {
+  const readmePath = path.join(process.cwd(), "README.md");
+  let readme: string | null = null;
+  try {
+    if (fs.existsSync(readmePath)) readme = fs.readFileSync(readmePath, "utf-8");
+  } catch {
+    readme = null;
+  }
+
+  const html = readme ? await renderMarkdown(readme) : null;
+
   return (
-    <>
-      <div className="flex h-[80dvh] w-full flex-col items-center justify-center">
-        <img
-          src={BASE_URL + "work-in-progress.png"}
-          alt="Work in progress"
-          className="mb-4 h-48 w-48"
-        />
-
-        <div className="text-2xl font-semibold text-gray-400">
-          README.md is under construction...
-        </div>
-      </div>
-      <a
-        href="https://www.flaticon.com/free-icons/under-construction"
-        title="under construction icons"
-        className="mt-48"
-      >
-        · Under construction icons created by Freepik - Flaticon
-      </a>
-    </>
+    <Card>
+      <CardContent className="p-4">
+        {html ? (
+          <div
+            className="markdown-body"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        ) : (
+          <p className="py-8 text-center text-gray-400">README.md not found.</p>
+        )}
+      </CardContent>
+    </Card>
   );
 }
