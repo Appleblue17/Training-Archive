@@ -361,6 +361,9 @@ class NOWCODERCrawler(BaseCrawler):
 
             status_link = f'{contest_link}#submit/"onlyMyStatusFilter"%3Atrue'
 
+            # 首次抓取的新比赛：以比赛开始时间为截止全量回填；否则增量（None）
+            deadline = self._deadline_for(contest_link)
+
             stop_fetching = False
             for page in range(1, 20):
                 # Assume there are at most 20 pages of submissions
@@ -443,7 +446,9 @@ class NOWCODERCrawler(BaseCrawler):
                         "problem_link": problem_link,
                         "submission_link": submission_link,
                     }
-                    stop_fetching = self._register_submission(submission_entry)
+                    stop_fetching = self._register_submission(
+                        submission_entry, deadline=deadline
+                    )
                     if stop_fetching:
                         self._mark_submissions_complete()
                         break
