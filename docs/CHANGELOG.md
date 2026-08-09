@@ -6,6 +6,8 @@
 
 ### Added
 
+- 平台启用/禁用管理：`crawler/config.json` 每个平台条目支持 `enabled` 字段（缺省 `true` 视为启用），`scheduled_task.py` 启动时按此过滤（任务A/任务B 均生效）；HDU/NowCoder 默认 `enabled: false`；新增模板 `crawler/config.example.json`（gitignore 例外保留模板可提交）
+- `config.json` 不再存放用户名等凭据：登录凭据统一由环境变量提供（QOJ/HDU 用户名密码、NowCoder Cookie，见 `.env.example`）
 - 新增 `docs/roadmap.md`：记录 v0.2.0 / v0.3.0 规划讨论与决策（双版本架构、功能分级、爬虫触发机制、DeepSeek 报告生成、GitHub OAuth 账号系统等）
 - 选定 UI 库 shadcn/ui 与图标库 lucide-react（替换 react-icons）
 - 爬虫订阅模型：`crawler/subscriptions.json` 统一订阅配置（QOJ / HDU / NowCoder 按 `platform` + `enabled` 过滤），替换 `input_contests.json`

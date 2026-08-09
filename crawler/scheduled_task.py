@@ -12,11 +12,17 @@
     python3 crawler/report.py                   # 扫描所有已结束且缺 review.md 的比赛
     python3 crawler/report.py <contest_folder>  # 只生成指定比赛
 
+平台启用/禁用：
+    crawler/config.json 中每个平台条目可用 "enabled" 字段控制（缺省 true 视为启用）：
+        { "qoj": { "enabled": true, ... }, "hdu": { "enabled": false, ... } }
+    显式 enabled: false 的平台不会被执行。
+
 用法：
     python3 crawler/scheduled_task.py               # 任务A（GitHub Actions 每 15~30 分钟）
     python3 crawler/scheduled_task.py --submissions-only  # 任务B（每天一次）
 """
 import importlib
+import json
 import os
 import sys
 
@@ -30,6 +36,25 @@ PLATFORM_CLASSES = {
     "hdu": ("crawler.hdu.hdu", "HDUCrawler"),
     "nowcoder": ("crawler.nowcoder.nowcoder", "NOWCODERCrawler"),
 }
+
+CONFIG_PATH = "crawler/config.json"
+
+
+def _load_enabled_platforms():
+    """从 crawler/config.json 读取启用的平台。
+
+    每个平台条目可用 "enabled" 字段控制（默认禁用）；
+    配置文件缺失 / 解析失败时全部平台禁用。
+    """
+    if not os.path.exists(CONFIG_PATH):
+        return []
+    try:
+        with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+            config = json.load(f)
+    except Exception as e:
+        print(f"[task] Failed to parse {CONFIG_PATH}: {e}; All platforms disabled.")
+        return []
+    return [p for p in PLATFORM_ORDER if config.get(p, {}).get("enabled", False)]
 
 
 def crawler_for(platform):
@@ -69,8 +94,11 @@ def run_platform(platform, submissions_only):
 def main():
     submissions_only = "--submissions-only" in sys.argv[1:]
 
+    enabled_platforms = _load_enabled_platforms()
+    print(f"[task] Enabled platforms: {', '.join(enabled_platforms)}")
+
     ok_platforms = []
-    for platform in PLATFORM_ORDER:
+    for platform in enabled_platforms:
         ok, crawler = run_platform(platform, submissions_only)
         if ok:
             ok_platforms.append(platform)

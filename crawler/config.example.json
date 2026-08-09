@@ -1,0 +1,20 @@
+{
+  "qoj": {
+    "enabled": true,
+    "base_url": "https://qoj.ac",
+    "min_wait_time": 0.5,
+    "max_wait_time": 2
+  },
+  "hdu": {
+    "enabled": false,
+    "base_url": "https://acm.hdu.edu.cn",
+    "min_wait_time": 0,
+    "max_wait_time": 0.5
+  },
+  "nowcoder": {
+    "enabled": false,
+    "base_url": "https://ac.nowcoder.com",
+    "min_wait_time": 0,
+    "max_wait_time": 0.5
+  }
+}

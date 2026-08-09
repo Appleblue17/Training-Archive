@@ -17,7 +17,7 @@
 
 ## 当前状态
 
-- 主功能（竞赛列表、文件查看、日志页）可用；爬虫双任务工作流已建（任务 A 每 30 分钟、任务 B 每日），**定时尚未启用**（未实测通过前手动触发验证），HDU / NowCoder 爬虫停用（代码保留）。
+- 主功能（竞赛列表、文件查看、日志页）可用；爬虫双任务工作流已建（任务 A 每 30 分钟、任务 B 每日），**定时尚未启用**（未实测通过前手动触发验证），HDU / NowCoder 爬虫默认停用（由 `crawler/config.json` 的 `enabled` 字段控制，可改回 `true` 启用）。
 - `contests/` 数据目录为空（git 忽略），本地开发如需查看效果需准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
 - **v0.2.0 开发中**：爬虫/CI 部分完成，前端 C 阶段进行中，详细规划见 `docs/roadmap.md`。
 
@@ -61,6 +61,8 @@
 
 ### 爬虫
 
+- 平台启用/禁用由 `crawler/config.json` 的 `enabled` 字段控制（缺省 `true`）；模板见 `crawler/config.example.json`（gitignored 的 `config.json` 不会被提交，deploy 分支的 `config.json` 需自行添加 `enabled` 字段才会真正禁用对应平台）。
+- 登录凭据一律走环境变量（`.env` / CI secrets），`config.json` 只放非敏感运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time`）。QOJ/HDU 用户名密码、NowCoder Cookie 由各平台 `login()` 读取，见 `.env.example`。
 - HDU / NowCoder 的 HTML→Markdown 依赖 **pandoc**（CI 中安装 3.6.3；本地需自行安装）。
 - 爬虫驱动：CI 用 `browser-actions/setup-chrome`（Chrome 114）并通过环境变量传入路径；本地需自行准备 `crawler/chrome-linux64` 与 `crawler/chromedriver-linux64`。
 - 凭据通过环境变量注入（见 `crawler.yml` 中 `secrets.*`），本地调试需自行设置对应环境变量。
