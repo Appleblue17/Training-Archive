@@ -6,6 +6,7 @@
 
 ## 最近更新
 
+- 2026-08-09：HDU / NowCoder 提交记录补抓 `problem_name`（此前只存 `problem_link`，题目映射的 name 兜底失效，link 有格式差异时报告显示 "?"）；`report.py` 依赖该字段做题目字母映射（QOJ 原有）。
 - 2026-08-09：爬虫修复补订场景——HDU/NowCoder 补订已完成比赛时提交一条都抓不到（早于全局 last-update 即停止），改为首次抓取的新比赛以 `start_time` 为截止全量回填；三平台统一"早于比赛开始时间的提交直接丢弃"（跨赛季历史提交不再进 staged）；`contests.json` 条目补充 `start_time`/`end_time` 并对旧条目按比赛文件夹回填。
 - 2026-08-08：完成 v0.2.0 规划讨论，记录至 `docs/roadmap.md`（含双版本架构、功能分级、爬虫触发机制、报告生成、账号系统等决策）。选定 UI 库 **shadcn/ui**、图标库 **lucide-react**。
 - 2026-08-08：文档体系完善 —— 补充 `docs/CHANGELOG.md`（v0.1.0）、重写 `README.md`、新增 `docs/architecture.md` 与 `docs/notes.md`、更新 `docs/agent-workflow.md`。

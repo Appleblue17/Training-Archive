@@ -411,6 +411,7 @@ class NOWCODERCrawler(BaseCrawler):
 
                     submission_id = cols[0].text.strip()
                     problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
+                    problem_name = cols[2].text.strip()
                     submission_link = urljoin(self.base_url, cols[0].find("a")["href"])
 
                     # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
@@ -443,6 +444,7 @@ class NOWCODERCrawler(BaseCrawler):
                         "memory": memory,
                         "language": language,
                         "submit_time": submit_time.isoformat(),
+                        "problem_name": problem_name,
                         "problem_link": problem_link,
                         "submission_link": submission_link,
                     }

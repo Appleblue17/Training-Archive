@@ -42,6 +42,7 @@
 
 ### Fixed
 
+- HDU / NowCoder 提交记录缺少 `problem_name`：`fetch_submissions_get_submissions` 构造 submission entry 时只存了 `problem_link`，未存题目名，导致 report.py / `_update_submission_status` 的题目映射只能依赖 link（name 兜底失效，link 有格式差异时显示 "?"）。两个平台从 status 页题目列（`cols[2]`，与 `problem_link` 同列）补抓 `problem_name`，与 problems 页存的 name 一致（QOJ 原有）
 - 补订已完成比赛提交抓不到：HDU/NowCoder 的提交记录在比赛 status 页里，补订时若提交早于全局 `last-update.json`，`_register_submission` 对第一条提交就 `return True` 直接停止，一场都抓不到。`fetch_contests` 记录本次新建的比赛（`_new_contests`），`fetch_submissions` 对首次抓取的比赛以 `start_time` 为截止全量回填（`_deadline_for` + `_register_submission(deadline=...)`）；非首次仍按全局 last-update 增量
 - 早于比赛开始时间的提交（跨赛季复用同一道题的历史提交）统一丢弃：`_update_submission_status` 匹配改为从 link/name 候选中选"start_time 最晚且不晚于提交时间"的比赛（提交属于其发生的赛季），早于所有匹配比赛开始的提交返回 `DISCARD` 直接丢弃、不再落入 staged；staged 重试循环对 `DISCARD` 的旧提交同样清除。QOJ 全局时间线同样适用
 - `contests.json` 条目补充 `start_time` / `end_time`（此前缺失导致时间窗口校验退化为全部匹配）；`fetch_submissions` 改用 `_load_contests_with_times()` 为旧条目按比赛文件夹 `contest.json` 回填一次

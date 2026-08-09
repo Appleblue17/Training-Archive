@@ -21,6 +21,21 @@ from dotenv import load_dotenv
 # 本地开发：从仓库根 .env 加载 DEEPSEEK_API_KEY（CI 无 .env，静默跳过）
 load_dotenv()
 
+# httpx（openai 底层）只认 socks5://，不认 socks://；clash 等代理工具导出的
+# ALL_PROXY 常为 "socks://127.0.0.1:7890"，会导致 OpenAI 客户端构造时报
+# "Unknown scheme for proxy URL"。统一归一化为 socks5://（socksio 已装）。
+for _proxy_var in (
+    "ALL_PROXY",
+    "all_proxy",
+    "HTTP_PROXY",
+    "http_proxy",
+    "HTTPS_PROXY",
+    "https_proxy",
+):
+    _proxy_value = os.environ.get(_proxy_var, "")
+    if _proxy_value.startswith("socks://"):
+        os.environ[_proxy_var] = "socks5://" + _proxy_value[len("socks://") :]
+
 # 北京时间（UTC+8）
 from datetime import timezone, timedelta
 
