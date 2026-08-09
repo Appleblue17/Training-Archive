@@ -59,6 +59,7 @@ class QOJCrawler(BaseCrawler):
             )
             return
 
+        self.username = username
         self.try_login_with_password(username, password)
 
     def fetch_contests_get_contest_list(self):
@@ -334,7 +335,7 @@ class QOJCrawler(BaseCrawler):
         - submit_time: The time when the submission was made, in ISO format (YYYY-MM-DDTHH:MM:SS)
         """
 
-        username = os.getenv("QOJ_USERNAME")
+        username = self.username
         if not username:
             self.log(
                 "fatal",

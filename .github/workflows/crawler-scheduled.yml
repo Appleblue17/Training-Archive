@@ -68,8 +68,9 @@ jobs:
           QOJ_PASSWORD: ${{ secrets.QOJ_PASSWORD }}
           HDU_USERNAME: ${{ secrets.HDU_USERNAME }}
           HDU_PASSWORD: ${{ secrets.HDU_PASSWORD }}
-          NEWCODER_COOKIE_NOWCODERUID: ${{ secrets.NEWCODER_COOKIE_NOWCODERUID }}
-          NEWCODER_COOKIE_T: ${{ secrets.NEWCODER_COOKIE_T }}
+          NOWCODER_USERNAME: ${{ secrets.NOWCODER_USERNAME }}
+          NOWCODER_COOKIE_NOWCODERUID: ${{ secrets.NOWCODER_COOKIE_NOWCODERUID }}
+          NOWCODER_COOKIE_T: ${{ secrets.NOWCODER_COOKIE_T }}
 
       - name: "Generate review reports (summary, independent of crawler)"
         run: python3 crawler/report.py

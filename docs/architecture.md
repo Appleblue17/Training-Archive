@@ -155,7 +155,7 @@ contests/
 |------|------|----------|------|
 | `crawler/qoj/qoj.py` | QOJ (qoj.ac) | 用户名/密码（`QOJ_USERNAME`/`QOJ_PASSWORD`） | 题目 PDF 下载或打印；**订阅驱动**（只抓订阅链接） |
 | `crawler/hdu/hdu.py` | HDU | 用户名/密码（`HDU_USERNAME`/`HDU_PASSWORD`） | HTML→Markdown 题目；**订阅驱动**；**已停用** |
-| `crawler/nowcoder/nowcoder.py` | NowCoder | Cookie（`NEWCODER_COOKIE_*`） | HTML→Markdown 题目；**订阅驱动**；**已停用** |
+| `crawler/nowcoder/nowcoder.py` | NowCoder | 昵称 + Cookie（`NOWCODER_USERNAME` / `NOWCODER_COOKIE_*`） | HTML→Markdown 题目；**订阅驱动**；**已停用** |
 
 ### 4.3 订阅模型与两个任务
 

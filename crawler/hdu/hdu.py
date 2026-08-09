@@ -86,6 +86,7 @@ class HDUCrawler(BaseCrawler):
             )
             return
 
+        self.username = username
         self.try_login_with_password(link, username, password)
 
     def fetch_contests_get_contest_list(self):

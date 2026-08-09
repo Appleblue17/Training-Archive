@@ -17,7 +17,6 @@ class NOWCODERCrawler(BaseCrawler):
         super().__init__("nowcoder", local_log_path)
         self.contests_path = "crawler/nowcoder/contests.json"
         self.submissions_path = "crawler/nowcoder/staged-submissions.json"
-        self.input_contests_path = "crawler/nowcoder/input_contests.json"
 
     def is_logged_in(self, link):
         main_page = self.fetch_page_with_browser(link)
@@ -41,9 +40,11 @@ class NOWCODERCrawler(BaseCrawler):
             self.log("info", "Login successful with cookies.")
 
     def login(self):
+        # 昵称用于登录态校验（is_logged_in）；cookie 用于实际登录
+        self.username = os.getenv("NOWCODER_USERNAME") or ""
         cookies = {
-            "NOWCODERUID": os.getenv("NEWCODER_COOKIE_NOWCODERUID"),
-            "t": os.getenv("NEWCODER_COOKIE_T"),
+            "NOWCODERUID": os.getenv("NOWCODER_COOKIE_NOWCODERUID"),
+            "t": os.getenv("NOWCODER_COOKIE_T"),
         }
         if not cookies["NOWCODERUID"] or not cookies["t"]:
             self.log(
@@ -66,7 +67,7 @@ class NOWCODERCrawler(BaseCrawler):
         - link: The link to the contest
         """
 
-        input_contest_list = self._load_file(self.input_contests_path)
+        input_contest_list = self._load_subscriptions(self.platform_name)
         contest_infos = []
         for input_contest in input_contest_list:
             if "link" not in input_contest:

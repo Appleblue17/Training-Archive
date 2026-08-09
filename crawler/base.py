@@ -27,9 +27,11 @@ class BaseCrawler:
         self.subscriptions_path = "crawler/subscriptions.json"
         self.driver = None
 
-        # Load configuration
+        # Load configuration（enabled 仅供 scheduled_task 过滤平台，不注入爬虫实例）
         config = self._load_file(self.config_path, default={})
         for key, value in config.get(platform_name, {}).items():
+            if key == "enabled":
+                continue
             setattr(self, key, value)
 
         # If download directory does not exist, create it
