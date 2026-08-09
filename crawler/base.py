@@ -264,6 +264,23 @@ class BaseCrawler:
             )
             return None
 
+    def _problem_id_from_link(self, link):
+        """从 problem_link 提取平台题目 ID。
+
+        HDU/NowCoder：https://.../problem?cid=123&pid=1006  → "1006"
+        QOJ：https://.../problem/123                          → "123"
+        提取失败返回 None。
+        """
+        if not link:
+            return None
+        m = re.search(r"[?&]pid=(\d+)", link)
+        if m:
+            return m.group(1)
+        m = re.search(r"/problem/(\d+)/?$", link)
+        if m:
+            return m.group(1)
+        return None
+
     def _load_contests_with_times(self):
         """加载 contests.json，并为缺 start_time 的旧条目回填比赛文件夹里的时间。
 
@@ -601,23 +618,32 @@ class BaseCrawler:
           - False   未匹配到任何比赛，保留在 staged-submissions.json
           - DISCARD 匹配到比赛但提交早于其开始时间（跨赛季复用历史提交），直接丢弃
 
-        匹配规则：先按 problem_link、再按 problem_name 收集候选比赛；
-        从候选中选出提交所属的那一场（start_time 最晚且不晚于提交时间）。
-        跨赛季复用同一道题时，提交属于其发生的那个赛季；早于所有匹配比赛
-        开始的提交（如 QOJ 全局提交时间线里的上一赛季历史提交）直接丢弃。
+        匹配规则：先按 problem_link、再按 problem_id（从 link 提取）、最后按
+        problem_name 收集候选比赛；从候选中选出提交所属的那一场（start_time
+        最晚且不晚于提交时间）。跨赛季复用同一道题时，提交属于其发生的那个
+        赛季；早于所有匹配比赛开始的提交（如 QOJ 全局提交时间线里的上一赛季
+        历史提交）直接丢弃。
         """
         ext = self._get_extension_name(entry["language"])
         filename = f"code.{ext}"
         submit_time = self._convert_iso_to_beijing(entry["submit_time"])
+        entry_link = entry.get("problem_link", "")
+        entry_id = entry.get("problem_id") or self._problem_id_from_link(entry_link)
+        entry_name = entry.get("problem_name", "")
 
-        # 收集 link / name 匹配到的 (contest, prob)，link 优先于 name
+        # 收集 link / id / name 匹配到的 (contest, prob)
         link_candidates = []
+        id_candidates = []
         name_candidates = []
         for contest in self.contests:
             for prob in contest.get("problems", []):
-                if prob["link"] == entry.get("problem_link", "not found"):
+                prob_link = prob["link"]
+                prob_id = self._problem_id_from_link(prob_link)
+                if entry_link and prob_link == entry_link:
                     link_candidates.append((contest, prob))
-                elif prob["name"] == entry.get("problem_name", "not found"):
+                elif entry_id and prob_id and entry_id == prob_id:
+                    id_candidates.append((contest, prob))
+                elif entry_name and prob.get("name") == entry_name:
                     name_candidates.append((contest, prob))
 
         def pick_best(candidates):
@@ -630,9 +656,13 @@ class BaseCrawler:
                     best = (start, contest, prob)
             return best
 
-        match = pick_best(link_candidates) or pick_best(name_candidates)
+        match = (
+            pick_best(link_candidates)
+            or pick_best(id_candidates)
+            or pick_best(name_candidates)
+        )
         if match is None:
-            if link_candidates or name_candidates:
+            if link_candidates or id_candidates or name_candidates:
                 # 匹配到比赛但提交早于其开始时间：跨赛季历史提交，直接丢弃
                 self.log(
                     "info",
@@ -645,7 +675,11 @@ class BaseCrawler:
             for staged_entry in self.staged_submissions:
                 if staged_entry.get("problem_link", "staged not found") == entry.get(
                     "problem_link", "entry not found"
-                ) or staged_entry.get("problem_name", "staged not found") == entry.get(
+                ) or staged_entry.get("problem_id", "staged not found") == entry.get(
+                    "problem_id", "entry not found"
+                ) or staged_entry.get(
+                    "problem_name", "staged not found"
+                ) == entry.get(
                     "problem_name", "entry not found"
                 ):
                     if (

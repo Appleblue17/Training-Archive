@@ -384,7 +384,13 @@ class QOJCrawler(BaseCrawler):
 
                 problem_name = cols[1].text.strip()
                 # To extract pure name, re `^#\d+\. (.*)`
-                problem_name_pure = re.match(r"^#\d+\. (.*)", problem_name).group(1)
+                problem_match = re.match(r"^#(\d+)\. (.*)", problem_name)
+                if problem_match:
+                    problem_id = problem_match.group(1)
+                    problem_name_pure = problem_match.group(2)
+                else:
+                    problem_id = ""
+                    problem_name_pure = problem_name
                 problem_link = urljoin(self.base_url, cols[1].find("a")["href"])
 
                 # Status format: [number] or [AC ✓] or [status]
@@ -404,6 +410,7 @@ class QOJCrawler(BaseCrawler):
 
                 submission_entry = {
                     "submission_id": submission_id,
+                    "problem_id": problem_id,
                     "problem_name": problem_name_pure,
                     "status": status,
                     "time": time,

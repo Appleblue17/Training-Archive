@@ -340,11 +340,11 @@ class NOWCODERCrawler(BaseCrawler):
         After fetching each submission, call the `_register_submission` method to register the submission. If the return value is True, stop fetching submissions and exit immediately.
         The submission entry should contain the following keys:
         - submission_id: The ID of the submission
-        - problem_name (optional): The name of the problem
+        - problem_id (optional): The ID of the problem (status 页题目列显示的 ID)
         - problem_link (optional): The link to the problem page
         - submit_time: The time when the submission was made, in ISO format (YYYY-MM-DDTHH:MM:SS)
 
-        Either `problem_name` or `problem_link` is required.
+        Either `problem_id` or `problem_link` is required.
         """
 
         input_contest_list = self._load_subscriptions(self.platform_name)
@@ -411,7 +411,7 @@ class NOWCODERCrawler(BaseCrawler):
 
                     submission_id = cols[0].text.strip()
                     problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
-                    problem_name = cols[2].text.strip()
+                    problem_id = cols[2].text.strip()
                     submission_link = urljoin(self.base_url, cols[0].find("a")["href"])
 
                     # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
@@ -444,7 +444,7 @@ class NOWCODERCrawler(BaseCrawler):
                         "memory": memory,
                         "language": language,
                         "submit_time": submit_time.isoformat(),
-                        "problem_name": problem_name,
+                        "problem_id": problem_id,
                         "problem_link": problem_link,
                         "submission_link": submission_link,
                     }

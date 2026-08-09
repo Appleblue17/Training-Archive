@@ -13,6 +13,7 @@
 """
 import json
 import os
+import re
 import sys
 from datetime import datetime
 
@@ -73,17 +74,40 @@ def _problem_letter_map(contest_folder):
     return result
 
 
+def _problem_id_from_link(link):
+    """从 problem_link 提取平台题目 ID（与 crawler/base.py 的 helper 一致）。
+
+    HDU/NowCoder：https://.../problem?cid=123&pid=1006  → "1006"
+    QOJ：https://.../problem/123                          → "123"
+    提取失败返回 None。
+    """
+    if not link:
+        return None
+    m = re.search(r"[?&]pid=(\d+)", link)
+    if m:
+        return m.group(1)
+    m = re.search(r"/problem/(\d+)/?$", link)
+    if m:
+        return m.group(1)
+    return None
+
+
 def build_prompt(contest_folder):
     contest = load_json(os.path.join(contest_folder, "contest.json")) or {}
     submissions = load_json(os.path.join(contest_folder, "submissions.json")) or []
     problems_map = _problem_letter_map(contest_folder)
 
-    # 提交 -> 题目字母：优先按 link 匹配，其次按 name 匹配
+    # 提交 -> 题目字母：优先按 link 匹配，其次按 problem_id，最后按 name
     letter_by_link = {}
+    letter_by_id = {}
     letter_by_name = {}
     for letter, entry in problems_map.items():
         if entry.get("link"):
-            letter_by_link[entry["link"].rstrip("/")] = letter
+            link = entry["link"].rstrip("/")
+            letter_by_link[link] = letter
+            pid = _problem_id_from_link(entry["link"])
+            if pid:
+                letter_by_id[pid] = letter
         if entry.get("name"):
             letter_by_name[entry["name"]] = letter
 
@@ -91,6 +115,9 @@ def build_prompt(contest_folder):
         link = (sub.get("problem_link") or "").rstrip("/")
         if link in letter_by_link:
             return letter_by_link[link]
+        pid = sub.get("problem_id") or _problem_id_from_link(link)
+        if pid and pid in letter_by_id:
+            return letter_by_id[pid]
         return letter_by_name.get(sub.get("problem_name"), "?")
 
     # letter -> {submission_id: source}（源码存于 problems/<letter>/submissions/<id>.<ext>）

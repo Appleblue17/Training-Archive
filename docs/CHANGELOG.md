@@ -42,9 +42,9 @@
 
 ### Fixed
 
-- HDU / NowCoder 提交记录缺少 `problem_name`：`fetch_submissions_get_submissions` 构造 submission entry 时只存了 `problem_link`，未存题目名，导致 report.py / `_update_submission_status` 的题目映射只能依赖 link（name 兜底失效，link 有格式差异时显示 "?"）。两个平台从 status 页题目列（`cols[2]`，与 `problem_link` 同列）补抓 `problem_name`，与 problems 页存的 name 一致（QOJ 原有）
+- HDU / NowCoder 提交记录补抓 `problem_id` 字段（此前只存 `problem_link`，题目映射的 name 兜底失效）：两个平台从 status 页题目列（`cols[2]`，与 `problem_link` 同列）抓取题目 ID（如 "1006"）。注意 **HDU/NowCoder 的 status 页该列显示的是题目 ID 而非题目名**，故不再存 `problem_name`；QOJ 从 `#123. Name` 同时提取 `problem_id`（"123"）与 `problem_name`（真实题目名）。三平台提交的题目匹配统一为三级：`problem_link` → `problem_id` → `problem_name`（`base.py` 新增 `_problem_id_from_link` helper；`report.py` 同步支持，link 有格式差异时不再显示 "?"）
 - 补订已完成比赛提交抓不到：HDU/NowCoder 的提交记录在比赛 status 页里，补订时若提交早于全局 `last-update.json`，`_register_submission` 对第一条提交就 `return True` 直接停止，一场都抓不到。`fetch_contests` 记录本次新建的比赛（`_new_contests`），`fetch_submissions` 对首次抓取的比赛以 `start_time` 为截止全量回填（`_deadline_for` + `_register_submission(deadline=...)`）；非首次仍按全局 last-update 增量
-- 早于比赛开始时间的提交（跨赛季复用同一道题的历史提交）统一丢弃：`_update_submission_status` 匹配改为从 link/name 候选中选"start_time 最晚且不晚于提交时间"的比赛（提交属于其发生的赛季），早于所有匹配比赛开始的提交返回 `DISCARD` 直接丢弃、不再落入 staged；staged 重试循环对 `DISCARD` 的旧提交同样清除。QOJ 全局时间线同样适用
+- 早于比赛开始时间的提交（跨赛季复用同一道题的历史提交）统一丢弃：`_update_submission_status` 匹配改为从 link/id/name 候选中选"start_time 最晚且不晚于提交时间"的比赛（提交属于其发生的赛季），早于所有匹配比赛开始的提交返回 `DISCARD` 直接丢弃、不再落入 staged；staged 重试循环对 `DISCARD` 的旧提交同样清除。QOJ 全局时间线同样适用
 - `contests.json` 条目补充 `start_time` / `end_time`（此前缺失导致时间窗口校验退化为全部匹配）；`fetch_submissions` 改用 `_load_contests_with_times()` 为旧条目按比赛文件夹 `contest.json` 回填一次
 - 本地爬虫读不到 `.env` 凭据（`os.getenv` 返回 None → login fatal）：`scheduled_task.py` / `report.py` 顶部新增 `load_dotenv()` 自动加载仓库根 `.env`（不覆盖已有环境变量，CI 无 `.env` 时静默跳过）；`requirements.txt` 新增 `python-dotenv`
 - `is_logged_in()` 的 `self.username` 无赋值来源（config.json 不再含 username 后会 `AttributeError`）：QOJ/HDU 在 `login()` 内从环境变量读用户名后赋值，NowCoder 在 `login()` 内读 `NOWCODER_USERNAME` 赋值；QOJ `fetch_submissions` 复用 `self.username`（不再重复读环境变量）
