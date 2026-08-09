@@ -5,11 +5,16 @@
 - 读取 contest.json、problems/*/problem.json、submissions.json
 - 原始提交序列（含代码与时间戳）直接送 LLM，不做分析性预处理
 - review.md 已存在则跳过（幂等，避免重复消耗 token）
-- API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变量）
+
+生成完整报告后自动串联生成 QQ 群分享简化版 qq-share.txt
+（逻辑在独立模块 crawler/qq_share.py，此处仅转调）。
+
+API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变量）。
 
 用法：
     python3 crawler/report.py                  # 扫描所有已结束且缺报告的比赛
     python3 crawler/report.py <contest_folder> # 只生成指定比赛（文件夹相对仓库根）
+    python3 crawler/report.py --qq-only        # 兼容入口：转调 qq_share.py（详见该模块）
 """
 import json
 import os
@@ -17,33 +22,13 @@ import re
 import sys
 from datetime import datetime
 
-from dotenv import load_dotenv
-
-# 本地开发：从仓库根 .env 加载 DEEPSEEK_API_KEY（CI 无 .env，静默跳过）
-load_dotenv()
-
-# httpx（openai 底层）只认 socks5://，不认 socks://；clash 等代理工具导出的
-# ALL_PROXY 常为 "socks://127.0.0.1:7890"，会导致 OpenAI 客户端构造时报
-# "Unknown scheme for proxy URL"。统一归一化为 socks5://（socksio 已装）。
-for _proxy_var in (
-    "ALL_PROXY",
-    "all_proxy",
-    "HTTP_PROXY",
-    "http_proxy",
-    "HTTPS_PROXY",
-    "https_proxy",
-):
-    _proxy_value = os.environ.get(_proxy_var, "")
-    if _proxy_value.startswith("socks://"):
-        os.environ[_proxy_var] = "socks5://" + _proxy_value[len("socks://") :]
+from deepseek_client import call_deepseek
+from qq_share import generate_qq_share, generate_qq_shares_for_all
 
 # 北京时间（UTC+8）
 from datetime import timezone, timedelta
 
 beijing = timezone(timedelta(hours=8))
-
-BASE_URL = "https://api.deepseek.com"
-MODEL = "deepseek-chat"
 
 # 提示词安全上限：超出后仅保留较新提交的源码，旧提交只留元数据，
 # 避免请求体超过模型上下文限制（DeepSeek 上下文 64K tokens）。
@@ -59,7 +44,7 @@ TEMPLATE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prompt
 
 # 模板读取失败的兜底（与 prompt.template.md 内容一致）
 DEFAULT_TEMPLATE = """\
-你是一名经验丰富的算法竞赛教练。请根据以下比赛数据撰写一份中文复盘报告。
+你是一名经验丰富的 ACM/ICPC 算法竞赛教练。请根据以下比赛数据撰写一份中文复盘报告。
 
 ## 比赛信息
 {{contest_info}}
@@ -72,17 +57,27 @@ DEFAULT_TEMPLATE = """\
 
 ## 要求
 
-请输出 Markdown 格式的复盘报告，包含：
+请输出 Markdown 格式的复盘报告，包含但不限于：
 
-1. **总体表现总结**：AC 数量、失败提交次数、用时分布与整体节奏。
-2. **逐题分析**：对每道题给出题意理解、AC 时间线、WA/失败次数、关键转折点与解题思路。
-3. **失误与改进建议**：按优先级列出可执行的改进项，作为下一场比赛的行动清单。
+1. **总体表现总结**：AC 数量、每道题的罚时与 Dirt、解题时间线（提交时间、AC 时间、罚时等）。分析整体节奏与策略，发挥水平，做得好与不足的地方。
+2. **逐题分析**：对有提交的每道题可先根据题意和代码，简单分析可能考察的模块或知识点，可能的解题思路，预估难度。随后，请详细分析时间线、未通过原因和关键转折点等。可注重以下内容：
+   - 主要的错误类型（如边界条件、算法复杂度、低级错误等）。可包含关键代码片段的解析
+   - 时间分配和策略调整
+3. **补题推荐**：针对未完成的题目，可根据可能的解题思路和难度，和题目质量（最重要的），简要给出补题建议，或是更多的练习建议和方向。
+4. **失误与改进建议**：总结本场比赛出现的不足，简要列出细致到题目与代码的失误点。提出可执行的改进项与建议（包括技术上和策略上的）
+   - 技术上：如算法、数据结构、代码风格、调试技巧等
+   - 策略上：如题目选择顺序、时间分配、团队协作等
+5. **一句话结语**（不必单独成段）：对本次比赛的整体感受、收获与反思，对队员的鼓励与建议。
 
 格式要求：
-
 - 报告开头用一级标题，标题为比赛名称。
 - 不要复述完整代码，只引用关键片段。
 - 全部使用中文。
+- 不必担忧篇幅，尽可能发掘细节和可能存在的问题和改进点
+
+提示：
+- 没有提交不代表没有尝试，可能是因为题目难度较高或时间不够（这在比赛中是常见的情况）。
+- 当一道题在通过之后，仍然有后续提交且与本题无关时，很可能是因为队员将此当作"虚拟打印"功能来使用，可以忽略，不必分析这些提交或是在报告中提及。
 """
 
 
@@ -319,24 +314,6 @@ def build_prompt(contest_folder):
     return prefix.replace("{{submissions}}", submissions_block)
 
 
-def call_deepseek(prompt, api_key):
-    from openai import OpenAI
-
-    client = OpenAI(api_key=api_key, base_url=BASE_URL)
-    resp = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {
-                "role": "system",
-                "content": "你是算法竞赛复盘助手，输出结构清晰的中文 Markdown 报告。",
-            },
-            {"role": "user", "content": prompt},
-        ],
-        temperature=0.3,
-    )
-    return resp.choices[0].message.content
-
-
 def generate_review(contest_folder):
     """为单场比赛生成 review.md。已存在或缺少关键数据时跳过。返回 True 表示生成成功。"""
     review_path = os.path.join(contest_folder, "review.md")
@@ -382,6 +359,9 @@ def generate_review(contest_folder):
     with open(review_path, "w", encoding="utf-8") as f:
         f.write(content)
     print(f"[report] Wrote {review_path}.")
+
+    # 串联生成 QQ 群分享简化版（独立 API 调用，失败不阻断完整报告）
+    generate_qq_share(contest_folder)
     return True
 
 
@@ -402,8 +382,17 @@ def generate_reviews_for_all(contests_root="contests"):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        target = sys.argv[1]
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    qq_only = "--qq-only" in sys.argv[1:]
+
+    if qq_only:
+        if args:
+            ok = generate_qq_share(args[0])
+            sys.exit(0 if ok else 1)
+        count = generate_qq_shares_for_all()
+        print(f"[report] Generated {count} qq-share(s).")
+    elif args:
+        target = args[0]
         ok = generate_review(target)
         sys.exit(0 if ok else 1)
     else:

@@ -40,6 +40,8 @@
 - 前端代码审查修复：格式化工具抽离到 `src/utils/format.ts`、URL 拼接抽离到 `src/utils/url.ts`；文件查看器重构为公共组件 + 页面薄封装；平台徽章修复 fallback；竞赛表格题号列数动态自适应（`maxProblems`）并提升键盘可访问性；首页分页边界、日期排序、横向滚动容器；布局响应式（`w-full max-w-6xl px-4`）
 - QOJ 比赛列表跳过未开始的比赛（与 HDU / NowCoder 行为一致）
 - 复盘报告 prompt 模板化：`crawler/prompt.template.md`（git 跟踪可直接编辑），注入内容用占位符 `{{contest_info}}` / `{{problems}}` / `{{submissions}}`；题目块新增**完整题面**（`statement.md`，丢弃与题号标题重复的首行）与 solved/solve_time 状态，提交源码按剩余预算（`MAX_PROMPT_CHARS` 减去固定内容）截断、题面优先保留；`report.py` 内置同名 fallback 模板
+- QQ 群分享简化版报告：`generate_qq_share` 基于已生成的 `review.md` 再调一次 DeepSeek（更高 temperature），生成轻松幽默、带 emoji 的**纯文本**总结（200-300 字），落盘 `qq-share.txt`；模板 `crawler/qq-share.template.md`（git 跟踪，占位符 `{{review}}`，内置 fallback）；完整报告生成后自动串联生成简化版（幂等），`--qq-only` 支持单独补生成。**QQ 群发送集成尚未接入（后续阶段）**
+- 爬虫脚本模块化拆分：DeepSeek 客户端抽离为 `crawler/deepseek_client.py`（`call_deepseek` + 代理归一化 + `.env` 加载，report / qq_share 共用）；QQ 群分享简化版抽离为 `crawler/qq_share.py`（独立可运行：`python3 crawler/qq_share.py [folder]`）；`report.py` 仅保留完整报告生成并转调 `qq_share`，`--qq-only` 作为兼容入口保留
 
 ### Fixed
 
