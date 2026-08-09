@@ -47,7 +47,53 @@ MODEL = "deepseek-chat"
 
 # 提示词安全上限：超出后仅保留较新提交的源码，旧提交只留元数据，
 # 避免请求体超过模型上下文限制（DeepSeek 上下文 64K tokens）。
+# 题面与比赛信息等固定内容优先保留，提交源码按剩余预算截断。
 MAX_PROMPT_CHARS = 240_000
+
+# 提示词模板：crawler/prompt.template.md（git 跟踪，可直接编辑）。
+# 占位符：
+#   {{contest_info}} 比赛信息块（程序生成，缺字段省略行）
+#   {{problems}}     题目列表 + 完整题面（程序生成，含 solved 状态）
+#   {{submissions}}  提交时间轴 + 源码（程序生成，按剩余预算截断）
+TEMPLATE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prompt.template.md")
+
+# 模板读取失败的兜底（与 prompt.template.md 内容一致）
+DEFAULT_TEMPLATE = """\
+你是一名经验丰富的算法竞赛教练。请根据以下比赛数据撰写一份中文复盘报告。
+
+## 比赛信息
+{{contest_info}}
+
+## 题目列表与题面
+{{problems}}
+
+## 提交记录（按时间升序，含每份源码）
+{{submissions}}
+
+## 要求
+
+请输出 Markdown 格式的复盘报告，包含：
+
+1. **总体表现总结**：AC 数量、失败提交次数、用时分布与整体节奏。
+2. **逐题分析**：对每道题给出题意理解、AC 时间线、WA/失败次数、关键转折点与解题思路。
+3. **失误与改进建议**：按优先级列出可执行的改进项，作为下一场比赛的行动清单。
+
+格式要求：
+
+- 报告开头用一级标题，标题为比赛名称。
+- 不要复述完整代码，只引用关键片段。
+- 全部使用中文。
+"""
+
+
+def _load_template():
+    """读取提示词模板文件；失败时回退到内置默认模板。"""
+    try:
+        with open(TEMPLATE_PATH, "r", encoding="utf-8") as f:
+            return f.read()
+    except Exception as e:
+        print(f"[report] Failed to load template {TEMPLATE_PATH}: {e}; using built-in default.")
+        return DEFAULT_TEMPLATE
 
 
 def load_json(path):
@@ -90,6 +136,112 @@ def _problem_id_from_link(link):
     if m:
         return m.group(1)
     return None
+
+
+def _build_problems_block(problems_map, contest_folder):
+    """题目列表块：每题含元数据（link/时限/内存/solved）+ 完整题面（statement.md）。
+
+    statement.md 由爬虫生成，首行为 "## <letter>. <name>" 标题，
+    与本块开头的 "### <letter>. <name>" 重复，注入时丢弃首行。
+    """
+    lines = []
+    if not problems_map:
+        lines.append("（无题目数据）")
+        return "\n".join(lines)
+
+    for letter in sorted(problems_map):
+        entry = problems_map[letter]
+        lines.append(f"### {letter}. {entry.get('name', '?')}")
+        if entry.get("link"):
+            lines.append(f"- link: {entry['link']}")
+        if entry.get("time_limit"):
+            lines.append(f"- time_limit: {entry['time_limit']}")
+        if entry.get("memory_limit"):
+            lines.append(f"- memory_limit: {entry['memory_limit']}")
+        if entry.get("solved"):
+            solved_line = "- solved: 是"
+            if entry.get("solve_time"):
+                solved_line += f"（solve_time: {entry['solve_time']}）"
+            lines.append(solved_line)
+        elif "solved" in entry:
+            lines.append("- solved: 否")
+
+        statement_path = os.path.join(
+            contest_folder, "problems", letter, "statement.md"
+        )
+        if os.path.exists(statement_path):
+            try:
+                with open(statement_path, "r", encoding="utf-8") as f:
+                    statement = f.read().strip()
+                # 丢弃与 ### 标题重复的首行（"## <letter>. <name>"）
+                body = (
+                    statement.split("\n", 1)[1].strip()
+                    if "\n" in statement
+                    else statement
+                )
+                if body:
+                    lines.append("")
+                    lines.append("题面：")
+                    lines.append(body)
+                else:
+                    lines.append("（题面为空）")
+            except Exception as e:
+                lines.append(f"（题面读取失败：{e}）")
+        else:
+            lines.append("（无题面数据）")
+        lines.append("")
+    return "\n".join(lines).rstrip()
+
+
+def _build_submissions_block(submissions_sorted, source_by_letter, letter_for, budget):
+    """提交时间轴块：每份提交的元数据行 + 源码代码块，受 budget（字符数）限制。
+
+    与旧版 build_prompt 内联逻辑一致：超预算时旧提交只保留元数据行、
+    源码省略（较新的提交优先保留源码）。
+    """
+    lines = []
+    if not submissions_sorted:
+        lines.append("（无提交数据）")
+        return "\n".join(lines)
+
+    used = 0
+    for i, sub in enumerate(submissions_sorted, 1):
+        sub_lines = []
+        sub_lines.append(
+            f"### 提交 #{i}  id={sub.get('submission_id')}  题目={letter_for(sub)}  "
+            f"状态={sub.get('status')}  语言={sub.get('language')}  "
+            f"时间={sub.get('submit_time')}"
+        )
+        if sub.get("time") is not None:
+            sub_lines.append(f"运行时间={sub.get('time')}")
+        if sub.get("memory") is not None:
+            sub_lines.append(f"内存={sub.get('memory')}")
+        # 元数据行（计入长度上限；源码只对较新的提交保留）
+        meta_len = sum(len(l) + 1 for l in sub_lines) + 60
+        if used + meta_len > budget:
+            sub_lines.append("（源码因长度限制省略）")
+            sub_lines.append("```")
+            lines.extend(sub_lines)
+            break
+        sub_lines.append("```")
+        letter = letter_for(sub)
+        code = source_by_letter.get(letter, {}).get(
+            str(sub.get("submission_id"))
+        ) or ""
+        if used + meta_len + len(code) > budget and code:
+            # 源码超限：截断为最近提交保留摘要
+            keep = budget - used - meta_len - 40
+            if keep > 200:
+                sub_lines.append(code[:keep] + "\n...（源码截断）")
+            else:
+                sub_lines.append("（源码因长度限制省略）")
+        else:
+            sub_lines.append(code)
+        sub_lines.append("```")
+        block = "\n".join(sub_lines)
+        lines.extend(sub_lines)
+        used += len(block) + 1
+    return "\n".join(lines)
 
 
 def build_prompt(contest_folder):
@@ -140,89 +292,31 @@ def build_prompt(contest_folder):
 
     submissions_sorted = sorted(submissions, key=sort_key)
 
-    lines = []
-    lines.append("你是一名经验丰富的算法竞赛教练。请根据以下比赛数据撰写一份中文复盘报告。")
-    lines.append("")
-    lines.append("## 比赛信息")
-    lines.append(f"- 名称：{contest.get('name', '?')}")
-    lines.append(f"- 日期：{contest.get('date', '?')}")
-    lines.append(f"- 平台：{contest.get('platform', '?')}")
+    # 比赛信息块（缺字段省略行）
+    info_lines = []
+    info_lines.append(f"- 名称：{contest.get('name', '?')}")
+    info_lines.append(f"- 日期：{contest.get('date', '?')}")
+    info_lines.append(f"- 平台：{contest.get('platform', '?')}")
     if contest.get("link"):
-        lines.append(f"- 链接：{contest['link']}")
+        info_lines.append(f"- 链接：{contest['link']}")
     if contest.get("start_time"):
-        lines.append(f"- 开始：{contest['start_time']}")
+        info_lines.append(f"- 开始：{contest['start_time']}")
     if contest.get("end_time"):
-        lines.append(f"- 结束：{contest['end_time']}")
+        info_lines.append(f"- 结束：{contest['end_time']}")
+    contest_info = "\n".join(info_lines)
 
-    lines.append("")
-    lines.append("## 题目列表")
-    if problems_map:
-        for letter in sorted(problems_map):
-            entry = problems_map[letter]
-            lines.append(f"- {letter}. {entry.get('name', '?')}")
-            if entry.get("link"):
-                lines.append(f"  link: {entry['link']}")
-            if entry.get("time_limit"):
-                lines.append(f"  time_limit: {entry['time_limit']}")
-            if entry.get("memory_limit"):
-                lines.append(f"  memory_limit: {entry['memory_limit']}")
-    else:
-        lines.append("（无题目数据）")
+    # 题目块（含完整题面）优先保留；提交源码按剩余预算截断
+    problems_block = _build_problems_block(problems_map, contest_folder)
 
-    lines.append("")
-    lines.append("## 提交记录（按时间升序，含每份源码）")
-    if not submissions_sorted:
-        lines.append("（无提交数据）")
-    else:
-        used = 0
-        for i, sub in enumerate(submissions_sorted, 1):
-            sub_lines = []
-            sub_lines.append(
-                f"### 提交 #{i}  id={sub.get('submission_id')}  题目={letter_for(sub)}  "
-                f"状态={sub.get('status')}  语言={sub.get('language')}  "
-                f"时间={sub.get('submit_time')}"
-            )
-            if sub.get("time") is not None:
-                sub_lines.append(f"运行时间={sub.get('time')}")
-            if sub.get("memory") is not None:
-                sub_lines.append(f"内存={sub.get('memory')}")
-            # 元数据行（计入长度上限；源码只对较新的提交保留）
-            meta_len = sum(len(l) + 1 for l in sub_lines) + 60
-            if used + meta_len > MAX_PROMPT_CHARS:
-                sub_lines.append("（源码因长度限制省略）")
-                sub_lines.append("```")
-                lines.extend(sub_lines)
-                break
-            sub_lines.append("```")
-            letter = letter_for(sub)
-            code = source_by_letter.get(letter, {}).get(
-                str(sub.get("submission_id"))
-            ) or ""
-            if used + meta_len + len(code) > MAX_PROMPT_CHARS and code:
-                # 源码超限：截断为最近提交保留摘要
-                keep = MAX_PROMPT_CHARS - used - meta_len - 40
-                if keep > 200:
-                    sub_lines.append(code[:keep] + "\n...（源码截断）")
-                else:
-                    sub_lines.append("（源码因长度限制省略）")
-            else:
-                sub_lines.append(code)
-            sub_lines.append("```")
-            block = "\n".join(sub_lines)
-            lines.extend(sub_lines)
-            used += len(block) + 1
-
-    lines.append("")
-    lines.append("## 要求")
-    lines.append(
-        "请输出 Markdown 格式的复盘报告，包含：1) 总体表现总结；2) 每道题的分析"
-        "（AC 时间线、WA/失败次数、关键转折点）；3) 失误与改进建议。"
+    template = _load_template()
+    prefix = template.replace("{{contest_info}}", contest_info).replace(
+        "{{problems}}", problems_block
     )
-    lines.append(
-        "报告开头用一级标题，标题为比赛名称。不要复述完整代码，只引用关键片段。"
+    budget = MAX_PROMPT_CHARS - len(prefix)
+    submissions_block = _build_submissions_block(
+        submissions_sorted, source_by_letter, letter_for, budget
     )
-
-    return "\n".join(lines)
+    return prefix.replace("{{submissions}}", submissions_block)
 
 
 def call_deepseek(prompt, api_key):

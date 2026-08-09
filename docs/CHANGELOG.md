@@ -39,6 +39,7 @@
 - 爬虫统一改为经 `crawler/scheduled_task.py` 入口运行；`deploy.yml` 触发条件扩展为同时监听两个爬虫工作流
 - 前端代码审查修复：格式化工具抽离到 `src/utils/format.ts`、URL 拼接抽离到 `src/utils/url.ts`；文件查看器重构为公共组件 + 页面薄封装；平台徽章修复 fallback；竞赛表格题号列数动态自适应（`maxProblems`）并提升键盘可访问性；首页分页边界、日期排序、横向滚动容器；布局响应式（`w-full max-w-6xl px-4`）
 - QOJ 比赛列表跳过未开始的比赛（与 HDU / NowCoder 行为一致）
+- 复盘报告 prompt 模板化：`crawler/prompt.template.md`（git 跟踪可直接编辑），注入内容用占位符 `{{contest_info}}` / `{{problems}}` / `{{submissions}}`；题目块新增**完整题面**（`statement.md`，丢弃与题号标题重复的首行）与 solved/solve_time 状态，提交源码按剩余预算（`MAX_PROMPT_CHARS` 减去固定内容）截断、题面优先保留；`report.py` 内置同名 fallback 模板
 
 ### Fixed
 
