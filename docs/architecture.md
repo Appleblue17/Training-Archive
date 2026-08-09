@@ -163,13 +163,15 @@ contests/
 
 ```json
 [
-  { "platform": "qoj", "link": "https://qoj.ac/contest/123", "name": "可选备注", "enabled": true }
+  { "platform": "qoj", "link": "https://qoj.ac/contest/123", "comments": "可选备注", "enabled": true }
 ]
 ```
 
+订阅条目 `enabled` 为**订阅级**开关（**缺省视为启用**，默认开启；设 `false` 暂时不抓该场，保留条目不删除）。
+
 三个平台均以订阅为唯一来源：QOJ 比赛列表按订阅链接过滤，HDU/NowCoder 遍历订阅链接解析比赛信息。
 
-**平台启用/禁用**：`crawler/config.json` 中每个平台条目可用 `enabled` 字段控制（缺省 `true` 视为启用）。`scheduled_task.py` 启动时读取该文件过滤平台，显式 `enabled: false` 的平台不会被执行（任务A/任务B 均生效）。模板见 `crawler/config.example.json`（开发分支 gitignore，deploy 分支跟踪）。
+**平台启用/禁用**：`crawler/config.json` 中每个平台条目可用 `enabled` 字段控制（**缺省 `false` 视为禁用**）。`scheduled_task.py` 启动时读取该文件过滤平台，显式 `enabled: true` 的平台才会被执行（任务A/任务B 均生效）；配置文件缺失 / 解析失败时全部平台禁用。模板见 `crawler/config.example.json`（开发分支 gitignore，deploy 分支跟踪）。注意：这里的 `enabled` 是**平台级**开关，与订阅条目的**订阅级** `enabled` 是两套独立配置。
 
 `config.json` 只存放**非敏感**的运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time`）；**登录凭据一律走环境变量**（`.env` / CI secrets）：QOJ/HDU 用户名密码、NowCoder Cookie 由各平台 `login()` 从环境变量读取，见 `.env.example`。
 
@@ -222,7 +224,7 @@ contests/
 | 全量提交采集（`submissions/` + `submissions.json`） | 复盘报告需要完整提交序列（含每份源码） | 每次提交都抓源码，初始同步耗时更长 |
 | LLM 复盘报告（DeepSeek） | 每场一份 `review.md`，原始提交序列直接送 LLM，不做预处理 | 依赖 `DEEPSEEK_API_KEY`；存在即跳过（幂等） |
 | 爬虫调度恢复为定时（两个任务） | 任务A（预订抓取，每 30 分钟）与任务B（提交周期同步，每天）分离；复盘报告由 `report.py` 独立运行 | `crawler-scheduled.yml` + `crawler.yml`，`concurrency` 串行防冲突 |
-| 平台启用/禁用由 `config.json` 控制 | HDU/NowCoder 平台结构变动/登录不稳定，默认停用；QOJ 为主力 | 每个平台条目 `enabled` 字段（缺省 true），`scheduled_task.py` 启动时过滤；代码保留，未删除 |
+| 平台启用/禁用由 `config.json` 控制 | HDU/NowCoder 平台结构变动/登录不稳定，默认停用；QOJ 为主力 | 每个平台条目 `enabled` 字段（缺省 false 视为禁用），`scheduled_task.py` 启动时过滤；代码保留，未删除 |
 
 ## 6. 已知限制
 

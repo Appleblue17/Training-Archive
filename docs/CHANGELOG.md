@@ -6,7 +6,7 @@
 
 ### Added
 
-- 平台启用/禁用管理：`crawler/config.json` 每个平台条目支持 `enabled` 字段（缺省 `true` 视为启用），`scheduled_task.py` 启动时按此过滤（任务A/任务B 均生效）；HDU/NowCoder 默认 `enabled: false`；新增模板 `crawler/config.example.json`（gitignore 例外保留模板可提交）
+- 平台启用/禁用管理：`crawler/config.json` 每个平台条目支持 `enabled` 字段（**缺省 `false` 视为禁用**，配置文件缺失/解析失败时全部平台禁用），`scheduled_task.py` 启动时按此过滤（任务A/任务B 均生效）；HDU/NowCoder 默认 `enabled: false`；新增模板 `crawler/config.example.json`（gitignore 例外保留模板可提交）
 - `config.json` 不再存放用户名等凭据：登录凭据统一由环境变量提供（QOJ/HDU 用户名密码、NowCoder Cookie，见 `.env.example`）
 - 新增 `docs/roadmap.md`：记录 v0.2.0 / v0.3.0 规划讨论与决策（双版本架构、功能分级、爬虫触发机制、DeepSeek 报告生成、GitHub OAuth 账号系统等）
 - 选定 UI 库 shadcn/ui 与图标库 lucide-react（替换 react-icons）
@@ -28,6 +28,7 @@
 
 ### Changed
 
+- 订阅条目字段 `name` 改名为 `comments`（纯用户备注，代码不读取）；`subscriptions.json` 订阅级 `enabled` 缺省视为启用（与 `config.json` 平台级缺省禁用区分）
 - NowCoder 环境变量拼写统一为 `NOWCODER_*`（原 `NEWCODER_COOKIE_*` 为历史遗留错拼）：代码、CI 工作流、文档同步；**CI Secrets 与本地 `.env` 需改名为 `NOWCODER_COOKIE_NOWCODERUID` / `NOWCODER_COOKIE_T`，并新增 `NOWCODER_USERNAME`**（登录态校验用昵称）
 - 爬虫与复盘报告解耦：`crawler/scheduled_task.py` 不再调用报告生成（只负责抓取与提交同步）；`crawler/report.py` 作为独立总结脚本运行；两个爬虫工作流均追加独立的报告生成步骤（`python3 crawler/report.py`），爬虫失败不生成报告，报告失败不阻断提交/部署
 - 依赖加固：`crawler/requirements.txt` 新增 `setuptools`（Python 3.12+ 移除标准库 distutils，而 `undetected_chromedriver` 3.5.5 仍依赖 `distutils.version`，CI ubuntu-latest 导入即报错）

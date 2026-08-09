@@ -13,9 +13,9 @@
     python3 crawler/report.py <contest_folder>  # 只生成指定比赛
 
 平台启用/禁用：
-    crawler/config.json 中每个平台条目可用 "enabled" 字段控制（缺省 true 视为启用）：
+    crawler/config.json 中每个平台条目可用 "enabled" 字段控制（缺省 false 视为禁用）：
         { "qoj": { "enabled": true, ... }, "hdu": { "enabled": false, ... } }
-    显式 enabled: false 的平台不会被执行。
+    显式 enabled: true 的平台才会被执行；配置文件缺失 / 解析失败时全部平台禁用。
 
 用法：
     python3 crawler/scheduled_task.py               # 任务A（GitHub Actions 每 15~30 分钟）

@@ -61,7 +61,8 @@
 
 ### 爬虫
 
-- 平台启用/禁用由 `crawler/config.json` 的 `enabled` 字段控制（缺省 `true`）；模板见 `crawler/config.example.json`（gitignored 的 `config.json` 不会被提交，deploy 分支的 `config.json` 需自行添加 `enabled` 字段才会真正禁用对应平台）。
+- 平台启用/禁用由 `crawler/config.json` 的 `enabled` 字段控制（**缺省 `false` 视为禁用**，配置文件缺失/解析失败时全部平台禁用）；模板见 `crawler/config.example.json`（gitignored 的 `config.json` 不会被提交，deploy 分支的 `config.json` 需显式 `enabled: true` 才会启用对应平台）。
+- 订阅条目（`crawler/subscriptions.json`）的 `enabled` 为**订阅级**开关，**缺省视为启用**（与 `config.json` 平台级缺省禁用不同）。
 - 登录凭据一律走环境变量（`.env` / CI secrets），`config.json` 只放非敏感运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time`）。QOJ/HDU 用户名密码由 `login()` 读取；NowCoder 需 `NOWCODER_USERNAME`（昵称，登录态校验）+ `NOWCODER_COOKIE_NOWCODERUID` / `NOWCODER_COOKIE_T`（登录 Cookie），见 `.env.example`。
 - HDU / NowCoder 的 HTML→Markdown 依赖 **pandoc**（CI 中安装 3.6.3；本地需自行安装）。
 - 爬虫驱动：CI 用 `browser-actions/setup-chrome`（Chrome 114）并通过环境变量传入路径；本地需自行准备 `crawler/chrome-linux64` 与 `crawler/chromedriver-linux64`。

@@ -219,10 +219,11 @@ class BaseCrawler:
 
         subscriptions.json 是统一的比赛订阅源（取代各平台零散的 input_contests.json）：
         [
-          {"platform": "hdu", "link": "https://...", "name": "可选备注", "enabled": true}
+          {"platform": "hdu", "link": "https://...", "comments": "可选", "enabled": true}
         ]
         - platform 为 None：返回全部条目。
         - platform 指定时：仅返回该平台且 enabled != false 的订阅。
+        - enabled 缺省视为启用（订阅级默认开启）；"comments" 仅为用户备注，代码不读取。
         链接由用户维护（文件被 gitignore，不随仓库同步）。
         """
         subs = self._load_file(self.subscriptions_path, default=[])
