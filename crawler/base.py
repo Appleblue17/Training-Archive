@@ -14,6 +14,12 @@ import undetected_chromedriver as uc
 # 注意：不要在模块导入时缓存 now，长任务跨午夜会用到过期时间，需实时获取。
 beijing = timezone(timedelta(hours=8))
 
+# _update_submission_status 返回值语义：
+#   True     已归档到比赛文件夹（该提交从 staged 移除）
+#   False    未匹配到任何比赛，保留在 staged-submissions.json
+#   DISCARD  匹配到比赛但提交早于其开始时间（跨赛季复用历史提交），直接丢弃
+DISCARD = "discard"
+
 
 class BaseCrawler:
     def __init__(self, platform_name, local_log_path):
@@ -41,6 +47,11 @@ class BaseCrawler:
 
         # 提交抓取是否完整结束（只有完整抓取才推进 last-update，避免静默丢提交）
         self._submissions_fetch_complete = False
+
+        # 本次运行新建的比赛（contest_link -> start_time ISO 字符串）。
+        # 首次抓取该比赛时（补订已完成比赛），提交抓取以比赛开始时间为截止全量回填，
+        # 否则 status 页第一条提交就早于全局 last-update 而被跳过，一场都抓不到。
+        self._new_contests = {}
 
         self.init_driver()
 
@@ -234,6 +245,54 @@ class BaseCrawler:
                 if s.get("platform") == platform and s.get("enabled", True)
             ]
         return subs
+
+    def _deadline_for(self, contest_link):
+        """首次抓取的新比赛：返回比赛开始时间作为提交抓取截止（全量回填该场比赛）。
+
+        非首次（本次运行未新建该比赛）返回 None，沿用全局 last_update_time 增量截止。
+        """
+        start_time = self._new_contests.get(contest_link)
+        if not start_time:
+            return None
+        try:
+            return self._convert_iso_to_beijing(start_time)
+        except Exception as e:
+            self.log(
+                "warning",
+                f"Invalid start_time {start_time!r} for {contest_link}: {e}; "
+                "falling back to incremental.",
+            )
+            return None
+
+    def _load_contests_with_times(self):
+        """加载 contests.json，并为缺 start_time 的旧条目回填比赛文件夹里的时间。
+
+        旧条目（本改动前写入）没有 start_time，跨赛季时间窗口判断会退化为全部匹配，
+        导致早于比赛开始的提交无法被丢弃。这里按比赛文件夹 contest.json 回填一次。
+        """
+        contests = self._load_file(self.contests_path)
+        changed = False
+        for contest in contests:
+            if contest.get("start_time"):
+                continue
+            folder = os.path.join(
+                self.repo_dir, f"{contest['date']} {contest['name']}"
+            )
+            info_path = os.path.join(folder, "contest.json")
+            if not os.path.exists(info_path):
+                continue
+            try:
+                with open(info_path, "r", encoding="utf-8") as f:
+                    info = json.load(f)
+            except Exception:
+                continue
+            if info.get("start_time"):
+                contest["start_time"] = info["start_time"]
+                contest["end_time"] = info.get("end_time")
+                changed = True
+        if changed:
+            self._write_file(self.contests_path, contests)
+        return contests
 
     def _write_file(self, path, entry):
         # ensure file exists and is a json object
@@ -451,6 +510,8 @@ class BaseCrawler:
             else:
                 os.makedirs(contest_folder)
                 self.log("info", f"Created contest folder: {contest_folder}")
+                # 记录本次运行新建的比赛：提交抓取时强制全量回填（见 _deadline_for）
+                self._new_contests[contest_link] = contest_info.get("start_time")
 
             self._write_file(
                 os.path.join(contest_folder, "contest.json"),
@@ -512,6 +573,8 @@ class BaseCrawler:
                 "name": contest_name,
                 "date": contest_date,
                 "link": contest_link,
+                "start_time": contest_info.get("start_time"),
+                "end_time": contest_info.get("end_time"),
                 "problems": problems,
             }
             self.contests.append(contest_entry)
@@ -531,122 +594,54 @@ class BaseCrawler:
         raise NotImplementedError
 
     def _update_submission_status(self, entry):
-        # Try to find it in self.contests by either problem_name or problem_link
-        # If found, write it to the contest/problem folder
-        # Otherwise, write it to local staged-submissions.json
+        """把一份提交归档到对应的比赛/题目（三平台统一）。
+
+        返回：
+          - True    已归档到比赛文件夹（该提交从 staged 移除）
+          - False   未匹配到任何比赛，保留在 staged-submissions.json
+          - DISCARD 匹配到比赛但提交早于其开始时间（跨赛季复用历史提交），直接丢弃
+
+        匹配规则：先按 problem_link、再按 problem_name 收集候选比赛；
+        从候选中选出提交所属的那一场（start_time 最晚且不晚于提交时间）。
+        跨赛季复用同一道题时，提交属于其发生的那个赛季；早于所有匹配比赛
+        开始的提交（如 QOJ 全局提交时间线里的上一赛季历史提交）直接丢弃。
+        """
         ext = self._get_extension_name(entry["language"])
         filename = f"code.{ext}"
+        submit_time = self._convert_iso_to_beijing(entry["submit_time"])
 
-        # Check if the problem has been recorded in any contest
-        link_matched = []
-        name_matched = []
+        # 收集 link / name 匹配到的 (contest, prob)，link 优先于 name
+        link_candidates = []
+        name_candidates = []
         for contest in self.contests:
             for prob in contest.get("problems", []):
                 if prob["link"] == entry.get("problem_link", "not found"):
-                    link_matched.append((contest, prob))
-                if prob["name"] == entry.get("problem_name", "not found"):
-                    name_matched.append((contest, prob))
+                    link_candidates.append((contest, prob))
+                elif prob["name"] == entry.get("problem_name", "not found"):
+                    name_candidates.append((contest, prob))
 
-        if link_matched and len(link_matched) == 1:
-            found = True
-            contest, prob = link_matched[0]
-        elif name_matched and len(name_matched) == 1:
-            found = True
-            contest, prob = name_matched[0]
-        else:
-            found = False
+        def pick_best(candidates):
+            best = None
+            for contest, prob in candidates:
+                start = self._convert_iso_to_beijing(
+                    contest.get("start_time", "1970-01-01T00:00:00")
+                )
+                if start <= submit_time and (best is None or start > best[0]):
+                    best = (start, contest, prob)
+            return best
 
-        if found:
-            # 校验提交时间是否在比赛时间窗口内。
-            # QOJ 提交列表是用户全部历史提交（submitter=<user> 分页遍历），
-            # Universal Cup 等题目跨赛季复用（同名/同链接），会产生早于比赛开始的
-            # 历史提交。这类提交不属于这场比赛，不应归档，交给 staged 流程处理。
-            contest_start = self._convert_iso_to_beijing(
-                contest.get("start_time", "1970-01-01T00:00:00")
-            )
-            submit_time = self._convert_iso_to_beijing(entry["submit_time"])
-            if submit_time < contest_start - timedelta(days=1):
+        match = pick_best(link_candidates) or pick_best(name_candidates)
+        if match is None:
+            if link_candidates or name_candidates:
+                # 匹配到比赛但提交早于其开始时间：跨赛季历史提交，直接丢弃
                 self.log(
-                    "warning",
-                    f"Submission {entry.get('submission_id')} at {entry['submit_time']} "
-                    f"is before contest start {contest.get('start_time')} for "
-                    f"{prob.get('letter')}.{prob.get('name')}; treating as unmatched.",
+                    "info",
+                    f"Submission {entry.get('submission_id')} at "
+                    f"{entry['submit_time']} is before the matched contest start; "
+                    "discarded.",
                 )
-                found = False
-            else:
-                problem_folder = os.path.join(
-                    self.repo_dir,
-                    f"{contest['date']} {contest['name']}",
-                    "problems",
-                    prob["letter"],
-                )
-                # Get if the problem is solved
-                problem_json_path = os.path.join(problem_folder, "problem.json")
-                if not os.path.exists(problem_json_path):
-                    self.log(
-                        "error",
-                        f"Problem JSON not found for {prob['name']} in {problem_folder}.",
-                    )
-                    return False
-
-                with open(problem_json_path, "r", encoding="utf-8") as f:
-                    problem_json = json.load(f)
-                problem_solved = problem_json.get("solved", False)
-
-                # 全量提交归档：submissions.json + problems/<letter>/submissions/<id>.<ext>
-                # 每次提交都抓取源码并落盘（供复盘报告使用）。源码抓取失败不阻断元数据流程。
-                try:
-                    code = self.fetch_submissions_fetch_source_code(entry)
-                except Exception as e:
-                    self.log(
-                        "error",
-                        f"Failed to fetch source code for submission {entry.get('submission_id')}: {e}",
-                    )
-                    code = None
-                self._archive_submission(contest, prob, entry, ext, code)
-
-                # Update "submit_time" and code file
-                is_newer = self._convert_iso_to_beijing(
-                    entry["submit_time"]
-                ) > self._convert_iso_to_beijing(
-                    problem_json.get("submit_time", "1970-01-01T00:00:00")
-                )
-                if code is not None and not (entry["status"] != "AC" and problem_solved) and (
-                    is_newer or (entry.get("status") == "AC" and not problem_solved)
-                ):
-                    problem_json["submit_time"] = entry["submit_time"]
-
-                    # Update source code file
-                    os.makedirs(problem_folder, exist_ok=True)
-                    file_path = os.path.join(problem_folder, filename)
-                    with open(file_path, "w", encoding="utf-8") as f:
-                        f.write(code)
-
-                    # Update code.{ext}.json
-                    self._write_file(
-                        os.path.join(problem_folder, f"code.{ext}.json"),
-                        entry,
-                    )
-
-                # Update problem.json "solved" and "solve_time"
-                if entry["status"] == "AC":
-                    problem_json["solved"] = True
-
-                    # If problem_json["solve_time"] is not set or later than entry["submit_time"], update it
-
-                    if "solve_time" not in problem_json or self._convert_iso_to_beijing(
-                        entry["submit_time"]
-                    ) < self._convert_iso_to_beijing(
-                        problem_json.get("solve_time", "1970-01-01T00:00:00")
-                    ):
-                        problem_json["solve_time"] = entry["submit_time"]
-
-                self._write_file(problem_json_path, problem_json)
-                return True
-
-        # If not found, update to staged-submissions.json
-        if not found:
-            # Check if the problem already exists in staged submissions
+                return DISCARD
+            # 未匹配到任何比赛，交给 staged 流程处理
             for staged_entry in self.staged_submissions:
                 if staged_entry.get("problem_link", "staged not found") == entry.get(
                     "problem_link", "entry not found"
@@ -664,6 +659,77 @@ class BaseCrawler:
                 self.staged_submissions.append(entry)
                 self._write_file(self.submissions_path, self.staged_submissions)
             return False
+
+        _, contest, prob = match
+        problem_folder = os.path.join(
+            self.repo_dir,
+            f"{contest['date']} {contest['name']}",
+            "problems",
+            prob["letter"],
+        )
+        # Get if the problem is solved
+        problem_json_path = os.path.join(problem_folder, "problem.json")
+        if not os.path.exists(problem_json_path):
+            self.log(
+                "error",
+                f"Problem JSON not found for {prob['name']} in {problem_folder}.",
+            )
+            return False
+
+        with open(problem_json_path, "r", encoding="utf-8") as f:
+            problem_json = json.load(f)
+        problem_solved = problem_json.get("solved", False)
+
+        # 全量提交归档：submissions.json + problems/<letter>/submissions/<id>.<ext>
+        # 每次提交都抓取源码并落盘（供复盘报告使用）。源码抓取失败不阻断元数据流程。
+        try:
+            code = self.fetch_submissions_fetch_source_code(entry)
+        except Exception as e:
+            self.log(
+                "error",
+                f"Failed to fetch source code for submission {entry.get('submission_id')}: {e}",
+            )
+            code = None
+        self._archive_submission(contest, prob, entry, ext, code)
+
+        # Update "submit_time" and code file
+        is_newer = self._convert_iso_to_beijing(
+            entry["submit_time"]
+        ) > self._convert_iso_to_beijing(
+            problem_json.get("submit_time", "1970-01-01T00:00:00")
+        )
+        if code is not None and not (entry["status"] != "AC" and problem_solved) and (
+            is_newer or (entry.get("status") == "AC" and not problem_solved)
+        ):
+            problem_json["submit_time"] = entry["submit_time"]
+
+            # Update source code file
+            os.makedirs(problem_folder, exist_ok=True)
+            file_path = os.path.join(problem_folder, filename)
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(code)
+
+            # Update code.{ext}.json
+            self._write_file(
+                os.path.join(problem_folder, f"code.{ext}.json"),
+                entry,
+            )
+
+        # Update problem.json "solved" and "solve_time"
+        if entry["status"] == "AC":
+            problem_json["solved"] = True
+
+            # If problem_json["solve_time"] is not set or later than entry["submit_time"], update it
+
+            if "solve_time" not in problem_json or self._convert_iso_to_beijing(
+                entry["submit_time"]
+            ) < self._convert_iso_to_beijing(
+                problem_json.get("solve_time", "1970-01-01T00:00:00")
+            ):
+                problem_json["solve_time"] = entry["submit_time"]
+
+        self._write_file(problem_json_path, problem_json)
+        return True
 
     def _archive_submission(self, contest, prob, entry, ext, code):
         """把一份提交完整归档（幂等，按 submission_id 去重）。
@@ -697,19 +763,31 @@ class BaseCrawler:
         submissions.append(entry)
         self._write_file(submissions_path, submissions)
 
-    def _register_submission(self, submission_entry):
+    def _register_submission(self, submission_entry, deadline=None):
         """
         Register a submission entry. This method is called after fetching each submission.
         Return a boolean indicating whether to stop fetching submissions.
+
+        deadline: 本次抓取的截止时间（早于该时间的提交停止抓取）。
+                  None 时使用全局 last_update_time（增量截止）；
+                  首次抓取的新比赛传比赛 start_time，强制全量回填（见 _deadline_for）。
         """
         submit_time = self._convert_iso_to_beijing(submission_entry["submit_time"])
         submission_id = submission_entry["submission_id"]
 
-        if submit_time < self.last_update_time:
-            self.log(
-                "info",
-                f"Reached last update (Submission {submission_id}), stopping.",
-            )
+        if deadline is None:
+            deadline = self.last_update_time
+        if submit_time < deadline:
+            if deadline is self.last_update_time:
+                self.log(
+                    "info",
+                    f"Reached last update (Submission {submission_id}), stopping.",
+                )
+            else:
+                self.log(
+                    "info",
+                    f"Reached contest start (Submission {submission_id}), stopping.",
+                )
             return True
 
         self._update_submission_status(submission_entry)
@@ -723,14 +801,27 @@ class BaseCrawler:
         )
         self.last_update_time = self._convert_iso_to_beijing(last_update_time_str)
 
-        self.contests = self._load_file(self.contests_path)
+        # 加载比赛列表（旧条目缺 start_time 时按比赛文件夹回填）
+        self.contests = self._load_contests_with_times()
         self.staged_submissions = self._load_file(self.submissions_path)
 
         # First try updating existing staged submissions
         self.log("info", "Start updating staged submissions...")
         new_staged = []
-        for entry in self.staged_submissions:
-            if not self._update_submission_status(entry):
+        # 遍历快照：_update_submission_status 对未匹配提交会 append 回
+        # self.staged_submissions（供增量抓取路径入 staged），若直接遍历原列表
+        # 会边遍历边增长导致无限循环。
+        for entry in list(self.staged_submissions):
+            result = self._update_submission_status(entry)
+            if result == DISCARD:
+                # 早于匹配比赛开始的 staged 提交（跨赛季历史遗留）直接丢弃
+                self.log(
+                    "info",
+                    f"Staged submission {entry.get('submission_id')} is before the "
+                    "matched contest start; discarded.",
+                )
+                continue
+            if not result:
                 new_staged.append(entry)
         self.staged_submissions = new_staged
         self._write_file(self.submissions_path, self.staged_submissions)

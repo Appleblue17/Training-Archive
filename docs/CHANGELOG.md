@@ -42,6 +42,9 @@
 
 ### Fixed
 
+- 补订已完成比赛提交抓不到：HDU/NowCoder 的提交记录在比赛 status 页里，补订时若提交早于全局 `last-update.json`，`_register_submission` 对第一条提交就 `return True` 直接停止，一场都抓不到。`fetch_contests` 记录本次新建的比赛（`_new_contests`），`fetch_submissions` 对首次抓取的比赛以 `start_time` 为截止全量回填（`_deadline_for` + `_register_submission(deadline=...)`）；非首次仍按全局 last-update 增量
+- 早于比赛开始时间的提交（跨赛季复用同一道题的历史提交）统一丢弃：`_update_submission_status` 匹配改为从 link/name 候选中选"start_time 最晚且不晚于提交时间"的比赛（提交属于其发生的赛季），早于所有匹配比赛开始的提交返回 `DISCARD` 直接丢弃、不再落入 staged；staged 重试循环对 `DISCARD` 的旧提交同样清除。QOJ 全局时间线同样适用
+- `contests.json` 条目补充 `start_time` / `end_time`（此前缺失导致时间窗口校验退化为全部匹配）；`fetch_submissions` 改用 `_load_contests_with_times()` 为旧条目按比赛文件夹 `contest.json` 回填一次
 - 本地爬虫读不到 `.env` 凭据（`os.getenv` 返回 None → login fatal）：`scheduled_task.py` / `report.py` 顶部新增 `load_dotenv()` 自动加载仓库根 `.env`（不覆盖已有环境变量，CI 无 `.env` 时静默跳过）；`requirements.txt` 新增 `python-dotenv`
 - `is_logged_in()` 的 `self.username` 无赋值来源（config.json 不再含 username 后会 `AttributeError`）：QOJ/HDU 在 `login()` 内从环境变量读用户名后赋值，NowCoder 在 `login()` 内读 `NOWCODER_USERNAME` 赋值；QOJ `fetch_submissions` 复用 `self.username`（不再重复读环境变量）
 - NowCoder 未迁移订阅模型：`fetch_contests_get_contest_list` 仍读旧的 `input_contests.json`（文件不存在 → 永远抓不到比赛），改为与 HDU/QOJ 一致的 `_load_subscriptions(self.platform_name)`，删除 `input_contests_path`
