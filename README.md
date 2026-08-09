@@ -69,11 +69,13 @@ pnpm lint
 # 安装依赖
 pip install -r crawler/requirements.txt
 
-# 准备配置与环境变量（用户名/密码等，见 .github/workflows/crawler.yml）
-# 运行指定平台爬虫
-python3 crawler/qoj/qoj.py
-python3 crawler/hdu/hdu.py
-python3 crawler/nowcoder/nowcoder.py
+# 准备配置与环境变量（见 crawler/subscriptions.example.json 与 .env.example）
+# 任务A：抓订阅比赛 + 增量同步提交
+python3 crawler/scheduled_task.py
+# 任务B：每日增量同步提交
+python3 crawler/scheduled_task.py --submissions-only
+# 复盘报告（独立于爬虫）
+python3 crawler/report.py
 ```
 
 爬虫会生成 `contests/` 数据目录与各平台日志文件（均已被 `.gitignore` 忽略）。

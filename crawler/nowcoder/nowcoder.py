@@ -453,31 +453,3 @@ class NOWCODERCrawler(BaseCrawler):
                 )
                 if stop_fetching:
                     break
-
-
-if __name__ == "__main__":
-    crawler = NOWCODERCrawler()
-    crawler.log("info", "Nowcoder Crawler is disabled.")
-    crawler.deinit_driver()
-    raise RuntimeError("Nowcoder Crawler is disabled.")
-
-    # try:
-    #     crawler.log(
-    #         "important",
-    #         "nowcoder Crawler started at " + datetime.now(beijing).isoformat(),
-    #     )
-    #     crawler.login()
-
-    #     crawler.fetch_contests()
-    #     crawler.log("info", "Contests fetched successfully.")
-    #     crawler.fetch_submissions()
-    #     crawler.log("info", "Submissions fetched successfully.")
-    #     crawler.log(
-    #         "important",
-    #         "nowcoder Crawler finished successfully at "
-    #         + datetime.now(beijing).isoformat(),
-    #     )
-    #     crawler.finish()
-    # except Exception as e:
-    #     crawler.log("fatal", f"An error occurred: {e}")
-    #     crawler.deinit_driver()

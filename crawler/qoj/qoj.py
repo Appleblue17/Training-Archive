@@ -421,24 +421,3 @@ class QOJCrawler(BaseCrawler):
                 "info",
                 f"Fetched {len(submission_elements)} submissions from page {page}.",
             )
-
-
-if __name__ == "__main__":
-    crawler = QOJCrawler()
-    try:
-        crawler.log(
-            "important", "QOJ Crawler started at " + datetime.now(beijing).isoformat()
-        )
-        crawler.login()
-        crawler.fetch_contests()
-        crawler.log("info", "Contests fetched successfully.")
-        crawler.fetch_submissions()
-        crawler.log("info", "Submissions fetched successfully.")
-        crawler.log(
-            "important",
-            "QOJ Crawler finished successfully at " + datetime.now(beijing).isoformat(),
-        )
-        crawler.finish()
-    except Exception as e:
-        crawler.log("fatal", f"An error occurred: {e}")
-        crawler.deinit_driver()
