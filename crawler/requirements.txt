@@ -2,3 +2,4 @@ undetected_chromedriver
 bs4
 openai
 setuptools
+python-dotenv

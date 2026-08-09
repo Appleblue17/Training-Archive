@@ -16,6 +16,11 @@ import os
 import sys
 from datetime import datetime
 
+from dotenv import load_dotenv
+
+# 本地开发：从仓库根 .env 加载 DEEPSEEK_API_KEY（CI 无 .env，静默跳过）
+load_dotenv()
+
 # 北京时间（UTC+8）
 from datetime import timezone, timedelta
 

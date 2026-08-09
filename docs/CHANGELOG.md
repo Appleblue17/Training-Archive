@@ -42,6 +42,7 @@
 
 ### Fixed
 
+- 本地爬虫读不到 `.env` 凭据（`os.getenv` 返回 None → login fatal）：`scheduled_task.py` / `report.py` 顶部新增 `load_dotenv()` 自动加载仓库根 `.env`（不覆盖已有环境变量，CI 无 `.env` 时静默跳过）；`requirements.txt` 新增 `python-dotenv`
 - `is_logged_in()` 的 `self.username` 无赋值来源（config.json 不再含 username 后会 `AttributeError`）：QOJ/HDU 在 `login()` 内从环境变量读用户名后赋值，NowCoder 在 `login()` 内读 `NOWCODER_USERNAME` 赋值；QOJ `fetch_submissions` 复用 `self.username`（不再重复读环境变量）
 - NowCoder 未迁移订阅模型：`fetch_contests_get_contest_list` 仍读旧的 `input_contests.json`（文件不存在 → 永远抓不到比赛），改为与 HDU/QOJ 一致的 `_load_subscriptions(self.platform_name)`，删除 `input_contests_path`
 - `BaseCrawler` 不再把 `config.json` 的 `enabled` 键注入实例（该键仅供 `scheduled_task.py` 过滤平台）

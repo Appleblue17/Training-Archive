@@ -26,6 +26,11 @@ import json
 import os
 import sys
 
+from dotenv import load_dotenv
+
+# 本地开发：从仓库根 .env 加载凭据（CI 无 .env，静默跳过；不覆盖已有环境变量）
+load_dotenv()
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 PLATFORM_ORDER = ("qoj", "hdu", "nowcoder")
