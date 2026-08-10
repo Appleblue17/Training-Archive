@@ -1,0 +1,134 @@
+[
+  {
+    "submission_id": "#1533981",
+    "problem_name": "All-Star",
+    "status": "AC",
+    "time": "2ms",
+    "memory": "5132kb",
+    "language": "C++14",
+    "submit_time": "2025-10-18T13:47:09+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9781",
+    "submission_link": "https://qoj.ac/submission/1533981"
+  },
+  {
+    "submission_id": "#1596411",
+    "problem_name": "NonZero PrefSuf Sums",
+    "status": "AC",
+    "time": "635ms",
+    "memory": "5256kb",
+    "language": "C++14",
+    "submit_time": "2025-10-27T20:05:24+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9782",
+    "submission_link": "https://qoj.ac/submission/1596411"
+  },
+  {
+    "submission_id": "#1535883",
+    "problem_name": "Duloc Network",
+    "status": "AC",
+    "time": "34ms",
+    "memory": "4172kb",
+    "language": "C++14",
+    "submit_time": "2025-10-18T16:40:38+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9783",
+    "submission_link": "https://qoj.ac/submission/1535883"
+  },
+  {
+    "submission_id": "#1533714",
+    "problem_name": "Donkey and Puss in Boots",
+    "status": "AC",
+    "time": "24ms",
+    "memory": "3852kb",
+    "language": "C++14",
+    "submit_time": "2025-10-18T13:12:43+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9784",
+    "submission_link": "https://qoj.ac/submission/1533714"
+  },
+  {
+    "submission_id": "#1539251",
+    "problem_name": "Shrooks",
+    "status": "AC",
+    "time": "420ms",
+    "memory": "28696kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T01:03:22+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9785",
+    "submission_link": "https://qoj.ac/submission/1539251"
+  },
+  {
+    "submission_id": "#1535376",
+    "problem_name": "Magical Bags",
+    "status": "AC",
+    "time": "213ms",
+    "memory": "45356kb",
+    "language": "C++14",
+    "submit_time": "2025-10-18T15:56:40+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9786",
+    "submission_link": "https://qoj.ac/submission/1535376"
+  },
+  {
+    "submission_id": "#1534077",
+    "problem_name": "Shrek's Song of the Swamp",
+    "status": "AC",
+    "time": "2472ms",
+    "memory": "152412kb",
+    "language": "C++14",
+    "submit_time": "2025-10-18T13:55:27+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9787",
+    "submission_link": "https://qoj.ac/submission/1534077"
+  },
+  {
+    "submission_id": "#1534228",
+    "problem_name": "Shreckless",
+    "status": "AC",
+    "time": "21ms",
+    "memory": "12972kb",
+    "language": "C++14",
+    "submit_time": "2025-10-18T14:09:18+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9788",
+    "submission_link": "https://qoj.ac/submission/1534228"
+  },
+  {
+    "submission_id": "#1533990",
+    "problem_name": "Make Swamp Great Again",
+    "status": "AC",
+    "time": "23ms",
+    "memory": "9396kb",
+    "language": "C++14",
+    "submit_time": "2025-10-18T13:48:04+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9790",
+    "submission_link": "https://qoj.ac/submission/1533990"
+  },
+  {
+    "submission_id": "#1534372",
+    "problem_name": "Intrusive Donkey",
+    "status": "AC",
+    "time": "52ms",
+    "memory": "17792kb",
+    "language": "C++14",
+    "submit_time": "2025-10-18T14:23:27+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9791",
+    "submission_link": "https://qoj.ac/submission/1534372"
+  },
+  {
+    "submission_id": "#1534175",
+    "problem_name": "Ogre Sort",
+    "status": "AC",
+    "time": "58ms",
+    "memory": "17112kb",
+    "language": "C++14",
+    "submit_time": "2025-10-18T14:04:27+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9792",
+    "submission_link": "https://qoj.ac/submission/1534175"
+  },
+  {
+    "submission_id": "#1553394",
+    "problem_name": "Enchanted Lawns Quest",
+    "status": "AC",
+    "time": "1131ms",
+    "memory": "138040kb",
+    "language": "C++20",
+    "submit_time": "2025-10-21T12:57:28+08:00",
+    "problem_link": "https://qoj.ac/contest/1849/problem/9793",
+    "submission_link": "https://qoj.ac/submission/1553394"
+  }
+]

@@ -1,0 +1,123 @@
+[
+  {
+    "submission_id": "#1017194",
+    "problem_name": "Eminor Array",
+    "status": "AC",
+    "time": "713ms",
+    "memory": "34844kb",
+    "language": "C++14",
+    "submit_time": "2025-05-05T15:52:01",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10749",
+    "submission_link": "https://qoj.ac/submission/1017194"
+  },
+  {
+    "submission_id": "#1017280",
+    "problem_name": "Dfs Order 0.5",
+    "status": "AC",
+    "time": "114ms",
+    "memory": "63812kb",
+    "language": "C++14",
+    "submit_time": "2025-05-05T16:11:57",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10750",
+    "submission_link": "https://qoj.ac/submission/1017280"
+  },
+  {
+    "submission_id": "#1016736",
+    "problem_name": "Fibonacci Sum",
+    "status": "AC",
+    "time": "303ms",
+    "memory": "404316kb",
+    "language": "C++14",
+    "submit_time": "2025-05-05T14:05:01",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10751",
+    "submission_link": "https://qoj.ac/submission/1016736"
+  },
+  {
+    "submission_id": "#1016899",
+    "problem_name": "Parallel Lines",
+    "status": "AC",
+    "time": "50ms",
+    "memory": "4444kb",
+    "language": "C++14",
+    "submit_time": "2025-05-05T14:50:15",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10752",
+    "submission_link": "https://qoj.ac/submission/1016899"
+  },
+  {
+    "submission_id": "#1017345",
+    "problem_name": "Connected Components",
+    "status": "AC",
+    "time": "904ms",
+    "memory": "31264kb",
+    "language": "C++14",
+    "submit_time": "2025-05-05T16:28:12",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10753",
+    "submission_link": "https://qoj.ac/submission/1017345"
+  },
+  {
+    "submission_id": "#1017784",
+    "problem_name": "Best Player",
+    "status": "AC",
+    "time": "499ms",
+    "memory": "44844kb",
+    "language": "C++17",
+    "submit_time": "2025-05-05T17:50:53",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10754",
+    "submission_link": "https://qoj.ac/submission/1017784"
+  },
+  {
+    "submission_id": "#1016757",
+    "problem_name": "Platform Game",
+    "status": "AC",
+    "time": "211ms",
+    "memory": "19964kb",
+    "language": "C++14",
+    "submit_time": "2025-05-05T14:14:14",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10755",
+    "submission_link": "https://qoj.ac/submission/1016757"
+  },
+  {
+    "submission_id": "#1017932",
+    "problem_name": "Games on the Ads 2: Painting",
+    "status": "AC",
+    "time": "269ms",
+    "memory": "3584kb",
+    "language": "C++14",
+    "submit_time": "2025-05-05T18:17:47",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10756",
+    "submission_link": "https://qoj.ac/submission/1017932"
+  },
+  {
+    "submission_id": "#1016617",
+    "problem_name": "The Easiest Problem",
+    "status": "AC",
+    "time": "0ms",
+    "memory": "3584kb",
+    "language": "C++14",
+    "submit_time": "2025-05-05T13:24:28",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10757",
+    "submission_link": "https://qoj.ac/submission/1016617"
+  },
+  {
+    "submission_id": "#1018733",
+    "problem_name": "String Divide II",
+    "status": "AC",
+    "time": "3830ms",
+    "memory": "27036kb",
+    "language": "C++17",
+    "submit_time": "2025-05-05T22:01:45",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10759",
+    "submission_link": "https://qoj.ac/submission/1018733"
+  },
+  {
+    "submission_id": "#1016695",
+    "problem_name": "Recharge",
+    "status": "AC",
+    "time": "47ms",
+    "memory": "3840kb",
+    "language": "C++14",
+    "submit_time": "2025-05-05T13:52:32",
+    "problem_link": "https://qoj.ac/contest/1996/problem/10760",
+    "submission_link": "https://qoj.ac/submission/1016695"
+  }
+]

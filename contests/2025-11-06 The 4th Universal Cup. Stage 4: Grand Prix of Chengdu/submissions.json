@@ -1,0 +1,112 @@
+[
+  {
+    "submission_id": "#1662866",
+    "problem_name": "A Lot of Paintings",
+    "status": "AC",
+    "time": "23ms",
+    "memory": "8708kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T09:21:29+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14706",
+    "submission_link": "https://qoj.ac/submission/1662866"
+  },
+  {
+    "submission_id": "#1663145",
+    "problem_name": "Blood Memories",
+    "status": "AC",
+    "time": "546ms",
+    "memory": "4148kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T10:23:37+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14707",
+    "submission_link": "https://qoj.ac/submission/1663145"
+  },
+  {
+    "submission_id": "#1663054",
+    "problem_name": "Crossing River",
+    "status": "AC",
+    "time": "71ms",
+    "memory": "21052kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T10:07:52+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14708",
+    "submission_link": "https://qoj.ac/submission/1663054"
+  },
+  {
+    "submission_id": "#1663447",
+    "problem_name": "Deductive Snooker Scoring",
+    "status": "AC",
+    "time": "2ms",
+    "memory": "3952kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T11:15:35+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14709",
+    "submission_link": "https://qoj.ac/submission/1663447"
+  },
+  {
+    "submission_id": "#1662885",
+    "problem_name": "GCD of Subsets",
+    "status": "AC",
+    "time": "17ms",
+    "memory": "3760kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T09:25:45+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14712",
+    "submission_link": "https://qoj.ac/submission/1662885"
+  },
+  {
+    "submission_id": "#1663842",
+    "problem_name": "Inside Triangle",
+    "status": "AC",
+    "time": "387ms",
+    "memory": "47980kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T12:22:00+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14714",
+    "submission_link": "https://qoj.ac/submission/1663842"
+  },
+  {
+    "submission_id": "#1662907",
+    "problem_name": "Judging Papers",
+    "status": "AC",
+    "time": "54ms",
+    "memory": "3984kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T09:29:21+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14715",
+    "submission_link": "https://qoj.ac/submission/1662907"
+  },
+  {
+    "submission_id": "#1663563",
+    "problem_name": "K-Coverage",
+    "status": "AC",
+    "time": "235ms",
+    "memory": "32268kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T11:32:46+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14716",
+    "submission_link": "https://qoj.ac/submission/1663563"
+  },
+  {
+    "submission_id": "#1662988",
+    "problem_name": "Label Matching",
+    "status": "AC",
+    "time": "692ms",
+    "memory": "285524kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T09:50:29+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14717",
+    "submission_link": "https://qoj.ac/submission/1662988"
+  },
+  {
+    "submission_id": "#1667763",
+    "problem_name": "Meeting for Meals",
+    "status": "AC",
+    "time": "719ms",
+    "memory": "92684kb",
+    "language": "C++14",
+    "submit_time": "2025-11-06T19:53:08+08:00",
+    "problem_link": "https://qoj.ac/contest/2567/problem/14718",
+    "submission_link": "https://qoj.ac/submission/1667763"
+  }
+]

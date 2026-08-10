@@ -1,0 +1,79 @@
+[
+  {
+    "submission_id": "#1020800",
+    "problem_name": "Anton's ABCD",
+    "status": "AC",
+    "time": "85ms",
+    "memory": "3968kb",
+    "language": "C++14",
+    "submit_time": "2025-05-06T12:58:09",
+    "problem_link": "https://qoj.ac/contest/1511/problem/8207",
+    "submission_link": "https://qoj.ac/submission/1020800"
+  },
+  {
+    "submission_id": "#1020294",
+    "problem_name": "Curly Palindromes",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3936kb",
+    "language": "C++14",
+    "submit_time": "2025-05-06T09:43:33",
+    "problem_link": "https://qoj.ac/contest/1511/problem/8209",
+    "submission_link": "https://qoj.ac/submission/1020294"
+  },
+  {
+    "submission_id": "#1020253",
+    "problem_name": "Division 3 Polyglot",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3680kb",
+    "language": "C++14",
+    "submit_time": "2025-05-06T09:25:56",
+    "problem_link": "https://qoj.ac/contest/1511/problem/8210",
+    "submission_link": "https://qoj.ac/submission/1020253"
+  },
+  {
+    "submission_id": "#1021176",
+    "problem_name": "Enumerating Substrings",
+    "status": "AC",
+    "time": "122ms",
+    "memory": "64848kb",
+    "language": "C++14",
+    "submit_time": "2025-05-06T14:51:38",
+    "problem_link": "https://qoj.ac/contest/1511/problem/8211",
+    "submission_link": "https://qoj.ac/submission/1021176"
+  },
+  {
+    "submission_id": "#1020644",
+    "problem_name": "Football in Osijek",
+    "status": "AC",
+    "time": "317ms",
+    "memory": "88876kb",
+    "language": "C++17",
+    "submit_time": "2025-05-06T11:46:55",
+    "problem_link": "https://qoj.ac/contest/1511/problem/8212",
+    "submission_link": "https://qoj.ac/submission/1020644"
+  },
+  {
+    "submission_id": "#1020854",
+    "problem_name": "Graffiti",
+    "status": "AC",
+    "time": "157ms",
+    "memory": "76488kb",
+    "language": "C++17",
+    "submit_time": "2025-05-06T13:49:09",
+    "problem_link": "https://qoj.ac/contest/1511/problem/8213",
+    "submission_link": "https://qoj.ac/submission/1020854"
+  },
+  {
+    "submission_id": "#1020395",
+    "problem_name": "King's Dinner",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3840kb",
+    "language": "C++14",
+    "submit_time": "2025-05-06T10:21:05",
+    "problem_link": "https://qoj.ac/contest/1511/problem/8217",
+    "submission_link": "https://qoj.ac/submission/1020395"
+  }
+]

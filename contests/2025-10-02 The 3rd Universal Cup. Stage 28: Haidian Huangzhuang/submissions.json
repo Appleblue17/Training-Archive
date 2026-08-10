@@ -1,0 +1,57 @@
+[
+  {
+    "submission_id": "#1432610",
+    "problem_name": "Currency",
+    "status": "AC",
+    "time": "2ms",
+    "memory": "6016kb",
+    "language": "C++14",
+    "submit_time": "2025-10-02T15:06:18+08:00",
+    "problem_link": "https://qoj.ac/contest/1903/problem/9692",
+    "submission_link": "https://qoj.ac/submission/1432610"
+  },
+  {
+    "submission_id": "#1439839",
+    "problem_name": "Trash Problem",
+    "status": "AC",
+    "time": "623ms",
+    "memory": "72372kb",
+    "language": "C++14",
+    "submit_time": "2025-10-03T15:50:43+08:00",
+    "problem_link": "https://qoj.ac/contest/1903/problem/9695",
+    "submission_link": "https://qoj.ac/submission/1439839"
+  },
+  {
+    "submission_id": "#1434771",
+    "problem_name": "Analysis",
+    "status": "WA",
+    "time": "3ms",
+    "memory": "48284kb",
+    "language": "C++14",
+    "submit_time": "2025-10-02T17:38:46+08:00",
+    "problem_link": "https://qoj.ac/contest/1903/problem/9696",
+    "submission_link": "https://qoj.ac/submission/1434771"
+  },
+  {
+    "submission_id": "#1434546",
+    "problem_name": "Algebra",
+    "status": "AC",
+    "time": "620ms",
+    "memory": "10320kb",
+    "language": "C++14",
+    "submit_time": "2025-10-02T17:19:01+08:00",
+    "problem_link": "https://qoj.ac/contest/1903/problem/9697",
+    "submission_link": "https://qoj.ac/submission/1434546"
+  },
+  {
+    "submission_id": "#1432738",
+    "problem_name": "Ying’s Cup",
+    "status": "AC",
+    "time": "998ms",
+    "memory": "13176kb",
+    "language": "C++14",
+    "submit_time": "2025-10-02T15:16:17+08:00",
+    "problem_link": "https://qoj.ac/contest/1903/problem/9700",
+    "submission_link": "https://qoj.ac/submission/1432738"
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "submission_id": "#1877854",
+    "problem_name": "Best Subsequence",
+    "status": "AC",
+    "time": "2443ms",
+    "memory": "32472kb",
+    "language": "C++14",
+    "submit_time": "2025-12-30T10:45:32+08:00",
+    "problem_link": "https://qoj.ac/contest/2078/problem/12212",
+    "submission_link": "https://qoj.ac/submission/1877854"
+  },
+  {
+    "submission_id": "#1877829",
+    "problem_name": "Cool pairs",
+    "status": "AC",
+    "time": "89ms",
+    "memory": "11524kb",
+    "language": "C++14",
+    "submit_time": "2025-12-30T10:31:01+08:00",
+    "problem_link": "https://qoj.ac/contest/2078/problem/12213",
+    "submission_link": "https://qoj.ac/submission/1877829"
+  },
+  {
+    "submission_id": "#1877980",
+    "problem_name": "Dates",
+    "status": "AC",
+    "time": "112ms",
+    "memory": "8804kb",
+    "language": "C++14",
+    "submit_time": "2025-12-30T11:57:20+08:00",
+    "problem_link": "https://qoj.ac/contest/2078/problem/12214",
+    "submission_link": "https://qoj.ac/submission/1877980"
+  },
+  {
+    "submission_id": "#1949906",
+    "problem_name": "Expected Value",
+    "status": "AC",
+    "time": "180ms",
+    "memory": "4524kb",
+    "language": "C++14",
+    "submit_time": "2026-01-23T14:38:00+08:00",
+    "problem_link": "https://qoj.ac/contest/2078/problem/12215",
+    "submission_link": "https://qoj.ac/submission/1949906"
+  },
+  {
+    "submission_id": "#1877716",
+    "problem_name": "Free Edges",
+    "status": "AC",
+    "time": "12ms",
+    "memory": "4464kb",
+    "language": "C++14",
+    "submit_time": "2025-12-30T09:21:19+08:00",
+    "problem_link": "https://qoj.ac/contest/2078/problem/12216",
+    "submission_link": "https://qoj.ac/submission/1877716"
+  },
+  {
+    "submission_id": "#1878748",
+    "problem_name": "Hall's Theorem",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3872kb",
+    "language": "C++20",
+    "submit_time": "2025-12-30T18:15:19+08:00",
+    "problem_link": "https://qoj.ac/contest/2078/problem/12218",
+    "submission_link": "https://qoj.ac/submission/1878748"
+  },
+  {
+    "submission_id": "#1878188",
+    "problem_name": "Interesting Graph",
+    "status": "AC",
+    "time": "547ms",
+    "memory": "75076kb",
+    "language": "C++14",
+    "submit_time": "2025-12-30T13:49:35+08:00",
+    "problem_link": "https://qoj.ac/contest/2078/problem/12219",
+    "submission_link": "https://qoj.ac/submission/1878188"
+  },
+  {
+    "submission_id": "#1877976",
+    "problem_name": "Knowledge",
+    "status": "AC",
+    "time": "2ms",
+    "memory": "4384kb",
+    "language": "C++14",
+    "submit_time": "2025-12-30T11:56:27+08:00",
+    "problem_link": "https://qoj.ac/contest/2078/problem/12221",
+    "submission_link": "https://qoj.ac/submission/1877976"
+  }
+]

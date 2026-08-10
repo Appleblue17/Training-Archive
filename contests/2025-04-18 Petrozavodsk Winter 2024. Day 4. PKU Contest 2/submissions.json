@@ -1,0 +1,101 @@
+[
+  {
+    "submission_id": "#1079856",
+    "problem_name": "Binary Strings",
+    "status": "AC",
+    "time": "101ms",
+    "memory": "211192kb",
+    "language": "C++17",
+    "submit_time": "2025-05-28T18:42:29",
+    "problem_link": "https://qoj.ac/contest/1700/problem/8467",
+    "submission_link": "https://qoj.ac/submission/1079856"
+  },
+  {
+    "submission_id": "#1045968",
+    "problem_name": "Collinear Arrangements",
+    "status": "AC",
+    "time": "211ms",
+    "memory": "7188kb",
+    "language": "C++14",
+    "submit_time": "2025-05-10T17:13:31",
+    "problem_link": "https://qoj.ac/contest/1700/problem/8468",
+    "submission_link": "https://qoj.ac/submission/1045968"
+  },
+  {
+    "submission_id": "#984396",
+    "problem_name": "Lines on a Phone Screen",
+    "status": "AC",
+    "time": "1404ms",
+    "memory": "80476kb",
+    "language": "C++14",
+    "submit_time": "2025-04-18T11:18:19",
+    "problem_link": "https://qoj.ac/contest/1700/problem/8471",
+    "submission_link": "https://qoj.ac/submission/984396"
+  },
+  {
+    "submission_id": "#984441",
+    "problem_name": "Majority",
+    "status": "AC",
+    "time": "4ms",
+    "memory": "6728kb",
+    "language": "C++14",
+    "submit_time": "2025-04-18T12:07:58",
+    "problem_link": "https://qoj.ac/contest/1700/problem/8472",
+    "submission_link": "https://qoj.ac/submission/984441"
+  },
+  {
+    "submission_id": "#1134615",
+    "problem_name": "Matrices and Determinants",
+    "status": "AC",
+    "time": "12ms",
+    "memory": "3988kb",
+    "language": "C++14",
+    "submit_time": "2025-07-02T19:15:30",
+    "problem_link": "https://qoj.ac/contest/1700/problem/8473",
+    "submission_link": "https://qoj.ac/submission/1134615"
+  },
+  {
+    "submission_id": "#984340",
+    "problem_name": "Matrices and Sums",
+    "status": "AC",
+    "time": "37ms",
+    "memory": "9876kb",
+    "language": "C++14",
+    "submit_time": "2025-04-18T10:26:16",
+    "problem_link": "https://qoj.ac/contest/1700/problem/8474",
+    "submission_link": "https://qoj.ac/submission/984340"
+  },
+  {
+    "submission_id": "#984528",
+    "problem_name": "Palindrome Strings",
+    "status": "AC",
+    "time": "291ms",
+    "memory": "384756kb",
+    "language": "C++17",
+    "submit_time": "2025-04-18T13:58:28",
+    "problem_link": "https://qoj.ac/contest/1700/problem/8475",
+    "submission_link": "https://qoj.ac/submission/984528"
+  },
+  {
+    "submission_id": "#984315",
+    "problem_name": "Count the Orders",
+    "status": "AC",
+    "time": "136ms",
+    "memory": "8600kb",
+    "language": "C++14",
+    "submit_time": "2025-04-18T09:45:18",
+    "problem_link": "https://qoj.ac/contest/1700/problem/8478",
+    "submission_link": "https://qoj.ac/submission/984315"
+  },
+  {
+    "submission_id": "#984383",
+    "problem_name": "Simple Math Problem",
+    "status": "AC",
+    "time": "20ms",
+    "memory": "8600kb",
+    "language": "C++14",
+    "submit_time": "2025-04-18T11:09:29",
+    "problem_link": "https://qoj.ac/contest/1700/problem/8479",
+    "submission_link": "https://qoj.ac/submission/984383"
+  }
+]

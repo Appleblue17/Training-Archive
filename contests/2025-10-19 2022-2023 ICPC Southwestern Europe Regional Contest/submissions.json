@@ -1,0 +1,134 @@
+[
+  {
+    "submission_id": "#1539792",
+    "problem_name": "Walking Boy",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3716kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T09:12:29+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5645",
+    "submission_link": "https://qoj.ac/submission/1539792"
+  },
+  {
+    "submission_id": "#1539809",
+    "problem_name": "Uniform Chemistry",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4148kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T09:23:24+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5646",
+    "submission_link": "https://qoj.ac/submission/1539809"
+  },
+  {
+    "submission_id": "#1539929",
+    "problem_name": "Another Wine Tasting Event",
+    "status": "AC",
+    "time": "6ms",
+    "memory": "13864kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T10:10:04+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5647",
+    "submission_link": "https://qoj.ac/submission/1539929"
+  },
+  {
+    "submission_id": "#1551653",
+    "problem_name": "Crossing the Railways",
+    "status": "AC",
+    "time": "411ms",
+    "memory": "47900kb",
+    "language": "C++14",
+    "submit_time": "2025-10-20T23:00:30+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5648",
+    "submission_link": "https://qoj.ac/submission/1551653"
+  },
+  {
+    "submission_id": "#1540039",
+    "problem_name": "Spinach Pizza",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4020kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T10:55:03+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5649",
+    "submission_link": "https://qoj.ac/submission/1540039"
+  },
+  {
+    "submission_id": "#1539798",
+    "problem_name": "Beppa and SwerChat",
+    "status": "AC",
+    "time": "9ms",
+    "memory": "4740kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T09:17:39+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5650",
+    "submission_link": "https://qoj.ac/submission/1539798"
+  },
+  {
+    "submission_id": "#1540921",
+    "problem_name": "Parmigiana With Seafood",
+    "status": "AC",
+    "time": "1007ms",
+    "memory": "20012kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T13:55:53+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5651",
+    "submission_link": "https://qoj.ac/submission/1540921"
+  },
+  {
+    "submission_id": "#1539832",
+    "problem_name": "Controllers",
+    "status": "AC",
+    "time": "16ms",
+    "memory": "4256kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T09:32:20+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5652",
+    "submission_link": "https://qoj.ac/submission/1539832"
+  },
+  {
+    "submission_id": "#1540885",
+    "problem_name": "Library game",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4012kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T13:51:34+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5653",
+    "submission_link": "https://qoj.ac/submission/1540885"
+  },
+  {
+    "submission_id": "#1540104",
+    "problem_name": "Italian Data Centers",
+    "status": "AC",
+    "time": "270ms",
+    "memory": "4088kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T11:16:18+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5654",
+    "submission_link": "https://qoj.ac/submission/1540104"
+  },
+  {
+    "submission_id": "#1539847",
+    "problem_name": "Train Splitting",
+    "status": "AC",
+    "time": "15ms",
+    "memory": "14000kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T09:42:31+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5655",
+    "submission_link": "https://qoj.ac/submission/1539847"
+  },
+  {
+    "submission_id": "#1539939",
+    "problem_name": "Vittorio Plays with LEGO Bricks",
+    "status": "AC",
+    "time": "9ms",
+    "memory": "4788kb",
+    "language": "C++14",
+    "submit_time": "2025-10-19T10:14:44+08:00",
+    "problem_link": "https://qoj.ac/contest/1123/problem/5656",
+    "submission_link": "https://qoj.ac/submission/1539939"
+  }
+]

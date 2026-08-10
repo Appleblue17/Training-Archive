@@ -1,0 +1,57 @@
+[
+  {
+    "submission_id": "#937128",
+    "problem_name": "Longest Increasing Subsequence",
+    "status": "AC",
+    "time": "162ms",
+    "memory": "15164kb",
+    "language": "C++17",
+    "submit_time": "2025-03-16T11:11:34",
+    "problem_link": "https://qoj.ac/contest/1919/problem/10101",
+    "submission_link": "https://qoj.ac/submission/937128"
+  },
+  {
+    "submission_id": "#937805",
+    "problem_name": "World of Rains",
+    "status": "AC",
+    "time": "192ms",
+    "memory": "13128kb",
+    "language": "C++17",
+    "submit_time": "2025-03-16T16:50:25",
+    "problem_link": "https://qoj.ac/problem/10104",
+    "submission_link": "https://qoj.ac/submission/937805"
+  },
+  {
+    "submission_id": "#929665",
+    "problem_name": "Deciding Game",
+    "status": "AC",
+    "time": "33ms",
+    "memory": "8204kb",
+    "language": "C++14",
+    "submit_time": "2025-03-09T11:56:53",
+    "problem_link": "https://qoj.ac/contest/1919/problem/10107",
+    "submission_link": "https://qoj.ac/submission/929665"
+  },
+  {
+    "submission_id": "#937538",
+    "problem_name": "Divide the String",
+    "status": "AC",
+    "time": "30ms",
+    "memory": "15984kb",
+    "language": "C++17",
+    "submit_time": "2025-03-16T14:51:31",
+    "problem_link": "https://qoj.ac/problem/10108",
+    "submission_link": "https://qoj.ac/submission/937538"
+  },
+  {
+    "submission_id": "#929890",
+    "problem_name": "Not Another Constructive Problem",
+    "status": "AC",
+    "time": "300ms",
+    "memory": "13284kb",
+    "language": "C++14",
+    "submit_time": "2025-03-09T14:25:05",
+    "problem_link": "https://qoj.ac/contest/1919/problem/10110",
+    "submission_link": "https://qoj.ac/submission/929890"
+  }
+]

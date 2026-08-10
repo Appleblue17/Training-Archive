@@ -1,0 +1,123 @@
+[
+  {
+    "submission_id": "#656225",
+    "problem_name": "012 Grid",
+    "status": "AC",
+    "time": "128ms",
+    "memory": "47940kb",
+    "language": "C++14",
+    "submit_time": "2024-10-19T11:52:31",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9476",
+    "submission_link": "https://qoj.ac/submission/656225"
+  },
+  {
+    "submission_id": "#655650",
+    "problem_name": "Topological Sort",
+    "status": "AC",
+    "time": "19ms",
+    "memory": "13476kb",
+    "language": "C++14",
+    "submit_time": "2024-10-19T09:01:01",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9477",
+    "submission_link": "https://qoj.ac/submission/655650"
+  },
+  {
+    "submission_id": "#656435",
+    "problem_name": "And DNA",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3708kb",
+    "language": "C++14",
+    "submit_time": "2024-10-19T12:58:22",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9479",
+    "submission_link": "https://qoj.ac/submission/656435"
+  },
+  {
+    "submission_id": "#655890",
+    "problem_name": "Hotel",
+    "status": "AC",
+    "time": "37ms",
+    "memory": "34624kb",
+    "language": "C++14",
+    "submit_time": "2024-10-19T10:12:49",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9480",
+    "submission_link": "https://qoj.ac/submission/655890"
+  },
+  {
+    "submission_id": "#655583",
+    "problem_name": "Min Nim",
+    "status": "AC",
+    "time": "4ms",
+    "memory": "4188kb",
+    "language": "C++14",
+    "submit_time": "2024-10-19T08:39:14",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9481",
+    "submission_link": "https://qoj.ac/submission/655583"
+  },
+  {
+    "submission_id": "#661236",
+    "problem_name": "Count Pseudo-Palindromes",
+    "status": "AC",
+    "time": "1798ms",
+    "memory": "246884kb",
+    "language": "C++17",
+    "submit_time": "2024-10-20T15:23:45",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9482",
+    "submission_link": "https://qoj.ac/submission/661236"
+  },
+  {
+    "submission_id": "#655551",
+    "problem_name": "Maximize Array",
+    "status": "AC",
+    "time": "57ms",
+    "memory": "74352kb",
+    "language": "C++14",
+    "submit_time": "2024-10-19T08:19:47",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9483",
+    "submission_link": "https://qoj.ac/submission/655551"
+  },
+  {
+    "submission_id": "#655878",
+    "problem_name": "Colored Complete Graph",
+    "status": "AC",
+    "time": "1361ms",
+    "memory": "10720kb",
+    "language": "C++17",
+    "submit_time": "2024-10-19T10:05:47",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9484",
+    "submission_link": "https://qoj.ac/submission/655878"
+  },
+  {
+    "submission_id": "#659736",
+    "problem_name": "Random Mex",
+    "status": "AC",
+    "time": "192ms",
+    "memory": "514004kb",
+    "language": "C++14",
+    "submit_time": "2024-10-19T21:41:06",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9486",
+    "submission_link": "https://qoj.ac/submission/659736"
+  },
+  {
+    "submission_id": "#656020",
+    "problem_name": "Do Not Turn Back",
+    "status": "AC",
+    "time": "325ms",
+    "memory": "5588kb",
+    "language": "C++17",
+    "submit_time": "2024-10-19T10:52:28",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9488",
+    "submission_link": "https://qoj.ac/submission/656020"
+  },
+  {
+    "submission_id": "#656183",
+    "problem_name": "Sub Brackets",
+    "status": "AC",
+    "time": "3ms",
+    "memory": "5828kb",
+    "language": "C++14",
+    "submit_time": "2024-10-19T11:42:58",
+    "problem_link": "https://qoj.ac/contest/1812/problem/9490",
+    "submission_link": "https://qoj.ac/submission/656183"
+  }
+]

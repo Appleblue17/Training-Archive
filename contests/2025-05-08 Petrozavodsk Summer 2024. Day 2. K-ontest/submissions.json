@@ -1,0 +1,100 @@
+[
+  {
+    "submission_id": "#1032932",
+    "problem_name": "Big Sieve Game",
+    "status": "AC",
+    "time": "17ms",
+    "memory": "5376kb",
+    "language": "C++14",
+    "submit_time": "2025-05-08T09:22:29",
+    "problem_link": "https://qoj.ac/contest/1806/problem/10001",
+    "submission_link": "https://qoj.ac/submission/1032932"
+  },
+  {
+    "submission_id": "#1034050",
+    "problem_name": "Catch The Flea",
+    "status": "AC",
+    "time": "1978ms",
+    "memory": "719984kb",
+    "language": "C++14",
+    "submit_time": "2025-05-08T12:41:00",
+    "problem_link": "https://qoj.ac/contest/1806/problem/10002",
+    "submission_link": "https://qoj.ac/submission/1034050"
+  },
+  {
+    "submission_id": "#1037228",
+    "problem_name": "Excellent HLD",
+    "status": "TL",
+    "time": "1725ms",
+    "memory": "29408kb",
+    "language": "C++17",
+    "submit_time": "2025-05-08T19:07:12",
+    "submission_link": "https://qoj.ac/submission/1037228"
+  },
+  {
+    "submission_id": "#1033050",
+    "problem_name": "Full Irreducibility",
+    "status": "AC",
+    "time": "37ms",
+    "memory": "5468kb",
+    "language": "C++14",
+    "submit_time": "2025-05-08T09:48:34",
+    "problem_link": "https://qoj.ac/contest/1806/problem/10005",
+    "submission_link": "https://qoj.ac/submission/1033050"
+  },
+  {
+    "submission_id": "#1033999",
+    "problem_name": "Good Triangle",
+    "status": "AC",
+    "time": "1853ms",
+    "memory": "102112kb",
+    "language": "C++14",
+    "submit_time": "2025-05-08T12:29:56",
+    "problem_link": "https://qoj.ac/contest/1806/problem/10006",
+    "submission_link": "https://qoj.ac/submission/1033999"
+  },
+  {
+    "submission_id": "#1032994",
+    "problem_name": "Isn't It Beautiful?",
+    "status": "AC",
+    "time": "34ms",
+    "memory": "6608kb",
+    "language": "C++14",
+    "submit_time": "2025-05-08T09:36:52",
+    "problem_link": "https://qoj.ac/contest/1806/problem/10008",
+    "submission_link": "https://qoj.ac/submission/1032994"
+  },
+  {
+    "submission_id": "#1034315",
+    "problem_name": "Joy Of Sleep",
+    "status": "AC",
+    "time": "280ms",
+    "memory": "69116kb",
+    "language": "C++14",
+    "submit_time": "2025-05-08T14:10:56",
+    "problem_link": "https://qoj.ac/contest/1806/problem/10009",
+    "submission_link": "https://qoj.ac/submission/1034315"
+  },
+  {
+    "submission_id": "#1034153",
+    "problem_name": "Lottery",
+    "status": "AC",
+    "time": "186ms",
+    "memory": "11836kb",
+    "language": "C++14",
+    "submit_time": "2025-05-08T13:17:39",
+    "problem_link": "https://qoj.ac/contest/1806/problem/10011",
+    "submission_link": "https://qoj.ac/submission/1034153"
+  },
+  {
+    "submission_id": "#1033266",
+    "problem_name": "Make It Regular",
+    "status": "AC",
+    "time": "159ms",
+    "memory": "283312kb",
+    "language": "C++14",
+    "submit_time": "2025-05-08T10:34:45",
+    "problem_link": "https://qoj.ac/contest/1806/problem/10012",
+    "submission_link": "https://qoj.ac/submission/1033266"
+  }
+]

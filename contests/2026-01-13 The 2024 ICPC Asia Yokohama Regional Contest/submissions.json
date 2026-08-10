@@ -1,0 +1,123 @@
+[
+  {
+    "submission_id": "#1912008",
+    "problem_name": "Ribbon on the Christmas Present",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3820kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T09:54:00+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10474",
+    "submission_link": "https://qoj.ac/submission/1912008"
+  },
+  {
+    "submission_id": "#1911986",
+    "problem_name": "The Sparsest Number in Between",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3872kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T09:42:52+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10475",
+    "submission_link": "https://qoj.ac/submission/1911986"
+  },
+  {
+    "submission_id": "#1912139",
+    "problem_name": "Omnes Viae Yokohamam Ducunt?",
+    "status": "AC",
+    "time": "104ms",
+    "memory": "50172kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T10:38:48+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10476",
+    "submission_link": "https://qoj.ac/submission/1912139"
+  },
+  {
+    "submission_id": "#1912417",
+    "problem_name": "Tree Generators",
+    "status": "AC",
+    "time": "24ms",
+    "memory": "77544kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T12:14:11+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10477",
+    "submission_link": "https://qoj.ac/submission/1912417"
+  },
+  {
+    "submission_id": "#1912032",
+    "problem_name": "E-Circuit Is Now on Sale!",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4200kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T10:01:44+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10478",
+    "submission_link": "https://qoj.ac/submission/1912032"
+  },
+  {
+    "submission_id": "#1912461",
+    "problem_name": "The Farthest Point",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4396kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T12:30:30+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10479",
+    "submission_link": "https://qoj.ac/submission/1912461"
+  },
+  {
+    "submission_id": "#1912748",
+    "problem_name": "Beyond the Former Explorer",
+    "status": "AC",
+    "time": "90ms",
+    "memory": "81444kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T14:03:15+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10480",
+    "submission_link": "https://qoj.ac/submission/1912748"
+  },
+  {
+    "submission_id": "#1915584",
+    "problem_name": "Remodeling the Dungeon 2",
+    "status": "AC",
+    "time": "790ms",
+    "memory": "66356kb",
+    "language": "C++20",
+    "submit_time": "2026-01-14T09:57:50+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10481",
+    "submission_link": "https://qoj.ac/submission/1915584"
+  },
+  {
+    "submission_id": "#1912176",
+    "problem_name": "Greatest of the Greatest Common Divisors",
+    "status": "AC",
+    "time": "120ms",
+    "memory": "20972kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T10:50:15+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10482",
+    "submission_link": "https://qoj.ac/submission/1912176"
+  },
+  {
+    "submission_id": "#1912154",
+    "problem_name": "Scheduling Two Meetings",
+    "status": "AC",
+    "time": "91ms",
+    "memory": "9280kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T10:42:49+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10484",
+    "submission_link": "https://qoj.ac/submission/1912154"
+  },
+  {
+    "submission_id": "#1912836",
+    "problem_name": "Peculiar Protocol",
+    "status": "AC",
+    "time": "261ms",
+    "memory": "8208kb",
+    "language": "C++14",
+    "submit_time": "2026-01-13T14:21:51+08:00",
+    "problem_link": "https://qoj.ac/contest/1987/problem/10485",
+    "submission_link": "https://qoj.ac/submission/1912836"
+  }
+]

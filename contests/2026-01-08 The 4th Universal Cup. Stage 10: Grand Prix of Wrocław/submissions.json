@@ -1,0 +1,123 @@
+[
+  {
+    "submission_id": "#1897924",
+    "problem_name": "Automatized Mineral Classification",
+    "status": "AC",
+    "time": "37ms",
+    "memory": "4076kb",
+    "language": "C++14",
+    "submit_time": "2026-01-08T13:52:29+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16000",
+    "submission_link": "https://qoj.ac/submission/1897924"
+  },
+  {
+    "submission_id": "#1898719",
+    "problem_name": "Bit Recovery",
+    "status": "AC",
+    "time": "35ms",
+    "memory": "3996kb",
+    "language": "C++14",
+    "submit_time": "2026-01-08T17:39:40+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16001",
+    "submission_link": "https://qoj.ac/submission/1898719"
+  },
+  {
+    "submission_id": "#1900404",
+    "problem_name": "Connecting Railway Stations",
+    "status": "AC",
+    "time": "64ms",
+    "memory": "36952kb",
+    "language": "C++20",
+    "submit_time": "2026-01-09T11:32:15+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16002",
+    "submission_link": "https://qoj.ac/submission/1900404"
+  },
+  {
+    "submission_id": "#1897534",
+    "problem_name": "DNA",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4008kb",
+    "language": "C++14",
+    "submit_time": "2026-01-08T09:48:56+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16003",
+    "submission_link": "https://qoj.ac/submission/1897534"
+  },
+  {
+    "submission_id": "#1897795",
+    "problem_name": "Foxes",
+    "status": "AC",
+    "time": "567ms",
+    "memory": "224288kb",
+    "language": "C++14",
+    "submit_time": "2026-01-08T12:04:17+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16005",
+    "submission_link": "https://qoj.ac/submission/1897795"
+  },
+  {
+    "submission_id": "#1897544",
+    "problem_name": "Game of Darts",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3816kb",
+    "language": "C++14",
+    "submit_time": "2026-01-08T09:55:43+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16006",
+    "submission_link": "https://qoj.ac/submission/1897544"
+  },
+  {
+    "submission_id": "#1897642",
+    "problem_name": "Hiking",
+    "status": "AC",
+    "time": "1101ms",
+    "memory": "105040kb",
+    "language": "C++14",
+    "submit_time": "2026-01-08T10:58:46+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16007",
+    "submission_link": "https://qoj.ac/submission/1897642"
+  },
+  {
+    "submission_id": "#1897608",
+    "problem_name": "Identical Fences",
+    "status": "AC",
+    "time": "6ms",
+    "memory": "4808kb",
+    "language": "C++14",
+    "submit_time": "2026-01-08T10:35:48+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16008",
+    "submission_link": "https://qoj.ac/submission/1897608"
+  },
+  {
+    "submission_id": "#1898663",
+    "problem_name": "Joyful Guided Tour",
+    "status": "AC",
+    "time": "1355ms",
+    "memory": "137700kb",
+    "language": "C++20",
+    "submit_time": "2026-01-08T17:11:50+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16009",
+    "submission_link": "https://qoj.ac/submission/1898663"
+  },
+  {
+    "submission_id": "#1897547",
+    "problem_name": "Key Properties",
+    "status": "AC",
+    "time": "116ms",
+    "memory": "21860kb",
+    "language": "C++14",
+    "submit_time": "2026-01-08T10:00:05+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16010",
+    "submission_link": "https://qoj.ac/submission/1897547"
+  },
+  {
+    "submission_id": "#1897522",
+    "problem_name": "Letters on T-shirts",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4072kb",
+    "language": "C++14",
+    "submit_time": "2026-01-08T09:44:15+08:00",
+    "problem_link": "https://qoj.ac/contest/2814/problem/16011",
+    "submission_link": "https://qoj.ac/submission/1897522"
+  }
+]

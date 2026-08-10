@@ -1,0 +1,90 @@
+[
+  {
+    "submission_id": "#1861982",
+    "problem_name": "Magician",
+    "status": "AC",
+    "time": "336ms",
+    "memory": "3968kb",
+    "language": "C++14",
+    "submit_time": "2025-12-24T10:30:52+08:00",
+    "problem_link": "https://qoj.ac/contest/2757/problem/15517",
+    "submission_link": "https://qoj.ac/submission/1861982"
+  },
+  {
+    "submission_id": "#1862445",
+    "problem_name": "Word Generator",
+    "status": "AC",
+    "time": "1395ms",
+    "memory": "6432kb",
+    "language": "C++14",
+    "submit_time": "2025-12-24T13:28:22+08:00",
+    "problem_link": "https://qoj.ac/contest/2757/problem/15518",
+    "submission_link": "https://qoj.ac/submission/1862445"
+  },
+  {
+    "submission_id": "#1861811",
+    "problem_name": "Glitch",
+    "status": "AC",
+    "time": "10ms",
+    "memory": "4052kb",
+    "language": "C++14",
+    "submit_time": "2025-12-24T09:34:34+08:00",
+    "problem_link": "https://qoj.ac/contest/2757/problem/15519",
+    "submission_link": "https://qoj.ac/submission/1861811"
+  },
+  {
+    "submission_id": "#1861934",
+    "problem_name": "XOR Again?",
+    "status": "AC",
+    "time": "193ms",
+    "memory": "34508kb",
+    "language": "C++14",
+    "submit_time": "2025-12-24T10:11:28+08:00",
+    "problem_link": "https://qoj.ac/contest/2757/problem/15521",
+    "submission_link": "https://qoj.ac/submission/1861934"
+  },
+  {
+    "submission_id": "#1862262",
+    "problem_name": "Binary Permutation",
+    "status": "AC",
+    "time": "45ms",
+    "memory": "13748kb",
+    "language": "C++14",
+    "submit_time": "2025-12-24T11:56:05+08:00",
+    "problem_link": "https://qoj.ac/contest/2757/problem/15522",
+    "submission_link": "https://qoj.ac/submission/1862262"
+  },
+  {
+    "submission_id": "#1886793",
+    "problem_name": "Magical Puzzles",
+    "status": "AC",
+    "time": "961ms",
+    "memory": "180864kb",
+    "language": "C++20",
+    "submit_time": "2026-01-03T18:57:59+08:00",
+    "problem_link": "https://qoj.ac/contest/2757/problem/15524",
+    "submission_link": "https://qoj.ac/submission/1886793"
+  },
+  {
+    "submission_id": "#1861749",
+    "problem_name": "Hidden Digits",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3996kb",
+    "language": "C++14",
+    "submit_time": "2025-12-24T09:20:17+08:00",
+    "problem_link": "https://qoj.ac/contest/2757/problem/15527",
+    "submission_link": "https://qoj.ac/submission/1861749"
+  },
+  {
+    "submission_id": "#1873807",
+    "problem_name": "Robots",
+    "status": "WA",
+    "time": "16ms",
+    "memory": "4140kb",
+    "language": "C++23",
+    "submit_time": "2025-12-28T07:44:32+08:00",
+    "problem_link": "https://qoj.ac/contest/2757/problem/15528",
+    "submission_link": "https://qoj.ac/submission/1873807"
+  }
+]

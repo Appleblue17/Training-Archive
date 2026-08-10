@@ -1,0 +1,102 @@
+[
+  {
+    "submission_id": "78634159",
+    "status": "AC",
+    "time": "9 ms",
+    "memory": "1292 KB",
+    "language": "C++",
+    "submit_time": "2025-08-04T09:28:29+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/A",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78634159"
+  },
+  {
+    "submission_id": "78441759",
+    "status": "AC",
+    "time": "295 ms",
+    "memory": "90904 KB",
+    "language": "C++",
+    "submit_time": "2025-07-24T14:40:26+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/B",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78441759"
+  },
+  {
+    "submission_id": "78443189",
+    "status": "AC",
+    "time": "1265 ms",
+    "memory": "235244 KB",
+    "language": "C++",
+    "submit_time": "2025-07-24T15:08:01+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/C",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78443189"
+  },
+  {
+    "submission_id": "78438041",
+    "status": "AC",
+    "time": "4 ms",
+    "memory": "560 KB",
+    "language": "C++",
+    "submit_time": "2025-07-24T13:20:44+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/D",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78438041"
+  },
+  {
+    "submission_id": "78445504",
+    "status": "AC",
+    "time": "1890 ms",
+    "memory": "87160 KB",
+    "language": "C++",
+    "submit_time": "2025-07-24T15:49:45+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/E",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78445504"
+  },
+  {
+    "submission_id": "78435339",
+    "status": "AC",
+    "time": "89 ms",
+    "memory": "7016 KB",
+    "language": "C++",
+    "submit_time": "2025-07-24T12:16:19+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/F",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78435339"
+  },
+  {
+    "submission_id": "78440063",
+    "status": "AC",
+    "time": "52 ms",
+    "memory": "32696 KB",
+    "language": "C++",
+    "submit_time": "2025-07-24T14:07:55+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/G",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78440063"
+  },
+  {
+    "submission_id": "78454052",
+    "status": "AC",
+    "time": "18 ms",
+    "memory": "1660 KB",
+    "language": "C++",
+    "submit_time": "2025-07-24T18:35:44+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/I",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78454052"
+  },
+  {
+    "submission_id": "78467247",
+    "status": "AC",
+    "time": "620 ms",
+    "memory": "5144 KB",
+    "language": "C++",
+    "submit_time": "2025-07-25T16:55:59+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/K",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78467247"
+  },
+  {
+    "submission_id": "78480978",
+    "status": "AC",
+    "time": "567 ms",
+    "memory": "68020 KB",
+    "language": "C++",
+    "submit_time": "2025-07-27T10:55:47+08:00",
+    "problem_link": "https://ac.nowcoder.com/acm/contest/108301/L",
+    "submission_link": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=78480978"
+  }
+]

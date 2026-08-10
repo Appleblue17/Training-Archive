@@ -1,0 +1,123 @@
+[
+  {
+    "submission_id": "#1451145",
+    "problem_name": "Grid Problem",
+    "status": "AC",
+    "time": "431ms",
+    "memory": "3716kb",
+    "language": "C++14",
+    "submit_time": "2025-10-05T00:42:13+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14426",
+    "submission_link": "https://qoj.ac/submission/1451145"
+  },
+  {
+    "submission_id": "#1446789",
+    "problem_name": "Domain Compression",
+    "status": "AC",
+    "time": "241ms",
+    "memory": "77436kb",
+    "language": "C++14",
+    "submit_time": "2025-10-04T15:32:53+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14427",
+    "submission_link": "https://qoj.ac/submission/1446789"
+  },
+  {
+    "submission_id": "#1445020",
+    "problem_name": "Staple Stable",
+    "status": "AC",
+    "time": "1731ms",
+    "memory": "6872kb",
+    "language": "C++14",
+    "submit_time": "2025-10-04T13:30:35+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14428",
+    "submission_link": "https://qoj.ac/submission/1445020"
+  },
+  {
+    "submission_id": "#1445284",
+    "problem_name": "Sequence Is Not Subsequence",
+    "status": "AC",
+    "time": "8ms",
+    "memory": "5004kb",
+    "language": "C++14",
+    "submit_time": "2025-10-04T13:48:34+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14429",
+    "submission_link": "https://qoj.ac/submission/1445284"
+  },
+  {
+    "submission_id": "#1444875",
+    "problem_name": "Coffee Shops",
+    "status": "AC",
+    "time": "9ms",
+    "memory": "4504kb",
+    "language": "C++14",
+    "submit_time": "2025-10-04T13:21:47+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14430",
+    "submission_link": "https://qoj.ac/submission/1444875"
+  },
+  {
+    "submission_id": "#1447765",
+    "problem_name": "Yet Another MST Problem",
+    "status": "AC",
+    "time": "421ms",
+    "memory": "55524kb",
+    "language": "C++14",
+    "submit_time": "2025-10-04T16:41:24+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14431",
+    "submission_link": "https://qoj.ac/submission/1447765"
+  },
+  {
+    "submission_id": "#1452892",
+    "problem_name": "Cyclic Topsort",
+    "status": "AC",
+    "time": "73ms",
+    "memory": "29584kb",
+    "language": "C++20",
+    "submit_time": "2025-10-05T12:33:24+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14432",
+    "submission_link": "https://qoj.ac/submission/1452892"
+  },
+  {
+    "submission_id": "#1445499",
+    "problem_name": "Misread Problem",
+    "status": "AC",
+    "time": "279ms",
+    "memory": "24888kb",
+    "language": "C++14",
+    "submit_time": "2025-10-04T14:02:58+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14433",
+    "submission_link": "https://qoj.ac/submission/1445499"
+  },
+  {
+    "submission_id": "#1481259",
+    "problem_name": "troS XEM",
+    "status": "AC",
+    "time": "559ms",
+    "memory": "132700kb",
+    "language": "C++20",
+    "submit_time": "2025-10-10T12:17:23+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14434",
+    "submission_link": "https://qoj.ac/submission/1481259"
+  },
+  {
+    "submission_id": "#1528137",
+    "problem_name": "Yet Another Constructive Problem",
+    "status": "AC",
+    "time": "82ms",
+    "memory": "161456kb",
+    "language": "C++14",
+    "submit_time": "2025-10-17T17:38:40+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14435",
+    "submission_link": "https://qoj.ac/submission/1528137"
+  },
+  {
+    "submission_id": "#1448591",
+    "problem_name": "Robot Construction",
+    "status": "AC",
+    "time": "299ms",
+    "memory": "86964kb",
+    "language": "C++14",
+    "submit_time": "2025-10-04T17:36:10+08:00",
+    "problem_link": "https://qoj.ac/contest/2539/problem/14436",
+    "submission_link": "https://qoj.ac/submission/1448591"
+  }
+]

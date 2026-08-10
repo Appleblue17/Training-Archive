@@ -1,0 +1,134 @@
+[
+  {
+    "submission_id": "#1519729",
+    "problem_name": "A Totient Quotient",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3764kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T10:02:20+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11356",
+    "submission_link": "https://qoj.ac/submission/1519729"
+  },
+  {
+    "submission_id": "#1519632",
+    "problem_name": "Circle of Leaf",
+    "status": "AC",
+    "time": "47ms",
+    "memory": "29844kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T09:19:26+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11357",
+    "submission_link": "https://qoj.ac/submission/1519632"
+  },
+  {
+    "submission_id": "#1519971",
+    "problem_name": "Geometry Rush",
+    "status": "AC",
+    "time": "19ms",
+    "memory": "7168kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T10:55:24+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11359",
+    "submission_link": "https://qoj.ac/submission/1519971"
+  },
+  {
+    "submission_id": "#1520305",
+    "problem_name": "Humans vs AI",
+    "status": "AC",
+    "time": "135ms",
+    "memory": "148136kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T11:46:14+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11360",
+    "submission_link": "https://qoj.ac/submission/1520305"
+  },
+  {
+    "submission_id": "#1519712",
+    "problem_name": "Mob Grinder",
+    "status": "AC",
+    "time": "66ms",
+    "memory": "11516kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T09:56:00+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11361",
+    "submission_link": "https://qoj.ac/submission/1519712"
+  },
+  {
+    "submission_id": "#1520330",
+    "problem_name": "Most Scenic Cycle",
+    "status": "AC",
+    "time": "757ms",
+    "memory": "134604kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T11:54:36+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11362",
+    "submission_link": "https://qoj.ac/submission/1520330"
+  },
+  {
+    "submission_id": "#1519678",
+    "problem_name": "Ornaments on a Tree",
+    "status": "AC",
+    "time": "69ms",
+    "memory": "47820kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T09:40:25+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11363",
+    "submission_link": "https://qoj.ac/submission/1519678"
+  },
+  {
+    "submission_id": "#1527735",
+    "problem_name": "Polygon Partition",
+    "status": "AC",
+    "time": "22ms",
+    "memory": "9700kb",
+    "language": "C++23",
+    "submit_time": "2025-10-17T16:38:02+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11364",
+    "submission_link": "https://qoj.ac/submission/1527735"
+  },
+  {
+    "submission_id": "#1520465",
+    "problem_name": "Popping Balloons",
+    "status": "AC",
+    "time": "1843ms",
+    "memory": "771188kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T12:22:38+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11365",
+    "submission_link": "https://qoj.ac/submission/1520465"
+  },
+  {
+    "submission_id": "#1519662",
+    "problem_name": "SLA Tomography",
+    "status": "AC",
+    "time": "6ms",
+    "memory": "10172kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T09:32:10+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11366",
+    "submission_link": "https://qoj.ac/submission/1519662"
+  },
+  {
+    "submission_id": "#1519767",
+    "problem_name": "Solar Farm",
+    "status": "AC",
+    "time": "119ms",
+    "memory": "4100kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T10:13:18+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11367",
+    "submission_link": "https://qoj.ac/submission/1519767"
+  },
+  {
+    "submission_id": "#1520860",
+    "problem_name": "This Is Sparta!",
+    "status": "AC",
+    "time": "114ms",
+    "memory": "6304kb",
+    "language": "C++14",
+    "submit_time": "2025-10-16T13:48:40+08:00",
+    "problem_link": "https://qoj.ac/contest/2041/problem/11368",
+    "submission_link": "https://qoj.ac/submission/1520860"
+  }
+]

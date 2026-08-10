@@ -1,0 +1,123 @@
+[
+  {
+    "submission_id": "#1322828",
+    "problem_name": "Turning Red",
+    "status": "AC",
+    "time": "113ms",
+    "memory": "110556kb",
+    "language": "C++14",
+    "submit_time": "2025-09-11T10:26:08+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8680",
+    "submission_link": "https://qoj.ac/submission/1322828"
+  },
+  {
+    "submission_id": "#1322935",
+    "problem_name": "Doing the Container Shuffle",
+    "status": "AC",
+    "time": "136ms",
+    "memory": "24132kb",
+    "language": "C++14",
+    "submit_time": "2025-09-11T10:53:50+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8685",
+    "submission_link": "https://qoj.ac/submission/1322935"
+  },
+  {
+    "submission_id": "#1327641",
+    "problem_name": "Zoo Management",
+    "status": "AC",
+    "time": "361ms",
+    "memory": "107232kb",
+    "language": "C++20",
+    "submit_time": "2025-09-12T11:30:47+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8686",
+    "submission_link": "https://qoj.ac/submission/1327641"
+  },
+  {
+    "submission_id": "#1331552",
+    "problem_name": "Bridging the Gap",
+    "status": "AC",
+    "time": "521ms",
+    "memory": "786144kb",
+    "language": "C++20",
+    "submit_time": "2025-09-13T13:34:31+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8683",
+    "submission_link": "https://qoj.ac/submission/1331552"
+  },
+  {
+    "submission_id": "#1324528",
+    "problem_name": "Carl’s Vacation",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4280kb",
+    "language": "C++14",
+    "submit_time": "2025-09-11T16:12:18+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8677",
+    "submission_link": "https://qoj.ac/submission/1324528"
+  },
+  {
+    "submission_id": "#1323107",
+    "problem_name": "Toy Train Tracks",
+    "status": "AC",
+    "time": "3ms",
+    "memory": "3968kb",
+    "language": "C++14",
+    "submit_time": "2025-09-11T11:33:32+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8687",
+    "submission_link": "https://qoj.ac/submission/1323107"
+  },
+  {
+    "submission_id": "#1323285",
+    "problem_name": "Three Kinds of Dice",
+    "status": "AC",
+    "time": "79ms",
+    "memory": "59372kb",
+    "language": "C++14",
+    "submit_time": "2025-09-11T12:28:32+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8676",
+    "submission_link": "https://qoj.ac/submission/1323285"
+  },
+  {
+    "submission_id": "#1322734",
+    "problem_name": "Riddle of the Sphinx",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3764kb",
+    "language": "C++14",
+    "submit_time": "2025-09-11T10:02:57+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8674",
+    "submission_link": "https://qoj.ac/submission/1322734"
+  },
+  {
+    "submission_id": "#1347710",
+    "problem_name": "Quartets",
+    "status": "AC",
+    "time": "2ms",
+    "memory": "4100kb",
+    "language": "C++20",
+    "submit_time": "2025-09-16T15:20:42+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8688",
+    "submission_link": "https://qoj.ac/submission/1347710"
+  },
+  {
+    "submission_id": "#1322626",
+    "problem_name": "Compression",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4100kb",
+    "language": "C++14",
+    "submit_time": "2025-09-11T09:23:14+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8689",
+    "submission_link": "https://qoj.ac/submission/1322626"
+  },
+  {
+    "submission_id": "#1342828",
+    "problem_name": "Archaeological Recovery",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4112kb",
+    "language": "C++14",
+    "submit_time": "2025-09-15T16:47:57+08:00",
+    "problem_link": "https://qoj.ac/contest/1661/problem/8690",
+    "submission_link": "https://qoj.ac/submission/1342828"
+  }
+]

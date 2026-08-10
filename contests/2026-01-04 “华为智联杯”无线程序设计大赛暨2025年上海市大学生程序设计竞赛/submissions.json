@@ -1,0 +1,145 @@
+[
+  {
+    "submission_id": "#1888495",
+    "problem_name": "序列",
+    "status": "AC",
+    "time": "108ms",
+    "memory": "118636kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T12:11:18+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12559",
+    "submission_link": "https://qoj.ac/submission/1888495"
+  },
+  {
+    "submission_id": "#1888411",
+    "problem_name": "审判",
+    "status": "AC",
+    "time": "730ms",
+    "memory": "22588kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T11:36:37+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12560",
+    "submission_link": "https://qoj.ac/submission/1888411"
+  },
+  {
+    "submission_id": "#1888527",
+    "problem_name": "饺子",
+    "status": "AC",
+    "time": "588ms",
+    "memory": "15128kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T12:44:46+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12561",
+    "submission_link": "https://qoj.ac/submission/1888527"
+  },
+  {
+    "submission_id": "#1888185",
+    "problem_name": "与或博弈",
+    "status": "AC",
+    "time": "191ms",
+    "memory": "3880kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T09:22:22+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12562",
+    "submission_link": "https://qoj.ac/submission/1888185"
+  },
+  {
+    "submission_id": "#1888378",
+    "problem_name": "Djangle 的数据结构",
+    "status": "AC",
+    "time": "191ms",
+    "memory": "14856kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T11:26:57+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12563",
+    "submission_link": "https://qoj.ac/submission/1888378"
+  },
+  {
+    "submission_id": "#1888672",
+    "problem_name": "No explanation",
+    "status": "AC",
+    "time": "76ms",
+    "memory": "15208kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T13:53:13+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12564",
+    "submission_link": "https://qoj.ac/submission/1888672"
+  },
+  {
+    "submission_id": "#1888228",
+    "problem_name": "矩阵",
+    "status": "AC",
+    "time": "285ms",
+    "memory": "3880kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T09:57:53+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12565",
+    "submission_link": "https://qoj.ac/submission/1888228"
+  },
+  {
+    "submission_id": "#1888168",
+    "problem_name": "V 我 112.5",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4008kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T09:15:51+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12566",
+    "submission_link": "https://qoj.ac/submission/1888168"
+  },
+  {
+    "submission_id": "#1888232",
+    "problem_name": "真相",
+    "status": "AC",
+    "time": "95ms",
+    "memory": "404752kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T09:59:27+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12567",
+    "submission_link": "https://qoj.ac/submission/1888232"
+  },
+  {
+    "submission_id": "#1888303",
+    "problem_name": "画圈",
+    "status": "AC",
+    "time": "52ms",
+    "memory": "10008kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T10:40:10+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12568",
+    "submission_link": "https://qoj.ac/submission/1888303"
+  },
+  {
+    "submission_id": "#1888275",
+    "problem_name": "神之一手",
+    "status": "AC",
+    "time": "42ms",
+    "memory": "8716kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T10:24:59+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12569",
+    "submission_link": "https://qoj.ac/submission/1888275"
+  },
+  {
+    "submission_id": "#1890774",
+    "problem_name": "迷宫",
+    "status": "AC",
+    "time": "3024ms",
+    "memory": "971232kb",
+    "language": "C++20",
+    "submit_time": "2026-01-05T11:56:46+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12570",
+    "submission_link": "https://qoj.ac/submission/1890774"
+  },
+  {
+    "submission_id": "#1888216",
+    "problem_name": "魔法使考核",
+    "status": "AC",
+    "time": "46ms",
+    "memory": "6356kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T09:47:50+08:00",
+    "problem_link": "https://qoj.ac/contest/2238/problem/12571",
+    "submission_link": "https://qoj.ac/submission/1888216"
+  }
+]

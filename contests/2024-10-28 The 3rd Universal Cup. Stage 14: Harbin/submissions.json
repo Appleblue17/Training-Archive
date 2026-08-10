@@ -1,0 +1,133 @@
+[
+  {
+    "submission_id": "#685170",
+    "problem_name": "Build a Computer",
+    "status": "AC",
+    "time": "0ms",
+    "memory": "3704kb",
+    "language": "C++14",
+    "submit_time": "2024-10-28T18:01:01",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9519",
+    "submission_link": "https://qoj.ac/submission/685170"
+  },
+  {
+    "submission_id": "#685646",
+    "problem_name": "Concave Hull",
+    "status": "AC",
+    "time": "40ms",
+    "memory": "7780kb",
+    "language": "C++17",
+    "submit_time": "2024-10-28T20:35:54",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9520",
+    "submission_link": "https://qoj.ac/submission/685646"
+  },
+  {
+    "submission_id": "#685031",
+    "problem_name": "Giving Directions in Harbin",
+    "status": "AC",
+    "time": "9ms",
+    "memory": "3940kb",
+    "language": "C++14",
+    "submit_time": "2024-10-28T17:10:36",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9521",
+    "submission_link": "https://qoj.ac/submission/685031"
+  },
+  {
+    "submission_id": "#1125694",
+    "problem_name": "A Simple String Problem",
+    "status": "AC",
+    "time": "1901ms",
+    "memory": "9084kb",
+    "language": "C++20",
+    "submit_time": "2025-06-27T21:10:21",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9522",
+    "submission_link": "https://qoj.ac/submission/1125694"
+  },
+  {
+    "submission_id": "#685447",
+    "problem_name": "Marble Race",
+    "status": "AC",
+    "time": "2010ms",
+    "memory": "12920kb",
+    "language": "C++14",
+    "submit_time": "2024-10-28T19:28:33",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9523",
+    "submission_link": "https://qoj.ac/submission/685447"
+  },
+  {
+    "submission_id": "#685324",
+    "problem_name": "Welcome to Join the Online Meeting!",
+    "status": "AC",
+    "time": "328ms",
+    "memory": "84844kb",
+    "language": "C++17",
+    "submit_time": "2024-10-28T18:51:01",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9525",
+    "submission_link": "https://qoj.ac/submission/685324"
+  },
+  {
+    "submission_id": "#1155533",
+    "problem_name": "Subsequence Counting",
+    "status": "AC",
+    "time": "745ms",
+    "memory": "13212kb",
+    "language": "C++14",
+    "submit_time": "2025-07-13T15:53:46",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9526",
+    "submission_link": "https://qoj.ac/submission/1155533"
+  },
+  {
+    "submission_id": "#685910",
+    "problem_name": "A Brand New Geometric Problem",
+    "status": "TL",
+    "time": "22ms",
+    "memory": "6148kb",
+    "language": "C++14",
+    "submit_time": "2024-10-28T21:55:27",
+    "submission_link": "https://qoj.ac/submission/685910"
+  },
+  {
+    "submission_id": "#685506",
+    "problem_name": "New Energy Vehicle",
+    "status": "AC",
+    "time": "124ms",
+    "memory": "15880kb",
+    "language": "C++17",
+    "submit_time": "2024-10-28T19:46:22",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9528",
+    "submission_link": "https://qoj.ac/submission/685506"
+  },
+  {
+    "submission_id": "#685387",
+    "problem_name": "Farm Management",
+    "status": "AC",
+    "time": "32ms",
+    "memory": "24108kb",
+    "language": "C++14",
+    "submit_time": "2024-10-28T19:11:55",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9529",
+    "submission_link": "https://qoj.ac/submission/685387"
+  },
+  {
+    "submission_id": "#685265",
+    "problem_name": "A Game On Tree",
+    "status": "AC",
+    "time": "233ms",
+    "memory": "26188kb",
+    "language": "C++14",
+    "submit_time": "2024-10-28T18:35:11",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9530",
+    "submission_link": "https://qoj.ac/submission/685265"
+  },
+  {
+    "submission_id": "#685002",
+    "problem_name": "Weird Ceiling",
+    "status": "AC",
+    "time": "92ms",
+    "memory": "3948kb",
+    "language": "C++14",
+    "submit_time": "2024-10-28T17:03:07",
+    "problem_link": "https://qoj.ac/contest/1817/problem/9531",
+    "submission_link": "https://qoj.ac/submission/685002"
+  }
+]

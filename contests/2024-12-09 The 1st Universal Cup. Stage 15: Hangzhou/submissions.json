@@ -1,0 +1,101 @@
+[
+  {
+    "submission_id": "#806660",
+    "problem_name": "Turn on the Light",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3676kb",
+    "language": "C++14",
+    "submit_time": "2024-12-09T13:37:49",
+    "problem_link": "https://qoj.ac/contest/1221/problem/6394",
+    "submission_link": "https://qoj.ac/submission/806660"
+  },
+  {
+    "submission_id": "#811151",
+    "problem_name": "Equation Discovering",
+    "status": "AC",
+    "time": "518ms",
+    "memory": "319352kb",
+    "language": "C++17",
+    "submit_time": "2024-12-12T15:52:15",
+    "problem_link": "https://qoj.ac/contest/1221/problem/6395",
+    "submission_link": "https://qoj.ac/submission/811151"
+  },
+  {
+    "submission_id": "#806844",
+    "problem_name": "Puzzle: Kusabi",
+    "status": "AC",
+    "time": "33ms",
+    "memory": "51068kb",
+    "language": "C++17",
+    "submit_time": "2024-12-09T16:06:07",
+    "problem_link": "https://qoj.ac/contest/1221/problem/6396",
+    "submission_link": "https://qoj.ac/submission/806844"
+  },
+  {
+    "submission_id": "#806721",
+    "problem_name": "Master of Both III",
+    "status": "AC",
+    "time": "325ms",
+    "memory": "27160kb",
+    "language": "C++14",
+    "submit_time": "2024-12-09T14:22:00",
+    "problem_link": "https://qoj.ac/contest/1221/problem/6397",
+    "submission_link": "https://qoj.ac/submission/806721"
+  },
+  {
+    "submission_id": "#806780",
+    "problem_name": "Puzzle: Tapa",
+    "status": "AC",
+    "time": "3ms",
+    "memory": "6016kb",
+    "language": "C++14",
+    "submit_time": "2024-12-09T15:04:53",
+    "problem_link": "https://qoj.ac/contest/1221/problem/6398",
+    "submission_link": "https://qoj.ac/submission/806780"
+  },
+  {
+    "submission_id": "#806961",
+    "problem_name": "Classic: Classical Problem",
+    "status": "AC",
+    "time": "4070ms",
+    "memory": "80152kb",
+    "language": "C++14",
+    "submit_time": "2024-12-09T17:26:07",
+    "problem_link": "https://qoj.ac/contest/1221/problem/6399",
+    "submission_link": "https://qoj.ac/submission/806961"
+  },
+  {
+    "submission_id": "#806683",
+    "problem_name": "Classic: N Real DNA Pots",
+    "status": "AC",
+    "time": "345ms",
+    "memory": "7772kb",
+    "language": "C++14",
+    "submit_time": "2024-12-09T13:53:06",
+    "problem_link": "https://qoj.ac/contest/1221/problem/6401",
+    "submission_link": "https://qoj.ac/submission/806683"
+  },
+  {
+    "submission_id": "#867729",
+    "problem_name": "Shuttle Tour",
+    "status": "AC",
+    "time": "3595ms",
+    "memory": "384244kb",
+    "language": "C++17",
+    "submit_time": "2025-01-23T22:20:10",
+    "problem_link": "https://qoj.ac/contest/1221/problem/6404",
+    "submission_link": "https://qoj.ac/submission/867729"
+  },
+  {
+    "submission_id": "#806783",
+    "problem_name": "Barkley",
+    "status": "AC",
+    "time": "922ms",
+    "memory": "68660kb",
+    "language": "C++17",
+    "submit_time": "2024-12-09T15:08:25",
+    "problem_link": "https://qoj.ac/contest/1221/problem/6405",
+    "submission_link": "https://qoj.ac/submission/806783"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "submission_id": "#1893087",
+    "problem_name": "Sum Game",
+    "status": "AC",
+    "time": "16ms",
+    "memory": "3996kb",
+    "language": "C++14",
+    "submit_time": "2026-01-06T09:47:05+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16115",
+    "submission_link": "https://qoj.ac/submission/1893087"
+  },
+  {
+    "submission_id": "#1893174",
+    "problem_name": "AND Reconstruction",
+    "status": "AC",
+    "time": "97ms",
+    "memory": "5544kb",
+    "language": "C++14",
+    "submit_time": "2026-01-06T10:20:22+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16116",
+    "submission_link": "https://qoj.ac/submission/1893174"
+  },
+  {
+    "submission_id": "#1893349",
+    "problem_name": "XOR-Excluding Sets",
+    "status": "AC",
+    "time": "378ms",
+    "memory": "7716kb",
+    "language": "C++14",
+    "submit_time": "2026-01-06T11:52:14+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16117",
+    "submission_link": "https://qoj.ac/submission/1893349"
+  },
+  {
+    "submission_id": "#1893252",
+    "problem_name": "Two Options",
+    "status": "AC",
+    "time": "321ms",
+    "memory": "130616kb",
+    "language": "C++14",
+    "submit_time": "2026-01-06T11:07:19+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16118",
+    "submission_link": "https://qoj.ac/submission/1893252"
+  },
+  {
+    "submission_id": "#1893077",
+    "problem_name": "Phone Company",
+    "status": "AC",
+    "time": "75ms",
+    "memory": "3744kb",
+    "language": "C++14",
+    "submit_time": "2026-01-06T09:44:30+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16119",
+    "submission_link": "https://qoj.ac/submission/1893077"
+  },
+  {
+    "submission_id": "#1903513",
+    "problem_name": "Language Barrier",
+    "status": "AC",
+    "time": "497ms",
+    "memory": "240984kb",
+    "language": "C++20",
+    "submit_time": "2026-01-10T14:36:37+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16120",
+    "submission_link": "https://qoj.ac/submission/1903513"
+  },
+  {
+    "submission_id": "#1893368",
+    "problem_name": "Intervals from Triplets",
+    "status": "AC",
+    "time": "343ms",
+    "memory": "153148kb",
+    "language": "C++14",
+    "submit_time": "2026-01-06T12:08:42+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16121",
+    "submission_link": "https://qoj.ac/submission/1893368"
+  },
+  {
+    "submission_id": "#1905050",
+    "problem_name": "Sorted Pairs",
+    "status": "AC",
+    "time": "173ms",
+    "memory": "28128kb",
+    "language": "C++20",
+    "submit_time": "2026-01-10T20:35:35+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16122",
+    "submission_link": "https://qoj.ac/submission/1905050"
+  },
+  {
+    "submission_id": "#1893140",
+    "problem_name": "Connect the Points",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4008kb",
+    "language": "C++14",
+    "submit_time": "2026-01-06T10:08:40+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16125",
+    "submission_link": "https://qoj.ac/submission/1893140"
+  },
+  {
+    "submission_id": "#1893536",
+    "problem_name": "Neo-Nim",
+    "status": "AC",
+    "time": "33ms",
+    "memory": "6348kb",
+    "language": "C++14",
+    "submit_time": "2026-01-06T14:06:45+08:00",
+    "problem_link": "https://qoj.ac/contest/2828/problem/16126",
+    "submission_link": "https://qoj.ac/submission/1893536"
+  }
+]

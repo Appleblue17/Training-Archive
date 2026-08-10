@@ -1,0 +1,112 @@
+[
+  {
+    "submission_id": "#1495529",
+    "problem_name": "Apple Tree",
+    "status": "AC",
+    "time": "4380ms",
+    "memory": "71452kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T13:20:54+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14130",
+    "submission_link": "https://qoj.ac/submission/1495529"
+  },
+  {
+    "submission_id": "#1494211",
+    "problem_name": "Balatro",
+    "status": "AC",
+    "time": "282ms",
+    "memory": "5684kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T09:52:43+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14131",
+    "submission_link": "https://qoj.ac/submission/1494211"
+  },
+  {
+    "submission_id": "#1494450",
+    "problem_name": "Digit Division",
+    "status": "AC",
+    "time": "80ms",
+    "memory": "10460kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T10:37:26+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14133",
+    "submission_link": "https://qoj.ac/submission/1494450"
+  },
+  {
+    "submission_id": "#1494552",
+    "problem_name": "Framboise 2",
+    "status": "AC",
+    "time": "161ms",
+    "memory": "12124kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T10:57:36+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14135",
+    "submission_link": "https://qoj.ac/submission/1494552"
+  },
+  {
+    "submission_id": "#1494828",
+    "problem_name": "Goofy Songs",
+    "status": "AC",
+    "time": "12ms",
+    "memory": "72300kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T11:50:07+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14136",
+    "submission_link": "https://qoj.ac/submission/1494828"
+  },
+  {
+    "submission_id": "#1494138",
+    "problem_name": "Heure de Rush",
+    "status": "AC",
+    "time": "294ms",
+    "memory": "120180kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T09:35:21+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14137",
+    "submission_link": "https://qoj.ac/submission/1494138"
+  },
+  {
+    "submission_id": "#1495418",
+    "problem_name": "Infrared",
+    "status": "AC",
+    "time": "8ms",
+    "memory": "4124kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T13:12:46+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14138",
+    "submission_link": "https://qoj.ac/submission/1495418"
+  },
+  {
+    "submission_id": "#1495721",
+    "problem_name": "JamBrains",
+    "status": "AC",
+    "time": "72ms",
+    "memory": "17032kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T13:34:33+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14139",
+    "submission_link": "https://qoj.ac/submission/1495721"
+  },
+  {
+    "submission_id": "#1494778",
+    "problem_name": "kk Operations",
+    "status": "AC",
+    "time": "904ms",
+    "memory": "253120kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T11:40:16+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14140",
+    "submission_link": "https://qoj.ac/submission/1494778"
+  },
+  {
+    "submission_id": "#1496191",
+    "problem_name": "Lice Hopping",
+    "status": "WA",
+    "time": "101ms",
+    "memory": "61148kb",
+    "language": "C++14",
+    "submit_time": "2025-10-12T14:02:58+08:00",
+    "problem_link": "https://qoj.ac/contest/2551/problem/14141",
+    "submission_link": "https://qoj.ac/submission/1496191"
+  }
+]

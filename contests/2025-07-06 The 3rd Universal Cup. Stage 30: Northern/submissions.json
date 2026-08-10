@@ -1,0 +1,79 @@
+[
+  {
+    "submission_id": "#1140070",
+    "problem_name": "Preparation for the Exam",
+    "status": "AC",
+    "time": "12ms",
+    "memory": "8708kb",
+    "language": "C++14",
+    "submit_time": "2025-07-06T09:38:36",
+    "problem_link": "https://qoj.ac/contest/1917/problem/10090",
+    "submission_link": "https://qoj.ac/submission/1140070"
+  },
+  {
+    "submission_id": "#1140157",
+    "problem_name": "Fractal Maze",
+    "status": "AC",
+    "time": "28ms",
+    "memory": "8252kb",
+    "language": "C++14",
+    "submit_time": "2025-07-06T11:11:22",
+    "problem_link": "https://qoj.ac/contest/1917/problem/10091",
+    "submission_link": "https://qoj.ac/submission/1140157"
+  },
+  {
+    "submission_id": "#1140371",
+    "problem_name": "Interactive Primality",
+    "status": "AC",
+    "time": "2209ms",
+    "memory": "8276kb",
+    "language": "C++14",
+    "submit_time": "2025-07-06T13:29:54",
+    "problem_link": "https://qoj.ac/contest/1917/problem/10092",
+    "submission_link": "https://qoj.ac/submission/1140371"
+  },
+  {
+    "submission_id": "#1140289",
+    "problem_name": "Jump the Frog",
+    "status": "AC",
+    "time": "1844ms",
+    "memory": "316696kb",
+    "language": "C++14",
+    "submit_time": "2025-07-06T12:43:11",
+    "problem_link": "https://qoj.ac/contest/1917/problem/10093",
+    "submission_link": "https://qoj.ac/submission/1140289"
+  },
+  {
+    "submission_id": "#1140064",
+    "problem_name": "Generating Random Trees",
+    "status": "AC",
+    "time": "121ms",
+    "memory": "8088kb",
+    "language": "C++14",
+    "submit_time": "2025-07-06T09:24:52",
+    "problem_link": "https://qoj.ac/contest/1917/problem/10096",
+    "submission_link": "https://qoj.ac/submission/1140064"
+  },
+  {
+    "submission_id": "#1140085",
+    "problem_name": "Vortex",
+    "status": "AC",
+    "time": "83ms",
+    "memory": "30772kb",
+    "language": "C++14",
+    "submit_time": "2025-07-06T10:14:58",
+    "problem_link": "https://qoj.ac/contest/1917/problem/10097",
+    "submission_link": "https://qoj.ac/submission/1140085"
+  },
+  {
+    "submission_id": "#1197689",
+    "problem_name": "Random Sum",
+    "status": "AC",
+    "time": "12554ms",
+    "memory": "565792kb",
+    "language": "C++14",
+    "submit_time": "2025-08-02T18:11:45+08:00",
+    "problem_link": "https://qoj.ac/contest/1917/problem/10098",
+    "submission_link": "https://qoj.ac/submission/1197689"
+  }
+]

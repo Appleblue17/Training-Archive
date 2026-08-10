@@ -1,0 +1,123 @@
+[
+  {
+    "submission_id": "#1566217",
+    "problem_name": "Many Many Heads",
+    "status": "AC",
+    "time": "8ms",
+    "memory": "4500kb",
+    "language": "C++14",
+    "submit_time": "2025-10-23T09:51:01+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7894",
+    "submission_link": "https://qoj.ac/submission/1566217"
+  },
+  {
+    "submission_id": "#1566716",
+    "problem_name": "Graph Partitioning 2",
+    "status": "AC",
+    "time": "326ms",
+    "memory": "437624kb",
+    "language": "C++14",
+    "submit_time": "2025-10-23T12:45:29+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7895",
+    "submission_link": "https://qoj.ac/submission/1566716"
+  },
+  {
+    "submission_id": "#1566128",
+    "problem_name": "Largest Digit",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3740kb",
+    "language": "C++14",
+    "submit_time": "2025-10-23T09:08:09+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7897",
+    "submission_link": "https://qoj.ac/submission/1566128"
+  },
+  {
+    "submission_id": "#1566392",
+    "problem_name": "I Just Want... One More...",
+    "status": "AC",
+    "time": "1817ms",
+    "memory": "37836kb",
+    "language": "C++14",
+    "submit_time": "2025-10-23T10:51:55+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7898",
+    "submission_link": "https://qoj.ac/submission/1566392"
+  },
+  {
+    "submission_id": "#1649211",
+    "problem_name": "Say Hello to the Future",
+    "status": "AC",
+    "time": "531ms",
+    "memory": "29400kb",
+    "language": "C++20",
+    "submit_time": "2025-11-04T13:47:06+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7899",
+    "submission_link": "https://qoj.ac/submission/1649211"
+  },
+  {
+    "submission_id": "#1566210",
+    "problem_name": "Gifts from Knowledge",
+    "status": "AC",
+    "time": "55ms",
+    "memory": "142832kb",
+    "language": "C++14",
+    "submit_time": "2025-10-23T09:45:35+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7900",
+    "submission_link": "https://qoj.ac/submission/1566210"
+  },
+  {
+    "submission_id": "#1567561",
+    "problem_name": "Basic Substring Structure",
+    "status": "AC",
+    "time": "110ms",
+    "memory": "103256kb",
+    "language": "C++20",
+    "submit_time": "2025-10-23T15:29:43+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7901",
+    "submission_link": "https://qoj.ac/submission/1567561"
+  },
+  {
+    "submission_id": "#1566178",
+    "problem_name": "Strange Sorting",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4020kb",
+    "language": "C++14",
+    "submit_time": "2025-10-23T09:30:45+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7902",
+    "submission_link": "https://qoj.ac/submission/1566178"
+  },
+  {
+    "submission_id": "#1566269",
+    "problem_name": "Rainbow Subarray",
+    "status": "AC",
+    "time": "498ms",
+    "memory": "31376kb",
+    "language": "C++14",
+    "submit_time": "2025-10-23T10:15:18+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7904",
+    "submission_link": "https://qoj.ac/submission/1566269"
+  },
+  {
+    "submission_id": "#1569360",
+    "problem_name": "Ticket to Ride",
+    "status": "AC",
+    "time": "2682ms",
+    "memory": "4892kb",
+    "language": "C++14",
+    "submit_time": "2025-10-23T19:42:01+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7905",
+    "submission_link": "https://qoj.ac/submission/1569360"
+  },
+  {
+    "submission_id": "#1566369",
+    "problem_name": "Almost Convex",
+    "status": "AC",
+    "time": "339ms",
+    "memory": "4148kb",
+    "language": "C++14",
+    "submit_time": "2025-10-23T10:46:07+08:00",
+    "problem_link": "https://qoj.ac/contest/1472/problem/7906",
+    "submission_link": "https://qoj.ac/submission/1566369"
+  }
+]

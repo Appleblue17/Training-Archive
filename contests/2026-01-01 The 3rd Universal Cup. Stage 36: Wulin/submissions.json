@@ -1,0 +1,134 @@
+[
+  {
+    "submission_id": "#1881708",
+    "problem_name": "Outer LIS",
+    "status": "AC",
+    "time": "1095ms",
+    "memory": "211284kb",
+    "language": "C++20",
+    "submit_time": "2026-01-01T18:34:22+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10723",
+    "submission_link": "https://qoj.ac/submission/1881708"
+  },
+  {
+    "submission_id": "#1880999",
+    "problem_name": "Turn on the Light 3",
+    "status": "AC",
+    "time": "27ms",
+    "memory": "4464kb",
+    "language": "C++14",
+    "submit_time": "2026-01-01T09:14:56+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10724",
+    "submission_link": "https://qoj.ac/submission/1880999"
+  },
+  {
+    "submission_id": "#1881213",
+    "problem_name": "RDDCCD",
+    "status": "AC",
+    "time": "346ms",
+    "memory": "67440kb",
+    "language": "C++14",
+    "submit_time": "2026-01-01T12:44:44+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10725",
+    "submission_link": "https://qoj.ac/submission/1881213"
+  },
+  {
+    "submission_id": "#1881053",
+    "problem_name": "Too Clever by Half",
+    "status": "AC",
+    "time": "87ms",
+    "memory": "184292kb",
+    "language": "C++14",
+    "submit_time": "2026-01-01T10:02:03+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10726",
+    "submission_link": "https://qoj.ac/submission/1881053"
+  },
+  {
+    "submission_id": "#1887773",
+    "problem_name": "Gold Miner",
+    "status": "AC",
+    "time": "1692ms",
+    "memory": "126048kb",
+    "language": "C++14",
+    "submit_time": "2026-01-04T00:47:03+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10727",
+    "submission_link": "https://qoj.ac/submission/1887773"
+  },
+  {
+    "submission_id": "#1881275",
+    "problem_name": "Challenge NPC III",
+    "status": "AC",
+    "time": "217ms",
+    "memory": "12720kb",
+    "language": "C++14",
+    "submit_time": "2026-01-01T13:46:21+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10728",
+    "submission_link": "https://qoj.ac/submission/1881275"
+  },
+  {
+    "submission_id": "#1881130",
+    "problem_name": "Tariff-ied",
+    "status": "AC",
+    "time": "638ms",
+    "memory": "4132kb",
+    "language": "C++14",
+    "submit_time": "2026-01-01T11:05:47+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10729",
+    "submission_link": "https://qoj.ac/submission/1881130"
+  },
+  {
+    "submission_id": "#1881007",
+    "problem_name": "Version Number",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4004kb",
+    "language": "C++14",
+    "submit_time": "2026-01-01T09:23:24+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10731",
+    "submission_link": "https://qoj.ac/submission/1881007"
+  },
+  {
+    "submission_id": "#1881327",
+    "problem_name": "Chocolate Sweet",
+    "status": "AC",
+    "time": "297ms",
+    "memory": "24600kb",
+    "language": "C++14",
+    "submit_time": "2026-01-01T14:13:31+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10732",
+    "submission_link": "https://qoj.ac/submission/1881327"
+  },
+  {
+    "submission_id": "#1886416",
+    "problem_name": "Wavelike Finding",
+    "status": "AC",
+    "time": "6029ms",
+    "memory": "68868kb",
+    "language": "C++20",
+    "submit_time": "2026-01-03T17:19:42+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10733",
+    "submission_link": "https://qoj.ac/submission/1886416"
+  },
+  {
+    "submission_id": "#1881033",
+    "problem_name": "Nailoongs Always Lie",
+    "status": "AC",
+    "time": "15ms",
+    "memory": "16732kb",
+    "language": "C++14",
+    "submit_time": "2026-01-01T09:47:50+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10734",
+    "submission_link": "https://qoj.ac/submission/1881033"
+  },
+  {
+    "submission_id": "#1881119",
+    "problem_name": "Master of Both VII",
+    "status": "AC",
+    "time": "24ms",
+    "memory": "4068kb",
+    "language": "C++14",
+    "submit_time": "2026-01-01T10:54:42+08:00",
+    "problem_link": "https://qoj.ac/contest/2021/problem/10735",
+    "submission_link": "https://qoj.ac/submission/1881119"
+  }
+]

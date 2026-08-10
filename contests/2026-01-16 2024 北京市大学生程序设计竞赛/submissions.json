@@ -1,0 +1,112 @@
+[
+  {
+    "submission_id": "#1930224",
+    "problem_name": "不要玩弄字符串",
+    "status": "AC",
+    "time": "1311ms",
+    "memory": "113812kb",
+    "language": "C++20",
+    "submit_time": "2026-01-18T17:13:43+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8713",
+    "submission_link": "https://qoj.ac/submission/1930224"
+  },
+  {
+    "submission_id": "#1923335",
+    "problem_name": "组合数",
+    "status": "AC",
+    "time": "758ms",
+    "memory": "248208kb",
+    "language": "C++20",
+    "submit_time": "2026-01-16T14:40:04+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8714",
+    "submission_link": "https://qoj.ac/submission/1923335"
+  },
+  {
+    "submission_id": "#1924817",
+    "problem_name": "放苹果",
+    "status": "AC",
+    "time": "953ms",
+    "memory": "173712kb",
+    "language": "C++14",
+    "submit_time": "2026-01-16T21:41:20+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8715",
+    "submission_link": "https://qoj.ac/submission/1924817"
+  },
+  {
+    "submission_id": "#1922647",
+    "problem_name": "树",
+    "status": "AC",
+    "time": "1000ms",
+    "memory": "48096kb",
+    "language": "C++14",
+    "submit_time": "2026-01-16T10:25:27+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8716",
+    "submission_link": "https://qoj.ac/submission/1922647"
+  },
+  {
+    "submission_id": "#1922771",
+    "problem_name": "骰子",
+    "status": "AC",
+    "time": "1531ms",
+    "memory": "37360kb",
+    "language": "C++14",
+    "submit_time": "2026-01-16T11:15:55+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8717",
+    "submission_link": "https://qoj.ac/submission/1922771"
+  },
+  {
+    "submission_id": "#1924281",
+    "problem_name": "保区间最小值一次回归问题",
+    "status": "AC",
+    "time": "867ms",
+    "memory": "79848kb",
+    "language": "C++20",
+    "submit_time": "2026-01-16T18:32:47+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8718",
+    "submission_link": "https://qoj.ac/submission/1924281"
+  },
+  {
+    "submission_id": "#1922846",
+    "problem_name": "后继",
+    "status": "AC",
+    "time": "549ms",
+    "memory": "69656kb",
+    "language": "C++14",
+    "submit_time": "2026-01-16T11:48:28+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8719",
+    "submission_link": "https://qoj.ac/submission/1922846"
+  },
+  {
+    "submission_id": "#1922992",
+    "problem_name": "BFS 序 0",
+    "status": "AC",
+    "time": "193ms",
+    "memory": "92324kb",
+    "language": "C++14",
+    "submit_time": "2026-01-16T12:44:08+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8720",
+    "submission_link": "https://qoj.ac/submission/1922992"
+  },
+  {
+    "submission_id": "#1927151",
+    "problem_name": "括号序列",
+    "status": "RE",
+    "time": "2ms",
+    "memory": "102116kb",
+    "language": "C++14",
+    "submit_time": "2026-01-17T17:10:14+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8721",
+    "submission_link": "https://qoj.ac/submission/1927151"
+  },
+  {
+    "submission_id": "#1922610",
+    "problem_name": "乘二",
+    "status": "AC",
+    "time": "154ms",
+    "memory": "32716kb",
+    "language": "C++14",
+    "submit_time": "2026-01-16T10:08:11+08:00",
+    "problem_link": "https://qoj.ac/contest/1668/problem/8723",
+    "submission_link": "https://qoj.ac/submission/1922610"
+  }
+]
