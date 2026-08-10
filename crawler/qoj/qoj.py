@@ -75,7 +75,7 @@ class QOJCrawler(BaseCrawler):
         """
         contest_page = self.fetch_page_with_browser("https://qoj.ac/contests")
 
-        # 订阅驱动：只抓取 subscriptions.json 中启用的 QOJ 比赛
+        # 订阅驱动：只抓取 crawler/subscriptions/ 目录中启用的 QOJ 比赛
         subscribed_links = {
             s.get("link", "").rstrip("/")
             for s in self._load_subscriptions(self.platform_name)

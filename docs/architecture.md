@@ -139,7 +139,7 @@ contests/
 | `fetch_submissions_fetch_source_code()` | 抓源码 | 抽象 |
 | `_update_submission_status()` | 提交落盘 | 按 `problem_link`/`problem_name` 匹配竞赛题目，全量归档到 `submissions.json` + `submissions/<id>.<ext>`，并写入 `code.<ext>` 与 `problem.json`；匹配不到则进 staged submissions |
 | `_archive_submission()` | 单份提交全量归档 | 按 `submission_id` 幂等去重；源码抓取失败不阻断元数据记录 |
-| `_load_subscriptions()` | 加载订阅配置 | 按 `platform` + `enabled` 过滤 `crawler/subscriptions.json` |
+| `_load_subscriptions()` | 加载订阅配置 | 合并 `crawler/subscriptions/` 目录下所有 `.json`（按 `link` 去重），按 `platform` + `enabled` 过滤 |
 | `_mark_submissions_complete()` | 标记提交抓取完整 | 仅在完整结束时调用；`finish()` 据此决定是否推进 `last-update.json` |
 | `finish()` | 收尾 | 关闭驱动；**仅当** `_mark_submissions_complete()` 被调用过才更新 `last-update.json`（避免抓取不完整时静默漏提交） |
 
@@ -161,7 +161,7 @@ contests/
 
 ### 4.3 订阅模型与两个任务
 
-统一订阅配置 `crawler/subscriptions.json`（gitignore，用户维护；模板见 `crawler/subscriptions.example.json`）：
+统一订阅配置存放在 `crawler/subscriptions/` 目录（开发分支 gitignore，用户维护；模板见 `crawler/subscriptions.example.json`）。目录下每个 `*.json` 文件都是一份订阅列表，**文件名随意**（可按平台 / 系列 / 月份等分组管理），运行时只识别 `.json` 文件，按文件名排序合并，重复 `link` 去重（保留先出现的条目）。单个文件格式：
 
 ```json
 [
@@ -214,7 +214,7 @@ contests/
 - 若题目已 AC 且旧提交非 AC，则不会用旧提交覆盖；新 AC 提交会更新 `solve_time`（取最早的 AC 时间）。
 - 提交抓取**完整性校验**：只有遍历完所有分页或到达 last-update 才标记完整；`finish()` 仅在此情况下推进 `last-update.json`，否则下次重跑，避免静默漏提交。
 
-**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/*/contests.json`、`crawler/*/staged-submissions.json`、`config.json`、`subscriptions.json`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。CI 工作流在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。仅 crawler 状态变化时同样提交（消息不带 `[contests-changed]` 标记，不触发部署）。日志、chromedriver 二进制、遗留 `input_*.json`、`new-contests.json`（临时报告列表，见 4.4）始终不提交。
+**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/*/contests.json`、`crawler/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。CI 工作流在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。仅 crawler 状态变化时同样提交（消息不带 `[contests-changed]` 标记，不触发部署）。日志、chromedriver 二进制、遗留 `input_*.json`、`new-contests.json`（临时报告列表，见 4.4）始终不提交。
 
 ## 5. 关键技术决策记录（ADR）
 
@@ -226,7 +226,7 @@ contests/
 | URL 双端常量（`BASE_URL`/`PREFIX_URL`） | 区分页面路由前缀与资源前缀，适配 GitHub Pages `basePath` | 修改部署路径只需改 `global.ts` 与 `next.config.ts`。**内部路由一律用根相对路径 + `next/link`**（`joinUrl("/", ...)` / `href="/"`，由 Link 自动添加一次 `basePath`）；`PREFIX_URL` 仅用于 `<a>` 外部/下载类链接（不经过 Link，手动拼接一次前缀）。二者混用会因 `next/link` 的 `addBasePath()` 叠加产生 `/Training-Archive/Training-Archive/...` 双前缀 404（2026-08-10 已修复） |
 | 爬虫数据不纳入 `main` 分支 | 避免大量二进制/JSON 数据污染主分支；`deploy` 分支专管数据与部署 | 主分支本地开发需自行准备 `contests/` |
 | 爬虫状态文件在 `deploy` 分支纳入版本控制 | 增量同步依赖跨运行持久的状态（last-update / 平台索引 / staged） | 开发分支 `.gitignore` 忽略；CI 用 `.gitignore.deploy` 覆盖后正常 `git add` |
-| 订阅模型 `subscriptions.json` | 统一管理预订比赛，取代各平台零散的 `input_contests.json` | 三平台均为订阅驱动；订阅文件 gitignore，由用户维护 |
+| 订阅模型 `crawler/subscriptions/` 目录 | 统一管理预订比赛，取代单文件 `subscriptions.json` 与各平台零散的 `input_contests.json`；多文件按 `link` 去重合并，文件名随意便于分组 | 三平台均为订阅驱动；订阅目录开发分支 gitignore，deploy 分支纳入版本控制 |
 | 全量提交采集（`submissions/` + `submissions.json`） | 复盘报告需要完整提交序列（含每份源码） | 每次提交都抓源码，初始同步耗时更长 |
 | LLM 复盘报告（DeepSeek） | 每场一份 `review.md`，原始提交序列直接送 LLM，不做预处理 | 依赖 `DEEPSEEK_API_KEY`；存在即跳过（幂等） |
 | 爬虫调度恢复为定时（两个任务） | 任务A（预订抓取，每 30 分钟）与任务B（提交周期同步，每天）分离；复盘报告由 `report.py` 独立运行 | `crawler-scheduled.yml` + `crawler.yml`，`concurrency` 串行防冲突 |

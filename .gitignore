@@ -61,7 +61,7 @@ crawler/chromedriver-linux64
 crawler/global.log.json
 crawler/last-update.json
 crawler/config.json
-crawler/subscriptions.json
+crawler/subscriptions/
 crawler/prompt.template.md
 crawler/qq-share.template.md
 crawler/new-contests.json

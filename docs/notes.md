@@ -6,6 +6,7 @@
 
 ## 最近更新
 
+- 2026-08-10：订阅配置改为目录式管理——`crawler/subscriptions/` 目录取代单文件 `crawler/subscriptions.json`，每个 `.json` 文件一份订阅列表（文件名随意，可按平台/系列/月份分组），运行时只识别 `.json` 文件、按文件名排序合并、重复 `link` 去重（保留先出现的条目）；`BaseCrawler._load_subscriptions` 重写为目录扫描。旧文件数据已迁移至 `crawler/subscriptions/hdu.json` 并删除单文件。开发分支 `.gitignore` 改为忽略整个目录（deploy 分支 `.gitignore.deploy` 无需改动，目录默认被跟踪）；模板仍为 `crawler/subscriptions.example.json`。
 - 2026-08-10：报告生成改为 `--from-crawl` 模式——任务A 结束把本次新建的比赛写入 `crawler/new-contests.json`（临时文件，gitignore），`report.py` / `qq_share.py` 加 `--from-crawl` 只对这些比赛生成 review / qq-share（幂等跳过），不再每次全量扫描；共享模块 `crawler/new_contests.py` 统一读写；工作流与 `server-task.sh` 的 report 步骤改用 `--from-crawl`（任务B 无新建比赛时自然跳过）。注意：订阅的比赛若在**进行中**被首次抓取（文件夹已建但未结束），当次不会生成报告，且后续运行不再新建该文件夹——`--from-crawl` 会漏掉这种比赛，需手动 `python3 crawler/report.py <folder>` 或全量扫描补生成。
 - 2026-08-10：方式二一键管理脚本 `crawler/server-task.sh`——复刻 Action 流程（pull→爬取→报告→清理→push），子命令 run/install/uninstall/status/log；`deploy.yml` 加 `push: branches: [deploy]` 触发（仅 `[contests-changed]` 提交部署）；gitignore 忽略 `crawler/server-task.log`。README / roadmap 同步。
 - 2026-08-10：部署方式确认并文档化——静态版两种部署方式（①GitHub Actions 开启 `schedule` 定时；②自建服务器 cron 跑同一套脚本，关闭 schedule、产物 push 回 deploy 分支需自行接入部署触发），动态版 v0.3.x 单列；写入 `docs/roadmap.md` §1.1 与 README「部署方式」。
@@ -76,7 +77,7 @@
 ### 爬虫
 
 - 平台启用/禁用由 `crawler/config.json` 的 `enabled` 字段控制（**缺省 `false` 视为禁用**，配置文件缺失/解析失败时全部平台禁用）；模板见 `crawler/config.example.json`（gitignored 的 `config.json` 不会被提交，deploy 分支的 `config.json` 需显式 `enabled: true` 才会启用对应平台）。
-- 订阅条目（`crawler/subscriptions.json`）的 `enabled` 为**订阅级**开关，**缺省视为启用**（与 `config.json` 平台级缺省禁用不同）。
+- 订阅条目（`crawler/subscriptions/` 目录下各 `.json` 文件）的 `enabled` 为**订阅级**开关，**缺省视为启用**（与 `config.json` 平台级缺省禁用不同）。运行时只识别目录下的 `.json` 文件（文件名随意，可按平台/系列分组），按文件名排序合并、重复 `link` 去重（保留先出现条目）；单文件格式与模板 `crawler/subscriptions.example.json` 一致。
 - 登录凭据一律走环境变量（`.env` / CI secrets），`config.json` 只放非敏感运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time`）。**本地运行爬虫/报告脚本会自动加载仓库根 `.env`**（`scheduled_task.py` / `report.py` 顶部 `load_dotenv()`，不覆盖已有环境变量；CI 无 `.env` 静默跳过）。QOJ/HDU 用户名密码由 `login()` 读取；NowCoder 需 `NOWCODER_USERNAME`（昵称，登录态校验）+ `NOWCODER_COOKIE_NOWCODERUID` / `NOWCODER_COOKIE_T`（登录 Cookie），见 `.env.example`。
 - 提交抓取截止：非首次运行按全局 `last-update.json` 增量（`_register_submission(deadline=None)`）；**首次抓取的新比赛**（本次运行 `fetch_contests` 新建文件夹，如补订已完成比赛）以该比赛 `start_time` 为截止**全量回填**（`_deadline_for`），否则 HDU/NowCoder 的 status 页第一条提交就早于全局 last-update 而被跳过、一场都抓不到。QOJ 提交走全局用户时间线，无 per-contest 概念，补订旧比赛需手动重置 `crawler/last-update.json` 该平台时间戳触发全量重抓（50 页上限内）。
 - 早于比赛开始时间的提交**统一直接丢弃**（三平台）：`_update_submission_status` 从 link/name 候选中选"start_time 最晚且不晚于提交时间"的比赛归档，早于所有匹配比赛开始的提交（跨赛季复用同一道题的历史提交）返回 `DISCARD` 丢弃、不进 staged；staged 中此类旧提交下次运行同样被清除。`contests.json` 条目含 `start_time`/`end_time`，旧条目由 `_load_contests_with_times()` 按比赛文件夹回填。

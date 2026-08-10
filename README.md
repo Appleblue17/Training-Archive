@@ -14,13 +14,13 @@
 
 ## 技术栈
 
-| 部分 | 技术 |
-|------|------|
-| 前端 | Next.js 15（静态导出）、React 19、TypeScript、Tailwind CSS、Motion |
+| 部分     | 技术                                                                   |
+| -------- | ---------------------------------------------------------------------- |
+| 前端     | Next.js 15（静态导出）、React 19、TypeScript、Tailwind CSS、Motion     |
 | 文档渲染 | unified / remark / rehype（Markdown + 数学公式 + 代码高亮）、react-pdf |
-| 爬虫 | Python、undetected_chromedriver、BeautifulSoup |
-| CI/CD | GitHub Actions（crawler.yml / deploy.yml） |
-| 包管理 | pnpm（registry: https://registry.npmmirror.com/） |
+| 爬虫     | Python、undetected_chromedriver、BeautifulSoup                         |
+| CI/CD    | GitHub Actions（crawler.yml / deploy.yml）                             |
+| 包管理   | pnpm（registry: https://registry.npmmirror.com/）                      |
 
 ## 目录结构
 
@@ -69,7 +69,8 @@ pnpm lint
 # 安装依赖
 pip install -r crawler/requirements.txt
 
-# 准备配置与环境变量（见 crawler/subscriptions.example.json 与 .env.example）
+# 准备配置与环境变量（见 crawler/subscriptions.example.json、.env.example）
+# 订阅文件放在 crawler/subscriptions/ 目录（每个 .json 一份列表，文件名随意）
 # 任务A：抓订阅比赛 + 增量同步提交
 python3 crawler/scheduled_task.py
 # 任务B：每日增量同步提交
@@ -85,7 +86,7 @@ python3 crawler/report.py "contests/2026-08-01 xxx"
 
 ## 部署方式
 
-网站提供三种部署方式，当前实现为**静态版（v0.2.0）**；动态版（v0.3.x）规划中，详见 [docs/roadmap.md](docs/roadmap.md) §1.1。
+网站提供三种部署方式，当前实现为**静态版（v0.2.x）**；动态版（v0.3.x）规划中，详见 [docs/roadmap.md](docs/roadmap.md) §1.1。
 
 ### 方式一：GitHub Actions 自动任务（默认，零运维）
 
@@ -102,10 +103,8 @@ GitHub 云端定时运行爬虫，自动提交并部署到 GitHub Pages：
 关闭工作流的定时（保留手动触发），在服务器上用 cron 跑同一套脚本，产物 push 回 `deploy` 分支，由 GitHub Actions 的 `deploy.yml` 自动构建部署 Pages。提供一键管理脚本 `crawler/server-task.sh`（复刻 Action 完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
 
 ```bash
-# 一键运行（任务 A：抓订阅比赛 + 增量同步）
-crawler/server-task.sh run
-# 任务 B：仅提交增量同步
-crawler/server-task.sh run b
+# 一键运行（任务 A：抓订阅比赛 + 增量同步；任务 B：仅提交增量同步）
+crawler/server-task.sh run [a/b]
 
 # 安装 / 卸载 cron 定时（任务 A 每 30 分钟 + 任务 B 每日，自动适配服务器时区）
 crawler/server-task.sh install
@@ -126,13 +125,13 @@ crawler/server-task.sh log [N]
 
 ## 文档
 
-| 文档 | 内容 |
-|------|------|
-| [docs/CHANGELOG.md](docs/CHANGELOG.md) | 变更日志（Keep a Changelog 格式） |
-| [docs/architecture.md](docs/architecture.md) | 架构设计、组件职责、技术决策 |
-| [docs/roadmap.md](docs/roadmap.md) | 开发规划：v0.2.0 / v0.3.0 路线图与决策记录 |
-| [docs/notes.md](docs/notes.md) | 开发笔记：进度、待办、注意事项 |
-| [docs/agent-workflow.md](docs/agent-workflow.md) | AI Agent 开发工作流规范 |
+| 文档                                             | 内容                                       |
+| ------------------------------------------------ | ------------------------------------------ |
+| [docs/CHANGELOG.md](docs/CHANGELOG.md)           | 变更日志（Keep a Changelog 格式）          |
+| [docs/architecture.md](docs/architecture.md)     | 架构设计、组件职责、技术决策               |
+| [docs/roadmap.md](docs/roadmap.md)               | 开发规划：v0.2.0 / v0.3.0 路线图与决策记录 |
+| [docs/notes.md](docs/notes.md)                   | 开发笔记：进度、待办、注意事项             |
+| [docs/agent-workflow.md](docs/agent-workflow.md) | AI Agent 开发工作流规范                    |
 
 ## License
 
