@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import renderMarkdown from "@/utils/render-markdown";
-import { Card, CardContent } from "@/components/ui/card";
+import FileViewerMarkdown from "@/components/file-viewer/file-viewer-markdown";
 
 export default async function ReadmePage() {
   const readmePath = path.join(process.cwd(), "README.md");
@@ -15,18 +15,13 @@ export default async function ReadmePage() {
 
   const html = readme ? await renderMarkdown(readme) : null;
 
-  return (
-    <Card>
-      <CardContent className="p-4">
-        {html ? (
-          <div
-            className="markdown-body"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-        ) : (
-          <p className="py-8 text-center text-gray-400">README.md not found.</p>
-        )}
-      </CardContent>
-    </Card>
-  );
+  if (!readme || !html) {
+    return (
+      <div className="flex h-[85dvh] items-center justify-center rounded border-2 border-gray-600 bg-[#0d1117]">
+        <p className="text-center text-gray-400">README.md not found.</p>
+      </div>
+    );
+  }
+
+  return <FileViewerMarkdown raw={readme} htmlContent={html} />;
 }

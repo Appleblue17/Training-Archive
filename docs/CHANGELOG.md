@@ -50,6 +50,7 @@
 - 时间显示统一为 `YYYY/MM/DD HH:MM`（24 小时制，北京时间，无秒）：`src/utils/format.ts` 新增 `formatDateTime`，Dashboard 最近完成与复盘时间轴共用
 - 内容查看类链接统一新标签页打开（`target="_blank"` + `rel="noopener noreferrer"`）：复盘 Source / 原始 markdown、Dashboard 题面与代码、搜索全部结果
 - lucide 图标尺寸统一（`size-4` 等）：页脚 GitHub 图标、日志/文件查看器的复制按钮与源码/下载图标（视觉一致性微调）
+- `/readme` 页渲染样式与文件查看器统一：直接复用 `FileViewerMarkdown` 组件（深色 `bg-[#0d1117]` 容器、边框、右上角复制按钮、`p-12` 可滚动区域），不再使用 `Card` 包裹；README 缺失时以同风格容器显示提示
 
 ### Fixed
 
