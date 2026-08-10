@@ -1,13 +1,8 @@
 import fs from "fs";
 import path from "path";
-import Link from "next/link";
-import FileViewer from "@/components/file-viewer/file-viewer";
-import { FiDownload, FiFileText, FiHome } from "react-icons/fi";
+import FileViewerPage from "@/components/file-viewer/file-viewer-page";
 
-import { FileMetadataType } from "@/lib/types";
 import getFileMetadata from "@/utils/get-file-metadata";
-import MetaDataDisplay from "@/components/metadata-display";
-import { PREFIX_URL } from "@/lib/global";
 
 export async function generateStaticParams() {
   const contestsDir = path.join(process.cwd(), "contests");
@@ -44,77 +39,30 @@ export default async function FilePage(props: {
   const problem = decodeURIComponent(params.problem);
   const file = decodeURIComponent(params.file);
 
-  const rawFilePath = path.join(PREFIX_URL, "contests", contest, "problems", problem, file);
-
-  const contestMetadata: FileMetadataType = getFileMetadata(
+  const contestMetadata = getFileMetadata(
     path.join(process.cwd(), "contests", contest),
     path.join(process.cwd(), "contests", contest, "contest.json"),
   );
 
-  const problemMetadata: FileMetadataType = getFileMetadata(
+  const problemMetadata = getFileMetadata(
     path.join(process.cwd(), "contests", contest, "problems", problem),
     path.join(process.cwd(), "contests", contest, "problems", problem, "problem.json"),
   );
 
-  const fileMetadata: FileMetadataType = getFileMetadata(
+  const fileMetadata = getFileMetadata(
     path.join(process.cwd(), "contests", contest, "problems", problem, file),
     path.join(process.cwd(), "contests", contest, "problems", problem, file + ".json"),
   );
 
   return (
-    <div className="flex min-h-screen justify-center py-4">
-      <div className="mx-auto w-4/5">
-        <header className="relative w-full rounded-lg py-2 text-slate-300">
-          <Link href={path.join(PREFIX_URL)}>
-            <FiHome className="absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400" />
-          </Link>
-          <h1 className="text-2xl font-semibold tracking-wide">File Viewer</h1>
-          <p className="ml-4 mt-2 text-base text-gray-400">
-            <span className="px-2 text-lg text-gray-200">/</span>
-            {contest}
-            <span className="px-2 text-lg text-slate-300">/</span>
-            {problem}
-            <span className="px-2 text-lg text-slate-300">/</span>
-            {file}
-          </p>
-          <div className="absolute right-8 top-2 flex items-center gap-2">
-            <a
-              href={rawFilePath}
-              download
-              className="rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
-            >
-              <FiDownload className="mr-2 inline-block text-base" />
-              Download
-            </a>
-            <a
-              href={rawFilePath}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
-            >
-              <FiFileText className="mr-2 inline-block text-base" />
-              Raw File
-            </a>
-          </div>
-        </header>
-        <main className="mt-4 flex w-full items-start justify-center gap-4">
-          <div className="flex-grow">
-            <FileViewer
-              dirPath={path.join("contests", contest, "problems", problem)}
-              fileName={file}
-            />
-          </div>
-          <div className="flex-shrink-0 basis-1/5 space-y-2 overflow-auto">
-            <MetaDataDisplay
-              name={"File"}
-              metadata={fileMetadata}
-              metadataBanner={["problem_link"]}
-            />
-            <MetaDataDisplay name={"Problem"} metadata={problemMetadata} />
-            <MetaDataDisplay name={"Contest"} metadata={contestMetadata} />
-          </div>
-        </main>
-      </div>
-    </div>
+    <FileViewerPage
+      contest={contest}
+      contestMetadata={contestMetadata}
+      file={file}
+      fileMetadata={fileMetadata}
+      problem={problem}
+      problemMetadata={problemMetadata}
+      fileMetadataBanner={["problem_link"]}
+    />
   );
 }

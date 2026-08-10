@@ -1,6 +1,9 @@
+import { ExternalLink } from "lucide-react";
 import "@/lib/globals.css";
+import "@public/github-markdown-dark.css";
+import "@public/katex.min.css";
+import "@public/github-dark.css";
 import { inter } from "@public/fonts/fonts";
-import { FiGithub } from "react-icons/fi";
 import { BASE_URL, REPO_URL } from "@/lib/global";
 
 export const experimental_ppr = true;
@@ -25,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               rel="noopener noreferrer"
               className="hover:text-blue-300"
             >
-              <FiGithub className="mr-1 inline" />
+              <ExternalLink className="mr-1 inline size-4" />
               GitHub
             </a>{" "}
             · MIT License

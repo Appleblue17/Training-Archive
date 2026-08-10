@@ -2,8 +2,13 @@ name: Crawler Workflow
 
 on:
   workflow_dispatch:
+  # 定时尚未启用：工作流未实测通过前先手动触发验证
   # schedule:
   #   - cron: "0 20 * * *" # Runs daily at 20:00 UTC (4:00 Asia/Shanghai)
+
+concurrency:
+  group: crawler
+  cancel-in-progress: false
 
 jobs:
   crawl:
@@ -50,82 +55,51 @@ jobs:
           pip install -r crawler/requirements.txt
 
       - name: Ensure chromedriver is executable
-        run: chmod +x crawler/chromedriver_linux64/chromedriver
+        run: chmod +x crawler/chromedriver-linux64/chromedriver
 
-      - name: Check chromedriver permissions
-        run: ls -l crawler/chromedriver_linux64/
-
-      - name: Run QOJ Crawler
-        id: qoj
-        continue-on-error: true
-        run: python3 crawler/qoj/qoj.py
+      - name: "Run scheduled task (task B: daily submissions sync)"
+        id: crawl
+        run: python3 crawler/scripts/scheduled_task.py --submissions-only
         env:
           PYTHONUNBUFFERED: "1"
           CHROME_BINARY: ${{ steps.setup-chrome.outputs.chrome-path }}
           CHROMEDRIVER_PATH: ${{ steps.setup-chrome.outputs.chromedriver-path }}
           QOJ_USERNAME: ${{ secrets.QOJ_USERNAME }}
           QOJ_PASSWORD: ${{ secrets.QOJ_PASSWORD }}
-
-      - name: Run HDU Crawler
-        id: hdu
-        continue-on-error: true
-        run: python3 crawler/hdu/hdu.py
-        env:
-          PYTHONUNBUFFERED: "1"
-          CHROME_BINARY: ${{ steps.setup-chrome.outputs.chrome-path }}
-          CHROMEDRIVER_PATH: ${{ steps.setup-chrome.outputs.chromedriver-path }}
           HDU_USERNAME: ${{ secrets.HDU_USERNAME }}
           HDU_PASSWORD: ${{ secrets.HDU_PASSWORD }}
+          NOWCODER_USERNAME: ${{ secrets.NOWCODER_USERNAME }}
+          NOWCODER_COOKIE_NOWCODERUID: ${{ secrets.NOWCODER_COOKIE_NOWCODERUID }}
+          NOWCODER_COOKIE_T: ${{ secrets.NOWCODER_COOKIE_T }}
 
-      - name: Run NowCoder Crawler
-        id: nowcoder
-        continue-on-error: true
-        run: python3 crawler/nowcoder/nowcoder.py
+      - name: "Generate review reports (only for contests created in this crawl)"
+        run: python3 crawler/scripts/report.py --from-crawl
         env:
           PYTHONUNBUFFERED: "1"
-          CHROME_BINARY: ${{ steps.setup-chrome.outputs.chrome-path }}
-          CHROMEDRIVER_PATH: ${{ steps.setup-chrome.outputs.chromedriver-path }}
-          NEWCODER_COOKIE_NOWCODERUID: ${{ secrets.NEWCODER_COOKIE_NOWCODERUID }}
-          NEWCODER_COOKIE_T: ${{ secrets.NEWCODER_COOKIE_T }}
-
-      - name: Check if all crawlers failed
-        id: all_failed
-        run: |
-          if [ "${{ steps.qoj.outcome }}" = "failure" ] && \
-             [ "${{ steps.hdu.outcome }}" = "failure" ] && \
-             [ "${{ steps.nowcoder.outcome }}" = "failure" ]; then
-            echo "All crawlers failed."
-            exit 1
-          fi
-          echo "At least one crawler succeeded. Continuing with the workflow."
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
 
       - name: Clean log files
-        run: python3 crawler/clean-log.py
+        run: python3 crawler/scripts/clean-log.py
 
-      - name: Add and show changes
+      - name: "Add, commit and push changes"
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add crawler contests
-          git reset HEAD crawler/chromedriver_linux64/chromedriver
+          # deploy 分支使用专用 gitignore：contests/ 与爬虫增量状态纳入版本控制，
+          # 保证增量同步跨运行生效，手动上传代码也能被正常跟踪。
+          cp .gitignore.deploy .gitignore
+          git add .gitignore crawler contests
+          git reset HEAD crawler/chromedriver-linux64/chromedriver 2>/dev/null || true
           git diff --cached --stat
-
-      - name: Check if contests changed
-        id: check_contests
-        run: |
-          if git diff --cached --name-only | grep contests/; then
-            echo "contests_changed=true" >> $GITHUB_ENV
-            echo "Detected changes in contests directory."
-          else
-            echo "contests_changed=false" >> $GITHUB_ENV
-            echo "No changes detected in contests directory."
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
           fi
-
-      - name: Commit and push changes
-        run: |
-          if [ "$contests_changed" = "true" ]; then
+          if git diff --cached --name-only | grep -q '^contests/'; then
             git commit -m "[auto] [contests-changed] Update contest and submission data"
-            git push
           else
-            echo "No contest changes detected. Skipping commit and push."
+            # 只有爬虫状态变化（如 last-update 推进）时也提交，但不带标记，
+            # 避免触发 deploy。
+            git commit -m "[auto] Update crawler state"
           fi
+          git push

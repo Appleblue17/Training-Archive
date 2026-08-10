@@ -1,7 +1,7 @@
+import { Globe } from "lucide-react";
 import Breadcrumb from "./breadcrumb";
 import fs from "fs";
 import path from "path";
-import { FiGlobe } from "react-icons/fi";
 
 import { REPO_URL } from "@/lib/global";
 import CrawlerStatus from "./crawler-status";
@@ -26,8 +26,8 @@ export default async function Layout({ children }: { children: React.ReactNode }
   const actionURL = REPO_URL + "actions";
 
   return (
-    <div className="mt-4 flex min-w-[1600px] justify-center">
-      <div className="relative mx-auto w-3/4 -translate-x-10">
+    <div className="mt-4 flex w-full justify-center">
+      <div className="relative mx-auto w-3/5 min-w-[64rem] px-4">
         <header className="w-full rounded-lg py-4 text-slate-300">
           <h1 className="text-3xl font-semibold tracking-wide">Training Archive</h1>
         </header>
@@ -38,7 +38,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
           rel="noopener noreferrer"
           className="absolute right-0 top-4 flex items-center gap-3 rounded-lg bg-zinc-700/80 px-4 py-2 text-sm transition-colors duration-150 hover:bg-zinc-600/80"
         >
-          <FiGlobe className="size-5 text-stone-400" />
+          <Globe className="size-5 text-stone-400" />
           <CrawlerStatus minTimeISO={minTimeISO} />
         </a>
         <Breadcrumb />

@@ -5,21 +5,20 @@ from bs4 import BeautifulSoup as bs4
 from datetime import datetime, timedelta, timezone
 
 beijing = timezone(timedelta(hours=8))
-now = datetime.now(beijing)
 from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from crawler.base import BaseCrawler
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
+from crawler.platforms.base import BaseCrawler
 
 
 class QOJCrawler(BaseCrawler):
-    def __init__(self, local_log_path="crawler/qoj/log.json"):
+    def __init__(self, local_log_path="crawler/platforms/qoj/log.json"):
         super().__init__("qoj", local_log_path)
-        self.contests_path = "crawler/qoj/contests.json"
-        self.submissions_path = "crawler/qoj/staged-submissions.json"
+        self.contests_path = "crawler/platforms/qoj/contests.json"
+        self.submissions_path = "crawler/platforms/qoj/staged-submissions.json"
 
     def is_logged_in(self):
         main_page = self.fetch_page_with_browser("https://qoj.ac/")
@@ -60,6 +59,7 @@ class QOJCrawler(BaseCrawler):
             )
             return
 
+        self.username = username
         self.try_login_with_password(username, password)
 
     def fetch_contests_get_contest_list(self):
@@ -75,6 +75,15 @@ class QOJCrawler(BaseCrawler):
         """
         contest_page = self.fetch_page_with_browser("https://qoj.ac/contests")
 
+        # 订阅驱动：只抓取 crawler/subscriptions/ 目录中启用的 QOJ 比赛
+        subscribed_links = {
+            s.get("link", "").rstrip("/")
+            for s in self._load_subscriptions(self.platform_name)
+        }
+        if not subscribed_links:
+            self.log("info", "No subscribed QOJ contests, skipping contest list fetch.")
+            return []
+
         soup = bs4(contest_page, "html.parser")
         contest_elements = soup.find_all("tr", class_="table-success")
 
@@ -89,6 +98,11 @@ class QOJCrawler(BaseCrawler):
             contest_link = urljoin(self.base_url, cols[0].find("a")["href"])
             contest_name = cols[0].find("a").text.strip()
 
+            # 未订阅的比赛跳过
+            if contest_link.rstrip("/") not in subscribed_links:
+                self.log("info", f"Contest {contest_name} is not subscribed, skipping.")
+                continue
+
             # If the contest already exists, skip it
             if any(c["link"] == contest_link for c in self.contests):
                 continue
@@ -98,6 +112,14 @@ class QOJCrawler(BaseCrawler):
             contest_start_time = cols[1].find("a").text.strip()
             start_time = self._convert_iso_to_beijing(contest_start_time)
             date = start_time.date()
+
+            if start_time > datetime.now(beijing):
+                # Contest is in the future, skip it
+                self.log(
+                    "info",
+                    f"Contest {contest_name} has not started yet. Skipping.",
+                )
+                continue
 
             # Contest duration is in cols[2]
             # Format: [X hours] or [X hours Y minutes]
@@ -231,6 +253,9 @@ class QOJCrawler(BaseCrawler):
             if "Memory Limit" in badge_content:
                 memory_limit = badge_content.split(":")[1].strip()
 
+        # Best-effort tag extraction; non-fatal if the page has no tags.
+        tags = self._extract_problem_tags(problem_soup)
+
         problem_pdf = problem_soup.find("iframe", id="statements-pdf")
         if not problem_pdf:
             self.log(
@@ -252,11 +277,42 @@ class QOJCrawler(BaseCrawler):
             "link": problem_link,
             "name": problem_name,
         }
+        if tags:
+            problem_entry["tags"] = tags
         if "time_limit" in locals():
             problem_entry["time_limit"] = time_limit
         if "memory_limit" in locals():
             problem_entry["memory_limit"] = memory_limit
         return problem_entry
+
+    def _extract_problem_tags(self, problem_soup):
+        """
+        Extract tags from a UOJ/QOJ-style problem page.
+
+        Best-effort: returns [] if the structure is unexpected, so a tag
+        parsing failure never blocks contest fetching. On QOJ tags live in a
+        panel whose heading contains "Tags"/"标签", each tag being a link with
+        "tag=" in its href.
+        """
+        tags = []
+        try:
+            for panel in problem_soup.select("div.panel"):
+                title_el = panel.select_one(".panel-heading .panel-title")
+                if not title_el:
+                    continue
+                if "tag" not in title_el.get_text(strip=True).lower():
+                    continue
+                for a in panel.select("a[href]"):
+                    if "tag" not in a["href"].lower():
+                        continue
+                    text = a.get_text(strip=True)
+                    if text:
+                        tags.append(text)
+                if tags:
+                    break
+        except Exception:
+            self.log("warning", "Failed to parse problem tags; continuing without tags.")
+        return tags
 
     def fetch_submissions_fetch_source_code(self, entry):
         """
@@ -279,13 +335,19 @@ class QOJCrawler(BaseCrawler):
         - submit_time: The time when the submission was made, in ISO format (YYYY-MM-DDTHH:MM:SS)
         """
 
-        username = os.getenv("QOJ_USERNAME")
+        username = self.username
         if not username:
             self.log(
                 "fatal",
                 "Username not found in environment variables. Cannot fetch submissions.",
             )
             return
+
+        # 增量截止：
+        #   contests-only（--contests-only）→ 最早的新比赛开始时间，只回填
+        #     新比赛提交区间；已有比赛的增量由每日任务B负责
+        #   否则 → None，沿用全局 last-update 增量截止
+        deadline = self._contests_only_deadline()
 
         # Assuming there are not more than 50 pages of submissions
         for page in range(1, 50):
@@ -305,6 +367,7 @@ class QOJCrawler(BaseCrawler):
                 self.log(
                     "info", f"Reached the end of submissions at page {current_page}."
                 )
+                self._mark_submissions_complete()
                 break
 
             table_body = soup.find("table", class_="table").find("tbody")
@@ -327,15 +390,20 @@ class QOJCrawler(BaseCrawler):
 
                 problem_name = cols[1].text.strip()
                 # To extract pure name, re `^#\d+\. (.*)`
-                problem_name_pure = re.match(r"^#\d+\. (.*)", problem_name).group(1)
+                problem_match = re.match(r"^#(\d+)\. (.*)", problem_name)
+                if problem_match:
+                    problem_id = problem_match.group(1)
+                    problem_name_pure = problem_match.group(2)
+                else:
+                    problem_id = ""
+                    problem_name_pure = problem_name
                 problem_link = urljoin(self.base_url, cols[1].find("a")["href"])
 
                 # Status format: [number] or [AC ✓] or [status]
                 raw_status = cols[3].text.replace(" ✓", "").strip()
                 if raw_status.isdigit():
-                    status = int(raw_status)
-                    if status == 100:
-                        status = "AC"
+                    # 数字状态统一为字符串（100 表示 AC），与前端字符串比对保持一致
+                    status = "AC" if int(raw_status) == 100 else raw_status
                 else:
                     # only preserve uppercase letters
                     status = "".join(c for c in raw_status if c.isupper())
@@ -348,6 +416,7 @@ class QOJCrawler(BaseCrawler):
 
                 submission_entry = {
                     "submission_id": submission_id,
+                    "problem_id": problem_id,
                     "problem_name": problem_name_pure,
                     "status": status,
                     "time": time,
@@ -357,32 +426,14 @@ class QOJCrawler(BaseCrawler):
                     "problem_link": problem_link,
                     "submission_link": submission_link,
                 }
-                stop_fetching = self._register_submission(submission_entry)
+                stop_fetching = self._register_submission(
+                    submission_entry, deadline=deadline
+                )
                 if stop_fetching:
+                    self._mark_submissions_complete()
                     return
 
             self.log(
                 "info",
                 f"Fetched {len(submission_elements)} submissions from page {page}.",
             )
-
-
-if __name__ == "__main__":
-    crawler = QOJCrawler()
-    try:
-        crawler.log(
-            "important", "QOJ Crawler started at " + datetime.now(beijing).isoformat()
-        )
-        crawler.login()
-        crawler.fetch_contests()
-        crawler.log("info", "Contests fetched successfully.")
-        crawler.fetch_submissions()
-        crawler.log("info", "Submissions fetched successfully.")
-        crawler.log(
-            "important",
-            "QOJ Crawler finished successfully at " + datetime.now(beijing).isoformat(),
-        )
-        crawler.finish()
-    except Exception as e:
-        crawler.log("fatal", f"An error occurred: {e}")
-        crawler.deinit_driver()

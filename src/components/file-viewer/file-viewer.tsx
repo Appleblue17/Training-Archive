@@ -1,3 +1,4 @@
+import { Download, FileText } from "lucide-react";
 import fs from "fs";
 import path from "path";
 import FileViewerPDF from "./file-viewer-pdf";
@@ -5,7 +6,6 @@ import FileViewerSource from "./file-viewer-source";
 import FileViewerMarkdownWrapper from "./file-viewer-markdown-wrapper";
 
 import { allowedExtensions, BASE_URL, PREFIX_URL } from "@/lib/global";
-import { FiDownload, FiFileText } from "react-icons/fi";
 
 export default function FileViewer({ dirPath, fileName }: { dirPath: string; fileName: string }) {
   const filePath = path.join(process.cwd(), dirPath, fileName);
@@ -45,7 +45,7 @@ export default function FileViewer({ dirPath, fileName }: { dirPath: string; fil
                 download
                 className="rounded bg-gray-700 px-3 py-1 text-base text-white hover:bg-gray-600"
               >
-                <FiDownload className="mr-2 inline-block text-base" />
+                <Download className="mr-2 inline-block text-base size-4" />
                 Download
               </a>
 
@@ -55,7 +55,7 @@ export default function FileViewer({ dirPath, fileName }: { dirPath: string; fil
                 rel="noopener noreferrer"
                 className="rounded bg-gray-700 px-3 py-1 text-base text-white hover:bg-gray-600"
               >
-                <FiFileText className="mr-2 inline-block text-base" />
+                <FileText className="mr-2 inline-block text-base size-4" />
                 Raw File
               </a>
             </div>

@@ -3,9 +3,11 @@ name: Deploy to GitHub Pages
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Crawler Workflow"]
+    workflows: ["Crawler Workflow", "Crawler Scheduled"]
     types:
       - completed
+  push:
+    branches: [deploy]
 
 jobs:
   check_contests:
@@ -14,37 +16,46 @@ jobs:
       should_deploy: ${{ steps.check_commit.outputs.should_deploy }}
     steps:
       - name: Checkout deploy branch
-        if: github.event_name == 'workflow_run'
         uses: actions/checkout@v4
         with:
           ref: deploy
 
       - name: Check if contests changed
-        if: github.event_name == 'workflow_run'
         id: check_commit
         run: |
           git fetch
           git log -1 --pretty=%B > last_commit_msg.txt
-          git log -1 --date=format:'%Y-%m-%d' --format='%cd' > last_commit_date.txt
           cat last_commit_msg.txt
-          commit_date=$(cat last_commit_date.txt)
-          today=$(date -u +%Y-%m-%d)
-          echo "Last commit date: $commit_date (UTC today: $today)"
-          if grep -q '\[contests-changed\]' last_commit_msg.txt && [ "$commit_date" = "$today" ]; then
-            echo "should_deploy=true" >> $GITHUB_OUTPUT
-            echo "Detected today's contests-changed commit. Will proceed with deployment."
-          else
-            echo "should_deploy=false" >> $GITHUB_OUTPUT
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # push 事件：最后提交就是本次 push 的（服务器刚提交），无需日期校验
             if grep -q '\[contests-changed\]' last_commit_msg.txt; then
-              echo "Commit contains [contests-changed] but is not from today. Skipping deployment."
+              echo "should_deploy=true" >> $GITHUB_OUTPUT
+              echo "Detected [contests-changed] in pushed commit. Will proceed with deployment."
             else
-              echo "No changes detected in contests directory. Will skip deployment."
+              echo "should_deploy=false" >> $GITHUB_OUTPUT
+              echo "No [contests-changed] marker. Will skip deployment."
+            fi
+          else
+            git log -1 --date=format:'%Y-%m-%d' --format='%cd' > last_commit_date.txt
+            commit_date=$(cat last_commit_date.txt)
+            today=$(date -u +%Y-%m-%d)
+            echo "Last commit date: $commit_date (UTC today: $today)"
+            if grep -q '\[contests-changed\]' last_commit_msg.txt && [ "$commit_date" = "$today" ]; then
+              echo "should_deploy=true" >> $GITHUB_OUTPUT
+              echo "Detected today's contests-changed commit. Will proceed with deployment."
+            else
+              echo "should_deploy=false" >> $GITHUB_OUTPUT
+              if grep -q '\[contests-changed\]' last_commit_msg.txt; then
+                echo "Commit contains [contests-changed] but is not from today. Skipping deployment."
+              else
+                echo "No changes detected in contests directory. Will skip deployment."
+              fi
             fi
           fi
 
   deploy:
     needs: check_contests
-    if: needs.check_contests.outputs.should_deploy == 'true' || github.event_name != 'workflow_run'
+    if: needs.check_contests.outputs.should_deploy == 'true' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write

@@ -1,11 +1,7 @@
 import fs from "fs";
 import path from "path";
-import ContestTable from "./contest-table";
-import Link from "next/link";
 
-import { ProblemInfoType, ContestInfoType } from "@/lib/types";
-import getFileMetadata from "@/utils/get-file-metadata";
-import { allowedExtensions } from "@/lib/global";
+import HomeView from "../home-view";
 
 import { ITEMS_PER_PAGE } from "@/lib/global";
 
@@ -19,130 +15,12 @@ export async function generateStaticParams() {
   }));
 }
 
-function getFilesInfo(directory: string) {
-  const files = fs.readdirSync(directory);
-  // only show files with allowed extensions and not .json
-  return files
-    .filter((file) => {
-      const fullPath = path.join(directory, file);
-      const ext = path.extname(file).toLowerCase();
-      return fs.statSync(fullPath).isFile() && allowedExtensions.includes(ext) && ext !== ".json";
-    })
-    .map((file) => {
-      return getFileMetadata(path.join(directory, file), path.join(directory, file + ".json"));
-    })
-    .filter((file) => file !== null);
-}
-
-function getProblemInfo(problemPath: string, relProblemPath: string): ProblemInfoType {
-  const problemInfo: ProblemInfoType = {
-    rel_path: relProblemPath,
-    files: getFilesInfo(problemPath),
-  };
-
-  if (fs.existsSync(problemPath)) {
-    const jsonPath = path.join(problemPath, "problem.json");
-    if (fs.existsSync(jsonPath)) {
-      const content = fs.readFileSync(jsonPath, "utf-8");
-      const json = JSON.parse(content);
-      Object.assign(problemInfo, json);
-    }
-  }
-  return problemInfo;
-}
-
-function getContests(): ContestInfoType[] {
-  const contestsDir = path.join(process.cwd(), "contests");
-  const contestFolders = fs.readdirSync(contestsDir);
-
-  const contests: ContestInfoType[] = [];
-  for (const contest of contestFolders) {
-    const contestPath = path.join(contestsDir, contest);
-
-    const contestInfo: ContestInfoType = {
-      rel_path: path.join("contests", contest),
-      date: "??-??-????",
-      name: "???",
-      platform: "unknown",
-      problems: [],
-      files: getFilesInfo(contestPath),
-    };
-
-    const jsonPath = path.join(contestPath, "contest.json");
-    if (fs.existsSync(jsonPath)) {
-      const content = fs.readFileSync(jsonPath, "utf-8");
-      const json = JSON.parse(content);
-      Object.assign(contestInfo, json);
-    }
-
-    const problemsPath = path.join(contestPath, "problems");
-    if (fs.existsSync(problemsPath)) {
-      const problemFolders = fs.readdirSync(problemsPath);
-      for (const folder of problemFolders) {
-        const problemInfo = getProblemInfo(
-          path.join(problemsPath, folder),
-          path.join("contests", contest, "problems", folder),
-        );
-        contestInfo.problems.push(problemInfo);
-      }
-    }
-    contests.push(contestInfo);
-  }
-  return contests;
-}
-
-type PageProps = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
 export default async function HomePage(props: { params: Promise<{ page: string }> }) {
   const params = await props.params;
   const pageParam = params.page;
 
-  const pageNum = pageParam.replace("page", "") ? parseInt(pageParam.replace("page", "")) : 1;
-  const contests = getContests().reverse();
-  const totalPages = Math.ceil(contests.length / ITEMS_PER_PAGE);
+  // 解析页码：page1 -> 1；非法/0 值回退到 1
+  const pageNum = Math.max(1, parseInt(pageParam.replace("page", ""), 10) || 1);
 
-  const start = (pageNum - 1) * ITEMS_PER_PAGE;
-  const end = start + ITEMS_PER_PAGE;
-  const pagedContests = contests.slice(start, end);
-
-  return (
-    <>
-      <ContestTable contests={pagedContests} />
-      <div className="mt-6 flex justify-center">
-        <nav className="inline-flex items-center space-x-2">
-          <Link
-            href={`/page${pageNum - 1}`}
-            className={`rounded-l bg-slate-700 px-4 py-2 text-white hover:bg-gray-600 ${
-              pageNum === 1 ? "pointer-events-none opacity-50" : ""
-            }`}
-            aria-disabled={pageNum === 1}
-          >
-            Previous
-          </Link>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <Link
-              key={i + 1}
-              href={`/page${i + 1}`}
-              className={`px-4 py-2 text-white hover:bg-gray-600 ${
-                pageNum === i + 1 ? "bg-blue-800" : "bg-slate-700"
-              }`}
-            >
-              {i + 1}
-            </Link>
-          ))}
-          <Link
-            href={`/page${pageNum + 1}`}
-            className={`rounded-r bg-slate-700 px-4 py-2 text-white hover:bg-gray-600 ${
-              pageNum === totalPages ? "pointer-events-none opacity-50" : ""
-            }`}
-            aria-disabled={pageNum === totalPages}
-          >
-            Next
-          </Link>
-        </nav>
-      </div>
-    </>
-  );
+  return <HomeView pageNum={pageNum} />;
 }

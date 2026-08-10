@@ -1,0 +1,20 @@
+[
+  {
+    "platform": "qoj",
+    "link": "https://qoj.ac/contest/123",
+    "comments": "示例：某场 QOJ 比赛（可留空）",
+    "enabled": true
+  },
+  {
+    "platform": "hdu",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1229",
+    "comments": "示例：某场 HDU 比赛（可留空）",
+    "enabled": true
+  },
+  {
+    "platform": "nowcoder",
+    "link": "https://ac.nowcoder.com/acm/contest/12345",
+    "comments": "示例：某场 NowCoder 比赛（可留空）",
+    "enabled": false
+  }
+]

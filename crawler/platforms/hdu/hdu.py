@@ -5,22 +5,41 @@ from bs4 import BeautifulSoup as bs4
 from datetime import datetime, timedelta, timezone
 
 beijing = timezone(timedelta(hours=8))
-now = datetime.now(beijing)
 from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from crawler.base import BaseCrawler
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
+from crawler.platforms.base import BaseCrawler
+
+# HDU 时间格式形如 "Jul 18, 2025 12:00:00"。
+# 显式映射英文月份，避免依赖系统 locale（非英文环境 %b 会解析失败）。
+HDU_MONTHS = {
+    "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+    "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12,
+}
+
+
+def _parse_hdu_time(s):
+    """Parse 'Jul 18, 2025 12:00:00' into a naive datetime."""
+    parts = s.strip().split()
+    if len(parts) != 4:
+        raise ValueError(f"Unexpected HDU time format: {s}")
+    month = HDU_MONTHS.get(parts[0])
+    if month is None:
+        raise ValueError(f"Unknown month in HDU time format: {s}")
+    day = int(parts[1].rstrip(","))
+    year = int(parts[2])
+    hour, minute, second = (int(x) for x in parts[3].split(":"))
+    return datetime(year, month, day, hour, minute, second)
 
 
 class HDUCrawler(BaseCrawler):
-    def __init__(self, local_log_path="crawler/hdu/log.json"):
+    def __init__(self, local_log_path="crawler/platforms/hdu/log.json"):
         super().__init__("hdu", local_log_path)
-        self.contests_path = "crawler/hdu/contests.json"
-        self.submissions_path = "crawler/hdu/staged-submissions.json"
-        self.input_contests_path = "crawler/hdu/input_contests.json"
+        self.contests_path = "crawler/platforms/hdu/contests.json"
+        self.submissions_path = "crawler/platforms/hdu/staged-submissions.json"
 
     def is_logged_in(self, link):
         main_page = self.fetch_page_with_browser(link)
@@ -67,6 +86,7 @@ class HDUCrawler(BaseCrawler):
             )
             return
 
+        self.username = username
         self.try_login_with_password(link, username, password)
 
     def fetch_contests_get_contest_list(self):
@@ -81,7 +101,7 @@ class HDUCrawler(BaseCrawler):
         - link: The link to the contest
         """
 
-        input_contest_list = self._load_file(self.input_contests_path)
+        input_contest_list = self._load_subscriptions(self.platform_name)
         contest_infos = []
         for input_contest in input_contest_list:
             if "link" not in input_contest:
@@ -114,14 +134,12 @@ class HDUCrawler(BaseCrawler):
                 continue
             start_time_str = contest_time_parts[0].strip()
             end_time_str = contest_time_parts[1].strip()
-            start_time = datetime.strptime(start_time_str, "%b %d, %Y %H:%M:%S")
-            end_time = datetime.strptime(end_time_str, "%b %d, %Y %H:%M:%S")
-            start_time = start_time.replace(tzinfo=beijing)
-            end_time = end_time.replace(tzinfo=beijing)
+            start_time = _parse_hdu_time(start_time_str).replace(tzinfo=beijing)
+            end_time = _parse_hdu_time(end_time_str).replace(tzinfo=beijing)
 
             contest_date = start_time.date().isoformat()
 
-            if start_time > now:
+            if start_time > datetime.now(beijing):
                 # Contest is in the future, skip it
                 self.log(
                     "info",
@@ -302,13 +320,21 @@ class HDUCrawler(BaseCrawler):
         Either `problem_name` or `problem_link` is required.
         """
 
-        input_contest_list = self._load_file(self.input_contests_path)
+        input_contest_list = self._load_subscriptions(self.platform_name)
         for input_contest in input_contest_list:
 
             if "link" not in input_contest:
                 self.log("error", "Input contest does not have a link.")
                 continue
             contest_link = input_contest["link"]
+            # contests-only（--contests-only）：只回填本次新建比赛的提交，
+            # 已有比赛的增量由每日任务B（--submissions-only）负责
+            if getattr(self, "_contests_only", False) and contest_link not in self._new_contests:
+                self.log(
+                    "info",
+                    f"Contest {contest_link} not new in this run; skipped (contests-only).",
+                )
+                continue
             self.log(
                 "info",
                 f"Start fetching submissions from {contest_link}.",
@@ -316,6 +342,9 @@ class HDUCrawler(BaseCrawler):
 
             self.login(contest_link)
             status_link = contest_link.replace("problems", "status")
+
+            # 首次抓取的新比赛：以比赛开始时间为截止全量回填；否则增量（None）
+            deadline = self._deadline_for(contest_link)
 
             stop_fetching = False
             for page in range(1, 10):
@@ -345,6 +374,7 @@ class HDUCrawler(BaseCrawler):
                         "info",
                         "Reached the end of submissions or no more pages to fetch. Stopped.",
                     )
+                    self._mark_submissions_complete()
                     break
 
                 table_body = soup.find("table", class_="page-card-table")
@@ -374,6 +404,7 @@ class HDUCrawler(BaseCrawler):
 
                     submission_id = cols[0].text.strip()
                     problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
+                    problem_id = cols[2].text.strip()
                     submission_link = urljoin(self.base_url, cols[5].find("a")["href"])
 
                     # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
@@ -399,11 +430,15 @@ class HDUCrawler(BaseCrawler):
                         "memory": memory,
                         "language": language,
                         "submit_time": submit_time.isoformat(),
+                        "problem_id": problem_id,
                         "problem_link": problem_link,
                         "submission_link": submission_link,
                     }
-                    stop_fetching = self._register_submission(submission_entry)
+                    stop_fetching = self._register_submission(
+                        submission_entry, deadline=deadline
+                    )
                     if stop_fetching:
+                        self._mark_submissions_complete()
                         break
 
                 self.log(
@@ -412,27 +447,3 @@ class HDUCrawler(BaseCrawler):
                 )
                 if stop_fetching:
                     break
-
-
-if __name__ == "__main__":
-    crawler = HDUCrawler()
-    crawler.log("info", "HDU Crawler is disabled.")
-    crawler.finish()
-    raise RuntimeError("HDU Crawler is disabled.")
-
-    # try:
-    #     crawler.log(
-    #         "important", "hdu Crawler started at " + datetime.now(beijing).isoformat()
-    #     )
-    #     crawler.fetch_contests()
-    #     crawler.log("info", "Contests fetched successfully.")
-    #     crawler.fetch_submissions()
-    #     crawler.log("info", "Submissions fetched successfully.")
-    #     crawler.log(
-    #         "important",
-    #         "hdu Crawler finished successfully at " + datetime.now(beijing).isoformat(),
-    #     )
-    #     crawler.finish()
-    # except Exception as e:
-    #     crawler.log("fatal", f"An error occurred: {e}")
-    #     crawler.deinit_driver()

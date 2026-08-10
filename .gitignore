@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# 但保留 .env.example 作为模板提交
+!.env.example
 
 # vercel
 .vercel
@@ -43,21 +45,38 @@ next-env.d.ts
 # contest source
 /public/contests
 
+# build-time generated search index (scripts/generate-search-index.mjs)
+/public/search-index.json
+
 # python
 .venv
 __pycache__/
 
 # crawler
+# 开发分支忽略爬虫数据与增量状态；deploy 分支使用 .gitignore.deploy（CI 提交前
+# 覆盖 .gitignore），将 contests/ 与状态文件纳入版本控制，保证增量同步生效。
 /contests/
-crawler/chrome-linux
-crawler/chromedriver_linux64
+crawler/chrome-linux64
+crawler/chromedriver-linux64
 crawler/global.log.json
 crawler/last-update.json
 crawler/config.json
-crawler/*/contests.json
-crawler/*/staged-submissions.json
-crawler/*/log.json
-crawler/*/input_*.json
+# 忽略 subscriptions 目录内容，但保留目录本身，使 ! 规则能重新纳入模板文件
+# （直接忽略 crawler/subscriptions/ 会连目录一起忽略，git 不再进入目录，! 失效）
+crawler/subscriptions/*
+!crawler/subscriptions/subscriptions.example.json
+crawler/prompts/prompt.template.md
+crawler/prompts/qq-share.template.md
+crawler/new-contests.json
+crawler/platforms/*/contests.json
+crawler/platforms/*/staged-submissions.json
+crawler/platforms/*/log.json
+crawler/platforms/*/input_*.json
+crawler/server-task.log
+# 但保留配置模板可提交
+!crawler/config.example.json
+!crawler/prompts/prompt.template.example.md
+!crawler/prompts/qq-share.template.example.md
 
 # test script
 *test.sh

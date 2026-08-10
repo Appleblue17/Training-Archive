@@ -1,0 +1,72 @@
+# 此文件是 deploy 分支专用的 gitignore。
+# deploy 分支托管竞赛数据与爬虫增量状态，因此 contests/ 与 crawler 状态文件
+# （last-update / 平台索引 / staged / config / subscriptions）都纳入版本控制，
+# 支持 CI 增量同步跨运行生效，也支持在仓库中手动上传代码。
+# CI 工作流会在提交前用本文件覆盖 .gitignore。
+# 开发分支请使用根目录的 .gitignore（忽略上述文件）。
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+# 但保留 .env.example 作为模板提交
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# contest source (deploy 时复制到 public 的目录，不提交)
+/public/contests
+
+# build-time generated search index (scripts/generate-search-index.mjs)
+/public/search-index.json
+
+# python
+.venv
+__pycache__/
+
+# crawler
+crawler/chrome-linux64
+crawler/chromedriver-linux64
+crawler/global.log.json
+crawler/new-contests.json
+crawler/platforms/*/log.json
+crawler/platforms/*/input_*.json
+crawler/server-task.log
+
+# test script
+*test.sh

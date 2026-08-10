@@ -1,9 +1,9 @@
 "use client";
+import { Copy, X } from "lucide-react";
 import React, { useState } from "react";
 import clsx from "clsx";
 import { logFileList } from "@/lib/global";
 import PlatformBadge from "@/components/platform-badge";
-import { FiCopy, FiX } from "react-icons/fi";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
@@ -87,7 +87,7 @@ function DisplayBox({
             </div>
             <div className="relative whitespace-pre-line font-mono text-base text-gray-100">
               {(logObj.level === "error" || logObj.level === "fatal") && (
-                <FiX className="absolute -left-7 -top-0.5 inline-block text-2xl text-red-500" />
+                <X className="absolute -left-7 -top-0.5 inline-block text-2xl text-red-500" />
               )}
               <span
                 className={clsx("mr-2 font-medium uppercase", {
@@ -165,7 +165,7 @@ export default function LogPage({ fileContentList }: { fileContentList: string[]
         onClick={handleCopy}
         className="absolute right-6 top-4 z-10 rounded bg-gray-700 px-3 py-1 font-sans text-sm text-white hover:bg-gray-600"
       >
-        <FiCopy className="mr-1 inline-block" />
+        <Copy className="mr-1 inline-block size-4" />
         {copyMessage}
       </button>
       <div className="w-52">

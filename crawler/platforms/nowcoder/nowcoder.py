@@ -5,20 +5,18 @@ from bs4 import BeautifulSoup as bs4, Tag
 from datetime import datetime, timedelta, timezone
 
 beijing = timezone(timedelta(hours=8))
-now = datetime.now(beijing)
 from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from crawler.base import BaseCrawler
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
+from crawler.platforms.base import BaseCrawler
 
 
 class NOWCODERCrawler(BaseCrawler):
-    def __init__(self, local_log_path="crawler/nowcoder/log.json"):
+    def __init__(self, local_log_path="crawler/platforms/nowcoder/log.json"):
         super().__init__("nowcoder", local_log_path)
-        self.contests_path = "crawler/nowcoder/contests.json"
-        self.submissions_path = "crawler/nowcoder/staged-submissions.json"
-        self.input_contests_path = "crawler/nowcoder/input_contests.json"
+        self.contests_path = "crawler/platforms/nowcoder/contests.json"
+        self.submissions_path = "crawler/platforms/nowcoder/staged-submissions.json"
 
     def is_logged_in(self, link):
         main_page = self.fetch_page_with_browser(link)
@@ -42,10 +40,18 @@ class NOWCODERCrawler(BaseCrawler):
             self.log("info", "Login successful with cookies.")
 
     def login(self):
+        # 昵称用于登录态校验（is_logged_in）；cookie 用于实际登录
+        self.username = os.getenv("NOWCODER_USERNAME") or ""
         cookies = {
-            "NOWCODERUID": os.getenv("NEWCODER_COOKIE_NOWCODERUID"),
-            "t": os.getenv("NEWCODER_COOKIE_T"),
+            "NOWCODERUID": os.getenv("NOWCODER_COOKIE_NOWCODERUID"),
+            "t": os.getenv("NOWCODER_COOKIE_T"),
         }
+        if not cookies["NOWCODERUID"] or not cookies["t"]:
+            self.log(
+                "fatal",
+                "Nowcoder cookies not found in environment variables. Stopped.",
+            )
+            return
 
         self.try_login_with_cookie(cookies)
 
@@ -61,7 +67,7 @@ class NOWCODERCrawler(BaseCrawler):
         - link: The link to the contest
         """
 
-        input_contest_list = self._load_file(self.input_contests_path)
+        input_contest_list = self._load_subscriptions(self.platform_name)
         contest_infos = []
         for input_contest in input_contest_list:
             if "link" not in input_contest:
@@ -95,7 +101,7 @@ class NOWCODERCrawler(BaseCrawler):
 
             contest_date = start_time.date().isoformat()
 
-            if start_time > now:
+            if start_time > datetime.now(beijing):
                 # Contest is in the future, skip it
                 self.log(
                     "info",
@@ -334,26 +340,37 @@ class NOWCODERCrawler(BaseCrawler):
         After fetching each submission, call the `_register_submission` method to register the submission. If the return value is True, stop fetching submissions and exit immediately.
         The submission entry should contain the following keys:
         - submission_id: The ID of the submission
-        - problem_name (optional): The name of the problem
+        - problem_id (optional): The ID of the problem (status 页题目列显示的 ID)
         - problem_link (optional): The link to the problem page
         - submit_time: The time when the submission was made, in ISO format (YYYY-MM-DDTHH:MM:SS)
 
-        Either `problem_name` or `problem_link` is required.
+        Either `problem_id` or `problem_link` is required.
         """
 
-        input_contest_list = self._load_file(self.input_contests_path)
+        input_contest_list = self._load_subscriptions(self.platform_name)
         for input_contest in input_contest_list:
 
             if "link" not in input_contest:
                 self.log("error", "Input contest does not have a link.")
                 continue
             contest_link = input_contest["link"]
+            # contests-only（--contests-only）：只回填本次新建比赛的提交，
+            # 已有比赛的增量由每日任务B（--submissions-only）负责
+            if getattr(self, "_contests_only", False) and contest_link not in self._new_contests:
+                self.log(
+                    "info",
+                    f"Contest {contest_link} not new in this run; skipped (contests-only).",
+                )
+                continue
             self.log(
                 "info",
                 f"Start fetching submissions from {contest_link}.",
             )
 
             status_link = f'{contest_link}#submit/"onlyMyStatusFilter"%3Atrue'
+
+            # 首次抓取的新比赛：以比赛开始时间为截止全量回填；否则增量（None）
+            deadline = self._deadline_for(contest_link)
 
             stop_fetching = False
             for page in range(1, 20):
@@ -376,6 +393,7 @@ class NOWCODERCrawler(BaseCrawler):
                         "info",
                         "Reached the end of submissions or no more pages to fetch. Stopped.",
                     )
+                    self._mark_submissions_complete()
                     break
 
                 table_body = soup.find("div", class_="module-box").find(
@@ -401,6 +419,7 @@ class NOWCODERCrawler(BaseCrawler):
 
                     submission_id = cols[0].text.strip()
                     problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
+                    problem_id = cols[2].text.strip()
                     submission_link = urljoin(self.base_url, cols[0].find("a")["href"])
 
                     # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
@@ -433,11 +452,15 @@ class NOWCODERCrawler(BaseCrawler):
                         "memory": memory,
                         "language": language,
                         "submit_time": submit_time.isoformat(),
+                        "problem_id": problem_id,
                         "problem_link": problem_link,
                         "submission_link": submission_link,
                     }
-                    stop_fetching = self._register_submission(submission_entry)
+                    stop_fetching = self._register_submission(
+                        submission_entry, deadline=deadline
+                    )
                     if stop_fetching:
+                        self._mark_submissions_complete()
                         break
 
                 self.log(
@@ -446,31 +469,3 @@ class NOWCODERCrawler(BaseCrawler):
                 )
                 if stop_fetching:
                     break
-
-
-if __name__ == "__main__":
-    crawler = NOWCODERCrawler()
-    crawler.log("info", "Nowcoder Crawler is disabled.")
-    crawler.finish()
-    raise RuntimeError("Nowcoder Crawler is disabled.")
-
-    # try:
-    #     crawler.log(
-    #         "important",
-    #         "nowcoder Crawler started at " + datetime.now(beijing).isoformat(),
-    #     )
-    #     crawler.login()
-
-    #     crawler.fetch_contests()
-    #     crawler.log("info", "Contests fetched successfully.")
-    #     crawler.fetch_submissions()
-    #     crawler.log("info", "Submissions fetched successfully.")
-    #     crawler.log(
-    #         "important",
-    #         "nowcoder Crawler finished successfully at "
-    #         + datetime.now(beijing).isoformat(),
-    #     )
-    #     crawler.finish()
-    # except Exception as e:
-    #     crawler.log("fatal", f"An error occurred: {e}")
-    #     crawler.deinit_driver()

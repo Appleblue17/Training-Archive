@@ -29,7 +29,7 @@ if __name__ == "__main__":
     print("[Log Cleaner] Starting log cleanup...")
     clean_log_file("crawler/global.log.json", keep=20)
 
-    for path in glob.glob("crawler/*/log.json"):
+    for path in glob.glob("crawler/platforms/*/log.json"):
         clean_log_file(path, keep=50)
 
     print("[Log Cleaner] Log cleanup completed.")

@@ -1,5 +1,5 @@
 "use client";
-import { FiAlertTriangle, FiCheck } from "react-icons/fi";
+import { AlertTriangle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 function getTimeDiffString(date: Date) {
@@ -47,7 +47,7 @@ export default function CrawlerStatus({ minTimeISO }: { minTimeISO: string | nul
     return (
       <span className="text-red-400">
         Last update time not available
-        <FiAlertTriangle className="ml-2 inline size-5" />
+        <AlertTriangle className="ml-2 inline size-5" />
       </span>
     );
   }

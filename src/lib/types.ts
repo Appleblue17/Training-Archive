@@ -18,6 +18,7 @@ export interface ProblemInfoType {
   solved?: boolean;
   submit_time?: Date;
   solve_time?: Date;
+  tags?: string[]; // Problem tags (e.g. from QOJ), optional
   files: FileMetadataType[];
   [key: string]: unknown; // Allow additional properties
 }
@@ -33,4 +34,21 @@ export interface ContestInfoType {
   problems: ProblemInfoType[];
   files: FileMetadataType[];
   [key: string]: unknown; // Allow additional properties
+}
+
+// One entry in the build-time search index (scripts/generate-search-index.mjs).
+export interface SearchIndexEntryType {
+  type: "problem";
+  contest: string;
+  date: string;
+  platform: string;
+  contestLink?: string;
+  letter: string;
+  name: string;
+  link?: string;
+  tags: string[];
+  viewFile: string;
+  contestFolder: string;
+  contestPath: string;
+  relPath: string;
 }
