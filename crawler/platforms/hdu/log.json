@@ -1,212 +1,302 @@
 [
   {
-    "time": "2026-08-10T23:50:13.767962+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2026-08-10T23:50:13.768507+08:00",
-    "level": "fatal",
-    "platform": "hdu",
-    "msg": "Failed to start Chromium: [Errno 2] No such file or directory: '/root/Training-Archive/crawler/chromedriver-linux64/chromedriver'"
-  },
-  {
-    "time": "2026-08-10T23:54:02.737097+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Download directory does not exist, creating it."
-  },
-  {
-    "time": "2026-08-10T23:54:07.859311+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09 (2026-07-21)"
-  },
-  {
-    "time": "2026-08-10T23:54:07.860885+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Created contest folder: contests/2026-07-21 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09"
-  },
-  {
-    "time": "2026-08-10T23:54:14.223528+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-08-10T23:54:16.801168+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:16.806891+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:16.807699+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:16.808627+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:18.632293+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:18.636081+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:18.638334+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:18.640249+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:20.739094+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:20.745253+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:20.746337+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:20.747465+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:21.622911+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Submissions fetch was not marked complete; last-update not advanced."
-  },
-  {
-    "time": "2026-08-10T23:56:24.536643+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09 (2026-07-21)"
-  },
-  {
-    "time": "2026-08-10T23:56:24.538687+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Created contest folder: contests/2026-07-21 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09"
-  },
-  {
-    "time": "2026-08-10T23:56:28.409924+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-08-10T23:56:50.987730+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Finished fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09 (2026-07-21)"
-  },
-  {
-    "time": "2026-08-10T23:56:50.995705+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "File crawler/platforms/hdu/staged-submissions.json does not exist, creating a new one."
-  },
-  {
-    "time": "2026-08-10T23:56:50.996140+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2026-08-10T23:56:50.996552+08:00",
+    "time": "2026-08-11T01:04:02.756300+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Start fetching new submissions..."
   },
   {
-    "time": "2026-08-10T23:56:50.997378+08:00",
+    "time": "2026-08-11T01:04:02.757492+08:00",
     "level": "info",
     "platform": "hdu",
-    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1229."
+    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1229 not new in this run; skipped (contests-only)."
   },
   {
-    "time": "2026-08-10T23:56:52.700587+08:00",
+    "time": "2026-08-11T01:04:02.758133+08:00",
     "level": "info",
     "platform": "hdu",
-    "msg": "Already logged in with username and password. Skipping login."
+    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1230."
   },
   {
-    "time": "2026-08-10T23:56:55.573773+08:00",
+    "time": "2026-08-11T01:04:05.356652+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2026-08-11T01:04:06.229700+08:00",
     "level": "warning",
     "platform": "hdu",
-    "msg": "File contests/2026-07-21 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09/submissions.json does not exist, creating a new one."
+    "msg": "File contests/2026-07-23 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff082\uff09/submissions.json does not exist, creating a new one."
   },
   {
-    "time": "2026-08-10T23:57:21.764469+08:00",
+    "time": "2026-08-11T01:04:18.511778+08:00",
     "level": "info",
     "platform": "hdu",
-    "msg": "Fetched 20 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1229, page 1."
+    "msg": "Fetched 25 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1230, page 1."
   },
   {
-    "time": "2026-08-10T23:57:23.233297+08:00",
+    "time": "2026-08-11T01:04:18.828369+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Reached the end of submissions or no more pages to fetch. Stopped."
   },
   {
-    "time": "2026-08-10T23:57:23.369966+08:00",
+    "time": "2026-08-11T01:04:18.829172+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1231."
+  },
+  {
+    "time": "2026-08-11T01:04:21.464716+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2026-08-11T01:04:21.962926+08:00",
+    "level": "warning",
+    "platform": "hdu",
+    "msg": "No submissions found on this page. Probably no submission was made."
+  },
+  {
+    "time": "2026-08-11T01:04:21.963745+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1232."
+  },
+  {
+    "time": "2026-08-11T01:04:24.925662+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2026-08-11T01:04:25.835415+08:00",
+    "level": "warning",
+    "platform": "hdu",
+    "msg": "File contests/2026-07-30 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff084\uff09/submissions.json does not exist, creating a new one."
+  },
+  {
+    "time": "2026-08-11T01:04:34.555199+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Fetched 19 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1232, page 1."
+  },
+  {
+    "time": "2026-08-11T01:04:34.815673+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Reached the end of submissions or no more pages to fetch. Stopped."
+  },
+  {
+    "time": "2026-08-11T01:04:34.816533+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1233."
+  },
+  {
+    "time": "2026-08-11T01:04:37.141600+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2026-08-11T01:04:38.162117+08:00",
+    "level": "warning",
+    "platform": "hdu",
+    "msg": "File contests/2026-08-04 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff085\uff09/submissions.json does not exist, creating a new one."
+  },
+  {
+    "time": "2026-08-11T01:04:54.999215+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Fetched 38 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1233, page 1."
+  },
+  {
+    "time": "2026-08-11T01:04:55.341217+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Reached the end of submissions or no more pages to fetch. Stopped."
+  },
+  {
+    "time": "2026-08-11T01:04:55.469191+08:00",
     "level": "info",
     "platform": "hdu",
     "msg": "Contests-only run; last-update not advanced (incremental sync is handled by task B)."
   },
   {
-    "time": "2026-08-11T00:53:58.730228+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Failed to parse subscriptions file crawler/subscriptions/hdu-2026.json: Expecting value: line 14 column 1 (char 301)"
-  },
-  {
-    "time": "2026-08-11T00:53:58.799392+08:00",
+    "time": "2026-08-11T01:06:26.859526+08:00",
     "level": "info",
     "platform": "hdu",
-    "msg": "Contest list is empty, no contests to fetch. Exiting."
+    "msg": "Contest 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff087\uff09 has not started yet. Skipping."
   },
   {
-    "time": "2026-08-11T00:53:58.981558+08:00",
+    "time": "2026-08-11T01:06:26.862065+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09 (2026-07-21)"
+  },
+  {
+    "time": "2026-08-11T01:06:26.863367+08:00",
     "level": "warning",
     "platform": "hdu",
-    "msg": "Submissions fetch was not marked complete; last-update not advanced."
+    "msg": "Contest folder already exists: contests/2026-07-21 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09. Skipped."
+  },
+  {
+    "time": "2026-08-11T01:06:26.864667+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff082\uff09 (2026-07-23)"
+  },
+  {
+    "time": "2026-08-11T01:06:26.866400+08:00",
+    "level": "warning",
+    "platform": "hdu",
+    "msg": "Contest folder already exists: contests/2026-07-23 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff082\uff09. Skipped."
+  },
+  {
+    "time": "2026-08-11T01:06:26.867722+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff083\uff09 (2026-07-28)"
+  },
+  {
+    "time": "2026-08-11T01:06:26.869099+08:00",
+    "level": "warning",
+    "platform": "hdu",
+    "msg": "Contest folder already exists: contests/2026-07-28 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff083\uff09. Skipped."
+  },
+  {
+    "time": "2026-08-11T01:06:26.870425+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff084\uff09 (2026-07-30)"
+  },
+  {
+    "time": "2026-08-11T01:06:26.871808+08:00",
+    "level": "warning",
+    "platform": "hdu",
+    "msg": "Contest folder already exists: contests/2026-07-30 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff084\uff09. Skipped."
+  },
+  {
+    "time": "2026-08-11T01:06:26.873234+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff085\uff09 (2026-08-04)"
+  },
+  {
+    "time": "2026-08-11T01:06:26.874516+08:00",
+    "level": "warning",
+    "platform": "hdu",
+    "msg": "Contest folder already exists: contests/2026-08-04 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff085\uff09. Skipped."
+  },
+  {
+    "time": "2026-08-11T01:06:26.875352+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff086\uff09 (2026-08-06)"
+  },
+  {
+    "time": "2026-08-11T01:06:26.876711+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Created contest folder: contests/2026-08-06 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff086\uff09"
+  },
+  {
+    "time": "2026-08-11T01:06:29.502968+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Login successful with username and password."
+  },
+  {
+    "time": "2026-08-11T01:06:38.263771+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Finished fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff086\uff09 (2026-08-06)"
+  },
+  {
+    "time": "2026-08-11T01:06:38.266615+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start updating staged submissions..."
+  },
+  {
+    "time": "2026-08-11T01:06:38.268087+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching new submissions..."
+  },
+  {
+    "time": "2026-08-11T01:06:38.269303+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1229 not new in this run; skipped (contests-only)."
+  },
+  {
+    "time": "2026-08-11T01:06:38.270196+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1230 not new in this run; skipped (contests-only)."
+  },
+  {
+    "time": "2026-08-11T01:06:38.271076+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1231 not new in this run; skipped (contests-only)."
+  },
+  {
+    "time": "2026-08-11T01:06:38.271976+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1232 not new in this run; skipped (contests-only)."
+  },
+  {
+    "time": "2026-08-11T01:06:38.272876+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1233 not new in this run; skipped (contests-only)."
+  },
+  {
+    "time": "2026-08-11T01:06:38.273748+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1234."
+  },
+  {
+    "time": "2026-08-11T01:06:38.433669+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Already logged in with username and password. Skipping login."
+  },
+  {
+    "time": "2026-08-11T01:06:39.157535+08:00",
+    "level": "warning",
+    "platform": "hdu",
+    "msg": "File contests/2026-08-06 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff086\uff09/submissions.json does not exist, creating a new one."
+  },
+  {
+    "time": "2026-08-11T01:06:59.647051+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Fetched 43 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1234, page 1."
+  },
+  {
+    "time": "2026-08-11T01:06:59.832324+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Reached the end of submissions or no more pages to fetch. Stopped."
+  },
+  {
+    "time": "2026-08-11T01:06:59.833438+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1235 not new in this run; skipped (contests-only)."
+  },
+  {
+    "time": "2026-08-11T01:06:59.844017+08:00",
+    "level": "info",
+    "platform": "hdu",
+    "msg": "Contests-only run; last-update not advanced (incremental sync is handled by task B)."
   }
 ]

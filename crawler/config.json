@@ -8,8 +8,8 @@
   "hdu": {
     "enabled": true,
     "base_url": "https://acm.hdu.edu.cn",
-    "min_wait_time": 0.5,
-    "max_wait_time": 2
+    "min_wait_time": 0,
+    "max_wait_time": 0.5
   },
   "nowcoder": {
     "enabled": false,
