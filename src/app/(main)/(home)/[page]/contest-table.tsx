@@ -1,12 +1,12 @@
 "use client";
 import { Check, ChevronRight, Code, FileText, Layers, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import clsx from "clsx";
 import { ProblemInfoType, ContestInfoType, FileMetadataType, CodeFileType } from "@/lib/types";
 import MetaDataDisplay from "@/components/metadata-display";
 import { formatDate } from "@/utils/format";
 import { joinUrl } from "@/utils/url";
-import { PREFIX_URL } from "@/lib/global";
 import PlatformBadge from "@/components/platform-badge";
 
 // Helper: Parse time string to Date object in Beijing time
@@ -71,15 +71,15 @@ function ContestFileList({ files, relPath }: { files: FileMetadataType[]; relPat
       <div className="flex flex-1 items-center justify-start gap-6 rounded-lg border border-gray-500 bg-gray-800 px-4 py-2">
         {files.map((file, idx) => (
           <div key={idx} className="flex items-center justify-between">
-            <a
-              href={joinUrl(PREFIX_URL, "view", relPath, file.name!)}
+            <Link
+              href={joinUrl("/", "view", relPath, file.name!)}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-100 transition-colors hover:text-blue-300"
             >
               <FileText className="inline-block size-4" />
               <span className="ml-1">{file.name}</span>
-            </a>
+            </Link>
           </div>
         ))}
         {files.length === 0 && (
@@ -143,8 +143,8 @@ function ProblemRow({
           <span className="inline-block min-w-10 text-right align-middle">{codeFile.size}</span>
           <span className="ml-1 text-gray-400">B</span>
         </span>
-        <a
-          href={joinUrl(PREFIX_URL, "view", problem.rel_path, codeFile.name!)}
+        <Link
+          href={joinUrl("/", "view", problem.rel_path, codeFile.name!)}
           target="_blank"
           rel="noopener noreferrer"
           className="ml-2 text-gray-100 transition-colors hover:text-blue-300"
@@ -152,7 +152,7 @@ function ProblemRow({
           onMouseLeave={() => setSelectedFileIdx(null)}
         >
           <Code className="inline-block size-5" />
-        </a>
+        </Link>
         <div className="flex justify-end">
           {submitStatus === "AC" ? (
             <Check className="inline-block size-5 text-green-400" />
@@ -206,8 +206,8 @@ function ProblemRow({
               onMouseLeave={() => setSelectedFileIdx(null)}
               className="flex items-center justify-between"
             >
-              <a
-                href={joinUrl(PREFIX_URL, "view", problem.rel_path, file.name!)}
+              <Link
+                href={joinUrl("/", "view", problem.rel_path, file.name!)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-gray-100 transition-colors hover:text-blue-300"
@@ -218,7 +218,7 @@ function ProblemRow({
                   <FileText className="inline-block size-4" />
                 )}
                 <span className="ml-1">{file.name}</span>
-              </a>
+              </Link>
             </div>
           ))}
       </div>

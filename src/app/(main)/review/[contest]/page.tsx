@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import { safeParseJson } from "@/lib/contests-data";
 import renderMarkdown from "@/utils/render-markdown";
-import { PREFIX_URL } from "@/lib/global";
 import { joinUrl } from "@/utils/url";
 import PlatformBadge from "@/components/platform-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -192,7 +191,7 @@ export default async function ReviewPage(props: {
               />
               <div className="mt-3 text-right">
                 <Link
-                  href={joinUrl(PREFIX_URL, "view", contestFolder, "review.md")}
+                  href={joinUrl("/", "view", contestFolder, "review.md")}
                   className="text-sm text-blue-300 hover:text-blue-200"
                 >
                   View raw markdown ↗

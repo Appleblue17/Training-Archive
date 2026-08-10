@@ -39,9 +39,12 @@
 - 爬虫统一改为经 `crawler/scheduled_task.py` 入口运行；`deploy.yml` 触发条件扩展为同时监听两个爬虫工作流
 - 前端代码审查修复：格式化工具抽离到 `src/utils/format.ts`、URL 拼接抽离到 `src/utils/url.ts`；文件查看器重构为公共组件 + 页面薄封装；平台徽章修复 fallback；竞赛表格题号列数动态自适应（`maxProblems`）并提升键盘可访问性；首页分页边界、日期排序、横向滚动容器；布局响应式（`w-full max-w-6xl px-4`）
 - QOJ 比赛列表跳过未开始的比赛（与 HDU / NowCoder 行为一致）
-- 复盘报告 prompt 模板化：`crawler/prompt.template.md`（git 跟踪可直接编辑），注入内容用占位符 `{{contest_info}}` / `{{problems}}` / `{{submissions}}`；题目块新增**完整题面**（`statement.md`，丢弃与题号标题重复的首行）与 solved/solve_time 状态，提交源码按剩余预算（`MAX_PROMPT_CHARS` 减去固定内容）截断、题面优先保留；`report.py` 内置同名 fallback 模板
-- QQ 群分享简化版报告：`generate_qq_share` 基于已生成的 `review.md` 再调一次 DeepSeek（更高 temperature），生成轻松幽默、带 emoji 的**纯文本**总结（200-300 字），落盘 `qq-share.txt`；模板 `crawler/qq-share.template.md`（git 跟踪，占位符 `{{review}}`，内置 fallback）；完整报告生成后自动串联生成简化版（幂等），`--qq-only` 支持单独补生成。**QQ 群发送集成尚未接入（后续阶段）**
+- 复盘报告 prompt 模板化：`crawler/prompt.template.md`（gitignore 本地可自由调整，副本 `crawler/prompt.template.example.md` 可提交），注入内容用占位符 `{{contest_info}}` / `{{problems}}` / `{{submissions}}`；题目块新增**完整题面**（`statement.md`，丢弃与题号标题重复的首行）与 solved/solve_time 状态，提交源码按剩余预算（`MAX_PROMPT_CHARS` 减去固定内容）截断、题面优先保留；`report.py` 内置同名 fallback 模板（与 `.example.md` 内容一致）
+- QQ 群分享简化版报告：`generate_qq_share` 基于已生成的 `review.md` 再调一次 DeepSeek（更高 temperature），生成轻松幽默、带 emoji 的**纯文本**总结（200-300 字），落盘 `qq-share.txt`；模板 `crawler/qq-share.template.md`（gitignore 本地可自由调整，副本 `crawler/qq-share.template.example.md` 可提交，占位符 `{{review}}`，内置 fallback 与副本一致）；完整报告生成后自动串联生成简化版（幂等），`--qq-only` 支持单独补生成。**QQ 群发送集成尚未接入（后续阶段）**
 - 爬虫脚本模块化拆分：DeepSeek 客户端抽离为 `crawler/deepseek_client.py`（`call_deepseek` + 代理归一化 + `.env` 加载，report / qq_share 共用）；QQ 群分享简化版抽离为 `crawler/qq_share.py`（独立可运行：`python3 crawler/qq_share.py [folder]`）；`report.py` 仅保留完整报告生成并转调 `qq_share`，`--qq-only` 作为兼容入口保留
+- 前端内部路由统一改为**根相对路径 + `next/link`**（`joinUrl("/", ...)` 或 `href="/"`，Link 自动添加一次 `basePath`）；外部链接（平台 contest/problem、下载类）保留 `<a>` + `PREFIX_URL`（见 `docs/architecture.md` §5 ADR）
+- Dashboard 复盘入口改版：移除独立 "Contest Reviews" 板块，有 `review.md` 的比赛在"最近比赛"列表中显示 Review 链接（`ArrowUpRight` 图标）；平台分布计数改为 `x{count}` 展示；搜索页结果列表间距收紧
+- 搜索索引 `public/search-index.json` 重新生成，清除已删除比赛的陈旧条目（现仅含现有钉耙编程 A–M 比赛）
 
 ### Fixed
 
@@ -58,6 +61,7 @@
 - 面包屑 Home 不高亮：`isActive` 对 Home 特判 `/` 与 `/pageN` 前缀
 - Markdown 样式缺失：`github-markdown-dark.css` / `katex.min.css` / `github-dark.css` 原只在文件查看器客户端组件 import，按 chunk 切分后 review / readme / dashboard 等页不加载 → 移入根布局全局加载，所有页面统一渲染样式
 - 跨赛季提交错误归档：QOJ 提交列表按用户全部历史提交遍历，Universal Cup 等题目跨赛季复用（同名/同链接）会产生早于比赛开始的历史提交被误归档。`_update_submission_status` 增加时间窗口校验（早于 `start_time` 1 天以上视为不匹配，落入 staged）；前端 `getInContestTime` 对早于比赛开始的提交 fallback 显示日期、`convertDurationToHHMMSS` 对负数取 0（修复 E 题显示 -1817:-27:-42 的问题）
+- 线上链接双前缀 404：`next/link` 的 `addBasePath()` 会无条件给 href 添加 `basePath`，而内部路由代码又手动 `joinUrl(PREFIX_URL, ...)` 拼接一次 → 生成 `/Training-Archive/Training-Archive/...`，线上页面点击 404（已 curl 实测验证）。修复：内部路由改用根相对路径（`joinUrl("/", ...)` / `href="/"`），由 Link 仅添加一次前缀；外部/下载类链接保留 `<a>` + `PREFIX_URL`（不经过 Link，行为本就正确）
 
 ## [0.1.0] - 2026-01-04
 

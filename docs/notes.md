@@ -6,6 +6,8 @@
 
 ## 最近更新
 
+- 2026-08-10：前端链接双前缀修复 + Dashboard 复盘入口改版——内部路由统一改 `next/link` **根相对路径**（`joinUrl("/", ...)` / `href="/"`），由 Link 自动添加一次 `basePath`，修复线上 `/Training-Archive/Training-Archive/...` 404（`next/link` 的 `addBasePath()` 与手动 `PREFIX_URL` 拼接叠加导致）；外部/下载类链接保留 `<a>` + `PREFIX_URL`。Dashboard 移除独立 "Contest Reviews" 板块，Review 入口移入最近比赛列表（有 `review.md` 才显示），平台分布改 `x{count}`；`public/search-index.json` 重新生成（清除已删比赛的陈旧条目）。lint + build 全通过，`out/` 无双前缀残留。
+- 2026-08-10：复盘模板改为 gitignore 本地编辑 + 提交 `.example.md` 副本——`crawler/prompt.template.md` / `crawler/qq-share.template.md` 移出版本控制（本地保留可自由调整），新增 `crawler/prompt.template.example.md` / `crawler/qq-share.template.example.md` 可提交副本；`report.py` 的 `DEFAULT_TEMPLATE` 与 `qq_share.py` 的 `DEFAULT_QQ_SHARE_TEMPLATE` 兜底内容同步为与 `.example.md` 完全一致（CI 等无模板文件环境行为一致）。
 - 2026-08-09：爬虫脚本模块化拆分——DeepSeek 客户端抽离为 `crawler/deepseek_client.py`（`call_deepseek` + 代理归一化 + `.env` 加载，report/qq_share 共用）；QQ 群分享简化版抽离为 `crawler/qq_share.py`（独立运行 `python3 crawler/qq_share.py [folder]`）；`report.py` 仅保留完整报告生成、串联转调 qq_share，`--qq-only` 兼容入口保留。
 - 2026-08-09：复盘报告新增 **QQ 群分享简化版**——`generate_qq_share` 基于 `review.md` 再调一次 DeepSeek（更高 temperature），生成轻松幽默、带 emoji 的纯文本总结，落盘 `contests/<date> <name>/qq-share.txt`；模板 `crawler/qq-share.template.md`（git 跟踪，占位符 `{{review}}`，内置 fallback）。生成完整报告后自动串联生成简化版（幂等，`qq-share.txt` 存在则跳过）；`--qq-only` 可单独补生成（含扫描模式）。**QQ 集成尚未接入，仅完成内容生成**。
 - 2026-08-09：复盘报告 prompt 模板化——`crawler/prompt.template.md`（git 跟踪，可直接编辑），占位符 `{{contest_info}}` / `{{problems}}` / `{{submissions}}`；`{{problems}}` 现含**完整题面**（`statement.md`，丢弃重复的首行标题）与 solved 状态，提交源码按剩余预算（`MAX_PROMPT_CHARS - 固定内容`）截断，题面优先保留；`report.py` 内置同名 fallback 模板（模板文件缺失时兜底）。

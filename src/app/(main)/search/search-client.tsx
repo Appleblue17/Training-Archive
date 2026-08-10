@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 
 import { SearchIndexEntryType } from "@/lib/types";
-import { PREFIX_URL } from "@/lib/global";
 import { joinUrl } from "@/utils/url";
 import { cn } from "@/lib/utils";
 import PlatformBadge from "@/components/platform-badge";
@@ -117,11 +116,11 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
           No results. Try fewer keywords or clear the tag filter.
         </p>
       ) : (
-        <ul className="space-y-2">
+        <ul className="space-y-1">
           {results.map((entry) => {
             const href = entry.viewFile
               ? joinUrl(
-                  PREFIX_URL,
+                  "/",
                   "view",
                   entry.contestFolder,
                   "problems",
@@ -133,7 +132,7 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
             return (
               <li
                 key={entry.contestFolder + "/" + entry.letter}
-                className="rounded-lg border border-gray-700 bg-gray-800/60 px-4 py-3 transition-colors hover:border-gray-500 hover:bg-gray-800"
+                className=" border border-gray-700 bg-gray-800/60 px-4 py-2 transition-colors hover:border-gray-500 hover:bg-gray-800"
               >
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <Link

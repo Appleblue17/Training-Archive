@@ -67,7 +67,7 @@ contests/
 | `(main)/search/page.tsx` | 搜索页（服务端读索引） |
 | `(main)/search/search-client.tsx` | 搜索交互（客户端）：关键词 + 标签过滤、结果列表 |
 | `(main)/dashboard/page.tsx` | 数据看板（服务端聚合统计/最近动态/contribution/复盘报告） |
-| `(main)/dashboard/dashboard-client.tsx` | 数据看板展示（客户端）：统计卡片、绿点图、最近动态、报告区 |
+| `(main)/dashboard/dashboard-client.tsx` | 数据看板展示（客户端）：统计卡片、绿点图、最近动态（含复盘入口，有 `review.md` 的比赛显示 Review 链接） |
 | `(main)/review/[contest]/page.tsx` | 复盘时间轴页：按 `submit_time` 展示提交序列 + LLM 报告 |
 | `(main)/review/[contest]/review-timeline.tsx` | 提交时间轴（客户端）：状态着色、源码链接 |
 | `(main)/log/page.tsx` + `log-page.tsx` | 日志页：按平台展示日志与 staged submissions |
@@ -217,7 +217,7 @@ contests/
 | 前端静态导出 + 构建时读 `fs` | 内容变更频率低，纯静态站点部署简单（GitHub Pages） | 每次数据变更需重新构建；页面仅反映构建时数据 |
 | 元数据使用 JSON 侧车文件（`<file>.json`） | 与文件实体一一对应，便于爬虫增量写入与前端合并读取 | `getFileMetadata()` 统一合并逻辑 |
 | 时间统一北京时间 | 竞赛平台均为中国时区，避免时区转换歧义 | 前端 `parseToBeijingTime` 与爬虫 `_convert_to_beijing_time` 双端一致 |
-| URL 双端常量（`BASE_URL`/`PREFIX_URL`） | 区分页面路由前缀与资源前缀，适配 GitHub Pages `basePath` | 修改部署路径只需改 `global.ts` 与 `next.config.ts` |
+| URL 双端常量（`BASE_URL`/`PREFIX_URL`） | 区分页面路由前缀与资源前缀，适配 GitHub Pages `basePath` | 修改部署路径只需改 `global.ts` 与 `next.config.ts`。**内部路由一律用根相对路径 + `next/link`**（`joinUrl("/", ...)` / `href="/"`，由 Link 自动添加一次 `basePath`）；`PREFIX_URL` 仅用于 `<a>` 外部/下载类链接（不经过 Link，手动拼接一次前缀）。二者混用会因 `next/link` 的 `addBasePath()` 叠加产生 `/Training-Archive/Training-Archive/...` 双前缀 404（2026-08-10 已修复） |
 | 爬虫数据不纳入 `main` 分支 | 避免大量二进制/JSON 数据污染主分支；`deploy` 分支专管数据与部署 | 主分支本地开发需自行准备 `contests/` |
 | 爬虫状态文件在 `deploy` 分支纳入版本控制 | 增量同步依赖跨运行持久的状态（last-update / 平台索引 / staged） | 开发分支 `.gitignore` 忽略；CI 用 `.gitignore.deploy` 覆盖后正常 `git add` |
 | 订阅模型 `subscriptions.json` | 统一管理预订比赛，取代各平台零散的 `input_contests.json` | 三平台均为订阅驱动；订阅文件 gitignore，由用户维护 |

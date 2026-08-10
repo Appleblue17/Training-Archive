@@ -1,10 +1,9 @@
 "use client";
-import { Activity, Award, BarChart2, CheckCircle2, Clock, FileText } from "lucide-react";
+import { Activity, ArrowUpRight, Award, BarChart2, CheckCircle2, Clock, FileText } from "lucide-react";
 import { useMemo } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
-import { PREFIX_URL } from "@/lib/global";
 import { joinUrl } from "@/utils/url";
 import PlatformBadge from "@/components/platform-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -189,11 +188,11 @@ export default function DashboardClient(props: DashboardClientProps) {
         </div>
         {Object.keys(stats.platformCounts).length > 0 && (
           <div className="mt-3 flex flex-wrap items-center gap-2 text-sm text-gray-400">
-            <span className="text-xs">Platforms:</span>
+            <span className="text-sm font-semibold">Platforms:</span>
             {Object.entries(stats.platformCounts).map(([platform, count]) => (
-              <span key={platform} className="inline-flex items-center gap-1.5">
+              <span key={platform} className="inline-flex items-center">
                 <PlatformBadge platform={platform} />
-                <span className="text-xs">{count}</span>
+                <span className="text-xs text-gray-400">x{count}</span>
               </span>
             ))}
           </div>
@@ -236,14 +235,14 @@ export default function DashboardClient(props: DashboardClientProps) {
                     </div>
                     <div className="flex shrink-0 items-center gap-2">
                       {c.hasReview && (
-                        <a
-                          href={joinUrl(PREFIX_URL, "review", c.contestFolder)}
-                          className="inline-flex items-center gap-1 text-xs text-blue-300 hover:text-blue-200"
+                        <Link
+                          href={joinUrl("/", "review", c.contestFolder)}
+                          className="inline-flex items-center gap-1 text-sm text-blue-300 hover:text-blue-200"
                           aria-label={`Review for ${c.name}`}
                         >
-                          <FileText className="size-3.5" />
                           Review
-                        </a>
+                          <ArrowUpRight className="size-3.5" />
+                        </Link>
                       )}
                       <PlatformBadge platform={c.platform} />
                     </div>
@@ -267,7 +266,7 @@ export default function DashboardClient(props: DashboardClientProps) {
                 {recentSolved.map((p) => {
                   const href = p.viewFile
                     ? joinUrl(
-                        PREFIX_URL,
+                        "/",
                         "view",
                         p.contestFolder,
                         "problems",

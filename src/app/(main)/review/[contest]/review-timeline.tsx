@@ -1,8 +1,8 @@
 "use client";
 import { Check, Code, X } from "lucide-react";
+import Link from "next/link";
 import clsx from "clsx";
 
-import { PREFIX_URL } from "@/lib/global";
 import { joinUrl } from "@/utils/url";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -60,7 +60,7 @@ export default function ReviewTimeline({
   }
 
   const sourceHref = (letter: string, file: string) =>
-    joinUrl(PREFIX_URL, "view", contestFolder, "problems", letter, file);
+    joinUrl("/", "view", contestFolder, "problems", letter, file);
 
   return (
     <Card>
@@ -109,14 +109,14 @@ export default function ReviewTimeline({
                 )}
                 <span className="ml-auto flex items-center gap-2">
                   {sub.sourceFile && (
-                    <a
+                    <Link
                       href={sourceHref(sub.problemLetter, sub.sourceFile)}
                       className="inline-flex items-center gap-1 text-sm text-blue-300 hover:text-blue-200"
                       title={`View source (${sub.sourceFile})`}
                     >
                       <Code className="size-4" />
                       Source
-                    </a>
+                    </Link>
                   )}
                   {sub.submissionLink && (
                     <a
