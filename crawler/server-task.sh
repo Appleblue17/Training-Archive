@@ -67,7 +67,9 @@ commit_and_push() {
     return 0
   fi
 
-  if git diff --cached --name-only | grep -q '^contests/'; then
+  # core.quotepath=false：比赛名含中文时 git 默认对非 ASCII 路径加引号+八进制转义
+  # （如 "contests/2026\u2026..."），grep '^contests/' 会匹配失败导致误判为无 contests 变更。
+  if git -c core.quotepath=false diff --cached --name-only | grep -q '^contests/'; then
     git commit -m "[auto] [contests-changed] Update contest and submission data"
   else
     # 只有爬虫状态变化（如 last-update 推进）时也提交，但不带标记，
