@@ -1,16 +1,15 @@
 import { getContests, getAllSubmissions, getReviews } from "@/lib/contests-data";
-import renderMarkdown from "@/utils/render-markdown";
 import DashboardClient from "./dashboard-client";
 
 /**
- * Dashboard（C3）：统计 + 最近动态 + contribution 绿点图 + 复盘报告区。
+ * Dashboard（C3）：统计 + 最近动态 + contribution 绿点图。
  * 全部数据在构建时（服务端组件）从 contests/ 聚合，再传给客户端组件展示。
+ * 复盘报告入口已并入 Recent Contests（有 review.md 的比赛展示 Review 链接）。
  */
 
 export default async function DashboardPage() {
   const contests = getContests();
   const submissions = getAllSubmissions();
-  const reviews = getReviews();
 
   // ---- 统计 ----
   const problemCount = contests.reduce((sum, c) => sum + c.problems.length, 0);
@@ -43,6 +42,7 @@ export default async function DashboardPage() {
     .slice(0, 8);
 
   // ---- 最近比赛（按日期降序）----
+  const reviewFolders = new Set(getReviews().map((r) => r.contestFolder));
   const recentContests = [...contests]
     .sort((a, b) => `${b.date} ${b.name}`.localeCompare(`${a.date} ${a.name}`))
     .slice(0, 5)
@@ -52,6 +52,8 @@ export default async function DashboardPage() {
       platform: c.platform,
       link: c.link,
       relPath: c.rel_path,
+      contestFolder: c.rel_path.split("/")[1] ?? "",
+      hasReview: reviewFolders.has(c.rel_path.split("/")[1] ?? ""),
       problemCount: c.problems.length,
     }));
 
@@ -67,12 +69,6 @@ export default async function DashboardPage() {
     contribution[key] = (contribution[key] ?? 0) + 1;
   }
 
-  // ---- 复盘报告区 ----
-  const currentReview = reviews[0] ?? null;
-  const currentReviewHtml = currentReview
-    ? await renderMarkdown(currentReview.content, currentReview.path)
-    : null;
-
   return (
     <DashboardClient
       stats={{
@@ -86,19 +82,6 @@ export default async function DashboardPage() {
       recentContests={recentContests}
       recentSolved={recentSolved}
       contribution={contribution}
-      reviews={reviews.map((r) => ({
-        contestFolder: r.contestFolder,
-        contestName: r.contestName,
-        date: r.date,
-        platform: r.platform,
-      }))}
-      currentReviewHtml={currentReviewHtml}
-      currentReview={{
-        contestFolder: currentReview?.contestFolder ?? "",
-        contestName: currentReview?.contestName ?? "",
-        date: currentReview?.date ?? "",
-        platform: currentReview?.platform ?? "",
-      }}
     />
   );
 }
