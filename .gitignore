@@ -62,6 +62,8 @@ crawler/global.log.json
 crawler/last-update.json
 crawler/config.json
 crawler/subscriptions.json
+crawler/prompt.template.md
+crawler/qq-share.template.md
 crawler/*/contests.json
 crawler/*/staged-submissions.json
 crawler/*/log.json
@@ -69,6 +71,8 @@ crawler/*/input_*.json
 # 但保留配置模板可提交
 !crawler/config.example.json
 !crawler/subscriptions.example.json
+!crawler/prompt.template.example.md
+!crawler/qq-share.template.example.md
 
 # test script
 *test.sh
