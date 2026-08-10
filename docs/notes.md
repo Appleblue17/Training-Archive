@@ -6,6 +6,7 @@
 
 ## 最近更新
 
+- 2026-08-10：链接与时间显示统一收尾——①新增历史提交查看路由 `/view/.../submissions/[file]`（`FileViewerPage` 加 `subdir`），修复复盘时间轴 Source 链接 404；②view 链接缺 `/contests/` 段的 404 修复（review/dashboard/search 四处补段）；③搜索/最近完成入口链接统一指向题面页（`statement.md` 优先），代码页以 `Code` 图标单独提供，Dashboard Recently Solved 展示代码长度（样式同首页）；④时间格式统一 `YYYY/MM/DD HH:MM`（`formatDateTime`，24h 北京时间）；⑤内容查看类链接统一新标签页；⑥lucide 图标尺寸统一。lint + 全量 build（清 `.next`/`out` 后）通过；注意 Next canary 增量构建偶发 `/_document`/`/_not-found` 报错，`rm -rf .next out` 后重跑即恢复。
 - 2026-08-10：前端链接双前缀修复 + Dashboard 复盘入口改版——内部路由统一改 `next/link` **根相对路径**（`joinUrl("/", ...)` / `href="/"`），由 Link 自动添加一次 `basePath`，修复线上 `/Training-Archive/Training-Archive/...` 404（`next/link` 的 `addBasePath()` 与手动 `PREFIX_URL` 拼接叠加导致）；外部/下载类链接保留 `<a>` + `PREFIX_URL`。Dashboard 移除独立 "Contest Reviews" 板块，Review 入口移入最近比赛列表（有 `review.md` 才显示），平台分布改 `x{count}`；`public/search-index.json` 重新生成（清除已删比赛的陈旧条目）。lint + build 全通过，`out/` 无双前缀残留。
 - 2026-08-10：复盘模板改为 gitignore 本地编辑 + 提交 `.example.md` 副本——`crawler/prompt.template.md` / `crawler/qq-share.template.md` 移出版本控制（本地保留可自由调整），新增 `crawler/prompt.template.example.md` / `crawler/qq-share.template.example.md` 可提交副本；`report.py` 的 `DEFAULT_TEMPLATE` 与 `qq_share.py` 的 `DEFAULT_QQ_SHARE_TEMPLATE` 兜底内容同步为与 `.example.md` 完全一致（CI 等无模板文件环境行为一致）。
 - 2026-08-09：爬虫脚本模块化拆分——DeepSeek 客户端抽离为 `crawler/deepseek_client.py`（`call_deepseek` + 代理归一化 + `.env` 加载，report/qq_share 共用）；QQ 群分享简化版抽离为 `crawler/qq_share.py`（独立运行 `python3 crawler/qq_share.py [folder]`）；`report.py` 仅保留完整报告生成、串联转调 qq_share，`--qq-only` 兼容入口保留。

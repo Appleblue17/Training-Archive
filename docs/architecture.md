@@ -74,6 +74,7 @@ contests/
 | `(main)/readme/page.tsx` | README 页（占位，未实现） |
 | `view/contests/[contest]/[file]/page.tsx` | 竞赛级文件查看页 |
 | `view/contests/[contest]/problems/[problem]/[file]/page.tsx` | 题目级文件查看页 |
+| `view/contests/[contest]/problems/[problem]/submissions/[file]/page.tsx` | 题目历史提交查看页（`problems/<letter>/submissions/<id>.<ext>`） |
 
 ### 3.2 关键模块
 
@@ -84,7 +85,7 @@ contests/
 | `src/lib/contests-data.ts` | 服务端数据读取（仅服务端 import）：`getContests` / `getAllSubmissions` / `getReviews` / `safeParseJson`；首页与 Dashboard 共用 |
 | `scripts/generate-search-index.mjs` | 构建时扫描 `contests/` 生成 `public/search-index.json`（问题级索引：题目/标签/比赛/平台/日期 + 跳转文件） |
 | `src/utils/get-file-metadata.ts` | 读取文件元数据，合并 `<file>.json` 侧车文件 |
-| `src/utils/format.ts` | 格式化工具：`formatKey` / `formatSize` / `formatDate` |
+| `src/utils/format.ts` | 格式化工具：`formatKey` / `formatSize` / `formatDate` / `formatDateTime`（`YYYY/MM/DD HH:MM`，24h 北京时间） |
 | `src/utils/url.ts` | 轻量 URL 拼接 `joinUrl`（客户端组件替代 `path.join`） |
 | `src/utils/render-markdown.ts` | 服务端 Markdown→HTML（unified 流水线，与文件查看器共用；复盘报告渲染） |
 | `src/components/metadata-display.tsx` | 元数据面板（格式化函数见 `src/utils/format.ts`） |
@@ -98,6 +99,7 @@ contests/
 按扩展名分发：
 
 - `file-viewer.tsx`：入口，按 `allowedExtensions` 分发到 PDF / Markdown / 源码 / 不支持类型（提供下载）。
+- `file-viewer-page.tsx`：竞赛级 / 题目级 / 题目历史提交查看页的公共渲染组件，支持 `subdir`（如 `submissions`，历史提交路由使用）拼接到题目目录路径。
 - `file-viewer-pdf.tsx`：PDF 渲染（react-pdf）。
 - `file-viewer-markdown-wrapper.tsx`：**服务端**调用共享 `render-markdown.ts` 的 unified 流水线把 Markdown 转为 HTML（remark-parse → remark-math → remark-gfm → remark-img-links → remark-rehype → rehype-sanitize → rehype-highlight → rehype-katex → rehype-format → rehype-stringify）。
 - `file-viewer-markdown.tsx`：**客户端**渲染 HTML（`dangerouslySetInnerHTML`）并提供复制按钮。

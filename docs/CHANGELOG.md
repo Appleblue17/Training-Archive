@@ -25,6 +25,7 @@
 - 图标库迁移（C5）：`react-icons` → **lucide-react**，全量替换 13 个文件中的图标引用（品牌图标如 Github 改用 `ExternalLink`）
 - 前端收尾（C6）：全局错误边界 `error.tsx`（渲染错误可重置）、自定义 `not-found.tsx`（404 页 + 返回入口）、全局 `loading.tsx` 骨架屏；无障碍复查确认表格展开行 `aria-expanded`、搜索/看板/报告区 `aria-label`、复制按钮自带文本均覆盖
 - README 页实现：`/readme` 构建时读取仓库根 `README.md`，用统一 unified 流水线渲染（替换占位页，移除 `<img>` 警告）
+- 历史提交查看路由：`/view/contests/[contest]/problems/[problem]/submissions/[file]` 支持查看某道题的全部历史提交源码（按 `submissions/<id>.<ext>` 生成静态页，`FileViewerPage` 新增 `subdir` 支持，面包屑展示 submissions 段）
 
 ### Changed
 
@@ -45,6 +46,10 @@
 - 前端内部路由统一改为**根相对路径 + `next/link`**（`joinUrl("/", ...)` 或 `href="/"`，Link 自动添加一次 `basePath`）；外部链接（平台 contest/problem、下载类）保留 `<a>` + `PREFIX_URL`（见 `docs/architecture.md` §5 ADR）
 - Dashboard 复盘入口改版：移除独立 "Contest Reviews" 板块，有 `review.md` 的比赛在"最近比赛"列表中显示 Review 链接（`ArrowUpRight` 图标）；平台分布计数改为 `x{count}` 展示；搜索页结果列表间距收紧
 - 搜索索引 `public/search-index.json` 重新生成，清除已删除比赛的陈旧条目（现仅含现有钉耙编程 A–M 比赛）
+- 入口链接统一指向题面页：搜索/最近完成/复盘时间轴等链接目标改为 `statement.md`/`statement.pdf` 优先（`generate-search-index.mjs` 与 Dashboard 聚合逻辑同步），代码页另以 `Code` 图标单独提供（Dashboard Recently Solved 每行含题面链接 + 代码图标链接）
+- 时间显示统一为 `YYYY/MM/DD HH:MM`（24 小时制，北京时间，无秒）：`src/utils/format.ts` 新增 `formatDateTime`，Dashboard 最近完成与复盘时间轴共用
+- 内容查看类链接统一新标签页打开（`target="_blank"` + `rel="noopener noreferrer"`）：复盘 Source / 原始 markdown、Dashboard 题面与代码、搜索全部结果
+- lucide 图标尺寸统一（`size-4` 等）：页脚 GitHub 图标、日志/文件查看器的复制按钮与源码/下载图标（视觉一致性微调）
 
 ### Fixed
 
@@ -62,6 +67,9 @@
 - Markdown 样式缺失：`github-markdown-dark.css` / `katex.min.css` / `github-dark.css` 原只在文件查看器客户端组件 import，按 chunk 切分后 review / readme / dashboard 等页不加载 → 移入根布局全局加载，所有页面统一渲染样式
 - 跨赛季提交错误归档：QOJ 提交列表按用户全部历史提交遍历，Universal Cup 等题目跨赛季复用（同名/同链接）会产生早于比赛开始的历史提交被误归档。`_update_submission_status` 增加时间窗口校验（早于 `start_time` 1 天以上视为不匹配，落入 staged）；前端 `getInContestTime` 对早于比赛开始的提交 fallback 显示日期、`convertDurationToHHMMSS` 对负数取 0（修复 E 题显示 -1817:-27:-42 的问题）
 - 线上链接双前缀 404：`next/link` 的 `addBasePath()` 会无条件给 href 添加 `basePath`，而内部路由代码又手动 `joinUrl(PREFIX_URL, ...)` 拼接一次 → 生成 `/Training-Archive/Training-Archive/...`，线上页面点击 404（已 curl 实测验证）。修复：内部路由改用根相对路径（`joinUrl("/", ...)` / `href="/"`），由 Link 仅添加一次前缀；外部/下载类链接保留 `<a>` + `PREFIX_URL`（不经过 Link，行为本就正确）
+- 复盘时间轴 Source 链接 404：源码文件位于 `problems/<letter>/submissions/<id>.<ext>`，而链接指向 `problems/<letter>/<file>` 且无对应路由。新增 `submissions/[file]` 路由并修正 `sourceHref`
+- 搜索/最近完成入口误链到代码页：`generate-search-index.mjs` 的 `viewFile` 取问题目录首个非 JSON 文件，`code.cpp` 字典序排在 `statement.md` 前 → 已解决题目搜索结果指向代码查看页。改为 `statement.md`/`statement.pdf` 优先
+- view 链接缺 `/contests/` 段：`review-timeline`/`review` 页/`dashboard`/`search` 用裸 `contestFolder`（仅文件夹名）拼接 `view` 路由，但路由实际为 `/view/contests/<folder>/...` → 404。四处统一补上 `"contests"` 段（`contest-table` 用含前缀的 `rel_path`，本就正确）
 
 ## [0.1.0] - 2026-01-04
 
