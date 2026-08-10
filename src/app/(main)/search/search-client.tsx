@@ -50,8 +50,7 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
       const haystack = entryToSearchable(entry);
       const matchesQuery = tokens.every((token) => haystack.includes(token));
       const matchesTags =
-        selectedTags.length === 0 ||
-        selectedTags.every((tag) => entry.tags.includes(tag));
+        selectedTags.length === 0 || selectedTags.every((tag) => entry.tags.includes(tag));
       return matchesQuery && matchesTags;
     });
   }, [entries, query, selectedTags]);
@@ -60,9 +59,7 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
   const hasQueryOrTags = query.trim().length > 0 || selectedTags.length > 0;
 
   return (
-    <div className="w-full">
-      <h1 className="mb-4 text-2xl font-semibold text-slate-200">Search</h1>
-
+    <div className="w-full pt-1">
       {/* Search input */}
       <div className="relative mb-4">
         <Search className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-gray-400" />
@@ -78,7 +75,11 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
 
       {/* Tag filter */}
       {allTags.length > 0 && (
-        <div className="mb-4 flex flex-wrap items-center gap-1.5" role="group" aria-label="Filter by tag">
+        <div
+          className="mb-4 flex flex-wrap items-center gap-1.5"
+          role="group"
+          aria-label="Filter by tag"
+        >
           <span className="mr-1 text-sm text-gray-400">Tags:</span>
           {allTags.map((tag) => {
             const active = selectedTags.includes(tag);
@@ -107,7 +108,9 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
 
       {/* Result count */}
       <p className="mb-4 text-sm text-gray-400" aria-live="polite">
-        {hasQueryOrTags ? `${totalMatches} result${totalMatches === 1 ? "" : "s"}` : `${entries.length} problems indexed`}
+        {hasQueryOrTags
+          ? `${totalMatches} result${totalMatches === 1 ? "" : "s"}`
+          : `${entries.length} problems indexed`}
       </p>
 
       {/* Results */}
@@ -132,7 +135,7 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
             return (
               <li
                 key={entry.contestFolder + "/" + entry.letter}
-                className=" border border-gray-700 bg-gray-800/60 px-4 py-2 transition-colors hover:border-gray-500 hover:bg-gray-800"
+                className="border border-gray-700 bg-gray-800/60 px-4 py-2 transition-colors hover:border-gray-500 hover:bg-gray-800"
               >
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <Link
