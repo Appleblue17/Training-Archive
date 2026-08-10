@@ -24,7 +24,9 @@ jobs:
         id: check_commit
         run: |
           git fetch
-          git log -1 --pretty=%B > last_commit_msg.txt
+          # 只用 subject 第一行（--pretty=%s）：提交 body 可能提及 [contests-changed]
+          # 字样（如描述该标记的修复说明），grep 整条信息会误判触发部署。
+          git log -1 --pretty=%s > last_commit_msg.txt
           cat last_commit_msg.txt
           if [ "${{ github.event_name }}" = "push" ]; then
             # push 事件：最后提交就是本次 push 的（服务器刚提交），无需日期校验

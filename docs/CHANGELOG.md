@@ -66,6 +66,7 @@
 
 ### Fixed
 
+- `deploy.yml` 的 `check_contests` 误触发部署：标记检查用 `git log -1 --pretty=%B`（subject + body 完整信息）做 `grep '[contests-changed]'`，若提交 **body** 里提及该标记字样（如描述此标记的修复说明）即误判为应部署。修复：改用 `--pretty=%s` 只取 subject 第一行——真正的标记提交 subject 为 `[auto] [contests-changed] ...` 仍能匹配，body 提及不再误触发
 - 自动提交的 `[contests-changed]` 标记对含中文路径的比赛失效：git 默认 `core.quotepath=true` 会把非 ASCII 路径输出为带引号 + 八进制转义（如 `"contests/2026\u2026..."`），`server-task.sh` 与两个爬虫工作流中的 `git diff --cached --name-only | grep '^contests/'` 匹配失败，导致**改了 `contests/` 内容却走了 `[auto] Update crawler state` 分支、不带标记、不触发部署**（实测 `14ff1d36d7` 新增 411 个中文路径提交文件却无标记）。修复：判断统一改为 `git -c core.quotepath=false diff --cached --name-only`（本次命令级生效，不改全局配置），中文路径原样输出即可匹配 `^contests/`
 - `/log` 页面在日志文件缺失时显示占位提示而非报错：日志是运行时产物（`crawler/global.log.json` 与 `crawler/platforms/*/log.json` 被 gitignore 不提交版本控制），deploy 分支 / 全新 clone 上 `/log` 读取路径必然不存在，此前页面显示 `Error reading file: ENOENT...`（空内容在 log 类型还显示 "Invalid log format"）。改为读取失败返回空串、前端渲染"暂无日志文件"占位（含生成路径提示），有日志时正常显示
 - 静态导出在无可用数据时失败：全部 5 个动态路由（`/[page]`、`/review/[contest]`、`/view/contests/[contest]/[file]`、`/view/contests/[contest]/problems/[problem]/[file]`、`/view/contests/[contest]/problems/[problem]/submissions/[file]`）的 `generateStaticParams` 在 `contests/` 无数据或不存在时返回空数组 / `readdirSync` 抛错，`output: export` 判定动态路由无法构建而报错。统一改为：`contests/` 不存在时判空，无匹配数据时返回占位参数（`~no-data~`），页面内部渲染"暂无数据"提示；`/[page]` 兜底输出 `page1`（HomeView 渲染空列表）。数据由爬虫生成后占位页自然消失。影响面：deploy 分支旧数据（无 `submissions.json`/`review.md`/提交历史）或全新 clone 空 `contests/` 时 build 均可通过

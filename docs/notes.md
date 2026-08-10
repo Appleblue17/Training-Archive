@@ -6,6 +6,7 @@
 
 ## 最近更新
 
+- 2026-08-11：`deploy.yml` 标记检查误触发——`check_contests` 用 `git log -1 --pretty=%B`（subject + body 完整信息）`grep '[contests-changed]'`，修复 quotepath 的那条提交 **body 里描述了 "[contests-changed] marker"** 字样，grep 匹配成功误判为应部署（实测无标记提交 `41ec917d8e` 触发了 deploy job）。修复：改 `--pretty=%s` 只取 subject 第一行，真标记提交（subject `[auto] [contests-changed] ...`）仍匹配，body 提及不再误触发。验证：修复提交旧逻辑匹配 1、新逻辑 0；真标记提交匹配 1。
 - 2026-08-11：修复自动提交 `[contests-changed]` 标记对**中文比赛名失效**的 bug——git 默认 `core.quotepath=true` 把非 ASCII 路径输出为带引号+八进制转义（`"contests/2026\u2026..."`），`server-task.sh` 与两个爬虫工作流的 `git diff --cached --name-only | grep '^contests/'` 匹配失败，改了 `contests/` 却走了 `[auto] Update crawler state` 分支（实测 `14ff1d36d7` 新增 411 个中文路径文件却无标记、未触发部署；`82e8e0b603` 是手动补的标记提交）。修复：三处判断统一改 `git -c core.quotepath=false diff --cached --name-only`（命令级生效不改全局配置）。验证：对 `14ff1d36d7` 旧逻辑匹配 0 个、新逻辑匹配 411 个。服务器下次 cron 运行 `git pull` 自动拉到修复后的脚本。
 - 2026-08-10：deploy 分支跟踪爬虫日志——`.gitignore.deploy` 不再忽略 `crawler/global.log.json` 与 `crawler/platforms/*/log.json`（`clean-log.py` 已控制大小：global 保留 20 条、平台保留 50 条），使云端 `/log` 页面可查看日志（此前日志被忽略、deploy 分支必然缺失，页面仅显示占位）。开发分支 `.gitignore` 仍忽略日志，本地日志不提交。CI 每次运行后提交日志（无 contests 变更时走 `[auto] Update crawler state` 不带部署标记，不触发部署）。
 - 2026-08-10：`/log` 页面缺失日志文件时显示友好占位而非报错——日志是运行时产物（`crawler/global.log.json` 与 `crawler/platforms/*/log.json` 被 gitignore 不提交版本控制），deploy 分支 / 全新 clone 读取路径必然不存在，此前页面显示 `Error reading file: ENOENT...`（空内容在 log 类型还显示 "Invalid log format"）。`log/page.tsx` 读取失败改为返回空串，`log-page.tsx` `DisplayBox` 空内容渲染"暂无日志文件"占位（含生成路径提示）；本地跑过爬虫后日志存在即正常显示。lint + build 通过。
