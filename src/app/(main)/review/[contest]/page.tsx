@@ -191,7 +191,9 @@ export default async function ReviewPage(props: {
               />
               <div className="mt-3 text-right">
                 <Link
-                  href={joinUrl("/", "view", contestFolder, "review.md")}
+                  href={joinUrl("/", "view", "contests", contestFolder, "review.md")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm text-blue-300 hover:text-blue-200"
                 >
                   View raw markdown ↗

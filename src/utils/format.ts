@@ -29,3 +29,22 @@ export function formatDate(val: unknown) {
   }
   return String(val);
 }
+
+/** 统一时间显示格式：YYYY/MM/DD HH:MM（24 小时制，无秒），北京时间。 */
+export function formatDateTime(val: unknown) {
+  const d = typeof val === "string" ? new Date(val) : val;
+  if (d instanceof Date && !isNaN(d.getTime())) {
+    return d
+      .toLocaleString("zh-CN", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        timeZone: "Asia/Shanghai",
+      })
+      .replace(/-/g, "/");
+  }
+  return String(val);
+}

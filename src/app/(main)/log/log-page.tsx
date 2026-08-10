@@ -165,7 +165,7 @@ export default function LogPage({ fileContentList }: { fileContentList: string[]
         onClick={handleCopy}
         className="absolute right-6 top-4 z-10 rounded bg-gray-700 px-3 py-1 font-sans text-sm text-white hover:bg-gray-600"
       >
-        <Copy className="mr-1 inline-block" />
+        <Copy className="mr-1 inline-block size-4" />
         {copyMessage}
       </button>
       <div className="w-52">

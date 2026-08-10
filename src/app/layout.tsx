@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               rel="noopener noreferrer"
               className="hover:text-blue-300"
             >
-              <ExternalLink className="mr-1 inline" />
+              <ExternalLink className="mr-1 inline size-4" />
               GitHub
             </a>{" "}
             · MIT License

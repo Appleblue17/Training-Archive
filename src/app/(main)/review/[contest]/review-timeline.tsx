@@ -1,9 +1,10 @@
 "use client";
-import { Check, Code, X } from "lucide-react";
+import { ArrowUpRight, Check, Code, X } from "lucide-react";
 import Link from "next/link";
 import clsx from "clsx";
 
 import { joinUrl } from "@/utils/url";
+import { formatDateTime } from "@/utils/format";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -60,7 +61,7 @@ export default function ReviewTimeline({
   }
 
   const sourceHref = (letter: string, file: string) =>
-    joinUrl("/", "view", contestFolder, "problems", letter, file);
+    joinUrl("/", "view", "contests", contestFolder, "problems", letter, "submissions", file);
 
   return (
     <Card>
@@ -89,7 +90,7 @@ export default function ReviewTimeline({
               />
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span className="font-mono text-xs text-gray-500">
-                  {new Date(sub.submitTime).toLocaleString()}
+                  {formatDateTime(sub.submitTime)}
                 </span>
                 <span className="text-sm font-medium text-slate-100">
                   {sub.problemLetter}. {sub.problemName}
@@ -102,15 +103,17 @@ export default function ReviewTimeline({
                   <Badge variant="secondary">{sub.language}</Badge>
                 )}
                 {sub.time && (
-                  <span className="text-xs text-gray-500">{sub.time} ms</span>
+                  <span className="text-xs text-gray-500">{sub.time}</span>
                 )}
                 {sub.memory && (
-                  <span className="text-xs text-gray-500">{sub.memory} MB</span>
+                  <span className="text-xs text-gray-500">{sub.memory}</span>
                 )}
                 <span className="ml-auto flex items-center gap-2">
                   {sub.sourceFile && (
                     <Link
                       href={sourceHref(sub.problemLetter, sub.sourceFile)}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-sm text-blue-300 hover:text-blue-200"
                       title={`View source (${sub.sourceFile})`}
                     >
@@ -125,7 +128,7 @@ export default function ReviewTimeline({
                       rel="noopener noreferrer"
                       className="text-xs text-gray-400 hover:text-gray-200"
                     >
-                      ↗
+                      <ArrowUpRight className="inline-block size-4" />
                     </a>
                   )}
                 </span>

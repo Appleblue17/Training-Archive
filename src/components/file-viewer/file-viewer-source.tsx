@@ -24,13 +24,13 @@ export default function FileViewerSource({ code, ext }: { code: string; ext: str
         onClick={handleCopy}
         className="absolute right-6 top-4 z-10 rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
       >
-        <Copy className="mr-1 inline-block" />
+        <Copy className="mr-1 inline-block size-4" />
         {copyMessage}
       </button>
 
       <div className="relative flex-1 overflow-y-auto">
         <div className="absolute left-4 top-0">
-          <Code className="mr-1 inline-block text-gray-200" />
+          <Code className="mr-1 inline-block text-gray-200 size-4" />
           <span className="text-sm text-gray-400">{ext.slice(1)}</span>
         </div>
         <div className="flex-1 py-5">

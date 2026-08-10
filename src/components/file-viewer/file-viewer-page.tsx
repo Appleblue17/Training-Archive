@@ -15,6 +15,8 @@ type FileViewerPageProps = {
   problem?: string;
   problemMetadata?: FileMetadataType;
   fileMetadataBanner?: string[];
+  /** Optional subdirectory under the problem dir, e.g. "submissions" for historical submission files. */
+  subdir?: string;
 };
 
 /**
@@ -30,15 +32,16 @@ export default function FileViewerPage({
   problem,
   problemMetadata,
   fileMetadataBanner,
+  subdir,
 }: FileViewerPageProps) {
   const dirPath = problem
-    ? path.join("contests", contest, "problems", problem)
+    ? path.join("contests", contest, "problems", problem, subdir ?? "")
     : path.join("contests", contest);
   const rawFilePath = joinUrl(
     PREFIX_URL,
     "contests",
     contest,
-    problem ? path.join("problems", problem) : "",
+    problem ? path.join("problems", problem, subdir ?? "") : "",
     file,
   );
 
@@ -57,6 +60,12 @@ export default function FileViewerPage({
               <>
                 <span className="px-2 text-lg text-slate-300">/</span>
                 {problem}
+                {subdir && (
+                  <>
+                    <span className="px-2 text-lg text-slate-300">/</span>
+                    {subdir}
+                  </>
+                )}
               </>
             )}
             <span className="px-2 text-lg text-slate-300">/</span>
@@ -68,7 +77,7 @@ export default function FileViewerPage({
               download
               className="rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
             >
-              <Download className="mr-2 inline-block text-base" />
+              <Download className="mr-2 inline-block text-base size-4" />
               Download
             </a>
             <a
@@ -77,7 +86,7 @@ export default function FileViewerPage({
               rel="noopener noreferrer"
               className="rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600"
             >
-              <FileText className="mr-2 inline-block text-base" />
+              <FileText className="mr-2 inline-block text-base size-4" />
               Raw File
             </a>
           </div>

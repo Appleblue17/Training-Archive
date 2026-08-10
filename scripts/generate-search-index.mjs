@@ -64,17 +64,22 @@ export function buildSearchIndex() {
       const link = problemJson?.link ?? "";
       const tags = Array.isArray(problemJson?.tags) ? problemJson.tags : [];
 
-      // First viewable (non-JSON) file, used to deep-link search results
-      // into the file viewer page.
+      // File used to deep-link search results into the file viewer page.
+      // Prefer the problem statement (statement.md/pdf); fall back to the
+      // first other viewable non-JSON file (e.g. code.cpp).
       let viewFile = "";
       try {
+        const files = fs
+          .readdirSync(problemPath)
+          .filter(
+            (f) =>
+              !f.endsWith(".json") && fs.statSync(path.join(problemPath, f)).isFile(),
+          );
         viewFile =
-          fs
-            .readdirSync(problemPath)
-            .find(
-              (f) =>
-                !f.endsWith(".json") && fs.statSync(path.join(problemPath, f)).isFile(),
-            ) ?? "";
+          files.find((f) => f.toLowerCase() === "statement.md") ??
+          files.find((f) => f.toLowerCase() === "statement.pdf") ??
+          files[0] ??
+          "";
       } catch {
         /* no viewable files */
       }

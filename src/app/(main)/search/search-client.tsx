@@ -122,13 +122,13 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
               ? joinUrl(
                   "/",
                   "view",
+                  "contests",
                   entry.contestFolder,
                   "problems",
                   entry.letter,
                   entry.viewFile,
                 )
               : entry.link || entry.contestLink || "#";
-            const isExternal = !entry.viewFile;
             return (
               <li
                 key={entry.contestFolder + "/" + entry.letter}
@@ -137,9 +137,8 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <Link
                     href={href}
-                    {...(isExternal
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-base font-medium text-slate-100 hover:text-blue-300"
                   >
                     {entry.letter}. {entry.name}

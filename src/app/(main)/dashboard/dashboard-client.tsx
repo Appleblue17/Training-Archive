@@ -1,10 +1,11 @@
 "use client";
-import { Activity, ArrowUpRight, Award, BarChart2, CheckCircle2, Clock, FileText } from "lucide-react";
+import { Activity, ArrowUpRight, Award, BarChart2, CheckCircle2, Clock, Code, FileText } from "lucide-react";
 import { useMemo } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
 import { joinUrl } from "@/utils/url";
+import { formatDateTime } from "@/utils/format";
 import PlatformBadge from "@/components/platform-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -27,6 +28,8 @@ interface RecentSolved {
   name: string;
   solveTime: string;
   viewFile: string;
+  codeFile: string;
+  codeSize: number | null;
 }
 
 export interface DashboardClientProps {
@@ -241,7 +244,7 @@ export default function DashboardClient(props: DashboardClientProps) {
                           aria-label={`Review for ${c.name}`}
                         >
                           Review
-                          <ArrowUpRight className="size-3.5" />
+                          <ArrowUpRight className="size-4" />
                         </Link>
                       )}
                       <PlatformBadge platform={c.platform} />
@@ -264,31 +267,61 @@ export default function DashboardClient(props: DashboardClientProps) {
             ) : (
               <ul className="space-y-2">
                 {recentSolved.map((p) => {
-                  const href = p.viewFile
-                    ? joinUrl(
-                        "/",
-                        "view",
-                        p.contestFolder,
-                        "problems",
-                        p.letter,
-                        p.viewFile,
-                      )
+                  const baseView = [
+                    "/",
+                    "view",
+                    "contests",
+                    p.contestFolder,
+                    "problems",
+                    p.letter,
+                  ];
+                  const viewHref = p.viewFile
+                    ? joinUrl(...baseView, p.viewFile)
+                    : p.codeFile
+                      ? joinUrl(...baseView, p.codeFile)
+                      : "#";
+                  const codeHref = p.codeFile
+                    ? joinUrl(...baseView, p.codeFile)
                     : "#";
                   return (
                     <li key={p.contestFolder + "/" + p.letter} className="flex items-center justify-between gap-2">
                       <div className="min-w-0">
-                        <Link
-                          href={href}
-                          className="truncate text-sm text-slate-100 hover:text-blue-300"
-                        >
-                          {p.letter}. {p.name}
-                        </Link>
+                        <div className="flex items-center gap-2">
+                          <Link
+                            href={viewHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title={p.viewFile ? `View statement (${p.viewFile})` : "View"}
+                            className="truncate text-sm text-slate-100 hover:text-blue-300"
+                          >
+                            {p.letter}. {p.name}
+                          </Link>
+                          {p.codeFile && (
+                            <Link
+                              href={codeHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title={`View code (${p.codeFile})`}
+                              aria-label={`View code for ${p.letter}. ${p.name}`}
+                              className="shrink-0 text-gray-400 transition-colors hover:text-blue-300"
+                            >
+                              <Code className="inline-block size-4" />
+                            </Link>
+                          )}
+                        </div>
                         <div className="truncate text-xs text-gray-500">
                           {p.contestName} · {p.contestDate}
                         </div>
                       </div>
-                      <span className="shrink-0 text-xs text-gray-400">
-                        {new Date(p.solveTime).toLocaleDateString()}
+                      <span className="shrink-0 whitespace-nowrap text-xs text-gray-400">
+                        {p.codeSize != null && (
+                          <span className="font-mono">
+                            <span className="inline-block min-w-10 text-right align-middle">{p.codeSize}</span>
+                            <span className="ml-1 text-gray-400">B</span>
+                            <span className="mx-1.5 text-gray-600">·</span>
+                          </span>
+                        )}
+                        {formatDateTime(p.solveTime)}
                       </span>
                     </li>
                   );

@@ -28,15 +28,27 @@ export default async function DashboardPage() {
     .flatMap((c) =>
       c.problems
         .filter((p) => p.solve_time)
-        .map((p) => ({
-          contestName: c.name,
-          contestDate: c.date,
-          contestFolder: c.rel_path.split("/")[1] ?? "",
-          letter: p.rel_path.split("/").pop() ?? "",
-          name: p.name ?? "",
-          solveTime: String(p.solve_time),
-          viewFile: p.files[0]?.name ?? "",
-        })),
+        .map((p) => {
+          const files = p.files;
+          // 题面文件优先（statement.md / statement.pdf），搜索/最近完成等入口的链接目标
+          const statementFile =
+            files.find((f) => f.name?.toLowerCase() === "statement.md")?.name ??
+            files.find((f) => f.name?.toLowerCase() === "statement.pdf")?.name ??
+            files.find((f) => f.name && !f.name.toLowerCase().startsWith("code"))?.name ??
+            "";
+          const codeFile = files.find((f) => f.name?.toLowerCase().startsWith("code"));
+          return {
+            contestName: c.name,
+            contestDate: c.date,
+            contestFolder: c.rel_path.split("/")[1] ?? "",
+            letter: p.rel_path.split("/").pop() ?? "",
+            name: p.name ?? "",
+            solveTime: String(p.solve_time),
+            viewFile: statementFile,
+            codeFile: codeFile?.name ?? "",
+            codeSize: typeof codeFile?.size === "number" ? codeFile.size : null,
+          };
+        }),
     )
     .sort((a, b) => new Date(b.solveTime).getTime() - new Date(a.solveTime).getTime())
     .slice(0, 8);
