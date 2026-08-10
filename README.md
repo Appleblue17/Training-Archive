@@ -69,7 +69,7 @@ pnpm lint
 # 安装依赖
 pip install -r crawler/requirements.txt
 
-# 准备配置与环境变量（见 crawler/subscriptions.example.json、.env.example）
+# 准备配置与环境变量（见 crawler/subscriptions/subscriptions.example.json、.env.example）
 # 订阅文件放在 crawler/subscriptions/ 目录（每个 .json 一份列表，文件名随意）
 # 任务A：抓订阅比赛 + 增量同步提交
 python3 crawler/scheduled_task.py

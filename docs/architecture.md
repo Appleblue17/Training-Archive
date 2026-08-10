@@ -161,7 +161,7 @@ contests/
 
 ### 4.3 订阅模型与两个任务
 
-统一订阅配置存放在 `crawler/subscriptions/` 目录（开发分支 gitignore，用户维护；模板见 `crawler/subscriptions.example.json`）。目录下每个 `*.json` 文件都是一份订阅列表，**文件名随意**（可按平台 / 系列 / 月份等分组管理），运行时只识别 `.json` 文件，按文件名排序合并，重复 `link` 去重（保留先出现的条目）。单个文件格式：
+统一订阅配置存放在 `crawler/subscriptions/` 目录（开发分支 gitignore，用户维护；模板见 `crawler/subscriptions/subscriptions.example.json`）。目录下每个 `*.json` 文件都是一份订阅列表，**文件名随意**（可按平台 / 系列 / 月份等分组管理），运行时只识别 `.json` 文件，按文件名排序合并，重复 `link` 去重（保留先出现的条目）；**模板文件 `*.example.json` 跳过**（示例比赛不是真实订阅）。单个文件格式：
 
 ```json
 [

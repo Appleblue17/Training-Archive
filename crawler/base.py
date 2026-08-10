@@ -242,6 +242,7 @@ class BaseCrawler:
             ]
         - 运行时只识别 .json 文件：按文件名排序后逐文件读取，合并为一个列表，
           重复 link 去重（保留先出现的条目）；非 .json 文件忽略。
+        - 模板文件 *.example.json 跳过（示例比赛不是真实订阅，只在目录里供参考）。
         - 文件缺失 / 解析失败 / 非列表时记录日志并跳过，不阻断其他文件。
         - platform 为 None：返回全部条目。
         - platform 指定时：仅返回该平台且 enabled != false 的订阅。
@@ -259,6 +260,9 @@ class BaseCrawler:
             return []
         for filename in sorted(os.listdir(self.subscriptions_dir)):
             if not filename.endswith(".json"):
+                continue
+            # 跳过模板文件（*.example.json），避免示例比赛被当作真实订阅抓取
+            if filename.endswith(".example.json"):
                 continue
             path = os.path.join(self.subscriptions_dir, filename)
             try:

@@ -29,7 +29,7 @@
 
 ### Changed
 
-- 订阅配置改为目录式管理：`crawler/subscriptions/` 目录取代单文件 `crawler/subscriptions.json`，目录下每个 `*.json` 文件是一份订阅列表（文件名随意，可按平台/系列/月份分组），`BaseCrawler._load_subscriptions` 重写为扫描目录——只识别 `.json` 文件，按文件名排序合并，重复 `link` 去重（保留先出现的条目）；文件缺失/解析失败/非列表时记录日志并跳过。开发分支 `.gitignore` 改为忽略整个目录（deploy 分支 `.gitignore.deploy` 无需改动，目录默认被跟踪）；模板仍为 `crawler/subscriptions.example.json`
+- 订阅配置改为目录式管理：`crawler/subscriptions/` 目录取代单文件 `crawler/subscriptions.json`，目录下每个 `*.json` 文件是一份订阅列表（文件名随意，可按平台/系列/月份分组），`BaseCrawler._load_subscriptions` 重写为扫描目录——只识别 `.json` 文件，按文件名排序合并，重复 `link` 去重（保留先出现的条目）；文件缺失/解析失败/非列表时记录日志并跳过；**模板文件 `*.example.json` 跳过**（示例比赛不是真实订阅）。开发分支 `.gitignore` 用 `crawler/subscriptions/*` 忽略目录内容（**不能忽略目录本身**，否则 `!` 规则无法重新纳入模板），模板 `crawler/subscriptions/subscriptions.example.json` 通过 `!` 例外保留提交（deploy 分支 `.gitignore.deploy` 无需改动，目录默认被跟踪）
 - 复盘报告改为 `--from-crawl` 模式：任务A 结束把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时文件，gitignore；无新建比赛时删除旧文件），`report.py` / `qq_share.py` 新增 `--from-crawl` 只对这些比赛生成 review / qq-share（幂等，不再每次全量扫描）；读写逻辑抽离为共享模块 `crawler/new_contests.py`；两个爬虫工作流与 `crawler/server-task.sh` 的 report 步骤改用 `python3 crawler/report.py --from-crawl`（任务B 无新建比赛自然跳过）。注意：**进行中**被首次抓取的比赛当次不会生成报告，且后续不再新建该文件夹，需手动指定文件夹或全量扫描补生成
 - 订阅条目字段 `name` 改名为 `comments`（纯用户备注，代码不读取）；`subscriptions.json` 订阅级 `enabled` 缺省视为启用（与 `config.json` 平台级缺省禁用区分）
 - NowCoder 环境变量拼写统一为 `NOWCODER_*`（原 `NEWCODER_COOKIE_*` 为历史遗留错拼）：代码、CI 工作流、文档同步；**CI Secrets 与本地 `.env` 需改名为 `NOWCODER_COOKIE_NOWCODERUID` / `NOWCODER_COOKIE_T`，并新增 `NOWCODER_USERNAME`**（登录态校验用昵称）

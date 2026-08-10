@@ -61,7 +61,10 @@ crawler/chromedriver-linux64
 crawler/global.log.json
 crawler/last-update.json
 crawler/config.json
-crawler/subscriptions/
+# 忽略 subscriptions 目录内容，但保留目录本身，使 ! 规则能重新纳入模板文件
+# （直接忽略 crawler/subscriptions/ 会连目录一起忽略，git 不再进入目录，! 失效）
+crawler/subscriptions/*
+!crawler/subscriptions/subscriptions.example.json
 crawler/prompt.template.md
 crawler/qq-share.template.md
 crawler/new-contests.json
@@ -72,7 +75,6 @@ crawler/*/input_*.json
 crawler/server-task.log
 # 但保留配置模板可提交
 !crawler/config.example.json
-!crawler/subscriptions.example.json
 !crawler/prompt.template.example.md
 !crawler/qq-share.template.example.md
 
