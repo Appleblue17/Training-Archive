@@ -19,7 +19,7 @@
 #   - 仓库根目录存在 .env（凭据；已被 gitignore，不会提交）
 #   - Python 依赖已安装（pip install -r crawler/requirements.txt）
 #   - Chrome / Chromedriver 位于 crawler/chrome-linux64/ 与
-#     crawler/chromedriver-linux64/（base.py 本地模式的默认路径）
+#     crawler/chromedriver-linux64/（crawler/platforms/base.py 本地模式的默认路径）
 #   - push 到 GitHub 的凭据已配置（SSH key 或 token）
 # ==============================================================================
 set -euo pipefail
@@ -119,16 +119,16 @@ cmd_run() {
   #    a=--contests-only：只查订阅/新建比赛，有新建才回填其提交（高频触发保持轻量）
   #    b=--submissions-only：每日增量提交同步
   if [ "$mode" = "b" ]; then
-    "$PY" crawler/scheduled_task.py --submissions-only
+    "$PY" crawler/scripts/scheduled_task.py --submissions-only
   else
-    "$PY" crawler/scheduled_task.py --contests-only
+    "$PY" crawler/scripts/scheduled_task.py --contests-only
   fi
 
   # 4. 复盘报告（独立于爬虫；只对本次爬取新建的比赛生成，失败仅告警，不阻断数据上线）
-  "$PY" crawler/report.py --from-crawl || log "[WARN] report.py failed (skipped review generation)."
+  "$PY" crawler/scripts/report.py --from-crawl || log "[WARN] report.py failed (skipped review generation)."
 
   # 5. 清理日志
-  "$PY" crawler/clean-log.py || true
+  "$PY" crawler/scripts/clean-log.py || true
 
   # 6. 提交推送
   commit_and_push

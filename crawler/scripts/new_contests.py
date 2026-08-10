@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """本次爬取新建比赛列表的读写（scheduled_task.py 写入，report.py / qq_share.py 读取）。
 
-任务A（crawler/scheduled_task.py）结束时把本次新建的比赛文件夹写入
+任务A（crawler/scripts/scheduled_task.py）结束时把本次新建的比赛文件夹写入
 crawler/new-contests.json（临时状态文件，gitignore）；report.py / qq_share.py
 以 --from-crawl 读取该文件，只对这些比赛生成报告，而不是扫描全部比赛。
 """
@@ -9,9 +9,14 @@ crawler/new-contests.json（临时状态文件，gitignore）；report.py / qq_s
 import json
 import os
 
-# 本次爬取新建的比赛列表（scheduled_task.py 任务A 写入；--from-crawl 读取）
+# 本次爬取新建的比赛列表（scheduled_task.py 任务A 写入；--from-crawl 读取）。
+# 状态文件固定位于仓库根 crawler/ 下：本模块在 crawler/scripts/，上溯两级到仓库根。
 NEW_CONTESTS_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "new-contests.json"
+    os.path.dirname(os.path.abspath(__file__)),
+    "..",
+    "..",
+    "crawler",
+    "new-contests.json",
 )
 
 

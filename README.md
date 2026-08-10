@@ -33,9 +33,12 @@
 │   ├── lib/                    # 类型定义、全局配置（BASE_URL 等）
 │   └── utils/                  # 文件元数据读取等工具
 ├── crawler/                    # Python 爬虫
-│   ├── base.py                 # BaseCrawler 基类（日志、配置、时间、文件写入）
-│   ├── clean-log.py            # 日志清理脚本
-│   └── {qoj,hdu,nowcoder}/     # 各平台爬虫
+│   ├── platforms/              # 各平台爬虫
+│   │   ├── base.py             # BaseCrawler 基类（日志、配置、时间、文件写入）
+│   │   └── {qoj,hdu,nowcoder}/ # 各平台爬虫
+│   ├── scripts/                # 可执行脚本（scheduled_task.py、report.py、clean-log.py 等）
+│   ├── llm/                    # LLM 客户端（deepseek_client.py）
+│   └── prompts/                # 报告模板（.example.md 提交，本地模板 gitignore）
 ├── contests/                   # 竞赛数据（爬虫生成，不纳入版本控制）
 ├── .github/workflows/          # crawler.yml（抓取）、deploy.yml（部署）
 └── docs/                       # 项目文档（见下）
@@ -72,16 +75,16 @@ pip install -r crawler/requirements.txt
 # 准备配置与环境变量（见 crawler/subscriptions/subscriptions.example.json、.env.example）
 # 订阅文件放在 crawler/subscriptions/ 目录（每个 .json 一份列表，文件名随意）
 # 任务A（默认完整：抓订阅比赛 + 全量增量提交）
-python3 crawler/scheduled_task.py
+python3 crawler/scripts/scheduled_task.py
 # 任务A（--contests-only：只查订阅/新建比赛，有新建才回填其提交；高频触发推荐）
-python3 crawler/scheduled_task.py --contests-only
+python3 crawler/scripts/scheduled_task.py --contests-only
 # 任务B：每日增量同步提交
-python3 crawler/scheduled_task.py --submissions-only
+python3 crawler/scripts/scheduled_task.py --submissions-only
 # 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成）
-python3 crawler/report.py --from-crawl
+python3 crawler/scripts/report.py --from-crawl
 # 补生成：扫描所有缺报告的已结束比赛，或只生成指定比赛
-python3 crawler/report.py
-python3 crawler/report.py "contests/2026-08-01 xxx"
+python3 crawler/scripts/report.py
+python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
 ```
 
 爬虫会生成 `contests/` 数据目录与各平台日志文件（均已被 `.gitignore` 忽略）。

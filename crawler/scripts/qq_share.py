@@ -9,10 +9,10 @@
 - API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变量）
 
 用法：
-    python3 crawler/qq_share.py --from-crawl          # 只对本次爬取新建的比赛生成（推荐）
-    python3 crawler/qq_share.py                       # 扫描所有缺 qq-share 的比赛补生成
-    python3 crawler/qq_share.py <contest_folder>      # 只生成指定比赛的 qq-share
-    python3 crawler/report.py --qq-only [...]         # 兼容入口（转调本模块）
+    python3 crawler/scripts/qq_share.py --from-crawl    # 只对本次爬取新建的比赛生成（推荐）
+    python3 crawler/scripts/qq_share.py                 # 扫描所有缺 qq-share 的比赛补生成
+    python3 crawler/scripts/qq_share.py <contest_folder>  # 只生成指定比赛的 qq-share
+    python3 crawler/scripts/report.py --qq-only [...]   # 兼容入口（转调本模块）
 """
 import os
 import sys
@@ -22,14 +22,17 @@ from dotenv import load_dotenv
 # 本地开发：从仓库根 .env 加载 DEEPSEEK_API_KEY（CI 无 .env，静默跳过）
 load_dotenv()
 
-from deepseek_client import call_deepseek
-from new_contests import load_new_contests
+# 脚本位于 crawler/scripts/，仓库根为 ../../（使 crawler 包可导入）
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
-# 模板：crawler/qq-share.template.md（gitignore，本地可自由调整）。
+from crawler.llm.deepseek_client import call_deepseek
+from crawler.scripts.new_contests import load_new_contests
+
+# 模板：crawler/prompts/qq-share.template.md（gitignore，本地可自由调整）。
 # 占位符：
 #   {{review}} 完整复盘报告内容（程序注入，按 QQ_SHARE_MAX_REVIEW_CHARS 截断）
 QQ_SHARE_TEMPLATE_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "qq-share.template.md"
+    os.path.dirname(os.path.abspath(__file__)), "..", "prompts", "qq-share.template.md"
 )
 
 # 简化版输入 review 的安全上限（review 为模型自产，通常很小；防御性截断）
@@ -42,7 +45,7 @@ QQ_SHARE_SYSTEM = (
 )
 QQ_SHARE_TEMPERATURE = 0.8
 
-# 模板读取失败的兜底（与 crawler/qq-share.template.example.md 内容一致；
+# 模板读取失败的兜底（与 crawler/prompts/qq-share.template.example.md 内容一致；
 # 实际模板被 gitignore，CI 等无文件环境用此兜底，保持一致行为）
 DEFAULT_QQ_SHARE_TEMPLATE = """\
 你是算法竞赛战队的"氛围组"担当，负责把比赛复盘改写成轻松、有感染力、适合发到 QQ 群分享的纯文本总结。

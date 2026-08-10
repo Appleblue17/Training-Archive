@@ -14,9 +14,9 @@
     每天一次对所有已开始/进行中的比赛做增量提交抓取（沿用 last-update.json）。
 
 复盘报告由独立脚本生成，不在此入口内调用：
-    python3 crawler/report.py --from-crawl        # 只对本次爬取新建的比赛生成（推荐）
-    python3 crawler/report.py                     # 扫描所有已结束且缺 review.md 的比赛
-    python3 crawler/report.py <contest_folder>    # 只生成指定比赛
+    python3 crawler/scripts/report.py --from-crawl    # 只对本次爬取新建的比赛生成（推荐）
+    python3 crawler/scripts/report.py                 # 扫描所有已结束且缺 review.md 的比赛
+    python3 crawler/scripts/report.py <contest_folder>  # 只生成指定比赛
 
 任务A 结束时会把本次新建的比赛文件夹列表写入 crawler/new-contests.json
 （临时状态文件，gitignore），report.py / qq_share.py 以 --from-crawl 读取
@@ -28,9 +28,9 @@
     显式 enabled: true 的平台才会被执行；配置文件缺失 / 解析失败时全部平台禁用。
 
 用法：
-    python3 crawler/scheduled_task.py                    # 任务A（完整：抓比赛 + 全量增量提交）
-    python3 crawler/scheduled_task.py --contests-only    # 只查订阅/新建比赛，有新建才回填其提交
-    python3 crawler/scheduled_task.py --submissions-only # 任务B（每天一次增量提交同步）
+    python3 crawler/scripts/scheduled_task.py              # 任务A（完整：抓比赛 + 全量增量提交）
+    python3 crawler/scripts/scheduled_task.py --contests-only    # 只查订阅/新建比赛，有新建才回填其提交
+    python3 crawler/scripts/scheduled_task.py --submissions-only # 任务B（每天一次增量提交同步）
 """
 import importlib
 import json
@@ -42,15 +42,16 @@ from dotenv import load_dotenv
 # 本地开发：从仓库根 .env 加载凭据（CI 无 .env，静默跳过；不覆盖已有环境变量）
 load_dotenv()
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+# 脚本位于 crawler/scripts/，仓库根为 ../../（使 crawler 包可导入）
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 PLATFORM_ORDER = ("qoj", "hdu", "nowcoder")
 
 # platform -> (crawler module name, crawler class name)
 PLATFORM_CLASSES = {
-    "qoj": ("crawler.qoj.qoj", "QOJCrawler"),
-    "hdu": ("crawler.hdu.hdu", "HDUCrawler"),
-    "nowcoder": ("crawler.nowcoder.nowcoder", "NOWCODERCrawler"),
+    "qoj": ("crawler.platforms.qoj.qoj", "QOJCrawler"),
+    "hdu": ("crawler.platforms.hdu.hdu", "HDUCrawler"),
+    "nowcoder": ("crawler.platforms.nowcoder.nowcoder", "NOWCODERCrawler"),
 }
 
 CONFIG_PATH = "crawler/config.json"

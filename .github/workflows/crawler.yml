@@ -59,7 +59,7 @@ jobs:
 
       - name: "Run scheduled task (task B: daily submissions sync)"
         id: crawl
-        run: python3 crawler/scheduled_task.py --submissions-only
+        run: python3 crawler/scripts/scheduled_task.py --submissions-only
         env:
           PYTHONUNBUFFERED: "1"
           CHROME_BINARY: ${{ steps.setup-chrome.outputs.chrome-path }}
@@ -73,13 +73,13 @@ jobs:
           NOWCODER_COOKIE_T: ${{ secrets.NOWCODER_COOKIE_T }}
 
       - name: "Generate review reports (only for contests created in this crawl)"
-        run: python3 crawler/report.py --from-crawl
+        run: python3 crawler/scripts/report.py --from-crawl
         env:
           PYTHONUNBUFFERED: "1"
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
 
       - name: Clean log files
-        run: python3 crawler/clean-log.py
+        run: python3 crawler/scripts/clean-log.py
 
       - name: "Add, commit and push changes"
         run: |

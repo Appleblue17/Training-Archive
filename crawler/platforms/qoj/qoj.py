@@ -10,15 +10,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from crawler.base import BaseCrawler
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
+from crawler.platforms.base import BaseCrawler
 
 
 class QOJCrawler(BaseCrawler):
-    def __init__(self, local_log_path="crawler/qoj/log.json"):
+    def __init__(self, local_log_path="crawler/platforms/qoj/log.json"):
         super().__init__("qoj", local_log_path)
-        self.contests_path = "crawler/qoj/contests.json"
-        self.submissions_path = "crawler/qoj/staged-submissions.json"
+        self.contests_path = "crawler/platforms/qoj/contests.json"
+        self.submissions_path = "crawler/platforms/qoj/staged-submissions.json"
 
     def is_logged_in(self):
         main_page = self.fetch_page_with_browser("https://qoj.ac/")

@@ -65,18 +65,18 @@ crawler/config.json
 # （直接忽略 crawler/subscriptions/ 会连目录一起忽略，git 不再进入目录，! 失效）
 crawler/subscriptions/*
 !crawler/subscriptions/subscriptions.example.json
-crawler/prompt.template.md
-crawler/qq-share.template.md
+crawler/prompts/prompt.template.md
+crawler/prompts/qq-share.template.md
 crawler/new-contests.json
-crawler/*/contests.json
-crawler/*/staged-submissions.json
-crawler/*/log.json
-crawler/*/input_*.json
+crawler/platforms/*/contests.json
+crawler/platforms/*/staged-submissions.json
+crawler/platforms/*/log.json
+crawler/platforms/*/input_*.json
 crawler/server-task.log
 # 但保留配置模板可提交
 !crawler/config.example.json
-!crawler/prompt.template.example.md
-!crawler/qq-share.template.example.md
+!crawler/prompts/prompt.template.example.md
+!crawler/prompts/qq-share.template.example.md
 
 # test script
 *test.sh

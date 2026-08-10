@@ -7,15 +7,15 @@
 - review.md 已存在则跳过（幂等，避免重复消耗 token）
 
 生成完整报告后自动串联生成 QQ 群分享简化版 qq-share.txt
-（逻辑在独立模块 crawler/qq_share.py，此处仅转调）。
+（逻辑在独立模块 crawler/scripts/qq_share.py，此处仅转调）。
 
 API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变量）。
 
 用法：
-    python3 crawler/report.py --from-crawl           # 只对本次爬取新建的比赛生成（推荐）
-    python3 crawler/report.py                        # 扫描所有已结束且缺报告的比赛
-    python3 crawler/report.py <contest_folder>       # 只生成指定比赛（文件夹相对仓库根）
-    python3 crawler/report.py --qq-only              # 兼容入口：转调 qq_share.py（详见该模块）
+    python3 crawler/scripts/report.py --from-crawl       # 只对本次爬取新建的比赛生成（推荐）
+    python3 crawler/scripts/report.py                    # 扫描所有已结束且缺报告的比赛
+    python3 crawler/scripts/report.py <contest_folder>   # 只生成指定比赛（文件夹相对仓库根）
+    python3 crawler/scripts/report.py --qq-only          # 兼容入口：转调 qq_share.py（详见该模块）
 """
 import json
 import os
@@ -23,9 +23,12 @@ import re
 import sys
 from datetime import datetime
 
-from deepseek_client import call_deepseek
-from new_contests import load_new_contests
-from qq_share import generate_qq_share, generate_qq_shares_for_all
+# 脚本位于 crawler/scripts/，仓库根为 ../../（使 crawler 包可导入）
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+from crawler.llm.deepseek_client import call_deepseek
+from crawler.scripts.new_contests import load_new_contests
+from crawler.scripts.qq_share import generate_qq_share, generate_qq_shares_for_all
 
 # 北京时间（UTC+8）
 from datetime import timezone, timedelta
@@ -37,14 +40,16 @@ beijing = timezone(timedelta(hours=8))
 # 题面与比赛信息等固定内容优先保留，提交源码按剩余预算截断。
 MAX_PROMPT_CHARS = 240_000
 
-# 提示词模板：crawler/prompt.template.md（gitignore，本地可自由调整）。
+# 提示词模板：crawler/prompts/prompt.template.md（gitignore，本地可自由调整）。
 # 占位符：
 #   {{contest_info}} 比赛信息块（程序生成，缺字段省略行）
 #   {{problems}}     题目列表 + 完整题面（程序生成，含 solved 状态）
 #   {{submissions}}  提交时间轴 + 源码（程序生成，按剩余预算截断）
-TEMPLATE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prompt.template.md")
+TEMPLATE_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "prompts", "prompt.template.md"
+)
 
-# 模板读取失败的兜底（与 crawler/prompt.template.example.md 内容一致；
+# 模板读取失败的兜底（与 crawler/prompts/prompt.template.example.md 内容一致；
 # 实际模板被 gitignore，CI 等无文件环境用此兜底，保持一致行为）
 DEFAULT_TEMPLATE = """\
 你是一名经验丰富的 ACM/ICPC 算法竞赛教练。请根据以下比赛数据撰写一份中文复盘报告。
@@ -120,7 +125,7 @@ def _problem_letter_map(contest_folder):
 
 
 def _problem_id_from_link(link):
-    """从 problem_link 提取平台题目 ID（与 crawler/base.py 的 helper 一致）。
+    """从 problem_link 提取平台题目 ID（与 crawler/platforms/base.py 的 helper 一致）。
 
     HDU/NowCoder：https://.../problem?cid=123&pid=1006  → "1006"
     QOJ：https://.../problem/123                          → "123"

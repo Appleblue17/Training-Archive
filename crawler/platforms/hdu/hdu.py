@@ -1,22 +1,45 @@
 import re
 import sys
 import os
-from bs4 import BeautifulSoup as bs4, Tag
+from bs4 import BeautifulSoup as bs4
 from datetime import datetime, timedelta, timezone
 
 beijing = timezone(timedelta(hours=8))
 from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from crawler.base import BaseCrawler
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
+from crawler.platforms.base import BaseCrawler
+
+# HDU 时间格式形如 "Jul 18, 2025 12:00:00"。
+# 显式映射英文月份，避免依赖系统 locale（非英文环境 %b 会解析失败）。
+HDU_MONTHS = {
+    "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+    "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12,
+}
 
 
-class NOWCODERCrawler(BaseCrawler):
-    def __init__(self, local_log_path="crawler/nowcoder/log.json"):
-        super().__init__("nowcoder", local_log_path)
-        self.contests_path = "crawler/nowcoder/contests.json"
-        self.submissions_path = "crawler/nowcoder/staged-submissions.json"
+def _parse_hdu_time(s):
+    """Parse 'Jul 18, 2025 12:00:00' into a naive datetime."""
+    parts = s.strip().split()
+    if len(parts) != 4:
+        raise ValueError(f"Unexpected HDU time format: {s}")
+    month = HDU_MONTHS.get(parts[0])
+    if month is None:
+        raise ValueError(f"Unknown month in HDU time format: {s}")
+    day = int(parts[1].rstrip(","))
+    year = int(parts[2])
+    hour, minute, second = (int(x) for x in parts[3].split(":"))
+    return datetime(year, month, day, hour, minute, second)
+
+
+class HDUCrawler(BaseCrawler):
+    def __init__(self, local_log_path="crawler/platforms/hdu/log.json"):
+        super().__init__("hdu", local_log_path)
+        self.contests_path = "crawler/platforms/hdu/contests.json"
+        self.submissions_path = "crawler/platforms/hdu/staged-submissions.json"
 
     def is_logged_in(self, link):
         main_page = self.fetch_page_with_browser(link)
@@ -25,35 +48,46 @@ class NOWCODERCrawler(BaseCrawler):
         success = self.username in main_page
         return success
 
-    def try_login_with_cookie(self, cookies):
-        link = "https://ac.nowcoder.com/"
+    def try_login_with_password(self, link, username, password):
+        if self.is_logged_in(link):
+            self.log(
+                "info", "Already logged in with username and password. Skipping login."
+            )
+            return
 
         self.driver.get(link)
-        for cookie_name, cookie_value in cookies.items():
-            self.driver.add_cookie({"name": cookie_name, "value": cookie_value})
-        self.driver.refresh()
+        
+        wait = WebDriverWait(self.driver, 30)
+        
+        username_input = wait.until(EC.presence_of_element_located((By.NAME, "username")))
+        username_input.send_keys(username)
+        self._random_sleep(0.5, 1)
+        
+        password_input = wait.until(EC.presence_of_element_located((By.NAME, "password")))
+        password_input.send_keys(password)
+        self._random_sleep(0.5, 1)
+
+        submit_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']")))
+        submit_button.click()
         self._random_sleep()
 
         if not self.is_logged_in(link):
             self.log("fatal", "Login failed with provided credentials.")
         else:
-            self.log("info", "Login successful with cookies.")
+            self.log("info", "Login successful with username and password.")
 
-    def login(self):
-        # 昵称用于登录态校验（is_logged_in）；cookie 用于实际登录
-        self.username = os.getenv("NOWCODER_USERNAME") or ""
-        cookies = {
-            "NOWCODERUID": os.getenv("NOWCODER_COOKIE_NOWCODERUID"),
-            "t": os.getenv("NOWCODER_COOKIE_T"),
-        }
-        if not cookies["NOWCODERUID"] or not cookies["t"]:
+    def login(self, link):
+        username = os.getenv("HDU_USERNAME")
+        password = os.getenv("HDU_PASSWORD")
+        if not username or not password:
             self.log(
                 "fatal",
-                "Nowcoder cookies not found in environment variables. Stopped.",
+                "Username or password not found in environment variables. Stopped.",
             )
             return
 
-        self.try_login_with_cookie(cookies)
+        self.username = username
+        self.try_login_with_password(link, username, password)
 
     def fetch_contests_get_contest_list(self):
         """
@@ -61,7 +95,7 @@ class NOWCODERCrawler(BaseCrawler):
         Return a dictionary with the following required keys:
         - name: The name of the contest
         - date: The date of the contest in ISO format (YYYY-MM-DD)
-        - platform: The platform name (in this case, "nowcoder")
+        - platform: The platform name (in this case, "hdu")
         - start_time: The start time of the contest in ISO format (YYYY-MM-DDTHH:MM:SS)
         - end_time: The end time of the contest in ISO format (YYYY-MM-DDTHH:MM:SS)
         - link: The link to the contest
@@ -75,19 +109,23 @@ class NOWCODERCrawler(BaseCrawler):
                 continue
             contest_link = input_contest["link"]
 
-            contest_page = self.fetch_page_with_browser(contest_link)
-            soup = bs4(contest_page, "html.parser")
+            login_page = self.fetch_page_with_browser(contest_link)
+            login_soup = bs4(login_page, "html.parser")
 
-            contest_name_element = (
-                soup.find("div", class_="topic-banner").find("h1").find("span")
+            contest_name_element = login_soup.find("div", class_="contest-info").find(
+                "h2"
             )
             contest_name = contest_name_element.text.strip()
 
-            # Contest time format example: "2025-07-15 12:00:00 至 2025-07-15 17:00:00"
+            # Contest time format example: "Jul 18, 2025 12:00:00 ~ Jul 18, 2025 17:00:00"
             # Convert it to ISO format
-            contest_time_element = soup.find("p", class_="match-time").find("span")
+            contest_time_element = (
+                login_soup.find("div", class_="contest-info")
+                .find("div", class_="info-pair")
+                .find("div", class_="info-value")
+            )
             contest_time_raw = contest_time_element.text.strip()
-            contest_time_parts = contest_time_raw.split(" 至 ")
+            contest_time_parts = contest_time_raw.split(" ~ ")
             if len(contest_time_parts) != 2:
                 self.log(
                     "error",
@@ -96,8 +134,8 @@ class NOWCODERCrawler(BaseCrawler):
                 continue
             start_time_str = contest_time_parts[0].strip()
             end_time_str = contest_time_parts[1].strip()
-            start_time = self._convert_iso_to_beijing(start_time_str)
-            end_time = self._convert_iso_to_beijing(end_time_str)
+            start_time = _parse_hdu_time(start_time_str).replace(tzinfo=beijing)
+            end_time = _parse_hdu_time(end_time_str).replace(tzinfo=beijing)
 
             contest_date = start_time.date().isoformat()
 
@@ -112,7 +150,7 @@ class NOWCODERCrawler(BaseCrawler):
             contest_info = {
                 "name": contest_name,
                 "date": contest_date,
-                "platform": "nowcoder",
+                "platform": "hdu",
                 "start_time": start_time.isoformat(),
                 "end_time": end_time.isoformat(),
                 "link": contest_link,
@@ -133,15 +171,11 @@ class NOWCODERCrawler(BaseCrawler):
         contest_link = contest_info["link"]
 
         # Go into the contest page to fetch more details
+        self.login(contest_link)
         contest_page = self.fetch_page_with_browser(contest_link)
         soup = bs4(contest_page, "html.parser")
 
-        problem_table = (
-            soup.find("div", class_="nk-main")
-            .find("div", class_="module-box")
-            .find("table", class_="table-hover")
-            .find("tbody")
-        )
+        problem_table = soup.find("table", class_="page-card-table").find("tbody")
         if not problem_table:
             self.log("error", f"No problem table found for contest {contest_name}.")
             return None
@@ -150,16 +184,18 @@ class NOWCODERCrawler(BaseCrawler):
         problems_infos = []
         for problem in problem_elements:
             cols = problem.find_all("td")
-            if len(cols) < 5:
+            if len(cols) < 4:
                 continue
 
             # Create problem folder
-            problem_letter = cols[0].text.strip()
+            # letter is calculated as the index of the problem in the list, starting from 'A'
+            problem_index = len(problems_infos)
+            problem_letter = chr(ord("A") + problem_index)
             problem_path = os.path.join(contest_folder, "problems", problem_letter)
             os.makedirs(problem_path, exist_ok=True)
 
-            problem_link = urljoin(self.base_url, cols[1].find("a")["href"])
-            problem_name = cols[1].text.strip()
+            problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
+            problem_name = cols[2].text.strip()
 
             problem_info = {
                 "letter": problem_letter,
@@ -188,111 +224,53 @@ class NOWCODERCrawler(BaseCrawler):
             )
             return None
 
-        problem_soup = (
-            bs4(problem_page, "html.parser")
-            .find("div", class_="nk-acm-container")
-            .find("div", class_="question-module")
-        )
+        problem_soup = bs4(problem_page, "html.parser")
 
-        info_element = problem_soup.find("div", class_="question-intr").find(
-            "div", class_="subject-item-wrap"
-        )
-        info_elements = info_element.find_all("span")
+        sidebar_element = problem_soup.find("div", class_="problem-sidebar")
+        info_pair_elements = sidebar_element.find_all("div", class_="info-pair")
 
-        for info_pair in info_elements:
-            info_content = info_pair.text.strip()
-            if "时间限制" in info_content:
-                # Format example: "时间限制：C/C++/Rust/Pascal 6秒，其他语言12秒"
-                # Extract to: "6 s"
-                match = re.search(r"(\d+)\s*秒", info_content)
-                if match:
-                    time_limit = f"{match.group(1)} s"
-                else:
-                    self.log(
-                        "warning",
-                        f"Time limit not found in {info_content} for problem {problem_name}.",
-                    )
-            if "内存限制" in info_content:
-                # Format example: "内存限制：C/C++/Rust/Pascal 256 M，其他语言512 M"
-                # Extract to: "256 MB"
-                match = re.search(r"(\d+)\s*M", info_content)
-                if match:
-                    memory_limit = f"{match.group(1)} MB"
-                else:
-                    self.log(
-                        "warning",
-                        f"Memory limit not found in {info_content} for problem {problem_name}.",
-                    )
+        for info_pair in info_pair_elements:
+            info_label = info_pair.find("div", class_="info-label").text.strip()
+            info_value = info_pair.find("div", class_="info-value").text.strip()
+            if "Time Limit" in info_label:
+                time_limit = (
+                    info_value.split("/")[1].strip()
+                    if "/" in info_value
+                    else info_value.strip()
+                )
+            if "Memory Limit" in info_label:
+                memory_limit = (
+                    info_value.split("/")[1].strip()
+                    if "/" in info_value
+                    else info_value.strip()
+                )
 
         # Download the problem statement
-
         # Try to convert the HTML to markdown
         try:
-            statement_container = problem_soup.find("div", class_="subject-describe")
-            statement_elements = list(statement_container.children)
-
+            statement_elements = problem_soup.find(
+                "div", class_="problem-body"
+            ).find_all("div", class_="problem-detail-block")
             if not statement_elements:
                 raise ValueError(f"No problem statement found for {problem_name}.")
 
             md_content = f"## {problem_letter}. {problem_name}\n\n"
             for element in statement_elements:
-                if not isinstance(element, Tag):
-                    continue  # skip text nodes
-                element_type = element.name
-                element_class = element.get("class", [])
+                element_label = element.find(
+                    "div", class_="problem-detail-label"
+                ).text.strip()
+                element_content = element.find("div", class_="problem-detail-value")
 
-                if element_type == "div" and "subject-question" in element_class:
-                    # This is the main problem statement section
-                    md_content += f"### 题目描述\n\n"
-                    element_cleaned = (
-                        str(element)
-                        .replace('<div class="subject-question">', "")
-                        .replace("</div>", "")
-                    )
-                    md_content += (
-                        self._convert_html_to_markdown(element_cleaned) + "\n\n"
-                    )
-                elif element_type == "h2":
-                    # This is a section header
-                    # Remove ":" at the end of the header
-                    section_title = element.text.strip().rstrip(":")
-                    md_content += f"### {section_title}\n\n"
-                elif element_type == "pre":
-                    element_cleaned = (
-                        str(element).replace("<pre>", "").replace("</pre>", "")
-                    )
-                    md_content += (
-                        self._convert_html_to_markdown(element_cleaned) + "\n\n"
-                    )
-                elif element_type == "div" and "question-oi" in element_class:
-                    oi_header = element.find("div", class_="question-oi-hd")
-                    if oi_header:
-                        oi_title = oi_header.text.strip()
-                        md_content += f"### {oi_title}\n\n"
-
-                    oi_mods = element.find_all("div", class_="question-oi-mod")
-                    for oi_mod in oi_mods:
-                        oi_mod_title = oi_mod.find("h2")
-                        if oi_mod_title:
-                            md_content += f"#### {oi_mod_title.text.strip()}\n\n"
-
-                        oi_mod_textarea = oi_mod.find("textarea")
-                        if oi_mod_textarea:
-                            oi_mod_content = oi_mod_textarea.text.strip()
-                            md_content += f"```plain\n{oi_mod_content}\n```\n\n"
-                            continue
-
-                        oi_mod_pre = oi_mod.find("pre")
-                        if oi_mod_pre:
-                            element_cleaned = (
-                                str(oi_mod_pre)
-                                .replace("<pre>", "")
-                                .replace("</pre>", "")
-                            )
-                            md_content += (
-                                self._convert_html_to_markdown(element_cleaned) + "\n\n"
-                            )
-                            continue
+                if "Sample" in element_label:
+                    # For Input/Output sections, directly use the text content
+                    element_content = element_content.get_text(strip=True)
+                    md_content += f"### {element_label}\n\n"
+                    md_content += f"```plain\n{element_content}\n```\n\n"
+                else:
+                    # For other sections, convert HTML to markdown
+                    md_content += f"### {element_label}\n\n"
+                    md_content += self._convert_html_to_markdown(str(element_content))
+                    md_content += "\n\n"
 
             md_path = os.path.join(problem_path, "statement.md")
             with open(md_path, "w", encoding="utf-8") as f:
@@ -322,16 +300,11 @@ class NOWCODERCrawler(BaseCrawler):
 
         code_page = self.fetch_page_with_browser(entry["submission_link"])
         code_soup = bs4(code_page, "html.parser")
-        code_element = (
-            code_soup.find("div", class_="result-subject-item")
-            .find("td", class_="code")
-            .find("div", class_="container")
+        code = (
+            code_soup.find("div", class_="problem-body")
+            .find("textarea", id="code")
+            .text.strip()
         )
-
-        code = ""
-        code_lines = code_element.find_all("div", class_="line")
-        for line in code_lines:
-            code += line.get_text().replace("\xa0", " ") + "\n"
         return code
 
     def fetch_submissions_get_submissions(self):
@@ -340,11 +313,11 @@ class NOWCODERCrawler(BaseCrawler):
         After fetching each submission, call the `_register_submission` method to register the submission. If the return value is True, stop fetching submissions and exit immediately.
         The submission entry should contain the following keys:
         - submission_id: The ID of the submission
-        - problem_id (optional): The ID of the problem (status 页题目列显示的 ID)
+        - problem_name (optional): The name of the problem
         - problem_link (optional): The link to the problem page
         - submit_time: The time when the submission was made, in ISO format (YYYY-MM-DDTHH:MM:SS)
 
-        Either `problem_id` or `problem_link` is required.
+        Either `problem_name` or `problem_link` is required.
         """
 
         input_contest_list = self._load_subscriptions(self.platform_name)
@@ -367,28 +340,36 @@ class NOWCODERCrawler(BaseCrawler):
                 f"Start fetching submissions from {contest_link}.",
             )
 
-            status_link = f'{contest_link}#submit/"onlyMyStatusFilter"%3Atrue'
+            self.login(contest_link)
+            status_link = contest_link.replace("problems", "status")
 
             # 首次抓取的新比赛：以比赛开始时间为截止全量回填；否则增量（None）
             deadline = self._deadline_for(contest_link)
 
             stop_fetching = False
-            for page in range(1, 20):
-                # Assume there are at most 20 pages of submissions
-                status_link_with_page = f'{status_link}%2C"page"%3A{page}'
+            for page in range(1, 10):
+                # Assume there are at most 10 pages of submissions
+                status_link_with_page = f"{status_link}&page={page}"
 
-                status_page = self.fetch_page_with_browser(status_link_with_page, 2)
+                status_page = self.fetch_page_with_browser(status_link_with_page)
                 soup = bs4(status_page, "html.parser")
 
-                current_page = soup.find("div", class_="pagination")
-                if not current_page:
-                    current_page_number = 1
-                else:
-                    current_page_number = int(
-                        current_page.find("li", class_="active").text.strip()
-                    )
+                pagination_element = soup.find("ul", class_="pagination")
 
-                if current_page_number != page:
+                isCurrentPage = False
+                if not pagination_element:
+                    if page == 1:
+                        isCurrentPage = True
+                else:
+                    current_pages = pagination_element.find_all(
+                        "li", class_="page-item disabled"
+                    )
+                    for current_page in current_pages:
+                        if current_page.text.strip() == str(page):
+                            isCurrentPage = True
+                            break
+
+                if not isCurrentPage:
                     self.log(
                         "info",
                         "Reached the end of submissions or no more pages to fetch. Stopped.",
@@ -396,9 +377,7 @@ class NOWCODERCrawler(BaseCrawler):
                     self._mark_submissions_complete()
                     break
 
-                table_body = soup.find("div", class_="module-box").find(
-                    "table", class_="table-hover"
-                )
+                table_body = soup.find("table", class_="page-card-table")
                 if not table_body:
                     self.log(
                         "warning",
@@ -406,11 +385,17 @@ class NOWCODERCrawler(BaseCrawler):
                     )
                     break
                 table_body = table_body.find("tbody")
+                if not table_body:
+                    self.log(
+                        "warning",
+                        "No submissions found on this page. Probably no submission was made.",
+                    )
+                    break
                 submission_elements = table_body.find_all("tr")
 
                 for submission in submission_elements:
                     cols = submission.find_all("td")
-                    if len(cols) < 9:
+                    if len(cols) < 7:
                         self.log(
                             "warning",
                             "Found submission with less than 9 columns, skipping.",
@@ -420,30 +405,23 @@ class NOWCODERCrawler(BaseCrawler):
                     submission_id = cols[0].text.strip()
                     problem_link = urljoin(self.base_url, cols[2].find("a")["href"])
                     problem_id = cols[2].text.strip()
-                    submission_link = urljoin(self.base_url, cols[0].find("a")["href"])
+                    submission_link = urljoin(self.base_url, cols[5].find("a")["href"])
 
                     # Status format: "Accepted", "Wrong Answer", "Time Limit Exceeded", "Runtime Error (ACCESS_VIOLATION)", etc.
-                    raw_status = cols[3].text.strip()
-                    if raw_status == "答案正确":
+                    raw_status = cols[6].text.strip()
+                    if raw_status == "Accepted":
                         status = "AC"
-                    elif "答案错误" in raw_status:
-                        status = "WA"
-                    elif "运行超时" in raw_status:
-                        status = "TLE"
-                    elif "运行错误" in raw_status:
+                    elif "Runtime Error" in raw_status:
                         status = "RE"
-                    elif "编译错误" in raw_status:
-                        status = "CE"
-                    elif "空间" in raw_status:
-                        status = "MLE"
                     else:
-                        status = "UKE"
+                        # only preserve uppercase letters
+                        status = re.sub(r"[^A-Z]", "", raw_status)
 
-                    time = cols[4].text.strip() + " ms"
-                    memory = cols[5].text.strip() + " KB"
-                    language = cols[7].text.strip()
+                    time = cols[3].text.strip()
+                    memory = cols[4].text.strip()
+                    language = cols[5].text.strip()
 
-                    submit_time = self._convert_iso_to_beijing(cols[8].text.strip())
+                    submit_time = self._convert_iso_to_beijing(cols[1].text.strip())
 
                     submission_entry = {
                         "submission_id": submission_id,

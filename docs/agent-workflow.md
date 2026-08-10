@@ -99,10 +99,10 @@
 | 项目 | 要求 |
 |------|------|
 | 命名 | 函数/变量：`snake_case`；类：PascalCase；常量：`UPPER_SNAKE_CASE` |
-| 模块组织 | 每个平台一个模块（`crawler/<platform>/<platform>.py`），公共逻辑放 `crawler/base.py`（`BaseCrawler`） |
+| 模块组织 | 每个平台一个模块（`crawler/platforms/<platform>/<platform>.py`），公共逻辑放 `crawler/platforms/base.py`（`BaseCrawler`） |
 | 类型注解 | 函数签名尽量标注参数与返回值类型 |
 | 日志 | 统一使用 `BaseCrawler.log()`，写入平台日志与 `crawler/global.log.json` |
-| 时间 | 统一使用北京时间（`crawler/base.py` 中定义的 `beijing` 时区） |
+| 时间 | 统一使用北京时间（`crawler/platforms/base.py` 中定义的 `beijing` 时区） |
 | 凭据 | 账号密码通过环境变量或 `crawler/config.json` 提供，禁止硬编码到源码 |
 
 ### 4.3 文档更新要求

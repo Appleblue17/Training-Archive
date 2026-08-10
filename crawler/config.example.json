@@ -1,6 +1,6 @@
 {
   "qoj": {
-    "enabled": true,
+    "enabled": false,
     "base_url": "https://qoj.ac",
     "min_wait_time": 0.5,
     "max_wait_time": 2

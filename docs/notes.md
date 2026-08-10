@@ -6,6 +6,7 @@
 
 ## 最近更新
 
+- 2026-08-10：爬虫目录重组——`crawler/` 按职责分文件夹：平台爬虫入 `crawler/platforms/{qoj,hdu,nowcoder}/`（公共逻辑 `crawler/platforms/base.py`），DeepSeek 客户端入 `crawler/llm/`（未来可扩展多平台 API），模板入 `crawler/prompts/`，可执行脚本入 `crawler/scripts/`（`scheduled_task.py` / `report.py` / `qq_share.py` / `clean-log.py` / `new_contests.py`）；导入统一改完全限定（`from crawler.platforms.base import ...`），平台状态文件路径改为 `crawler/platforms/<platform>/{log,contests,staged-submissions}.json`（前端 log/ 页面 `global.ts` 同步）；`server-task.sh` 与 CI 工作流命令改为 `crawler/scripts/...`。各子目录补 `__init__.py` 成包。验证：ast/导入测试 + contests-only 单测全过。
 - 2026-08-10：任务A 新增 **`--contests-only`** 模式——高频触发（`crawler-scheduled.yml` 每 30 分钟 / `server-task.sh run a`）只检查订阅有没有触发（新建比赛），有新建才以该场 `start_time` 为截止回填其提交，无新建则完全不碰提交；**不推进 `last-update.json`**（已有比赛增量由每日任务B负责，推进会漏抓两次任务之间的新提交）。实现：`run_platform` 改传 mode（full/contests/submissions），`crawler._contests_only = True` 后 HDU/NowCoder 的 `fetch_submissions_get_submissions` 只遍历本次新建比赛、QOJ 以最早新比赛开始时间为提交截止，`BaseCrawler.finish()` 在 contests-only 始终不推进 last-update。完整任务A（`scheduled_task.py`）保留为手动/临时模式。
 - 2026-08-10：订阅配置改为目录式管理——`crawler/subscriptions/` 目录取代单文件 `crawler/subscriptions.json`，每个 `.json` 文件一份订阅列表（文件名随意，可按平台/系列/月份分组），运行时只识别 `.json` 文件、按文件名排序合并、重复 `link` 去重（保留先出现的条目）、**模板文件 `*.example.json` 跳过**；`BaseCrawler._load_subscriptions` 重写为目录扫描。旧文件数据已迁移至 `crawler/subscriptions/hdu.json` 并删除单文件。开发分支 `.gitignore` 用 `crawler/subscriptions/*` 忽略目录内容 + `!crawler/subscriptions/subscriptions.example.json` 例外保留模板（**不能忽略目录本身**，否则 `!` 规则失效）；deploy 分支 `.gitignore.deploy` 无需改动，目录默认被跟踪。模板路径 `crawler/subscriptions/subscriptions.example.json`。
 - 2026-08-10：报告生成改为 `--from-crawl` 模式——任务A 结束把本次新建的比赛写入 `crawler/new-contests.json`（临时文件，gitignore），`report.py` / `qq_share.py` 加 `--from-crawl` 只对这些比赛生成 review / qq-share（幂等跳过），不再每次全量扫描；共享模块 `crawler/new_contests.py` 统一读写；工作流与 `server-task.sh` 的 report 步骤改用 `--from-crawl`（任务B 无新建比赛时自然跳过）。注意：订阅的比赛若在**进行中**被首次抓取（文件夹已建但未结束），当次不会生成报告，且后续运行不再新建该文件夹——`--from-crawl` 会漏掉这种比赛，需手动 `python3 crawler/report.py <folder>` 或全量扫描补生成。
@@ -79,9 +80,9 @@
 
 - 平台启用/禁用由 `crawler/config.json` 的 `enabled` 字段控制（**缺省 `false` 视为禁用**，配置文件缺失/解析失败时全部平台禁用）；模板见 `crawler/config.example.json`（gitignored 的 `config.json` 不会被提交，deploy 分支的 `config.json` 需显式 `enabled: true` 才会启用对应平台）。
 - 订阅条目（`crawler/subscriptions/` 目录下各 `.json` 文件）的 `enabled` 为**订阅级**开关，**缺省视为启用**（与 `config.json` 平台级缺省禁用不同）。运行时只识别目录下的 `.json` 文件（文件名随意，可按平台/系列分组），按文件名排序合并、重复 `link` 去重（保留先出现条目）；单文件格式与模板 `crawler/subscriptions/subscriptions.example.json` 一致。
-- 登录凭据一律走环境变量（`.env` / CI secrets），`config.json` 只放非敏感运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time`）。**本地运行爬虫/报告脚本会自动加载仓库根 `.env`**（`scheduled_task.py` / `report.py` 顶部 `load_dotenv()`，不覆盖已有环境变量；CI 无 `.env` 静默跳过）。QOJ/HDU 用户名密码由 `login()` 读取；NowCoder 需 `NOWCODER_USERNAME`（昵称，登录态校验）+ `NOWCODER_COOKIE_NOWCODERUID` / `NOWCODER_COOKIE_T`（登录 Cookie），见 `.env.example`。
+- 登录凭据一律走环境变量（`.env` / CI secrets），`config.json` 只放非敏感运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time`）。**本地运行爬虫/报告脚本会自动加载仓库根 `.env`**（`crawler/scripts/scheduled_task.py` / `crawler/scripts/report.py` 顶部 `load_dotenv()`，不覆盖已有环境变量；CI 无 `.env` 静默跳过）。QOJ/HDU 用户名密码由 `login()` 读取；NowCoder 需 `NOWCODER_USERNAME`（昵称，登录态校验）+ `NOWCODER_COOKIE_NOWCODERUID` / `NOWCODER_COOKIE_T`（登录 Cookie），见 `.env.example`。
 - 提交抓取截止：非首次运行按全局 `last-update.json` 增量（`_register_submission(deadline=None)`）；**首次抓取的新比赛**（本次运行 `fetch_contests` 新建文件夹，如补订已完成比赛）以该比赛 `start_time` 为截止**全量回填**（`_deadline_for`），否则 HDU/NowCoder 的 status 页第一条提交就早于全局 last-update 而被跳过、一场都抓不到。QOJ 提交走全局用户时间线，无 per-contest 概念，补订旧比赛需手动重置 `crawler/last-update.json` 该平台时间戳触发全量重抓（50 页上限内）。
-- **`--contests-only` 模式**（高频触发专用）：只检查订阅有没有触发，有新建比赛才回填其提交（截止 = 该场 `start_time`），无新建完全不碰提交。**不推进 `last-update.json`**——已有比赛的增量由每日任务B负责；若在 contests-only 推进，会跳过已有比赛在两次任务之间的新提交，造成漏抓。任务A 完整模式（`scheduled_task.py`）保留为手动/临时场景。注意：若某场新建比赛的**提交回填失败**（如超时），其文件夹已存在，后续 contests-only 运行不会把它当作"新建"而跳过回填（与任务A 同样的既有限制），需手动处理（重置该平台 last-update 触发全量重抓，或跑完整任务A）。
+- **`--contests-only` 模式**（高频触发专用）：只检查订阅有没有触发，有新建比赛才回填其提交（截止 = 该场 `start_time`），无新建完全不碰提交。**不推进 `last-update.json`**——已有比赛的增量由每日任务B负责；若在 contests-only 推进，会跳过已有比赛在两次任务之间的新提交，造成漏抓。任务A 完整模式（`crawler/scripts/scheduled_task.py`）保留为手动/临时场景。注意：若某场新建比赛的**提交回填失败**（如超时），其文件夹已存在，后续 contests-only 运行不会把它当作"新建"而跳过回填（与任务A 同样的既有限制），需手动处理（重置该平台 last-update 触发全量重抓，或跑完整任务A）。
 - 早于比赛开始时间的提交**统一直接丢弃**（三平台）：`_update_submission_status` 从 link/name 候选中选"start_time 最晚且不晚于提交时间"的比赛归档，早于所有匹配比赛开始的提交（跨赛季复用同一道题的历史提交）返回 `DISCARD` 丢弃、不进 staged；staged 中此类旧提交下次运行同样被清除。`contests.json` 条目含 `start_time`/`end_time`，旧条目由 `_load_contests_with_times()` 按比赛文件夹回填。
 - HDU / NowCoder 的 HTML→Markdown 依赖 **pandoc**（CI 中安装 3.6.3；本地需自行安装）。
 - 爬虫驱动：CI 用 `browser-actions/setup-chrome`（Chrome 114）并通过环境变量传入路径；本地需自行准备 `crawler/chrome-linux64` 与 `crawler/chromedriver-linux64`。
@@ -102,9 +103,9 @@ pnpm build          # 生产构建（NODE_ENV=production 时导出 out/）
 pnpm lint           # ESLint 检查
 
 pip install -r crawler/requirements.txt   # 爬虫依赖
-python3 crawler/scheduled_task.py                # 任务A（完整）：抓订阅比赛 + 全量增量提交
-python3 crawler/scheduled_task.py --contests-only     # 任务A（轻量）：只查订阅/新建比赛，有新建才回填其提交
-python3 crawler/scheduled_task.py --submissions-only  # 任务B：每日增量同步提交
-python3 crawler/report.py --from-crawl           # 复盘报告：只对本次爬取新建的比赛生成
-python3 crawler/report.py                        # 补生成：扫描所有缺报告的已结束比赛
+python3 crawler/scripts/scheduled_task.py                # 任务A（完整）：抓订阅比赛 + 全量增量提交
+python3 crawler/scripts/scheduled_task.py --contests-only     # 任务A（轻量）：只查订阅/新建比赛，有新建才回填其提交
+python3 crawler/scripts/scheduled_task.py --submissions-only  # 任务B：每日增量同步提交
+python3 crawler/scripts/report.py --from-crawl           # 复盘报告：只对本次爬取新建的比赛生成
+python3 crawler/scripts/report.py                        # 补生成：扫描所有缺报告的已结束比赛
 ```

@@ -64,8 +64,8 @@ crawler/chrome-linux64
 crawler/chromedriver-linux64
 crawler/global.log.json
 crawler/new-contests.json
-crawler/*/log.json
-crawler/*/input_*.json
+crawler/platforms/*/log.json
+crawler/platforms/*/input_*.json
 crawler/server-task.log
 
 # test script
