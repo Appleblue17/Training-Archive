@@ -1,11 +1,20 @@
 "use client";
-import { Activity, ArrowUpRight, Award, BarChart2, CheckCircle2, Clock, Code, FileText } from "lucide-react";
-import { useMemo } from "react";
+import {
+  Activity,
+  ArrowUpRight,
+  Award,
+  CheckCircle2,
+  Clock,
+  Code,
+  FileCode,
+  FileText,
+} from "lucide-react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
 import { joinUrl } from "@/utils/url";
-import { formatDateTime } from "@/utils/format";
+import { formatDateTime, formatSize } from "@/utils/format";
 import PlatformBadge from "@/components/platform-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -38,7 +47,7 @@ export interface DashboardClientProps {
     problemCount: number;
     solvedProblemCount: number;
     submissionCount: number;
-    acCount: number;
+    totalCodeBytes: number;
     platformCounts: Record<string, number>;
   };
   recentContests: RecentContest[];
@@ -78,13 +87,50 @@ function contributionColor(count: number): string {
   return "bg-emerald-400";
 }
 
+// ---- contribution 绿点图 ----
+const CELL_SIZE = 10; // px，size-2.5
+const CELL_GAP = 3; // px，gap-[3px]
+const PITCH = CELL_SIZE + CELL_GAP; // 每列/行间距
+const Y_LABEL_WIDTH = 30; // px，Y 轴星期标签列宽
+const MONTH_ROW_HEIGHT = 16; // px，X 轴月份标签行高（h-4）
+
 function ContributionGraph({ contribution }: { contribution: Record<string, number> }) {
   const cells = useMemo(() => getContributionCells(contribution), [contribution]);
+  const [hover, setHover] = useState<{
+    x: number;
+    y: number;
+    row: number;
+    count: number;
+    dateStr: string;
+  } | null>(null);
   const totalActive = Object.keys(contribution).length;
   const totalCount = Object.values(contribution).reduce((a, b) => a + b, 0);
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // 按周分块（每 7 天一组，从周日开始）——每列固定 10px，横向 gap 与纵向一致
+  const weeks: { key: string; days: typeof cells }[] = [];
+  for (let i = 0; i < cells.length; i += 7) {
+    weeks.push({ key: cells[i].key, days: cells.slice(i, i + 7) });
+  }
+
+  // X 轴月份标签：锚定到该月第一天所在的周列
+  const months: { label: string; week: number }[] = [];
+  let lastMonthKey = "";
+  cells.forEach((cell, i) => {
+    const key = `${cell.date.getFullYear()}-${cell.date.getMonth()}`;
+    if (key !== lastMonthKey) {
+      lastMonthKey = key;
+      months.push({
+        label: cell.date.toLocaleString("en-US", { month: "short" }),
+        week: Math.floor(i / 7),
+      });
+    }
+  });
+
   return (
-    <Card>
+    <Card className="w-fit max-w-full">
       <CardHeader className="flex-row items-center justify-between space-y-0 py-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Activity className="size-4 text-emerald-400" />
@@ -95,23 +141,95 @@ function ContributionGraph({ contribution }: { contribution: Record<string, numb
         </span>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto">
-          <div className="grid grid-flow-col grid-rows-7 gap-[3px]" style={{ minWidth: "max-content" }}>
-            {cells.map((cell) => {
-              const isFuture = cell.date > new Date();
-              return (
-                <div
-                  key={cell.key}
-                  className={clsx(
-                    "size-2.5 rounded-[3px]",
-                    isFuture ? "bg-zinc-900" : contributionColor(cell.count),
-                  )}
-                  title={`${cell.key}: ${cell.count} submission${cell.count === 1 ? "" : "s"}`}
-                  aria-label={`${cell.key}: ${cell.count} submissions`}
-                />
-              );
-            })}
+        <div className="relative">
+          <div className="overflow-x-auto">
+            <div className="flex gap-[3px]">
+              {/* Y 轴：星期标签（与 7 行方格对齐） */}
+              <div
+                className="flex flex-col gap-[3px] text-[9px] leading-none text-gray-500"
+                style={{ width: Y_LABEL_WIDTH, paddingTop: MONTH_ROW_HEIGHT + CELL_GAP }}
+              >
+                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((label, i) => (
+                  <div key={i} className="flex h-2.5 items-center">
+                    {label}
+                  </div>
+                ))}
+              </div>
+
+              {/* X 轴月份 + 方格 */}
+              <div className="flex flex-col gap-[3px]">
+                <div className="relative h-4">
+                  {months.map((m) => (
+                    <div
+                      key={`${m.label}-${m.week}`}
+                      className="absolute top-0 whitespace-nowrap text-[10px] leading-none text-gray-500"
+                      style={{ left: m.week * PITCH }}
+                    >
+                      {m.label}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex gap-[3px]">
+                  {weeks.map((week, wi) => (
+                    <div key={week.key} className="flex flex-col gap-[3px]">
+                      {week.days.map((cell, ri) => {
+                        const isFuture = cell.date > today;
+                        return (
+                          <div
+                            key={cell.key}
+                            role="img"
+                            aria-label={`${cell.key}: ${cell.count} submission${cell.count === 1 ? "" : "s"}`}
+                            onMouseEnter={(e) => {
+                              if (isFuture) return;
+                              const scroller = e.currentTarget.closest(".overflow-x-auto");
+                              const scrollLeft = scroller ? scroller.scrollLeft : 0;
+                              setHover({
+                                x:
+                                  Y_LABEL_WIDTH +
+                                  CELL_GAP +
+                                  wi * PITCH +
+                                  CELL_SIZE / 2 -
+                                  scrollLeft,
+                                y: MONTH_ROW_HEIGHT + CELL_GAP + ri * PITCH + CELL_SIZE / 2,
+                                row: ri,
+                                count: cell.count,
+                                dateStr: cell.key.replace(/-/g, "/"),
+                              });
+                            }}
+                            onMouseLeave={() => setHover(null)}
+                            className={clsx(
+                              "size-2.5 rounded-[3px]",
+                              isFuture ? "bg-zinc-900" : contributionColor(cell.count),
+                            )}
+                          />
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
+
+          {/* 悬浮提示：当日提交数 */}
+          {hover && (
+            <div
+              className="pointer-events-none absolute z-20 whitespace-nowrap rounded-md border border-gray-600 bg-gray-800 px-2.5 py-1.5 text-xs shadow-lg"
+              style={{
+                left: hover.x,
+                top: hover.y,
+                transform:
+                  hover.row === 0
+                    ? "translate(-50%, 8px)"
+                    : "translate(-50%, calc(-100% - 8px))",
+              }}
+            >
+              <span className="font-semibold text-slate-100">
+                {hover.count} submission{hover.count === 1 ? "" : "s"}
+              </span>
+              <span className="text-gray-400"> · {hover.dateStr}</span>
+            </div>
+          )}
         </div>
         <div className="mt-2 flex items-center gap-1 text-xs text-gray-500">
           <span>Less</span>
@@ -156,8 +274,7 @@ export default function DashboardClient(props: DashboardClientProps) {
     <div className="w-full space-y-6">
       {/* 统计卡片 */}
       <section aria-label="Statistics">
-        <h1 className="mb-3 text-2xl font-semibold text-slate-200">Dashboard</h1>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 py-2 sm:grid-cols-3 lg:grid-cols-5">
           <StatCard
             label="Contests"
             value={stats.contestCount}
@@ -183,10 +300,10 @@ export default function DashboardClient(props: DashboardClientProps) {
             accent="bg-purple-900/40"
           />
           <StatCard
-            label="AC"
-            value={stats.acCount}
-            icon={<BarChart2 className="size-5 text-emerald-400" />}
-            accent="bg-emerald-900/40"
+            label="Total Code"
+            value={formatSize(stats.totalCodeBytes)}
+            icon={<FileCode className="size-5 text-cyan-400" />}
+            accent="bg-cyan-900/40"
           />
         </div>
         {Object.keys(stats.platformCounts).length > 0 && (
@@ -219,7 +336,8 @@ export default function DashboardClient(props: DashboardClientProps) {
               <ul className="space-y-2">
                 {recentContests.map((c) => (
                   <li key={c.relPath} className="flex items-center justify-between gap-2">
-                    <div className="min-w-0">
+                    <div className="min-w-0 space-x-1">
+                      <PlatformBadge platform={c.platform} />
                       {c.link ? (
                         <a
                           href={c.link}
@@ -232,6 +350,7 @@ export default function DashboardClient(props: DashboardClientProps) {
                       ) : (
                         <span className="truncate text-sm text-slate-100">{c.name}</span>
                       )}
+
                       <div className="text-xs text-gray-500">
                         {c.date} · {c.problemCount} problems
                       </div>
@@ -247,7 +366,6 @@ export default function DashboardClient(props: DashboardClientProps) {
                           <ArrowUpRight className="size-4" />
                         </Link>
                       )}
-                      <PlatformBadge platform={c.platform} />
                     </div>
                   </li>
                 ))}
@@ -263,28 +381,22 @@ export default function DashboardClient(props: DashboardClientProps) {
           </CardHeader>
           <CardContent>
             {recentSolved.length === 0 ? (
-              <p className="py-4 text-center text-sm text-gray-500">Nothing solved yet.</p>
+              <p className="py-4 text-center text-sm text-gray-500">Nothing solved yet</p>
             ) : (
               <ul className="space-y-2">
                 {recentSolved.map((p) => {
-                  const baseView = [
-                    "/",
-                    "view",
-                    "contests",
-                    p.contestFolder,
-                    "problems",
-                    p.letter,
-                  ];
+                  const baseView = ["/", "view", "contests", p.contestFolder, "problems", p.letter];
                   const viewHref = p.viewFile
                     ? joinUrl(...baseView, p.viewFile)
                     : p.codeFile
                       ? joinUrl(...baseView, p.codeFile)
                       : "#";
-                  const codeHref = p.codeFile
-                    ? joinUrl(...baseView, p.codeFile)
-                    : "#";
+                  const codeHref = p.codeFile ? joinUrl(...baseView, p.codeFile) : "#";
                   return (
-                    <li key={p.contestFolder + "/" + p.letter} className="flex items-center justify-between gap-2">
+                    <li
+                      key={p.contestFolder + "/" + p.letter}
+                      className="flex items-center justify-between gap-2"
+                    >
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
                           <Link
@@ -316,7 +428,9 @@ export default function DashboardClient(props: DashboardClientProps) {
                       <span className="shrink-0 whitespace-nowrap text-xs text-gray-400">
                         {p.codeSize != null && (
                           <span className="font-mono">
-                            <span className="inline-block min-w-10 text-right align-middle">{p.codeSize}</span>
+                            <span className="inline-block min-w-10 text-right align-middle">
+                              {p.codeSize}
+                            </span>
                             <span className="ml-1 text-gray-400">B</span>
                             <span className="mx-1.5 text-gray-600">·</span>
                           </span>

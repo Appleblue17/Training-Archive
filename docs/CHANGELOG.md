@@ -51,6 +51,9 @@
 - 内容查看类链接统一新标签页打开（`target="_blank"` + `rel="noopener noreferrer"`）：复盘 Source / 原始 markdown、Dashboard 题面与代码、搜索全部结果
 - lucide 图标尺寸统一（`size-4` 等）：页脚 GitHub 图标、日志/文件查看器的复制按钮与源码/下载图标（视觉一致性微调）
 - `/readme` 页渲染样式与文件查看器统一：直接复用 `FileViewerMarkdown` 组件（深色 `bg-[#0d1117]` 容器、边框、右上角复制按钮、`p-12` 可滚动区域），不再使用 `Card` 包裹；README 缺失时以同风格容器显示提示
+- Dashboard 统计卡片 AC 替换为 **Total Code**：新增 `getTotalCodeBytes()`（`contests/*/problems/*/submissions/` 归档源码字节数总和，`formatSize` 显示），AC 提交数语义与 Solved 重复且无区分度
+- Contribution 绿点图改版：①方格布局由 `grid grid-rows-7`（隐式列被 `justify-content: stretch` 拉伸导致横向 gap 虚大）改为 **flex 每列固定 10px**（`flex flex-col gap-[3px]` 按周分列），横向/纵向 gap 严格一致；②新增 **X 轴月份标签**（锚定该月第一天所在周列，绝对定位）与 **Y 轴星期标签**（Sun/Mon/Wed/Fri，与 7 行对齐）；③悬浮提示改为**自定义 tooltip**（绝对定位 + `scrollLeft` 校正，首行下方/其余上方显示，`YYYY/MM/DD` 日期），替代原生 `title`；单元格保留 `role="img"` + `aria-label`
+- Contribution 卡片宽度与 Y 轴标签收尾：卡片加 `w-fit max-w-full`（不再被 `w-full` 容器拉伸，收缩到内容宽度）；Y 轴星期标签补全 7 天（Sun–Sat，列宽 26→30px）
 
 ### Fixed
 

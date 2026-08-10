@@ -144,6 +144,36 @@ export function getAllSubmissions(): SubmissionWithContest[] {
   return result;
 }
 
+/**
+ * 总码量：所有题目已归档提交记录源码（problems/<letter>/submissions/）的字节数总和。
+ * 用于 Dashboard 统计卡片（Total Code）。
+ */
+export function getTotalCodeBytes(): number {
+  const contestsDir = path.join(process.cwd(), "contests");
+  if (!fs.existsSync(contestsDir)) return 0;
+
+  let total = 0;
+  for (const contestFolder of fs.readdirSync(contestsDir)) {
+    const problemsPath = path.join(contestsDir, contestFolder, "problems");
+    if (!fs.existsSync(problemsPath)) continue;
+
+    for (const problemFolder of fs.readdirSync(problemsPath)) {
+      const submissionsPath = path.join(problemsPath, problemFolder, "submissions");
+      if (!fs.existsSync(submissionsPath)) continue;
+
+      for (const file of fs.readdirSync(submissionsPath)) {
+        const fullPath = path.join(submissionsPath, file);
+        try {
+          if (fs.statSync(fullPath).isFile()) total += fs.statSync(fullPath).size;
+        } catch {
+          // 忽略无法 stat 的文件（如断链）
+        }
+      }
+    }
+  }
+  return total;
+}
+
 export interface ReviewInfo {
   contestFolder: string;
   contestName: string;

@@ -1,4 +1,4 @@
-import { getContests, getAllSubmissions, getReviews } from "@/lib/contests-data";
+import { getContests, getAllSubmissions, getReviews, getTotalCodeBytes } from "@/lib/contests-data";
 import DashboardClient from "./dashboard-client";
 
 /**
@@ -21,7 +21,7 @@ export default async function DashboardPage() {
   for (const c of contests) {
     platformCounts[c.platform] = (platformCounts[c.platform] ?? 0) + 1;
   }
-  const acCount = submissions.filter((s) => s.status === "AC").length;
+  const totalCodeBytes = getTotalCodeBytes();
 
   // ---- 最近完成的题目（按 solve_time 降序）----
   const recentSolved = contests
@@ -88,7 +88,7 @@ export default async function DashboardPage() {
         problemCount,
         solvedProblemCount,
         submissionCount: submissions.length,
-        acCount,
+        totalCodeBytes,
         platformCounts,
       }}
       recentContests={recentContests}
