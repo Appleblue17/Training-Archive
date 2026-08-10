@@ -1,0 +1,131 @@
+1:"$Sreact.fragment"
+2:I[48521,[],""]
+3:I[89900,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-3ad219a6236c735b.js"],"default"]
+4:I[31661,[],""]
+5:I[86070,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+6:I[52236,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],""]
+f:I[50939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/baa0e101e3a2d945.css","style"]
+0:{"P":null,"b":"g1DKBu43vpPDTRktoGdlX","p":"/Training-Archive","c":["","view","contests","2024-12-22%20The%202019%20ICPC%20Asia%20East%20Continent%20Final%20Contest%20(EC-Final%202019)","problems","K","submissions","%23868422.cpp"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2024-12-22%20The%202019%20ICPC%20Asia%20East%20Continent%20Final%20Contest%20(EC-Final%202019)","d"],{"children":["problems",{"children":[["problem","K","d"],{"children":["submissions",{"children":[["file","%23868422.cpp","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/baa0e101e3a2d945.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2024-12-22%20The%202019%20ICPC%20Asia%20East%20Continent%20Final%20Contest%20(EC-Final%202019)","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":"$L7","templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["problems","$L8",{"children":[["problem","K","d"],"$L9",{"children":["submissions","$La",{"children":[["file","%23868422.cpp","d"],"$Lb",{"children":["__PAGE__","$Lc",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},["$Ld",[],[]],false],"$Le",false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+11:I[47055,[],"OutletBoundary"]
+13:I[39909,[],"AsyncMetadataOutlet"]
+15:I[47055,[],"ViewportBoundary"]
+17:I[47055,[],"MetadataBoundary"]
+18:"$Sreact.suspense"
+7:["$","$L4",null,{}]
+8:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+a:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+b:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+c:["$","$1","c",{"children":["$L10",null,["$","$L11",null,{"children":["$L12",["$","$L13",null,{"promise":"$@14"}]]}]]}]
+d:["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}]
+e:["$","$1","h",{"children":[null,[["$","$L15",null,{"children":"$L16"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L17",null,{"children":["$","div",null,{"hidden":true,"children":["$","$18",null,{"fallback":null,"children":"$L19"}]}]}]]}]
+1a:I[16417,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+1b:T924,#pragma GCC optimize(3)
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef double dou;
+typedef pair<int,int> pii;
+#define fi first
+#define se second
+#define mapa make_pair
+typedef long double ld;
+typedef unsigned long long ull;
+#define ep emplace_back
+template <typename T>inline void read(T &x){
+	x=0;char c=getchar();bool f=0;
+	for(;c<'0'||c>'9';c=getchar()) f|=(c=='-');
+	for(;c>='0'&&c<='9';c=getchar())
+	x=(x<<1)+(x<<3)+(c^48);
+	x=(f?-x:x);
+}
+const int N=6e5+5;
+const int mod=998244353;
+const int inf=1e9;
+int n, m;
+int u[N], v[N]; ll w[N];
+set<pair<ll, int> > s;
+set<pii> e[N];
+bool ban[N];
+void dfs(int x, int fa, int ed, ll add){
+	if(x==ed) return ;
+	int y=0, id=0;
+	if(e[x].upper_bound(mapa(fa, inf))!=e[x].end()){
+		y=(*e[x].upper_bound(mapa(fa, inf))).fi;
+		id=(*e[x].upper_bound(mapa(fa, inf))).se;
+	}
+	else{
+		y=(*e[x].begin()).fi;
+		id=(*e[x].begin()).se;
+	}
+	if(s.find(mapa(w[id], id))==s.end()){
+		w[id]+=add;
+		if(u[id]!=x) swap(u[id], v[id]);
+		s.insert(mapa(w[id], id));
+	}
+	else{
+		e[u[id]].erase(e[u[id]].find(mapa(v[id], id)));
+		e[v[id]].erase(e[v[id]].find(mapa(u[id], id)));
+		s.erase(mapa(w[id], id));
+		w[id]+=add;
+	}
+	dfs(y, x, ed, add);
+}
+inline void work(int x){
+	ban[x]=1;
+	s.erase(s.find(mapa(w[x], x)));
+	e[u[x]].erase(e[u[x]].find(mapa(v[x], x)));
+	e[v[x]].erase(e[v[x]].find(mapa(u[x], x)));
+	dfs(u[x], v[x], v[x], w[x]);
+}
+int edg[N], tot;
+inline bool cmp(int x, int y){
+	return w[x]>w[y];
+}
+int fa[N], sz[N];
+inline int get(int x){
+	while(x!=fa[x]) x=fa[x]=fa[fa[x]];
+	return x;
+}
+int main(){
+	// freopen("D:\\nya\\acm\\A\\test.in","r",stdin);
+	// freopen("D:\\nya\\acm\\A\\test.out","w",stdout);
+	read(n); read(m);
+	for(int i=1; i<=m; ++i){
+		read(u[i]); read(v[i]); read(w[i]);
+		if(u[i]>v[i]) swap(u[i], v[i]);
+		if(u[i]+1==v[i]||(u[i]==1&&v[i]==n)) s.insert(mapa(w[i], i));
+		if(u[i]==1&&v[i]==n) swap(u[i], v[i]);
+		e[u[i]].insert(mapa(v[i], i));
+		e[v[i]].insert(mapa(u[i], i));
+	}
+	for(int i=1; i<=m-n+1; ++i) work((*s.begin()).se);
+	for(int i=1; i<=m; ++i) if(!ban[i]){
+		edg[++tot]=i;
+	}
+	sort(edg+1, edg+tot+1, cmp);
+	for(int i=1; i<=n; ++i) fa[i]=i, sz[i]=1;
+	int ans=0;
+	for(int i=1; i<=tot; ++i){
+		int x=u[edg[i]], y=v[edg[i]];
+		x=get(x); y=get(y);
+		ans=(ans+w[edg[i]]%mod*sz[x]%mod*sz[y]%mod)%mod;
+		fa[x]=y; sz[y]+=sz[x];
+	}
+	printf("%d\n", ans);
+	return 0;
+}
+
+10:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","$L6",null,{"href":"/","children":["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8","key":"5wwlr5"}],["path",{"d":"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z","key":"r6nss1"}]],"className":"lucide-house absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400"}]}],["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2024-12-22 The 2019 ICPC Asia East Continent Final Contest (EC-Final 2019)",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"K",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"submissions"]],["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"#868422.cpp"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2024-12-22 The 2019 ICPC Asia East Continent Final Contest (EC-Final 2019)/problems/K/submissions/#868422.cpp","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M12 15V3","key":"m9g1x1"}],["path",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","key":"ih7n3h"}],["path",{"d":"m7 10 5 5 5-5","key":"brsn70"}]],"className":"lucide-download mr-2 inline-block text-base size-4"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2024-12-22 The 2019 ICPC Asia East Continent Final Contest (EC-Final 2019)/problems/K/submissions/#868422.cpp","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z","key":"1oefj6"}],["path",{"d":"M14 2v5a1 1 0 0 0 1 1h5","key":"wfsgrz"}],["path",{"d":"M10 9H8","key":"b1mrlr"}],["path",{"d":"M16 13H8","key":"t4e002"}],["path",{"d":"M16 17H8","key":"z1uh3a"}]],"className":"lucide-file-text mr-2 inline-block text-base size-4"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":["$","$L1a",null,{"code":"$1b","ext":".cpp"}]}],"$L1c"]}]]}]}]
+1c:["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"#868422.cpp"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"2.285 KB (2340 B)"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"All Pair Maximum Flow"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/1039/problem/5048","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/1039/problem/5048"}]]}],["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"6 s"}]]}],["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"256 MB"}]]}],["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}],["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/01/25 00:58:26"}]]}],["$","div","solve_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solve Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/01/25 00:58:26"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"The 2019 ICPC Asia East Continent Final Contest (EC-Final 2019)"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2024-12-22"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"qoj"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":["$L1d"," ","$L1e"]}],"$L1f","$L20","$L21"]}]]}]]}]
+1d:["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]
+1e:["$","span",null,{"className":"text-pink-400","children":"2024/12/22 17:10:23"}]
+1f:["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2024/12/22 22:10:23"}]]}]
+20:["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/1039","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/1039"}]]}]
+21:["$","div","difficulty",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Difficulty","]"]}]," ",["$","span",null,{"className":"text-yellow-300","children":5}]]}]
+16:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+12:null
+14:{"metadata":[],"error":null,"digest":"$undefined"}
+19:"$14:metadata"

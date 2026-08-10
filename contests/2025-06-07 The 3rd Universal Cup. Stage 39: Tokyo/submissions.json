@@ -1,0 +1,156 @@
+[
+  {
+    "submission_id": "#1095637",
+    "problem_name": "Array Similarity",
+    "status": "AC",
+    "time": "809ms",
+    "memory": "29136kb",
+    "language": "C++20",
+    "submit_time": "2025-06-07T13:31:42",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10970",
+    "submission_link": "https://qoj.ac/submission/1095637"
+  },
+  {
+    "submission_id": "#1095698",
+    "problem_name": "Bracket Character Frequency",
+    "status": "AC",
+    "time": "67ms",
+    "memory": "10236kb",
+    "language": "C++14",
+    "submit_time": "2025-06-07T13:58:21",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10971",
+    "submission_link": "https://qoj.ac/submission/1095698"
+  },
+  {
+    "submission_id": "#1095859",
+    "problem_name": "Card Deck",
+    "status": "AC",
+    "time": "27ms",
+    "memory": "3952kb",
+    "language": "C++14",
+    "submit_time": "2025-06-07T15:13:20",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10972",
+    "submission_link": "https://qoj.ac/submission/1095859"
+  },
+  {
+    "submission_id": "#1097959",
+    "problem_name": "Digits of Prefix Product",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3620kb",
+    "language": "C++14",
+    "submit_time": "2025-06-08T17:52:04",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10973",
+    "submission_link": "https://qoj.ac/submission/1097959"
+  },
+  {
+    "submission_id": "#1125962",
+    "problem_name": "Fourier Coefficients",
+    "status": "AC",
+    "time": "3065ms",
+    "memory": "290936kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T00:04:51",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10975",
+    "submission_link": "https://qoj.ac/submission/1125962"
+  },
+  {
+    "submission_id": "#1096626",
+    "problem_name": "Guarding Plan",
+    "status": "AC",
+    "time": "55ms",
+    "memory": "21744kb",
+    "language": "C++14",
+    "submit_time": "2025-06-07T21:06:01",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10976",
+    "submission_link": "https://qoj.ac/submission/1096626"
+  },
+  {
+    "submission_id": "#1097495",
+    "problem_name": "Hidden Sequence Rotation",
+    "status": "AC",
+    "time": "100ms",
+    "memory": "10376kb",
+    "language": "C++20",
+    "submit_time": "2025-06-08T11:04:37",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10977",
+    "submission_link": "https://qoj.ac/submission/1097495"
+  },
+  {
+    "submission_id": "#1097941",
+    "problem_name": "Insert AB or BA",
+    "status": "AC",
+    "time": "938ms",
+    "memory": "241728kb",
+    "language": "C++20",
+    "submit_time": "2025-06-08T17:27:39",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10978",
+    "submission_link": "https://qoj.ac/submission/1097941"
+  },
+  {
+    "submission_id": "#1123601",
+    "problem_name": "Journey through the Fractal",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3664kb",
+    "language": "C++14",
+    "submit_time": "2025-06-26T19:21:05",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10979",
+    "submission_link": "https://qoj.ac/submission/1123601"
+  },
+  {
+    "submission_id": "#1095836",
+    "problem_name": "K-rep Array",
+    "status": "AC",
+    "time": "265ms",
+    "memory": "78708kb",
+    "language": "C++20",
+    "submit_time": "2025-06-07T15:04:53",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10980",
+    "submission_link": "https://qoj.ac/submission/1095836"
+  },
+  {
+    "submission_id": "#1096228",
+    "problem_name": "LIS Triangle",
+    "status": "AC",
+    "time": "13ms",
+    "memory": "4780kb",
+    "language": "C++14",
+    "submit_time": "2025-06-07T17:49:35",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10981",
+    "submission_link": "https://qoj.ac/submission/1096228"
+  },
+  {
+    "submission_id": "#1095666",
+    "problem_name": "Minimum Distance Tree",
+    "status": "AC",
+    "time": "278ms",
+    "memory": "132732kb",
+    "language": "C++14",
+    "submit_time": "2025-06-07T13:46:47",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10982",
+    "submission_link": "https://qoj.ac/submission/1095666"
+  },
+  {
+    "submission_id": "#1096081",
+    "problem_name": "Nice Bouquets",
+    "status": "AC",
+    "time": "20ms",
+    "memory": "11868kb",
+    "language": "C++14",
+    "submit_time": "2025-06-07T16:51:57",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10983",
+    "submission_link": "https://qoj.ac/submission/1096081"
+  },
+  {
+    "submission_id": "#1095623",
+    "problem_name": "Quadratic Pieces",
+    "status": "AC",
+    "time": "32ms",
+    "memory": "8056kb",
+    "language": "C++14",
+    "submit_time": "2025-06-07T13:24:40",
+    "problem_link": "https://qoj.ac/contest/2071/problem/10986",
+    "submission_link": "https://qoj.ac/submission/1095623"
+  }
+]

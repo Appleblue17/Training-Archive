@@ -1,0 +1,145 @@
+[
+  {
+    "submission_id": "#1274948",
+    "problem_name": "Bingo",
+    "status": "AC",
+    "time": "100ms",
+    "memory": "40804kb",
+    "language": "C++20",
+    "submit_time": "2025-08-31T16:04:24+08:00",
+    "problem_link": "https://qoj.ac/contest/1828/problem/9572",
+    "submission_link": "https://qoj.ac/submission/1274948"
+  },
+  {
+    "submission_id": "#1126889",
+    "problem_name": "Simulated Universe",
+    "status": "AC",
+    "time": "65ms",
+    "memory": "282084kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T17:00:09",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8933",
+    "submission_link": "https://qoj.ac/submission/1126889"
+  },
+  {
+    "submission_id": "#1126432",
+    "problem_name": "Challenge NPC",
+    "status": "AC",
+    "time": "19ms",
+    "memory": "5652kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T10:04:52",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8934",
+    "submission_link": "https://qoj.ac/submission/1126432"
+  },
+  {
+    "submission_id": "#1126963",
+    "problem_name": "Puzzle: Easy as Scrabble",
+    "status": "AC",
+    "time": "126ms",
+    "memory": "6340kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T17:36:36",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8935",
+    "submission_link": "https://qoj.ac/submission/1126963"
+  },
+  {
+    "submission_id": "#1126454",
+    "problem_name": "Team Arrangement",
+    "status": "AC",
+    "time": "662ms",
+    "memory": "3764kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T10:54:07",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8936",
+    "submission_link": "https://qoj.ac/submission/1126454"
+  },
+  {
+    "submission_id": "#1126412",
+    "problem_name": "Stage: Agausscrab",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3456kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T09:15:01",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8937",
+    "submission_link": "https://qoj.ac/submission/1126412"
+  },
+  {
+    "submission_id": "#1127182",
+    "problem_name": "Crawling on a Tree",
+    "status": "AC",
+    "time": "305ms",
+    "memory": "645528kb",
+    "language": "C++20",
+    "submit_time": "2025-06-28T21:03:50",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8938",
+    "submission_link": "https://qoj.ac/submission/1127182"
+  },
+  {
+    "submission_id": "#1126463",
+    "problem_name": "Permutation",
+    "status": "AC",
+    "time": "232ms",
+    "memory": "4028kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T11:24:18",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8939",
+    "submission_link": "https://qoj.ac/submission/1126463"
+  },
+  {
+    "submission_id": "#1126547",
+    "problem_name": "Piggy Sort",
+    "status": "AC",
+    "time": "61ms",
+    "memory": "22396kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T12:47:29",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8940",
+    "submission_link": "https://qoj.ac/submission/1126547"
+  },
+  {
+    "submission_id": "#1126475",
+    "problem_name": "Even or Odd Spanning Tree",
+    "status": "AC",
+    "time": "309ms",
+    "memory": "102268kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T11:39:37",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8941",
+    "submission_link": "https://qoj.ac/submission/1126475"
+  },
+  {
+    "submission_id": "#1127280",
+    "problem_name": "Sugar Sweet 3",
+    "status": "AC",
+    "time": "1023ms",
+    "memory": "20368kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T22:57:29",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8942",
+    "submission_link": "https://qoj.ac/submission/1127280"
+  },
+  {
+    "submission_id": "#1126636",
+    "problem_name": "Challenge Matrix Multiplication",
+    "status": "AC",
+    "time": "999ms",
+    "memory": "189636kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T13:56:05",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8943",
+    "submission_link": "https://qoj.ac/submission/1126636"
+  },
+  {
+    "submission_id": "#1126416",
+    "problem_name": "Triangles",
+    "status": "AC",
+    "time": "2ms",
+    "memory": "4020kb",
+    "language": "C++14",
+    "submit_time": "2025-06-28T09:43:03",
+    "problem_link": "https://qoj.ac/contest/1780/problem/8944",
+    "submission_link": "https://qoj.ac/submission/1126416"
+  }
+]

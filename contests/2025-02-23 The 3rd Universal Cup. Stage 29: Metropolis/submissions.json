@@ -1,0 +1,112 @@
+[
+  {
+    "submission_id": "#912081",
+    "problem_name": "Basic Graph Algorithm",
+    "status": "AC",
+    "time": "1174ms",
+    "memory": "160144kb",
+    "language": "C++14",
+    "submit_time": "2025-02-23T10:18:37",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9038",
+    "submission_link": "https://qoj.ac/submission/912081"
+  },
+  {
+    "submission_id": "#912051",
+    "problem_name": "Conquer the Multiples",
+    "status": "AC",
+    "time": "15ms",
+    "memory": "3840kb",
+    "language": "C++14",
+    "submit_time": "2025-02-23T09:33:35",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9039",
+    "submission_link": "https://qoj.ac/submission/912051"
+  },
+  {
+    "submission_id": "#912223",
+    "problem_name": "Decrease and Swap",
+    "status": "AC",
+    "time": "16ms",
+    "memory": "4864kb",
+    "language": "C++17",
+    "submit_time": "2025-02-23T13:55:42",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9040",
+    "submission_link": "https://qoj.ac/submission/912223"
+  },
+  {
+    "submission_id": "#912158",
+    "problem_name": "Equal Measure",
+    "status": "AC",
+    "time": "200ms",
+    "memory": "137032kb",
+    "language": "C++14",
+    "submit_time": "2025-02-23T12:54:40",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9041",
+    "submission_link": "https://qoj.ac/submission/912158"
+  },
+  {
+    "submission_id": "#912202",
+    "problem_name": "Fast Bogosort",
+    "status": "AC",
+    "time": "356ms",
+    "memory": "74876kb",
+    "language": "C++14",
+    "submit_time": "2025-02-23T13:37:25",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9042",
+    "submission_link": "https://qoj.ac/submission/912202"
+  },
+  {
+    "submission_id": "#912087",
+    "problem_name": "Geometry Task",
+    "status": "AC",
+    "time": "875ms",
+    "memory": "8784kb",
+    "language": "C++14",
+    "submit_time": "2025-02-23T10:34:01",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9043",
+    "submission_link": "https://qoj.ac/submission/912087"
+  },
+  {
+    "submission_id": "#912070",
+    "problem_name": "In Search of the Ultimate Artifact",
+    "status": "AC",
+    "time": "31ms",
+    "memory": "6960kb",
+    "language": "C++14",
+    "submit_time": "2025-02-23T10:00:16",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9045",
+    "submission_link": "https://qoj.ac/submission/912070"
+  },
+  {
+    "submission_id": "#912726",
+    "problem_name": "Just-in-Time Render Analysis",
+    "status": "AC",
+    "time": "2558ms",
+    "memory": "143408kb",
+    "language": "C++17",
+    "submit_time": "2025-02-23T20:36:23",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9046",
+    "submission_link": "https://qoj.ac/submission/912726"
+  },
+  {
+    "submission_id": "#913352",
+    "problem_name": "Lazy Susan",
+    "status": "AC",
+    "time": "450ms",
+    "memory": "297348kb",
+    "language": "C++17",
+    "submit_time": "2025-02-24T14:15:13",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9048",
+    "submission_link": "https://qoj.ac/submission/913352"
+  },
+  {
+    "submission_id": "#1632930",
+    "problem_name": "Machine Learning with Penguins",
+    "status": "AC",
+    "time": "110ms",
+    "memory": "22112kb",
+    "language": "C++23",
+    "submit_time": "2025-11-01T19:42:55+08:00",
+    "problem_link": "https://qoj.ac/contest/1913/problem/9049",
+    "submission_link": "https://qoj.ac/submission/1632930"
+  }
+]

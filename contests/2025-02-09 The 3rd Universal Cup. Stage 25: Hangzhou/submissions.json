@@ -1,0 +1,101 @@
+[
+  {
+    "submission_id": "#891082",
+    "problem_name": "AUS",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3840kb",
+    "language": "C++14",
+    "submit_time": "2025-02-09T09:17:20",
+    "problem_link": "https://qoj.ac/contest/1893/problem/9726",
+    "submission_link": "https://qoj.ac/submission/891082"
+  },
+  {
+    "submission_id": "#892438",
+    "problem_name": "Barkley III",
+    "status": "AC",
+    "time": "1472ms",
+    "memory": "81604kb",
+    "language": "C++17",
+    "submit_time": "2025-02-10T09:49:37",
+    "problem_link": "https://qoj.ac/contest/1893/problem/9727",
+    "submission_link": "https://qoj.ac/submission/892438"
+  },
+  {
+    "submission_id": "#909052",
+    "problem_name": "Dividing Sequence",
+    "status": "AC",
+    "time": "2ms",
+    "memory": "3968kb",
+    "language": "C++17",
+    "submit_time": "2025-02-21T15:08:11",
+    "problem_link": "https://qoj.ac/contest/1893/problem/9729",
+    "submission_link": "https://qoj.ac/submission/909052"
+  },
+  {
+    "submission_id": "#891107",
+    "problem_name": "Elevator II",
+    "status": "AC",
+    "time": "106ms",
+    "memory": "9508kb",
+    "language": "C++14",
+    "submit_time": "2025-02-09T10:08:34",
+    "problem_link": "https://qoj.ac/contest/1893/problem/9730",
+    "submission_link": "https://qoj.ac/submission/891107"
+  },
+  {
+    "submission_id": "#891266",
+    "problem_name": "Fuzzy Ranking",
+    "status": "AC",
+    "time": "125ms",
+    "memory": "106600kb",
+    "language": "C++14",
+    "submit_time": "2025-02-09T12:14:40",
+    "problem_link": "https://qoj.ac/contest/1893/problem/9731",
+    "submission_link": "https://qoj.ac/submission/891266"
+  },
+  {
+    "submission_id": "#891094",
+    "problem_name": "Heavy-light Decomposition",
+    "status": "AC",
+    "time": "31ms",
+    "memory": "6612kb",
+    "language": "C++14",
+    "submit_time": "2025-02-09T09:44:02",
+    "problem_link": "https://qoj.ac/contest/1893/problem/9733",
+    "submission_link": "https://qoj.ac/submission/891094"
+  },
+  {
+    "submission_id": "#891400",
+    "problem_name": "Japanese Bands",
+    "status": "AC",
+    "time": "1882ms",
+    "memory": "195164kb",
+    "language": "C++14",
+    "submit_time": "2025-02-09T13:48:27",
+    "problem_link": "https://qoj.ac/contest/1893/problem/9735",
+    "submission_link": "https://qoj.ac/submission/891400"
+  },
+  {
+    "submission_id": "#891087",
+    "problem_name": "Kind of Bingo",
+    "status": "AC",
+    "time": "18ms",
+    "memory": "10440kb",
+    "language": "C++14",
+    "submit_time": "2025-02-09T09:33:55",
+    "problem_link": "https://qoj.ac/contest/1893/problem/9736",
+    "submission_link": "https://qoj.ac/submission/891087"
+  },
+  {
+    "submission_id": "#891152",
+    "problem_name": "Make It Divisible",
+    "status": "AC",
+    "time": "773ms",
+    "memory": "8404kb",
+    "language": "C++14",
+    "submit_time": "2025-02-09T10:56:59",
+    "problem_link": "https://qoj.ac/contest/1893/problem/9738",
+    "submission_link": "https://qoj.ac/submission/891152"
+  }
+]

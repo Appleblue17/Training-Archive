@@ -1,0 +1,206 @@
+1:"$Sreact.fragment"
+2:I[48521,[],""]
+3:I[89900,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-3ad219a6236c735b.js"],"default"]
+4:I[31661,[],""]
+5:I[86070,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+6:I[52236,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],""]
+e:I[50939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/baa0e101e3a2d945.css","style"]
+0:{"P":null,"b":"g1DKBu43vpPDTRktoGdlX","p":"/Training-Archive","c":["","view","contests","2025-02-05%20The%202nd%20Universal%20Cup.%20Stage%2025%3A%20Shenzhen","problems","B","submissions","%231147669.cpp"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2025-02-05%20The%202nd%20Universal%20Cup.%20Stage%2025%3A%20Shenzhen","d"],{"children":["problems",{"children":[["problem","B","d"],{"children":["submissions",{"children":[["file","%231147669.cpp","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/baa0e101e3a2d945.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2025-02-05%20The%202nd%20Universal%20Cup.%20Stage%2025%3A%20Shenzhen","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["problems","$L7",{"children":[["problem","B","d"],"$L8",{"children":["submissions","$L9",{"children":[["file","%231147669.cpp","d"],"$La",{"children":["__PAGE__","$Lb",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},["$Lc",[],[]],false],"$Ld",false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+10:I[47055,[],"OutletBoundary"]
+12:I[39909,[],"AsyncMetadataOutlet"]
+14:I[47055,[],"ViewportBoundary"]
+16:I[47055,[],"MetadataBoundary"]
+17:"$Sreact.suspense"
+7:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+8:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+a:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+b:["$","$1","c",{"children":["$Lf",null,["$","$L10",null,{"children":["$L11",["$","$L12",null,{"promise":"$@13"}]]}]]}]
+c:["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}]
+d:["$","$1","h",{"children":[null,[["$","$L14",null,{"children":"$L15"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L16",null,{"children":["$","div",null,{"hidden":true,"children":["$","$17",null,{"fallback":null,"children":"$L18"}]}]}]]}]
+19:I[16417,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+1a:Tfb1,#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+const int N=3e5+5,mod=998244353,inv2=(mod+1)/2;
+
+int ksm(int a,int x){
+    int tot=1;
+    while(x){
+        if(x & 1ll) tot=tot*a%mod;
+        a=a*a%mod;
+        x>>=1ll;
+    }
+    return tot;
+}
+
+void gmod(int &x) { x%=mod; }
+namespace NTT{
+    int A[N],B[N],C[N],rev[N];
+    int init(int n){
+		int lim=0;
+		while((1<<lim)<=n) lim++;
+		for(int i=0;i<=(1<<lim)-1;i++)
+			rev[i]=(rev[i>>1]>>1) | ((i & 1)<<(lim-1));
+		return lim;
+	}
+	void ntt(int *f,int n,int opt){
+		for(int i=0;i<=n-1;i++)
+			if(i<rev[i]) swap(f[i],f[rev[i]]);
+		for(int l=1;l<n;l<<=1){
+			int tmp=ksm(3,(mod-1)/(l*2));
+			if(opt==-1) tmp=ksm(tmp,mod-2);
+			for(int i=0;i<=n-1;i+=l<<1){
+				int omegf=1;
+				for(int j=0;j<l;j++){
+					int x=f[i+j],y=omegf*f[i+j+l]%mod;
+					f[i+j]=(x+y)%mod,f[i+j+l]=(x-y+mod)%mod;
+					omegf=omegf*tmp%mod;
+				}
+			}
+		}
+		if(opt==-1){
+			int t=ksm(n,mod-2);
+			for(int i=0;i<n;i++)
+				f[i]=f[i]*t%mod;
+		}
+	}
+    void solve(int *s,int* f,int* g,int n,int m){
+        if(n+m<=150){
+            for(int i=0;i<=n+m;i++) C[i]=0;
+            for(int i=0;i<=n;i++)
+                for(int j=0;j<=m;j++)
+                    gmod(C[i+j]+=f[i]*g[j]%mod);
+            for(int i=0;i<=n+m;i++) s[i]=C[i];
+            return ;
+        }
+        int lim=init(n+m);
+        for(int i=0;i<(1<<lim);i++) A[i]=B[i]=0;
+        for(int i=0;i<=n;i++) A[i]=f[i];
+        for(int i=0;i<=m;i++) B[i]=g[i];
+        ntt(A,(1<<lim),1);
+        ntt(B,(1<<lim),1);
+        for(int i=0;i<(1<<lim);i++) C[i]=A[i]*B[i]%mod;
+        ntt(C,(1<<lim),-1);
+        for(int i=0;i<=n+m;i++) s[i]=C[i];
+    }
+}
+
+namespace INV{
+	int A[N],B[N],S[N];
+	void solve(int *s,int *f,int n){
+		S[0]=ksm(f[0],mod-2);
+		S[1]=0;
+		for(int len=2;len/2<=n;len<<=1){
+			int lim=len<<1;
+			for(int i=0;i<len;i++) A[i]=f[i],B[i]=S[i];
+			for(int i=len;i<lim;i++) A[i]=B[i]=0;
+			NTT::init(lim-1);
+			NTT::ntt(A,lim,1);
+			NTT::ntt(B,lim,1);
+			for(int j=0;j<lim;j++)
+				S[j]=(2*B[j]%mod+mod-A[j]*B[j]%mod*B[j]%mod)%mod;
+			NTT::ntt(S,lim,-1);
+			for(int j=len;j<lim;j++) S[j]=0;
+		}
+		for(int i=0;i<=n;i++) s[i]=S[i];
+	}
+}
+
+namespace LN{
+	int A[N],B[N];
+	void solve(int *s,int *f,int n){
+		for(int i=0;i<=n;i++) A[i]=f[i],B[i]=0;
+		for(int i=1;i<=n;i++) B[i-1]=f[i]*i%mod;
+
+		INV::solve(A,A,n);
+		NTT::solve(A,A,B,n,n);
+
+		for(int i=n-1;i>=0;i--) A[i+1]=A[i]*ksm(i+1,mod-2)%mod;
+		A[0]=0;
+
+		for(int i=0;i<=n;i++) s[i]=A[i];
+	}
+}
+
+namespace EXP{
+	int A[N],B[N],C[N],S[N];
+	void solve(int *s,int *f,int n){
+		A[0]=B[0]=C[0]=0;
+		S[0]=1;
+		for(int len=2;len/2<=n;len<<=1){
+			int lim=len<<1;
+			for(int i=0;i<len;i++) A[i]=f[i],B[i]=S[i];
+			
+			LN::solve(C,B,len-1);
+			for(int i=0;i<len;i++) C[i]=(mod-C[i]+A[i])%mod;
+			C[0]=(C[0]+1)%mod;
+			NTT::init(lim-1);
+			NTT::ntt(B,lim,1);
+			NTT::ntt(C,lim,1);
+			for(int j=0;j<lim;j++) S[j]=B[j]*C[j]%mod;
+			
+			NTT::ntt(S,lim,-1);
+			for(int j=len;j<lim;j++) S[j]=0;
+		}
+		for(int i=0;i<=n;i++) s[i]=S[i];
+	}
+}
+
+int mul[N],inv[N];
+void init(int lim){
+    mul[0]=inv[0]=1;
+    for(int i=1;i<=lim;i++) mul[i]=mul[i-1]*i%mod;
+    inv[lim]=ksm(mul[lim],mod-2);
+    for(int i=lim-1;i>=1;i--) inv[i]=inv[i+1]*(i+1)%mod;
+}
+int C(int m,int n){
+    if(m<0 || n<0 || m<n) return 0;
+    return mul[m]*inv[n]%mod*inv[m-n]%mod;
+}
+
+int n;
+int A[N],B[N],S[N];
+int F[N],G[N],H[N],P[N],Q[N];
+
+
+signed main(){
+    init(N-5);
+    
+    cin>>n;
+    
+    for(int i=0;i<=n;i++) A[i]=inv[i+1];
+    LN::solve(H,A,n);
+    for(int i=1,x=inv2;i<=n;i++,x=x*inv2%mod){
+        H[i]=H[i]*x%mod*ksm((1+mod-x)%mod,mod-2)%mod;
+    }
+    EXP::solve(G,H,n);
+    
+    // for(int i=0;i<=n;i++) cout<<G[i]<<" "; cout<<endl;
+    
+    INV::solve(F,G,n);
+    for(int i=0;i<=n;i++) B[i]=inv[i]; // e^x
+    NTT::solve(P,F,B,n,n);
+    
+    A[0]=0;
+    for(int i=1;i<=n;i++) A[i]=ksm(inv2,i);
+    for(int i=0;i<=n;i++) B[i]=P[i]*ksm(2,i*(i-1)/2)%mod;
+    NTT::solve(Q,A,B,n,n);
+    for(int i=0;i<=n;i++) Q[i]=Q[i]*ksm(inv2,i*(i-1)/2)%mod;
+    
+    NTT::solve(S,G,Q,n,n);
+    cout<<S[n]*mul[n]%mod;
+}
+f:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","$L6",null,{"href":"/","children":["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8","key":"5wwlr5"}],["path",{"d":"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z","key":"r6nss1"}]],"className":"lucide-house absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400"}]}],["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2025-02-05 The 2nd Universal Cup. Stage 25: Shenzhen",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"B",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"submissions"]],["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"#1147669.cpp"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2025-02-05 The 2nd Universal Cup. Stage 25: Shenzhen/problems/B/submissions/#1147669.cpp","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M12 15V3","key":"m9g1x1"}],["path",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","key":"ih7n3h"}],["path",{"d":"m7 10 5 5 5-5","key":"brsn70"}]],"className":"lucide-download mr-2 inline-block text-base size-4"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2025-02-05 The 2nd Universal Cup. Stage 25: Shenzhen/problems/B/submissions/#1147669.cpp","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z","key":"1oefj6"}],["path",{"d":"M14 2v5a1 1 0 0 0 1 1h5","key":"wfsgrz"}],["path",{"d":"M10 9H8","key":"b1mrlr"}],["path",{"d":"M16 13H8","key":"t4e002"}],["path",{"d":"M16 17H8","key":"z1uh3a"}]],"className":"lucide-file-text mr-2 inline-block text-base size-4"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":["$","$L19",null,{"code":"$1a","ext":".cpp"}]}],"$L1b"]}]]}]}]
+1b:["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"#1147669.cpp"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"3.923 KB (4017 B)"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Excuse"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/1540/problem/8329","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/1540/problem/8329"}]]}],["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"2.0 s"}]]}],["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"512 MB"}]]}],["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}],["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/10 05:24:59"}]]}],["$","div","solve_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solve Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/07/10 05:24:59"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"The 2nd Universal Cup. Stage 25: Shenzhen"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025-02-05"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"qoj"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":["$L1c"," ","$L1d"]}],"$L1e","$L1f","$L20"]}]]}]]}]
+1c:["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]
+1d:["$","span",null,{"className":"text-pink-400","children":"2025/02/05 17:09:29"}]
+1e:["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2025/02/05 22:09:29"}]]}]
+1f:["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/1540","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/1540"}]]}]
+20:["$","div","difficulty",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Difficulty","]"]}]," ",["$","span",null,{"className":"text-yellow-300","children":3.5}]]}]
+15:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+11:null
+13:{"metadata":[],"error":null,"digest":"$undefined"}
+18:"$13:metadata"

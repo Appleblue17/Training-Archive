@@ -1,0 +1,145 @@
+[
+  {
+    "submission_id": "#1090667",
+    "problem_name": "JB Loves Math",
+    "status": "AC",
+    "time": "10ms",
+    "memory": "4012kb",
+    "language": "C++14",
+    "submit_time": "2025-06-04T09:13:51",
+    "problem_link": "https://qoj.ac/contest/2056/problem/11369",
+    "submission_link": "https://qoj.ac/submission/1090667"
+  },
+  {
+    "submission_id": "#1090659",
+    "problem_name": "JB Loves Comma",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4068kb",
+    "language": "C++17",
+    "submit_time": "2025-06-04T09:10:12",
+    "problem_link": "https://qoj.ac/contest/2056/problem/11370",
+    "submission_link": "https://qoj.ac/submission/1090659"
+  },
+  {
+    "submission_id": "#1090671",
+    "problem_name": "JB Wants to Earn Big Money",
+    "status": "AC",
+    "time": "4ms",
+    "memory": "4392kb",
+    "language": "C++17",
+    "submit_time": "2025-06-04T09:18:25",
+    "problem_link": "https://qoj.ac/contest/2056/problem/11371",
+    "submission_link": "https://qoj.ac/submission/1090671"
+  },
+  {
+    "submission_id": "#1093491",
+    "problem_name": "The Profiteer",
+    "status": "AC",
+    "time": "908ms",
+    "memory": "150312kb",
+    "language": "C++17",
+    "submit_time": "2025-06-05T22:49:08",
+    "problem_link": "https://qoj.ac/contest/2056/problem/3998",
+    "submission_link": "https://qoj.ac/submission/1093491"
+  },
+  {
+    "submission_id": "#1091008",
+    "problem_name": "Easy Jump",
+    "status": "AC",
+    "time": "429ms",
+    "memory": "5044kb",
+    "language": "C++14",
+    "submit_time": "2025-06-04T14:00:41",
+    "problem_link": "https://qoj.ac/contest/2056/problem/3994",
+    "submission_link": "https://qoj.ac/submission/1091008"
+  },
+  {
+    "submission_id": "#1090818",
+    "problem_name": "Easy Fix",
+    "status": "AC",
+    "time": "2516ms",
+    "memory": "312856kb",
+    "language": "C++17",
+    "submit_time": "2025-06-04T11:11:35",
+    "problem_link": "https://qoj.ac/contest/2056/problem/4002",
+    "submission_link": "https://qoj.ac/submission/1090818"
+  },
+  {
+    "submission_id": "#1090744",
+    "problem_name": "Easy Glide",
+    "status": "AC",
+    "time": "11ms",
+    "memory": "27088kb",
+    "language": "C++17",
+    "submit_time": "2025-06-04T10:35:38",
+    "problem_link": "https://qoj.ac/contest/2056/problem/11372",
+    "submission_link": "https://qoj.ac/submission/1090744"
+  },
+  {
+    "submission_id": "#1092088",
+    "problem_name": "A=B",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3844kb",
+    "language": "C++17",
+    "submit_time": "2025-06-04T22:37:32",
+    "problem_link": "https://qoj.ac/contest/2056/problem/4006",
+    "submission_link": "https://qoj.ac/submission/1092088"
+  },
+  {
+    "submission_id": "#1090933",
+    "problem_name": "Barbecue",
+    "status": "AC",
+    "time": "137ms",
+    "memory": "53836kb",
+    "language": "C++17",
+    "submit_time": "2025-06-04T12:19:51",
+    "problem_link": "https://qoj.ac/contest/2056/problem/4001",
+    "submission_link": "https://qoj.ac/submission/1090933"
+  },
+  {
+    "submission_id": "#1090742",
+    "problem_name": "Frog",
+    "status": "AC",
+    "time": "15ms",
+    "memory": "4280kb",
+    "language": "C++14",
+    "submit_time": "2025-06-04T10:35:16",
+    "problem_link": "https://qoj.ac/contest/2056/problem/4005",
+    "submission_link": "https://qoj.ac/submission/1090742"
+  },
+  {
+    "submission_id": "#1094431",
+    "problem_name": "Dynamic Reachability",
+    "status": "AC",
+    "time": "9053ms",
+    "memory": "86028kb",
+    "language": "C++20",
+    "submit_time": "2025-06-06T16:29:25",
+    "problem_link": "https://qoj.ac/contest/2056/problem/4000",
+    "submission_link": "https://qoj.ac/submission/1094431"
+  },
+  {
+    "submission_id": "#1090672",
+    "problem_name": "Candy Machine",
+    "status": "AC",
+    "time": "121ms",
+    "memory": "19600kb",
+    "language": "C++14",
+    "submit_time": "2025-06-04T09:23:49",
+    "problem_link": "https://qoj.ac/contest/2056/problem/3997",
+    "submission_link": "https://qoj.ac/submission/1090672"
+  },
+  {
+    "submission_id": "#1090706",
+    "problem_name": "BpbBppbpBB",
+    "status": "AC",
+    "time": "148ms",
+    "memory": "6224kb",
+    "language": "C++14",
+    "submit_time": "2025-06-04T10:03:08",
+    "problem_link": "https://qoj.ac/contest/2056/problem/3999",
+    "submission_link": "https://qoj.ac/submission/1090706"
+  }
+]

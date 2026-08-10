@@ -1,0 +1,101 @@
+[
+  {
+    "submission_id": "#1412755",
+    "problem_name": "Simple Game",
+    "status": "AC",
+    "time": "27ms",
+    "memory": "6416kb",
+    "language": "C++14",
+    "submit_time": "2025-09-28T09:57:01+08:00",
+    "problem_link": "https://qoj.ac/contest/1376/problem/7501",
+    "submission_link": "https://qoj.ac/submission/1412755"
+  },
+  {
+    "submission_id": "#1413283",
+    "problem_name": "Painting the Roads",
+    "status": "AC",
+    "time": "67ms",
+    "memory": "200128kb",
+    "language": "C++14",
+    "submit_time": "2025-09-28T13:23:31+08:00",
+    "problem_link": "https://qoj.ac/contest/1376/problem/7502",
+    "submission_link": "https://qoj.ac/submission/1413283"
+  },
+  {
+    "submission_id": "#1412800",
+    "problem_name": "Too Many Edges",
+    "status": "AC",
+    "time": "1779ms",
+    "memory": "16556kb",
+    "language": "C++14",
+    "submit_time": "2025-09-28T10:17:11+08:00",
+    "problem_link": "https://qoj.ac/contest/1376/problem/7503",
+    "submission_link": "https://qoj.ac/submission/1412800"
+  },
+  {
+    "submission_id": "#1412926",
+    "problem_name": "HearthStone",
+    "status": "WA",
+    "time": "1ms",
+    "memory": "6112kb",
+    "language": "C++14",
+    "submit_time": "2025-09-28T11:04:40+08:00",
+    "problem_link": "https://qoj.ac/contest/1376/problem/7504",
+    "submission_link": "https://qoj.ac/submission/1412926"
+  },
+  {
+    "submission_id": "#1412683",
+    "problem_name": "Billiard",
+    "status": "AC",
+    "time": "24ms",
+    "memory": "3988kb",
+    "language": "C++14",
+    "submit_time": "2025-09-28T09:28:33+08:00",
+    "problem_link": "https://qoj.ac/contest/1376/problem/7505",
+    "submission_link": "https://qoj.ac/submission/1412683"
+  },
+  {
+    "submission_id": "#1416512",
+    "problem_name": "StrCartesian",
+    "status": "AC",
+    "time": "4712ms",
+    "memory": "247052kb",
+    "language": "C++20",
+    "submit_time": "2025-09-28T23:16:36+08:00",
+    "problem_link": "https://qoj.ac/contest/1376/problem/7506",
+    "submission_link": "https://qoj.ac/submission/1416512"
+  },
+  {
+    "submission_id": "#1426373",
+    "problem_name": "Ald",
+    "status": "AC",
+    "time": "1004ms",
+    "memory": "101644kb",
+    "language": "C++20",
+    "submit_time": "2025-10-01T16:31:14+08:00",
+    "problem_link": "https://qoj.ac/contest/1376/problem/7507",
+    "submission_link": "https://qoj.ac/submission/1426373"
+  },
+  {
+    "submission_id": "#1483343",
+    "problem_name": "01tree",
+    "status": "AC",
+    "time": "75ms",
+    "memory": "76832kb",
+    "language": "C++14",
+    "submit_time": "2025-10-10T18:18:24+08:00",
+    "problem_link": "https://qoj.ac/contest/1376/problem/7509",
+    "submission_link": "https://qoj.ac/submission/1483343"
+  },
+  {
+    "submission_id": "#1413292",
+    "problem_name": "Planar Graph",
+    "status": "WA",
+    "time": "51ms",
+    "memory": "14244kb",
+    "language": "C++14",
+    "submit_time": "2025-09-28T13:26:40+08:00",
+    "problem_link": "https://qoj.ac/contest/1376/problem/7511",
+    "submission_link": "https://qoj.ac/submission/1413292"
+  }
+]

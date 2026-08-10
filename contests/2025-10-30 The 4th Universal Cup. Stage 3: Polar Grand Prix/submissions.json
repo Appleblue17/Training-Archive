@@ -1,0 +1,90 @@
+[
+  {
+    "submission_id": "#1621946",
+    "problem_name": "Christmas Tree",
+    "status": "AC",
+    "time": "102ms",
+    "memory": "10220kb",
+    "language": "C++23",
+    "submit_time": "2025-10-31T01:54:02+08:00",
+    "problem_link": "https://qoj.ac/contest/2559/problem/14416",
+    "submission_link": "https://qoj.ac/submission/1621946"
+  },
+  {
+    "submission_id": "#1615651",
+    "problem_name": "Roman Numerals",
+    "status": "AC",
+    "time": "464ms",
+    "memory": "89640kb",
+    "language": "C++14",
+    "submit_time": "2025-10-30T12:12:57+08:00",
+    "problem_link": "https://qoj.ac/contest/2559/problem/14417",
+    "submission_link": "https://qoj.ac/submission/1615651"
+  },
+  {
+    "submission_id": "#1616359",
+    "problem_name": "Disjoint Set Splitting",
+    "status": "AC",
+    "time": "2304ms",
+    "memory": "246836kb",
+    "language": "C++20",
+    "submit_time": "2025-10-30T14:10:14+08:00",
+    "problem_link": "https://qoj.ac/contest/2559/problem/14418",
+    "submission_link": "https://qoj.ac/submission/1616359"
+  },
+  {
+    "submission_id": "#1618689",
+    "problem_name": "This Time I Will Be Lucky",
+    "status": "AC",
+    "time": "3404ms",
+    "memory": "7168kb",
+    "language": "C++14",
+    "submit_time": "2025-10-30T17:40:07+08:00",
+    "problem_link": "https://qoj.ac/contest/2559/problem/14420",
+    "submission_link": "https://qoj.ac/submission/1618689"
+  },
+  {
+    "submission_id": "#1615450",
+    "problem_name": "Far Away",
+    "status": "AC",
+    "time": "1524ms",
+    "memory": "259144kb",
+    "language": "C++14",
+    "submit_time": "2025-10-30T11:40:09+08:00",
+    "problem_link": "https://qoj.ac/contest/2559/problem/14421",
+    "submission_link": "https://qoj.ac/submission/1615450"
+  },
+  {
+    "submission_id": "#1614862",
+    "problem_name": "Two Permutations",
+    "status": "AC",
+    "time": "125ms",
+    "memory": "21196kb",
+    "language": "C++14",
+    "submit_time": "2025-10-30T10:00:34+08:00",
+    "problem_link": "https://qoj.ac/contest/2559/problem/14423",
+    "submission_link": "https://qoj.ac/submission/1614862"
+  },
+  {
+    "submission_id": "#1615981",
+    "problem_name": "One Permutation",
+    "status": "WA",
+    "time": "0ms",
+    "memory": "14276kb",
+    "language": "C++14",
+    "submit_time": "2025-10-30T13:12:26+08:00",
+    "problem_link": "https://qoj.ac/contest/2559/problem/14424",
+    "submission_link": "https://qoj.ac/submission/1615981"
+  },
+  {
+    "submission_id": "#1614767",
+    "problem_name": "Game on Board",
+    "status": "AC",
+    "time": "6ms",
+    "memory": "4368kb",
+    "language": "C++14",
+    "submit_time": "2025-10-30T09:26:21+08:00",
+    "problem_link": "https://qoj.ac/contest/2559/problem/14425",
+    "submission_link": "https://qoj.ac/submission/1614767"
+  }
+]

@@ -1,0 +1,123 @@
+[
+  {
+    "submission_id": "#1785744",
+    "problem_name": "Azalea Garden",
+    "status": "AC",
+    "time": "2470ms",
+    "memory": "446748kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T13:48:23+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14681",
+    "submission_link": "https://qoj.ac/submission/1785744"
+  },
+  {
+    "submission_id": "#1785398",
+    "problem_name": "Beautiful Dangos",
+    "status": "AC",
+    "time": "275ms",
+    "memory": "278760kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T12:26:12+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14682",
+    "submission_link": "https://qoj.ac/submission/1785398"
+  },
+  {
+    "submission_id": "#1785507",
+    "problem_name": "Catch the Monster",
+    "status": "AC",
+    "time": "391ms",
+    "memory": "108336kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T12:50:54+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14683",
+    "submission_link": "https://qoj.ac/submission/1785507"
+  },
+  {
+    "submission_id": "#1784913",
+    "problem_name": "Follow the Penguins",
+    "status": "AC",
+    "time": "160ms",
+    "memory": "102924kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T10:03:28+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14686",
+    "submission_link": "https://qoj.ac/submission/1784913"
+  },
+  {
+    "submission_id": "#1784723",
+    "problem_name": "Grand Voting",
+    "status": "AC",
+    "time": "25ms",
+    "memory": "4108kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T09:10:52+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14687",
+    "submission_link": "https://qoj.ac/submission/1784723"
+  },
+  {
+    "submission_id": "#1788864",
+    "problem_name": "Heart of Darkness",
+    "status": "AC",
+    "time": "2194ms",
+    "memory": "515476kb",
+    "language": "C++14",
+    "submit_time": "2025-11-28T00:00:58+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14688",
+    "submission_link": "https://qoj.ac/submission/1788864"
+  },
+  {
+    "submission_id": "#1784854",
+    "problem_name": "Imagined Holly",
+    "status": "AC",
+    "time": "110ms",
+    "memory": "33088kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T09:45:26+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14689",
+    "submission_link": "https://qoj.ac/submission/1784854"
+  },
+  {
+    "submission_id": "#1784841",
+    "problem_name": "January's Color",
+    "status": "AC",
+    "time": "259ms",
+    "memory": "118840kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T09:39:09+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14690",
+    "submission_link": "https://qoj.ac/submission/1784841"
+  },
+  {
+    "submission_id": "#1785361",
+    "problem_name": "Killing Bits",
+    "status": "AC",
+    "time": "626ms",
+    "memory": "24968kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T12:13:49+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14691",
+    "submission_link": "https://qoj.ac/submission/1785361"
+  },
+  {
+    "submission_id": "#1784773",
+    "problem_name": "Let's Make a Convex!",
+    "status": "AC",
+    "time": "33ms",
+    "memory": "10760kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T09:20:42+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14692",
+    "submission_link": "https://qoj.ac/submission/1784773"
+  },
+  {
+    "submission_id": "#1785109",
+    "problem_name": "Mystique as Iris",
+    "status": "AC",
+    "time": "58ms",
+    "memory": "54512kb",
+    "language": "C++14",
+    "submit_time": "2025-11-27T11:08:17+08:00",
+    "problem_link": "https://qoj.ac/contest/2562/problem/14693",
+    "submission_link": "https://qoj.ac/submission/1785109"
+  }
+]

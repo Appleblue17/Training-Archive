@@ -1,0 +1,145 @@
+[
+  {
+    "submission_id": "#1144392",
+    "problem_name": "Modulo Ruins the Legend",
+    "status": "AC",
+    "time": "6ms",
+    "memory": "4020kb",
+    "language": "C++14",
+    "submit_time": "2025-07-08T09:53:26",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5301",
+    "submission_link": "https://qoj.ac/submission/1144392"
+  },
+  {
+    "submission_id": "#1146579",
+    "problem_name": "Useful Algorithm",
+    "status": "AC",
+    "time": "1792ms",
+    "memory": "453228kb",
+    "language": "C++20",
+    "submit_time": "2025-07-09T15:20:00",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5302",
+    "submission_link": "https://qoj.ac/submission/1146579"
+  },
+  {
+    "submission_id": "#1144413",
+    "problem_name": "No Bug No Game",
+    "status": "AC",
+    "time": "76ms",
+    "memory": "85732kb",
+    "language": "C++14",
+    "submit_time": "2025-07-08T10:29:00",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5303",
+    "submission_link": "https://qoj.ac/submission/1144413"
+  },
+  {
+    "submission_id": "#1144372",
+    "problem_name": "Money Game",
+    "status": "AC",
+    "time": "27ms",
+    "memory": "4756kb",
+    "language": "C++14",
+    "submit_time": "2025-07-08T09:21:01",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5304",
+    "submission_link": "https://qoj.ac/submission/1144372"
+  },
+  {
+    "submission_id": "#1145110",
+    "problem_name": "Oscar is All You Need",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "6108kb",
+    "language": "C++20",
+    "submit_time": "2025-07-08T18:24:52",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5305",
+    "submission_link": "https://qoj.ac/submission/1145110"
+  },
+  {
+    "submission_id": "#1144369",
+    "problem_name": "Da Mi Lao Shi Ai Kan De",
+    "status": "AC",
+    "time": "4ms",
+    "memory": "3824kb",
+    "language": "C++14",
+    "submit_time": "2025-07-08T09:18:38",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5306",
+    "submission_link": "https://qoj.ac/submission/1144369"
+  },
+  {
+    "submission_id": "#1144440",
+    "problem_name": "Subgraph Isomorphism",
+    "status": "AC",
+    "time": "240ms",
+    "memory": "48600kb",
+    "language": "C++14",
+    "submit_time": "2025-07-08T11:04:21",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5307",
+    "submission_link": "https://qoj.ac/submission/1144440"
+  },
+  {
+    "submission_id": "#1144955",
+    "problem_name": "RPG Pro League",
+    "status": "AC",
+    "time": "82ms",
+    "memory": "19760kb",
+    "language": "C++14",
+    "submit_time": "2025-07-08T16:53:58",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5308",
+    "submission_link": "https://qoj.ac/submission/1144955"
+  },
+  {
+    "submission_id": "#1144624",
+    "problem_name": "Guess Cycle Length",
+    "status": "AC",
+    "time": "19ms",
+    "memory": "8032kb",
+    "language": "C++14",
+    "submit_time": "2025-07-08T13:50:00",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5309",
+    "submission_link": "https://qoj.ac/submission/1144624"
+  },
+  {
+    "submission_id": "#1150483",
+    "problem_name": "Painting",
+    "status": "AC",
+    "time": "1458ms",
+    "memory": "91572kb",
+    "language": "C++20",
+    "submit_time": "2025-07-11T13:42:56",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5310",
+    "submission_link": "https://qoj.ac/submission/1150483"
+  },
+  {
+    "submission_id": "#1144405",
+    "problem_name": "Master of Both",
+    "status": "AC",
+    "time": "67ms",
+    "memory": "110484kb",
+    "language": "C++14",
+    "submit_time": "2025-07-08T10:13:17",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5311",
+    "submission_link": "https://qoj.ac/submission/1144405"
+  },
+  {
+    "submission_id": "#1145366",
+    "problem_name": "Levenshtein Distance",
+    "status": "AC",
+    "time": "890ms",
+    "memory": "25452kb",
+    "language": "C++20",
+    "submit_time": "2025-07-08T20:38:47",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5312",
+    "submission_link": "https://qoj.ac/submission/1145366"
+  },
+  {
+    "submission_id": "#1144596",
+    "problem_name": "Please Save Pigeland",
+    "status": "AC",
+    "time": "303ms",
+    "memory": "154588kb",
+    "language": "C++20",
+    "submit_time": "2025-07-08T13:26:09",
+    "problem_link": "https://qoj.ac/contest/1071/problem/5313",
+    "submission_link": "https://qoj.ac/submission/1144596"
+  }
+]

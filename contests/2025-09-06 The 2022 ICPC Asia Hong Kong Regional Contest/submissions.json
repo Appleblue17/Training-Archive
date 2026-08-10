@@ -1,0 +1,134 @@
+[
+  {
+    "submission_id": "#1291266",
+    "problem_name": "TreeScript",
+    "status": "AC",
+    "time": "31ms",
+    "memory": "46532kb",
+    "language": "C++14",
+    "submit_time": "2025-09-06T09:37:51+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5455",
+    "submission_link": "https://qoj.ac/submission/1291266"
+  },
+  {
+    "submission_id": "#1291301",
+    "problem_name": "Big Picture",
+    "status": "AC",
+    "time": "126ms",
+    "memory": "24448kb",
+    "language": "C++14",
+    "submit_time": "2025-09-06T10:14:08+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5456",
+    "submission_link": "https://qoj.ac/submission/1291301"
+  },
+  {
+    "submission_id": "#1291504",
+    "problem_name": "Painting Grid",
+    "status": "AC",
+    "time": "32ms",
+    "memory": "6148kb",
+    "language": "C++14",
+    "submit_time": "2025-09-06T11:53:14+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5457",
+    "submission_link": "https://qoj.ac/submission/1291504"
+  },
+  {
+    "submission_id": "#1294326",
+    "problem_name": "Shortest Path Query",
+    "status": "AC",
+    "time": "473ms",
+    "memory": "168952kb",
+    "language": "C++20",
+    "submit_time": "2025-09-06T20:02:35+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5458",
+    "submission_link": "https://qoj.ac/submission/1294326"
+  },
+  {
+    "submission_id": "#1291360",
+    "problem_name": "Goose, goose, DUCK?",
+    "status": "AC",
+    "time": "1220ms",
+    "memory": "208344kb",
+    "language": "C++14",
+    "submit_time": "2025-09-06T10:39:46+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5459",
+    "submission_link": "https://qoj.ac/submission/1291360"
+  },
+  {
+    "submission_id": "#1292030",
+    "problem_name": "Sum of Numbers",
+    "status": "AC",
+    "time": "286ms",
+    "memory": "12800kb",
+    "language": "C++20",
+    "submit_time": "2025-09-06T14:00:29+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5460",
+    "submission_link": "https://qoj.ac/submission/1292030"
+  },
+  {
+    "submission_id": "#1293879",
+    "problem_name": "Paddle Star",
+    "status": "AC",
+    "time": "82ms",
+    "memory": "4268kb",
+    "language": "C++14",
+    "submit_time": "2025-09-06T17:47:11+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5461",
+    "submission_link": "https://qoj.ac/submission/1293879"
+  },
+  {
+    "submission_id": "#1291246",
+    "problem_name": "Another Goose Goose Duck Problem",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3708kb",
+    "language": "C++14",
+    "submit_time": "2025-09-06T09:16:44+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5462",
+    "submission_link": "https://qoj.ac/submission/1291246"
+  },
+  {
+    "submission_id": "#1294162",
+    "problem_name": "Range Closest Pair of Points Query",
+    "status": "AC",
+    "time": "7465ms",
+    "memory": "576576kb",
+    "language": "C++20",
+    "submit_time": "2025-09-06T19:03:48+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5463",
+    "submission_link": "https://qoj.ac/submission/1294162"
+  },
+  {
+    "submission_id": "#1291879",
+    "problem_name": "Dice Game",
+    "status": "AC",
+    "time": "11ms",
+    "memory": "4020kb",
+    "language": "C++14",
+    "submit_time": "2025-09-06T13:32:28+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5464",
+    "submission_link": "https://qoj.ac/submission/1291879"
+  },
+  {
+    "submission_id": "#1291255",
+    "problem_name": "Maximum GCD",
+    "status": "AC",
+    "time": "12ms",
+    "memory": "4380kb",
+    "language": "C++14",
+    "submit_time": "2025-09-06T09:29:35+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5465",
+    "submission_link": "https://qoj.ac/submission/1291255"
+  },
+  {
+    "submission_id": "#1291534",
+    "problem_name": "Permutation Compression",
+    "status": "AC",
+    "time": "201ms",
+    "memory": "33192kb",
+    "language": "C++14",
+    "submit_time": "2025-09-06T12:15:21+08:00",
+    "problem_link": "https://qoj.ac/contest/1099/problem/5466",
+    "submission_link": "https://qoj.ac/submission/1291534"
+  }
+]

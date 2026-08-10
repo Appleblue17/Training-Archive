@@ -1,0 +1,101 @@
+[
+  {
+    "submission_id": "#826364",
+    "problem_name": "City",
+    "status": "AC",
+    "time": "2ms",
+    "memory": "3684kb",
+    "language": "C++14",
+    "submit_time": "2024-12-22T09:15:29",
+    "problem_link": "https://qoj.ac/contest/1039/problem/5038",
+    "submission_link": "https://qoj.ac/submission/826364"
+  },
+  {
+    "submission_id": "#1156492",
+    "problem_name": "Black and White",
+    "status": "AC",
+    "time": "21ms",
+    "memory": "7108kb",
+    "language": "C++14",
+    "submit_time": "2025-07-13T21:13:12",
+    "problem_link": "https://qoj.ac/contest/1039/problem/5039",
+    "submission_link": "https://qoj.ac/submission/1156492"
+  },
+  {
+    "submission_id": "#826438",
+    "problem_name": "Dirichlet kk-th root",
+    "status": "AC",
+    "time": "101ms",
+    "memory": "26528kb",
+    "language": "C++14",
+    "submit_time": "2024-12-22T10:59:13",
+    "problem_link": "https://qoj.ac/contest/1039/problem/5040",
+    "submission_link": "https://qoj.ac/submission/826438"
+  },
+  {
+    "submission_id": "#1274731",
+    "problem_name": "Fire",
+    "status": "AC",
+    "time": "29ms",
+    "memory": "37284kb",
+    "language": "C++20",
+    "submit_time": "2025-08-31T14:56:14+08:00",
+    "problem_link": "https://qoj.ac/contest/1039/problem/5041",
+    "submission_link": "https://qoj.ac/submission/1274731"
+  },
+  {
+    "submission_id": "#826398",
+    "problem_name": "Flow",
+    "status": "AC",
+    "time": "52ms",
+    "memory": "16580kb",
+    "language": "C++14",
+    "submit_time": "2024-12-22T09:59:13",
+    "problem_link": "https://qoj.ac/contest/1039/problem/5042",
+    "submission_link": "https://qoj.ac/submission/826398"
+  },
+  {
+    "submission_id": "#826506",
+    "problem_name": "Happiness",
+    "status": "AC",
+    "time": "531ms",
+    "memory": "3956kb",
+    "language": "C++14",
+    "submit_time": "2024-12-22T12:53:27",
+    "problem_link": "https://qoj.ac/contest/1039/problem/5044",
+    "submission_link": "https://qoj.ac/submission/826506"
+  },
+  {
+    "submission_id": "#826427",
+    "problem_name": "King",
+    "status": "AC",
+    "time": "417ms",
+    "memory": "44476kb",
+    "language": "C++14",
+    "submit_time": "2024-12-22T10:41:14",
+    "problem_link": "https://qoj.ac/contest/1039/problem/5045",
+    "submission_link": "https://qoj.ac/submission/826427"
+  },
+  {
+    "submission_id": "#868422",
+    "problem_name": "All Pair Maximum Flow",
+    "status": "AC",
+    "time": "1160ms",
+    "memory": "97736kb",
+    "language": "C++14",
+    "submit_time": "2025-01-24T16:58:26",
+    "problem_link": "https://qoj.ac/contest/1039/problem/5048",
+    "submission_link": "https://qoj.ac/submission/868422"
+  },
+  {
+    "submission_id": "#826389",
+    "problem_name": "Value",
+    "status": "AC",
+    "time": "32ms",
+    "memory": "7912kb",
+    "language": "C++14",
+    "submit_time": "2024-12-22T09:47:58",
+    "problem_link": "https://qoj.ac/contest/1039/problem/5050",
+    "submission_link": "https://qoj.ac/submission/826389"
+  }
+]

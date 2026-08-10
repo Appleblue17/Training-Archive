@@ -1,0 +1,112 @@
+[
+  {
+    "submission_id": "#1082936",
+    "problem_name": "Stop, Yesterday Please No More",
+    "status": "AC",
+    "time": "20ms",
+    "memory": "20480kb",
+    "language": "C++14",
+    "submit_time": "2025-05-30T11:26:26",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5414",
+    "submission_link": "https://qoj.ac/submission/1082936"
+  },
+  {
+    "submission_id": "#1082985",
+    "problem_name": "Ropeway",
+    "status": "AC",
+    "time": "207ms",
+    "memory": "29924kb",
+    "language": "C++14",
+    "submit_time": "2025-05-30T12:29:13",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5415",
+    "submission_link": "https://qoj.ac/submission/1082985"
+  },
+  {
+    "submission_id": "#1082857",
+    "problem_name": "Chat Program",
+    "status": "AC",
+    "time": "572ms",
+    "memory": "12492kb",
+    "language": "C++14",
+    "submit_time": "2025-05-30T10:43:35",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5417",
+    "submission_link": "https://qoj.ac/submission/1082857"
+  },
+  {
+    "submission_id": "#1082993",
+    "problem_name": "Color the Tree",
+    "status": "AC",
+    "time": "194ms",
+    "memory": "36700kb",
+    "language": "C++14",
+    "submit_time": "2025-05-30T12:53:32",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5418",
+    "submission_link": "https://qoj.ac/submission/1082993"
+  },
+  {
+    "submission_id": "#1082785",
+    "problem_name": "Inscryption",
+    "status": "AC",
+    "time": "158ms",
+    "memory": "15628kb",
+    "language": "C++14",
+    "submit_time": "2025-05-30T10:02:51",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5420",
+    "submission_link": "https://qoj.ac/submission/1082785"
+  },
+  {
+    "submission_id": "#1102054",
+    "problem_name": "Factories Once More",
+    "status": "AC",
+    "time": "322ms",
+    "memory": "39628kb",
+    "language": "C++20",
+    "submit_time": "2025-06-12T14:08:44",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5421",
+    "submission_link": "https://qoj.ac/submission/1102054"
+  },
+  {
+    "submission_id": "#1082738",
+    "problem_name": "Perfect Palindrome",
+    "status": "AC",
+    "time": "3ms",
+    "memory": "3712kb",
+    "language": "C++14",
+    "submit_time": "2025-05-30T09:32:28",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5422",
+    "submission_link": "https://qoj.ac/submission/1082738"
+  },
+  {
+    "submission_id": "#1083016",
+    "problem_name": "Perfect Matching",
+    "status": "AC",
+    "time": "983ms",
+    "memory": "86464kb",
+    "language": "C++14",
+    "submit_time": "2025-05-30T13:33:38",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5423",
+    "submission_link": "https://qoj.ac/submission/1083016"
+  },
+  {
+    "submission_id": "#1083044",
+    "problem_name": "NaN in a Heap",
+    "status": "AC",
+    "time": "931ms",
+    "memory": "3584kb",
+    "language": "C++14",
+    "submit_time": "2025-05-30T14:03:53",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5424",
+    "submission_link": "https://qoj.ac/submission/1083044"
+  },
+  {
+    "submission_id": "#1082972",
+    "problem_name": "Drain the Water Tank",
+    "status": "AC",
+    "time": "3ms",
+    "memory": "13764kb",
+    "language": "C++14",
+    "submit_time": "2025-05-30T12:12:47",
+    "problem_link": "https://qoj.ac/contest/1093/problem/5426",
+    "submission_link": "https://qoj.ac/submission/1082972"
+  }
+]

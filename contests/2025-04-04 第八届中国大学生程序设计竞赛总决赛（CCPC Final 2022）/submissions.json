@@ -1,0 +1,90 @@
+[
+  {
+    "submission_id": "#963856",
+    "problem_name": "Graph Partitioning",
+    "status": "AC",
+    "time": "600ms",
+    "memory": "64612kb",
+    "language": "C++14",
+    "submit_time": "2025-04-04T14:16:13",
+    "problem_link": "https://qoj.ac/contest/1244/problem/6501",
+    "submission_link": "https://qoj.ac/submission/963856"
+  },
+  {
+    "submission_id": "#963728",
+    "problem_name": "DFS Order 3",
+    "status": "AC",
+    "time": "125ms",
+    "memory": "8572kb",
+    "language": "C++14",
+    "submit_time": "2025-04-04T12:14:05",
+    "problem_link": "https://qoj.ac/contest/1244/problem/6503",
+    "submission_link": "https://qoj.ac/submission/963728"
+  },
+  {
+    "submission_id": "#963649",
+    "problem_name": "CCPC String",
+    "status": "AC",
+    "time": "28ms",
+    "memory": "12700kb",
+    "language": "C++14",
+    "submit_time": "2025-04-04T09:19:32",
+    "problem_link": "https://qoj.ac/contest/1244/problem/6505",
+    "submission_link": "https://qoj.ac/submission/963649"
+  },
+  {
+    "submission_id": "#963712",
+    "problem_name": "Chase Game 3",
+    "status": "AC",
+    "time": "32ms",
+    "memory": "11020kb",
+    "language": "C++14",
+    "submit_time": "2025-04-04T11:45:16",
+    "problem_link": "https://qoj.ac/contest/1244/problem/6506",
+    "submission_link": "https://qoj.ac/submission/963712"
+  },
+  {
+    "submission_id": "#1185269",
+    "problem_name": "Not Another Range Query Problem",
+    "status": "AC",
+    "time": "200ms",
+    "memory": "69812kb",
+    "language": "C++20",
+    "submit_time": "2025-07-27T17:09:02+08:00",
+    "problem_link": "https://qoj.ac/problem/6509",
+    "submission_link": "https://qoj.ac/submission/1185269"
+  },
+  {
+    "submission_id": "#963704",
+    "problem_name": "Best Carry Player 3",
+    "status": "AC",
+    "time": "38ms",
+    "memory": "3840kb",
+    "language": "C++14",
+    "submit_time": "2025-04-04T11:17:44",
+    "problem_link": "https://qoj.ac/contest/1244/problem/6510",
+    "submission_link": "https://qoj.ac/submission/963704"
+  },
+  {
+    "submission_id": "#964133",
+    "problem_name": "Completely Multiplicative Function",
+    "status": "AC",
+    "time": "1168ms",
+    "memory": "18752kb",
+    "language": "C++17",
+    "submit_time": "2025-04-04T16:57:09",
+    "problem_link": "https://qoj.ac/contest/1244/problem/6512",
+    "submission_link": "https://qoj.ac/submission/964133"
+  },
+  {
+    "submission_id": "#963839",
+    "problem_name": "Expression 3",
+    "status": "AC",
+    "time": "2917ms",
+    "memory": "413740kb",
+    "language": "C++14",
+    "submit_time": "2025-04-04T14:02:39",
+    "problem_link": "https://qoj.ac/contest/1244/problem/6513",
+    "submission_link": "https://qoj.ac/submission/963839"
+  }
+]

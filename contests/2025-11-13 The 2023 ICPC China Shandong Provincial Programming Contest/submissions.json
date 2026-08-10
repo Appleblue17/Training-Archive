@@ -1,0 +1,134 @@
+[
+  {
+    "submission_id": "#1709933",
+    "problem_name": "Orders",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4012kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T09:18:25+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6691",
+    "submission_link": "https://qoj.ac/submission/1709933"
+  },
+  {
+    "submission_id": "#1710152",
+    "problem_name": "Building Company",
+    "status": "AC",
+    "time": "95ms",
+    "memory": "34432kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T10:03:20+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6692",
+    "submission_link": "https://qoj.ac/submission/1710152"
+  },
+  {
+    "submission_id": "#1711100",
+    "problem_name": "Trie",
+    "status": "AC",
+    "time": "95ms",
+    "memory": "252724kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T13:00:30+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6684",
+    "submission_link": "https://qoj.ac/submission/1711100"
+  },
+  {
+    "submission_id": "#1709978",
+    "problem_name": "Fast and Fat",
+    "status": "AC",
+    "time": "170ms",
+    "memory": "8672kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T09:28:29+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6693",
+    "submission_link": "https://qoj.ac/submission/1709978"
+  },
+  {
+    "submission_id": "#1710075",
+    "problem_name": "Math Problem",
+    "status": "AC",
+    "time": "577ms",
+    "memory": "4012kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T09:49:47+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6694",
+    "submission_link": "https://qoj.ac/submission/1710075"
+  },
+  {
+    "submission_id": "#1711390",
+    "problem_name": "Colorful Segments",
+    "status": "AC",
+    "time": "626ms",
+    "memory": "36032kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T13:46:42+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6672",
+    "submission_link": "https://qoj.ac/submission/1711390"
+  },
+  {
+    "submission_id": "#1709950",
+    "problem_name": "Matching",
+    "status": "AC",
+    "time": "41ms",
+    "memory": "6620kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T09:21:58+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6695",
+    "submission_link": "https://qoj.ac/submission/1709950"
+  },
+  {
+    "submission_id": "#1709917",
+    "problem_name": "Three Dice",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4020kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T09:15:32+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6696",
+    "submission_link": "https://qoj.ac/submission/1709917"
+  },
+  {
+    "submission_id": "#1710157",
+    "problem_name": "Not Another Path Query Problem",
+    "status": "AC",
+    "time": "632ms",
+    "memory": "180960kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T10:04:34+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6679",
+    "submission_link": "https://qoj.ac/submission/1710157"
+  },
+  {
+    "submission_id": "#1711305",
+    "problem_name": "Difficult Constructive Problem",
+    "status": "AC",
+    "time": "17ms",
+    "memory": "4688kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T13:32:55+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6683",
+    "submission_link": "https://qoj.ac/submission/1711305"
+  },
+  {
+    "submission_id": "#1710044",
+    "problem_name": "Puzzle: Sashigane",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4020kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T09:41:34+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6677",
+    "submission_link": "https://qoj.ac/submission/1710044"
+  },
+  {
+    "submission_id": "#1710325",
+    "problem_name": "Computational Geometry",
+    "status": "AC",
+    "time": "18ms",
+    "memory": "8812kb",
+    "language": "C++14",
+    "submit_time": "2025-11-13T10:38:14+08:00",
+    "problem_link": "https://qoj.ac/contest/1280/problem/6676",
+    "submission_link": "https://qoj.ac/submission/1710325"
+  }
+]

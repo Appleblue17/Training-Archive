@@ -1,0 +1,112 @@
+[
+  {
+    "submission_id": "#819723",
+    "problem_name": "Add One 2",
+    "status": "AC",
+    "time": "758ms",
+    "memory": "99576kb",
+    "language": "C++14",
+    "submit_time": "2024-12-18T17:14:25",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8542",
+    "submission_link": "https://qoj.ac/submission/819723"
+  },
+  {
+    "submission_id": "#1156485",
+    "problem_name": "Periodic Sequence",
+    "status": "AC",
+    "time": "2486ms",
+    "memory": "9508kb",
+    "language": "C++14",
+    "submit_time": "2025-07-13T21:10:28",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8543",
+    "submission_link": "https://qoj.ac/submission/1156485"
+  },
+  {
+    "submission_id": "#820621",
+    "problem_name": "Colorful Graph 2",
+    "status": "AC",
+    "time": "687ms",
+    "memory": "42572kb",
+    "language": "C++14",
+    "submit_time": "2024-12-18T22:16:44",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8544",
+    "submission_link": "https://qoj.ac/submission/820621"
+  },
+  {
+    "submission_id": "#819151",
+    "problem_name": "Min or Max",
+    "status": "AC",
+    "time": "11ms",
+    "memory": "4552kb",
+    "language": "C++14",
+    "submit_time": "2024-12-18T13:13:56",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8545",
+    "submission_link": "https://qoj.ac/submission/819151"
+  },
+  {
+    "submission_id": "#825692",
+    "problem_name": "Whose Land?",
+    "status": "AC",
+    "time": "1931ms",
+    "memory": "231972kb",
+    "language": "C++14",
+    "submit_time": "2024-12-21T21:27:26",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8547",
+    "submission_link": "https://qoj.ac/submission/825692"
+  },
+  {
+    "submission_id": "#820750",
+    "problem_name": "China Convex Polygon Contest",
+    "status": "AC",
+    "time": "28ms",
+    "memory": "10956kb",
+    "language": "C++14",
+    "submit_time": "2024-12-19T00:31:43",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8548",
+    "submission_link": "https://qoj.ac/submission/820750"
+  },
+  {
+    "submission_id": "#819160",
+    "problem_name": "The Game",
+    "status": "AC",
+    "time": "854ms",
+    "memory": "78768kb",
+    "language": "C++14",
+    "submit_time": "2024-12-18T13:23:12",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8549",
+    "submission_link": "https://qoj.ac/submission/819160"
+  },
+  {
+    "submission_id": "#821663",
+    "problem_name": "DFS Order 5",
+    "status": "AC",
+    "time": "129ms",
+    "memory": "20572kb",
+    "language": "C++14",
+    "submit_time": "2024-12-19T17:13:09",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8551",
+    "submission_link": "https://qoj.ac/submission/821663"
+  },
+  {
+    "submission_id": "#1086008",
+    "problem_name": "Sticks",
+    "status": "AC",
+    "time": "311ms",
+    "memory": "171776kb",
+    "language": "C++14",
+    "submit_time": "2025-06-02T00:03:24",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8552",
+    "submission_link": "https://qoj.ac/submission/1086008"
+  },
+  {
+    "submission_id": "#1156488",
+    "problem_name": "Bot Friends",
+    "status": "AC",
+    "time": "341ms",
+    "memory": "437744kb",
+    "language": "C++14",
+    "submit_time": "2025-07-13T21:10:54",
+    "problem_link": "https://qoj.ac/contest/1596/problem/8554",
+    "submission_link": "https://qoj.ac/submission/1156488"
+  }
+]

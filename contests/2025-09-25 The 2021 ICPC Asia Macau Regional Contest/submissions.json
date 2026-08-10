@@ -1,0 +1,101 @@
+[
+  {
+    "submission_id": "#1397047",
+    "problem_name": "So I'll Max Out My Constructive Algorithm Skills",
+    "status": "AC",
+    "time": "22ms",
+    "memory": "4012kb",
+    "language": "C++14",
+    "submit_time": "2025-09-25T09:18:50+08:00",
+    "problem_link": "https://qoj.ac/contest/911/problem/3836",
+    "submission_link": "https://qoj.ac/submission/1397047"
+  },
+  {
+    "submission_id": "#1397470",
+    "problem_name": "Laser Trap",
+    "status": "AC",
+    "time": "296ms",
+    "memory": "21188kb",
+    "language": "C++14",
+    "submit_time": "2025-09-25T12:43:32+08:00",
+    "problem_link": "https://qoj.ac/contest/911/problem/3838",
+    "submission_link": "https://qoj.ac/submission/1397470"
+  },
+  {
+    "submission_id": "#1397254",
+    "problem_name": "Pass the Ball!",
+    "status": "AC",
+    "time": "150ms",
+    "memory": "82644kb",
+    "language": "C++14",
+    "submit_time": "2025-09-25T10:59:29+08:00",
+    "problem_link": "https://qoj.ac/contest/911/problem/3840",
+    "submission_link": "https://qoj.ac/submission/1397254"
+  },
+  {
+    "submission_id": "#1397209",
+    "problem_name": "Sandpile on Clique",
+    "status": "AC",
+    "time": "331ms",
+    "memory": "32372kb",
+    "language": "C++14",
+    "submit_time": "2025-09-25T10:47:07+08:00",
+    "problem_link": "https://qoj.ac/contest/911/problem/3841",
+    "submission_link": "https://qoj.ac/submission/1397209"
+  },
+  {
+    "submission_id": "#1397478",
+    "problem_name": "Cyclic Buffer",
+    "status": "AC",
+    "time": "1513ms",
+    "memory": "128468kb",
+    "language": "C++14",
+    "submit_time": "2025-09-25T12:50:24+08:00",
+    "problem_link": "https://qoj.ac/contest/911/problem/3842",
+    "submission_link": "https://qoj.ac/submission/1397478"
+  },
+  {
+    "submission_id": "#1399202",
+    "problem_name": "Permutation on Tree",
+    "status": "AC",
+    "time": "782ms",
+    "memory": "5508kb",
+    "language": "C++14",
+    "submit_time": "2025-09-25T19:08:29+08:00",
+    "problem_link": "https://qoj.ac/contest/911/problem/3843",
+    "submission_link": "https://qoj.ac/submission/1399202"
+  },
+  {
+    "submission_id": "#1397407",
+    "problem_name": "LCS Spanning Tree",
+    "status": "AC",
+    "time": "3481ms",
+    "memory": "589144kb",
+    "language": "C++14",
+    "submit_time": "2025-09-25T12:08:33+08:00",
+    "problem_link": "https://qoj.ac/contest/911/problem/3844",
+    "submission_link": "https://qoj.ac/submission/1397407"
+  },
+  {
+    "submission_id": "#1399022",
+    "problem_name": "Colorful Tree",
+    "status": "AC",
+    "time": "2823ms",
+    "memory": "499768kb",
+    "language": "C++20",
+    "submit_time": "2025-09-25T18:29:27+08:00",
+    "problem_link": "https://qoj.ac/contest/911/problem/3845",
+    "submission_link": "https://qoj.ac/submission/1399022"
+  },
+  {
+    "submission_id": "#1397096",
+    "problem_name": "Link-Cut Tree",
+    "status": "AC",
+    "time": "145ms",
+    "memory": "20612kb",
+    "language": "C++14",
+    "submit_time": "2025-09-25T09:51:15+08:00",
+    "problem_link": "https://qoj.ac/contest/911/problem/3846",
+    "submission_link": "https://qoj.ac/submission/1397096"
+  }
+]

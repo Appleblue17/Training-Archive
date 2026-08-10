@@ -1,0 +1,112 @@
+[
+  {
+    "submission_id": "#1357097",
+    "problem_name": "A-Skew-ed Reasoning",
+    "status": "AC",
+    "time": "79ms",
+    "memory": "78860kb",
+    "language": "C++14",
+    "submit_time": "2025-09-18T13:58:12+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14601",
+    "submission_link": "https://qoj.ac/submission/1357097"
+  },
+  {
+    "submission_id": "#1356969",
+    "problem_name": "Blackboard Game",
+    "status": "AC",
+    "time": "34ms",
+    "memory": "18440kb",
+    "language": "C++14",
+    "submit_time": "2025-09-18T13:31:03+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14602",
+    "submission_link": "https://qoj.ac/submission/1356969"
+  },
+  {
+    "submission_id": "#1356003",
+    "problem_name": "Buggy Rover",
+    "status": "AC",
+    "time": "4ms",
+    "memory": "4948kb",
+    "language": "C++14",
+    "submit_time": "2025-09-18T09:19:05+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14604",
+    "submission_link": "https://qoj.ac/submission/1356003"
+  },
+  {
+    "submission_id": "#1363219",
+    "problem_name": "Delivery Service",
+    "status": "AC",
+    "time": "704ms",
+    "memory": "136340kb",
+    "language": "C++20",
+    "submit_time": "2025-09-19T10:23:29+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14605",
+    "submission_link": "https://qoj.ac/submission/1363219"
+  },
+  {
+    "submission_id": "#1356112",
+    "problem_name": "Herding Cats",
+    "status": "AC",
+    "time": "354ms",
+    "memory": "95348kb",
+    "language": "C++14",
+    "submit_time": "2025-09-18T09:45:27+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14606",
+    "submission_link": "https://qoj.ac/submission/1356112"
+  },
+  {
+    "submission_id": "#1356440",
+    "problem_name": "Score Values",
+    "status": "AC",
+    "time": "92ms",
+    "memory": "6368kb",
+    "language": "C++14",
+    "submit_time": "2025-09-18T11:32:13+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14608",
+    "submission_link": "https://qoj.ac/submission/1356440"
+  },
+  {
+    "submission_id": "#1356241",
+    "problem_name": "Slot Machine",
+    "status": "AC",
+    "time": "11ms",
+    "memory": "3780kb",
+    "language": "C++14",
+    "submit_time": "2025-09-18T10:23:48+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14609",
+    "submission_link": "https://qoj.ac/submission/1356241"
+  },
+  {
+    "submission_id": "#1356249",
+    "problem_name": "Stacking Cups",
+    "status": "AC",
+    "time": "9ms",
+    "memory": "5560kb",
+    "language": "C++14",
+    "submit_time": "2025-09-18T10:28:37+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14610",
+    "submission_link": "https://qoj.ac/submission/1356249"
+  },
+  {
+    "submission_id": "#1356312",
+    "problem_name": "Treasure Map",
+    "status": "AC",
+    "time": "110ms",
+    "memory": "67020kb",
+    "language": "C++14",
+    "submit_time": "2025-09-18T10:57:03+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14611",
+    "submission_link": "https://qoj.ac/submission/1356312"
+  },
+  {
+    "submission_id": "#1356069",
+    "problem_name": "Walking on Sunshine",
+    "status": "AC",
+    "time": "29ms",
+    "memory": "5636kb",
+    "language": "C++14",
+    "submit_time": "2025-09-18T09:34:48+08:00",
+    "problem_link": "https://qoj.ac/contest/2522/problem/14612",
+    "submission_link": "https://qoj.ac/submission/1356069"
+  }
+]

@@ -1,0 +1,145 @@
+[
+  {
+    "submission_id": "#1138440",
+    "problem_name": "Programming Contest",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3732kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T09:14:26",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6530",
+    "submission_link": "https://qoj.ac/submission/1138440"
+  },
+  {
+    "submission_id": "#1138522",
+    "problem_name": "Base Station Construction",
+    "status": "AC",
+    "time": "183ms",
+    "memory": "64564kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T10:24:50",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6531",
+    "submission_link": "https://qoj.ac/submission/1138522"
+  },
+  {
+    "submission_id": "#1138450",
+    "problem_name": "Trading",
+    "status": "AC",
+    "time": "68ms",
+    "memory": "5476kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T09:31:20",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6532",
+    "submission_link": "https://qoj.ac/submission/1138450"
+  },
+  {
+    "submission_id": "#1138475",
+    "problem_name": "New Houses",
+    "status": "AC",
+    "time": "73ms",
+    "memory": "6376kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T09:51:16",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6525",
+    "submission_link": "https://qoj.ac/submission/1138475"
+  },
+  {
+    "submission_id": "#1138540",
+    "problem_name": "New but Nostalgic Problem",
+    "status": "AC",
+    "time": "44ms",
+    "memory": "129644kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T10:41:45",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6516",
+    "submission_link": "https://qoj.ac/submission/1138540"
+  },
+  {
+    "submission_id": "#1138616",
+    "problem_name": "Traveling in Cells",
+    "status": "AC",
+    "time": "3065ms",
+    "memory": "48984kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T12:06:53",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6533",
+    "submission_link": "https://qoj.ac/submission/1138616"
+  },
+  {
+    "submission_id": "#1147845",
+    "problem_name": "Swapping Operation",
+    "status": "AC",
+    "time": "444ms",
+    "memory": "22516kb",
+    "language": "C++14",
+    "submit_time": "2025-07-09T23:03:36",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6521",
+    "submission_link": "https://qoj.ac/submission/1147845"
+  },
+  {
+    "submission_id": "#1138630",
+    "problem_name": "Canvas",
+    "status": "AC",
+    "time": "170ms",
+    "memory": "63624kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T12:40:27",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6526",
+    "submission_link": "https://qoj.ac/submission/1138630"
+  },
+  {
+    "submission_id": "#1138457",
+    "problem_name": "Path Planning",
+    "status": "AC",
+    "time": "2591ms",
+    "memory": "15764kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T09:38:50",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6515",
+    "submission_link": "https://qoj.ac/submission/1138457"
+  },
+  {
+    "submission_id": "#1138598",
+    "problem_name": "X Equals Y",
+    "status": "AC",
+    "time": "103ms",
+    "memory": "3728kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T11:44:20",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6519",
+    "submission_link": "https://qoj.ac/submission/1138598"
+  },
+  {
+    "submission_id": "#1138527",
+    "problem_name": "Peg Solitaire",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3744kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T10:30:11",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6534",
+    "submission_link": "https://qoj.ac/submission/1138527"
+  },
+  {
+    "submission_id": "#1139280",
+    "problem_name": "Classic Problem",
+    "status": "AC",
+    "time": "3669ms",
+    "memory": "97840kb",
+    "language": "C++20",
+    "submit_time": "2025-07-05T19:05:04",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6520",
+    "submission_link": "https://qoj.ac/submission/1139280"
+  },
+  {
+    "submission_id": "#1138699",
+    "problem_name": "Computational Geometry",
+    "status": "AC",
+    "time": "584ms",
+    "memory": "784616kb",
+    "language": "C++14",
+    "submit_time": "2025-07-05T13:36:43",
+    "problem_link": "https://qoj.ac/contest/1247/problem/6517",
+    "submission_link": "https://qoj.ac/submission/1138699"
+  }
+]

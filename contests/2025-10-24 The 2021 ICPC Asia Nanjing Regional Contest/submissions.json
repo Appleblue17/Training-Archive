@@ -1,0 +1,134 @@
+[
+  {
+    "submission_id": "#1571761",
+    "problem_name": "Oops, It's Yesterday Twice More",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3844kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T09:18:56+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6431",
+    "submission_link": "https://qoj.ac/submission/1571761"
+  },
+  {
+    "submission_id": "#1574628",
+    "problem_name": "Puzzle in Inazuma",
+    "status": "AC",
+    "time": "14ms",
+    "memory": "4440kb",
+    "language": "C++20",
+    "submit_time": "2025-10-24T18:08:18+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6432",
+    "submission_link": "https://qoj.ac/submission/1574628"
+  },
+  {
+    "submission_id": "#1571884",
+    "problem_name": "Klee in Solitary Confinement",
+    "status": "AC",
+    "time": "152ms",
+    "memory": "65548kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T09:53:03+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6433",
+    "submission_link": "https://qoj.ac/submission/1571884"
+  },
+  {
+    "submission_id": "#1572412",
+    "problem_name": "Paimon Sorting",
+    "status": "AC",
+    "time": "92ms",
+    "memory": "9340kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T11:33:04+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6434",
+    "submission_link": "https://qoj.ac/submission/1572412"
+  },
+  {
+    "submission_id": "#1572614",
+    "problem_name": "Paimon Segment Tree",
+    "status": "AC",
+    "time": "711ms",
+    "memory": "62624kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T12:23:25+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6435",
+    "submission_link": "https://qoj.ac/submission/1572614"
+  },
+  {
+    "submission_id": "#1572738",
+    "problem_name": "Paimon's Tree",
+    "status": "AC",
+    "time": "1360ms",
+    "memory": "167200kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T12:54:54+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6437",
+    "submission_link": "https://qoj.ac/submission/1572738"
+  },
+  {
+    "submission_id": "#1572670",
+    "problem_name": "Crystalfly",
+    "status": "AC",
+    "time": "249ms",
+    "memory": "26464kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T12:38:06+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6438",
+    "submission_link": "https://qoj.ac/submission/1572670"
+  },
+  {
+    "submission_id": "#1572387",
+    "problem_name": "Cloud Retainer's Game",
+    "status": "AC",
+    "time": "559ms",
+    "memory": "22060kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T11:25:12+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6439",
+    "submission_link": "https://qoj.ac/submission/1572387"
+  },
+  {
+    "submission_id": "#1572107",
+    "problem_name": "Xingqiu's Joke",
+    "status": "AC",
+    "time": "872ms",
+    "memory": "36604kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T10:39:58+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6440",
+    "submission_link": "https://qoj.ac/submission/1572107"
+  },
+  {
+    "submission_id": "#1605373",
+    "problem_name": "Ancient Magic Circle in Teyvat",
+    "status": "AC",
+    "time": "1030ms",
+    "memory": "54680kb",
+    "language": "C++20",
+    "submit_time": "2025-10-29T00:03:52+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6441",
+    "submission_link": "https://qoj.ac/submission/1605373"
+  },
+  {
+    "submission_id": "#1572879",
+    "problem_name": "Secret of Tianqiu Valley",
+    "status": "AC",
+    "time": "88ms",
+    "memory": "5344kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T13:30:44+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6442",
+    "submission_link": "https://qoj.ac/submission/1572879"
+  },
+  {
+    "submission_id": "#1571857",
+    "problem_name": "Windblume Festival",
+    "status": "AC",
+    "time": "171ms",
+    "memory": "10204kb",
+    "language": "C++14",
+    "submit_time": "2025-10-24T09:44:19+08:00",
+    "problem_link": "https://qoj.ac/contest/1236/problem/6443",
+    "submission_link": "https://qoj.ac/submission/1571857"
+  }
+]

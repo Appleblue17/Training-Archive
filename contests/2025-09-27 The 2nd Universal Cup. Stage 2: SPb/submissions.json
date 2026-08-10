@@ -1,0 +1,134 @@
+[
+  {
+    "submission_id": "#1405687",
+    "problem_name": "Mixed Messages",
+    "status": "AC",
+    "time": "2ms",
+    "memory": "8860kb",
+    "language": "C++14",
+    "submit_time": "2025-09-27T09:36:49+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7175",
+    "submission_link": "https://qoj.ac/submission/1405687"
+  },
+  {
+    "submission_id": "#1405660",
+    "problem_name": "I Flipped The Calendar...",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3720kb",
+    "language": "C++14",
+    "submit_time": "2025-09-27T09:27:34+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7176",
+    "submission_link": "https://qoj.ac/submission/1405660"
+  },
+  {
+    "submission_id": "#1408693",
+    "problem_name": "Many Many Cycles",
+    "status": "AC",
+    "time": "642ms",
+    "memory": "5772kb",
+    "language": "C++20",
+    "submit_time": "2025-09-27T16:06:49+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7177",
+    "submission_link": "https://qoj.ac/submission/1408693"
+  },
+  {
+    "submission_id": "#1407140",
+    "problem_name": "Bishops",
+    "status": "AC",
+    "time": "15ms",
+    "memory": "6472kb",
+    "language": "C++23",
+    "submit_time": "2025-09-27T14:18:16+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7178",
+    "submission_link": "https://qoj.ac/submission/1407140"
+  },
+  {
+    "submission_id": "#1417817",
+    "problem_name": "Fischer's Chess Guessing Game",
+    "status": "AC",
+    "time": "396ms",
+    "memory": "7928kb",
+    "language": "C++20",
+    "submit_time": "2025-09-29T13:19:46+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7179",
+    "submission_link": "https://qoj.ac/submission/1417817"
+  },
+  {
+    "submission_id": "#1406184",
+    "problem_name": "Graph Cuts",
+    "status": "AC",
+    "time": "1420ms",
+    "memory": "35332kb",
+    "language": "C++14",
+    "submit_time": "2025-09-27T12:29:38+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7181",
+    "submission_link": "https://qoj.ac/submission/1406184"
+  },
+  {
+    "submission_id": "#1455689",
+    "problem_name": "Very Sparse Table",
+    "status": "AC",
+    "time": "1007ms",
+    "memory": "35960kb",
+    "language": "C++20",
+    "submit_time": "2025-10-05T17:58:37+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7182",
+    "submission_link": "https://qoj.ac/submission/1455689"
+  },
+  {
+    "submission_id": "#1405634",
+    "problem_name": "Password",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4020kb",
+    "language": "C++14",
+    "submit_time": "2025-09-27T09:18:26+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7183",
+    "submission_link": "https://qoj.ac/submission/1405634"
+  },
+  {
+    "submission_id": "#1405880",
+    "problem_name": "Transport Pluses",
+    "status": "AC",
+    "time": "46ms",
+    "memory": "75576kb",
+    "language": "C++14",
+    "submit_time": "2025-09-27T10:57:47+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7184",
+    "submission_link": "https://qoj.ac/submission/1405880"
+  },
+  {
+    "submission_id": "#1405817",
+    "problem_name": "Poor Students",
+    "status": "AC",
+    "time": "347ms",
+    "memory": "39596kb",
+    "language": "C++14",
+    "submit_time": "2025-09-27T10:36:05+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7185",
+    "submission_link": "https://qoj.ac/submission/1405817"
+  },
+  {
+    "submission_id": "#1407198",
+    "problem_name": "\"Memo\" Game With a Hint",
+    "status": "AC",
+    "time": "786ms",
+    "memory": "3920kb",
+    "language": "C++14",
+    "submit_time": "2025-09-27T14:22:38+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7186",
+    "submission_link": "https://qoj.ac/submission/1407198"
+  },
+  {
+    "submission_id": "#1406060",
+    "problem_name": "Hardcore String Counting",
+    "status": "AC",
+    "time": "3508ms",
+    "memory": "63692kb",
+    "language": "C++14",
+    "submit_time": "2025-09-27T11:56:13+08:00",
+    "problem_link": "https://qoj.ac/contest/1356/problem/7187",
+    "submission_link": "https://qoj.ac/submission/1406060"
+  }
+]

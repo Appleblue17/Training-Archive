@@ -1,0 +1,123 @@
+[
+  {
+    "submission_id": "#1953471",
+    "problem_name": "Anime",
+    "status": "AC",
+    "time": "14ms",
+    "memory": "12692kb",
+    "language": "C++14",
+    "submit_time": "2026-01-24T12:20:19+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10166",
+    "submission_link": "https://qoj.ac/submission/1953471"
+  },
+  {
+    "submission_id": "#1953690",
+    "problem_name": "Dota 322 for Droids",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "3816kb",
+    "language": "C++14",
+    "submit_time": "2026-01-24T12:59:56+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10168",
+    "submission_link": "https://qoj.ac/submission/1953690"
+  },
+  {
+    "submission_id": "#1955885",
+    "problem_name": "Nomad Camp",
+    "status": "AC",
+    "time": "1155ms",
+    "memory": "42736kb",
+    "language": "C++14",
+    "submit_time": "2026-01-24T17:47:38+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10169",
+    "submission_link": "https://qoj.ac/submission/1955885"
+  },
+  {
+    "submission_id": "#1962555",
+    "problem_name": "Data Structures Master",
+    "status": "AC",
+    "time": "338ms",
+    "memory": "201584kb",
+    "language": "C++20",
+    "submit_time": "2026-01-26T10:53:31+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10170",
+    "submission_link": "https://qoj.ac/submission/1962555"
+  },
+  {
+    "submission_id": "#1953434",
+    "problem_name": "Poisonous Labyrinth",
+    "status": "AC",
+    "time": "448ms",
+    "memory": "236608kb",
+    "language": "C++14",
+    "submit_time": "2026-01-24T12:13:38+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10171",
+    "submission_link": "https://qoj.ac/submission/1953434"
+  },
+  {
+    "submission_id": "#1962323",
+    "problem_name": "Geometry Enjoyer",
+    "status": "AC",
+    "time": "506ms",
+    "memory": "6384kb",
+    "language": "C++23",
+    "submit_time": "2026-01-26T10:14:57+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10172",
+    "submission_link": "https://qoj.ac/submission/1962323"
+  },
+  {
+    "submission_id": "#1953206",
+    "problem_name": "Hocolate Hame",
+    "status": "AC",
+    "time": "462ms",
+    "memory": "214324kb",
+    "language": "C++14",
+    "submit_time": "2026-01-24T10:50:37+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10173",
+    "submission_link": "https://qoj.ac/submission/1953206"
+  },
+  {
+    "submission_id": "#1956334",
+    "problem_name": "Lost Table",
+    "status": "AC",
+    "time": "270ms",
+    "memory": "34820kb",
+    "language": "C++14",
+    "submit_time": "2026-01-24T19:07:12+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10174",
+    "submission_link": "https://qoj.ac/submission/1956334"
+  },
+  {
+    "submission_id": "#1953195",
+    "problem_name": "Team Training",
+    "status": "AC",
+    "time": "38ms",
+    "memory": "7464kb",
+    "language": "C++14",
+    "submit_time": "2026-01-24T10:47:35+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10175",
+    "submission_link": "https://qoj.ac/submission/1953195"
+  },
+  {
+    "submission_id": "#1953225",
+    "problem_name": "Reachability in a Matrix",
+    "status": "AC",
+    "time": "208ms",
+    "memory": "485440kb",
+    "language": "C++14",
+    "submit_time": "2026-01-24T10:59:35+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10176",
+    "submission_link": "https://qoj.ac/submission/1953225"
+  },
+  {
+    "submission_id": "#1953041",
+    "problem_name": "Bitvzhuh",
+    "status": "AC",
+    "time": "345ms",
+    "memory": "11816kb",
+    "language": "C++14",
+    "submit_time": "2026-01-24T09:56:48+08:00",
+    "problem_link": "https://qoj.ac/contest/1931/problem/10177",
+    "submission_link": "https://qoj.ac/submission/1953041"
+  }
+]

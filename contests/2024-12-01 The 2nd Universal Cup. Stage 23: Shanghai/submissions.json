@@ -1,0 +1,101 @@
+[
+  {
+    "submission_id": "#796220",
+    "problem_name": "Roman Master",
+    "status": "AC",
+    "time": "41ms",
+    "memory": "11364kb",
+    "language": "C++14",
+    "submit_time": "2024-12-01T14:30:41",
+    "problem_link": "https://qoj.ac/contest/1522/problem/8048",
+    "submission_link": "https://qoj.ac/submission/796220"
+  },
+  {
+    "submission_id": "#796630",
+    "problem_name": "Equal Sums",
+    "status": "AC",
+    "time": "988ms",
+    "memory": "991956kb",
+    "language": "C++14",
+    "submit_time": "2024-12-01T22:34:21",
+    "problem_link": "https://qoj.ac/contest/1522/problem/8049",
+    "submission_link": "https://qoj.ac/submission/796630"
+  },
+  {
+    "submission_id": "#806529",
+    "problem_name": "Random Permutation",
+    "status": "AC",
+    "time": "2791ms",
+    "memory": "7376kb",
+    "language": "C++14",
+    "submit_time": "2024-12-09T11:22:35",
+    "problem_link": "https://qoj.ac/contest/1522/problem/8050",
+    "submission_link": "https://qoj.ac/submission/806529"
+  },
+  {
+    "submission_id": "#796215",
+    "problem_name": "Colorful Graph",
+    "status": "AC",
+    "time": "37ms",
+    "memory": "5900kb",
+    "language": "C++14",
+    "submit_time": "2024-12-01T14:24:58",
+    "problem_link": "https://qoj.ac/contest/1522/problem/8051",
+    "submission_link": "https://qoj.ac/submission/796215"
+  },
+  {
+    "submission_id": "#796232",
+    "problem_name": "Dot Product",
+    "status": "AC",
+    "time": "31ms",
+    "memory": "13500kb",
+    "language": "C++14",
+    "submit_time": "2024-12-01T14:50:27",
+    "problem_link": "https://qoj.ac/contest/1522/problem/8052",
+    "submission_link": "https://qoj.ac/submission/796232"
+  },
+  {
+    "submission_id": "#797428",
+    "problem_name": "Balance",
+    "status": "AC",
+    "time": "253ms",
+    "memory": "28392kb",
+    "language": "C++14",
+    "submit_time": "2024-12-02T23:35:47",
+    "problem_link": "https://qoj.ac/contest/1522/problem/8055",
+    "submission_link": "https://qoj.ac/submission/797428"
+  },
+  {
+    "submission_id": "#796604",
+    "problem_name": "Travel 2",
+    "status": "AC",
+    "time": "163ms",
+    "memory": "4456kb",
+    "language": "C++14",
+    "submit_time": "2024-12-01T21:56:30",
+    "problem_link": "https://qoj.ac/contest/1522/problem/8056",
+    "submission_link": "https://qoj.ac/submission/796604"
+  },
+  {
+    "submission_id": "#796281",
+    "problem_name": "Best Carry Player 4",
+    "status": "AC",
+    "time": "85ms",
+    "memory": "27508kb",
+    "language": "C++14",
+    "submit_time": "2024-12-01T16:02:02",
+    "problem_link": "https://qoj.ac/contest/1522/problem/8057",
+    "submission_link": "https://qoj.ac/submission/796281"
+  },
+  {
+    "submission_id": "#796377",
+    "problem_name": "Binary vs Ternary",
+    "status": "AC",
+    "time": "12ms",
+    "memory": "3952kb",
+    "language": "C++14",
+    "submit_time": "2024-12-01T17:52:47",
+    "problem_link": "https://qoj.ac/contest/1522/problem/8058",
+    "submission_link": "https://qoj.ac/submission/796377"
+  }
+]
