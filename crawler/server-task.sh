@@ -36,7 +36,7 @@ DEPLOY_BRANCH="deploy"
 # cron 按服务器本地时区执行。
 # 任务 B 对应 action 的每日 0:20 UTC（北京时间 4:00）；install 时会按
 # 服务器时区自动调整：UTC → 0 20 * * *，其他（如 CST）→ 0 4 * * *。
-CRON_A='*/30 * * * *'
+CRON_A='*/40 * * * *'
 CRON_B='0 4 * * *'
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG_FILE"; }

@@ -4,5 +4,11 @@
     "link": "https://acm.hdu.edu.cn/contest/problems?cid=1229",
     "comments": "2026“钉耙编程”中国大学生算法设计暑期联赛（1）",
     "enabled": true
-  }
+  },
+  {
+    "platform": "hdu",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1230",
+    "comments": "2",
+    "enabled": true
+  },
 ]
