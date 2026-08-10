@@ -65,6 +65,7 @@
 
 ### Fixed
 
+- 静态导出在无可用数据时失败：全部 5 个动态路由（`/[page]`、`/review/[contest]`、`/view/contests/[contest]/[file]`、`/view/contests/[contest]/problems/[problem]/[file]`、`/view/contests/[contest]/problems/[problem]/submissions/[file]`）的 `generateStaticParams` 在 `contests/` 无数据或不存在时返回空数组 / `readdirSync` 抛错，`output: export` 判定动态路由无法构建而报错。统一改为：`contests/` 不存在时判空，无匹配数据时返回占位参数（`~no-data~`），页面内部渲染"暂无数据"提示；`/[page]` 兜底输出 `page1`（HomeView 渲染空列表）。数据由爬虫生成后占位页自然消失。影响面：deploy 分支旧数据（无 `submissions.json`/`review.md`/提交历史）或全新 clone 空 `contests/` 时 build 均可通过
 - HDU / NowCoder 提交记录补抓 `problem_id` 字段（此前只存 `problem_link`，题目映射的 name 兜底失效）：两个平台从 status 页题目列（`cols[2]`，与 `problem_link` 同列）抓取题目 ID（如 "1006"）。注意 **HDU/NowCoder 的 status 页该列显示的是题目 ID 而非题目名**，故不再存 `problem_name`；QOJ 从 `#123. Name` 同时提取 `problem_id`（"123"）与 `problem_name`（真实题目名）。三平台提交的题目匹配统一为三级：`problem_link` → `problem_id` → `problem_name`（`base.py` 新增 `_problem_id_from_link` helper；`report.py` 同步支持，link 有格式差异时不再显示 "?"）
 - 补订已完成比赛提交抓不到：HDU/NowCoder 的提交记录在比赛 status 页里，补订时若提交早于全局 `last-update.json`，`_register_submission` 对第一条提交就 `return True` 直接停止，一场都抓不到。`fetch_contests` 记录本次新建的比赛（`_new_contests`），`fetch_submissions` 对首次抓取的比赛以 `start_time` 为截止全量回填（`_deadline_for` + `_register_submission(deadline=...)`）；非首次仍按全局 last-update 增量
 - 早于比赛开始时间的提交（跨赛季复用同一道题的历史提交）统一丢弃：`_update_submission_status` 匹配改为从 link/id/name 候选中选"start_time 最晚且不晚于提交时间"的比赛（提交属于其发生的赛季），早于所有匹配比赛开始的提交返回 `DISCARD` 直接丢弃、不再落入 staged；staged 重试循环对 `DISCARD` 的旧提交同样清除。QOJ 全局时间线同样适用
