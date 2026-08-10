@@ -1,0 +1,413 @@
+1:"$Sreact.fragment"
+2:I[48521,[],""]
+3:I[89900,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-3ad219a6236c735b.js"],"default"]
+4:I[31661,[],""]
+5:I[86070,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+6:I[52236,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],""]
+e:I[50939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/baa0e101e3a2d945.css","style"]
+0:{"P":null,"b":"6qyAPdX8vLiHYeb7J_xvN","p":"/Training-Archive","c":["","view","contests","2026-07-28%202026%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%883%EF%BC%89","problems","C","statement.md"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2026-07-28%202026%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%883%EF%BC%89","d"],{"children":["problems",{"children":[["problem","C","d"],{"children":[["file","statement.md","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/baa0e101e3a2d945.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2026-07-28%202026%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%883%EF%BC%89","d"],"$L7",{"children":["problems","$L8",{"children":[["problem","C","d"],"$L9",{"children":[["file","statement.md","d"],"$La",{"children":["__PAGE__","$Lb",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},["$Lc",[],[]],false],"$Ld",false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+10:I[47055,[],"OutletBoundary"]
+12:I[39909,[],"AsyncMetadataOutlet"]
+14:I[47055,[],"ViewportBoundary"]
+16:I[47055,[],"MetadataBoundary"]
+17:"$Sreact.suspense"
+7:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+8:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+a:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+b:["$","$1","c",{"children":["$Lf",null,["$","$L10",null,{"children":["$L11",["$","$L12",null,{"promise":"$@13"}]]}]]}]
+c:["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}]
+d:["$","$1","h",{"children":[null,[["$","$L14",null,{"children":"$L15"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L16",null,{"children":["$","div",null,{"hidden":true,"children":["$","$17",null,{"fallback":null,"children":"$L18"}]}]}]]}]
+f:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","$L6",null,{"href":"/","children":["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8","key":"5wwlr5"}],["path",{"d":"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z","key":"r6nss1"}]],"className":"lucide-house absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400"}]}],["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2026-07-28 2026“钉耙编程”中国大学生算法设计暑期联赛（3）",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"C","$undefined"],["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"statement.md"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2026-07-28 2026“钉耙编程”中国大学生算法设计暑期联赛（3）/problems/C/statement.md","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M12 15V3","key":"m9g1x1"}],["path",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","key":"ih7n3h"}],["path",{"d":"m7 10 5 5 5-5","key":"brsn70"}]],"className":"lucide-download mr-2 inline-block text-base size-4"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2026-07-28 2026“钉耙编程”中国大学生算法设计暑期联赛（3）/problems/C/statement.md","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z","key":"1oefj6"}],["path",{"d":"M14 2v5a1 1 0 0 0 1 1h5","key":"wfsgrz"}],["path",{"d":"M10 9H8","key":"b1mrlr"}],["path",{"d":"M16 13H8","key":"t4e002"}],["path",{"d":"M16 17H8","key":"z1uh3a"}]],"className":"lucide-file-text mr-2 inline-block text-base size-4"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":"$L19"}],["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"statement.md"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"5.815 KB (5955 B)"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Best"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1003","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1003"}]]}],"$L1a","$L1b","$L1c"]}]]}],"$L1d"]}]]}]]}]}]
+1a:["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"2000 MS"}]]}]
+1b:["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"262144 K"}]]}]
+1c:["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"false"}]]}]
+1d:["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"2026“钉耙编程”中国大学生算法设计暑期联赛（3）"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026-07-28"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"hdu"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/07/28 12:00:00"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/07/28 17:00:00"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problems?cid=1231","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problems?cid=1231"}]]}]]}]]}]
+1e:I[16005,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+1f:T1743,## C. Best
+
+### Problem Description
+
+小 M 的审美很奇怪。
+
+小 M 眼中，一个长度为 l 的美丽的序列 a 满足以下条件：
+
+[[$\forall i \in \lbrack 1,l\rbrack,a_{i} \geq \sum_{x = 1}^{i - 1}a_{x}$][[[]{.strut
+style="height: 0.7335em; vertical-align: -0.0391em;"}[∀]{.mord}[i]{.mord
+.mathnormal}[]{.mspace
+style="margin-right: 0.2778em;"}[∈]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 1em; vertical-align: -0.25em;"}[\[]{.mopen}[1]{.mord}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[l]{.mord .mathnormal
+style="margin-right: 0.0197em;"}[\]]{.mclose}[,]{.mpunct}[]{.mspace
+style="margin-right: 0.1667em;"}[[a]{.mord .mathnormal}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
+.reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≥]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 2.4788em; vertical-align: -0.9671em;"}[[[[[[]{.pstrut
+style="height: 3em;"}[[[x]{.mord .mathnormal .mtight}[=]{.mrel
+.mtight}[1]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.1329em; margin-left: 0em;"}[[]{.pstrut
+style="height: 3em;"}[∑]{.mop .op-symbol
+.small-op}]{style="top: -3em;"}[[]{.pstrut
+style="height: 3em;"}[[[i]{.mord .mathnormal .mtight}[−]{.mbin
+.mtight}[1]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -3.95em; margin-left: 0em;"}]{.vlist
+style="height: 1.5117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.9671em;"}]{.vlist-r}]{.vlist-t .vlist-t2}]{.mop
+.op-limits}[]{.mspace style="margin-right: 0.1667em;"}[[a]{.mord
+.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[x]{.mord
+.mathnormal .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+aria-hidden="true"}]
+
+小 H 有一个由正整数组成的序列
+b，他想从这个序列中取出来一个最长的子序列送给小 M，要求这个子序列在小 M
+眼里是美丽的。
+
+小 H 想知道他能取出来的序列最长长度是多少
+
+### Input
+
+第一行一个正整数
+[[$T\text{（}T \leq 20\text{）}$][[[]{.strut
+style="height: 0.8193em; vertical-align: -0.136em;"}[T]{.mord
+.mathnormal style="margin-right: 0.1389em;"}[（]{.mord
+.cjk_fallback}[T]{.mord .mathnormal
+style="margin-right: 0.1389em;"}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.6833em;"}[20]{.mord}[）]{.mord
+.cjk_fallback}]{.base}]{.katex-html
+aria-hidden="true"}]，表示数据组数。
+
+对于每组数据，第一行一个整数
+[[$n\text{（}1 \leq n \leq 10^{5}\text{）}$][[[]{.strut
+style="height: 0.8193em; vertical-align: -0.136em;"}[n]{.mord
+.mathnormal}[（]{.mord .cjk_fallback}[1]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.7719em; vertical-align: -0.136em;"}[n]{.mord
+.mathnormal}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.8141em;"}[1]{.mord}[[0]{.mord}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[5]{.mord .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -3.063em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.8141em;"}]{.vlist-r}]{.vlist-t}]{.msupsub}]{.mord}[）]{.mord
+.cjk_fallback}]{.base}]{.katex-html aria-hidden="true"}]，表示 b
+序列长度。
+
+接下来一行 [[$n$][[[]{.strut
+style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}] 个整数，第 [[$i$][[[]{.strut
+style="height: 0.6595em;"}[i]{.mord .mathnormal}]{.base}]{.katex-html
+aria-hidden="true"}] 个整数代表着
+[[$b_{i}\text{（}1 \leq b_{i} \leq 10^{18}\text{）}$][[[]{.strut
+style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[i]{.mord
+.mathnormal .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[（]{.mord
+.cjk_fallback}[1]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+.mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[i]{.mord
+.mathnormal .mtight}]{.sizing .reset-size6 .size3
+.mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+.vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+style="height: 0.8141em;"}[1]{.mord}[[0]{.mord}[[[[[[]{.pstrut
+style="height: 2.7em;"}[[[18]{.mord .mtight}]{.mord .mtight}]{.sizing
+.reset-size6 .size3
+.mtight}]{style="top: -3.063em; margin-right: 0.05em;"}]{.vlist
+style="height: 0.8141em;"}]{.vlist-r}]{.vlist-t}]{.msupsub}]{.mord}[）]{.mord
+.cjk_fallback}]{.base}]{.katex-html aria-hidden="true"}].
+
+### Output
+
+输出 [[$T$][[[]{.strut
+style="height: 0.6833em;"}[T]{.mord .mathnormal
+style="margin-right: 0.1389em;"}]{.base}]{.katex-html
+aria-hidden="true"}] 行，每行一个正整数代表这组数据对应的答案。
+
+### Sample Input
+
+```plain
+2
+5
+4 5 1 3 6
+5
+12 1 5 4 9
+```
+
+### Sample Output
+
+```plain
+3
+3
+```
+
+20:T46dc,
+<h2>C. Best</h2>
+<h3>Problem Description</h3>
+<p>小 M 的审美很奇怪。</p>
+<p>小 M 眼中，一个长度为 l 的美丽的序列 a 满足以下条件：</p>
+<p>
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi mathvariant="normal">∀</mi>
+            <mi>i</mi>
+            <mo>∈</mo>
+            <mo stretchy="false">[</mo>
+            <mn>1</mn>
+            <mo separator="true">,</mo>
+            <mi>l</mi>
+            <mo stretchy="false">]</mo>
+            <mo separator="true">,</mo>
+            <msub>
+              <mi>a</mi>
+              <mi>i</mi>
+            </msub>
+            <mo>≥</mo>
+            <msubsup>
+              <mo>∑</mo>
+              <mrow>
+                <mi>x</mi>
+                <mo>=</mo>
+                <mn>1</mn>
+              </mrow>
+              <mrow>
+                <mi>i</mi>
+                <mo>−</mo>
+                <mn>1</mn>
+              </mrow>
+            </msubsup>
+            <msub>
+              <mi>a</mi>
+              <mi>x</mi>
+            </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">\forall i \in \lbrack 1,l\rbrack,a_{i} \geq \sum_{x = 1}^{i - 1}a_{x}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord">∀</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2643em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9646em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>][[[]{.strut
+  style="height: 0.7335em; vertical-align: -0.0391em;"}[∀]{.mord}[i]{.mord
+  .mathnormal}[]{.mspace
+  style="margin-right: 0.2778em;"}[∈]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 1em; vertical-align: -0.25em;"}[[]{.mopen}[1]{.mord}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[l]{.mord .mathnormal
+  style="margin-right: 0.0197em;"}[]]{.mclose}[,]{.mpunct}[]{.mspace
+  style="margin-right: 0.1667em;"}[[a]{.mord .mathnormal}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[i]{.mord .mathnormal .mtight}]{.sizing
+  .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≥]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 2.4788em; vertical-align: -0.9671em;"}[[[[[[]{.pstrut
+  style="height: 3em;"}[[[x]{.mord .mathnormal .mtight}[=]{.mrel
+  .mtight}[1]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.1329em; margin-left: 0em;"}[[]{.pstrut
+  style="height: 3em;"}[∑]{.mop .op-symbol
+  .small-op}]{style="top: -3em;"}[[]{.pstrut
+  style="height: 3em;"}[[[i]{.mord .mathnormal .mtight}[−]{.mbin
+  .mtight}[1]{.mord .mtight}]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -3.95em; margin-left: 0em;"}]{.vlist
+  style="height: 1.5117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.9671em;"}]{.vlist-r}]{.vlist-t .vlist-t2}]{.mop
+  .op-limits}[]{.mspace style="margin-right: 0.1667em;"}[[a]{.mord
+  .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[x]{.mord
+  .mathnormal .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.1514em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}]{.base}]{.katex-html
+  aria-hidden="true"}]
+</p>
+<p>
+  小 H 有一个由正整数组成的序列
+  b，他想从这个序列中取出来一个最长的子序列送给小 M，要求这个子序列在小 M
+  眼里是美丽的。
+</p>
+<p>小 H 想知道他能取出来的序列最长长度是多少</p>
+<h3>Input</h3>
+<p>
+  第一行一个正整数
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>T</mi>
+            <mtext>（</mtext>
+            <mi>T</mi>
+            <mo>≤</mo>
+            <mn>20</mn>
+            <mtext>）</mtext>
+          </mrow>
+          <annotation encoding="application/x-tex">T\text{（}T \leq 20\text{）}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord text"><span class="mord cjk_fallback">（</span></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">20</span><span class="mord text"><span class="mord cjk_fallback">）</span></span></span></span></span>][[[]{.strut
+  style="height: 0.8193em; vertical-align: -0.136em;"}[T]{.mord
+  .mathnormal style="margin-right: 0.1389em;"}[（]{.mord
+  .cjk_fallback}[T]{.mord .mathnormal
+  style="margin-right: 0.1389em;"}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.6833em;"}[20]{.mord}[）]{.mord
+  .cjk_fallback}]{.base}]{.katex-html
+  aria-hidden="true"}]，表示数据组数。
+</p>
+<p>
+  对于每组数据，第一行一个整数
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+            <mtext>（</mtext>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <mi>n</mi>
+            <mo>≤</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>5</mn>
+            </msup>
+            <mtext>）</mtext>
+          </mrow>
+          <annotation encoding="application/x-tex">n\text{（}1 \leq n \leq 10^{5}\text{）}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mord text"><span class="mord cjk_fallback">（</span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span><span class="mord text"><span class="mord cjk_fallback">）</span></span></span></span></span>][[[]{.strut
+  style="height: 0.8193em; vertical-align: -0.136em;"}[n]{.mord
+  .mathnormal}[（]{.mord .cjk_fallback}[1]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.7719em; vertical-align: -0.136em;"}[n]{.mord
+  .mathnormal}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.8141em;"}[1]{.mord}[[0]{.mord}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[5]{.mord .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -3.063em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.8141em;"}]{.vlist-r}]{.vlist-t}]{.msupsub}]{.mord}[）]{.mord
+  .cjk_fallback}]{.base}]{.katex-html aria-hidden="true"}]，表示 b
+  序列长度。
+</p>
+<p>
+  接下来一行 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>][[[]{.strut
+  style="height: 0.4306em;"}[n]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}] 个整数，第 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>i</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">i</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>][[[]{.strut
+  style="height: 0.6595em;"}[i]{.mord .mathnormal}]{.base}]{.katex-html
+  aria-hidden="true"}] 个整数代表着
+  [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <msub>
+              <mi>b</mi>
+              <mi>i</mi>
+            </msub>
+            <mtext>（</mtext>
+            <mn>1</mn>
+            <mo>≤</mo>
+            <msub>
+              <mi>b</mi>
+              <mi>i</mi>
+            </msub>
+            <mo>≤</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>18</mn>
+            </msup>
+            <mtext>）</mtext>
+          </mrow>
+          <annotation encoding="application/x-tex">b_{i}\text{（}1 \leq b_{i} \leq 10^{18}\text{）}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord text"><span class="mord cjk_fallback">（</span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">18</span></span></span></span></span></span></span></span></span><span class="mord text"><span class="mord cjk_fallback">）</span></span></span></span></span>][[[]{.strut
+  style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+  .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[i]{.mord
+  .mathnormal .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[（]{.mord
+  .cjk_fallback}[1]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.8444em; vertical-align: -0.15em;"}[[b]{.mord
+  .mathnormal}[[[[[[]{.pstrut style="height: 2.7em;"}[[i]{.mord
+  .mathnormal .mtight}]{.sizing .reset-size6 .size3
+  .mtight}]{style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.3117em;"}[​]{.vlist-s}]{.vlist-r}[[]{.vlist
+  style="height: 0.15em;"}]{.vlist-r}]{.vlist-t
+  .vlist-t2}]{.msupsub}]{.mord}[]{.mspace
+  style="margin-right: 0.2778em;"}[≤]{.mrel}[]{.mspace
+  style="margin-right: 0.2778em;"}]{.base}[[]{.strut
+  style="height: 0.8141em;"}[1]{.mord}[[0]{.mord}[[[[[[]{.pstrut
+  style="height: 2.7em;"}[[[18]{.mord .mtight}]{.mord .mtight}]{.sizing
+  .reset-size6 .size3
+  .mtight}]{style="top: -3.063em; margin-right: 0.05em;"}]{.vlist
+  style="height: 0.8141em;"}]{.vlist-r}]{.vlist-t}]{.msupsub}]{.mord}[）]{.mord
+  .cjk_fallback}]{.base}]{.katex-html aria-hidden="true"}].
+</p>
+<h3>Output</h3>
+<p>
+  输出 [[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>T</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">T</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>][[[]{.strut
+  style="height: 0.6833em;"}[T]{.mord .mathnormal
+  style="margin-right: 0.1389em;"}]{.base}]{.katex-html
+  aria-hidden="true"}] 行，每行一个正整数代表这组数据对应的答案。
+</p>
+<h3>Sample Input</h3>
+<pre><code class="hljs language-plain">2
+5
+4 5 1 3 6
+5
+12 1 5 4 9
+</code></pre>
+<h3>Sample Output</h3>
+<pre><code class="hljs language-plain">3
+3
+</code></pre>
+19:["$","$L1e",null,{"raw":"$1f","htmlContent":"$20"}]
+15:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+11:null
+13:{"metadata":[],"error":null,"digest":"$undefined"}
+18:"$13:metadata"
