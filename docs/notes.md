@@ -6,6 +6,8 @@
 
 ## 最近更新
 
+- 2026-08-10：方式二一键管理脚本 `crawler/server-task.sh`——复刻 Action 流程（pull→爬取→报告→清理→push），子命令 run/install/uninstall/status/log；`deploy.yml` 加 `push: branches: [deploy]` 触发（仅 `[contests-changed]` 提交部署）；gitignore 忽略 `crawler/server-task.log`。README / roadmap 同步。
+- 2026-08-10：部署方式确认并文档化——静态版两种部署方式（①GitHub Actions 开启 `schedule` 定时；②自建服务器 cron 跑同一套脚本，关闭 schedule、产物 push 回 deploy 分支需自行接入部署触发），动态版 v0.3.x 单列；写入 `docs/roadmap.md` §1.1 与 README「部署方式」。
 - 2026-08-10：Contribution 收尾——卡片 `w-fit max-w-full` 收缩到内容宽度（原被 `w-full` 容器拉伸）；Y 轴星期标签补全 7 天（Sun–Sat，列宽 30px）。lint + 全量 build 通过。
 - 2026-08-10：Dashboard 统计与 Contribution 改版——①AC 卡片替换为 Total Code（`getTotalCodeBytes` 统计 submissions/ 源码字节总和）；②绿点图布局改 flex 按周分列修复横向 gap 虚大（原 grid 隐式列被 stretch 拉伸），新增 X 轴月份 / Y 轴星期标签；③悬浮自定义 tooltip（scrollLeft 校正）。lint + 全量 build 通过。
 - 2026-08-10：`/readme` 页样式与文件查看器统一——直接复用 `FileViewerMarkdown` 组件（深色容器 `bg-[#0d1117]` + 边框 + 右上角复制按钮 + `p-12` 可滚动区），移除 `Card` 包裹；README 缺失时同风格占位提示。lint + 全量 build 通过。

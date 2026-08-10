@@ -68,6 +68,7 @@ crawler/*/contests.json
 crawler/*/staged-submissions.json
 crawler/*/log.json
 crawler/*/input_*.json
+crawler/server-task.log
 # 但保留配置模板可提交
 !crawler/config.example.json
 !crawler/subscriptions.example.json

@@ -54,6 +54,10 @@
 - Dashboard 统计卡片 AC 替换为 **Total Code**：新增 `getTotalCodeBytes()`（`contests/*/problems/*/submissions/` 归档源码字节数总和，`formatSize` 显示），AC 提交数语义与 Solved 重复且无区分度
 - Contribution 绿点图改版：①方格布局由 `grid grid-rows-7`（隐式列被 `justify-content: stretch` 拉伸导致横向 gap 虚大）改为 **flex 每列固定 10px**（`flex flex-col gap-[3px]` 按周分列），横向/纵向 gap 严格一致；②新增 **X 轴月份标签**（锚定该月第一天所在周列，绝对定位）与 **Y 轴星期标签**（Sun/Mon/Wed/Fri，与 7 行对齐）；③悬浮提示改为**自定义 tooltip**（绝对定位 + `scrollLeft` 校正，首行下方/其余上方显示，`YYYY/MM/DD` 日期），替代原生 `title`；单元格保留 `role="img"` + `aria-label`
 - Contribution 卡片宽度与 Y 轴标签收尾：卡片加 `w-fit max-w-full`（不再被 `w-full` 容器拉伸，收缩到内容宽度）；Y 轴星期标签补全 7 天（Sun–Sat，列宽 26→30px）
+- 部署方式确认与文档化：静态版（v0.2.0）拆为两种部署方式——①GitHub Actions 自动任务（开启两个 workflow 的 `schedule`，零运维）；②自建服务器 cron 跑同一套脚本（关闭 schedule，产物 push 回 `deploy` 分支触发部署，需自行接入部署触发）；动态版（v0.3.x）单列。记录至 `docs/roadmap.md` §1.1 并写入 README「部署方式」章节
+- 方式二一键管理脚本 `crawler/server-task.sh`：复刻 Action 完整流程（pull deploy 分支 → 跑爬虫任务 → 生成报告 → 清理日志 → 提交推送，`[contests-changed]` 标记规则一致）；子命令 `run [a|b]` / `install` / `uninstall` / `status` / `log [N]`；内建 `flock` 防并发、`.env` 加载（cron 环境不继承）、`TZ=Asia/Shanghai`、venv 自动探测、依赖检查、cron 时区自动适配
+- `deploy.yml` 支持方式二部署触发：新增 `on: push: branches: [deploy]`——push 事件免日期校验，仅带 `[contests-changed]` 标记的提交部署；`deploy` job 条件收紧为 `should_deploy == 'true' || workflow_dispatch`（原 `!= workflow_run` 会让 push 事件无条件部署）
+- `.gitignore` / `.gitignore.deploy` 忽略 `crawler/server-task.log`（运行日志不入库）
 
 ### Fixed
 

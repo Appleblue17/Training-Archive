@@ -15,6 +15,42 @@
 
 构建开关建议：环境变量（如 `NEXT_PUBLIC_DEPLOY_MODE=static|dynamic`）区分构建模式。数据流上保留「文件为事实来源」：爬虫不变，动态版在服务端把 `contests/` 数据灌入 DB 供 API 查询。
 
+### 1.1 三种部署方式（2026-08-10 确认）
+
+静态版（v0.2.0）有**两种部署方式**，差异只在「自动任务跑在哪 + 产物如何触发部署」，**爬虫/报告脚本完全共用**；动态版（v0.3.x）单列：
+
+| # | 部署形态 | 自动任务（爬取/总结） | 版本 | 操作 |
+|---|----------|----------------------|------|------|
+| 1 | GitHub Pages（静态导出） | **GitHub Actions**（cron 定时） | v0.2.0 | 开启两个 workflow 的 `schedule` 即完成，零运维 |
+| 2 | GitHub Pages（静态导出） | **自建服务器**（cron 定时） | v0.2.0 | 关闭 workflow 的 `schedule`，服务器 cron 跑同一套脚本，产物 push 回 `deploy` 分支触发部署 |
+| 3 | 自建服务器（Next.js 动态） | 服务器内 APScheduler / `at`（精确到分钟） | v0.3.x | roadmap §3，需 API routes / Docker |
+
+#### 方案 1：GitHub Actions 自动任务（当前默认）
+- **开启定时**（取消注释）：
+  - `.github/workflows/crawler-scheduled.yml`：`schedule` cron `*/30 * * * *`（任务 A：抓订阅比赛 + 增量同步）
+  - `.github/workflows/crawler.yml`：`schedule` cron `0 20 * * *`（任务 B：每日提交增量同步）
+- 爬虫跑完带 `[contests-changed]` 标记 push 到 `deploy` 分支 → `deploy.yml`（`workflow_run` 监听两个 crawler workflow）自动构建并部署 Pages。
+- 优点：完全托管云端、零运维；缺点：Actions 无原生单次调度，预订比赛用轮询模拟（延迟 15~30 分钟）。
+
+#### 方案 2：自建服务器跑脚本
+- **关闭定时**（保留 `workflow_dispatch` 手动触发即可）。
+- 提供一键管理脚本 **`crawler/server-task.sh`**（复刻 Action 完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
+  ```bash
+  crawler/server-task.sh run [a|b]   # 一键运行（a=任务A完整抓取[默认]，b=任务B仅提交同步）
+  crawler/server-task.sh install     # 安装 cron（任务A 每 30 分钟 + 任务B 每日，自动适配服务器时区）
+  crawler/server-task.sh uninstall   # 卸载 cron
+  crawler/server-task.sh status      # 查看 cron / git / 最近日志
+  crawler/server-task.sh log [N]     # 查看运行日志
+  ```
+- 脚本内建：`flock` 防并发、自动切到 `deploy` 分支 + `--ff-only` pull、加载根目录 `.env`（cron 环境不继承）、`TZ=Asia/Shanghai`、venv 自动探测、依赖检查、提交规则与 action 一致（`contests/` 变化带 `[contests-changed]` 标记）。
+- **部署触发**：`deploy.yml` 已加 `on: push: branches: [deploy]`——带 `[contests-changed]` 标记的提交才部署，仅状态变化的提交跳过（push 事件免日期校验；`workflow_dispatch` 仍无条件部署）。
+- 优点：调度灵活（可精确到分钟、可用 `at` 排一次性任务）、不消耗 Actions 配额；缺点：需自备服务器与 Chrome/Chromedriver 环境。
+
+#### 方案 3：动态版（v0.3.x）
+- 自建服务器 / Docker，Next.js API routes 或独立 service。
+- 数据流：爬虫不变，服务端把 `contests/` 灌入 DB 供 API 查询；账号系统、个人收藏、正式资源保护见 §5 / §6。
+- 调度：APScheduler / `at` 按 `end_time` 排一次性任务，精确到分钟，跑完即删（见 §3）。
+
 ---
 
 ## 2. 功能分级：静态版 / 动态版

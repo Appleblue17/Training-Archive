@@ -65,6 +65,7 @@ crawler/chromedriver-linux64
 crawler/global.log.json
 crawler/*/log.json
 crawler/*/input_*.json
+crawler/server-task.log
 
 # test script
 *test.sh
