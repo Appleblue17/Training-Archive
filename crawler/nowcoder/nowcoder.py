@@ -354,6 +354,14 @@ class NOWCODERCrawler(BaseCrawler):
                 self.log("error", "Input contest does not have a link.")
                 continue
             contest_link = input_contest["link"]
+            # contests-only（--contests-only）：只回填本次新建比赛的提交，
+            # 已有比赛的增量由每日任务B（--submissions-only）负责
+            if getattr(self, "_contests_only", False) and contest_link not in self._new_contests:
+                self.log(
+                    "info",
+                    f"Contest {contest_link} not new in this run; skipped (contests-only).",
+                )
+                continue
             self.log(
                 "info",
                 f"Start fetching submissions from {contest_link}.",

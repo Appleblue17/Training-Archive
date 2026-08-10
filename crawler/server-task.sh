@@ -7,7 +7,7 @@
 #   提交推送（[contests-changed] 规则）→ GitHub Actions 的 deploy.yml 自动部署 Pages
 #
 # 用法:
-#   server-task.sh run [a|b]    手动运行一次任务（a=任务A完整抓取[默认]，b=任务B仅提交同步）
+#   server-task.sh run [a|b]    手动运行一次任务（a=任务A查订阅/新建比赛[默认]，b=任务B仅提交同步）
 #   server-task.sh install      安装 cron 定时（任务A 每 30 分钟 + 任务B 每日）
 #   server-task.sh uninstall    卸载 cron 定时
 #   server-task.sh status       查看 cron / git / 最近日志
@@ -116,10 +116,12 @@ cmd_run() {
   fi
 
   # 3. 运行爬虫任务（与 action 一致：失败即中止，不提交推送）
+  #    a=--contests-only：只查订阅/新建比赛，有新建才回填其提交（高频触发保持轻量）
+  #    b=--submissions-only：每日增量提交同步
   if [ "$mode" = "b" ]; then
     "$PY" crawler/scheduled_task.py --submissions-only
   else
-    "$PY" crawler/scheduled_task.py
+    "$PY" crawler/scheduled_task.py --contests-only
   fi
 
   # 4. 复盘报告（独立于爬虫；只对本次爬取新建的比赛生成，失败仅告警，不阻断数据上线）

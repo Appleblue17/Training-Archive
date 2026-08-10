@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   # 定时尚未启用：工作流未实测通过前先手动触发验证
   # schedule:
-  #   - cron: "*/30 * * * *" # Every 30 minutes: task A (scheduled contests + submissions)
+  #   - cron: "*/30 * * * *" # Every 30 minutes: check subscriptions for new contests (--contests-only)
 
 concurrency:
   group: crawler
@@ -57,9 +57,9 @@ jobs:
       - name: Ensure chromedriver is executable
         run: chmod +x crawler/chromedriver-linux64/chromedriver
 
-      - name: "Run scheduled task (task A: fetch contests + sync submissions)"
+      - name: "Run scheduled task (--contests-only: check subscriptions, backfill new contests)"
         id: crawl
-        run: python3 crawler/scheduled_task.py
+        run: python3 crawler/scheduled_task.py --contests-only
         env:
           PYTHONUNBUFFERED: "1"
           CHROME_BINARY: ${{ steps.setup-chrome.outputs.chrome-path }}

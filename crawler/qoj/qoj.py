@@ -343,6 +343,12 @@ class QOJCrawler(BaseCrawler):
             )
             return
 
+        # 增量截止：
+        #   contests-only（--contests-only）→ 最早的新比赛开始时间，只回填
+        #     新比赛提交区间；已有比赛的增量由每日任务B负责
+        #   否则 → None，沿用全局 last-update 增量截止
+        deadline = self._contests_only_deadline()
+
         # Assuming there are not more than 50 pages of submissions
         for page in range(1, 50):
             self.log("info", f"Start fetching submissions from page {page}.")
@@ -420,7 +426,9 @@ class QOJCrawler(BaseCrawler):
                     "problem_link": problem_link,
                     "submission_link": submission_link,
                 }
-                stop_fetching = self._register_submission(submission_entry)
+                stop_fetching = self._register_submission(
+                    submission_entry, deadline=deadline
+                )
                 if stop_fetching:
                     self._mark_submissions_complete()
                     return

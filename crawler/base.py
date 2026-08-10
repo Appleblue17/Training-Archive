@@ -58,6 +58,10 @@ class BaseCrawler:
         # report.py / qq_share.py 以 --from-crawl 只对这些比赛生成报告。
         self._new_contest_folders = []
 
+        # contests-only 模式（--contests-only）：只回填本次新建比赛的提交，
+        # 不回填已有比赛的增量（由每日任务B负责），finish() 不推进 last-update。
+        self._contests_only = False
+
         self.init_driver()
 
     def _random_sleep(self, min_wait_time=None, max_wait_time=None):
@@ -322,6 +326,21 @@ class BaseCrawler:
                 "falling back to incremental.",
             )
             return None
+
+    def _contests_only_deadline(self):
+        """contests-only（--contests-only）：最早的新比赛开始时间作为提交抓取截止。
+
+        只回填本次新建比赛的提交区间；非 contests-only / 无新比赛 / 全部缺
+        start_time 时返回 None，由调用方回退到全局 last_update_time 增量截止。
+        """
+        if not getattr(self, "_contests_only", False) or not self._new_contests:
+            return None
+        starts = [
+            self._convert_iso_to_beijing(v)
+            for v in self._new_contests.values()
+            if v
+        ]
+        return min(starts) if starts else None
 
     def _problem_id_from_link(self, link):
         """从 problem_link 提取平台题目 ID。
@@ -939,6 +958,16 @@ class BaseCrawler:
             self.log(
                 "warning",
                 "Submissions fetch was not marked complete; last-update not advanced.",
+            )
+            return
+        if self._contests_only:
+            # contests-only：只回填新建比赛的提交（可能完整也可能不完整），
+            # 不推进全局 last-update——否则会跳过已有比赛在两次任务之间
+            # 的新提交（已有比赛的增量同步由每日任务B --submissions-only 负责）。
+            self.log(
+                "info",
+                "Contests-only run; last-update not advanced "
+                "(incremental sync is handled by task B).",
             )
             return
         self.last_update = self._load_file(self.last_update_path, default={})

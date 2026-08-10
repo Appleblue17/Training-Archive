@@ -16,7 +16,7 @@
 └──────────────────┘
 ```
 
-- **爬虫子系统**：定时（任务A：预订比赛抓取，每 30 分钟；任务B：提交周期同步，每天）抓取竞赛、题目、提交与代码，写入 `contests/` 目录和各类日志；复盘报告由独立脚本 `crawler/report.py` 生成。
+- **爬虫子系统**：定时（任务A：查订阅/预订比赛抓取，每 30 分钟 `--contests-only`；任务B：提交周期同步，每天）抓取竞赛、题目、提交与代码，写入 `contests/` 目录和各类日志；复盘报告由独立脚本 `crawler/report.py` 生成。
 - **前端子系统**：Next.js 静态导出。构建时通过 `fs` 读取 `contests/` 目录与 JSON 元数据，生成竞赛列表、题目详情、文件查看与复盘页面。
 - **CI/CD**：`crawler-scheduled.yml`（任务A）与 `crawler.yml`（任务B）在 `deploy` 分支上运行爬虫并提交数据；`deploy.yml` 检测到当日数据变更后构建并发布到 GitHub Pages。
 
@@ -141,7 +141,7 @@ contests/
 | `_archive_submission()` | 单份提交全量归档 | 按 `submission_id` 幂等去重；源码抓取失败不阻断元数据记录 |
 | `_load_subscriptions()` | 加载订阅配置 | 合并 `crawler/subscriptions/` 目录下所有 `.json`（按 `link` 去重），按 `platform` + `enabled` 过滤 |
 | `_mark_submissions_complete()` | 标记提交抓取完整 | 仅在完整结束时调用；`finish()` 据此决定是否推进 `last-update.json` |
-| `finish()` | 收尾 | 关闭驱动；**仅当** `_mark_submissions_complete()` 被调用过才更新 `last-update.json`（避免抓取不完整时静默漏提交） |
+| `finish()` | 收尾 | 关闭驱动；**仅当** `_mark_submissions_complete()` 被调用过才更新 `last-update.json`（避免抓取不完整时静默漏提交）；**contests-only 模式始终不推进**（增量由任务B负责） |
 
 其他基础设施：
 
@@ -185,14 +185,17 @@ contests/
 }
 ```
 
-`crawler/scheduled_task.py` 提供两个任务入口（**只负责爬虫**，复盘报告由 `crawler/report.py` 独立生成，见 4.4）：
+`crawler/scheduled_task.py` 提供三个入口（**只负责爬虫**，复盘报告由 `crawler/report.py` 独立生成，见 4.4）：
 
 | 任务 | 命令 | 调度 | 职责 |
 |------|------|------|------|
-| 任务A（预订比赛抓取） | `python3 crawler/scheduled_task.py` | `crawler-scheduled.yml`，每 30 分钟 | 抓订阅的已开始比赛 → 增量同步提交 |
+| 任务A（完整，默认） | `python3 crawler/scheduled_task.py` | 手动/临时 | 抓订阅的已开始比赛 → 增量同步提交 |
+| 任务A（`--contests-only`） | `python3 crawler/scheduled_task.py --contests-only` | `crawler-scheduled.yml`，每 30 分钟 | 只检查订阅有没有触发（新建比赛）；有新建才回填这些比赛的提交记录，无新建则完全不碰提交，保持轻量。**不推进 `last-update.json`**——已有比赛的增量由任务B负责 |
 | 任务B（提交周期同步） | `python3 crawler/scheduled_task.py --submissions-only` | `crawler.yml`，每天 20:00 UTC | 对所有已开始/进行中的比赛做增量提交抓取 |
 
-两个爬虫工作流在爬虫步骤之后均追加独立的报告生成步骤（`python3 crawler/report.py --from-crawl`），与爬虫解耦：爬虫失败不生成报告，报告失败不阻断提交/部署。`--from-crawl` 只对任务A 本次新建的比赛生成（读取 `crawler/new-contests.json`，见 4.4），任务B（无新建比赛）自然跳过。
+`--contests-only` 实现要点：`scheduled_task.run_platform` 在 `fetch_contests` 后检查 `crawler._new_contests`，为空直接结束；非空则置 `crawler._contests_only = True` 再 `fetch_submissions()`——HDU/NowCoder 的 `fetch_submissions_get_submissions` 只遍历本次新建的比赛（其余订阅跳过），QOJ 以最早新比赛开始时间为提交截止（`_register_submission(deadline=...)`），`BaseCrawler.finish()` 在 contests-only 模式始终不推进 `last-update.json`。
+
+两个爬虫工作流在爬虫步骤之后均追加独立的报告生成步骤（`python3 crawler/report.py --from-crawl`），与爬虫解耦：爬虫失败不生成报告，报告失败不阻断提交/部署。`--from-crawl` 只对本次新建的比赛生成（读取 `crawler/new-contests.json`，见 4.4），任务B（无新建比赛）自然跳过。
 
 ### 4.4 复盘报告（`crawler/report.py`，独立总结脚本）
 
@@ -200,7 +203,7 @@ contests/
   - `python3 crawler/report.py --from-crawl`（**推荐**）：只对本次爬取新建的比赛生成（读 `crawler/new-contests.json`，任务A 结束时写入；无文件/空列表时直接跳过）
   - `python3 crawler/report.py`：扫描所有已结束且缺 `review.md` 的比赛补生成
   - `python3 crawler/report.py <contest_folder>`：只生成指定比赛
-- 任务A（`crawler/scheduled_task.py`）结束时把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时状态文件，gitignore；无新建比赛时删除旧文件），`report.py` / `qq_share.py` 以 `--from-crawl` 读取；读写逻辑统一在共享模块 `crawler/new_contests.py`。
+- 任务A（`crawler/scheduled_task.py`，含 `--contests-only`）结束时把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时状态文件，gitignore；无新建比赛时删除旧文件），`report.py` / `qq_share.py` 以 `--from-crawl` 读取；读写逻辑统一在共享模块 `crawler/new_contests.py`。
 - 读取 `contest.json`、`submissions.json`、`problems/<letter>/submissions/<id>.<ext>`，**不做分析性预处理**，原始提交序列（含代码与时间戳）直接送 DeepSeek（OpenAI 兼容接口，`deepseek-chat`）。
 - 输出 `contests/<date> <name>/review.md`；`review.md` 已存在即跳过（幂等）。
 - API key 从环境变量 `DEEPSEEK_API_KEY` 读取（CI secret）。
@@ -213,6 +216,7 @@ contests/
 - 未匹配到已归档竞赛的提交先进入 `crawler/<platform>/staged-submissions.json`，下次运行时优先尝试回填（如新竞赛已归档）。
 - 若题目已 AC 且旧提交非 AC，则不会用旧提交覆盖；新 AC 提交会更新 `solve_time`（取最早的 AC 时间）。
 - 提交抓取**完整性校验**：只有遍历完所有分页或到达 last-update 才标记完整；`finish()` 仅在此情况下推进 `last-update.json`，否则下次重跑，避免静默漏提交。
+- **contests-only（`--contests-only`）不回填已有比赛、不推进 `last-update.json`**：新建比赛的提交以该场 `start_time` 为截止全量回填（`_deadline_for`，与任务A首次抓取一致），已有比赛的增量由每日任务B推进。若推进，会跳过已有比赛在两次任务之间的新提交，造成漏抓。
 
 **deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/*/contests.json`、`crawler/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。CI 工作流在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。仅 crawler 状态变化时同样提交（消息不带 `[contests-changed]` 标记，不触发部署）。日志、chromedriver 二进制、遗留 `input_*.json`、`new-contests.json`（临时报告列表，见 4.4）始终不提交。
 
@@ -229,7 +233,7 @@ contests/
 | 订阅模型 `crawler/subscriptions/` 目录 | 统一管理预订比赛，取代单文件 `subscriptions.json` 与各平台零散的 `input_contests.json`；多文件按 `link` 去重合并，文件名随意便于分组 | 三平台均为订阅驱动；订阅目录开发分支 gitignore，deploy 分支纳入版本控制 |
 | 全量提交采集（`submissions/` + `submissions.json`） | 复盘报告需要完整提交序列（含每份源码） | 每次提交都抓源码，初始同步耗时更长 |
 | LLM 复盘报告（DeepSeek） | 每场一份 `review.md`，原始提交序列直接送 LLM，不做预处理 | 依赖 `DEEPSEEK_API_KEY`；存在即跳过（幂等） |
-| 爬虫调度恢复为定时（两个任务） | 任务A（预订抓取，每 30 分钟）与任务B（提交周期同步，每天）分离；复盘报告由 `report.py` 独立运行 | `crawler-scheduled.yml` + `crawler.yml`，`concurrency` 串行防冲突 |
+| 爬虫调度恢复为定时（两个任务） | 任务A（查订阅/预订抓取，每 30 分钟 `--contests-only`，有新建才回填其提交）与任务B（提交周期同步，每天）分离；复盘报告由 `report.py` 独立运行 | `crawler-scheduled.yml` + `crawler.yml`，`concurrency` 串行防冲突 |
 | 平台启用/禁用由 `config.json` 控制 | HDU/NowCoder 平台结构变动/登录不稳定，默认停用；QOJ 为主力 | 每个平台条目 `enabled` 字段（缺省 false 视为禁用），`scheduled_task.py` 启动时过滤；代码保留，未删除 |
 
 ## 6. 已知限制

@@ -71,8 +71,10 @@ pip install -r crawler/requirements.txt
 
 # 准备配置与环境变量（见 crawler/subscriptions/subscriptions.example.json、.env.example）
 # 订阅文件放在 crawler/subscriptions/ 目录（每个 .json 一份列表，文件名随意）
-# 任务A：抓订阅比赛 + 增量同步提交
+# 任务A（默认完整：抓订阅比赛 + 全量增量提交）
 python3 crawler/scheduled_task.py
+# 任务A（--contests-only：只查订阅/新建比赛，有新建才回填其提交；高频触发推荐）
+python3 crawler/scheduled_task.py --contests-only
 # 任务B：每日增量同步提交
 python3 crawler/scheduled_task.py --submissions-only
 # 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成）
@@ -94,7 +96,7 @@ GitHub 云端定时运行爬虫，自动提交并部署到 GitHub Pages：
 
 1. 在仓库 Secrets 配置凭据（QOJ/HDU 账号、NowCoder Cookie、`DEEPSEEK_API_KEY`，见 `.env.example`）。
 2. 开启两个工作流的定时（取消注释 `schedule`）：
-   - `.github/workflows/crawler-scheduled.yml`：每 30 分钟任务 A（抓订阅比赛 + 增量同步）
+   - `.github/workflows/crawler-scheduled.yml`：每 30 分钟查订阅/新建比赛（`--contests-only`，有新建才回填其提交）
    - `.github/workflows/crawler.yml`：每日 20:00 UTC 任务 B（提交增量同步）
 3. 爬虫完成后自动触发 `deploy.yml` 部署 Pages。
 
@@ -103,7 +105,7 @@ GitHub 云端定时运行爬虫，自动提交并部署到 GitHub Pages：
 关闭工作流的定时（保留手动触发），在服务器上用 cron 跑同一套脚本，产物 push 回 `deploy` 分支，由 GitHub Actions 的 `deploy.yml` 自动构建部署 Pages。提供一键管理脚本 `crawler/server-task.sh`（复刻 Action 完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
 
 ```bash
-# 一键运行（任务 A：抓订阅比赛 + 增量同步；任务 B：仅提交增量同步）
+# 一键运行（任务 A：查订阅/新建比赛（--contests-only）；任务 B：仅提交增量同步）
 crawler/server-task.sh run [a/b]
 
 # 安装 / 卸载 cron 定时（任务 A 每 30 分钟 + 任务 B 每日，自动适配服务器时区）
