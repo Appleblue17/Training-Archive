@@ -1,3 +1,10 @@
+# 此文件是 deploy 分支专用的 gitignore。
+# deploy 分支托管竞赛数据与爬虫增量状态，因此 contests/ 与 crawler 状态文件
+# （last-update / 平台索引 / staged / config / subscriptions）都纳入版本控制，
+# 支持 CI 增量同步跨运行生效，也支持在仓库中手动上传代码。
+# CI 工作流会在提交前用本文件覆盖 .gitignore。
+# 开发分支请使用根目录的 .gitignore（忽略上述文件）。
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -42,7 +49,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# contest source
+# contest source (deploy 时复制到 public 的目录，不提交)
 /public/contests
 
 # build-time generated search index (scripts/generate-search-index.mjs)
@@ -53,30 +60,15 @@ next-env.d.ts
 __pycache__/
 
 # crawler
-# 开发分支忽略爬虫数据与增量状态；deploy 分支使用 .gitignore.deploy（CI 提交前
-# 覆盖 .gitignore），将 contests/ 与状态文件纳入版本控制，保证增量同步生效。
-/contests/
 crawler/chrome-linux64
 crawler/chromedriver-linux64
 crawler/global.log.json
-crawler/last-update.json
-crawler/config.json
-# 忽略 subscriptions 目录内容，但保留目录本身，使 ! 规则能重新纳入模板文件
-# （直接忽略 crawler/subscriptions/ 会连目录一起忽略，git 不再进入目录，! 失效）
-crawler/subscriptions/*
-!crawler/subscriptions/subscriptions.example.json
+crawler/new-contests.json
 crawler/prompts/prompt.template.md
 crawler/prompts/qq-share.template.md
-crawler/new-contests.json
-crawler/platforms/*/contests.json
-crawler/platforms/*/staged-submissions.json
 crawler/platforms/*/log.json
 crawler/platforms/*/input_*.json
 crawler/server-task.log
-# 但保留配置模板可提交
-!crawler/config.example.json
-!crawler/prompts/prompt.template.example.md
-!crawler/prompts/qq-share.template.example.md
 
 # test script
 *test.sh

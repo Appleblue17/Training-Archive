@@ -1,0 +1,677 @@
+[
+  {
+    "name": "2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84251",
+    "date": "2025-07-15",
+    "link": "https://ac.nowcoder.com/acm/contest/108298",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Rectangular Posters",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/A"
+      },
+      {
+        "letter": "B",
+        "name": "Binary Substrings 2",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/B"
+      },
+      {
+        "letter": "C",
+        "name": "Clamped Sequence 2",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/C"
+      },
+      {
+        "letter": "D",
+        "name": "LCM Challenge",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/D"
+      },
+      {
+        "letter": "E",
+        "name": "Endless Ladders",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/E"
+      },
+      {
+        "letter": "F",
+        "name": "Flight Tracker 2",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/F"
+      },
+      {
+        "letter": "G",
+        "name": "Symmetry Intervals",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/G"
+      },
+      {
+        "letter": "H",
+        "name": "Symmetry Intervals 2",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/H"
+      },
+      {
+        "letter": "I",
+        "name": "Iron Bars Cutting",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/I"
+      },
+      {
+        "letter": "J",
+        "name": "Museum Construction",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/J"
+      },
+      {
+        "letter": "K",
+        "name": "Museum Acceptance",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/K"
+      },
+      {
+        "letter": "L",
+        "name": "Numb Numbers",
+        "link": "https://ac.nowcoder.com/acm/contest/108298/L"
+      }
+    ]
+  },
+  {
+    "name": "2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84252",
+    "date": "2025-07-17",
+    "link": "https://ac.nowcoder.com/acm/contest/108299",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Another Day of Sun",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/A"
+      },
+      {
+        "letter": "B",
+        "name": "Bitwise Perfect",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/B"
+      },
+      {
+        "letter": "C",
+        "name": "Colorful Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/C"
+      },
+      {
+        "letter": "D",
+        "name": "Donkey Thinks...",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/D"
+      },
+      {
+        "letter": "E",
+        "name": "Effective Numbers",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/E"
+      },
+      {
+        "letter": "F",
+        "name": "Field of Fire",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/F"
+      },
+      {
+        "letter": "G",
+        "name": "Geometry Friend",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/G"
+      },
+      {
+        "letter": "H",
+        "name": "Highway Upgrade",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/H"
+      },
+      {
+        "letter": "I",
+        "name": "Identical Somehow",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/I"
+      },
+      {
+        "letter": "J",
+        "name": "Just Curve it",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/J"
+      },
+      {
+        "letter": "K",
+        "name": "K-th Memorable Sub-string",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/K"
+      },
+      {
+        "letter": "L",
+        "name": "Love Wins All",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/L"
+      },
+      {
+        "letter": "M",
+        "name": "Miscalculated Triangles",
+        "link": "https://ac.nowcoder.com/acm/contest/108299/M"
+      }
+    ]
+  },
+  {
+    "name": "\"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84253",
+    "date": "2025-07-22",
+    "link": "https://ac.nowcoder.com/acm/contest/108300",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Ad-hoc Newbie",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/A"
+      },
+      {
+        "letter": "B",
+        "name": "Bitwise Puzzle",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/B"
+      },
+      {
+        "letter": "C",
+        "name": "Capella",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/C"
+      },
+      {
+        "letter": "D",
+        "name": "Distant Control",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/D"
+      },
+      {
+        "letter": "E",
+        "name": "Equal",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/E"
+      },
+      {
+        "letter": "F",
+        "name": "Flower",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/F"
+      },
+      {
+        "letter": "G",
+        "name": "Gellyfish and Priority Queue",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/G"
+      },
+      {
+        "letter": "H",
+        "name": "Head out to the Target",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/H"
+      },
+      {
+        "letter": "I",
+        "name": "Infinity",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/I"
+      },
+      {
+        "letter": "J",
+        "name": "Jetton",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/J"
+      },
+      {
+        "letter": "K",
+        "name": "Kaleidoscope",
+        "link": "https://ac.nowcoder.com/acm/contest/108300/K"
+      }
+    ]
+  },
+  {
+    "name": "2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84254",
+    "date": "2025-07-24",
+    "link": "https://ac.nowcoder.com/acm/contest/108301",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "All Kinds of Dice",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/A"
+      },
+      {
+        "letter": "B",
+        "name": "Blind Alley",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/B"
+      },
+      {
+        "letter": "C",
+        "name": "Computational Geometry Problem",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/C"
+      },
+      {
+        "letter": "D",
+        "name": "Determinant of 01-Matrix",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/D"
+      },
+      {
+        "letter": "E",
+        "name": "Echoes of 24",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/E"
+      },
+      {
+        "letter": "F",
+        "name": "For the Treasury!",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/F"
+      },
+      {
+        "letter": "G",
+        "name": "Ghost in the Parentheses",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/G"
+      },
+      {
+        "letter": "H",
+        "name": "Highs and Lows",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/H"
+      },
+      {
+        "letter": "I",
+        "name": "I, Box",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/I"
+      },
+      {
+        "letter": "J",
+        "name": "Journey Around the World",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/J"
+      },
+      {
+        "letter": "K",
+        "name": "Kindred Sums",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/K"
+      },
+      {
+        "letter": "L",
+        "name": "Ladder Challenge",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/L"
+      },
+      {
+        "letter": "M",
+        "name": "Monopoly",
+        "link": "https://ac.nowcoder.com/acm/contest/108301/M"
+      }
+    ]
+  },
+  {
+    "name": "2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84255",
+    "date": "2025-07-29",
+    "link": "https://ac.nowcoder.com/acm/contest/108302",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Entangled Coins",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/A"
+      },
+      {
+        "letter": "B",
+        "name": "Extra Training",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/B"
+      },
+      {
+        "letter": "C",
+        "name": "Array Deletion Game",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/C"
+      },
+      {
+        "letter": "D",
+        "name": "Prime XOR Permutation",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/D"
+      },
+      {
+        "letter": "E",
+        "name": "Mysterious XOR Operation",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/E"
+      },
+      {
+        "letter": "F",
+        "name": "Grid Survival",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/F"
+      },
+      {
+        "letter": "G",
+        "name": "Line of Sight",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/G"
+      },
+      {
+        "letter": "H",
+        "name": "VI Civilization",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/H"
+      },
+      {
+        "letter": "I",
+        "name": "Block Combination Minimal Perimeter",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/I"
+      },
+      {
+        "letter": "J",
+        "name": "Fastest Coverage Problem",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/J"
+      },
+      {
+        "letter": "K",
+        "name": "Perfect Journey",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/K"
+      },
+      {
+        "letter": "L",
+        "name": "Float",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/L"
+      },
+      {
+        "letter": "M",
+        "name": "Mysterious Spacetime",
+        "link": "https://ac.nowcoder.com/acm/contest/108302/M"
+      }
+    ]
+  },
+  {
+    "name": "2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84256",
+    "date": "2025-07-31",
+    "link": "https://ac.nowcoder.com/acm/contest/108303",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Dominoes on Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/A"
+      },
+      {
+        "letter": "B",
+        "name": "Base Conversion Master",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/B"
+      },
+      {
+        "letter": "C",
+        "name": "Stack",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/C"
+      },
+      {
+        "letter": "D",
+        "name": "Beautiful Matrix",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/D"
+      },
+      {
+        "letter": "E",
+        "name": "Array",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/E"
+      },
+      {
+        "letter": "F",
+        "name": "Random Segment Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/F"
+      },
+      {
+        "letter": "G",
+        "name": "Turn around",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/G"
+      },
+      {
+        "letter": "H",
+        "name": "Knapsack Problem",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/H"
+      },
+      {
+        "letter": "I",
+        "name": "Longest Common Substring",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/I"
+      },
+      {
+        "letter": "J",
+        "name": "Game on a Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/J"
+      },
+      {
+        "letter": "K",
+        "name": "Maximum GCD",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/K"
+      },
+      {
+        "letter": "L",
+        "name": "Minimum Parenthesis String",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/L"
+      },
+      {
+        "letter": "M",
+        "name": "Minimum Difference",
+        "link": "https://ac.nowcoder.com/acm/contest/108303/M"
+      }
+    ]
+  },
+  {
+    "name": "\"\u73b0\u4ee3\u6c7d\u8f66\u524d\u77bb\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84257",
+    "date": "2025-08-05",
+    "link": "https://ac.nowcoder.com/acm/contest/108304",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Loopy Laggon",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/A"
+      },
+      {
+        "letter": "B",
+        "name": "A Gift from the Star",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/B"
+      },
+      {
+        "letter": "C",
+        "name": "Forsaken City",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/C"
+      },
+      {
+        "letter": "D",
+        "name": "Lost Woods",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/D"
+      },
+      {
+        "letter": "E",
+        "name": "String",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/E"
+      },
+      {
+        "letter": "F",
+        "name": "The Correlation",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/F"
+      },
+      {
+        "letter": "G",
+        "name": "Nice Doppelgnger",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/G"
+      },
+      {
+        "letter": "H",
+        "name": "Summit Down Side",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/H"
+      },
+      {
+        "letter": "I",
+        "name": "Lava Layer",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/I"
+      },
+      {
+        "letter": "J",
+        "name": "Ivory",
+        "link": "https://ac.nowcoder.com/acm/contest/108304/J"
+      }
+    ]
+  },
+  {
+    "name": "2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84258",
+    "date": "2025-08-07",
+    "link": "https://ac.nowcoder.com/acm/contest/108305",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Insert One",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/A"
+      },
+      {
+        "letter": "B",
+        "name": "Inversion Number Parity",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/B"
+      },
+      {
+        "letter": "C",
+        "name": "Bernoulli's Principle",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/C"
+      },
+      {
+        "letter": "D",
+        "name": "Christmas Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/D"
+      },
+      {
+        "letter": "E",
+        "name": "Matrix Lottery",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/E"
+      },
+      {
+        "letter": "F",
+        "name": "Broken LED Lights",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/F"
+      },
+      {
+        "letter": "G",
+        "name": "Changing Minimum Spanning Tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/G"
+      },
+      {
+        "letter": "H",
+        "name": "Interval LRU",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/H"
+      },
+      {
+        "letter": "I",
+        "name": "Tennis Match",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/I"
+      },
+      {
+        "letter": "J",
+        "name": "Multiplication in Base the Square Root of -2",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/J"
+      },
+      {
+        "letter": "K",
+        "name": "Many Sprinklers!!!",
+        "link": "https://ac.nowcoder.com/acm/contest/108305/K"
+      }
+    ]
+  },
+  {
+    "name": "\"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u84259",
+    "date": "2025-08-12",
+    "link": "https://ac.nowcoder.com/acm/contest/108306",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "AVL tree",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/A"
+      },
+      {
+        "letter": "B",
+        "name": "Date",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/B"
+      },
+      {
+        "letter": "C",
+        "name": "Epoch-making",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/C"
+      },
+      {
+        "letter": "D",
+        "name": "Kiritorisen",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/D"
+      },
+      {
+        "letter": "E",
+        "name": "Tournament",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/E"
+      },
+      {
+        "letter": "F",
+        "name": "Military Training",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/F"
+      },
+      {
+        "letter": "G",
+        "name": "Permutation",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/G"
+      },
+      {
+        "letter": "H",
+        "name": "Counter Streak",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/H"
+      },
+      {
+        "letter": "I",
+        "name": "Tree Construction",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/I"
+      },
+      {
+        "letter": "J",
+        "name": "Too many catgirls nya",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/J"
+      },
+      {
+        "letter": "K",
+        "name": "Reversed Hanged Man",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/K"
+      },
+      {
+        "letter": "L",
+        "name": "Ping Pong",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/L"
+      },
+      {
+        "letter": "M",
+        "name": "Digit Sum",
+        "link": "https://ac.nowcoder.com/acm/contest/108306/M"
+      }
+    ]
+  },
+  {
+    "name": "\"\u5f71\u77f3Insta360\u676f\"2025\u725b\u5ba2\u6691\u671f\u591a\u6821\u8bad\u7ec3\u842510",
+    "date": "2025-08-14",
+    "link": "https://ac.nowcoder.com/acm/contest/108307",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "The Spacy Language (spacy)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/A"
+      },
+      {
+        "letter": "B",
+        "name": "Trimming Palindrome (trim)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/B"
+      },
+      {
+        "letter": "C",
+        "name": "Hexagis (hexagis)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/C"
+      },
+      {
+        "letter": "D",
+        "name": "Grammar Test (grammar)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/D"
+      },
+      {
+        "letter": "E",
+        "name": "Sensei and Affection (affection)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/E"
+      },
+      {
+        "letter": "F",
+        "name": "Sensei and Yuuka Going Shopping (yuuka)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/F"
+      },
+      {
+        "letter": "G",
+        "name": "Starlight (starlight)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/G"
+      },
+      {
+        "letter": "H",
+        "name": "Rev Equation (NOI-tAUqe ver.) (equation)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/H"
+      },
+      {
+        "letter": "I",
+        "name": "Matrix (matrix)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/I"
+      },
+      {
+        "letter": "J",
+        "name": "Segments (segments)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/J"
+      },
+      {
+        "letter": "K",
+        "name": "Amazing Sets (amazing)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/K"
+      },
+      {
+        "letter": "L",
+        "name": "Desertrium (desertrium)",
+        "link": "https://ac.nowcoder.com/acm/contest/108307/L"
+      }
+    ]
+  }
+]
