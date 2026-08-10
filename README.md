@@ -74,8 +74,11 @@ pip install -r crawler/requirements.txt
 python3 crawler/scheduled_task.py
 # 任务B：每日增量同步提交
 python3 crawler/scheduled_task.py --submissions-only
-# 复盘报告（独立于爬虫）
+# 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成）
+python3 crawler/report.py --from-crawl
+# 补生成：扫描所有缺报告的已结束比赛，或只生成指定比赛
 python3 crawler/report.py
+python3 crawler/report.py "contests/2026-08-01 xxx"
 ```
 
 爬虫会生成 `contests/` 数据目录与各平台日志文件（均已被 `.gitignore` 忽略）。

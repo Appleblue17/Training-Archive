@@ -122,8 +122,8 @@ cmd_run() {
     "$PY" crawler/scheduled_task.py
   fi
 
-  # 4. 复盘报告（独立于爬虫；失败仅告警，不阻断数据上线）
-  "$PY" crawler/report.py || log "[WARN] report.py failed (skipped review generation)."
+  # 4. 复盘报告（独立于爬虫；只对本次爬取新建的比赛生成，失败仅告警，不阻断数据上线）
+  "$PY" crawler/report.py --from-crawl || log "[WARN] report.py failed (skipped review generation)."
 
   # 5. 清理日志
   "$PY" crawler/clean-log.py || true

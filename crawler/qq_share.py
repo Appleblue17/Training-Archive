@@ -9,6 +9,7 @@
 - API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变量）
 
 用法：
+    python3 crawler/qq_share.py --from-crawl          # 只对本次爬取新建的比赛生成（推荐）
     python3 crawler/qq_share.py                       # 扫描所有缺 qq-share 的比赛补生成
     python3 crawler/qq_share.py <contest_folder>      # 只生成指定比赛的 qq-share
     python3 crawler/report.py --qq-only [...]         # 兼容入口（转调本模块）
@@ -22,6 +23,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from deepseek_client import call_deepseek
+from new_contests import load_new_contests
 
 # 模板：crawler/qq-share.template.md（gitignore，本地可自由调整）。
 # 占位符：
@@ -169,6 +171,15 @@ def main(argv=None):
     if argv is None:
         argv = sys.argv[1:]
     args = [a for a in argv if not a.startswith("--")]
+    from_crawl = "--from-crawl" in argv
+
+    if from_crawl:
+        # 只对本次爬取新建的比赛生成（qq-share.txt 存在仍幂等跳过）
+        folders = load_new_contests()
+        count = sum(1 for f in folders if generate_qq_share(f))
+        print(f"[qq-share] Generated {count} qq-share(s) from crawl.")
+        return 0
+
     if args:
         ok = generate_qq_share(args[0])
         return 0 if ok else 1

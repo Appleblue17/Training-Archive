@@ -12,9 +12,10 @@
 API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变量）。
 
 用法：
-    python3 crawler/report.py                  # 扫描所有已结束且缺报告的比赛
-    python3 crawler/report.py <contest_folder> # 只生成指定比赛（文件夹相对仓库根）
-    python3 crawler/report.py --qq-only        # 兼容入口：转调 qq_share.py（详见该模块）
+    python3 crawler/report.py --from-crawl           # 只对本次爬取新建的比赛生成（推荐）
+    python3 crawler/report.py                        # 扫描所有已结束且缺报告的比赛
+    python3 crawler/report.py <contest_folder>       # 只生成指定比赛（文件夹相对仓库根）
+    python3 crawler/report.py --qq-only              # 兼容入口：转调 qq_share.py（详见该模块）
 """
 import json
 import os
@@ -23,6 +24,7 @@ import sys
 from datetime import datetime
 
 from deepseek_client import call_deepseek
+from new_contests import load_new_contests
 from qq_share import generate_qq_share, generate_qq_shares_for_all
 
 # 北京时间（UTC+8）
@@ -386,8 +388,19 @@ def generate_reviews_for_all(contests_root="contests"):
 if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     qq_only = "--qq-only" in sys.argv[1:]
+    from_crawl = "--from-crawl" in sys.argv[1:]
 
-    if qq_only:
+    if from_crawl:
+        # 只对本次爬取新建的比赛生成（review.md / qq-share 存在仍幂等跳过）
+        folders = load_new_contests()
+        if qq_only:
+            count = sum(1 for f in folders if generate_qq_share(f))
+            print(f"[report] Generated {count} qq-share(s) from crawl.")
+            sys.exit(0)
+        count = sum(1 for f in folders if generate_review(f))
+        print(f"[report] Generated {count} review(s) from crawl.")
+        sys.exit(0)
+    elif qq_only:
         if args:
             ok = generate_qq_share(args[0])
             sys.exit(0 if ok else 1)

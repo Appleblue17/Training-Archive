@@ -9,8 +9,13 @@
     每天一次对所有已开始/进行中的比赛做增量提交抓取（沿用 last-update.json）。
 
 复盘报告由独立脚本生成，不在此入口内调用：
-    python3 crawler/report.py                   # 扫描所有已结束且缺 review.md 的比赛
-    python3 crawler/report.py <contest_folder>  # 只生成指定比赛
+    python3 crawler/report.py --from-crawl        # 只对本次爬取新建的比赛生成（推荐）
+    python3 crawler/report.py                     # 扫描所有已结束且缺 review.md 的比赛
+    python3 crawler/report.py <contest_folder>    # 只生成指定比赛
+
+任务A 结束时会把本次新建的比赛文件夹列表写入 crawler/new-contests.json
+（临时状态文件，gitignore），report.py / qq_share.py 以 --from-crawl 读取
+该文件，只对这些比赛生成报告，而不是扫描全部比赛。
 
 平台启用/禁用：
     crawler/config.json 中每个平台条目可用 "enabled" 字段控制（缺省 false 视为禁用）：
@@ -43,6 +48,31 @@ PLATFORM_CLASSES = {
 }
 
 CONFIG_PATH = "crawler/config.json"
+NEW_CONTESTS_PATH = "crawler/new-contests.json"
+
+
+def _write_new_contests(crawlers):
+    """把本次运行新建的比赛文件夹写入 new-contests.json，供 report.py --from-crawl 使用。
+
+    - 有新建比赛：覆盖写入列表（去重保持顺序）
+    - 无新建比赛：删除旧文件，避免 report.py --from-crawl 用上上次的陈旧列表
+    """
+    folders = []
+    seen = set()
+    for c in crawlers:
+        for f in getattr(c, "_new_contest_folders", []):
+            if f not in seen:
+                seen.add(f)
+                folders.append(f)
+
+    if folders:
+        with open(NEW_CONTESTS_PATH, "w", encoding="utf-8") as f:
+            json.dump(folders, f, ensure_ascii=False, indent=2)
+        print(f"[task] New contests recorded for report: {folders}")
+    else:
+        if os.path.exists(NEW_CONTESTS_PATH):
+            os.remove(NEW_CONTESTS_PATH)
+            print(f"[task] No new contests; removed {NEW_CONTESTS_PATH}.")
 
 
 def _load_enabled_platforms():
@@ -103,16 +133,23 @@ def main():
     print(f"[task] Enabled platforms: {', '.join(enabled_platforms)}")
 
     ok_platforms = []
+    ok_crawlers = []
     for platform in enabled_platforms:
         ok, crawler = run_platform(platform, submissions_only)
         if ok:
             ok_platforms.append(platform)
+            ok_crawlers.append(crawler)
         else:
             print(f"[task] Platform {platform} did not complete successfully.")
 
     if not ok_platforms:
         print("[task] All platforms failed. Exiting with error.")
         sys.exit(1)
+
+    # 任务A：记录本次新建的比赛，供 report.py --from-crawl 只生成这些
+    # （任务B 仅增量同步，不新建比赛，不写文件）
+    if not submissions_only:
+        _write_new_contests(ok_crawlers)
 
     print(f"[task] Completed platforms: {', '.join(ok_platforms)}")
 

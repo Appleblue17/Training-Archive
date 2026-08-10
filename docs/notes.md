@@ -6,6 +6,7 @@
 
 ## 最近更新
 
+- 2026-08-10：报告生成改为 `--from-crawl` 模式——任务A 结束把本次新建的比赛写入 `crawler/new-contests.json`（临时文件，gitignore），`report.py` / `qq_share.py` 加 `--from-crawl` 只对这些比赛生成 review / qq-share（幂等跳过），不再每次全量扫描；共享模块 `crawler/new_contests.py` 统一读写；工作流与 `server-task.sh` 的 report 步骤改用 `--from-crawl`（任务B 无新建比赛时自然跳过）。注意：订阅的比赛若在**进行中**被首次抓取（文件夹已建但未结束），当次不会生成报告，且后续运行不再新建该文件夹——`--from-crawl` 会漏掉这种比赛，需手动 `python3 crawler/report.py <folder>` 或全量扫描补生成。
 - 2026-08-10：方式二一键管理脚本 `crawler/server-task.sh`——复刻 Action 流程（pull→爬取→报告→清理→push），子命令 run/install/uninstall/status/log；`deploy.yml` 加 `push: branches: [deploy]` 触发（仅 `[contests-changed]` 提交部署）；gitignore 忽略 `crawler/server-task.log`。README / roadmap 同步。
 - 2026-08-10：部署方式确认并文档化——静态版两种部署方式（①GitHub Actions 开启 `schedule` 定时；②自建服务器 cron 跑同一套脚本，关闭 schedule、产物 push 回 deploy 分支需自行接入部署触发），动态版 v0.3.x 单列；写入 `docs/roadmap.md` §1.1 与 README「部署方式」。
 - 2026-08-10：Contribution 收尾——卡片 `w-fit max-w-full` 收缩到内容宽度（原被 `w-full` 容器拉伸）；Y 轴星期标签补全 7 天（Sun–Sat，列宽 30px）。lint + 全量 build 通过。
@@ -100,5 +101,6 @@ pnpm lint           # ESLint 检查
 pip install -r crawler/requirements.txt   # 爬虫依赖
 python3 crawler/scheduled_task.py                # 任务A：抓订阅比赛 + 增量同步提交
 python3 crawler/scheduled_task.py --submissions-only  # 任务B：每日增量同步提交
-python3 crawler/report.py                        # 复盘报告（独立于爬虫）
+python3 crawler/report.py --from-crawl           # 复盘报告：只对本次爬取新建的比赛生成
+python3 crawler/report.py                        # 补生成：扫描所有缺报告的已结束比赛
 ```

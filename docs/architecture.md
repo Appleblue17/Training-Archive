@@ -192,16 +192,20 @@ contests/
 | 任务A（预订比赛抓取） | `python3 crawler/scheduled_task.py` | `crawler-scheduled.yml`，每 30 分钟 | 抓订阅的已开始比赛 → 增量同步提交 |
 | 任务B（提交周期同步） | `python3 crawler/scheduled_task.py --submissions-only` | `crawler.yml`，每天 20:00 UTC | 对所有已开始/进行中的比赛做增量提交抓取 |
 
-两个爬虫工作流在爬虫步骤之后均追加独立的报告生成步骤（`python3 crawler/report.py`），与爬虫解耦：爬虫失败不生成报告，报告失败不阻断提交/部署。
+两个爬虫工作流在爬虫步骤之后均追加独立的报告生成步骤（`python3 crawler/report.py --from-crawl`），与爬虫解耦：爬虫失败不生成报告，报告失败不阻断提交/部署。`--from-crawl` 只对任务A 本次新建的比赛生成（读取 `crawler/new-contests.json`，见 4.4），任务B（无新建比赛）自然跳过。
 
 ### 4.4 复盘报告（`crawler/report.py`，独立总结脚本）
 
-- 独立于爬虫入口运行：`python3 crawler/report.py`（扫描所有已结束且缺 `review.md` 的比赛）或 `python3 crawler/report.py <contest_folder>`（只生成指定比赛）。
-
+- 独立于爬虫入口运行，三种模式：
+  - `python3 crawler/report.py --from-crawl`（**推荐**）：只对本次爬取新建的比赛生成（读 `crawler/new-contests.json`，任务A 结束时写入；无文件/空列表时直接跳过）
+  - `python3 crawler/report.py`：扫描所有已结束且缺 `review.md` 的比赛补生成
+  - `python3 crawler/report.py <contest_folder>`：只生成指定比赛
+- 任务A（`crawler/scheduled_task.py`）结束时把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时状态文件，gitignore；无新建比赛时删除旧文件），`report.py` / `qq_share.py` 以 `--from-crawl` 读取；读写逻辑统一在共享模块 `crawler/new_contests.py`。
 - 读取 `contest.json`、`submissions.json`、`problems/<letter>/submissions/<id>.<ext>`，**不做分析性预处理**，原始提交序列（含代码与时间戳）直接送 DeepSeek（OpenAI 兼容接口，`deepseek-chat`）。
 - 输出 `contests/<date> <name>/review.md`；`review.md` 已存在即跳过（幂等）。
 - API key 从环境变量 `DEEPSEEK_API_KEY` 读取（CI secret）。
 - 只对 `end_time` 已过且有提交数据的比赛生成报告。
+- QQ 群分享简化版（`qq-share.txt`）由独立模块 `crawler/qq_share.py` 生成，完整报告生成后自动串联，也支持 `--from-crawl` 单独补生成（`python3 crawler/qq_share.py --from-crawl` 或 `python3 crawler/report.py --from-crawl --qq-only`）。
 
 ### 4.5 增量抓取逻辑
 
@@ -210,7 +214,7 @@ contests/
 - 若题目已 AC 且旧提交非 AC，则不会用旧提交覆盖；新 AC 提交会更新 `solve_time`（取最早的 AC 时间）。
 - 提交抓取**完整性校验**：只有遍历完所有分页或到达 last-update 才标记完整；`finish()` 仅在此情况下推进 `last-update.json`，否则下次重跑，避免静默漏提交。
 
-**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/*/contests.json`、`crawler/*/staged-submissions.json`、`config.json`、`subscriptions.json`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。CI 工作流在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。仅 crawler 状态变化时同样提交（消息不带 `[contests-changed]` 标记，不触发部署）。日志、chromedriver 二进制、遗留 `input_*.json` 始终不提交。
+**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/*/contests.json`、`crawler/*/staged-submissions.json`、`config.json`、`subscriptions.json`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。CI 工作流在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。仅 crawler 状态变化时同样提交（消息不带 `[contests-changed]` 标记，不触发部署）。日志、chromedriver 二进制、遗留 `input_*.json`、`new-contests.json`（临时报告列表，见 4.4）始终不提交。
 
 ## 5. 关键技术决策记录（ADR）
 

@@ -64,6 +64,7 @@ crawler/config.json
 crawler/subscriptions.json
 crawler/prompt.template.md
 crawler/qq-share.template.md
+crawler/new-contests.json
 crawler/*/contests.json
 crawler/*/staged-submissions.json
 crawler/*/log.json

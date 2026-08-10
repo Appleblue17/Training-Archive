@@ -29,6 +29,7 @@
 
 ### Changed
 
+- 复盘报告改为 `--from-crawl` 模式：任务A 结束把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时文件，gitignore；无新建比赛时删除旧文件），`report.py` / `qq_share.py` 新增 `--from-crawl` 只对这些比赛生成 review / qq-share（幂等，不再每次全量扫描）；读写逻辑抽离为共享模块 `crawler/new_contests.py`；两个爬虫工作流与 `crawler/server-task.sh` 的 report 步骤改用 `python3 crawler/report.py --from-crawl`（任务B 无新建比赛自然跳过）。注意：**进行中**被首次抓取的比赛当次不会生成报告，且后续不再新建该文件夹，需手动指定文件夹或全量扫描补生成
 - 订阅条目字段 `name` 改名为 `comments`（纯用户备注，代码不读取）；`subscriptions.json` 订阅级 `enabled` 缺省视为启用（与 `config.json` 平台级缺省禁用区分）
 - NowCoder 环境变量拼写统一为 `NOWCODER_*`（原 `NEWCODER_COOKIE_*` 为历史遗留错拼）：代码、CI 工作流、文档同步；**CI Secrets 与本地 `.env` 需改名为 `NOWCODER_COOKIE_NOWCODERUID` / `NOWCODER_COOKIE_T`，并新增 `NOWCODER_USERNAME`**（登录态校验用昵称）
 - 爬虫与复盘报告解耦：`crawler/scheduled_task.py` 不再调用报告生成（只负责抓取与提交同步）；`crawler/report.py` 作为独立总结脚本运行；两个爬虫工作流均追加独立的报告生成步骤（`python3 crawler/report.py`），爬虫失败不生成报告，报告失败不阻断提交/部署

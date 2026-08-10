@@ -53,6 +53,11 @@ class BaseCrawler:
         # 否则 status 页第一条提交就早于全局 last-update 而被跳过，一场都抓不到。
         self._new_contests = {}
 
+        # 本次运行新建的比赛文件夹（相对仓库根，如 "contests/2026-07-21 xxx"）。
+        # 供 scheduled_task.py 汇总写入 new-contests.json，
+        # report.py / qq_share.py 以 --from-crawl 只对这些比赛生成报告。
+        self._new_contest_folders = []
+
         self.init_driver()
 
     def _random_sleep(self, min_wait_time=None, max_wait_time=None):
@@ -529,6 +534,8 @@ class BaseCrawler:
                 self.log("info", f"Created contest folder: {contest_folder}")
                 # 记录本次运行新建的比赛：提交抓取时强制全量回填（见 _deadline_for）
                 self._new_contests[contest_link] = contest_info.get("start_time")
+                # 记录文件夹，供 report.py --from-crawl 只对本次预订的比赛生成报告
+                self._new_contest_folders.append(contest_folder)
 
             self._write_file(
                 os.path.join(contest_folder, "contest.json"),
