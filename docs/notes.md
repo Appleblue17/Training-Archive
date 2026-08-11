@@ -6,6 +6,7 @@
 
 ## 最近更新
 
+- 2026-08-11：**服务器闹钟机制（方式二专用）**——订阅条目可选填 `end_time`（比赛结束时间，ISO 格式），取代「cron 定时扫描订阅、爬平台比较时间」的轮询：不填 = 历史比赛（`sync` 立即爬取归档，不生成报告）；未来 = 写闹钟到点爬取 + 立即生成报告（精确到分钟）；已过 = `sync` 立即爬取 + 报告（闹钟失败后补漏）。新增 `crawler/scripts/alarm.py`（plan/due/mark/list）与闹钟表 `crawler/alarms.json`（gitignore，两处 .gitignore 均忽略）；`server-task.sh` 新增 `sync`/`fire`，`install` 的 cron 改为「闹钟检查每分钟 + 任务B 每日」，`status` 展示闹钟；`scheduled_task.py` 新增 `--links`（只抓指定订阅，复用 contests-only 语义），`report.py --from-crawl` 新增 `--links` 过滤（同批爬取只对过期比赛生成报告）。方式一（Actions 轮询）不读取 end_time、保持原样。失败重试最多 3 次后标记 failed，靠下次手动 sync 补。验证：alarm.py 全子命令 + 幂等/剪除/failed 计数、--links 解析互斥、report --links 过滤均通过；bash -n / py_compile 通过。
 - 2026-08-11：`deploy.yml` 标记检查误触发——`check_contests` 用 `git log -1 --pretty=%B`（subject + body 完整信息）`grep '[contests-changed]'`，修复 quotepath 的那条提交 **body 里描述了 "[contests-changed] marker"** 字样，grep 匹配成功误判为应部署（实测无标记提交触发了 deploy job）。修复：改 `--pretty=%s` 只取 subject 第一行，真标记提交（subject `[auto] [contests-changed] ...`）仍匹配，body 提及不再误触发。验证：修复提交旧逻辑匹配 1、新逻辑 0；真标记提交匹配 1。推送后端到端确认：无标记提交的 Deploy run 仅跑 check_contests、deploy job 被跳过。
 - 2026-08-11：修复自动提交 `[contests-changed]` 标记对**中文比赛名失效**的 bug——git 默认 `core.quotepath=true` 把非 ASCII 路径输出为带引号+八进制转义（`"contests/2026\u2026..."`），`server-task.sh` 与两个爬虫工作流的 `git diff --cached --name-only | grep '^contests/'` 匹配失败，改了 `contests/` 却走了 `[auto] Update crawler state` 分支（实测新增 411 个中文路径文件却无标记、未触发部署）。修复：三处判断统一改 `git -c core.quotepath=false diff --cached --name-only`（命令级生效不改全局配置）。验证：对误判提交旧逻辑匹配 0 个、新逻辑匹配 411 个。deploy 分支同步修复，服务器下次 cron 运行 `git pull` 自动拉到修复后的脚本。
 - 2026-08-10：`/log` 页面缺失日志文件时显示友好占位而非报错——日志是运行时产物（`crawler/global.log.json` 与 `crawler/platforms/*/log.json` 被 gitignore 不提交版本控制），deploy 分支 / 全新 clone 读取路径必然不存在，此前页面显示 `Error reading file: ENOENT...`（空内容在 log 类型还显示 "Invalid log format"）。`log/page.tsx` 读取失败改为返回空串，`log-page.tsx` `DisplayBox` 空内容渲染"暂无日志文件"占位（含生成路径提示）；本地跑过爬虫后日志存在即正常显示。lint + build 通过。
@@ -38,25 +39,21 @@
 
 ## 当前状态
 
-- 主功能（竞赛列表、文件查看、日志页）可用；爬虫双任务工作流已建（任务 A 每 30 分钟、任务 B 每日），**定时尚未启用**（未实测通过前手动触发验证），HDU / NowCoder 爬虫默认停用（由 `crawler/config.json` 的 `enabled` 字段控制，可改回 `true` 启用）。
+- 主功能（竞赛列表、文件查看、日志页）可用；爬虫双任务工作流已建（方式一 Actions：任务 A 每 30 分钟、任务 B 每日；方式二服务器：闹钟检查每分钟 + 任务 B 每日），**定时尚未启用**（未实测通过前手动触发验证），HDU / NowCoder 爬虫默认停用（由 `crawler/config.json` 的 `enabled` 字段控制，可改回 `true` 启用）。
+- 方式二**闹钟机制已实现**（`crawler/scripts/alarm.py` + `crawler/server-task.sh sync/fire`）：订阅条目可选填 `end_time`，未来比赛 `sync` 写闹钟表 `crawler/alarms.json`（gitignore）、cron 每分钟 `fire` 到点爬取 + 立即生成报告；不填 = 历史比赛立即爬不生成报告；已过 = 过期比赛立即爬 + 报告。详见「最近更新」与 `docs/architecture.md` §4.6。
 - `contests/` 数据目录为空（git 忽略），本地开发如需查看效果需准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
-- **v0.2.0 开发中**：爬虫/CI 部分完成，前端 C 阶段进行中，详细规划见 `docs/roadmap.md`。
+- **v0.2.1 开发中**：v0.2.0 发布后的修复/增强分支（deploy 标记检查、动态路由占位、quotepath 中文路径、闹钟机制等），**未完成、未创建 PR**，详细规划见 `docs/roadmap.md`。
 
 ## 待办
 
-### v0.2.0（开发中，见 `docs/roadmap.md`）
+### v0.2.1（开发中，见 `docs/roadmap.md`）
 
-- [x] 代码质量/健壮性修复清单（`docs/roadmap.md` §8）
-- [x] 爬虫数据层：订阅模型、任务 A/B、全量提交采集、报告生成模块
-- [x] CI 工作流：`.gitignore.deploy`、`crawler-scheduled.yml`（任务 A）、`crawler.yml`（任务 B）、`deploy.yml` 触发扩展
-- [x] 题目标签支持（problem.json `tags` + 前端徽章渲染）
-- [x] 搜索（构建时 `search-index.json` + `/search` 页，关键词 + 标签过滤）
-- [x] Dashboard（统计 + 最近动态 + contribution 绿点图 + 复盘报告区，构建时聚合）
-- [x] 复盘时间轴页（`/review/[contest]`：提交时间轴 + LLM 报告）
-- [x] UI 库迁移到 shadcn/ui；图标库迁移到 lucide-react
-- [x] C6 收尾：错误边界（`error.tsx`）、骨架屏（`loading.tsx`）、自定义 404（`not-found.tsx`）、无障碍复查（readme 页仍占位）
-- [x] 响应式与可访问性改造（`docs/roadmap.md` §8 已覆盖：布局响应式、表格键盘操作、`aria-label`/`aria-expanded`）
-- [x] 验收：`pnpm lint` + `pnpm build` 全通过（2026-08-08，仅 readme 占位页存在已知 img 警告）
+- [x] v0.2.0 发布（含 §8 清单、爬虫数据层、前端 C 阶段全部落地）
+- [x] `deploy.yml` 标记检查误触发修复（`--pretty=%s` 只取 subject）
+- [x] 动态路由空数据兜底（占位参数 `~no-data~`）
+- [x] quotepath 中文路径修复（`git -c core.quotepath=false` 三处统一）
+- [x] 服务器闹钟机制（方式二专用）：`alarm.py`（plan/due/mark/list）+ `server-task.sh sync/fire` + `scheduled_task.py --links` + `report.py --from-crawl --links`
+- [ ] 方式二服务器端到端实测（`install` cron + `fire` 真实比赛触发 + 部署链路）
 
 ### 常规
 
@@ -84,6 +81,7 @@
 
 - 平台启用/禁用由 `crawler/config.json` 的 `enabled` 字段控制（**缺省 `false` 视为禁用**，配置文件缺失/解析失败时全部平台禁用）；模板见 `crawler/config.example.json`（gitignored 的 `config.json` 不会被提交，deploy 分支的 `config.json` 需显式 `enabled: true` 才会启用对应平台）。
 - 订阅条目（`crawler/subscriptions/` 目录下各 `.json` 文件）的 `enabled` 为**订阅级**开关，**缺省视为启用**（与 `config.json` 平台级缺省禁用不同）。运行时只识别目录下的 `.json` 文件（文件名随意，可按平台/系列分组），按文件名排序合并、重复 `link` 去重（保留先出现条目）；单文件格式与模板 `crawler/subscriptions/subscriptions.example.json` 一致。
+- **闹钟机制（方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，北京时间 ISO），由 `crawler/scripts/alarm.py` 读写闹钟表 `crawler/alarms.json`（gitignore，**不提交**，仅服务器本地状态）。`server-task.sh sync` 先 `plan` 分类：不填 = 历史比赛立即爬取归档不生成报告；已过 = 过期比赛立即爬取 + 报告（闹钟失败后补漏场景）；未来 = 写闹钟表。cron 每分钟 `fire`：`due` 无到期闹钟**安静退出**（不产生提交），有则爬取（`--contests-only --links`）+ 报告（`report.py --from-crawl --links`）+ `mark --fired`；**爬取失败 `mark --failed`**，attempts 达 3 置 failed 不再重试，靠下次手动 `sync` 按过期比赛补，**不做自动兜底**。方式一（Actions 轮询）不读取 `end_time`、保持原样。注意：`--links` 与 `--submissions-only` 互斥、无值报错；`--links` 只抓指定订阅，语义与 `--contests-only` 一致（有新建才回填其提交、不推进 last-update）。
 - 登录凭据一律走环境变量（`.env` / CI secrets），`config.json` 只放非敏感运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time`）。**本地运行爬虫/报告脚本会自动加载仓库根 `.env`**（`crawler/scripts/scheduled_task.py` / `crawler/scripts/report.py` 顶部 `load_dotenv()`，不覆盖已有环境变量；CI 无 `.env` 静默跳过）。QOJ/HDU 用户名密码由 `login()` 读取；NowCoder 需 `NOWCODER_USERNAME`（昵称，登录态校验）+ `NOWCODER_COOKIE_NOWCODERUID` / `NOWCODER_COOKIE_T`（登录 Cookie），见 `.env.example`。
 - 提交抓取截止：非首次运行按全局 `last-update.json` 增量（`_register_submission(deadline=None)`）；**首次抓取的新比赛**（本次运行 `fetch_contests` 新建文件夹，如补订已完成比赛）以该比赛 `start_time` 为截止**全量回填**（`_deadline_for`），否则 HDU/NowCoder 的 status 页第一条提交就早于全局 last-update 而被跳过、一场都抓不到。QOJ 提交走全局用户时间线，无 per-contest 概念，补订旧比赛需手动重置 `crawler/last-update.json` 该平台时间戳触发全量重抓（50 页上限内）。
 - **`--contests-only` 模式**（高频触发专用）：只检查订阅有没有触发，有新建比赛才回填其提交（截止 = 该场 `start_time`），无新建完全不碰提交。**不推进 `last-update.json`**——已有比赛的增量由每日任务B负责；若在 contests-only 推进，会跳过已有比赛在两次任务之间的新提交，造成漏抓。任务A 完整模式（`crawler/scripts/scheduled_task.py`）保留为手动/临时场景。注意：若某场新建比赛的**提交回填失败**（如超时），其文件夹已存在，后续 contests-only 运行不会把它当作"新建"而跳过回填（与任务A 同样的既有限制），需手动处理（重置该平台 last-update 触发全量重抓，或跑完整任务A）。
@@ -109,7 +107,21 @@ pnpm lint           # ESLint 检查
 pip install -r crawler/requirements.txt   # 爬虫依赖
 python3 crawler/scripts/scheduled_task.py                # 任务A（完整）：抓订阅比赛 + 全量增量提交
 python3 crawler/scripts/scheduled_task.py --contests-only     # 任务A（轻量）：只查订阅/新建比赛，有新建才回填其提交
+python3 crawler/scripts/scheduled_task.py --contests-only --links "https://qoj.ac/contest/123"  # 只抓指定订阅链接（闹钟 fire/sync 内部使用）
 python3 crawler/scripts/scheduled_task.py --submissions-only  # 任务B：每日增量同步提交
 python3 crawler/scripts/report.py --from-crawl           # 复盘报告：只对本次爬取新建的比赛生成
+python3 crawler/scripts/report.py --from-crawl --links "https://qoj.ac/contest/123"  # 只对指定链接生成（与 --links 爬取搭配）
 python3 crawler/scripts/report.py                        # 补生成：扫描所有缺报告的已结束比赛
+
+python3 crawler/scripts/alarm.py plan              # 扫描订阅：分类 HISTORY/EXPIRED/未来，写闹钟表并剪除已删订阅
+python3 crawler/scripts/alarm.py due               # 列出到点且未触发未失败的闹钟（无则空输出）
+python3 crawler/scripts/alarm.py mark <link> --fired   # 标记闹钟已触发
+python3 crawler/scripts/alarm.py mark <link> --failed  # 标记失败（attempts+1，达 3 置 failed）
+python3 crawler/scripts/alarm.py list              # 列出全部闹钟
+
+crawler/server-task.sh run [a|b]   # 一键运行（方式二）
+crawler/server-task.sh sync        # 手动同步订阅：历史/过期立即爬，未来写闹钟表
+crawler/server-task.sh fire        # 闹钟检查：到点爬取 + 报告（cron 每分钟；无到期安静退出）
+crawler/server-task.sh install     # 安装 cron（闹钟每分钟 + 任务B 每日）
+crawler/server-task.sh status      # 查看 cron / 闹钟 / git / 日志
 ```

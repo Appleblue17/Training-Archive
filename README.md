@@ -78,10 +78,13 @@ pip install -r crawler/requirements.txt
 python3 crawler/scripts/scheduled_task.py
 # 任务A（--contests-only：只查订阅/新建比赛，有新建才回填其提交；高频触发推荐）
 python3 crawler/scripts/scheduled_task.py --contests-only
+# 只抓指定订阅链接（服务器闹钟 fire / sync 补抓用；与 --contests-only 语义一致）
+python3 crawler/scripts/scheduled_task.py --contests-only --links "https://qoj.ac/contest/123"
 # 任务B：每日增量同步提交
 python3 crawler/scripts/scheduled_task.py --submissions-only
-# 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成）
+# 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成；--links 可只对指定链接生成）
 python3 crawler/scripts/report.py --from-crawl
+python3 crawler/scripts/report.py --from-crawl --links "https://qoj.ac/contest/123"
 # 补生成：扫描所有缺报告的已结束比赛，或只生成指定比赛
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
@@ -111,14 +114,22 @@ GitHub 云端定时运行爬虫，自动提交并部署到 GitHub Pages：
 # 一键运行（任务 A：查订阅/新建比赛（--contests-only）；任务 B：仅提交增量同步）
 crawler/server-task.sh run [a/b]
 
-# 安装 / 卸载 cron 定时（任务 A 每 30 分钟 + 任务 B 每日，自动适配服务器时区）
+# 更新订阅后手动同步（闹钟机制）：
+#   历史比赛（订阅不填 end_time）→ 立即爬取归档，不生成报告
+#   过期比赛（end_time 已过）    → 立即爬取并生成报告（如闹钟失败后补漏）
+#   未来比赛（end_time 未到）    → 写入闹钟表，到点由 fire 触发
+crawler/server-task.sh sync
+
+# 安装 / 卸载 cron 定时（闹钟检查每分钟 + 任务 B 每日，自动适配服务器时区）
 crawler/server-task.sh install
 crawler/server-task.sh uninstall
 
-# 查看状态 / 日志
+# 查看状态（cron / 闹钟 / git / 日志）/ 查看日志
 crawler/server-task.sh status
 crawler/server-task.sh log [N]
 ```
+
+**闹钟机制（方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式，如 `"2026-08-15T23:00:00+08:00"`）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交），cron 每分钟调用 `fire` 检查：到点即爬取该场比赛（`--contests-only --links`）并立即生成复盘报告，精确到分钟，替代原来的 30 分钟轮询。爬取失败自动重试最多 3 次，之后标记失败、靠下次手动 `sync` 按「过期比赛」补爬。方式一（GitHub Actions）仍用轮询，不读取 `end_time` 字段。
 
 服务器环境要求：已 clone 仓库、根目录有 `.env` 凭据、`pip install -r crawler/requirements.txt`、Chrome/Chromedriver 在 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`、已配置 push 凭据（SSH key 或 token）。
 

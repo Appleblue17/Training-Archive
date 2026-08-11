@@ -68,6 +68,13 @@ class NOWCODERCrawler(BaseCrawler):
         """
 
         input_contest_list = self._load_subscriptions(self.platform_name)
+        only_links = getattr(self, "_only_links", None)
+        if only_links:
+            # --links：只抓指定订阅链接（服务器闹钟 fire / sync 补抓用）
+            input_contest_list = [
+                s for s in input_contest_list
+                if s.get("link", "").rstrip("/") in only_links
+            ]
         contest_infos = []
         for input_contest in input_contest_list:
             if "link" not in input_contest:

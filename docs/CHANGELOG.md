@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+### Added
+
+- **服务器闹钟机制（部署方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式），取代「cron 定时扫描所有订阅、爬平台比较时间」的轮询方案——不填 `end_time` 视为历史比赛（`sync` 立即爬取归档，不生成报告）；`end_time` 未来则写入闹钟表，到点触发爬取并立即生成复盘报告（精确到分钟）；`end_time` 已过（如闹钟失败后补漏）由 `sync` 立即爬取并生成报告。方式一（GitHub Actions 轮询）不读取该字段，保持原样
+  - 新增闹钟表 `crawler/alarms.json`（运行时状态文件，`.gitignore` 与 `.gitignore.deploy` 均忽略，不提交），由新脚本 `crawler/scripts/alarm.py` 统一读写（`plan` / `due` / `mark` / `list` 子命令）
+  - `crawler/server-task.sh` 新增 `sync`（手动同步：历史/过期立即爬、未来写闹钟）与 `fire`（cron 每分钟检查，无到期闹钟时安静退出）子命令；`install` 的 cron 由「任务A 每 30 分钟轮询」改为「闹钟检查每分钟 + 任务B 每日」；`status` 增加闹钟列表展示
+  - `scheduled_task.py` 新增 `--links "link1,link2"`：只抓指定订阅链接的比赛（与 `--contests-only` 语义一致：新建比赛才回填其提交、不推进 last-update；不能与 `--submissions-only` 同用）；三平台 `fetch_contests_get_contest_list` 按 `crawler._only_links` 过滤订阅
+  - `report.py --from-crawl` 新增 `--links` 过滤：同一批爬取同时含历史与过期比赛时，只对指定链接（过期比赛）生成报告
+  - 爬取失败自动重试最多 3 次（`alarm.py mark --failed` 计数），之后标记失败、fire 不再重试，靠下次手动 `sync` 按「过期比赛」补爬
+
 ### Fixed
 
 - `deploy.yml` 的 `check_contests` 误触发部署：标记检查用 `git log -1 --pretty=%B`（subject + body 完整信息）做 `grep '[contests-changed]'`，若提交 **body** 里提及该标记字样（如描述此标记的修复说明）即误判为应部署。修复：改用 `--pretty=%s` 只取 subject 第一行——真正的标记提交 subject 为 `[auto] [contests-changed] ...` 仍能匹配，body 提及不再误触发

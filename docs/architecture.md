@@ -16,7 +16,7 @@
 └──────────────────┘
 ```
 
-- **爬虫子系统**：定时（任务A：查订阅/预订比赛抓取，每 30 分钟 `--contests-only`；任务B：提交周期同步，每天）抓取竞赛、题目、提交与代码，写入 `contests/` 目录和各类日志；复盘报告由独立脚本 `crawler/scripts/report.py` 生成。
+- **爬虫子系统**：定时（方式一 Actions：任务A 查订阅/预订比赛抓取，每 30 分钟 `--contests-only`；方式二服务器：预订比赛用闹钟机制 `sync`/`fire`，见 4.6；任务B 提交周期同步，每天）抓取竞赛、题目、提交与代码，写入 `contests/` 目录和各类日志；复盘报告由独立脚本 `crawler/scripts/report.py` 生成。
 - **前端子系统**：Next.js 静态导出。构建时通过 `fs` 读取 `contests/` 目录与 JSON 元数据，生成竞赛列表、题目详情、文件查看与复盘页面。
 - **CI/CD**：`crawler-scheduled.yml`（任务A）与 `crawler.yml`（任务B）在 `deploy` 分支上运行爬虫并提交数据；`deploy.yml` 检测到当日数据变更后构建并发布到 GitHub Pages。
 
@@ -165,11 +165,20 @@ contests/
 
 ```json
 [
-  { "platform": "qoj", "link": "https://qoj.ac/contest/123", "comments": "可选备注", "enabled": true }
+  { "platform": "qoj", "link": "https://qoj.ac/contest/123", "comments": "可选备注", "enabled": true },
+  { "platform": "qoj", "link": "https://qoj.ac/contest/456", "end_time": "2026-08-15T23:00:00+08:00" }
 ]
 ```
 
 订阅条目 `enabled` 为**订阅级**开关（**缺省视为启用**，默认开启；设 `false` 暂时不抓该场，保留条目不删除）。
+
+订阅条目可选填 `end_time`（比赛结束时间，**北京时间 ISO 格式**），仅**部署方式二（自建服务器）**的闹钟机制读取（见 4.6），方式一（GitHub Actions 轮询）不读取该字段、保持原样：
+
+| end_time 取值 | 含义 | 行为 |
+|---------------|------|------|
+| 不填 | 历史比赛 | `sync` 立即爬取归档，**不生成报告** |
+| 未来时间 | 未来比赛 | `sync` 写入闹钟表，到点由 `fire` 爬取 + **立即生成报告**（精确到分钟） |
+| 已过时间 | 过期比赛（如闹钟失败后补漏） | `sync` 立即爬取 + **生成报告** |
 
 三个平台均以订阅为唯一来源：QOJ 比赛列表按订阅链接过滤，HDU/NowCoder 遍历订阅链接解析比赛信息。
 
@@ -191,6 +200,7 @@ contests/
 |------|------|------|------|
 | 任务A（完整，默认） | `python3 crawler/scripts/scheduled_task.py` | 手动/临时 | 抓订阅的已开始比赛 → 增量同步提交 |
 | 任务A（`--contests-only`） | `python3 crawler/scripts/scheduled_task.py --contests-only` | `crawler-scheduled.yml`，每 30 分钟 | 只检查订阅有没有触发（新建比赛）；有新建才回填这些比赛的提交记录，无新建则完全不碰提交，保持轻量。**不推进 `last-update.json`**——已有比赛的增量由任务B负责 |
+| 任务A（`--contests-only --links`） | `python3 crawler/scripts/scheduled_task.py --contests-only --links "https://qoj.ac/contest/123"` | 服务器闹钟 `fire` / `sync` 内部调用 | 只抓**指定订阅链接**的比赛（其余订阅跳过），语义与 `--contests-only` 一致；与 `--submissions-only` 互斥，`--links` 无值报错 |
 | 任务B（提交周期同步） | `python3 crawler/scripts/scheduled_task.py --submissions-only` | `crawler.yml`，每天 20:00 UTC | 对所有已开始/进行中的比赛做增量提交抓取 |
 
 `--contests-only` 实现要点：`scheduled_task.run_platform` 在 `fetch_contests` 后检查 `crawler._new_contests`，为空直接结束；非空则置 `crawler._contests_only = True` 再 `fetch_submissions()`——HDU/NowCoder 的 `fetch_submissions_get_submissions` 只遍历本次新建的比赛（其余订阅跳过），QOJ 以最早新比赛开始时间为提交截止（`_register_submission(deadline=...)`），`BaseCrawler.finish()` 在 contests-only 模式始终不推进 `last-update.json`。
@@ -199,8 +209,9 @@ contests/
 
 ### 4.4 复盘报告（`crawler/scripts/report.py`，独立总结脚本）
 
-- 独立于爬虫入口运行，三种模式：
+- 独立于爬虫入口运行，四种模式：
   - `python3 crawler/scripts/report.py --from-crawl`（**推荐**）：只对本次爬取新建的比赛生成（读 `crawler/new-contests.json`，任务A 结束时写入；无文件/空列表时直接跳过）
+  - `python3 crawler/scripts/report.py --from-crawl --links "link1,link2"`：在 `--from-crawl` 基础上只对**指定订阅链接**的比赛生成（闹钟 `sync` 同批爬取同时含历史与过期比赛时，只对过期比赛生成报告）
   - `python3 crawler/scripts/report.py`：扫描所有已结束且缺 `review.md` 的比赛补生成
   - `python3 crawler/scripts/report.py <contest_folder>`：只生成指定比赛
 - 任务A（`crawler/scripts/scheduled_task.py`，含 `--contests-only`）结束时把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时状态文件，gitignore；无新建比赛时删除旧文件），`report.py` / `qq_share.py` 以 `--from-crawl` 读取；读写逻辑统一在共享模块 `crawler/scripts/new_contests.py`。
@@ -218,7 +229,32 @@ contests/
 - 提交抓取**完整性校验**：只有遍历完所有分页或到达 last-update 才标记完整；`finish()` 仅在此情况下推进 `last-update.json`，否则下次重跑，避免静默漏提交。
 - **contests-only（`--contests-only`）不回填已有比赛、不推进 `last-update.json`**：新建比赛的提交以该场 `start_time` 为截止全量回填（`_deadline_for`，与任务A首次抓取一致），已有比赛的增量由每日任务B推进。若推进，会跳过已有比赛在两次任务之间的新提交，造成漏抓。
 
-**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/platforms/*/contests.json`、`crawler/platforms/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。CI 工作流在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。仅 crawler 状态变化时同样提交（消息不带 `[contests-changed]` 标记，不触发部署）。日志、chromedriver 二进制、遗留 `input_*.json`、`new-contests.json`（临时报告列表，见 4.4）始终不提交。
+**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/platforms/*/contests.json`、`crawler/platforms/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。CI 工作流在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。仅 crawler 状态变化时同样提交（消息不带 `[contests-changed]` 标记，不触发部署）。日志、chromedriver 二进制、遗留 `input_*.json`、`new-contests.json`（临时报告列表，见 4.4）**与 `alarms.json`（闹钟表，见 4.6）**始终不提交。
+
+### 4.6 服务器闹钟机制（部署方式二专用，`crawler/scripts/alarm.py`）
+
+**背景**：方式二（自建服务器）早期沿用方式一的轮询思路——cron 每 30 分钟扫描所有订阅、爬平台比较时间判断是否到点，精确度差且每次都要跑全量扫描。改用**闹钟表 + 每分钟检查**：订阅条目填 `end_time`（见 4.3），`sync` 时把未来比赛写入闹钟表，cron 每分钟检查到点即触发。
+
+**闹钟表 `crawler/alarms.json`**：运行时状态文件，`alarm.py` 统一读写，`.gitignore` 与 `.gitignore.deploy` 均忽略、**不提交**（服务器本地状态，不属于 deploy 分支数据）。每条记录含 `link` / `end_time` / `fired` / `failed` / `attempts`。
+
+**子命令**：
+
+| 子命令 | 职责 |
+|--------|------|
+| `alarm.py plan` | 扫描订阅目录：HISTORY（不填 end_time）/ EXPIRED（已过）/ 未来比赛；未来比赛写入闹钟表（幂等，`end_time` 更新则重置状态），并**剪除订阅中已删除条目的闹钟** |
+| `alarm.py due` | 输出到点且未触发、未失败（`attempts < 3`）的闹钟；无则安静（空输出，供 cron 判断） |
+| `alarm.py mark <link> --fired` | 标记该闹钟已触发（爬取成功） |
+| `alarm.py mark <link> --failed` | 标记失败，`attempts` 计数 +1；达 **MAX_ATTEMPTS=3** 置 `failed`，`due` 不再输出（不再自动重试） |
+| `alarm.py list` | 列出全部闹钟（含失败计数） |
+
+**server-task.sh 集成**：
+
+- `cmd_sync`（`crawler/server-task.sh sync`）：①`plan` 分类订阅并写闹钟表；②爬取 HISTORY + EXPIRED 比赛（`--contests-only --links "..."`）；③对 EXPIRED 比赛生成报告（`report.py --from-crawl --links "..."`）；④`mark --fired`。即：历史比赛立即爬取归档不生成报告，过期比赛立即爬取 + 报告（闹钟失败后补漏场景），未来比赛只写闹钟不动。
+- `cmd_fire`（`crawler/server-task.sh fire`）：先 `due`，**无到期闹钟安静退出**（不产生提交）；有则走与 `sync` 相同的完整流程（爬取 → 报告 → mark fired）。**爬取失败 `mark --failed`**，重试最多 3 次后标记 failed，靠下次手动 `sync` 按「过期比赛」补爬。
+- `install` 的 cron 改为：闹钟检查 `* * * * *`（fire）+ 任务B 每日；`status` 展示闹钟表。
+- **不做事后自动兜底**：fire 失败标记 failed 后不会自动重扫，需手动 `sync` 补（用户确认的取舍，避免低频全量重扫的复杂度）。
+
+**只对方式二生效**：方式一（GitHub Actions 轮询）不读取 `end_time` 字段，`alarm.py` 与 `sync`/`fire` 仅服务器使用。
 
 ## 5. 关键技术决策记录（ADR）
 
@@ -234,6 +270,7 @@ contests/
 | 全量提交采集（`submissions/` + `submissions.json`） | 复盘报告需要完整提交序列（含每份源码） | 每次提交都抓源码，初始同步耗时更长 |
 | LLM 复盘报告（DeepSeek） | 每场一份 `review.md`，原始提交序列直接送 LLM，不做预处理 | 依赖 `DEEPSEEK_API_KEY`；存在即跳过（幂等） |
 | 爬虫调度恢复为定时（两个任务） | 任务A（查订阅/预订抓取，每 30 分钟 `--contests-only`，有新建才回填其提交）与任务B（提交周期同步，每天）分离；复盘报告由 `report.py` 独立运行 | `crawler-scheduled.yml` + `crawler.yml`，`concurrency` 串行防冲突 |
+| 服务器闹钟机制（方式二专用） | 方式二（自建服务器）用闹钟表 + cron 每分钟检查替代 30 分钟轮询：订阅填 `end_time`，`sync` 写闹钟、`fire` 到点触发，精确到分钟；只对方式二生效，方式一（Actions 轮询）不读取 `end_time` | `crawler/scripts/alarm.py` + `crawler/alarms.json`（gitignore，不提交）；`server-task.sh` 新增 `sync`/`fire`，`install` 的 cron 改「闹钟每分钟 + 任务B 每日」；失败重试 3 次后标记 failed，不做事后自动兜底（靠手动 `sync` 补） |
 | 平台启用/禁用由 `config.json` 控制 | HDU/NowCoder 平台结构变动/登录不稳定，默认停用；QOJ 为主力 | 每个平台条目 `enabled` 字段（缺省 false 视为禁用），`scheduled_task.py` 启动时过滤；代码保留，未删除 |
 
 ## 6. 已知限制
