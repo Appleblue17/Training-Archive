@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- `deploy.yml` 的 `check_contests` 误触发部署：标记检查用 `git log -1 --pretty=%B`（subject + body 完整信息）做 `grep '[contests-changed]'`，若提交 **body** 里提及该标记字样（如描述此标记的修复说明）即误判为应部署。修复：改用 `--pretty=%s` 只取 subject 第一行——真正的标记提交 subject 为 `[auto] [contests-changed] ...` 仍能匹配，body 提及不再误触发
+- 自动提交的 `[contests-changed]` 标记对含中文路径的比赛失效：git 默认 `core.quotepath=true` 会把非 ASCII 路径输出为带引号 + 八进制转义（如 `"contests/2026\u2026..."`），`server-task.sh` 与两个爬虫工作流中的 `git diff --cached --name-only | grep '^contests/'` 匹配失败，导致**改了 `contests/` 内容却走了 `[auto] Update crawler state` 分支、不带标记、不触发部署**（实测新增 411 个中文路径提交文件却无标记）。修复：判断统一改为 `git -c core.quotepath=false diff --cached --name-only`（本次命令级生效，不改全局配置），中文路径原样输出即可匹配 `^contests/`
+- `/log` 页面在日志文件缺失时显示占位提示而非报错：日志是运行时产物（`crawler/global.log.json` 与 `crawler/platforms/*/log.json` 被 gitignore 不提交版本控制），deploy 分支 / 全新 clone 上 `/log` 读取路径必然不存在，此前页面显示 `Error reading file: ENOENT...`（空内容在 log 类型还显示 "Invalid log format"）。改为读取失败返回空串、前端渲染"暂无日志文件"占位（含生成路径提示），有日志时正常显示
+- 静态导出在无可用数据时失败：全部 5 个动态路由（`/[page]`、`/review/[contest]`、`/view/contests/[contest]/[file]`、`/view/contests/[contest]/problems/[problem]/[file]`、`/view/contests/[contest]/problems/[problem]/submissions/[file]`）的 `generateStaticParams` 在 `contests/` 无数据或不存在时返回空数组 / `readdirSync` 抛错，`output: export` 判定动态路由无法构建而报错。统一改为：`contests/` 不存在时判空，无匹配数据时返回占位参数（`~no-data~`），页面内部渲染"暂无数据"提示；`/[page]` 兜底输出 `page1`（HomeView 渲染空列表）。数据由爬虫生成后占位页自然消失。影响面：deploy 分支旧数据（无 `submissions.json`/`review.md`/提交历史）或全新 clone 空 `contests/` 时 build 均可通过
+
+## [0.2.0] - 2026-08-10
+
 ### Added
 
 - 平台启用/禁用管理：`crawler/config.json` 每个平台条目支持 `enabled` 字段（**缺省 `false` 视为禁用**，配置文件缺失/解析失败时全部平台禁用），`scheduled_task.py` 启动时按此过滤（任务A/任务B 均生效）；HDU/NowCoder 默认 `enabled: false`；新增模板 `crawler/config.example.json`（gitignore 例外保留模板可提交）
@@ -65,10 +74,6 @@
 
 ### Fixed
 
-- `deploy.yml` 的 `check_contests` 误触发部署：标记检查用 `git log -1 --pretty=%B`（subject + body 完整信息）做 `grep '[contests-changed]'`，若提交 **body** 里提及该标记字样（如描述此标记的修复说明）即误判为应部署。修复：改用 `--pretty=%s` 只取 subject 第一行——真正的标记提交 subject 为 `[auto] [contests-changed] ...` 仍能匹配，body 提及不再误触发
-- 自动提交的 `[contests-changed]` 标记对含中文路径的比赛失效：git 默认 `core.quotepath=true` 会把非 ASCII 路径输出为带引号 + 八进制转义（如 `"contests/2026\u2026..."`），`server-task.sh` 与两个爬虫工作流中的 `git diff --cached --name-only | grep '^contests/'` 匹配失败，导致**改了 `contests/` 内容却走了 `[auto] Update crawler state` 分支、不带标记、不触发部署**（实测新增 411 个中文路径提交文件却无标记）。修复：判断统一改为 `git -c core.quotepath=false diff --cached --name-only`（本次命令级生效，不改全局配置），中文路径原样输出即可匹配 `^contests/`
-- `/log` 页面在日志文件缺失时显示占位提示而非报错：日志是运行时产物（`crawler/global.log.json` 与 `crawler/platforms/*/log.json` 被 gitignore 不提交版本控制），deploy 分支 / 全新 clone 上 `/log` 读取路径必然不存在，此前页面显示 `Error reading file: ENOENT...`（空内容在 log 类型还显示 "Invalid log format"）。改为读取失败返回空串、前端渲染"暂无日志文件"占位（含生成路径提示），有日志时正常显示
-- 静态导出在无可用数据时失败：全部 5 个动态路由（`/[page]`、`/review/[contest]`、`/view/contests/[contest]/[file]`、`/view/contests/[contest]/problems/[problem]/[file]`、`/view/contests/[contest]/problems/[problem]/submissions/[file]`）的 `generateStaticParams` 在 `contests/` 无数据或不存在时返回空数组 / `readdirSync` 抛错，`output: export` 判定动态路由无法构建而报错。统一改为：`contests/` 不存在时判空，无匹配数据时返回占位参数（`~no-data~`），页面内部渲染"暂无数据"提示；`/[page]` 兜底输出 `page1`（HomeView 渲染空列表）。数据由爬虫生成后占位页自然消失。影响面：deploy 分支旧数据（无 `submissions.json`/`review.md`/提交历史）或全新 clone 空 `contests/` 时 build 均可通过
 - HDU / NowCoder 提交记录补抓 `problem_id` 字段（此前只存 `problem_link`，题目映射的 name 兜底失效）：两个平台从 status 页题目列（`cols[2]`，与 `problem_link` 同列）抓取题目 ID（如 "1006"）。注意 **HDU/NowCoder 的 status 页该列显示的是题目 ID 而非题目名**，故不再存 `problem_name`；QOJ 从 `#123. Name` 同时提取 `problem_id`（"123"）与 `problem_name`（真实题目名）。三平台提交的题目匹配统一为三级：`problem_link` → `problem_id` → `problem_name`（`base.py` 新增 `_problem_id_from_link` helper；`report.py` 同步支持，link 有格式差异时不再显示 "?"）
 - 补订已完成比赛提交抓不到：HDU/NowCoder 的提交记录在比赛 status 页里，补订时若提交早于全局 `last-update.json`，`_register_submission` 对第一条提交就 `return True` 直接停止，一场都抓不到。`fetch_contests` 记录本次新建的比赛（`_new_contests`），`fetch_submissions` 对首次抓取的比赛以 `start_time` 为截止全量回填（`_deadline_for` + `_register_submission(deadline=...)`）；非首次仍按全局 last-update 增量
 - 早于比赛开始时间的提交（跨赛季复用同一道题的历史提交）统一丢弃：`_update_submission_status` 匹配改为从 link/id/name 候选中选"start_time 最晚且不晚于提交时间"的比赛（提交属于其发生的赛季），早于所有匹配比赛开始的提交返回 `DISCARD` 直接丢弃、不再落入 staged；staged 重试循环对 `DISCARD` 的旧提交同样清除。QOJ 全局时间线同样适用
