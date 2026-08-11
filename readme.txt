@@ -9,7 +9,7 @@ b:I[39909,[],"AsyncMetadataOutlet"]
 f:I[50939,[],""]
 :HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/Training-Archive/_next/static/css/baa0e101e3a2d945.css","style"]
-0:{"P":null,"b":"6qyAPdX8vLiHYeb7J_xvN","p":"/Training-Archive","c":["","readme"],"i":false,"f":[[["",{"children":["(main)",{"children":["readme",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/baa0e101e3a2d945.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["readme",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L8",null,["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]]}],{},null,false]},null,false]},null,false]},[["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],"$Ld"]}]]}],[],[]],false],"$Le",false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+0:{"P":null,"b":"dgfOIk6z9n6XyDoFuFNZY","p":"/Training-Archive","c":["","readme"],"i":false,"f":[[["",{"children":["(main)",{"children":["readme",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/baa0e101e3a2d945.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["readme",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L8",null,["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]]}],{},null,false]},null,false]},null,false]},[["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],"$Ld"]}]]}],[],[]],false],"$Le",false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
 10:I[47055,[],"ViewportBoundary"]
 12:I[47055,[],"MetadataBoundary"]
 13:"$Sreact.suspense"
@@ -19,7 +19,7 @@ d:["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]
 e:["$","$1","h",{"children":[null,[["$","$L10",null,{"children":"$L11"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L12",null,{"children":["$","div",null,{"hidden":true,"children":["$","$13",null,{"fallback":null,"children":"$L14"}]}]}]]}]
 7:["$","div",null,{"className":"mt-4 flex w-full justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/5 min-w-[64rem] px-4","children":[["$","header",null,{"className":"w-full rounded-lg py-4 text-slate-300","children":["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]}],["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/actions","target":"_blank","rel":"noopener noreferrer","className":"absolute right-0 top-4 flex items-center gap-3 rounded-lg bg-zinc-700/80 px-4 py-2 text-sm transition-colors duration-150 hover:bg-zinc-600/80","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["circle",{"cx":"12","cy":"12","r":"10","key":"1mglay"}],["path",{"d":"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20","key":"13o1zl"}],["path",{"d":"M2 12h20","key":"9i4pu4"}]],"className":"lucide-globe size-5 text-stone-400"}],["$","$L15",null,{"minTimeISO":"2026-01-26T03:00:32.617Z"}]]}],["$","$L16",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
 17:I[16005,["986","static/chunks/app/(main)/readme/page-7082f35ef19b9958.js"],"default"]
-18:T1d21,# Training Archive
+18:T2250,# Training Archive
 
 算法竞赛训练归档站：自动抓取 QOJ / HDU / NowCoder 的参赛提交与题目，归档为静态站点，便于回溯自己的训练记录与解题代码。
 
@@ -99,10 +99,13 @@ pip install -r crawler/requirements.txt
 python3 crawler/scripts/scheduled_task.py
 # 任务A（--contests-only：只查订阅/新建比赛，有新建才回填其提交；高频触发推荐）
 python3 crawler/scripts/scheduled_task.py --contests-only
+# 只抓指定订阅链接（服务器闹钟 fire / sync 补抓用；与 --contests-only 语义一致）
+python3 crawler/scripts/scheduled_task.py --contests-only --links "https://qoj.ac/contest/123"
 # 任务B：每日增量同步提交
 python3 crawler/scripts/scheduled_task.py --submissions-only
-# 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成）
+# 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成；--links 可只对指定链接生成）
 python3 crawler/scripts/report.py --from-crawl
+python3 crawler/scripts/report.py --from-crawl --links "https://qoj.ac/contest/123"
 # 补生成：扫描所有缺报告的已结束比赛，或只生成指定比赛
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
@@ -132,14 +135,22 @@ GitHub 云端定时运行爬虫，自动提交并部署到 GitHub Pages：
 # 一键运行（任务 A：查订阅/新建比赛（--contests-only）；任务 B：仅提交增量同步）
 crawler/server-task.sh run [a/b]
 
-# 安装 / 卸载 cron 定时（任务 A 每 30 分钟 + 任务 B 每日，自动适配服务器时区）
+# 更新订阅后手动同步（闹钟机制）：
+#   历史比赛（订阅不填 end_time）→ 立即爬取归档，不生成报告
+#   过期比赛（end_time 已过）    → 立即爬取并生成报告（如闹钟失败后补漏）
+#   未来比赛（end_time 未到）    → 写入闹钟表，到点由 fire 触发
+crawler/server-task.sh sync
+
+# 安装 / 卸载 cron 定时（闹钟检查每分钟 + 任务 B 每日，自动适配服务器时区）
 crawler/server-task.sh install
 crawler/server-task.sh uninstall
 
-# 查看状态 / 日志
+# 查看状态（cron / 闹钟 / git / 日志）/ 查看日志
 crawler/server-task.sh status
 crawler/server-task.sh log [N]
 ```
+
+**闹钟机制（方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式，如 `"2026-08-15T23:00:00+08:00"`）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交），cron 每分钟调用 `fire` 检查：到点即爬取该场比赛（`--contests-only --links`）并立即生成复盘报告，精确到分钟，替代原来的 30 分钟轮询。爬取失败自动重试最多 3 次，之后标记失败、靠下次手动 `sync` 按「过期比赛」补爬。方式一（GitHub Actions）仍用轮询，不读取 `end_time` 字段。
 
 服务器环境要求：已 clone 仓库、根目录有 `.env` 凭据、`pip install -r crawler/requirements.txt`、Chrome/Chromedriver 在 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`、已配置 push 凭据（SSH key 或 token）。
 
@@ -164,7 +175,7 @@ crawler/server-task.sh log [N]
 [MIT](LICENSE) © Appleblue17
 
 本项目仅用于学习与个人归档用途。
-19:T25ed,
+19:T2c96,
 <h1>Training Archive</h1>
 <p>算法竞赛训练归档站：自动抓取 QOJ / HDU / NowCoder 的参赛提交与题目，归档为静态站点，便于回溯自己的训练记录与解题代码。</p>
 <p>在线访问：<a href="https://appleblue17.github.io/Training-Archive/">https://appleblue17.github.io/Training-Archive/</a></p>
@@ -257,10 +268,13 @@ pip install -r crawler/requirements.txt
 python3 crawler/scripts/scheduled_task.py
 <span class="hljs-comment"># 任务A（--contests-only：只查订阅/新建比赛，有新建才回填其提交；高频触发推荐）</span>
 python3 crawler/scripts/scheduled_task.py --contests-only
+<span class="hljs-comment"># 只抓指定订阅链接（服务器闹钟 fire / sync 补抓用；与 --contests-only 语义一致）</span>
+python3 crawler/scripts/scheduled_task.py --contests-only --links <span class="hljs-string">"https://qoj.ac/contest/123"</span>
 <span class="hljs-comment"># 任务B：每日增量同步提交</span>
 python3 crawler/scripts/scheduled_task.py --submissions-only
-<span class="hljs-comment"># 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成）</span>
+<span class="hljs-comment"># 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成；--links 可只对指定链接生成）</span>
 python3 crawler/scripts/report.py --from-crawl
+python3 crawler/scripts/report.py --from-crawl --links <span class="hljs-string">"https://qoj.ac/contest/123"</span>
 <span class="hljs-comment"># 补生成：扫描所有缺报告的已结束比赛，或只生成指定比赛</span>
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py <span class="hljs-string">"contests/2026-08-01 xxx"</span>
@@ -285,14 +299,21 @@ python3 crawler/scripts/report.py <span class="hljs-string">"contests/2026-08-01
 <pre><code class="hljs language-bash"><span class="hljs-comment"># 一键运行（任务 A：查订阅/新建比赛（--contests-only）；任务 B：仅提交增量同步）</span>
 crawler/server-task.sh run [a/b]
 
-<span class="hljs-comment"># 安装 / 卸载 cron 定时（任务 A 每 30 分钟 + 任务 B 每日，自动适配服务器时区）</span>
+<span class="hljs-comment"># 更新订阅后手动同步（闹钟机制）：</span>
+<span class="hljs-comment">#   历史比赛（订阅不填 end_time）→ 立即爬取归档，不生成报告</span>
+<span class="hljs-comment">#   过期比赛（end_time 已过）    → 立即爬取并生成报告（如闹钟失败后补漏）</span>
+<span class="hljs-comment">#   未来比赛（end_time 未到）    → 写入闹钟表，到点由 fire 触发</span>
+crawler/server-task.sh <span class="hljs-built_in">sync</span>
+
+<span class="hljs-comment"># 安装 / 卸载 cron 定时（闹钟检查每分钟 + 任务 B 每日，自动适配服务器时区）</span>
 crawler/server-task.sh install
 crawler/server-task.sh uninstall
 
-<span class="hljs-comment"># 查看状态 / 日志</span>
+<span class="hljs-comment"># 查看状态（cron / 闹钟 / git / 日志）/ 查看日志</span>
 crawler/server-task.sh status
 crawler/server-task.sh <span class="hljs-built_in">log</span> [N]
 </code></pre>
+<p><strong>闹钟机制（方式二专用）</strong>：订阅条目可选填 <code>end_time</code>（比赛结束时间，ISO 格式，如 <code>"2026-08-15T23:00:00+08:00"</code>）。<code>sync</code> 把未来比赛写入运行时状态文件 <code>crawler/alarms.json</code>（gitignore，不提交），cron 每分钟调用 <code>fire</code> 检查：到点即爬取该场比赛（<code>--contests-only --links</code>）并立即生成复盘报告，精确到分钟，替代原来的 30 分钟轮询。爬取失败自动重试最多 3 次，之后标记失败、靠下次手动 <code>sync</code> 按「过期比赛」补爬。方式一（GitHub Actions）仍用轮询，不读取 <code>end_time</code> 字段。</p>
 <p>服务器环境要求：已 clone 仓库、根目录有 <code>.env</code> 凭据、<code>pip install -r crawler/requirements.txt</code>、Chrome/Chromedriver 在 <code>crawler/chrome-linux64/</code> 与 <code>crawler/chromedriver-linux64/</code>、已配置 push 凭据（SSH key 或 token）。</p>
 <blockquote>
   <p><code>deploy.yml</code> 已支持 <code>push</code> 到 <code>deploy</code> 分支触发：带 <code>[contests-changed]</code> 标记的提交才会部署，仅状态变化的提交会跳过。</p>
