@@ -37,14 +37,17 @@
 - 提供一键管理脚本 **`crawler/server-task.sh`**（复刻 Action 完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
   ```bash
   crawler/server-task.sh run [a|b]   # 一键运行（a=任务A完整抓取[默认]，b=任务B仅提交同步）
-  crawler/server-task.sh install     # 安装 cron（任务A 每 30 分钟 + 任务B 每日，自动适配服务器时区）
+  crawler/server-task.sh sync        # 手动同步订阅：历史/过期比赛立即爬取，未来比赛写闹钟表
+  crawler/server-task.sh fire        # 闹钟检查：到点比赛爬取 + 立即生成报告（cron 每分钟调用，无到期安静退出）
+  crawler/server-task.sh install     # 安装 cron（闹钟检查每分钟 + 任务B 每日，自动适配服务器时区）
   crawler/server-task.sh uninstall   # 卸载 cron
-  crawler/server-task.sh status      # 查看 cron / git / 最近日志
+  crawler/server-task.sh status      # 查看 cron / 闹钟 / git / 最近日志
   crawler/server-task.sh log [N]     # 查看运行日志
   ```
 - 脚本内建：`flock` 防并发、自动切到 `deploy` 分支 + `--ff-only` pull、加载根目录 `.env`（cron 环境不继承）、`TZ=Asia/Shanghai`、venv 自动探测、依赖检查、提交规则与 action 一致（`contests/` 变化带 `[contests-changed]` 标记）。
+- **预订比赛用闹钟机制（方式二专用）**：订阅条目可选填 `end_time`，`sync` 把未来比赛写入闹钟表 `crawler/alarms.json`（gitignore，不提交），cron 每分钟 `fire` 检查到点即爬取并立即生成报告（精确到分钟，替代 30 分钟轮询）；不填 `end_time` 的历史比赛 `sync` 立即爬取归档不生成报告；已过 `end_time` 的过期比赛（闹钟失败后补漏）`sync` 立即爬取 + 报告。失败重试最多 3 次后标记 failed，靠下次手动 `sync` 补，**不做自动兜底**。方式一（Actions）不读取 `end_time`、保持轮询原样。
 - **部署触发**：`deploy.yml` 已加 `on: push: branches: [deploy]`——带 `[contests-changed]` 标记的提交才部署，仅状态变化的提交跳过（push 事件免日期校验；`workflow_dispatch` 仍无条件部署）。
-- 优点：调度灵活（可精确到分钟、可用 `at` 排一次性任务）、不消耗 Actions 配额；缺点：需自备服务器与 Chrome/Chromedriver 环境。
+- 优点：调度精确到分钟（闹钟替代轮询）、不消耗 Actions 配额；缺点：需自备服务器与 Chrome/Chromedriver 环境。
 
 #### 方案 3：动态版（v0.3.x）
 - 自建服务器 / Docker，Next.js API routes 或独立 service。
@@ -79,7 +82,8 @@
 - 语义：某场**预订**的比赛结束后 → 抓取整场比赛数据 → 立即生成复盘报告。
 - 调度：
   - 动态版：APScheduler / `at` 按 `end_time` 排一次性 job，**精确到分钟**，跑完即删。
-  - 静态版（GitHub Actions）：Actions 无原生单次调度，用 **cron 每 15~30 分钟轮询**「到点且未跑过的预订比赛」模拟一次性执行（平台限制，非设计上的轮询）。用户已确认可接受此延迟。
+  - 静态版（GitHub Actions，方式一）：Actions 无原生单次调度，用 **cron 每 15~30 分钟轮询**「到点且未跑过的预订比赛」模拟一次性执行（平台限制，非设计上的轮询）。用户已确认可接受此延迟。
+  - 静态版（自建服务器，方式二）：订阅条目填 `end_time`（不填 = 历史比赛，`sync` 立即爬取归档不生成报告；已过 = 过期比赛，立即爬取 + 报告），`sync` 把未来比赛写入闹钟表，cron 每分钟 `fire` 到点爬取 + 立即生成报告，**精确到分钟**；失败重试最多 3 次后标记 failed，靠手动 `sync` 补，不做自动兜底。方式一（Actions）不读取 `end_time` 字段。
 - 幂等：每场比赛记录「已抓取 / 已生成报告」状态标记，重跑只补未完成的。
 - 只抓该场次数据，与任务 B 无耦合。
 
@@ -88,7 +92,8 @@
 - 沿用现有 `last-update.json` 增量机制。
 
 ### 订阅配置
-- 统一 `crawler/subscriptions.json`（含 `link`/`platform`/`enabled`），取代三平台零散的 `input_contests.json`。
+- 统一 `crawler/subscriptions/` 目录（已实现，取代单文件与三平台零散的 `input_contests.json`），每个 `.json` 文件一份订阅列表（文件名随意，按 `link` 去重合并），模板 `crawler/subscriptions/subscriptions.example.json`。
+- 条目含 `link` / `platform` / `enabled`（订阅级开关，缺省启用）；可选填 `end_time`（比赛结束时间，仅方式二闹钟机制读取）。
 - 初期从空模板开始，链接由用户填充。
 
 ---
@@ -207,6 +212,7 @@ v0.3.0（动态版）
 | 11 | UI 库 | shadcn/ui |
 | 12 | 图标库 | lucide-react（替换 react-icons） |
 | 13 | CI secret | `DEEPSEEK_API_KEY` |
+| 14 | 方式二预订比赛调度（2026-08-11） | 闹钟机制：订阅填 `end_time`，`sync` 写闹钟表、cron 每分钟 `fire` 到点爬取 + 立即生成报告（精确到分钟，替代 30 分钟轮询）；失败重试 3 次后标记 failed，**不做自动兜底**（靠手动 `sync` 按过期比赛补）；方式一（Actions 轮询）不读取 `end_time` |
 
 ## 11. 遗留 / 待定
 

@@ -66,6 +66,7 @@ crawler/chromedriver-linux64
 # crawler/global.log.json
 # crawler/platforms/*/log.json
 crawler/new-contests.json
+crawler/alarms.json
 crawler/prompts/prompt.template.md
 crawler/prompts/qq-share.template.md
 crawler/platforms/*/input_*.json

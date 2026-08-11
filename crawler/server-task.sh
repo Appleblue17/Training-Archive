@@ -8,9 +8,11 @@
 #
 # 用法:
 #   server-task.sh run [a|b]    手动运行一次任务（a=任务A查订阅/新建比赛[默认]，b=任务B仅提交同步）
-#   server-task.sh install      安装 cron 定时（任务A 每 30 分钟 + 任务B 每日）
+#   server-task.sh sync         更新订阅后手动同步：历史/过期比赛立即爬取，未来比赛写入闹钟
+#   server-task.sh fire         闹钟到点触发（cron 每分钟调用；无到期闹钟时安静退出）
+#   server-task.sh install      安装 cron 定时（闹钟检查每分钟 + 任务B 每日）
 #   server-task.sh uninstall    卸载 cron 定时
-#   server-task.sh status       查看 cron / git / 最近日志
+#   server-task.sh status       查看 cron / 闹钟 / git / 最近日志
 #   server-task.sh log [N]      查看最近 N 行运行日志（默认 50）
 #   server-task.sh --help       显示本帮助
 #
@@ -21,6 +23,13 @@
 #   - Chrome / Chromedriver 位于 crawler/chrome-linux64/ 与
 #     crawler/chromedriver-linux64/（crawler/platforms/base.py 本地模式的默认路径）
 #   - push 到 GitHub 的凭据已配置（SSH key 或 token）
+#
+# 闹钟机制（服务器方式二专用；GitHub Actions 方式一仍用轮询，不读取 end_time）：
+#   订阅条目可选填 end_time（比赛结束时间，ISO 格式）：
+#     - 不填 end_time：历史比赛，sync 立即爬取归档（不生成复盘报告）
+#     - end_time 未来：sync 写入 crawler/alarms.json 闹钟表，fire 到点爬取并生成报告
+#     - end_time 已过：sync 立即爬取并生成报告（如闹钟失败后补漏）
+#   闹钟表是运行时状态文件（gitignore，不提交），由 crawler/scripts/alarm.py 统一读写。
 # ==============================================================================
 set -euo pipefail
 
@@ -34,9 +43,10 @@ LOCK_FILE="/tmp/training-archive-server-task.lock"
 DEPLOY_BRANCH="deploy"
 
 # cron 按服务器本地时区执行。
-# 任务 B 对应 action 的每日 0:20 UTC（北京时间 4:00）；install 时会按
+# fire：闹钟检查，每分钟跑一次（无到期闹钟时安静退出，开销可忽略）
+# 任务 B：对应 action 的每日 0:20 UTC（北京时间 4:00）；install 时会按
 # 服务器时区自动调整：UTC → 0 20 * * *，其他（如 CST）→ 0 4 * * *。
-CRON_A='*/10 * * * *'
+CRON_FIRE='* * * * *'
 CRON_B='0 4 * * *'
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG_FILE"; }
@@ -139,6 +149,171 @@ cmd_run() {
 }
 
 # ---------------------------------------------------------------------------
+# 子命令：sync（更新订阅后手动同步）
+#
+# 读取订阅 + 闹钟表（alarm.py plan）：
+#   - 历史比赛（不填 end_time）→ 立即爬取归档，不生成报告
+#   - 过期比赛（end_time 已过）→ 立即爬取 + 生成报告（如闹钟失败后补漏）
+#   - 未来比赛（end_time 未到）→ 写入闹钟表，由 fire 到点触发
+# 爬取用 --contests-only --links（只抓本次涉及的比赛，不推进 last-update）。
+# ---------------------------------------------------------------------------
+cmd_sync() {
+  exec 9>"$LOCK_FILE"
+  if ! flock -n 9; then
+    log "Another task is already running, skip this sync." >&2
+    exit 1
+  fi
+
+  log "=== sync ==="
+  cd "$REPO_ROOT"
+
+  # 1. 同步 deploy 分支（与 cmd_run 相同）
+  if ! git rev-parse --verify "$DEPLOY_BRANCH" >/dev/null 2>&1; then
+    log "Branch '$DEPLOY_BRANCH' not found. Create it first (e.g. from main)." >&2
+    exit 1
+  fi
+  git checkout "$DEPLOY_BRANCH" >/dev/null 2>&1 || { log "Failed to checkout $DEPLOY_BRANCH." >&2; exit 1; }
+  git pull --ff-only origin "$DEPLOY_BRANCH" 2>&1 | tee -a "$LOG_FILE" || true
+
+  # 2. 环境
+  if [ -f .env ]; then
+    set -a; source .env; set +a
+  else
+    log "[WARN] .env not found; platform logins may fail." >&2
+  fi
+  export TZ=Asia/Shanghai PYTHONUNBUFFERED=1
+  local PY
+  PY="$(pick_python)"
+  log "Using python: $PY"
+  if ! "$PY" -c "import undetected_chromedriver" >/dev/null 2>&1; then
+    log "Missing Python dependencies. Run: pip install -r crawler/requirements.txt" >&2
+    exit 1
+  fi
+
+  # 3. 读取订阅 + 闹钟表（alarm.py plan 同时写入未来闹钟）
+  local plan_out history_links expired_links all_links summary
+  plan_out="$("$PY" crawler/scripts/alarm.py plan 2>&1)"
+  summary="$(printf '%s\n' "$plan_out" | grep '^\[alarm\] plan:' || true)"
+  [ -n "$summary" ] && log "$summary"
+  history_links="$(printf '%s\n' "$plan_out" | awk -F'\t' '$1=="HISTORY"{print $2}')"
+  expired_links="$(printf '%s\n' "$plan_out" | awk -F'\t' '$1=="EXPIRED"{print $2}')"
+  all_links="$(printf '%s\n' "$history_links" "$expired_links" | grep -v '^$' | paste -sd, -)"
+
+  if [ -z "$all_links" ]; then
+    log "No history/expired links; nothing to crawl."
+    log "=== sync done ==="
+    return 0
+  fi
+
+  # 4. 爬取（失败即中止：不标记 fired，下次 sync 会重新 plan 重试）
+  log "Crawling: $all_links"
+  if ! "$PY" crawler/scripts/scheduled_task.py --contests-only --links "$all_links"; then
+    log "Sync crawl failed; alarms left pending for next sync."
+    exit 1
+  fi
+
+  # 5. 复盘报告：只对「过期比赛」生成（历史比赛不生成；--links 过滤 new-contests.json）
+  if [ -n "$expired_links" ]; then
+    log "Generating reviews for expired contests."
+    "$PY" crawler/scripts/report.py --from-crawl --links "$expired_links" \
+      || log "[WARN] report.py failed (skipped review generation)."
+  fi
+
+  # 6. 标记已完成（保留 fired 历史，plan 下次跳过）
+  printf '%s\n' "$history_links" "$expired_links" | while IFS= read -r link; do
+    [ -n "$link" ] || continue
+    "$PY" crawler/scripts/alarm.py mark "$link" --fired >/dev/null 2>&1 || true
+  done
+
+  # 7. 清理日志 + 提交推送
+  "$PY" crawler/scripts/clean-log.py || true
+  commit_and_push
+
+  log "=== sync done ==="
+}
+
+# ---------------------------------------------------------------------------
+# 子命令：fire（闹钟到点触发；cron 每分钟调用）
+#
+# 无到期闹钟时保持安静（不写日志、不碰 git），避免每分钟刷日志。
+# 有到期闹钟时：爬取（--contests-only --links）→ 生成报告 → 标记 fired → 提交推送。
+# 爬取失败：标记 failed（计数；超过 MAX_ATTEMPTS 后 fire 不再重试，
+# 靠下次手动 sync 按「过期比赛」补爬）。
+# ---------------------------------------------------------------------------
+cmd_fire() {
+  cd "$REPO_ROOT" 2>/dev/null || exit 1
+
+  local PY
+  PY="$(pick_python)"
+
+  # 先读闹钟表（轻量）；无到期则安静退出
+  local due_out due_links
+  due_out="$("$PY" crawler/scripts/alarm.py due 2>/dev/null)" || true
+  due_links="$(printf '%s\n' "$due_out" | awk -F'\t' '$1=="DUE"{print $2}')"
+  if [ -z "$due_links" ]; then
+    exit 0
+  fi
+
+  # 有到期闹钟才做完整流程（flock 防与 sync / 任务B 并发）
+  exec 9>"$LOCK_FILE"
+  if ! flock -n 9; then
+    log "Another task is already running, skip this fire run." >&2
+    exit 1
+  fi
+
+  log "=== fire ==="
+  # 1. 同步 deploy 分支（防与 origin 漂移；失败不阻断，push 时会再校验）
+  if ! git rev-parse --verify "$DEPLOY_BRANCH" >/dev/null 2>&1; then
+    log "Branch '$DEPLOY_BRANCH' not found. Create it first (e.g. from main)." >&2
+    exit 1
+  fi
+  git checkout "$DEPLOY_BRANCH" >/dev/null 2>&1 || { log "Failed to checkout $DEPLOY_BRANCH." >&2; exit 1; }
+  git pull --ff-only origin "$DEPLOY_BRANCH" 2>&1 | tee -a "$LOG_FILE" || true
+
+  # 2. 环境
+  if [ -f .env ]; then
+    set -a; source .env; set +a
+  else
+    log "[WARN] .env not found; platform logins may fail." >&2
+  fi
+  export TZ=Asia/Shanghai PYTHONUNBUFFERED=1
+  if ! "$PY" -c "import undetected_chromedriver" >/dev/null 2>&1; then
+    log "Missing Python dependencies. Run: pip install -r crawler/requirements.txt" >&2
+    exit 1
+  fi
+
+  local all_links
+  all_links="$(printf '%s\n' "$due_links" | grep -v '^$' | paste -sd, -)"
+  log "Fire due: $all_links"
+
+  # 3. 爬取（失败：标记 failed，不提交推送）
+  if ! "$PY" crawler/scripts/scheduled_task.py --contests-only --links "$all_links"; then
+    log "Fire crawl failed; marking due alarms as failed."
+    printf '%s\n' "$due_links" | while IFS= read -r link; do
+      [ -n "$link" ] || continue
+      "$PY" crawler/scripts/alarm.py mark "$link" --failed >/dev/null 2>&1 || true
+    done
+    exit 1
+  fi
+
+  # 4. 复盘报告（到期比赛 = 未来比赛，都要生成；失败仅告警，不阻断）
+  "$PY" crawler/scripts/report.py --from-crawl \
+    || log "[WARN] report.py failed (skipped review generation)."
+
+  # 5. 标记 fired（保留历史，plan 下次跳过）
+  printf '%s\n' "$due_links" | while IFS= read -r link; do
+    [ -n "$link" ] || continue
+    "$PY" crawler/scripts/alarm.py mark "$link" --fired >/dev/null 2>&1 || true
+  done
+
+  # 6. 清理日志 + 提交推送
+  "$PY" crawler/scripts/clean-log.py || true
+  commit_and_push
+
+  log "=== fire done ==="
+}
+
+# ---------------------------------------------------------------------------
 # 子命令：install / uninstall（cron 定时）
 # ---------------------------------------------------------------------------
 cmd_install() {
@@ -150,7 +325,7 @@ cmd_install() {
   cmd_uninstall >/dev/null 2>&1 || true
   (
     crontab -l 2>/dev/null || true
-    echo "$CRON_A cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh run a >> $LOG_FILE 2>&1"
+    echo "$CRON_FIRE cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh fire >> $LOG_FILE 2>&1"
     echo "$CRON_B cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh run b >> $LOG_FILE 2>&1"
   ) | crontab -
   log "Installed cron (server TZ=$tz):"
@@ -168,6 +343,9 @@ cmd_uninstall() {
 cmd_status() {
   echo "== cron =="
   crontab -l 2>/dev/null | grep 'server-task.sh' || echo "(none)"
+  echo
+  echo "== alarms =="
+  "$(pick_python)" crawler/scripts/alarm.py list 2>/dev/null || echo "(alarm.py unavailable)"
   echo
   echo "== git =="
   git -C "$REPO_ROOT" branch --show-current
@@ -192,10 +370,12 @@ cmd_help() {
 # ---------------------------------------------------------------------------
 case "${1:-}" in
   run)        cmd_run "${2:-a}" ;;
+  sync)       cmd_sync ;;
+  fire)       cmd_fire ;;
   install)    cmd_install ;;
   uninstall)  cmd_uninstall ;;
   status)     cmd_status ;;
   log)        cmd_log "${2:-50}" ;;
   --help|-h)  cmd_help ;;
-  *)          echo "Usage: $0 {run [a|b]|install|uninstall|status|log [N]|--help}" >&2; exit 1 ;;
+  *)          echo "Usage: $0 {run [a|b]|sync|fire|install|uninstall|status|log [N]|--help}" >&2; exit 1 ;;
 esac

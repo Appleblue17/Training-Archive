@@ -13,6 +13,9 @@ API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变
 
 用法：
     python3 crawler/scripts/report.py --from-crawl       # 只对本次爬取新建的比赛生成（推荐）
+    python3 crawler/scripts/report.py --from-crawl --links "https://...,https://..."
+        # 只对本次新建中指定订阅链接的比赛生成（服务器 sync 补抓已过期比赛用：
+        # 同一批爬取可能同时含历史比赛，历史比赛不生成报告，用 --links 过滤）
     python3 crawler/scripts/report.py                    # 扫描所有已结束且缺报告的比赛
     python3 crawler/scripts/report.py <contest_folder>   # 只生成指定比赛（文件夹相对仓库根）
     python3 crawler/scripts/report.py --qq-only          # 兼容入口：转调 qq_share.py（详见该模块）
@@ -395,9 +398,30 @@ if __name__ == "__main__":
     qq_only = "--qq-only" in sys.argv[1:]
     from_crawl = "--from-crawl" in sys.argv[1:]
 
+    # --links "link1,link2"：只对指定订阅链接的比赛生成（服务器 sync 补抓已过期
+    # 比赛时，同一批爬取可能同时含历史比赛，历史比赛不生成报告，用 --links 过滤）。
+    links_filter = None
+    if "--links" in sys.argv[1:]:
+        idx = sys.argv[1:].index("--links")
+        raw = sys.argv[1:][idx + 1] if idx + 1 < len(sys.argv[1:]) else ""
+        links_filter = {
+            l.strip().rstrip("/") for l in raw.split(",") if l.strip()
+        }
+
+    def _filter_by_links(folders):
+        if not links_filter:
+            return folders
+        kept = []
+        for f in folders:
+            contest = load_json(os.path.join(f, "contest.json")) or {}
+            link = str(contest.get("link") or "").rstrip("/")
+            if link in links_filter:
+                kept.append(f)
+        return kept
+
     if from_crawl:
         # 只对本次爬取新建的比赛生成（review.md / qq-share 存在仍幂等跳过）
-        folders = load_new_contests()
+        folders = _filter_by_links(load_new_contests())
         if qq_only:
             count = sum(1 for f in folders if generate_qq_share(f))
             print(f"[report] Generated {count} qq-share(s) from crawl.")

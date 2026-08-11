@@ -76,9 +76,13 @@ class QOJCrawler(BaseCrawler):
         contest_page = self.fetch_page_with_browser("https://qoj.ac/contests")
 
         # 订阅驱动：只抓取 crawler/subscriptions/ 目录中启用的 QOJ 比赛
+        subs = self._load_subscriptions(self.platform_name)
+        only_links = getattr(self, "_only_links", None)
+        if only_links:
+            # --links：只抓指定订阅链接（服务器闹钟 fire / sync 补抓用）
+            subs = [s for s in subs if s.get("link", "").rstrip("/") in only_links]
         subscribed_links = {
-            s.get("link", "").rstrip("/")
-            for s in self._load_subscriptions(self.platform_name)
+            s.get("link", "").rstrip("/") for s in subs
         }
         if not subscribed_links:
             self.log("info", "No subscribed QOJ contests, skipping contest list fetch.")

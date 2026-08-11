@@ -21,6 +21,81 @@ beijing = timezone(timedelta(hours=8))
 DISCARD = "discard"
 
 
+def load_subscriptions_dir(subscriptions_dir, platform=None, log=None):
+    """从 crawler/subscriptions/ 目录加载订阅配置（模块级，供爬虫与 alarm.py 共用）。
+
+    crawler/subscriptions/ 目录是统一的比赛订阅源。目录下每个 *.json 文件都是
+    一份订阅列表，文件名随意（可按平台 / 系列 / 月份等分组管理）：
+        [
+          {"platform": "hdu", "link": "https://...", "comments": "可选",
+           "end_time": "可选，比赛结束时间", "enabled": true}
+        ]
+    - 运行时只识别 .json 文件：按文件名排序后逐文件读取，合并为一个列表，
+      重复 link 去重（保留先出现的条目）；非 .json 文件忽略。
+    - 模板文件 *.example.json 跳过（示例比赛不是真实订阅，只在目录里供参考）。
+    - 文件缺失 / 解析失败 / 非列表时记录日志并跳过，不阻断其他文件。
+    - platform 为 None：返回全部条目（**含 enabled: false 的条目**，供 alarm.py
+      自行过滤）。
+    - platform 指定时：仅返回该平台且 enabled != false 的订阅（爬虫用）。
+    - enabled 缺省视为启用（订阅级默认开启）；"comments" 仅为用户备注，代码不读取。
+    - "end_time" 为可选字段：不写 = 历史比赛（sync 立即爬取，不生成报告）；
+      未来时间 = 服务器闹钟机制（方式二）到点触发爬取并生成报告；已过时间 =
+      sync 立即爬取并生成报告（补漏）。方式一（GitHub Actions 轮询）不读取该字段。
+
+    链接由用户维护（开发分支被 gitignore，不随仓库同步；deploy 分支纳入版本控制）。
+    """
+    def _log(level, msg):
+        if log:
+            log(level, msg)
+
+    subs = []
+    seen_links = set()
+    if not os.path.isdir(subscriptions_dir):
+        _log(
+            "warning",
+            f"Subscriptions directory {subscriptions_dir} does not exist; "
+            "no subscriptions.",
+        )
+        return []
+    for filename in sorted(os.listdir(subscriptions_dir)):
+        if not filename.endswith(".json"):
+            continue
+        # 跳过模板文件（*.example.json），避免示例比赛被当作真实订阅抓取
+        if filename.endswith(".example.json"):
+            continue
+        path = os.path.join(subscriptions_dir, filename)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                entries = json.load(f)
+        except Exception as e:
+            _log("error", f"Failed to parse subscriptions file {path}: {e}")
+            continue
+        if not isinstance(entries, list):
+            _log("warning", f"Subscriptions file {path} is not a list; skipped.")
+            continue
+        for entry in entries:
+            link = str(entry.get("link") or "").rstrip("/")
+            if not link:
+                _log("warning", f"Subscription entry in {path} has no link; skipped.")
+                continue
+            if link in seen_links:
+                _log(
+                    "warning",
+                    f"Duplicate subscription link {link} (seen in an earlier file); "
+                    "keeping the first entry.",
+                )
+                continue
+            seen_links.add(link)
+            subs.append(entry)
+
+    if platform is not None:
+        return [
+            s for s in subs
+            if s.get("platform") == platform and s.get("enabled", True)
+        ]
+    return subs
+
+
 class BaseCrawler:
     def __init__(self, platform_name, local_log_path):
         self.platform_name = platform_name
@@ -61,6 +136,10 @@ class BaseCrawler:
         # contests-only 模式（--contests-only）：只回填本次新建比赛的提交，
         # 不回填已有比赛的增量（由每日任务B负责），finish() 不推进 last-update。
         self._contests_only = False
+
+        # --links：只抓指定订阅链接的比赛（服务器闹钟 fire / sync 补抓用）。
+        # 为 None 时抓全部订阅；三平台 fetch_contests_get_contest_list 据此过滤。
+        self._only_links = None
 
         self.init_driver()
 
@@ -235,79 +314,10 @@ class BaseCrawler:
                 return default
 
     def _load_subscriptions(self, platform=None):
-        """加载订阅配置。
-
-        crawler/subscriptions/ 目录是统一的比赛订阅源（取代旧版单文件
-        subscriptions.json 与更早各平台零散的 input_contests.json）。
-        目录下每个 *.json 文件都是一份订阅列表，文件名随意（可按平台 / 系列 /
-        月份等分组管理）：
-            [
-              {"platform": "hdu", "link": "https://...", "comments": "可选", "enabled": true}
-            ]
-        - 运行时只识别 .json 文件：按文件名排序后逐文件读取，合并为一个列表，
-          重复 link 去重（保留先出现的条目）；非 .json 文件忽略。
-        - 模板文件 *.example.json 跳过（示例比赛不是真实订阅，只在目录里供参考）。
-        - 文件缺失 / 解析失败 / 非列表时记录日志并跳过，不阻断其他文件。
-        - platform 为 None：返回全部条目。
-        - platform 指定时：仅返回该平台且 enabled != false 的订阅。
-        - enabled 缺省视为启用（订阅级默认开启）；"comments" 仅为用户备注，代码不读取。
-        链接由用户维护（开发分支被 gitignore，不随仓库同步；deploy 分支纳入版本控制）。
-        """
-        subs = []
-        seen_links = set()
-        if not os.path.isdir(self.subscriptions_dir):
-            self.log(
-                "warning",
-                f"Subscriptions directory {self.subscriptions_dir} does not exist; "
-                "no subscriptions.",
-            )
-            return []
-        for filename in sorted(os.listdir(self.subscriptions_dir)):
-            if not filename.endswith(".json"):
-                continue
-            # 跳过模板文件（*.example.json），避免示例比赛被当作真实订阅抓取
-            if filename.endswith(".example.json"):
-                continue
-            path = os.path.join(self.subscriptions_dir, filename)
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    entries = json.load(f)
-            except Exception as e:
-                self.log(
-                    "error", f"Failed to parse subscriptions file {path}: {e}"
-                )
-                continue
-            if not isinstance(entries, list):
-                self.log(
-                    "warning",
-                    f"Subscriptions file {path} is not a list; skipped.",
-                )
-                continue
-            for entry in entries:
-                link = str(entry.get("link") or "").rstrip("/")
-                if not link:
-                    self.log(
-                        "warning",
-                        f"Subscription entry in {path} has no link; skipped.",
-                    )
-                    continue
-                if link in seen_links:
-                    self.log(
-                        "warning",
-                        f"Duplicate subscription link {link} (seen in an earlier file); "
-                        "keeping the first entry.",
-                    )
-                    continue
-                seen_links.add(link)
-                subs.append(entry)
-
-        if platform is not None:
-            return [
-                s
-                for s in subs
-                if s.get("platform") == platform and s.get("enabled", True)
-            ]
-        return subs
+        """加载订阅配置（复用模块级 load_subscriptions_dir，见其文档字符串）。"""
+        return load_subscriptions_dir(
+            self.subscriptions_dir, platform=platform, log=self.log
+        )
 
     def _deadline_for(self, contest_link):
         """首次抓取的新比赛：返回比赛开始时间作为提交抓取截止（全量回填该场比赛）。

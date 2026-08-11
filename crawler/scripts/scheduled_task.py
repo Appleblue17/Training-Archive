@@ -31,6 +31,9 @@
     python3 crawler/scripts/scheduled_task.py              # 任务A（完整：抓比赛 + 全量增量提交）
     python3 crawler/scripts/scheduled_task.py --contests-only    # 只查订阅/新建比赛，有新建才回填其提交
     python3 crawler/scripts/scheduled_task.py --submissions-only # 任务B（每天一次增量提交同步）
+    python3 crawler/scripts/scheduled_task.py --contests-only --links "https://...,https://..."
+        # 只抓指定订阅链接的比赛（服务器闹钟 fire / sync 补抓用）；与 --contests-only
+        # 语义一致：新建比赛才回填其提交、不推进 last-update。不能与 --submissions-only 同用。
 """
 import importlib
 import json
@@ -105,15 +108,18 @@ def crawler_for(platform):
     return getattr(module, class_name)()
 
 
-def run_platform(platform, mode):
+def run_platform(platform, mode, only_links=None):
     """运行单个平台的爬虫。返回 (ok, crawler)。异常被捕获记录，不阻断其他平台。
 
     mode:
         "full"         任务A：抓比赛 + 全量增量提交同步（默认）
         "contests"     --contests-only：只抓订阅的新比赛；有新建才回填其提交
         "submissions"  任务B（--submissions-only）：只做增量提交同步
+    only_links: 只抓指定订阅链接（--links，服务器闹钟/历史补抓用）。
+                为 None 时抓全部订阅。
     """
     crawler = crawler_for(platform)
+    crawler._only_links = only_links
     ok = False
     try:
         # HDU 的 login 签名不同（login(link)），由其内部流程自行登录；
@@ -155,6 +161,28 @@ def main():
             "exiting."
         )
         sys.exit(1)
+
+    # --links "link1,link2"：只抓指定订阅链接（服务器闹钟/历史补抓用）。
+    # 仅对比赛抓取有意义；与 --submissions-only（纯提交增量）互斥。
+    only_links = None
+    if "--links" in args:
+        idx = args.index("--links")
+        if idx + 1 >= len(args):
+            print("[task] --links requires a comma-separated list of links; exiting.")
+            sys.exit(1)
+        if submissions_only:
+            print("[task] --links cannot be combined with --submissions-only; exiting.")
+            sys.exit(1)
+        only_links = {
+            l.strip().rstrip("/")
+            for l in args[idx + 1].split(",")
+            if l.strip()
+        }
+        if not only_links:
+            print("[task] --links list is empty; exiting.")
+            sys.exit(1)
+        print(f"[task] Only fetching links: {sorted(only_links)}")
+
     mode = (
         "contests"
         if contests_only
@@ -167,7 +195,7 @@ def main():
     ok_platforms = []
     ok_crawlers = []
     for platform in enabled_platforms:
-        ok, crawler = run_platform(platform, mode)
+        ok, crawler = run_platform(platform, mode, only_links=only_links)
         if ok:
             ok_platforms.append(platform)
             ok_crawlers.append(crawler)
