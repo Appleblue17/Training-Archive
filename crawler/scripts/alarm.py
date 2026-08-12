@@ -7,9 +7,9 @@
   - end_time 已过    = 过期比赛：sync 立即爬取并生成报告（如闹钟失败后补漏）
 
 闹钟表 crawler/alarms.json 是运行时状态文件（gitignore，不提交），由本模块
-统一读写；server-task.sh 的 sync / fire 子命令编排：
+统一读写；daemon.py 的 sync / fire 子命令编排：
   sync  → alarm.py plan   （输出 HISTORY / EXPIRED / RETRY 链接，写未来闹钟）
-  fire  → alarm.py due    （输出到点未触发的闹钟链接，cron 每分钟调用）
+  fire  → alarm.py due    （输出到点未触发的闹钟链接，daemon 定时调用）
   fire  → alarm.py mark   （成功后标记 archived；失败标记 failed）
 
 状态模型（每条闹钟一个 status）：
@@ -28,7 +28,9 @@
       读取订阅 + 闹钟表，输出：
         HISTORY\t<link>   历史比赛：立即爬取，不生成报告
         EXPIRED\t<link>   过期比赛：立即爬取并生成报告
-        RETRY\t<link>     上次失败的比赛：本次 sync 重试一次
+        RETRY\t<link>     上次失败的比赛：本次 sync 重试一次（第 3 列 =
+                         end_time：空 = 原 HISTORY 不生成报告；非空 = 原
+                         EXPIRED/planned 生成报告）
       未来比赛写入/更新闹钟表（planned）。有 failed 重试时输出
       "[alarm] WARNING: ..." 提示用户。
   python3 crawler/scripts/alarm.py due
@@ -200,8 +202,10 @@ def cmd_plan():
                 # 已处理完且订阅未变：跳过
                 continue
             if unchanged and st == STATUS_FAILED:
-                # 上次失败：本次 sync 重试一次（保持 failed，不重置）
-                retry_links.append(link)
+                # 上次失败：本次 sync 重试一次（保持 failed，不重置）。
+                # 输出第 3 列 = end_time，供 sync 判断重试成功后的报告策略：
+                #   空（原 HISTORY）→ 不生成报告；非空（原 EXPIRED/planned）→ 生成。
+                retry_links.append((link, end_time))
                 continue
             if unchanged and st == STATUS_PLANNED and end_dt is not None and end_dt > now:
                 # 未来闹钟未到点：等 fire
@@ -239,14 +243,16 @@ def cmd_plan():
         print(f"HISTORY\t{link}")
     for link in expired_links:
         print(f"EXPIRED\t{link}")
-    for link in retry_links:
-        print(f"RETRY\t{link}")
+    for link, end_time in retry_links:
+        # 第 3 列 = end_time：空 = 原 HISTORY（重试成功不生成报告）；
+        # 非空 = 原 EXPIRED/planned（重试成功要生成报告）。
+        print(f"RETRY\t{link}\t{end_time or ''}")
 
     if retry_links:
         print(
             "[alarm] WARNING: "
             f"{len(retry_links)} previously failed alarm(s) will be retried: "
-            f"{', '.join(retry_links)}"
+            f"{', '.join(link for link, _ in retry_links)}"
         )
     print(
         f"[alarm] plan: {len(history_links)} history, {len(expired_links)} expired, "
@@ -257,7 +263,8 @@ def cmd_plan():
 def cmd_due():
     """输出 DUE\t<link>：status == planned、fire_at 已到、未失败的闹钟。
 
-    fire 每分钟调用；无到期闹钟时**无任何输出**，避免刷日志。
+    fire 任务定时调用（daemon 默认每 5 分钟）；无到期闹钟时**无任何输出**，
+    避免刷日志。
     pending / archived / failed 一律忽略（fire 只处理未来闹钟）。
     """
     alarms = _load_alarms()

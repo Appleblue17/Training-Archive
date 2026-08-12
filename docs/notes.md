@@ -46,7 +46,7 @@
 
 - **平台启用/禁用**：`crawler/config.json` 的 `enabled` 字段（缺省 `false` 视为禁用，配置文件缺失/解析失败时全部禁用）；模板 `crawler/config.example.json`。
 - **订阅条目**（`crawler/subscriptions/` 下各 `.json`）：`enabled` 为订阅级开关（缺省启用，与平台级缺省禁用不同）；按文件名排序合并、重复 `link` 去重、模板文件 `*.example.json` 跳过。
-- **闹钟机制（静态版专用）**：订阅条目可选填 `end_time`（北京时间 ISO）。`daemon.py sync` 先 `plan` 分类：不填 = 历史比赛立即爬不生成报告；已过 = 立即爬 + 报告；未来 = 写闹钟表；`failed` = 输出 `RETRY` 重试一次（成功 → `archived`，失败保持 `failed`，`plan` 输出 `WARNING`）。`fire`：`due` 无到期闹钟安静退出，有则爬取（`--contests-only --links`）+ 报告 + `mark --archived`；**爬取失败 `mark --failed`**（fire 只查 `planned`，失败后不再自动重试，靠自动 `sync` 兜底）。订阅修改 `end_time` → 重新安排，订阅删除 → 剪除闹钟。注意：`--links` 与 `--submissions-only` 互斥、无值报错。
+- **闹钟机制（静态版专用）**：订阅条目可选填 `end_time`（北京时间 ISO）。`daemon.py sync` 先 `plan` 分类：不填 = 历史比赛立即爬不生成报告；已过 = 立即爬 + 报告；未来 = 写闹钟表；`failed` = 输出 `RETRY` 重试一次（成功 → `archived`，失败保持 `failed`，`plan` 输出 `WARNING`；`RETRY` 第 3 列为原任务的 `end_time`，**重试成功后仅当原任务填了 `end_time` 才生成报告**）。`fire`：`due` 无到期闹钟安静退出，有则爬取（`--contests-only --links`）+ 报告 + `mark --archived`；**爬取失败 `mark --failed`**（fire 只查 `planned`，失败后不再自动重试，靠自动 `sync` 兜底）。报告条件 = 订阅填了 `end_time`（EXPIRED / RETRY / fire due），按链接反查生成（`report.py --links`），与"本次是否新建"无关。订阅修改 `end_time` → 重新安排，订阅删除 → 剪除闹钟。注意：`--links` 与 `--submissions-only` 互斥、无值报错。
 - **凭据**：一律走环境变量（`.env` / CI secrets），`config.json` 只放非敏感参数。本地运行爬虫/报告脚本自动加载根目录 `.env`（`load_dotenv()`，不覆盖已有变量）。
 - **提交抓取截止**：非首次按全局 `last-update.json` 增量；首次抓取的新比赛以 `start_time` 为截止全量回填。QOJ 补订旧比赛需手动重置该平台 last-update 触发全量重抓。
 - **`--contests-only`**：只检查订阅有没有触发，有新建比赛才回填其提交；**不推进 `last-update.json`**（已有比赛增量由每日 `--submissions-only` 负责）。若新建比赛提交回填失败（如超时），文件夹已存在，后续运行不会当新建重试，需手动处理。
@@ -73,7 +73,9 @@ python3 crawler/scripts/scheduled_task.py                # 默认模式：抓订
 python3 crawler/scripts/scheduled_task.py --contests-only     # 只查订阅/新建比赛（高频触发）
 python3 crawler/scripts/scheduled_task.py --contests-only --links "https://qoj.ac/contest/123"  # 只抓指定订阅链接
 python3 crawler/scripts/scheduled_task.py --submissions-only  # 提交增量模式（每日）
-python3 crawler/scripts/report.py --from-crawl           # 复盘报告：只对本次爬取新建的比赛生成
+python3 crawler/scripts/report.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456"  # 按订阅链接反查生成（daemon sync/fire 用；报告条件 = 订阅填了 end_time：EXPIRED/RETRY/fire due）
+python3 crawler/scripts/report.py --from-crawl           # 手动：只对本次爬取新建的比赛生成
+python3 crawler/scripts/report.py --from-crawl --links "https://qoj.ac/contest/123"  # 手动：只对本次新建中指定链接生成
 python3 crawler/scripts/report.py                        # 补生成：扫描所有缺报告的已结束比赛
 
 python3 crawler/scripts/alarm.py plan              # 扫描订阅：分类 HISTORY/EXPIRED/RETRY，写未来闹钟

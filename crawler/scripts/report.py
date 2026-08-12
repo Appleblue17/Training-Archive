@@ -12,10 +12,12 @@
 API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变量）。
 
 用法：
-    python3 crawler/scripts/report.py --from-crawl       # 只对本次爬取新建的比赛生成（推荐）
+    python3 crawler/scripts/report.py --links "https://...,https://..."
+        # 按订阅链接生成报告（daemon 的 sync/fire 用；报告条件 = 订阅里
+        # 填了 end_time 的比赛：EXPIRED / RETRY / fire due，与是否新建无关）
+    python3 crawler/scripts/report.py --from-crawl       # 只对本次爬取新建的比赛生成（手动）
     python3 crawler/scripts/report.py --from-crawl --links "https://...,https://..."
-        # 只对本次新建中指定订阅链接的比赛生成（服务器 sync 补抓已过期比赛用：
-        # 同一批爬取可能同时含历史比赛，历史比赛不生成报告，用 --links 过滤）
+        # 只对本次新建中指定订阅链接的比赛生成（手动过滤用）
     python3 crawler/scripts/report.py                    # 扫描所有已结束且缺报告的比赛
     python3 crawler/scripts/report.py <contest_folder>   # 只生成指定比赛（文件夹相对仓库根）
     python3 crawler/scripts/report.py --qq-only          # 兼容入口：转调 qq_share.py（详见该模块）
@@ -393,6 +395,29 @@ def generate_reviews_for_all(contests_root="contests"):
     return generated
 
 
+def generate_reviews_for_links(links_filter, contests_root="contests"):
+    """按订阅链接反查比赛文件夹生成报告（不依赖 new-contests.json）。
+
+    扫描 contests/ 下所有比赛的 contest.json，匹配 link 的才生成。
+    daemon 的 sync/fire 使用：报告条件 = 订阅里**填了 end_time** 的比赛
+    （EXPIRED / RETRY / fire due），与"本次是否新建"无关——比赛此前已
+    归档过（非新建）也要生成，否则会漏掉复盘。
+    """
+    if not os.path.isdir(contests_root):
+        print(f"[report] {contests_root} does not exist, nothing to do.")
+        return 0
+    generated = 0
+    for name in sorted(os.listdir(contests_root)):
+        contest_folder = os.path.join(contests_root, name)
+        if not os.path.isdir(contest_folder):
+            continue
+        contest = load_json(os.path.join(contest_folder, "contest.json")) or {}
+        link = str(contest.get("link") or "").rstrip("/")
+        if link in links_filter and generate_review(contest_folder):
+            generated += 1
+    return generated
+
+
 if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     qq_only = "--qq-only" in sys.argv[1:]
@@ -420,7 +445,7 @@ if __name__ == "__main__":
         return kept
 
     if from_crawl:
-        # 只对本次爬取新建的比赛生成（review.md / qq-share 存在仍幂等跳过）
+        # 只对本次爬取新建的比赛生成（手动场景；review.md / qq-share 存在仍幂等跳过）
         folders = _filter_by_links(load_new_contests())
         if qq_only:
             count = sum(1 for f in folders if generate_qq_share(f))
@@ -428,6 +453,13 @@ if __name__ == "__main__":
             sys.exit(0)
         count = sum(1 for f in folders if generate_review(f))
         print(f"[report] Generated {count} review(s) from crawl.")
+        sys.exit(0)
+    elif links_filter:
+        # 订阅驱动（daemon 的 sync/fire）：报告条件 = 订阅里填了 end_time 的
+        # 比赛（EXPIRED / RETRY / fire due），按链接反查比赛文件夹生成，
+        # 不依赖 new-contests.json（与本次是否新建无关）。
+        count = generate_reviews_for_links(links_filter)
+        print(f"[report] Generated {count} review(s) for links.")
         sys.exit(0)
     elif qq_only:
         if args:

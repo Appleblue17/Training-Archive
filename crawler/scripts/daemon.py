@@ -254,7 +254,12 @@ def cmd_incremental():
 
 
 def _parse_plan_output(plan_out):
-    """解析 alarm.py plan 的 tab 分隔输出为 (history, expired, retry) 链接列表。"""
+    """解析 alarm.py plan 的 tab 分隔输出为 (history, expired, retry)。
+
+    history / expired 为链接列表；retry 为 (link, end_time) 元组列表：
+    end_time 非空 = 原 EXPIRED/planned 任务（重试成功要生成报告），
+    空 = 原 HISTORY 任务（重试成功不生成报告）。
+    """
     history, expired, retry = [], [], []
     for line in plan_out.splitlines():
         if line.startswith("HISTORY\t"):
@@ -262,7 +267,8 @@ def _parse_plan_output(plan_out):
         elif line.startswith("EXPIRED\t"):
             expired.append(line.split("\t", 1)[1])
         elif line.startswith("RETRY\t"):
-            retry.append(line.split("\t", 1)[1])
+            parts = line.split("\t", 2)
+            retry.append((parts[1], parts[2] if len(parts) > 2 else ""))
     return history, expired, retry
 
 
@@ -270,6 +276,8 @@ def cmd_sync():
     """同步订阅：plan 分类 → 爬取 HISTORY/EXPIRED/RETRY → 报告 → mark archived。
 
     爬取失败 → 本次涉及的全部链接 mark --failed（下次 sync 重试）。
+    报告条件 = 订阅填了 end_time：EXPIRED 必生成；RETRY 仅当原任务填了
+    end_time（第 3 列非空）才生成；HISTORY 不生成。
     """
     def _run():
         log("=== sync ===")
@@ -286,7 +294,8 @@ def cmd_sync():
         for l in summary + warn:
             log(l)
         history_links, expired_links, retry_links = _parse_plan_output(plan_out)
-        all_links = list(dict.fromkeys(history_links + expired_links + retry_links))
+        retry_all = [link for link, _ in retry_links]
+        all_links = list(dict.fromkeys(history_links + expired_links + retry_all))
 
         if not all_links:
             log("No history/expired/retry links; nothing to crawl.")
@@ -303,11 +312,17 @@ def cmd_sync():
                 run_py("alarm.py", "mark", link, "--failed", capture=True)
             return p.returncode
 
-        # 3. 复盘报告：只对过期比赛和失败重试生成（历史比赛不生成）
-        report_links = list(dict.fromkeys(expired_links + retry_links))
+        # 3. 复盘报告：只对填了 end_time 的比赛生成（HISTORY 不生成）。
+        #    报告条件 = 订阅的 end_time 标记，而非"本次是否新建"——按链接
+        #    反查比赛文件夹生成（report.py --links），不依赖 new-contests.json。
+        #    EXPIRED 必生成；RETRY 按第 3 列 end_time 判断：非空 = 原
+        #    EXPIRED/planned（生成），空 = 原 HISTORY（不生成）。
+        report_links = list(
+            dict.fromkeys(expired_links + [link for link, et in retry_links if et])
+        )
         if report_links:
             log("Generating reviews for expired/retried contests.")
-            p = run_py("report.py", "--from-crawl", "--links", ",".join(report_links))
+            p = run_py("report.py", "--links", ",".join(report_links))
             if p.returncode != 0:
                 log("[WARN] report.py failed (skipped review generation).")
 
@@ -360,8 +375,12 @@ def cmd_fire():
                 run_py("alarm.py", "mark", link, "--failed", capture=True)
             return p.returncode
 
-        # 到期比赛（未来比赛）都要生成报告；失败仅告警
-        p = run_py("report.py", "--from-crawl")
+        # 到期比赛（填了 end_time 的未来比赛）都要生成报告；失败仅告警。
+        # 报告条件 = 订阅的 end_time 标记（fire due），按链接反查比赛文件夹
+        # 生成（report.py --links），不依赖 new-contests.json——比赛此前已
+        # 归档过（非本次新建）也要生成，否则会漏掉复盘。
+        log("Generating reviews for due contests.")
+        p = run_py("report.py", "--links", ",".join(due_links))
         if p.returncode != 0:
             log("[WARN] report.py failed (skipped review generation).")
 
