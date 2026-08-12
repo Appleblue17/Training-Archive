@@ -155,7 +155,10 @@ cmd_run() {
 #   - 历史比赛（不填 end_time）→ 立即爬取归档，不生成报告
 #   - 过期比赛（end_time 已过）→ 立即爬取 + 生成报告（如闹钟失败后补漏）
 #   - 未来比赛（end_time 未到）→ 写入闹钟表，由 fire 到点触发
+#   - 失败重试（上次 failed）→ 保持 failed 状态重试一次：成功 → archived，
+#     失败 → 保持 failed（plan 输出 WARNING 提示用户）
 # 爬取用 --contests-only --links（只抓本次涉及的比赛，不推进 last-update）。
+# 爬取失败 → 本次涉及的全部链接 mark --failed（下次 sync 重试）。
 # ---------------------------------------------------------------------------
 cmd_sync() {
   exec 9>"$LOCK_FILE"
@@ -191,38 +194,48 @@ cmd_sync() {
   fi
 
   # 3. 读取订阅 + 闹钟表（alarm.py plan 同时写入未来闹钟）
-  local plan_out history_links expired_links all_links summary
+  local plan_out summary warn history_links expired_links retry_links all_links
   plan_out="$("$PY" crawler/scripts/alarm.py plan 2>&1)"
   summary="$(printf '%s\n' "$plan_out" | grep '^\[alarm\] plan:' || true)"
   [ -n "$summary" ] && log "$summary"
+  warn="$(printf '%s\n' "$plan_out" | grep '^\[alarm\] WARNING:' || true)"
+  [ -n "$warn" ] && log "$warn"
   history_links="$(printf '%s\n' "$plan_out" | awk -F'\t' '$1=="HISTORY"{print $2}')"
   expired_links="$(printf '%s\n' "$plan_out" | awk -F'\t' '$1=="EXPIRED"{print $2}')"
-  all_links="$(printf '%s\n' "$history_links" "$expired_links" | grep -v '^$' | paste -sd, -)"
+  retry_links="$(printf '%s\n' "$plan_out" | awk -F'\t' '$1=="RETRY"{print $2}')"
+  all_links="$(printf '%s\n' "$history_links" "$expired_links" "$retry_links" | grep -v '^$' | paste -sd, -)"
 
   if [ -z "$all_links" ]; then
-    log "No history/expired links; nothing to crawl."
+    log "No history/expired/retry links; nothing to crawl."
     log "=== sync done ==="
     return 0
   fi
 
-  # 4. 爬取（失败即中止：不标记 fired，下次 sync 会重新 plan 重试）
+  # 4. 爬取（失败：本次涉及的链接全部 mark --failed，下次 sync 重试）
   log "Crawling: $all_links"
   if ! "$PY" crawler/scripts/scheduled_task.py --contests-only --links "$all_links"; then
-    log "Sync crawl failed; alarms left pending for next sync."
+    log "Sync crawl failed; marking involved alarms as failed."
+    printf '%s\n' "$history_links" "$expired_links" "$retry_links" | while IFS= read -r link; do
+      [ -n "$link" ] || continue
+      "$PY" crawler/scripts/alarm.py mark "$link" --failed >/dev/null 2>&1 || true
+    done
     exit 1
   fi
 
-  # 5. 复盘报告：只对「过期比赛」生成（历史比赛不生成；--links 过滤 new-contests.json）
-  if [ -n "$expired_links" ]; then
-    log "Generating reviews for expired contests."
-    "$PY" crawler/scripts/report.py --from-crawl --links "$expired_links" \
+  # 5. 复盘报告：对「过期比赛」和「失败重试」生成（历史比赛不生成；
+  #    --links 过滤 new-contests.json；report.py 自行过滤已结束且缺 review 的）
+  local report_links
+  report_links="$(printf '%s\n' "$expired_links" "$retry_links" | grep -v '^$' | paste -sd, -)"
+  if [ -n "$report_links" ]; then
+    log "Generating reviews for expired/retried contests."
+    "$PY" crawler/scripts/report.py --from-crawl --links "$report_links" \
       || log "[WARN] report.py failed (skipped review generation)."
   fi
 
-  # 6. 标记已完成（保留 fired 历史，plan 下次跳过）
-  printf '%s\n' "$history_links" "$expired_links" | while IFS= read -r link; do
+  # 6. 标记已处理完（archived；保留历史，plan 下次跳过）
+  printf '%s\n' "$history_links" "$expired_links" "$retry_links" | while IFS= read -r link; do
     [ -n "$link" ] || continue
-    "$PY" crawler/scripts/alarm.py mark "$link" --fired >/dev/null 2>&1 || true
+    "$PY" crawler/scripts/alarm.py mark "$link" --archived >/dev/null 2>&1 || true
   done
 
   # 7. 清理日志 + 提交推送
@@ -236,9 +249,9 @@ cmd_sync() {
 # 子命令：fire（闹钟到点触发；cron 每分钟调用）
 #
 # 无到期闹钟时保持安静（不写日志、不碰 git），避免每分钟刷日志。
-# 有到期闹钟时：爬取（--contests-only --links）→ 生成报告 → 标记 fired → 提交推送。
-# 爬取失败：标记 failed（计数；超过 MAX_ATTEMPTS 后 fire 不再重试，
-# 靠下次手动 sync 按「过期比赛」补爬）。
+# 有到期闹钟时：爬取（--contests-only --links）→ 生成报告 → 标记 archived → 提交推送。
+# 爬取失败：标记 failed（fire 只查 planned，失败后不再重试；下次手动 sync
+# 重试一次，成功 → archived，失败保持 failed）。
 # ---------------------------------------------------------------------------
 cmd_fire() {
   cd "$REPO_ROOT" 2>/dev/null || exit 1
@@ -300,10 +313,10 @@ cmd_fire() {
   "$PY" crawler/scripts/report.py --from-crawl \
     || log "[WARN] report.py failed (skipped review generation)."
 
-  # 5. 标记 fired（保留历史，plan 下次跳过）
+  # 5. 标记 archived（保留历史，plan 下次跳过）
   printf '%s\n' "$due_links" | while IFS= read -r link; do
     [ -n "$link" ] || continue
-    "$PY" crawler/scripts/alarm.py mark "$link" --fired >/dev/null 2>&1 || true
+    "$PY" crawler/scripts/alarm.py mark "$link" --archived >/dev/null 2>&1 || true
   done
 
   # 6. 清理日志 + 提交推送
