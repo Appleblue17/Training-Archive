@@ -133,7 +133,7 @@ env:
   NEXT_PUBLIC_REPO_URL: https://github.com/yourname/my-training-archive/
 ```
 
-> `deploy.yml` 通过 `push` 到 `deploy` 分支触发：带 `[contests-changed]` 标记的提交才会部署，仅状态变化的提交会跳过。
+> `deploy.yml` 通过 `push` 到 `deploy` 分支触发；守护进程只在 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送（带 `[contests-changed]` 标记触发部署），仅 crawler 状态 / 日志变化时不发提交（已在本地持久化）。
 
 ### 动态版（v0.4.0 规划中）
 

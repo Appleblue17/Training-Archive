@@ -7,8 +7,9 @@
   - sync         同步订阅：历史/过期立即爬，未来比赛写入闹钟
   - incremental  提交增量同步（scheduled_task.py --submissions-only）
 
-与 server-task.sh 语义完全一致（git 流程、闹钟分类、失败标记、提交规则原样保留），
-区别是：
+与 server-task.sh 语义一致（git 流程、闹钟分类、失败标记原样保留），
+提交规则调整为：仅 contests/ 有实质更新才提交推送（带 [contests-changed] 标记），
+仅 crawler 状态/日志变化时不提交（已在本地持久化）。区别是：
   - 跨平台：Linux / macOS / Windows 均可运行
   - run 主循环：croniter 解析表达式 + 状态文件防重复；睡眠恢复后每个任务
     只补跑一次（不追赶历史，靠任务自身增量/幂等覆盖错过时段）
@@ -162,10 +163,13 @@ def ensure_deploy_branch():
 
 
 def commit_and_push():
-    """提交并推送（复刻 server-task.sh：contests/ 变化带 [contests-changed] 标记）。
+    """提交并推送——仅当 contests/ 有实质更新时。
 
-    deploy 分支使用 .gitignore.deploy，把 contests/ 与爬虫增量状态纳入版本控制；
-    仅状态变化时也提交但不带标记（不触发 deploy.yml）。
+    无实质更新（contests/ 未变化）时不提交不推送：爬虫状态与日志
+    （last-update.json、staged-submissions.json、log.json、daemon.log 等）
+    已在本地文件系统持久化（deploy 分支工作区），无需同步远端。
+    仅 contests/ 变化（新比赛 / 新提交 / 新报告）才发 [contests-changed]
+    提交，触发 deploy.yml 部署。
     """
     git("config", "user.name", "server-task[bot]", check=False)
     git("config", "user.email", "server-task[bot]@users.noreply.github.com", check=False)
@@ -173,19 +177,15 @@ def commit_and_push():
     git("add", ".gitignore", "crawler", "contests", check=False)
     git("reset", "HEAD", "crawler/chromedriver-linux64/chromedriver", check=False)
 
-    r = git("diff", "--cached", "--quiet", check=False)
-    if r.returncode == 0:
-        log("No changes to commit.")
-        return
-
     # core.quotepath=false：比赛名含中文时 git 默认转义非 ASCII 路径，
     # grep '^contests/' 会误判；统一用 quotepath=false 取文件名判断。
     r = git("-c", "core.quotepath=false", "diff", "--cached", "--name-only", check=False)
     changed = [line for line in r.stdout.splitlines() if line.startswith("contests/")]
-    if changed:
-        git("commit", "-m", "[auto] [contests-changed] Update contest and submission data")
-    else:
-        git("commit", "-m", "[auto] Update crawler state")
+    if not changed:
+        log("No contest data changes; skip commit/push (crawler state persists locally).")
+        return
+
+    git("commit", "-m", "[auto] [contests-changed] Update contest and submission data")
     git("push", "origin", DEPLOY_BRANCH)
     log(f"Pushed to {DEPLOY_BRANCH}.")
 

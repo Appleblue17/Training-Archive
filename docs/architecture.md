@@ -212,7 +212,7 @@ contests/
 - 提交抓取**完整性校验**：只有遍历完所有分页或到达 last-update 才标记完整；`finish()` 仅在此情况下推进 `last-update.json`，否则下次重跑，避免静默漏提交。
 - **contests-only 不回填已有比赛、不推进 `last-update.json`**：新建比赛的提交以该场 `start_time` 为截止全量回填（`_deadline_for`，与默认模式首次抓取一致），已有比赛的增量由每日 `--submissions-only` 推进。
 
-**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/platforms/*/contests.json`、`crawler/platforms/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。自托管守护进程（`daemon.py`）在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。仅 crawler 状态变化时同样提交（消息不带 `[contests-changed]` 标记，不触发部署）。日志、chromedriver 二进制、`new-contests.json`（临时报告列表）与 `alarms.json`（闹钟表，见 4.6）始终不提交。
+**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/platforms/*/contests.json`、`crawler/platforms/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。自托管守护进程（`daemon.py`）在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。**仅 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送**（消息带 `[contests-changed]` 标记，触发部署）；仅 crawler 状态/日志变化时不提交不推送（这些文件已在本地文件系统持久化，无需同步远端）。日志、chromedriver 二进制、`new-contests.json`（临时报告列表）与 `alarms.json`（闹钟表，见 4.6）始终不提交。
 
 ### 4.6 闹钟机制（`crawler/scripts/alarm.py`）
 

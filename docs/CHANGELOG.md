@@ -17,6 +17,7 @@
 ### Changed
 
 - **浏览器驱动路径按平台解析**（`base.py`）：`CHROME_BINARY` / `CHROMEDRIVER_PATH` env 优先，缺省按 `sys.platform` 回落——Linux 用 `crawler/chrome-linux64`、Windows 用 `crawler/chrome-win64`、macOS 用系统 Google Chrome + `crawler/chromedriver-mac*`（glob 匹配）
+- **仅 contests/ 有实质更新才提交推送**（`daemon.py`）：无新比赛 / 新提交 / 新报告时不再发 `[auto] Update crawler state` 提交（crawler 状态与日志已在本地文件系统持久化，无需同步远端）；只有 contests/ 变化才提交 `[contests-changed]` 触发部署
 
 ### Removed
 
