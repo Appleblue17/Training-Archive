@@ -35,6 +35,7 @@ import os
 import re
 import sys
 import time
+import uuid
 
 from dotenv import load_dotenv
 
@@ -200,34 +201,54 @@ class QQGroupSender:
             time.sleep(MIN_SEND_INTERVAL - elapsed)
 
     def _call(self, action, params):
-        """发送一个 OneBot action，返回响应 dict；失败返回 None。"""
+        """发送一个 OneBot action，返回响应 dict；失败返回 None。
+
+        NapCat 正向 WS 会先推送事件帧（如 meta_event，无 echo），因此
+        循环 recv 跳过事件帧，直到拿到匹配本次请求 echo 的响应。
+        """
         if self._ws is None:
             return None
         self._throttle()
+        eid = uuid.uuid4().hex[:8]
         payload = json.dumps(
-            {"action": action, "params": params}, ensure_ascii=False
+            {"action": action, "params": params, "echo": eid},
+            ensure_ascii=False,
         )
         try:
             self._ws.send(payload)
             self._last_send_ts = time.time()
-            resp = json.loads(self._ws.recv())
-            return resp if isinstance(resp, dict) else None
+            while True:
+                msg = json.loads(self._ws.recv())
+                if not isinstance(msg, dict):
+                    continue
+                if msg.get("echo") == eid:
+                    return msg
+                # 事件帧（无 echo 或 echo 不匹配）：跳过，继续等本次响应
         except Exception as e:
             print(f"[qq-share] {action} 失败: {e}")
             return None
 
     def send_text(self, text):
-        """发送纯文本到群。成功返回 True。"""
-        resp = self._call(
-            ACTION_SEND_GROUP_MSG,
-            {"group_id": self.group_id, "message": text},
-        )
-        if resp is None:
+        """按段落（空行分隔）逐条发送纯文本到群。
+
+        模板约定：两个换行符隔开的分段 = 一条独立 QQ 消息。逐段发送，
+        段间由 _throttle 限速（MIN_SEND_INTERVAL）。全部发送成功返回 True，
+        任一失败即中断并返回 False。
+        """
+        paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
+        if not paragraphs:
             return False
-        if resp.get("status") in ("ok", "async"):
-            return True
-        print(f"[qq-share] send_group_msg 返回错误: {resp.get('msg', 'unknown')}")
-        return False
+        for para in paragraphs:
+            resp = self._call(
+                ACTION_SEND_GROUP_MSG,
+                {"group_id": self.group_id, "message": para},
+            )
+            if resp is None:
+                return False
+            if resp.get("status") not in ("ok", "async"):
+                print(f"[qq-share] send_group_msg 返回错误: {resp.get('msg', 'unknown')}")
+                return False
+        return True
 
     def send_file(self, file_path, file_name=None):
         """发送文件到群（upload_group_file）。成功返回 True。"""
