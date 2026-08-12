@@ -70,6 +70,9 @@ python3 crawler/scripts/report.py --from-crawl
 # 补生成：扫描所有缺报告的已结束比赛，或只生成指定比赛
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
+# QQ 群分享（可选，config.json 的 ai_tasks.share.enabled 开启后 daemon 自动调用；NapCat 配置见 crawler/config.example.json 的 qq 块）
+python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456"
+python3 crawler/scripts/qq_share.py "contests/2026-08-01 xxx"
 ```
 
 爬虫会生成 `contests/` 数据目录与各平台日志文件（均已被 `.gitignore` 忽略）。
