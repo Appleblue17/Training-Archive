@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""爬虫任务入口（任务A：预订比赛抓取；任务B：提交记录周期同步）。
+"""爬虫任务入口（按模式运行：比赛抓取 / 提交增量同步）。
 
-任务A（默认 / --contests-only）：
+默认模式（无参数）：
     某场预订的比赛结束后 → 抓取整场比赛数据。
     幂等：比赛目录存在即跳过抓取。
 
-    --contests-only（推荐给高频触发）：
-        只检查订阅有没有触发（新建比赛）。有新建比赛时才回填这些比赛的
-        提交记录；没有新建比赛则完全不碰提交，保持轻量。已有比赛的增量
-        提交同步交给任务B。注意：--contests-only 不推进 last-update。
+--contests-only（推荐给高频触发）：
+    只检查订阅有没有触发（新建比赛）。有新建比赛时才回填这些比赛的
+    提交记录；没有新建比赛则完全不碰提交，保持轻量。已有比赛的增量
+    提交同步交给 --submissions-only。注意：--contests-only 不推进 last-update。
 
-任务B（--submissions-only）：
+--submissions-only（提交增量模式）：
     每天一次对所有已开始/进行中的比赛做增量提交抓取（沿用 last-update.json）。
 
 复盘报告由独立脚本生成，不在此入口内调用：
@@ -18,9 +18,9 @@
     python3 crawler/scripts/report.py                 # 扫描所有已结束且缺 review.md 的比赛
     python3 crawler/scripts/report.py <contest_folder>  # 只生成指定比赛
 
-任务A 结束时会把本次新建的比赛文件夹列表写入 crawler/new-contests.json
-（临时状态文件，gitignore），report.py / qq_share.py 以 --from-crawl 读取
-该文件，只对这些比赛生成报告，而不是扫描全部比赛。
+比赛抓取模式（默认 / --contests-only）结束时会把本次新建的比赛文件夹列表写入
+crawler/new-contests.json（临时状态文件，gitignore），report.py / qq_share.py
+以 --from-crawl 读取该文件，只对这些比赛生成报告，而不是扫描全部比赛。
 
 平台启用/禁用：
     crawler/config.json 中每个平台条目可用 "enabled" 字段控制（缺省 false 视为禁用）：
@@ -28,9 +28,9 @@
     显式 enabled: true 的平台才会被执行；配置文件缺失 / 解析失败时全部平台禁用。
 
 用法：
-    python3 crawler/scripts/scheduled_task.py              # 任务A（完整：抓比赛 + 全量增量提交）
+    python3 crawler/scripts/scheduled_task.py              # 默认：抓比赛 + 全量增量提交
     python3 crawler/scripts/scheduled_task.py --contests-only    # 只查订阅/新建比赛，有新建才回填其提交
-    python3 crawler/scripts/scheduled_task.py --submissions-only # 任务B（每天一次增量提交同步）
+    python3 crawler/scripts/scheduled_task.py --submissions-only # 提交增量模式（每天一次增量提交同步）
     python3 crawler/scripts/scheduled_task.py --contests-only --links "https://...,https://..."
         # 只抓指定订阅链接的比赛（服务器闹钟 fire / sync 补抓用）；与 --contests-only
         # 语义一致：新建比赛才回填其提交、不推进 last-update。不能与 --submissions-only 同用。
@@ -112,9 +112,9 @@ def run_platform(platform, mode, only_links=None):
     """运行单个平台的爬虫。返回 (ok, crawler)。异常被捕获记录，不阻断其他平台。
 
     mode:
-        "full"         任务A：抓比赛 + 全量增量提交同步（默认）
+        "full"         默认：抓比赛 + 全量增量提交同步
         "contests"     --contests-only：只抓订阅的新比赛；有新建才回填其提交
-        "submissions"  任务B（--submissions-only）：只做增量提交同步
+        "submissions"  --submissions-only（提交增量）：只做增量提交同步
     only_links: 只抓指定订阅链接（--links，服务器闹钟/历史补抓用）。
                 为 None 时抓全部订阅。
     """
@@ -207,7 +207,7 @@ def main():
         sys.exit(1)
 
     # 记录本次新建的比赛，供 report.py --from-crawl 只生成这些
-    # （任务B 仅增量同步，不新建比赛，不写文件）
+    # （提交增量模式仅增量同步，不新建比赛，不写文件）
     if mode != "submissions":
         _write_new_contests(ok_crawlers)
 

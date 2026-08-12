@@ -74,13 +74,13 @@ pip install -r crawler/requirements.txt
 
 # 准备配置与环境变量（见 crawler/subscriptions/subscriptions.example.json、.env.example）
 # 订阅文件放在 crawler/subscriptions/ 目录（每个 .json 一份列表，文件名随意）
-# 任务A（默认完整：抓订阅比赛 + 全量增量提交）
+# 默认模式：抓订阅比赛 + 全量增量提交（手动/临时）
 python3 crawler/scripts/scheduled_task.py
-# 任务A（--contests-only：只查订阅/新建比赛，有新建才回填其提交；高频触发推荐）
+# 只查订阅/新建比赛（--contests-only：有新建才回填其提交；高频触发推荐）
 python3 crawler/scripts/scheduled_task.py --contests-only
 # 只抓指定订阅链接（服务器闹钟 fire / sync 补抓用；与 --contests-only 语义一致）
 python3 crawler/scripts/scheduled_task.py --contests-only --links "https://qoj.ac/contest/123"
-# 任务B：每日增量同步提交
+# 提交增量模式（--submissions-only：每日一次增量提交同步）
 python3 crawler/scripts/scheduled_task.py --submissions-only
 # 复盘报告（独立于爬虫，只对本次爬取新建的比赛生成；--links 可只对指定链接生成）
 python3 crawler/scripts/report.py --from-crawl
@@ -103,7 +103,7 @@ GitHub 云端定时运行爬虫，自动提交并部署到 GitHub Pages：
 1. 在仓库 Secrets 配置凭据（QOJ/HDU 账号、NowCoder Cookie、`DEEPSEEK_API_KEY`，见 `.env.example`）。
 2. 开启两个工作流的定时（取消注释 `schedule`）：
    - `.github/workflows/crawler-scheduled.yml`：每 30 分钟查订阅/新建比赛（`--contests-only`，有新建才回填其提交）
-   - `.github/workflows/crawler.yml`：每日 20:00 UTC 任务 B（提交增量同步）
+   - `.github/workflows/crawler.yml`：每日 20:00 UTC 提交增量同步（`--submissions-only`）
 3. 爬虫完成后自动触发 `deploy.yml` 部署 Pages。
 
 ### 方式二：自建服务器跑脚本
@@ -111,8 +111,8 @@ GitHub 云端定时运行爬虫，自动提交并部署到 GitHub Pages：
 关闭工作流的定时（保留手动触发），在服务器上用 cron 跑同一套脚本，产物 push 回 `deploy` 分支，由 GitHub Actions 的 `deploy.yml` 自动构建部署 Pages。提供一键管理脚本 `crawler/server-task.sh`（复刻 Action 完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
 
 ```bash
-# 一键运行（任务 A：查订阅/新建比赛（--contests-only）；任务 B：仅提交增量同步）
-crawler/server-task.sh run [a/b]
+# 提交增量同步（--submissions-only；每日一次，install 的 cron 自动调用）
+crawler/server-task.sh incremental
 
 # 更新订阅后手动同步（闹钟机制）：
 #   历史比赛（订阅不填 end_time）→ 立即爬取归档，不生成报告
@@ -121,7 +121,7 @@ crawler/server-task.sh run [a/b]
 #   失败重试（上次 failed）      → 重试一次：成功 → archived，失败保持 failed（日志会提示）
 crawler/server-task.sh sync
 
-# 安装 / 卸载 cron 定时（闹钟检查每分钟 + 任务 B 每日，自动适配服务器时区）
+# 安装 / 卸载 cron 定时（闹钟检查每分钟 + 提交增量每日，自动适配服务器时区）
 crawler/server-task.sh install
 crawler/server-task.sh uninstall
 

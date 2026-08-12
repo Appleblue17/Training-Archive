@@ -7,10 +7,10 @@
 #   提交推送（[contests-changed] 规则）→ GitHub Actions 的 deploy.yml 自动部署 Pages
 #
 # 用法:
-#   server-task.sh run [a|b]    手动运行一次任务（a=任务A查订阅/新建比赛[默认]，b=任务B仅提交同步）
+#   server-task.sh incremental  提交增量同步（scheduled_task.py --submissions-only；每日）
 #   server-task.sh sync         更新订阅后手动同步：历史/过期比赛立即爬取，未来比赛写入闹钟
 #   server-task.sh fire         闹钟到点触发（cron 每分钟调用；无到期闹钟时安静退出）
-#   server-task.sh install      安装 cron 定时（闹钟检查每分钟 + 任务B 每日）
+#   server-task.sh install      安装 cron 定时（闹钟检查每分钟 + 提交增量每日）
 #   server-task.sh uninstall    卸载 cron 定时
 #   server-task.sh status       查看 cron / 闹钟 / git / 最近日志
 #   server-task.sh log [N]      查看最近 N 行运行日志（默认 50）
@@ -44,7 +44,7 @@ DEPLOY_BRANCH="deploy"
 
 # cron 按服务器本地时区执行。
 # fire：闹钟检查，每分钟跑一次（无到期闹钟时安静退出，开销可忽略）
-# 任务 B：对应 action 的每日 0:20 UTC（北京时间 4:00）；install 时会按
+# 提交增量（--submissions-only）：对应 action 的每日 0:20 UTC（北京时间 4:00）；install 时会按
 # 服务器时区自动调整：UTC → 0 20 * * *，其他（如 CST）→ 0 4 * * *。
 CRON_FIRE='* * * * *'
 CRON_B='0 4 * * *'
@@ -91,17 +91,19 @@ commit_and_push() {
 }
 
 # ---------------------------------------------------------------------------
-# 子命令：run
+# 子命令：incremental（提交增量同步；对应 scheduled_task.py --submissions-only）
+#
+# 每日一次对所有已开始/进行中的比赛做增量提交抓取（沿用 last-update.json）。
+# 直接对应 scheduled_task.py 的 --submissions-only 模式；install 的 cron 每日调用。
 # ---------------------------------------------------------------------------
-cmd_run() {
-  local mode="${1:-a}"
+cmd_incremental() {
   exec 9>"$LOCK_FILE"
   if ! flock -n 9; then
     log "Another task is already running, skip this run." >&2
     exit 1
   fi
 
-  log "=== run (task ${mode}) ==="
+  log "=== incremental (--submissions-only) ==="
   cd "$REPO_ROOT"
 
   # 1. 同步 deploy 分支
@@ -127,16 +129,10 @@ cmd_run() {
     exit 1
   fi
 
-  # 3. 运行爬虫任务（与 action 一致：失败即中止，不提交推送）
-  #    a=--contests-only：只查订阅/新建比赛，有新建才回填其提交（高频触发保持轻量）
-  #    b=--submissions-only：每日增量提交同步
-  if [ "$mode" = "b" ]; then
-    "$PY" crawler/scripts/scheduled_task.py --submissions-only
-  else
-    "$PY" crawler/scripts/scheduled_task.py --contests-only
-  fi
+  # 3. 运行提交增量同步（与 action 的 --submissions-only 一致：失败即中止，不提交推送）
+  "$PY" crawler/scripts/scheduled_task.py --submissions-only
 
-  # 4. 复盘报告（独立于爬虫；只对本次爬取新建的比赛生成，失败仅告警，不阻断数据上线）
+  # 4. 复盘报告（独立于爬虫；提交增量无新建比赛，--from-crawl 自然跳过，失败仅告警）
   "$PY" crawler/scripts/report.py --from-crawl || log "[WARN] report.py failed (skipped review generation)."
 
   # 5. 清理日志
@@ -145,7 +141,7 @@ cmd_run() {
   # 6. 提交推送
   commit_and_push
 
-  log "=== done (task ${mode}) ==="
+  log "=== done (incremental) ==="
 }
 
 # ---------------------------------------------------------------------------
@@ -170,7 +166,7 @@ cmd_sync() {
   log "=== sync ==="
   cd "$REPO_ROOT"
 
-  # 1. 同步 deploy 分支（与 cmd_run 相同）
+  # 1. 同步 deploy 分支（与 cmd_incremental 相同）
   if ! git rev-parse --verify "$DEPLOY_BRANCH" >/dev/null 2>&1; then
     log "Branch '$DEPLOY_BRANCH' not found. Create it first (e.g. from main)." >&2
     exit 1
@@ -267,7 +263,7 @@ cmd_fire() {
     exit 0
   fi
 
-  # 有到期闹钟才做完整流程（flock 防与 sync / 任务B 并发）
+  # 有到期闹钟才做完整流程（flock 防与 sync / incremental 并发）
   exec 9>"$LOCK_FILE"
   if ! flock -n 9; then
     log "Another task is already running, skip this fire run." >&2
@@ -339,7 +335,7 @@ cmd_install() {
   (
     crontab -l 2>/dev/null || true
     echo "$CRON_FIRE cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh fire >> $LOG_FILE 2>&1"
-    echo "$CRON_B cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh run b >> $LOG_FILE 2>&1"
+    echo "$CRON_B cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh incremental >> $LOG_FILE 2>&1"
   ) | crontab -
   log "Installed cron (server TZ=$tz):"
   crontab -l | grep 'server-task.sh'
@@ -382,7 +378,7 @@ cmd_help() {
 
 # ---------------------------------------------------------------------------
 case "${1:-}" in
-  run)        cmd_run "${2:-a}" ;;
+  incremental) cmd_incremental ;;
   sync)       cmd_sync ;;
   fire)       cmd_fire ;;
   install)    cmd_install ;;
@@ -390,5 +386,5 @@ case "${1:-}" in
   status)     cmd_status ;;
   log)        cmd_log "${2:-50}" ;;
   --help|-h)  cmd_help ;;
-  *)          echo "Usage: $0 {run [a|b]|sync|fire|install|uninstall|status|log [N]|--help}" >&2; exit 1 ;;
+  *)          echo "Usage: $0 {incremental|sync|fire|install|uninstall|status|log [N]|--help}" >&2; exit 1 ;;
 esac

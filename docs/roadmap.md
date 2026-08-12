@@ -27,8 +27,8 @@
 
 #### 方案 1：GitHub Actions 自动任务（当前默认）
 - **开启定时**（取消注释）：
-  - `.github/workflows/crawler-scheduled.yml`：`schedule` cron `*/30 * * * *`（任务 A：抓订阅比赛 + 增量同步）
-  - `.github/workflows/crawler.yml`：`schedule` cron `0 20 * * *`（任务 B：每日提交增量同步）
+  - `.github/workflows/crawler-scheduled.yml`：`schedule` cron `*/30 * * * *`（`--contests-only`：查订阅/新建比赛）
+  - `.github/workflows/crawler.yml`：`schedule` cron `0 20 * * *`（`--submissions-only`：每日提交增量同步）
 - 爬虫跑完带 `[contests-changed]` 标记 push 到 `deploy` 分支 → `deploy.yml`（`workflow_run` 监听两个 crawler workflow）自动构建并部署 Pages。
 - 优点：完全托管云端、零运维；缺点：Actions 无原生单次调度，预订比赛用轮询模拟（延迟 15~30 分钟）。
 
@@ -36,10 +36,10 @@
 - **关闭定时**（保留 `workflow_dispatch` 手动触发即可）。
 - 提供一键管理脚本 **`crawler/server-task.sh`**（复刻 Action 完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
   ```bash
-  crawler/server-task.sh run [a|b]   # 一键运行（a=任务A完整抓取[默认]，b=任务B仅提交同步）
+  crawler/server-task.sh incremental   # 提交增量同步（scheduled_task.py --submissions-only；每日）
   crawler/server-task.sh sync        # 手动同步订阅：历史/过期比赛立即爬取，未来比赛写闹钟表，失败比赛重试一次
   crawler/server-task.sh fire        # 闹钟检查：到点比赛爬取 + 立即生成报告（cron 每分钟调用，无到期安静退出）
-  crawler/server-task.sh install     # 安装 cron（闹钟检查每分钟 + 任务B 每日，自动适配服务器时区）
+  crawler/server-task.sh install     # 安装 cron（闹钟检查每分钟 + 提交增量每日，自动适配服务器时区）
   crawler/server-task.sh uninstall   # 卸载 cron
   crawler/server-task.sh status      # 查看 cron / 闹钟 / git / 最近日志
   crawler/server-task.sh log [N]     # 查看运行日志
@@ -74,20 +74,20 @@
 
 ---
 
-## 3. 爬虫触发机制：两个独立任务（用户已确认拆分）
+## 3. 爬虫触发机制：预订比赛抓取与提交增量同步（用户已确认拆分）
 
 **预订比赛 ≠ 周期同步**，两者是独立的机制：
 
-### 任务 A：预订比赛抓取 + 复盘（一次性任务）
+### 预订比赛抓取 + 复盘（一次性任务）
 - 语义：某场**预订**的比赛结束后 → 抓取整场比赛数据 → 立即生成复盘报告。
 - 调度：
   - 动态版：APScheduler / `at` 按 `end_time` 排一次性 job，**精确到分钟**，跑完即删。
   - 静态版（GitHub Actions，方式一）：Actions 无原生单次调度，用 **cron 每 15~30 分钟轮询**「到点且未跑过的预订比赛」模拟一次性执行（平台限制，非设计上的轮询）。用户已确认可接受此延迟。
   - 静态版（自建服务器，方式二）：订阅条目填 `end_time`（不填 = 历史比赛，`sync` 立即爬取归档不生成报告；已过 = 过期比赛，立即爬取 + 报告），`sync` 把未来比赛写入闹钟表，cron 每分钟 `fire` 到点爬取 + 立即生成报告，**精确到分钟**；状态模型 `planned`/`pending`/`archived`/`failed`，**失败即 `failed`（fire 不再自动重试），下次手动 `sync` 重试一次（成功 → `archived`，失败保持 `failed`）**，不做自动兜底。方式一（Actions）不读取 `end_time` 字段。
 - 幂等：每场比赛记录「已抓取 / 已生成报告」状态标记，重跑只补未完成的。
-- 只抓该场次数据，与任务 B 无耦合。
+- 只抓该场次数据，与提交增量同步无耦合。
 
-### 任务 B：提交记录周期同步
+### 提交记录周期同步（--submissions-only）
 - 每天一次（cron），对所有已开始/进行中的比赛做**增量**提交抓取。
 - 沿用现有 `last-update.json` 增量机制。
 
@@ -180,7 +180,7 @@
 ```
 v0.2.0（静态版增强 + 爬虫数据层升级，分支 dev/v0.2.0）
 ├─ A. 代码质量/健壮性修复（§8 清单，含时区/驱动路径/pandoc/分页完整性）
-├─ B. 爬虫数据层：订阅模型 + 任务A/B + 全量提交采集 + 报告生成模块
+├─ B. 爬虫数据层：订阅模型 + 比赛抓取/提交增量模式 + 全量提交采集 + 报告生成模块
 ├─ C. 前端：标签、搜索、Dashboard(+报告区+contribution)、复盘时间轴页、UI/图标库迁移、响应式与可访问性
 └─ D. 可选：静态版客户端加密资源保护（默认不做）
 
@@ -202,8 +202,8 @@ v0.3.0（动态版）
 | 1 | 双版本架构 | 单一代码库 + 构建开关，静态版与动态版并存 |
 | 2 | 题目标签 | 队内共享，写 `problem.json`，随 git 同步 |
 | 3 | 收藏/稍后再做 | 区分每个人，动态版 DB 实现 |
-| 4 | 预订比赛 | 一次性任务（比赛结束→抓整场→生成报告），与提交周期任务分离 |
-| 5 | 提交记录周期任务 | 每天一次增量同步 |
+| 4 | 预订比赛 | 一次性任务（比赛结束→抓整场→生成报告），与提交增量同步分离 |
+| 5 | 提交记录周期同步 | 每天一次增量同步（`--submissions-only`） |
 | 6 | 全量提交采集 | 每份提交的代码 + 时间戳都保存，供复盘 |
 | 7 | LLM 报告 | 每场一份，不做预处理直接给 LLM，DeepSeek（OpenAI 兼容） |
 | 8 | 报告展示 | 放 Dashboard，支持查看往期报告 |
