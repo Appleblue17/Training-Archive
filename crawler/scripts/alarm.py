@@ -1,30 +1,42 @@
 #!/usr/bin/env python3
 """服务器闹钟机制（部署方式二：自建服务器 cron）的闹钟表管理。
 
-背景：订阅列表（crawler/subscriptions/*.json）中每条可选填 end_time：
-  - 不填 end_time    = 历史比赛：sync 时立即爬取归档，不生成复盘报告
+订阅列表（crawler/subscriptions/*.json）中每条可选填 end_time：
+  - 不填 end_time    = 历史比赛：sync 立即爬取归档，不生成复盘报告
   - end_time 在未来  = 未来比赛：sync 写入闹钟表，到点（fire）爬取并生成报告
   - end_time 已过    = 过期比赛：sync 立即爬取并生成报告（如闹钟失败后补漏）
 
 闹钟表 crawler/alarms.json 是运行时状态文件（gitignore，不提交），由本模块
 统一读写；server-task.sh 的 sync / fire 子命令编排：
-  sync  → alarm.py plan   （输出 HISTORY / EXPIRED 链接，写入未来闹钟）
+  sync  → alarm.py plan   （输出 HISTORY / EXPIRED / RETRY 链接，写未来闹钟）
   fire  → alarm.py due    （输出到点未触发的闹钟链接，cron 每分钟调用）
-  fire  → alarm.py mark   （成功后标记 fired；失败标记 failed / 计数）
+  fire  → alarm.py mark   （成功后标记 archived；失败标记 failed）
+
+状态模型（每条闹钟一个 status）：
+  planned   未来比赛：fire_at = end_time，等待 fire（due 只查这个状态）
+  pending   sync 已安排立即处理（HISTORY / EXPIRED 待爬取；fire_at 为空）
+  archived  已处理完（历史/过期已归档、未来已触发）；sync 跳过、fire 忽略
+  failed    爬取失败：fire 忽略，下次 sync 重试一次（成功 → archived，失败保持 failed）
+
+与订阅文件保持同步：
+  - 订阅里修改 end_time → plan 检测到信息变更，重新安排（archived 也会被重新激活）
+  - 订阅里删除条目 → plan 剪除对应闹钟（含 archived 历史）
+  - failed 条目**永不重置**：只有重试成功（mark --archived）才改变状态
 
 子命令（输出 tab 分隔，供 bash 解析）：
   python3 crawler/scripts/alarm.py plan
       读取订阅 + 闹钟表，输出：
         HISTORY\t<link>   历史比赛：立即爬取，不生成报告
         EXPIRED\t<link>   过期比赛：立即爬取并生成报告
-      未来比赛写入闹钟表（按 link 幂等，fire_at 变化时更新）。
+        RETRY\t<link>     上次失败的比赛：本次 sync 重试一次
+      未来比赛写入/更新闹钟表（planned）。有 failed 重试时输出
+      "[alarm] WARNING: ..." 提示用户。
   python3 crawler/scripts/alarm.py due
-      输出 DUE\t<link>：fire_at 已到、未触发、未失败的闹钟；无则无输出（fire 每分钟
-      调用，保持安静避免刷日志）。
-  python3 crawler/scripts/alarm.py mark <link> --fired|--failed
-      标记闹钟状态：--fired 置 fired=true（保留历史，plan 跳过）；
-      --failed 计数 +1，超过 MAX_ATTEMPTS 置 failed=true（fire 不再重试，靠下次
-      sync 补抓）。
+      输出 DUE\t<link>：status == planned、fire_at 已到、未失败的闹钟；
+      无则无输出（fire 每分钟调用，保持安静避免刷日志）。pending/archived/failed 忽略。
+  python3 crawler/scripts/alarm.py mark <link> --archived|--failed
+      标记状态：--archived 置 archived（attempts 清零，sync/fire 处理成功）；
+      --failed attempts +1、置 failed（fire 不再重试，下次 sync 重试一次）。
   python3 crawler/scripts/alarm.py list
       人类可读列出全部闹钟（server-task.sh status 用）。
 """
@@ -47,13 +59,19 @@ SUBSCRIPTIONS_DIR = os.path.join(REPO_ROOT, "crawler", "subscriptions")
 # 平台顺序（与 scheduled_task.py 保持一致）
 PLATFORM_ORDER = ("qoj", "hdu", "nowcoder")
 
-# 单条闹钟最多失败次数；超过后置 failed=true（fire 不再重试，靠下次 sync 补抓）。
-# fire 每分钟跑一次，3 次失败约等于连续 3 分钟重试，足够覆盖瞬时网络抖动。
-MAX_ATTEMPTS = 3
+# 闹钟状态
+STATUS_PLANNED = "planned"      # 未来比赛：等 fire（fire_at = end_time）
+STATUS_PENDING = "pending"      # sync 已安排立即处理（HISTORY/EXPIRED 待爬，fire_at 为空）
+STATUS_ARCHIVED = "archived"    # 已处理完：sync 跳过、fire 忽略
+STATUS_FAILED = "failed"        # 爬取失败：fire 忽略，下次 sync 重试一次
 
 
 def _load_alarms():
-    """读取闹钟表，返回 {link: entry}。文件缺失/损坏时返回空 dict。"""
+    """读取闹钟表，返回 {link: entry}。文件缺失/损坏时返回空 dict。
+
+    兼容旧格式迁移：旧条目用 fired/failed 布尔推断状态，统一为
+    status 字段（fired → archived，failed → failed，其余 → planned）。
+    """
     if not os.path.exists(ALARMS_PATH):
         return {}
     try:
@@ -64,7 +82,29 @@ def _load_alarms():
         return {}
     if not isinstance(entries, list):
         return {}
-    return {e.get("link", ""): e for e in entries if e.get("link")}
+    alarms = {}
+    for e in entries:
+        link = e.get("link", "")
+        if not link:
+            continue
+        alarms[link] = _migrate_alarm(e)
+    return alarms
+
+
+def _migrate_alarm(e):
+    """旧格式（fired/failed 布尔）迁移到新 status 字段；已是新格式原样返回。"""
+    if "status" in e:
+        return e
+    e = dict(e)
+    if e.get("fired"):
+        e["status"] = STATUS_ARCHIVED
+    elif e.get("failed"):
+        e["status"] = STATUS_FAILED
+    else:
+        e["status"] = STATUS_PLANNED
+    e.pop("fired", None)
+    e.pop("failed", None)
+    return e
 
 
 def _save_alarms(alarms):
@@ -106,28 +146,30 @@ def _parse_time(s):
     return dt.astimezone(beijing)
 
 
-def _new_entry(platform, link, end_time, fire_at):
+def _new_entry(platform, link, end_time, fire_at, status):
     return {
         "platform": platform,
         "link": link,
         "end_time": end_time,
         "fire_at": fire_at,
-        "fired": False,
-        "failed": False,
+        "status": status,
         "attempts": 0,
-        "added_at": datetime.now(beijing).isoformat(),
+        "updated_at": datetime.now(beijing).isoformat(),
     }
 
 
 def cmd_plan():
-    """读取订阅 + 闹钟表：输出 HISTORY / EXPIRED 链接，写入未来闹钟。
+    """读取订阅 + 闹钟表：输出 HISTORY / EXPIRED / RETRY 链接，写未来闹钟。
 
     - 只处理「已启用平台（config.json）」+「订阅级 enabled」的条目。
-    - 已 fired 的条目跳过（历史已归档 / 闹钟已完成）。
-    - 不填 end_time → HISTORY（立即爬，不报告）。
-    - end_time <= now → EXPIRED（立即爬 + 报告）；重置失败状态允许本次重试。
-    - end_time > now → 写入/更新闹钟（fire_at = end_time）。
-    - 不在订阅中的闹钟（含 fired 历史）剪除。
+    - archived 且订阅信息未变 → 跳过（已处理完）。
+    - failed 且订阅信息未变 → 输出 RETRY（**保持 failed 不重置**，本次重试一次，
+      由 sync 爬取结果决定 archived 或继续 failed）。
+    - planned 且未到点 → 保持等 fire。
+    - 其余（新建 / 信息变更 / pending 遗留 / planned 已到点 / failed 但信息变更）
+      → 按 end_time 重新分类：不填 → HISTORY；已过 → EXPIRED（均置 pending 待爬）；
+        未来 → planned（fire_at = end_time）。
+    - 订阅中已删除的 link 剪除闹钟（含 archived 历史）。
     """
     enabled = set(_load_enabled_platforms())
     subs = load_subscriptions_dir(SUBSCRIPTIONS_DIR, platform=None)
@@ -140,56 +182,53 @@ def cmd_plan():
 
     history_links = []
     expired_links = []
+    retry_links = []
     active_links = set()
     for s in active:
         link = str(s.get("link") or "").rstrip("/")
         if not link:
             continue
         active_links.add(link)
-        end_dt = _parse_time(s.get("end_time"))
+        end_time = s.get("end_time")
+        end_dt = _parse_time(end_time)
         existing = alarms.get(link)
-        if existing and existing.get("fired"):
-            # 已处理过，跳过
-            continue
 
+        if existing is not None:
+            st = existing.get("status")
+            unchanged = existing.get("end_time") == end_time
+            if unchanged and st == STATUS_ARCHIVED:
+                # 已处理完且订阅未变：跳过
+                continue
+            if unchanged and st == STATUS_FAILED:
+                # 上次失败：本次 sync 重试一次（保持 failed，不重置）
+                retry_links.append(link)
+                continue
+            if unchanged and st == STATUS_PLANNED and end_dt is not None and end_dt > now:
+                # 未来闹钟未到点：等 fire
+                continue
+            # 其余情况（新建 / 信息变更 / pending 遗留 / planned 已到点 / failed 但信息变更）
+            # → 重新分类。重建条目（信息变更时 attempts 清零属合理重置）。
+
+        # 重新分类
         if end_dt is None:
             # 历史比赛：立即爬取，不生成报告
-            if existing is None:
-                alarms[link] = _new_entry(
-                    s.get("platform"), link, s.get("end_time"), None
-                )
-            else:
-                # 重新尝试（如上次爬取失败）
-                existing.update({"fired": False, "failed": False, "attempts": 0})
+            alarms[link] = _new_entry(
+                s.get("platform"), link, None, None, STATUS_PENDING
+            )
             history_links.append(link)
         elif end_dt <= now:
             # 过期比赛：立即爬取 + 生成报告（如闹钟失败后补漏）
-            fire_at = s.get("end_time")
-            if existing is None:
-                alarms[link] = _new_entry(s.get("platform"), link, fire_at, fire_at)
-            else:
-                existing.update(
-                    {"fired": False, "failed": False, "attempts": 0, "fire_at": fire_at}
-                )
+            alarms[link] = _new_entry(
+                s.get("platform"), link, end_time, None, STATUS_PENDING
+            )
             expired_links.append(link)
         else:
-            # 未来比赛：写闹钟
-            fire_at = s.get("end_time")
-            if existing is None:
-                alarms[link] = _new_entry(s.get("platform"), link, fire_at, fire_at)
-            else:
-                existing.update(
-                    {
-                        "platform": s.get("platform"),
-                        "end_time": fire_at,
-                        "fire_at": fire_at,
-                        "fired": False,
-                        "failed": False,
-                        "attempts": 0,
-                    }
-                )
+            # 未来比赛：写闹钟，等 fire
+            alarms[link] = _new_entry(
+                s.get("platform"), link, end_time, end_time, STATUS_PLANNED
+            )
 
-    # 剪除已不在订阅中的闹钟（含 fired 历史）
+    # 剪除已不在订阅中的闹钟（含 archived 历史）
     for link in list(alarms):
         if link not in active_links:
             del alarms[link]
@@ -200,22 +239,32 @@ def cmd_plan():
         print(f"HISTORY\t{link}")
     for link in expired_links:
         print(f"EXPIRED\t{link}")
+    for link in retry_links:
+        print(f"RETRY\t{link}")
+
+    if retry_links:
+        print(
+            "[alarm] WARNING: "
+            f"{len(retry_links)} previously failed alarm(s) will be retried: "
+            f"{', '.join(retry_links)}"
+        )
     print(
         f"[alarm] plan: {len(history_links)} history, {len(expired_links)} expired, "
-        f"{len(alarms)} alarms tracked."
+        f"{len(retry_links)} retry, {len(alarms)} alarms tracked."
     )
 
 
 def cmd_due():
-    """输出 DUE\t<link>：fire_at 已到、未触发、未失败的闹钟。
+    """输出 DUE\t<link>：status == planned、fire_at 已到、未失败的闹钟。
 
     fire 每分钟调用；无到期闹钟时**无任何输出**，避免刷日志。
+    pending / archived / failed 一律忽略（fire 只处理未来闹钟）。
     """
     alarms = _load_alarms()
     now = datetime.now(beijing)
     due = []
     for e in alarms.values():
-        if e.get("fired") or e.get("failed"):
+        if e.get("status") != STATUS_PLANNED:
             continue
         fire_at = e.get("fire_at")
         if not fire_at:
@@ -230,33 +279,29 @@ def cmd_due():
 def cmd_mark(link, state):
     """标记闹钟状态。
 
-    --fired：置 fired=true（保留历史条目，plan 跳过）。
-    --failed：attempts +1；超过 MAX_ATTEMPTS 置 failed=true（fire 不再重试）。
+    --archived：置 archived（attempts 清零）；sync / fire 处理成功时调用。
+    --failed：attempts +1、置 failed（fire 不再重试，下次 sync 重试一次）。
+    条目不存在时创建 minimal 条目（兜底：如 plan 后表被外部清理）。
     """
     link = link.rstrip("/")
     alarms = _load_alarms()
     e = alarms.get(link)
     if e is None:
-        print(f"[alarm] mark {link}: not found; nothing to do.")
-        return
-    if state == "fired":
-        e["fired"] = True
-        e["failed"] = False
+        e = _new_entry("", link, None, None, STATUS_PENDING)
+        alarms[link] = e
+    if state == "archived":
+        e["status"] = STATUS_ARCHIVED
         e["attempts"] = 0
-        print(f"[alarm] mark {link}: fired.")
+        e["updated_at"] = datetime.now(beijing).isoformat()
+        print(f"[alarm] mark {link}: archived.")
     elif state == "failed":
+        e["status"] = STATUS_FAILED
         e["attempts"] = e.get("attempts", 0) + 1
-        if e["attempts"] >= MAX_ATTEMPTS:
-            e["failed"] = True
-            print(
-                f"[alarm] mark {link}: failed "
-                f"(attempts={e['attempts']} >= {MAX_ATTEMPTS}); waiting for sync."
-            )
-        else:
-            print(
-                f"[alarm] mark {link}: failed "
-                f"(attempts={e['attempts']}/{MAX_ATTEMPTS}); will retry."
-            )
+        e["updated_at"] = datetime.now(beijing).isoformat()
+        print(
+            f"[alarm] mark {link}: failed "
+            f"(attempts={e['attempts']}); will retry on next sync."
+        )
     else:
         print(f"[alarm] mark: unknown state {state!r}.", file=sys.stderr)
         sys.exit(1)
@@ -270,19 +315,25 @@ def cmd_list():
         print("(no alarms)")
         return
     now = datetime.now(beijing)
-    print(f"{'link':<56} {'platform':<8} {'fire_at':<26} state")
-    for e in sorted(alarms.values(), key=lambda x: x.get("fire_at") or "9999"):
+    print(f"{'link':<56} {'platform':<8} {'status':<10} {'fire_at':<26} attempts")
+    for e in sorted(alarms.values(), key=lambda x: x.get("link", "")):
         fire_at = e.get("fire_at") or "-"
-        if e.get("fired"):
-            state = "fired"
-        elif e.get("failed"):
-            state = f"failed({e.get('attempts', 0)})"
-        elif fire_at == "-":
-            state = "pending(history)"
-        else:
+        status = e.get("status", "?")
+        if status == STATUS_PLANNED:
             dt = _parse_time(fire_at)
             state = "due" if (dt and dt <= now) else "scheduled"
-        print(f"{e['link']:<56} {e.get('platform', ''):<8} {fire_at:<26} {state}")
+        elif status == STATUS_PENDING:
+            state = "pending(sync)"
+        elif status == STATUS_ARCHIVED:
+            state = "archived"
+        elif status == STATUS_FAILED:
+            state = f"failed({e.get('attempts', 0)})"
+        else:
+            state = status
+        print(
+            f"{e['link']:<56} {e.get('platform', ''):<8} "
+            f"{status:<10} {fire_at:<26} {e.get('attempts', 0)}"
+        )
 
 
 def main():
@@ -297,7 +348,7 @@ def main():
         cmd_due()
     elif cmd == "mark":
         if len(args) < 3:
-            print("usage: alarm.py mark <link> --fired|--failed", file=sys.stderr)
+            print("usage: alarm.py mark <link> --archived|--failed", file=sys.stderr)
             sys.exit(1)
         cmd_mark(args[1], args[2].lstrip("-"))
     elif cmd == "list":

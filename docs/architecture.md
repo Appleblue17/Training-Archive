@@ -235,24 +235,37 @@ contests/
 
 **背景**：方式二（自建服务器）早期沿用方式一的轮询思路——cron 每 30 分钟扫描所有订阅、爬平台比较时间判断是否到点，精确度差且每次都要跑全量扫描。改用**闹钟表 + 每分钟检查**：订阅条目填 `end_time`（见 4.3），`sync` 时把未来比赛写入闹钟表，cron 每分钟检查到点即触发。
 
-**闹钟表 `crawler/alarms.json`**：运行时状态文件，`alarm.py` 统一读写，`.gitignore` 与 `.gitignore.deploy` 均忽略、**不提交**（服务器本地状态，不属于 deploy 分支数据）。每条记录含 `link` / `end_time` / `fired` / `failed` / `attempts`。
+**闹钟表 `crawler/alarms.json`**：运行时状态文件，`alarm.py` 统一读写，`.gitignore` 与 `.gitignore.deploy` 均忽略、**不提交**（服务器本地状态，不属于 deploy 分支数据）。每条记录含 `link` / `platform` / `end_time` / `fire_at` / `status` / `attempts` / `updated_at`。
+
+**状态模型**（每条闹钟一个 `status` 字段，替代早期的 `fired`/`failed` 布尔组合）：
+
+| status | 含义 | 处理 |
+|--------|------|------|
+| `planned` | 未来比赛：`fire_at = end_time`，等待 fire | `due` 只查这个状态；到点由 fire 爬取 + 报告 |
+| `pending` | sync 已安排立即处理（HISTORY / EXPIRED 待爬取，`fire_at` 为空） | fire 忽略；爬取成功后置 `archived`，失败置 `failed` |
+| `archived` | 已处理完（历史/过期已归档、未来已触发） | sync 跳过、fire 忽略 |
+| `failed` | 爬取失败 | fire 忽略；下次 sync **重试一次**：成功 → `archived`，失败保持 `failed` |
+
+**与订阅文件保持同步**：`plan` 检测订阅里修改 `end_time`（信息变更 → 重新安排，archived 也会被重新激活）；订阅里删除条目 → 剪除对应闹钟（含 archived 历史）。`failed` 条目**永不重置**，只有重试成功（`mark --archived`）才改变状态。
 
 **子命令**：
 
 | 子命令 | 职责 |
 |--------|------|
-| `alarm.py plan` | 扫描订阅目录：HISTORY（不填 end_time）/ EXPIRED（已过）/ 未来比赛；未来比赛写入闹钟表（幂等，`end_time` 更新则重置状态），并**剪除订阅中已删除条目的闹钟** |
-| `alarm.py due` | 输出到点且未触发、未失败（`attempts < 3`）的闹钟；无则安静（空输出，供 cron 判断） |
-| `alarm.py mark <link> --fired` | 标记该闹钟已触发（爬取成功） |
-| `alarm.py mark <link> --failed` | 标记失败，`attempts` 计数 +1；达 **MAX_ATTEMPTS=3** 置 `failed`，`due` 不再输出（不再自动重试） |
-| `alarm.py list` | 列出全部闹钟（含失败计数） |
+| `alarm.py plan` | 扫描订阅：输出 `HISTORY` / `EXPIRED` / `RETRY` 链接，写未来闹钟（`planned`）。archived 且信息未变跳过；failed 且信息未变输出 `RETRY`（**保持 failed 不重置**）；其余（新建/信息变更/pending 遗留/planned 已到点）按 `end_time` 重新分类。有 failed 重试时输出 `WARNING` 提示用户。剪除订阅中已删除条目的闹钟 |
+| `alarm.py due` | 输出 `status == planned` 且 `fire_at` 已到、未失败的闹钟；pending/archived/failed 一律忽略；无则空输出（cron 判断） |
+| `alarm.py mark <link> --archived` | 标记已处理完（attempts 清零，保留历史，plan 下次跳过） |
+| `alarm.py mark <link> --failed` | attempts +1、置 `failed`（fire 不再重试；下次 sync 重试一次） |
+| `alarm.py list` | 列出全部闹钟（含状态与失败计数） |
+
+旧格式闹钟表（`fired`/`failed` 布尔）在 `_load_alarms` 读入时自动迁移：`fired → archived`、`failed → failed`、其余 → `planned`。
 
 **server-task.sh 集成**：
 
-- `cmd_sync`（`crawler/server-task.sh sync`）：①`plan` 分类订阅并写闹钟表；②爬取 HISTORY + EXPIRED 比赛（`--contests-only --links "..."`）；③对 EXPIRED 比赛生成报告（`report.py --from-crawl --links "..."`）；④`mark --fired`。即：历史比赛立即爬取归档不生成报告，过期比赛立即爬取 + 报告（闹钟失败后补漏场景），未来比赛只写闹钟不动。
-- `cmd_fire`（`crawler/server-task.sh fire`）：先 `due`，**无到期闹钟安静退出**（不产生提交）；有则走与 `sync` 相同的完整流程（爬取 → 报告 → mark fired）。**爬取失败 `mark --failed`**，重试最多 3 次后标记 failed，靠下次手动 `sync` 按「过期比赛」补爬。
+- `cmd_sync`（`crawler/server-task.sh sync`）：①`plan` 分类订阅并写闹钟表，有 `RETRY`/`WARNING` 时记录日志告知用户；②爬取 HISTORY + EXPIRED + RETRY 比赛（`--contests-only --links "..."`）；③对 EXPIRED 与 RETRY 生成报告（`report.py --from-crawl --links "..."`，幂等）；④全部 `mark --archived`。即：历史比赛立即爬取归档不生成报告，过期比赛立即爬取 + 报告，失败比赛重试一次（成功 → archived，失败保持 failed）。**爬取失败时本次涉及的全部链接 `mark --failed`**（下次 sync 重试），不再静默退出。
+- `cmd_fire`（`crawler/server-task.sh fire`）：先 `due`，**无到期闹钟安静退出**（不产生提交）；有则走与 `sync` 相同的完整流程（爬取 → 报告 → mark archived）。**爬取失败 `mark --failed`**——fire 只查 planned，失败后不再自动重试，靠下次手动 `sync` 重试一次（成功 → archived，失败保持 failed）。
 - `install` 的 cron 改为：闹钟检查 `* * * * *`（fire）+ 任务B 每日；`status` 展示闹钟表。
-- **不做事后自动兜底**：fire 失败标记 failed 后不会自动重扫，需手动 `sync` 补（用户确认的取舍，避免低频全量重扫的复杂度）。
+- **不做自动兜底**：failed 不会自动重扫，需手动 `sync` 重试（用户确认的取舍，避免低频全量重扫的复杂度）。
 
 **只对方式二生效**：方式一（GitHub Actions 轮询）不读取 `end_time` 字段，`alarm.py` 与 `sync`/`fire` 仅服务器使用。
 
@@ -270,7 +283,7 @@ contests/
 | 全量提交采集（`submissions/` + `submissions.json`） | 复盘报告需要完整提交序列（含每份源码） | 每次提交都抓源码，初始同步耗时更长 |
 | LLM 复盘报告（DeepSeek） | 每场一份 `review.md`，原始提交序列直接送 LLM，不做预处理 | 依赖 `DEEPSEEK_API_KEY`；存在即跳过（幂等） |
 | 爬虫调度恢复为定时（两个任务） | 任务A（查订阅/预订抓取，每 30 分钟 `--contests-only`，有新建才回填其提交）与任务B（提交周期同步，每天）分离；复盘报告由 `report.py` 独立运行 | `crawler-scheduled.yml` + `crawler.yml`，`concurrency` 串行防冲突 |
-| 服务器闹钟机制（方式二专用） | 方式二（自建服务器）用闹钟表 + cron 每分钟检查替代 30 分钟轮询：订阅填 `end_time`，`sync` 写闹钟、`fire` 到点触发，精确到分钟；只对方式二生效，方式一（Actions 轮询）不读取 `end_time` | `crawler/scripts/alarm.py` + `crawler/alarms.json`（gitignore，不提交）；`server-task.sh` 新增 `sync`/`fire`，`install` 的 cron 改「闹钟每分钟 + 任务B 每日」；失败重试 3 次后标记 failed，不做事后自动兜底（靠手动 `sync` 补） |
+| 服务器闹钟机制（方式二专用） | 方式二（自建服务器）用闹钟表 + cron 每分钟检查替代 30 分钟轮询：订阅填 `end_time`，`sync` 写闹钟、`fire` 到点触发，精确到分钟；只对方式二生效，方式一（Actions 轮询）不读取 `end_time` | `crawler/scripts/alarm.py` + `crawler/alarms.json`（gitignore，不提交）；`server-task.sh` 新增 `sync`/`fire`，`install` 的 cron 改「闹钟每分钟 + 任务B 每日」；状态模型 `planned/pending/archived/failed`，fire 失败即 failed、不再自动重试（下次 sync 重试一次，成功 → archived，失败保持 failed），不做事后自动兜底 |
 | 平台启用/禁用由 `config.json` 控制 | HDU/NowCoder 平台结构变动/登录不稳定，默认停用；QOJ 为主力 | 每个平台条目 `enabled` 字段（缺省 false 视为禁用），`scheduled_task.py` 启动时过滤；代码保留，未删除 |
 
 ## 6. 已知限制

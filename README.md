@@ -118,6 +118,7 @@ crawler/server-task.sh run [a/b]
 #   历史比赛（订阅不填 end_time）→ 立即爬取归档，不生成报告
 #   过期比赛（end_time 已过）    → 立即爬取并生成报告（如闹钟失败后补漏）
 #   未来比赛（end_time 未到）    → 写入闹钟表，到点由 fire 触发
+#   失败重试（上次 failed）      → 重试一次：成功 → archived，失败保持 failed（日志会提示）
 crawler/server-task.sh sync
 
 # 安装 / 卸载 cron 定时（闹钟检查每分钟 + 任务 B 每日，自动适配服务器时区）
@@ -129,7 +130,7 @@ crawler/server-task.sh status
 crawler/server-task.sh log [N]
 ```
 
-**闹钟机制（方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式，如 `"2026-08-15T23:00:00+08:00"`）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交），cron 每分钟调用 `fire` 检查：到点即爬取该场比赛（`--contests-only --links`）并立即生成复盘报告，精确到分钟，替代原来的 30 分钟轮询。爬取失败自动重试最多 3 次，之后标记失败、靠下次手动 `sync` 按「过期比赛」补爬。方式一（GitHub Actions）仍用轮询，不读取 `end_time` 字段。
+**闹钟机制（方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式，如 `"2026-08-15T23:00:00+08:00"`）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交）并标记为 `planned`，cron 每分钟调用 `fire` 检查：到点即爬取该场比赛（`--contests-only --links`）并立即生成复盘报告，精确到分钟，替代原来的 30 分钟轮询。闹钟状态模型：`planned`（未来等 fire）/ `pending`（sync 待立即处理）/ `archived`（已处理完，fire 忽略）/ `failed`（爬取失败，fire 忽略）。**爬取失败即标记 `failed`（不再自动重试），下次手动 `sync` 重试一次：成功 → `archived`，失败保持 `failed`，且 sync 日志会提示用户**。订阅里修改 `end_time` 或删除条目时，`sync` 会相应重新安排或剪除闹钟。方式一（GitHub Actions）仍用轮询，不读取 `end_time` 字段。
 
 服务器环境要求：已 clone 仓库、根目录有 `.env` 凭据、`pip install -r crawler/requirements.txt`、Chrome/Chromedriver 在 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`、已配置 push 凭据（SSH key 或 token）。
 
