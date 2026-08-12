@@ -71,7 +71,7 @@ python3 crawler/scripts/report.py --from-crawl
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
 # QQ 群分享（可选，config.json 的 ai_tasks.share.enabled 开启后 daemon 自动调用；NapCat 配置见 crawler/config.example.json 的 qq 块）
-python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456"
+python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456" [--file-only]
 python3 crawler/scripts/qq_share.py "contests/2026-08-01 xxx"
 ```
 
