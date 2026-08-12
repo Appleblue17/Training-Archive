@@ -331,3 +331,51 @@ could not detect version_main.therefore, we are assuming it is chrome 108 or hig
 [2026-08-12T22:15:33.061337+08:00] [INFO] Contests-only run; last-update not advanced (incremental sync is handled by task B).
 [task] New contests recorded for report: ['contests/2026-07-23 2026“钉耙编程”中国大学生算法设计暑期联赛（2）', 'contests/2026-07-28 2026“钉耙编程”中国大学生算法设计暑期联赛（3）', 'contests/2026-07-30 2026“钉耙编程”中国大学生算法设计暑期联赛（4）', 'contests/2026-08-04 2026“钉耙编程”中国大学生算法设计暑期联赛（5）']
 [task] Completed platforms: hdu
+[2026-08-12 22:15:40] Pushed to deploy.
+[2026-08-12 22:15:40] === sync done ===
+[2026-08-12 22:18:24] Installed systemd user unit: /root/.config/systemd/user/training-archive-daemon.service
+[2026-08-12 22:18:24] Start at login: systemctl --user enable --now training-archive-daemon.service
+[2026-08-12 22:18:24] === daemon run started ===
+[2026-08-12 22:18:24] Lock: /tmp/training-archive-daemon.lock
+[2026-08-12 22:18:24] [run] scheduled: fire=*/5 * * * *, sync=0 */3 * * *, incremental=0 4 * * *
+[2026-08-12 22:18:24] [run] task due: fire
+[2026-08-12 22:18:25] [run] task due: sync
+[2026-08-12 22:18:25] === sync ===
+[2026-08-12 22:18:29] [alarm] plan: 0 history, 0 expired, 0 retry, 6 alarms tracked.
+[2026-08-12 22:18:29] No history/expired/retry links; nothing to crawl.
+[2026-08-12 22:18:29] === sync done ===
+[2026-08-12 22:20:29] [run] task due: fire
+[2026-08-12 22:25:29] [run] task due: fire
+[2026-08-12 22:30:29] [run] task due: fire
+[2026-08-12 22:30:30] === fire ===
+[2026-08-12 22:30:33] Fire due: https://acm.hdu.edu.cn/contest/problems?cid=1234
+[2026-08-12 22:30:33] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --contests-only --links https://acm.hdu.edu.cn/contest/problems?cid=1234
+[task] Only fetching links: ['https://acm.hdu.edu.cn/contest/problems?cid=1234']
+[task] Enabled platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[2026-08-12T22:30:37.791888+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（6） (2026-08-06)
+[2026-08-12T22:30:37.794490+08:00] [INFO] Created contest folder: contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）
+[2026-08-12T22:30:40.298687+08:00] [INFO] Login successful with username and password.
+[2026-08-12T22:30:49.595345+08:00] [INFO] Finished fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（6） (2026-08-06)
+[2026-08-12T22:30:49.599258+08:00] [INFO] Start updating staged submissions...
+[2026-08-12T22:30:49.600306+08:00] [INFO] Start fetching new submissions...
+[2026-08-12T22:30:49.601561+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1229 not new in this run; skipped (contests-only).
+[2026-08-12T22:30:49.602202+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1230 not new in this run; skipped (contests-only).
+[2026-08-12T22:30:49.602888+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1231 not new in this run; skipped (contests-only).
+[2026-08-12T22:30:49.603489+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1232 not new in this run; skipped (contests-only).
+[2026-08-12T22:30:49.604204+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1233 not new in this run; skipped (contests-only).
+[2026-08-12T22:30:49.604921+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1234.
+[2026-08-12T22:30:49.977463+08:00] [INFO] Already logged in with username and password. Skipping login.
+[2026-08-12T22:30:50.983000+08:00] [WARNING] File contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）/submissions.json does not exist, creating a new one.
+[2026-08-12T22:31:10.571316+08:00] [INFO] Fetched 43 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1234, page 1.
+[2026-08-12T22:31:10.911075+08:00] [INFO] Reached the end of submissions or no more pages to fetch. Stopped.
+[2026-08-12T22:31:11.046377+08:00] [INFO] Contests-only run; last-update not advanced (incremental sync is handled by task B).
+[task] New contests recorded for report: ['contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）']
+[task] Completed platforms: hdu
+[2026-08-12 22:31:11] Generating reviews for due contests.
+[2026-08-12 22:31:11] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/report.py --links https://acm.hdu.edu.cn/contest/problems?cid=1234
+[report] Generating review for contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6） ...
+[report] Wrote contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）/review.md.
+[qq-share] Generating qq-share for contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6） ...
+[qq-share] Wrote contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）/qq-share.txt.
+[report] Generated 1 review(s) for links.
