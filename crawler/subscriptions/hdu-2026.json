@@ -21,18 +21,19 @@
     "platform": "hdu",
     "link": "https://acm.hdu.edu.cn/contest/problems?cid=1232",
     "comments": "4",
-    "enabled": false
+    "enabled": true
   },
   {
     "platform": "hdu",
     "link": "https://acm.hdu.edu.cn/contest/problems?cid=1233",
     "comments": "5",
-    "enabled": false
+    "enabled": true
   },
   {
     "platform": "hdu",
     "link": "https://acm.hdu.edu.cn/contest/problems?cid=1234",
     "comments": "6",
-    "enabled": false
+    "enabled": true,
+    "end_time": "2026-08-12T22:30:00+08:00"
   }
 ]

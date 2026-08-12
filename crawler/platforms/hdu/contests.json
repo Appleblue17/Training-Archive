@@ -1398,5 +1398,488 @@
         "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1013"
       }
     ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff082\uff09",
+    "date": "2026-07-23",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1230",
+    "start_time": "2026-07-23T12:00:00+08:00",
+    "end_time": "2026-07-23T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "xyz \u95ee\u9898",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "\u8868\u8fbe\u5f0f 2",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "\u5f20\u529b",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u576a\u5395\u9e21",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "\u51cf\u6570\u6e38\u620f 2",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u5408\u6210\u5927 hdu",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u53e6\u4e00\u4e2a shu \u8bba\u95ee\u9898",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "\u6700\u9065\u8fdc\u7684\u8ddd\u79bb",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u5f15\u529b\u573a",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u5e7b\u7075\u6218\u961f 2",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "\u952e\u76d8\u6740\u624b",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "\u6700\u540e\u4e00\u6b21\u76f8\u9047",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1012"
+      }
+    ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff084\uff09",
+    "date": "2026-07-30",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1232",
+    "start_time": "2026-07-30T12:00:00+08:00",
+    "end_time": "2026-07-30T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "A. Signal",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "B. Binary Choice",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "C. Stalin Sort",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "D. EERT",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "E. TREE",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "F. Median Shuffle",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "G. Perfect Palindrome",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "H. Mode",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "I. Gather",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "J. Rare Game",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "K. Union MEX",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "L. Yet Another Suffix Array Problem",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1012"
+      }
+    ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff085\uff09",
+    "date": "2026-08-04",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1233",
+    "start_time": "2026-08-04T12:00:00+08:00",
+    "end_time": "2026-08-04T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u7b80\u5355\u591a\u9879\u5f0f\u95ee\u9898",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "\u5e0c\u671b\u706f\u5854",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "\u62ec\u53f7\u51f8\u5305",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u63a2\u7d22\u5b9d\u7269",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "indigo \u7a76\u7adf\u662f\u8c01\uff1f",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u4e09\u4e32\u5171\u9e23",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u53cd\u5f39\u5c0f\u7403",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "\u75c5\u6bd2\u7247\u6bb5",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u81ea\u4e58",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u94fe\u4e0a Nim",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "\u6811\u5f62\u5e7f\u64ad",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "\u4ed9\u4eba\u638c\u56fe",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1012"
+      }
+    ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff082\uff09",
+    "date": "2026-07-23",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1230",
+    "start_time": "2026-07-23T12:00:00+08:00",
+    "end_time": "2026-07-23T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "xyz \u95ee\u9898",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "\u8868\u8fbe\u5f0f 2",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "\u5f20\u529b",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u576a\u5395\u9e21",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "\u51cf\u6570\u6e38\u620f 2",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u5408\u6210\u5927 hdu",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u53e6\u4e00\u4e2a shu \u8bba\u95ee\u9898",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "\u6700\u9065\u8fdc\u7684\u8ddd\u79bb",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u5f15\u529b\u573a",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u5e7b\u7075\u6218\u961f 2",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "\u952e\u76d8\u6740\u624b",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "\u6700\u540e\u4e00\u6b21\u76f8\u9047",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1012"
+      }
+    ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff083\uff09",
+    "date": "2026-07-28",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1231",
+    "start_time": "2026-07-28T12:00:00+08:00",
+    "end_time": "2026-07-28T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "runs",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "The World Cup",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "Best",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "toys",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "GCD",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "Special Judge",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "rains",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "FWT",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "Six Grade",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "Random",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "Mex",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "Shift Square",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1231&pid=1012"
+      }
+    ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff084\uff09",
+    "date": "2026-07-30",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1232",
+    "start_time": "2026-07-30T12:00:00+08:00",
+    "end_time": "2026-07-30T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "A. Signal",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "B. Binary Choice",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "C. Stalin Sort",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "D. EERT",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "E. TREE",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "F. Median Shuffle",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "G. Perfect Palindrome",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "H. Mode",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "I. Gather",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "J. Rare Game",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "K. Union MEX",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "L. Yet Another Suffix Array Problem",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1232&pid=1012"
+      }
+    ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff085\uff09",
+    "date": "2026-08-04",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1233",
+    "start_time": "2026-08-04T12:00:00+08:00",
+    "end_time": "2026-08-04T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u7b80\u5355\u591a\u9879\u5f0f\u95ee\u9898",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "\u5e0c\u671b\u706f\u5854",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "\u62ec\u53f7\u51f8\u5305",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u63a2\u7d22\u5b9d\u7269",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "indigo \u7a76\u7adf\u662f\u8c01\uff1f",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u4e09\u4e32\u5171\u9e23",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u53cd\u5f39\u5c0f\u7403",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "\u75c5\u6bd2\u7247\u6bb5",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u81ea\u4e58",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u94fe\u4e0a Nim",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "\u6811\u5f62\u5e7f\u64ad",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "\u4ed9\u4eba\u638c\u56fe",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1012"
+      }
+    ]
   }
 ]
