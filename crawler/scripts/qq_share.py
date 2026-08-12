@@ -36,6 +36,7 @@
     python3 crawler/scripts/qq_share.py --from-crawl           # 只对本次爬取新建的比赛
     python3 crawler/scripts/qq_share.py <contest_folder>       # 指定比赛（文件夹相对仓库根）
     python3 crawler/scripts/qq_share.py                        # 扫描所有缺 qq-share 的比赛
+    python3 crawler/scripts/qq_share.py <contest_folder> --file-only  # 强制只发 review 文件
 """
 import json
 import os
@@ -258,7 +259,10 @@ class QQGroupSender:
         return True
 
     def send_file(self, file_path, file_name=None):
-        """发送文件到群（upload_group_file）。成功返回 True。"""
+        """发送文件到群（upload_group_file）。成功返回 True。
+
+        file_name 可自定义（如带比赛名）；缺省用原文件名。
+        """
         name = file_name or os.path.basename(file_path)
         resp = self._call(
             ACTION_UPLOAD_GROUP_FILE,
@@ -275,11 +279,11 @@ class QQGroupSender:
         print(f"[qq-share] upload_group_file 返回错误: {resp.get('msg', 'unknown')}")
         return False
 
-    def send_contest(self, text, review_path):
+    def send_contest(self, text, review_path, file_name=None):
         """发送文字 + review 文件到群。任一成功即整体成功。
 
         - text 非空：先发文字；文字发送失败不影响文件发送
-        - review_path 存在：再发文件
+        - review_path 存在：再发文件（file_name 自定义文件名，缺省 review.md）
         返回 (text_ok, file_ok)。
         """
         text_ok = False
@@ -289,7 +293,7 @@ class QQGroupSender:
                 print("[qq-share] 文字发送失败（继续尝试发文件）。")
         file_ok = False
         if review_path and os.path.isfile(review_path):
-            file_ok = self.send_file(review_path)
+            file_ok = self.send_file(review_path, file_name=file_name)
         return text_ok, file_ok
 
 
@@ -384,7 +388,34 @@ def generate_qq_share(contest_folder):
 # ---------------------------------------------------------------------------
 # 发送入口
 # ---------------------------------------------------------------------------
-def send_contest_share(contest_folder):
+def build_review_file_name(contest_folder):
+    """为比赛的 review.md 生成更详细的发送文件名。
+
+    格式：{date}_{比赛名}_{复盘}.md，去掉引号等不适合作文件名的字符。
+    例：2026-08-06_2026钉耙编程中国大学生算法设计暑期联赛（6）_复盘.md
+    fallback：无法读取 contest.json 时用 review.md。
+    """
+    try:
+        with open(os.path.join(contest_folder, "contest.json"), "r", encoding="utf-8") as f:
+            contest = json.load(f)
+    except Exception:
+        return "review.md"
+    if not isinstance(contest, dict):
+        return "review.md"
+    date = str(contest.get("date") or "").strip()
+    name = str(contest.get("name") or "").strip()
+    if not name:
+        return "review.md"
+    # 过滤文件名字符非法字符（QQ 文件名也适用）：引号、斜杠、反斜杠等
+    name = re.sub(r'["\'\\/:*?<>|]', "", name).strip()
+    prefix = f"{date}_" if date else ""
+    fname = f"{prefix}{name}_复盘.md"
+    # 文件名安全兜底：过滤控制字符与首尾空白
+    fname = re.sub(r"[\x00-\x1f]", "", fname).strip()
+    return fname or "review.md"
+
+
+def send_contest_share(contest_folder, force_file_only=False):
     """对一场比赛执行完整 share 流程：生成 qq-share → 群发 → 删除 qq-share。
 
     返回 True 表示流程成功完成（发送成功且 qq-share.txt 已清理）；
@@ -399,10 +430,11 @@ def send_contest_share(contest_folder):
               "must run first).")
         return False
 
-    # 0. 发送模式：text_and_file（默认，文案+文件）/ file_only（只发文件）
+    # 0. 发送模式：text_and_file（默认，文案+文件）/ file_only（只发文件）。
+    #    force_file_only（--file-only CLI）优先于 config 的 qq.send_mode。
     qq_cfg = _load_qq_config()
     send_mode = str(qq_cfg.get("send_mode") or "text_and_file").strip().lower()
-    file_only = send_mode == "file_only"
+    file_only = force_file_only or send_mode == "file_only"
 
     # 1. 生成 qq-share.txt（存在则跳过：上次发送失败遗留，直接重试发送）。
     #    file_only 模式不生成/不读取文案，直接跳到发送文件。
@@ -420,8 +452,8 @@ def send_contest_share(contest_folder):
             print(f"[qq-share] qq-share text empty/missing for {folder_name}; "
                   "sending review file only (recorded in log).")
     else:
-        print(f"[qq-share] send_mode=file_only: 只发 review 文件，跳过文案 "
-              f"（{folder_name}）。")
+        print(f"[qq-share] {'--file-only CLI' if force_file_only else 'send_mode=file_only'}: "
+              f"只发 review 文件，跳过文案（{folder_name}）。")
 
     # 2. NapCat 配置检查（qq_cfg 已在第 0 步加载）
     ws_url = qq_cfg.get("napcat_ws_url", "")
@@ -446,8 +478,9 @@ def send_contest_share(contest_folder):
         return False
 
     try:
+        review_file_name = build_review_file_name(contest_folder)
         text_ok, file_ok = sender.send_contest(
-            clean_for_qq(text) if text else "", review_path
+            clean_for_qq(text) if text else "", review_path, file_name=review_file_name
         )
     except Exception as e:
         print(f"[qq-share] 发送异常: {e}")
@@ -471,7 +504,8 @@ def send_contest_share(contest_folder):
     return True
 
 
-def send_contest_shares_for_links(links_filter, contests_root=CONTESTS_ROOT):
+def send_contest_shares_for_links(links_filter, contests_root=CONTESTS_ROOT,
+                                  force_file_only=False):
     """按订阅链接反查比赛文件夹，逐个执行 share 流程。返回成功发送数量。
 
     daemon 的 sync/fire 使用：与 report.py --links 相同的反查方式。
@@ -490,21 +524,22 @@ def send_contest_shares_for_links(links_filter, contests_root=CONTESTS_ROOT):
         except Exception:
             continue
         link = str((contest or {}).get("link") or "").rstrip("/")
-        if link in links_filter and send_contest_share(contest_folder):
+        if link in links_filter and send_contest_share(
+                contest_folder, force_file_only=force_file_only):
             sent += 1
     return sent
 
 
-def send_contest_shares_from_crawl():
+def send_contest_shares_from_crawl(force_file_only=False):
     """只对本次爬取新建的比赛执行 share 流程。返回成功发送数量。"""
     sent = 0
     for folder in load_new_contests():
-        if send_contest_share(folder):
+        if send_contest_share(folder, force_file_only=force_file_only):
             sent += 1
     return sent
 
 
-def send_contest_shares_for_all(contests_root=CONTESTS_ROOT):
+def send_contest_shares_for_all(contests_root=CONTESTS_ROOT, force_file_only=False):
     """扫描所有已有 review.md 且未发送过 qq-share 的比赛。返回成功发送数量。
 
     注：未发送标记 = 存在未删除的 qq-share.txt；发送成功的比赛 qq-share.txt
@@ -519,7 +554,8 @@ def send_contest_shares_for_all(contests_root=CONTESTS_ROOT):
         if not os.path.isdir(contest_folder):
             continue
         qq_path = os.path.join(contest_folder, "qq-share.txt")
-        if os.path.isfile(qq_path) and send_contest_share(contest_folder):
+        if os.path.isfile(qq_path) and send_contest_share(
+                contest_folder, force_file_only=force_file_only):
             sent += 1
     return sent
 
@@ -528,11 +564,13 @@ def main(argv=None):
     """CLI 入口。返回进程退出码。
 
     发送失败不产生非零退出码（不阻断 daemon 主流程，review 已生成成功）。
+    --file-only：本次调用强制只发 review 文件（优先于 config 的 qq.send_mode）。
     """
     if argv is None:
         argv = sys.argv[1:]
     args = [a for a in argv if not a.startswith("--")]
     from_crawl = "--from-crawl" in argv
+    force_file_only = "--file-only" in argv
 
     # --links "link1,link2"：按订阅链接反查比赛（daemon sync/fire 用）
     links_filter = None
@@ -542,18 +580,19 @@ def main(argv=None):
         links_filter = {l.strip().rstrip("/") for l in raw.split(",") if l.strip()}
 
     if from_crawl:
-        sent = send_contest_shares_from_crawl()
+        sent = send_contest_shares_from_crawl(force_file_only=force_file_only)
         print(f"[qq-share] Sent {sent} share(s) from crawl.")
         return 0
     if links_filter:
-        sent = send_contest_shares_for_links(links_filter)
+        sent = send_contest_shares_for_links(
+            links_filter, force_file_only=force_file_only)
         print(f"[qq-share] Sent {sent} share(s) for links.")
         return 0
     if args:
         # 单场比赛：发送失败也返回 0（不阻断 daemon 主流程）
-        send_contest_share(args[0])
+        send_contest_share(args[0], force_file_only=force_file_only)
         return 0
-    sent = send_contest_shares_for_all()
+    sent = send_contest_shares_for_all(force_file_only=force_file_only)
     print(f"[qq-share] Sent {sent} share(s).")
     return 0
 
