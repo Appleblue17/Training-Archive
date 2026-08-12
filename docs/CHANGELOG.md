@@ -6,9 +6,17 @@
 
 > 下一版本规划为 v0.3.0（部署方式重构），见 `docs/roadmap.md`。
 
+### Added
+
+- **跨平台守护进程 `crawler/scripts/daemon.py`**（替代 v0.2.x 的 `crawler/server-task.sh`）：
+  - 子命令 `run` / `sync` / `fire` / `incremental` / `install` / `uninstall` / `status` / `log`；`run` 主循环用 croniter 解析 `config.json` 的 `scheduled` 块调度任务，睡眠/关机恢复后每个任务只补跑一次
+  - `install` 按操作系统注册开机自启：Linux systemd user unit、macOS launchd、Windows schtasks（默认「登录时启动」）
+  - 跨平台串行锁改用 filelock（替代 flock），新增依赖 `croniter` / `filelock`（`crawler/requirements.txt`）
+
 ### Removed
 
 - **Actions 爬虫链路**：删除 `crawler-scheduled.yml` / `crawler.yml`；`deploy.yml` 去掉 `workflow_run` 监听（保留 `push` 触发）。静态版部署统一为「自托管爬虫 + GitHub Pages」（详见 `docs/roadmap.md` §1.1）。
+- **`crawler/server-task.sh`**：由 `crawler/scripts/daemon.py` 替代（cron/`flock` 依赖 Linux 环境，改为跨平台守护进程 + 跨平台自启）。
 
 ## [0.2.1] - 2026-08-12
 

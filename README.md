@@ -11,7 +11,7 @@
 - **文件查看器**：在线预览 Markdown（GFM / 数学公式 / KaTeX / 代码高亮）、PDF、源码文件，支持下载
 - **复盘报告**：每场完赛自动生成 LLM 复盘报告（DeepSeek）与 QQ 群分享文本
 - **日志页面**：查看各平台爬虫运行日志与 staged submissions
-- **自动抓取**：自托管脚本（`crawler/server-task.sh`）定时运行爬虫，检测到竞赛变化后自动提交并部署到 GitHub Pages
+- **自动抓取**：自托管守护进程（`crawler/scripts/daemon.py`）定时运行爬虫，检测到竞赛变化后自动提交并部署到 GitHub Pages
 
 ## 技术栈
 
@@ -20,7 +20,7 @@
 | 前端     | Next.js 15（静态导出）、React 19、TypeScript、Tailwind CSS、Motion     |
 | 文档渲染 | unified / remark / rehype（Markdown + 数学公式 + 代码高亮）、react-pdf |
 | 爬虫     | Python、undetected_chromedriver、BeautifulSoup                         |
-| CI/CD    | GitHub Actions（deploy.yml 构建部署 Pages）+ 自托管爬虫脚本（server-task.sh） |
+| CI/CD    | GitHub Actions（deploy.yml 构建部署 Pages）+ 自托管爬虫守护进程（daemon.py） |
 | 包管理   | pnpm（registry: https://registry.npmmirror.com/）                      |
 
 ## 目录结构
@@ -29,12 +29,12 @@
 ├── src/                        # Next.js 前端（列表、搜索、Dashboard、复盘、文件查看器）
 ├── crawler/                    # Python 爬虫
 │   ├── platforms/              # BaseCrawler 基类 + qoj/hdu/nowcoder 平台实现
-│   ├── scripts/                # scheduled_task.py / report.py / alarm.py / server-task.sh
+│   ├── scripts/                # scheduled_task.py / report.py / alarm.py / daemon.py
 │   ├── llm/                    # DeepSeek 客户端
 │   ├── subscriptions/          # 订阅配置（每个 .json 一份列表，模板见 .example.json）
 │   └── config.json             # 平台启用、请求间隔、cron 表达式（scheduled 块）
 ├── contests/                   # 竞赛数据（爬虫生成，不纳入版本控制）
-├── .github/workflows/          # crawler*.yml（抓取）、deploy.yml（部署）
+├── .github/workflows/          # deploy.yml（部署）
 └── docs/                       # 项目文档（见下）
 ```
 
@@ -77,22 +77,24 @@ python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
 
 静态版（v0.3.0 起）统一为**一种部署方式**：自托管脚本运行爬虫，产物 push 回 `deploy` 分支，由 GitHub Actions 的 `deploy.yml` 自动构建并部署到 GitHub Pages。动态版（v0.4.0）规划中，详见 [docs/roadmap.md](docs/roadmap.md) §1.1。
 
-### 部署（唯一方式）：自托管爬虫 + GitHub Pages
+### 部署（唯一方式）：跨平台守护进程 + GitHub Pages
 
-提供一键管理脚本 `crawler/server-task.sh`（完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
+提供跨平台守护进程 `crawler/scripts/daemon.py`（完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
 
 ```bash
-crawler/server-task.sh incremental  # 提交增量同步（--submissions-only）
-crawler/server-task.sh sync         # 同步订阅：历史/过期立即爬，未来比赛写入闹钟
-crawler/server-task.sh fire         # 闹钟到点触发（无到期安静退出）
-crawler/server-task.sh install      # 安装 cron 定时（从 config.json 的 scheduled 块读取表达式）
-crawler/server-task.sh uninstall    # 卸载 cron
-crawler/server-task.sh status       # 查看状态 / 日志
+python3 crawler/scripts/daemon.py run             # 主循环（前台运行；安装为服务后由系统拉起）
+python3 crawler/scripts/daemon.py sync            # 同步订阅：历史/过期立即爬，未来比赛写入闹钟
+python3 crawler/scripts/daemon.py fire            # 闹钟到点触发（无到期安静退出）
+python3 crawler/scripts/daemon.py incremental     # 提交增量同步（--submissions-only）
+python3 crawler/scripts/daemon.py install         # 注册开机自启（按 OS：systemd user / launchd / schtasks）
+python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
+python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 ```
 
-> v0.3.0 起 `server-task.sh` 将替换为跨平台守护进程 `crawler/scripts/daemon.py`（支持 Windows / macOS）。
+- **主循环调度**：`run` 用 croniter 解析 `config.json` 的 `scheduled` 块（三个表达式），睡眠/关机恢复后每个任务只补跑一次（不追赶历史，靠任务自身增量/幂等覆盖错过时段）。
+- **开机自启**：`install` 按操作系统注册——Linux systemd user unit、macOS launchd、Windows schtasks（默认「登录时启动」；服务器可手动改为系统级服务）。
 
-**闹钟机制**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交）并标记为 `planned`，cron 按 `config.json` 的 `scheduled` 块间隔调用 `fire`：到点即爬取该场比赛并立即生成复盘报告。状态模型：`planned` / `pending` / `archived` / `failed`；爬取失败即 `failed`（不再自动重试），由自动 `sync` 重试：成功 → `archived`，失败保持 `failed`。订阅里修改 `end_time` 或删除条目时，`sync` 会相应重新安排或剪除闹钟。详见 [docs/architecture.md](docs/architecture.md) §4.6。
+**闹钟机制**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交）并标记为 `planned`，守护进程主循环按 `config.json` 的 `scheduled` 块间隔调度 `fire`：到点即爬取该场比赛并立即生成复盘报告。状态模型：`planned` / `pending` / `archived` / `failed`；爬取失败即 `failed`（不再自动重试），由自动 `sync` 重试：成功 → `archived`，失败保持 `failed`。订阅里修改 `end_time` 或删除条目时，`sync` 会相应重新安排或剪除闹钟。详见 [docs/architecture.md](docs/architecture.md) §4.6。
 
 运行环境要求：已 clone 仓库、根目录有 `.env` 凭据、`pip install -r crawler/requirements.txt`、Chrome/Chromedriver 在 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`、已配置 push 凭据（SSH key 或 token）。
 

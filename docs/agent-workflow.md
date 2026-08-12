@@ -35,7 +35,7 @@
 |------|------|
 | 依赖安装 | `pip install -r crawler/requirements.txt`（undetected_chromedriver、bs4） |
 | 运行 | `python3 crawler/scripts/scheduled_task.py`（三种模式） |
-| 凭据/环境 | 平台账号密码、浏览器路径等通过环境变量或 `crawler/config.json` 提供，见 `crawler/server-task.sh` 与 `.env.example` |
+| 凭据/环境 | 平台账号密码、浏览器路径等通过环境变量或 `crawler/config.json` 提供，见 `crawler/scripts/daemon.py` 与 `.env.example` |
 
 ### 自动化（GitHub Actions）
 
