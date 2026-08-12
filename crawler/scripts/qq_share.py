@@ -20,16 +20,19 @@
 与 report 解耦：report.py 不再串联本模块；由 daemon 的 sync/fire 在 report
 成功后按 config.json 的 ai_tasks.share.enabled 单独调用。
 
-配置（crawler/config.json）：
+配置（crawler/config.json，非敏感部分）：
   "ai_tasks": { "share": { "enabled": true } }
   "qq": {
     "napcat_ws_url": "ws://127.0.0.1:6700",   # NapCat WebSocket 地址
-    "napcat_token": "",                        # NapCat 鉴权 token（如启用）
-    "group_id": 123456789,                     # 目标 QQ 群号
     "send_mode": "text_and_file"               # 发送模式：
                                                #   text_and_file（默认）文案 + review 文件
                                                #   file_only 只发 review 文件（不生成/不发文案）
   }
+
+敏感配置放仓库根 .env（勿提交；.env.example 为模板）：
+  QQ_NAPCAT_TOKEN=<NapCat 鉴权 token>
+  QQ_GROUP_ID=<目标 QQ 群号>
+  # token / group_id 仅从 .env 读取，config.json 的 qq 块只放非敏感项。
 
 用法：
     python3 crawler/scripts/qq_share.py --links "link1,link2"  # 按订阅链接反查比赛（daemon 用）
@@ -107,6 +110,7 @@ DEFAULT_QQ_SHARE_TEMPLATE = """\
 # 仓库根 / 配置路径
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 CONFIG_PATH = os.path.join(REPO_ROOT, "crawler", "config.json")
+ENV_PATH = os.path.join(REPO_ROOT, ".env")
 CONTESTS_ROOT = os.path.join(REPO_ROOT, "contests")
 
 # 消息发送频率控制（每条消息至少间隔此秒数，避免被风控）
@@ -139,11 +143,41 @@ def ai_task_enabled(name):
     return bool(task)
 
 
+def _load_env_qq():
+    """从 .env 读取 QQ 敏感配置；.env 缺失/无字段返回 {}。
+
+    字段映射：QQ_NAPCAT_TOKEN → napcat_token，QQ_GROUP_ID → group_id。
+    """
+    try:
+        from dotenv import dotenv_values
+        env = dotenv_values(ENV_PATH)
+    except Exception:
+        env = {}
+    out = {}
+    if env.get("QQ_NAPCAT_TOKEN"):
+        out["napcat_token"] = env["QQ_NAPCAT_TOKEN"]
+    if env.get("QQ_GROUP_ID"):
+        try:
+            out["group_id"] = int(env["QQ_GROUP_ID"])
+        except (TypeError, ValueError):
+            print(f"[qq-share] .env 的 QQ_GROUP_ID 非数字，已忽略: "
+                  f"{env['QQ_GROUP_ID']!r}")
+    return out
+
+
 def _load_qq_config():
-    """读取 config.json 的 qq 块；缺失返回 {}。"""
+    """读取 QQ 配置。
+
+    - config.json 的 qq 块：非敏感项（napcat_ws_url / send_mode）
+    - .env：敏感项 napcat_token（QQ_NAPCAT_TOKEN）与 group_id（QQ_GROUP_ID），
+      仅从 .env 读取，不回退 config.json（敏感内容不进仓库）。
+    """
     cfg = _load_config()
     qq = cfg.get("qq", {})
-    return qq if isinstance(qq, dict) else {}
+    if not isinstance(qq, dict):
+        qq = {}
+    qq.update(_load_env_qq())
+    return qq
 
 
 # ---------------------------------------------------------------------------
