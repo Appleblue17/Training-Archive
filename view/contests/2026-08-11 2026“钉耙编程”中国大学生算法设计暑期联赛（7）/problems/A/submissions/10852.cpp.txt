@@ -1,0 +1,231 @@
+1:"$Sreact.fragment"
+2:I[48521,[],""]
+3:I[89900,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-3ad219a6236c735b.js"],"default"]
+4:I[31661,[],""]
+5:I[86070,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+6:I[52236,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],""]
+10:I[50939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/baa0e101e3a2d945.css","style"]
+0:{"P":null,"b":"0__jO2XDhNkMj0_8XQNgH","p":"/Training-Archive","c":["","view","contests","2026-08-11%202026%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%887%EF%BC%89","problems","A","submissions","10852.cpp"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2026-08-11%202026%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%887%EF%BC%89","d"],{"children":["problems",{"children":[["problem","A","d"],{"children":["submissions",{"children":[["file","10852.cpp","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/baa0e101e3a2d945.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":"$L7","templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2026-08-11%202026%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%887%EF%BC%89","d"],"$L8",{"children":["problems","$L9",{"children":[["problem","A","d"],"$La",{"children":["submissions","$Lb",{"children":[["file","10852.cpp","d"],"$Lc",{"children":["__PAGE__","$Ld",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},["$Le",[],[]],false],"$Lf",false]],"m":"$undefined","G":["$10",[]],"s":false,"S":true}
+12:I[47055,[],"OutletBoundary"]
+14:I[39909,[],"AsyncMetadataOutlet"]
+16:I[47055,[],"ViewportBoundary"]
+18:I[47055,[],"MetadataBoundary"]
+19:"$Sreact.suspense"
+7:["$","$L4",null,{}]
+8:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+a:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+b:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+c:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+d:["$","$1","c",{"children":["$L11",null,["$","$L12",null,{"children":["$L13",["$","$L14",null,{"promise":"$@15"}]]}]]}]
+e:["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}]
+f:["$","$1","h",{"children":[null,[["$","$L16",null,{"children":"$L17"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L18",null,{"children":["$","div",null,{"hidden":true,"children":["$","$19",null,{"fallback":null,"children":"$L1a"}]}]}]]}]
+1b:I[16417,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+1c:T12b6,#pragma GCC optimize(2)
+#include <bits/stdc++.h>
+using namespace std;
+const int N=2e5+50, B=330, mod=998244353;
+bool st;
+int T,n;
+char s[N];
+int sl[N], sr[N], len[N];
+int ans[N];
+int lim;
+int ful[N];
+vector<int> e[N];
+int fa[N];
+int ed[N];
+int sz[N], son[N], dfn[N], seq[N], timer, dep[N], rl[N];
+void dfs(int x){
+    dep[x]=dep[fa[x]]+1;
+	if(ful[x]) ++timer;
+    sz[x]=1; son[x]=0; dfn[x]=timer; 
+	if(ful[x]) rl[x]=timer;
+	else rl[x]=rl[fa[x]];
+    for(auto y:e[x]){
+        dfs(y); sz[x]+=sz[y];
+        if(sz[y]>sz[son[x]]) son[x]=y;
+    }
+    ed[x]=timer;
+}
+int tp[N], bot[N];
+void dfs2(int x, int top){
+    tp[x]=top; bot[top]=x;
+    if(son[x]) dfs2(son[x], top);
+    for(auto y:e[x]) if(y!=son[x]) dfs2(y, y);
+}
+int del[N], col[N];
+int fnd(int x){
+    while(x){
+        if(del[tp[x]]){
+            return x;
+        }
+        if(col[tp[x]]){
+            if(dep[col[tp[x]]]<dep[x]) {int rt=col[tp[x]]; col[tp[x]]=x; return rt;}
+            else return x;
+        }
+        if(x==bot[tp[x]]){
+            del[tp[x]]=1;
+        }
+        else {
+            col[tp[x]]=x;
+        }
+        x=fa[tp[x]];
+    }
+    return 0;
+}
+void clr(int x){
+    while(x){
+        del[tp[x]]=col[tp[x]]=0;
+        x=fa[tp[x]];
+    }
+}
+struct ACAM{
+    int tr[N][26], idx;
+    
+    void build(){
+        queue<int> que;
+        fa[1]=1;
+        for(int i=0; i<26; ++i){
+            if(tr[1][i]) que.push(tr[1][i]), fa[tr[1][i]]=1;
+            else tr[1][i]=1;
+        }
+        while(!que.empty()){
+            int x=que.front(); que.pop();
+            for(int i=0; i<26; ++i){
+                if(tr[x][i]){
+                    int v=tr[x][i];
+                    que.push(v);
+                    fa[v]=tr[fa[x]][i];
+                }
+                else{
+                    tr[x][i]=tr[fa[x]][i];
+                }
+            }
+        }
+        for(int i=2; i<=idx; ++i) e[fa[i]].push_back(i);
+        timer=0;
+        fa[1]=0;
+		
+        ful[1]=1;
+        dfs(1);
+        dfs2(1, 1);
+    }
+    void clr(){
+        for(int i=1; i<=idx; ++i) {
+            for(int j=0; j<26; ++j) tr[i][j]=0;
+            e[i].clear(); fa[i]=0; ful[i]=0;
+        }
+        idx=1;
+    }
+    void ins(int i){
+        int p=1;
+        for(int j=sl[i]; j<=sr[i]; ++j){
+            if(!tr[p][s[j]-'a']) tr[p][s[j]-'a']=++idx;
+            p=tr[p][s[j]-'a'];
+        }
+        ful[p]=1;
+    }
+}A;
+int lp[N], rp[N], bid[N];
+struct DS{
+    int slf[100005], tag[330];
+    void clr(){
+        for(int i=1; i<=n+1; ++i) slf[i]=0;
+        for(int i=1; i<=bid[n+1]; ++i) tag[i]=0;
+    }
+    void add(int l, int r, int v){
+        if(bid[l]==bid[r]){
+            for(int i=l; i<=r; ++i) slf[i]=(slf[i]+v)%mod;
+            return ;
+        }
+        for(int i=l; i<=rp[bid[l]]; ++i) slf[i]=(slf[i]+v)%mod;
+        for(int i=lp[bid[r]]; i<=r; ++i) slf[i]=(slf[i]+v)%mod;
+        for(int i=bid[l]+1; i<bid[r]; ++i) tag[i]=(tag[i]+v)%mod;
+    }
+    inline int get(int x){
+        return slf[x]+tag[bid[x]];
+    }
+}D[455];
+long long tmp[455];
+void solve(){
+    scanf("%d", &n);
+	if(n>1e5){
+		while(1);
+	}
+    for(int i=1; i<=n; ++i) ans[i]=0;
+    A.clr();
+    for(int i=1; i<=n; ++i){
+        sl[i]=sr[i-1]+1;
+        scanf("\n%s", s+sl[i]);
+        len[i]=strlen(s+sl[i]);
+        sr[i]=sl[i]+len[i]-1;
+        A.ins(i);
+    }
+    A.build();
+    lim=1;
+    while(1ll*(lim+1)*(lim+2)<=2*sr[n]) ++lim;
+    lim=min(lim, n);
+    for(int i=1; i<=n+1; ++i) bid[i]=(i-1)/B+1;
+    for(int i=1; i<=bid[n+1]; ++i){
+        lp[i]=rp[i-1]+1; rp[i]=rp[i-1]+B;
+    }
+    rp[bid[n+1]]=n+1;
+    for(int i=1; i<=lim; ++i) D[i].clr();
+	return ;
+    for(int i=1; i<=n; ++i){
+        int p=1;
+		int cur=min(min(len[i], len[i-1]+1), min(i, lim));
+        for(int j=1; j<=cur; ++j) tmp[j]=0;
+        tmp[1]=1;
+        for(int j=sl[i]; j<=sr[i]; ++j){
+            p=A.tr[p][s[j]-'a'];
+            int q=fnd(p);
+            if(p==q) continue;
+			// cout<<dfn[p]<<' '<<dfn[q]<<endl;
+            for(int k=1; k<cur; ++k){
+                tmp[k+1]=(tmp[k+1]+D[k].get(rl[p]));
+            }
+            if(q!=0){
+                for(int k=1; k<cur; ++k){
+                    tmp[k+1]=(tmp[k+1]+mod*2-D[k].get(rl[q]));
+                }
+            }
+        }
+        assert(ful[p]==1);
+        for(int j=1; j<=cur; ++j){
+            tmp[j]%=mod;
+            ans[j]=(ans[j]+tmp[j])%mod;
+			// cout<<dfn[p]<<' '<<ed[p]<<endl;
+            D[j].add(dfn[p], ed[p], tmp[j]);
+        }
+        p=1;
+        for(int j=sl[i]; j<=sr[i]; ++j){
+            p=A.tr[p][s[j]-'a'];
+            clr(p);
+        }
+    }
+    for(int i=0; i<n; ++i){
+        printf("%d ", ans[n-i]);
+    }
+    putchar('\n');
+}
+int main(){
+	// freopen("D:\\nya\\acm\\A\\test.in","r",stdin);
+	// freopen("D:\\nya\\acm\\A\\test.out","w",stdout);
+    scanf("%d",&T);
+    while(T--){
+        solve();
+    }
+}11:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","$L6",null,{"href":"/","children":["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8","key":"5wwlr5"}],["path",{"d":"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z","key":"r6nss1"}]],"className":"lucide-house absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400"}]}],["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7）",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"A",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"submissions"]],["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"10852.cpp"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7）/problems/A/submissions/10852.cpp","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M12 15V3","key":"m9g1x1"}],["path",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","key":"ih7n3h"}],["path",{"d":"m7 10 5 5 5-5","key":"brsn70"}]],"className":"lucide-download mr-2 inline-block text-base size-4"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7）/problems/A/submissions/10852.cpp","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z","key":"1oefj6"}],["path",{"d":"M14 2v5a1 1 0 0 0 1 1h5","key":"wfsgrz"}],["path",{"d":"M10 9H8","key":"b1mrlr"}],["path",{"d":"M16 13H8","key":"t4e002"}],["path",{"d":"M16 17H8","key":"z1uh3a"}]],"className":"lucide-file-text mr-2 inline-block text-base size-4"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":["$","$L1b",null,{"code":"$1c","ext":".cpp"}]}],"$L1d"]}]]}]}]
+1d:["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"10852.cpp"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"4.678 KB (4790 B)"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"今晚吃什么"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problem?cid=1235&pid=1001","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problem?cid=1235&pid=1001"}]]}],["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"2000 MS"}]]}],["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"524288 K"}]]}],["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}],["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/08/11 17:39:05"}]]}],["$","div","solve_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solve Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/08/11 17:38:12"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"2026“钉耙编程”中国大学生算法设计暑期联赛（7）"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026-08-11"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"hdu"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":["$L1e"," ","$L1f"]}],"$L20","$L21"]}]]}]]}]
+1e:["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]
+1f:["$","span",null,{"className":"text-pink-400","children":"2026/08/11 12:00:00"}]
+20:["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/08/11 17:00:00"}]]}]
+21:["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problems?cid=1235","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problems?cid=1235"}]]}]
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+13:null
+15:{"metadata":[],"error":null,"digest":"$undefined"}
+1a:"$15:metadata"
