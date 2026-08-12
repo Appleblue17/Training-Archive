@@ -1,4 +1,9 @@
 {
+  "scheduled": {
+    "fire": "*/5 * * * *",
+    "sync": "0 */3 * * *",
+    "incremental": "0 4 * * *"
+  },
   "qoj": {
     "enabled": false,
     "base_url": "https://qoj.ac",

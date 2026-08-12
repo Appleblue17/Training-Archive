@@ -177,22 +177,25 @@ contests/
 | end_time 取值 | 含义 | 行为 |
 |---------------|------|------|
 | 不填 | 历史比赛 | `sync` 立即爬取归档，**不生成报告** |
-| 未来时间 | 未来比赛 | `sync` 写入闹钟表，到点由 `fire` 爬取 + **立即生成报告**（精确到分钟） |
+| 未来时间 | 未来比赛 | `sync` 写入闹钟表，到点由 `fire` 爬取 + **立即生成报告**（精确到 5 分钟） |
 | 已过时间 | 过期比赛（如闹钟失败后补漏） | `sync` 立即爬取 + **生成报告** |
 
 三个平台均以订阅为唯一来源：QOJ 比赛列表按订阅链接过滤，HDU/NowCoder 遍历订阅链接解析比赛信息。
 
 **平台启用/禁用**：`crawler/config.json` 中每个平台条目可用 `enabled` 字段控制（**缺省 `false` 视为禁用**）。`scheduled_task.py` 启动时读取该文件过滤平台，显式 `enabled: true` 的平台才会被执行（所有模式均生效）；配置文件缺失 / 解析失败时全部平台禁用。模板见 `crawler/config.example.json`（开发分支 gitignore，deploy 分支跟踪）。注意：这里的 `enabled` 是**平台级**开关，与订阅条目的**订阅级** `enabled` 是两套独立配置。
 
-`config.json` 只存放**非敏感**的运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time`）；**登录凭据一律走环境变量**（`.env` / CI secrets）：QOJ/HDU 用户名密码、NowCoder Cookie 由各平台 `login()` 从环境变量读取，见 `.env.example`。
+`config.json` 只存放**非敏感**的运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time` / `scheduled`）；**登录凭据一律走环境变量**（`.env` / CI secrets）：QOJ/HDU 用户名密码、NowCoder Cookie 由各平台 `login()` 从环境变量读取，见 `.env.example`。
 
 ```json
 {
+  "scheduled": { "fire": "*/5 * * * *", "sync": "0 */3 * * *", "incremental": "0 4 * * *" },
   "qoj":    { "enabled": true,  "base_url": "https://qoj.ac", "min_wait_time": 0.5, "max_wait_time": 2 },
   "hdu":    { "enabled": false, "base_url": "https://acm.hdu.edu.cn", "min_wait_time": 0, "max_wait_time": 0.5 },
   "nowcoder": { "enabled": false, "base_url": "https://ac.nowcoder.com", "min_wait_time": 0, "max_wait_time": 0.5 }
 }
 ```
+
+`scheduled` 块为**部署方式二（自建服务器）**的 cron 表达式（`server-task.sh install` 读取生成 crontab，见 4.6）：`fire`（闹钟检查，默认每 5 分钟）、`sync`（订阅同步，默认每 3 小时）、`incremental`（提交增量，默认每日 4:00）。服务器上可直接修改后重跑 `install` 生效。
 
 `crawler/scripts/scheduled_task.py` 提供三个入口（**只负责爬虫**，复盘报告由 `crawler/scripts/report.py` 独立生成，见 4.4）：
 
@@ -233,7 +236,7 @@ contests/
 
 ### 4.6 服务器闹钟机制（部署方式二专用，`crawler/scripts/alarm.py`）
 
-**背景**：方式二（自建服务器）早期沿用方式一的轮询思路——cron 每 30 分钟扫描所有订阅、爬平台比较时间判断是否到点，精确度差且每次都要跑全量扫描。改用**闹钟表 + 每分钟检查**：订阅条目填 `end_time`（见 4.3），`sync` 时把未来比赛写入闹钟表，cron 每分钟检查到点即触发。
+**背景**：方式二（自建服务器）早期沿用方式一的轮询思路——cron 每 30 分钟扫描所有订阅、爬平台比较时间判断是否到点，精确度差且每次都要跑全量扫描。改用**闹钟表 + 每 5 分钟检查**：订阅条目填 `end_time`（见 4.3），`sync` 时把未来比赛写入闹钟表，cron 每 5 分钟检查到点即触发。
 
 **闹钟表 `crawler/alarms.json`**：运行时状态文件，`alarm.py` 统一读写，`.gitignore` 与 `.gitignore.deploy` 均忽略、**不提交**（服务器本地状态，不属于 deploy 分支数据）。每条记录含 `link` / `platform` / `end_time` / `fire_at` / `status` / `attempts` / `updated_at`。
 
@@ -263,9 +266,10 @@ contests/
 **server-task.sh 集成**：
 
 - `cmd_sync`（`crawler/server-task.sh sync`）：①`plan` 分类订阅并写闹钟表，有 `RETRY`/`WARNING` 时记录日志告知用户；②爬取 HISTORY + EXPIRED + RETRY 比赛（`--contests-only --links "..."`）；③对 EXPIRED 与 RETRY 生成报告（`report.py --from-crawl --links "..."`，幂等）；④全部 `mark --archived`。即：历史比赛立即爬取归档不生成报告，过期比赛立即爬取 + 报告，失败比赛重试一次（成功 → archived，失败保持 failed）。**爬取失败时本次涉及的全部链接 `mark --failed`**（下次 sync 重试），不再静默退出。
-- `cmd_fire`（`crawler/server-task.sh fire`）：先 `due`，**无到期闹钟安静退出**（不产生提交）；有则走与 `sync` 相同的完整流程（爬取 → 报告 → mark archived）。**爬取失败 `mark --failed`**——fire 只查 planned，失败后不再自动重试，靠下次手动 `sync` 重试一次（成功 → archived，失败保持 failed）。
-- `install` 的 cron 改为：闹钟检查 `* * * * *`（fire）+ 提交增量每日（`server-task.sh incremental`，即 `scheduled_task.py --submissions-only`）；`status` 展示闹钟表。
-- **不做自动兜底**：failed 不会自动重扫，需手动 `sync` 重试（用户确认的取舍，避免低频全量重扫的复杂度）。
+- `cmd_fire`（`crawler/server-task.sh fire`）：先 `due`，**无到期闹钟安静退出**（不产生提交）；有则走与 `sync` 相同的完整流程（爬取 → 报告 → mark archived）。**爬取失败 `mark --failed`**——fire 只查 planned，失败后不再自动重试，靠下次 sync 重试一次（成功 → archived，失败保持 failed）。
+- `cmd_incremental`（`crawler/server-task.sh incremental`）：对应 `scheduled_task.py --submissions-only`，每日对所有已开始/进行中的比赛做增量提交抓取（沿用 `last-update.json`）。
+- `install` 从 **`crawler/config.json` 的 `scheduled` 块**读取 3 条 cron 表达式生成 crontab（服务器上直接改 config.json 的 `scheduled` 后重跑 `install` 即生效；缺失/非法时回落到默认值）：闹钟检查 `*/5 * * * *`（`fire`）+ 订阅同步 `0 */3 * * *`（`sync`，自动兜底重试 failed + 自动发现新订阅）+ 提交增量 `0 4 * * *`（`incremental`）。`status` 展示闹钟表与 crontab。
+- **失败兜底**：failed 不会由 fire 自动重扫，但每 3 小时一次的自动 `sync` 会重试一次（成功 → archived，失败保持 failed），相当于低频自动兜底。
 
 **只对方式二生效**：方式一（GitHub Actions 轮询）不读取 `end_time` 字段，`alarm.py` 与 `sync`/`fire` 仅服务器使用。
 
@@ -283,7 +287,7 @@ contests/
 | 全量提交采集（`submissions/` + `submissions.json`） | 复盘报告需要完整提交序列（含每份源码） | 每次提交都抓源码，初始同步耗时更长 |
 | LLM 复盘报告（DeepSeek） | 每场一份 `review.md`，原始提交序列直接送 LLM，不做预处理 | 依赖 `DEEPSEEK_API_KEY`；存在即跳过（幂等） |
 | 爬虫调度恢复为定时（两个模式） | `--contests-only`（查订阅/预订抓取，每 30 分钟，有新建才回填其提交）与 `--submissions-only`（提交增量同步，每天）分离；复盘报告由 `report.py` 独立运行 | `crawler-scheduled.yml` + `crawler.yml`，`concurrency` 串行防冲突 |
-| 服务器闹钟机制（方式二专用） | 方式二（自建服务器）用闹钟表 + cron 每分钟检查替代 30 分钟轮询：订阅填 `end_time`，`sync` 写闹钟、`fire` 到点触发，精确到分钟；只对方式二生效，方式一（Actions 轮询）不读取 `end_time` | `crawler/scripts/alarm.py` + `crawler/alarms.json`（gitignore，不提交）；`server-task.sh` 新增 `sync`/`fire`，`install` 的 cron 改「闹钟每分钟 + 提交增量每日」；状态模型 `planned/pending/archived/failed`，fire 失败即 failed、不再自动重试（下次 sync 重试一次，成功 → archived，失败保持 failed），不做事后自动兜底 |
+| 服务器闹钟机制（方式二专用） | 方式二（自建服务器）用闹钟表 + cron 检查替代 30 分钟轮询：订阅填 `end_time`，`sync` 写闹钟、`fire` 到点触发（每 5 分钟）；只对方式二生效，方式一（Actions 轮询）不读取 `end_time` | `crawler/scripts/alarm.py` + `crawler/alarms.json`（gitignore，不提交）；`server-task.sh` 的 `sync`/`fire`/`incremental` 与 `install` 从 `config.json` 的 `scheduled` 块读取 cron（fire 每 5 分钟 + sync 每 3 小时自动兜底重试 failed + incremental 每日）；状态模型 `planned/pending/archived/failed`，fire 失败即 failed、不再自动重试（下次 sync 重试一次，成功 → archived，失败保持 failed） |
 | 平台启用/禁用由 `config.json` 控制 | HDU/NowCoder 平台结构变动/登录不稳定，默认停用；QOJ 为主力 | 每个平台条目 `enabled` 字段（缺省 false 视为禁用），`scheduled_task.py` 启动时过滤；代码保留，未删除 |
 
 ## 6. 已知限制

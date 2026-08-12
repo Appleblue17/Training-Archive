@@ -6,17 +6,18 @@
 
 ### Added
 
-- **服务器闹钟机制（部署方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式），取代「cron 定时扫描所有订阅、爬平台比较时间」的轮询方案——不填 `end_time` 视为历史比赛（`sync` 立即爬取归档，不生成报告）；`end_time` 未来则写入闹钟表，到点触发爬取并立即生成复盘报告（精确到分钟）；`end_time` 已过（如闹钟失败后补漏）由 `sync` 立即爬取并生成报告。方式一（GitHub Actions 轮询）不读取该字段，保持原样
+- **服务器闹钟机制（部署方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式），取代「cron 定时扫描所有订阅、爬平台比较时间」的轮询方案——不填 `end_time` 视为历史比赛（`sync` 立即爬取归档，不生成报告）；`end_time` 未来则写入闹钟表，到点触发爬取并立即生成复盘报告（精确到 5 分钟）；`end_time` 已过（如闹钟失败后补漏）由 `sync` 立即爬取并生成报告。方式一（GitHub Actions 轮询）不读取该字段，保持原样
   - 新增闹钟表 `crawler/alarms.json`（运行时状态文件，`.gitignore` 与 `.gitignore.deploy` 均忽略，不提交），由新脚本 `crawler/scripts/alarm.py` 统一读写（`plan` / `due` / `mark` / `list` 子命令）
-  - `crawler/server-task.sh` 新增 `sync`（手动同步：历史/过期立即爬、未来写闹钟、failed 重试）与 `fire`（cron 每分钟检查，无到期闹钟时安静退出）子命令；`install` 的 cron 由「`--contests-only` 每 30 分钟轮询」改为「闹钟检查每分钟 + 提交增量每日」；`status` 增加闹钟列表展示
+  - `crawler/server-task.sh` 新增 `sync`（订阅同步：历史/过期立即爬、未来写闹钟、failed 重试）与 `fire`（cron 每 5 分钟检查，无到期闹钟时安静退出）子命令；`install` 的 cron 由「`--contests-only` 每 30 分钟轮询」改为「从 `crawler/config.json` 的 `scheduled` 块读取 fire / sync / incremental 三条表达式」；`status` 增加闹钟列表展示
   - `scheduled_task.py` 新增 `--links "link1,link2"`：只抓指定订阅链接的比赛（与 `--contests-only` 语义一致：新建比赛才回填其提交、不推进 last-update；不能与 `--submissions-only` 同用）；三平台 `fetch_contests_get_contest_list` 按 `crawler._only_links` 过滤订阅
   - `report.py --from-crawl` 新增 `--links` 过滤：同一批爬取同时含历史与过期比赛时，只对指定链接（过期比赛）生成报告
   - **闹钟状态模型**：`planned`（未来等 fire）/ `pending`（sync 待立即处理）/ `archived`（已处理完，fire 忽略）/ `failed`（爬取失败，fire 忽略）；`due` 只查 `planned` 且 `fire_at` 已到，pending/archived/failed 一律忽略（修复旧逻辑 EXPIRED 条目 `fire_at` 已过被 `due` 误判重跑的问题）
-  - **失败处理**：爬取失败即 `mark --failed`（fire 只查 planned，失败后不再自动重试），下次手动 `sync` 输出 `RETRY` 重试一次（成功 → `archived`，失败保持 `failed`），并输出 `WARNING` 提示用户；`failed` 条目**永不重置**，只有重试成功才改变状态（修复旧逻辑 `plan` 对未来条目无条件重置 `failed`/`attempts`、失败记录被一次 sync 清零的问题）
+  - **失败处理**：爬取失败即 `mark --failed`（fire 只查 planned，失败后不再自动重试），下次 `sync` 输出 `RETRY` 重试一次（成功 → `archived`，失败保持 `failed`），并输出 `WARNING` 提示用户；`sync` 由 cron 每 3 小时自动调度（见 Changed），相当于低频自动兜底；`failed` 条目**永不重置**，只有重试成功才改变状态（修复旧逻辑 `plan` 对未来条目无条件重置 `failed`/`attempts`、失败记录被一次 sync 清零的问题）
   - **与订阅同步**：订阅修改 `end_time` → `plan` 重新安排（archived 也重新激活）；订阅删除 → 剪除闹钟（含 archived 历史）；旧格式闹钟表（`fired`/`failed` 布尔）在 `_load_alarms` 读入时自动迁移（fired → archived、failed → failed、其余 → planned）
 
 ### Changed
 
+- **cron 配置外置到 `crawler/config.json` 的 `scheduled` 块**：新增 `scheduled` 块存三条 cron 表达式——`fire`（闹钟检查，默认 `*/5 * * * *`，原每分钟一次改为每 5 分钟一次）、`sync`（订阅同步，默认 `0 */3 * * *`，**新增**：每 3 小时自动同步订阅，取代「仅手动 sync」成为 failed 闹钟的低频自动兜底）、`incremental`（提交增量，默认 `0 4 * * *`）。`crawler/server-task.sh install` 改为用 `pick_python` 读取该块生成 crontab（缺失/非法时回落到默认值，install 始终可用），删除原先硬编码的 `CRON_FIRE`/`CRON_B` 与 UTC 时区自动调整逻辑；服务器上直接改 `config.json` 的 `scheduled` 后重跑 `install` 即生效。模板 `crawler/config.example.json` 同步。README / architecture / roadmap / notes 文档同步更新
 - **去除「任务A/B」别名，统一以 `scheduled_task.py` 模式指代**：`server-task.sh` 删除 `run [a|b]` 子命令，新增 `incremental`（内部直接调 `scheduled_task.py --submissions-only`，保留 git pull / env / commit 流程），`install` 的 cron 每日条目改为 `server-task.sh incremental`；文档（README / architecture / roadmap / notes 命令速查、当前状态、注意事项）与 `scheduled_task.py` docstring 同步改用 `--contests-only`（比赛抓取路径）与 `--submissions-only`（提交增量同步）指代，默认模式（无参数）保留为手动/临时；notes 历史条目保留原表述
 
 ### Fixed

@@ -7,10 +7,10 @@
 #   提交推送（[contests-changed] 规则）→ GitHub Actions 的 deploy.yml 自动部署 Pages
 #
 # 用法:
-#   server-task.sh incremental  提交增量同步（scheduled_task.py --submissions-only；每日）
-#   server-task.sh sync         更新订阅后手动同步：历史/过期比赛立即爬取，未来比赛写入闹钟
-#   server-task.sh fire         闹钟到点触发（cron 每分钟调用；无到期闹钟时安静退出）
-#   server-task.sh install      安装 cron 定时（闹钟检查每分钟 + 提交增量每日）
+#   server-task.sh incremental  提交增量同步（scheduled_task.py --submissions-only；每日，cron 自动）
+#   server-task.sh sync         同步订阅：历史/过期立即爬，未来比赛写入闹钟（cron 每 3 小时自动 + 可手动）
+#   server-task.sh fire         闹钟到点触发（cron 每 5 分钟调用；无到期闹钟时安静退出）
+#   server-task.sh install      安装 cron 定时（从 crawler/config.json 的 scheduled 块读取表达式）
 #   server-task.sh uninstall    卸载 cron 定时
 #   server-task.sh status       查看 cron / 闹钟 / git / 最近日志
 #   server-task.sh log [N]      查看最近 N 行运行日志（默认 50）
@@ -42,12 +42,11 @@ LOG_FILE="$SCRIPT_DIR/server-task.log"
 LOCK_FILE="/tmp/training-archive-server-task.lock"
 DEPLOY_BRANCH="deploy"
 
-# cron 按服务器本地时区执行。
-# fire：闹钟检查，每分钟跑一次（无到期闹钟时安静退出，开销可忽略）
-# 提交增量（--submissions-only）：对应 action 的每日 0:20 UTC（北京时间 4:00）；install 时会按
-# 服务器时区自动调整：UTC → 0 20 * * *，其他（如 CST）→ 0 4 * * *。
-CRON_FIRE='* * * * *'
-CRON_B='0 4 * * *'
+# cron 表达式统一放在 crawler/config.json 的 scheduled 块（服务器可手动修改）：
+#   fire: 闹钟检查（默认每 5 分钟；无到期闹钟时安静退出，开销可忽略）
+#   sync: 自动同步订阅（默认每 3 小时：历史/过期立即爬、未来写闹钟、失败重试一次）
+#   incremental: 提交增量同步（默认每日 4:00）
+# install 读取该块生成 crontab；修改后需重跑 install 生效。
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG_FILE"; }
 
@@ -145,7 +144,7 @@ cmd_incremental() {
 }
 
 # ---------------------------------------------------------------------------
-# 子命令：sync（更新订阅后手动同步）
+# 子命令：sync（同步订阅；cron 每 3 小时自动调用，也可手动）
 #
 # 读取订阅 + 闹钟表（alarm.py plan）：
 #   - 历史比赛（不填 end_time）→ 立即爬取归档，不生成报告
@@ -242,12 +241,12 @@ cmd_sync() {
 }
 
 # ---------------------------------------------------------------------------
-# 子命令：fire（闹钟到点触发；cron 每分钟调用）
+# 子命令：fire（闹钟到点触发；cron 每 5 分钟调用）
 #
-# 无到期闹钟时保持安静（不写日志、不碰 git），避免每分钟刷日志。
+# 无到期闹钟时保持安静（不写日志、不碰 git），避免频繁刷日志。
 # 有到期闹钟时：爬取（--contests-only --links）→ 生成报告 → 标记 archived → 提交推送。
-# 爬取失败：标记 failed（fire 只查 planned，失败后不再重试；下次手动 sync
-# 重试一次，成功 → archived，失败保持 failed）。
+# 爬取失败：标记 failed（fire 只查 planned，失败后不再重试；下次 sync
+# 重试一次（每 3 小时自动），成功 → archived，失败保持 failed）。
 # ---------------------------------------------------------------------------
 cmd_fire() {
   cd "$REPO_ROOT" 2>/dev/null || exit 1
@@ -324,20 +323,30 @@ cmd_fire() {
 
 # ---------------------------------------------------------------------------
 # 子命令：install / uninstall（cron 定时）
+#
+# cron 表达式从 crawler/config.json 的 scheduled 块读取（默认值见
+# config.example.json）。服务器上手动修改 config.json 的 scheduled 后，
+# 重跑 install 即按新表达式重写 crontab。
 # ---------------------------------------------------------------------------
 cmd_install() {
-  local tz
-  tz="$(date +%Z)"
-  if [ "$tz" = "UTC" ]; then
-    CRON_B='0 20 * * *'
-  fi
+  # 读取 scheduled 块（缺失/非法时回落到默认值，保证 install 始终可用）
+  local PY CRON_FIRE CRON_SYNC CRON_INCREMENTAL
+  PY="$(pick_python)"
+  CRON_FIRE="$("$PY" -c 'import json;print(json.load(open("'"$REPO_ROOT"'/crawler/config.json"))["scheduled"].get("fire","*/5 * * * *"))' 2>/dev/null || true)"
+  [ -n "$CRON_FIRE" ] || CRON_FIRE='*/5 * * * *'
+  CRON_SYNC="$("$PY" -c 'import json;print(json.load(open("'"$REPO_ROOT"'/crawler/config.json"))["scheduled"].get("sync","0 */3 * * *"))' 2>/dev/null || true)"
+  [ -n "$CRON_SYNC" ] || CRON_SYNC='0 */3 * * *'
+  CRON_INCREMENTAL="$("$PY" -c 'import json;print(json.load(open("'"$REPO_ROOT"'/crawler/config.json"))["scheduled"].get("incremental","0 4 * * *"))' 2>/dev/null || true)"
+  [ -n "$CRON_INCREMENTAL" ] || CRON_INCREMENTAL='0 4 * * *'
+
   cmd_uninstall >/dev/null 2>&1 || true
   (
     crontab -l 2>/dev/null || true
     echo "$CRON_FIRE cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh fire >> $LOG_FILE 2>&1"
-    echo "$CRON_B cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh incremental >> $LOG_FILE 2>&1"
+    echo "$CRON_SYNC cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh sync >> $LOG_FILE 2>&1"
+    echo "$CRON_INCREMENTAL cd $REPO_ROOT && $SCRIPT_DIR/server-task.sh incremental >> $LOG_FILE 2>&1"
   ) | crontab -
-  log "Installed cron (server TZ=$tz):"
+  log "Installed cron (from config.json scheduled block):"
   crontab -l | grep 'server-task.sh'
 }
 
