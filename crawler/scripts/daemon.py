@@ -292,13 +292,14 @@ def cmd_sync():
         if not _deps_ok():
             return 1
 
-        # 1. plan 分类订阅并写闹钟表（同时输出 WARNING 提示 failed 重试）
+        # 1. plan 分类订阅并写闹钟表。转发所有 [alarm] 诊断行到日志：
+        #    plan 汇总、WARNING（failed 重试 / 订阅条目告警）、ERROR（订阅文件
+        #    格式有问题被跳过）——用户能立刻看到，而不只是静默跳过。
         proc = run_py("alarm.py", "plan", capture=True)
         plan_out = proc.stdout
-        summary = [l for l in plan_out.splitlines() if l.startswith("[alarm] plan:")]
-        warn = [l for l in plan_out.splitlines() if l.startswith("[alarm] WARNING:")]
-        for l in summary + warn:
-            log(l)
+        for l in plan_out.splitlines():
+            if l.startswith("[alarm]"):
+                log(l)
         history_links, expired_links, retry_links = _parse_plan_output(plan_out)
         retry_all = [link for link, _ in retry_links]
         all_links = list(dict.fromkeys(history_links + expired_links + retry_all))

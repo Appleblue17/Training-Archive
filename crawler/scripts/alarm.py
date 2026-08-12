@@ -160,6 +160,23 @@ def _new_entry(platform, link, end_time, fire_at, status):
     }
 
 
+def _subscription_diag():
+    """订阅加载诊断收集器：返回 (log_callback, counters)。
+
+    load_subscriptions_dir 对坏文件 / 坏条目默认静默跳过（log=None 时 _log
+    是空操作）。这里接住 error/warning 并输出到 stdout（daemon sync 会转发
+    到日志），用户能立刻看到格式有问题的订阅文件；counters 供 plan 汇总行
+    报告数量。
+    """
+    counters = {"errors": 0, "warnings": 0}
+
+    def _log(level, msg):
+        counters["errors" if level == "error" else "warnings"] += 1
+        print(f"[alarm] {level.upper()}: {msg}")
+
+    return _log, counters
+
+
 def cmd_plan():
     """读取订阅 + 闹钟表：输出 HISTORY / EXPIRED / RETRY 链接，写未来闹钟。
 
@@ -172,9 +189,14 @@ def cmd_plan():
       → 按 end_time 重新分类：不填 → HISTORY；已过 → EXPIRED（均置 pending 待爬）；
         未来 → planned（fire_at = end_time）。
     - 订阅中已删除的 link 剪除闹钟（含 archived 历史）。
+    - 订阅文件解析失败 / 非列表 / 条目缺 link / 重复 link：输出
+      [alarm] ERROR/WARNING 诊断（不阻断其余正常文件，但用户能立刻看到）。
     """
     enabled = set(_load_enabled_platforms())
-    subs = load_subscriptions_dir(SUBSCRIPTIONS_DIR, platform=None)
+    sub_log, sub_diag = _subscription_diag()
+    subs = load_subscriptions_dir(
+        SUBSCRIPTIONS_DIR, platform=None, log=sub_log
+    )
     active = [
         s for s in subs
         if s.get("platform") in enabled and s.get("enabled", True)
@@ -254,9 +276,20 @@ def cmd_plan():
             f"{len(retry_links)} previously failed alarm(s) will be retried: "
             f"{', '.join(link for link, _ in retry_links)}"
         )
+    if sub_diag["errors"]:
+        print(
+            "[alarm] ERROR: subscription file(s) with format problems were skipped; "
+            "their contests will NOT be synced. Fix them and re-run sync."
+        )
+    diag = ""
+    if sub_diag["errors"] or sub_diag["warnings"]:
+        diag = (
+            f", subscription diag: {sub_diag['errors']} errors, "
+            f"{sub_diag['warnings']} warnings"
+        )
     print(
         f"[alarm] plan: {len(history_links)} history, {len(expired_links)} expired, "
-        f"{len(retry_links)} retry, {len(alarms)} alarms tracked."
+        f"{len(retry_links)} retry, {len(alarms)} alarms tracked{diag}."
     )
 
 
