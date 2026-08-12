@@ -74,6 +74,8 @@ crawler/platforms/*/staged-submissions.json
 crawler/platforms/*/log.json
 crawler/platforms/*/input_*.json
 crawler/server-task.log
+crawler/daemon.log
+crawler/daemon-state.json
 # 但保留配置模板可提交
 !crawler/config.example.json
 !crawler/prompts/prompt.template.example.md
