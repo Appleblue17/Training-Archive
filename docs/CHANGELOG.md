@@ -2,9 +2,7 @@
 
 > 格式基于 [Keep a Changelog](https://keepachangelog.com/)。
 
-## [Unreleased]
-
-> 下一版本规划为 v0.3.0（部署方式重构），见 `docs/roadmap.md`。
+## [0.3.0] - 2026-08-12
 
 ### Added
 

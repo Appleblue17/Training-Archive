@@ -6,25 +6,27 @@
 
 ## 当前状态
 
-- 主功能可用（竞赛列表、文件查看、日志、搜索、Dashboard、复盘时间轴）；爬虫双模式已建（`--contests-only` + `--submissions-only`），由自托管守护进程调度（`daemon.py`：`fire` / `sync` / `incremental`，表达式在 `crawler/config.json` 的 `scheduled` 块）。**定时尚未启用**（未实测通过前手动触发验证）。
-- **v0.3.0 进行中（部署方式重构）**：静态版统一为自托管爬虫 + GitHub Pages（已删除 Actions 爬虫链路）；跨平台守护进程 `daemon.py` 替代 `server-task.sh`；fork 部署参数化（basePath / URL 常量 env 化）。
+- 主功能可用（竞赛列表、文件查看、日志、搜索、Dashboard、复盘时间轴）；爬虫双模式已建（`--contests-only` + `--submissions-only`），由自托管守护进程调度（`daemon.py`：`fire` / `sync` / `incremental`，表达式在 `crawler/config.json` 的 `scheduled` 块）。
+- **v0.3.0 已发布（2026-08-12，部署方式重构）**：静态版统一为自托管爬虫 + GitHub Pages（已删除 Actions 爬虫链路）；跨平台守护进程 `daemon.py` 替代 `server-task.sh`；fork 部署参数化（basePath / URL 常量 env 化）。服务器 + 本地 Linux 已端到端实测通过（`install` 自启 + `sync`/`fire` + 部署链路）；Windows / macOS 测试留待后续。
 - HDU / NowCoder 爬虫默认停用（`crawler/config.json` 的 `enabled` 字段控制）。
 - 闹钟机制已实现（`crawler/scripts/alarm.py` + `crawler/scripts/daemon.py sync/fire`）：订阅条目可选填 `end_time`，未来比赛写闹钟表 `crawler/alarms.json`（gitignore），到点由 `fire` 爬取 + 立即生成报告；状态模型 `planned` / `pending` / `archived` / `failed`。
 - `contests/` 数据目录为空（git 忽略），本地开发需先准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
-- **v0.2.1 已发布（2026-08-12）**。下一版本 **v0.3.0 = 部署方式重构**：跨平台守护进程 `daemon.py` 替代 `server-task.sh`、删除 Actions 爬虫链路（方式一）、fork 部署参数化（basePath / URL 常量 env 化）。
+- **下一版本 v0.4.0 = 动态版**（服务器 / Docker，账号系统、正式资源保护），见 `docs/roadmap.md`。
 
 ## 待办
 
-### v0.3.0（部署方式重构）
+### v0.4.0（动态版）
 
-- [x] `daemon.py` 跨平台守护进程（替代 `server-task.sh`；已实现 commit `e502c2bb`）
-- [x] 删除 Actions 爬虫链路（`crawler-scheduled.yml` / `crawler.yml` 已删；`deploy.yml` 已去掉 `workflow_run` 监听，保留 `push` 触发）
-- [x] fork 部署参数化（`next.config.ts` basePath、`global.ts` URL 常量 env 化：`NEXT_PUBLIC_BASE_PATH` / `NEXT_PUBLIC_SITE_URL` / `NEXT_PUBLIC_REPO_URL`）
-- [x] 部署指引文档（README：Chrome 环境准备按平台 + fork 参数化说明）
-- [ ] 端到端实测（v0.3.0 改造完成后统一验证：`install` 自启 + `fire` 真实比赛触发 + 部署链路；用户已做过初步测试）
+- [ ] 同代码库 API routes / Docker 部署骨架
+- [ ] GitHub OAuth + session（登录=队员）
+- [ ] 个人收藏 / 稍后再做（DB）
+- [ ] 正式资源保护（账号鉴权，受保护资源不进公开仓库）
+- [ ] 订阅管理 UI + 精确到分钟的按 end_time 一次性调度
+- [ ] 报告按需重新生成
 
-### 常规
+### 后续
 
+- [ ] Windows / macOS 守护进程实测（`daemon.py` install / run；v0.3.0 已在 Linux 实测通过）
 - [ ] 评估是否引入前端测试（当前仅 lint）
 - [ ] 复盘报告内容细节：是否含每道题 AC 时间线/WA 次数（数据已全量采集，倾向包含）
 
