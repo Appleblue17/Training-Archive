@@ -208,3 +208,46 @@ could not detect version_main.therefore, we are assuming it is chrome 108 or hig
 [task] New contests recorded for report: ['contests/2026-07-21 2026“钉耙编程”中国大学生算法设计暑期联赛（1）']
 [task] Completed platforms: hdu
 could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[2026-08-12 20:58:05] Pushed to deploy.
+[2026-08-12 20:58:05] === sync done ===
+[2026-08-12 21:32:55] === sync ===
+[2026-08-12 21:32:59] [alarm] plan: 1 history, 0 expired, 0 retry, 6 alarms tracked.
+[2026-08-12 21:32:59] Crawling: https://acm.hdu.edu.cn/contest/problems?cid=1229
+[2026-08-12 21:32:59] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --contests-only --links https://acm.hdu.edu.cn/contest/problems?cid=1229
+[task] Only fetching links: ['https://acm.hdu.edu.cn/contest/problems?cid=1229']
+[task] Enabled platforms: hdu
+[2026-08-12T21:33:04.063239+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（1） (2026-07-21)
+[2026-08-12T21:33:04.065875+08:00] [WARNING] Contest folder already exists: contests/2026-07-21 2026“钉耙编程”中国大学生算法设计暑期联赛（1）. Skipped.
+[2026-08-12T21:33:04.176323+08:00] [WARNING] Submissions fetch was not marked complete; last-update not advanced.
+[task] No new contests; removed crawler/new-contests.json.
+[task] Completed platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[2026-08-12 21:33:05] No contest data changes; skip commit/push (crawler state persists locally).
+[2026-08-12 21:33:05] === sync done ===
+[2026-08-12 21:33:35] === sync ===
+[2026-08-12 21:33:39] [alarm] plan: 0 history, 0 expired, 0 retry, 6 alarms tracked.
+[2026-08-12 21:33:39] No history/expired/retry links; nothing to crawl.
+[2026-08-12 21:33:39] === sync done ===
+[2026-08-12 21:36:42] === sync ===
+[2026-08-12 21:36:46] [alarm] plan: 1 history, 0 expired, 0 retry, 3 alarms tracked.
+[2026-08-12 21:36:46] Crawling: https://acm.hdu.edu.cn/contest/problems?cid=1229
+[2026-08-12 21:36:46] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --contests-only --links https://acm.hdu.edu.cn/contest/problems?cid=1229
+[task] Only fetching links: ['https://acm.hdu.edu.cn/contest/problems?cid=1229']
+[task] Enabled platforms: hdu
+[2026-08-12T21:36:50.812763+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（1） (2026-07-21)
+[2026-08-12T21:36:50.814755+08:00] [INFO] Created contest folder: contests/2026-07-21 2026“钉耙编程”中国大学生算法设计暑期联赛（1）
+[2026-08-12T21:36:54.249292+08:00] [INFO] Login successful with username and password.
+[2026-08-12T21:37:04.922064+08:00] [INFO] Finished fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（1） (2026-07-21)
+[2026-08-12T21:37:04.924072+08:00] [INFO] Start updating staged submissions...
+[2026-08-12T21:37:04.924712+08:00] [INFO] Start fetching new submissions...
+[2026-08-12T21:37:04.926096+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1229.
+[2026-08-12T21:37:05.485738+08:00] [INFO] Already logged in with username and password. Skipping login.
+[2026-08-12T21:37:06.580454+08:00] [WARNING] File contests/2026-07-21 2026“钉耙编程”中国大学生算法设计暑期联赛（1）/submissions.json does not exist, creating a new one.
+[2026-08-12T21:37:13.499404+08:00] [INFO] Fetched 20 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1229, page 1.
+[2026-08-12T21:37:14.086114+08:00] [INFO] Reached the end of submissions or no more pages to fetch. Stopped.
+[2026-08-12T21:37:14.086781+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1230 not new in this run; skipped (contests-only).
+[2026-08-12T21:37:14.087353+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1231 not new in this run; skipped (contests-only).
+[2026-08-12T21:37:14.121585+08:00] [INFO] Contests-only run; last-update not advanced (incremental sync is handled by task B).
+[task] New contests recorded for report: ['contests/2026-07-21 2026“钉耙编程”中国大学生算法设计暑期联赛（1）']
+[task] Completed platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher

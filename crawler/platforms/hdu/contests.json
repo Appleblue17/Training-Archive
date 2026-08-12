@@ -1324,5 +1324,79 @@
         "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1013"
       }
     ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09",
+    "date": "2026-07-21",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1229",
+    "start_time": "2026-07-21T12:00:00+08:00",
+    "end_time": "2026-07-21T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u5c0f\u4e11\u724c",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "\u753b\u6811",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "\u8fb9\u754c\u4e3b\u4e49",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u642d\u79ef\u6728",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "\u6469\u5361\u6570",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u5f00\u5173\u706f",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u7b80\u5355\u51e0\u4f55\u9898",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "\u6570\u5b57\u5b50\u5e8f\u5217",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u6570\u7ec4",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u6e38\u620f",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "\u68ee\u6797",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "\u5411\u91cf",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1012"
+      },
+      {
+        "letter": "M",
+        "name": "\u5f69\u8272\u5339\u914d",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1013"
+      }
+    ]
   }
 ]
