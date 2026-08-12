@@ -68,6 +68,8 @@ crawler/alarms.json
 crawler/platforms/*/log.json
 crawler/platforms/*/input_*.json
 crawler/server-task.log
+crawler/daemon.log
+crawler/daemon-state.json
 
 # test script
 *test.sh
