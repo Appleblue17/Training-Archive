@@ -136,14 +136,26 @@ def run_py(script, *args, capture=False):
     sync/fire 爬取长任务时实时可见，而不是等任务结束后一次性输出。
     stderr 并入同一流（日志本就区分 stdout/stderr）。
     返回 Popen（已 wait，returncode 可用）。
+
+    关键：PYTHONUNBUFFERED=1——子进程 stdout 被重定向到管道时，Python 默认
+    用块缓冲（4-8KB），print() 不带 flush 的日志会攒在子进程缓冲区里，直到
+    进程结束才 flush 到管道；daemon 侧流式读取也读不到（表现为爬取过程静默、
+    结束后一次性输出）。强制无缓冲后每行 print 立即到达管道，流式转发才生效。
     """
     cmd = [sys.executable, os.path.join(SCRIPT_DIR, script), *args]
+    env = dict(os.environ)
+    env["PYTHONUNBUFFERED"] = "1"
     if capture:
-        return subprocess.run(cmd, text=True, capture_output=True)
+        return subprocess.run(cmd, text=True, capture_output=True, env=env)
     log("$ " + " ".join(cmd))
     # stderr=STDOUT 合并为单一管道：避免双管道各自读、互等填满造成死锁
     proc = subprocess.Popen(
-        cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1
+        cmd,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        bufsize=1,
+        env=env,
     )
     assert proc.stdout is not None
     for line in proc.stdout:
