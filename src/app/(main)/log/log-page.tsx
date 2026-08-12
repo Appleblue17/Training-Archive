@@ -63,9 +63,23 @@ function DisplayBox({
   item: {
     name: string;
     type: string;
+    category: string;
   };
   content: string;
 }) {
+  if (!content || !content.trim()) {
+    return (
+      <div className="flex h-full items-center justify-center p-8 text-gray-400">
+        <div className="text-center">
+          <div className="text-sm">暂无日志文件</div>
+          <div className="mt-1 text-xs text-gray-500">
+            日志为运行时产物（gitignore，不提交版本控制），本地运行爬虫后生成：
+            <span className="font-mono">crawler/{item.category === "global" ? "global.log.json" : `platforms/${item.category}/log.json`}</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (item.type === "log") {
     let logArr: LogObject[] = [];
     try {

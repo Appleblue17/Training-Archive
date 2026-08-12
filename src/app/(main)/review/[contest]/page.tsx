@@ -60,10 +60,13 @@ function readContest(folder: string): ContestData | null {
   };
 }
 
+/** 无可用数据时的占位参数，保证 output: export 下动态路由可构建。 */
+const PLACEHOLDER = "~no-data~";
+
 export async function generateStaticParams() {
   const contestsDir = path.join(process.cwd(), "contests");
-  if (!fs.existsSync(contestsDir)) return [];
-  return fs
+  if (!fs.existsSync(contestsDir)) return [{ contest: PLACEHOLDER }];
+  const params = fs
     .readdirSync(contestsDir)
     .filter((folder) => {
       const p = path.join(contestsDir, folder);
@@ -74,6 +77,13 @@ export async function generateStaticParams() {
       );
     })
     .map((folder) => ({ contest: folder }));
+
+  // output: export 要求动态路由至少有一个静态参数；无数据时用占位参数，
+  // 页面内部渲染"Contest not found"提示（数据由爬虫生成后占位页自然消失）。
+  if (params.length === 0) {
+    return [{ contest: PLACEHOLDER }];
+  }
+  return params;
 }
 
 export default async function ReviewPage(props: {

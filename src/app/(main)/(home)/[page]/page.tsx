@@ -7,8 +7,11 @@ import { ITEMS_PER_PAGE } from "@/lib/global";
 
 export async function generateStaticParams() {
   const contestsDir = path.join(process.cwd(), "contests");
+  // contests/ 不存在或为空时也输出 page1（HomeView 渲染空列表），
+  // 保证 output: export 下动态路由可构建。
+  if (!fs.existsSync(contestsDir)) return [{ page: "page1" }];
   const contestFolders = fs.readdirSync(contestsDir);
-  const totalPages = Math.ceil(contestFolders.length / ITEMS_PER_PAGE);
+  const totalPages = Math.max(1, Math.ceil(contestFolders.length / ITEMS_PER_PAGE));
 
   return Array.from({ length: totalPages }, (_, i) => ({
     page: `page${i + 1}`,

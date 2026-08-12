@@ -68,6 +68,7 @@ crawler/subscriptions/*
 crawler/prompts/prompt.template.md
 crawler/prompts/qq-share.template.md
 crawler/new-contests.json
+crawler/alarms.json
 crawler/platforms/*/contests.json
 crawler/platforms/*/staged-submissions.json
 crawler/platforms/*/log.json
