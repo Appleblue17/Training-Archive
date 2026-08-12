@@ -34,13 +34,12 @@
 | 项目 | 说明 |
 |------|------|
 | 依赖安装 | `pip install -r crawler/requirements.txt`（undetected_chromedriver、bs4） |
-| 运行 | `python3 crawler/{qoj,hdu,nowcoder}/{qoj,hdu,nowcoder}.py` |
-| 凭据/环境 | 平台账号密码、浏览器路径等通过环境变量或 `crawler/config.json` 提供，见 `.github/workflows/crawler.yml` |
+| 运行 | `python3 crawler/scripts/scheduled_task.py`（三种模式） |
+| 凭据/环境 | 平台账号密码、浏览器路径等通过环境变量或 `crawler/config.json` 提供，见 `crawler/server-task.sh` 与 `.env.example` |
 
 ### 自动化（GitHub Actions）
 
-- `crawler.yml`：爬虫工作流（定时任务已停用，目前仅手动触发）
-- `deploy.yml`：部署工作流，构建并发布到 GitHub Pages
+- `deploy.yml`：部署工作流，构建并发布到 GitHub Pages（自托管爬虫 push `[contests-changed]` 提交到 `deploy` 分支触发）
 
 ---
 

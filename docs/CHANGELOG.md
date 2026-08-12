@@ -6,6 +6,10 @@
 
 > 下一版本规划为 v0.3.0（部署方式重构），见 `docs/roadmap.md`。
 
+### Removed
+
+- **Actions 爬虫链路**：删除 `crawler-scheduled.yml` / `crawler.yml`；`deploy.yml` 去掉 `workflow_run` 监听（保留 `push` 触发）。静态版部署统一为「自托管爬虫 + GitHub Pages」（详见 `docs/roadmap.md` §1.1）。
+
 ## [0.2.1] - 2026-08-12
 
 ### Added
