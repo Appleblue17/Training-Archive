@@ -1181,5 +1181,74 @@
         "link": "https://acm.hdu.edu.cn/contest/problem?cid=1235&pid=1012"
       }
     ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff086\uff09",
+    "date": "2026-08-06",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1234",
+    "start_time": "2026-08-06T12:00:00+08:00",
+    "end_time": "2026-08-06T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Grand Mex",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "Dice Tower",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "Phi Master",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "Three Colors",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "Yougou Cleansing",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "Gcd Master",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "Multicon",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "CuteSafari",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "Imperfect Permutation",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "Card Damage",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "Push Box",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "P2P",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1234&pid=1012"
+      }
+    ]
   }
 ]
