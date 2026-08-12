@@ -7,6 +7,10 @@
      → 群发 review.md 文件（upload_group_file）
   3. 发送成功后删除 qq-share.txt（临时产物，不进入 git；失败保留供下次重试）
 
+发送模式（config.json 的 qq.send_mode）：
+  - text_and_file（默认）：文案 + review 文件（上述完整流程）
+  - file_only：只发 review 文件，不生成/不发送文案（不产生 qq-share.txt、不调 LLM）
+
 规则：
   - 文字缺失（qq-share.txt 生成失败/为空）：记入 log，跳过文字，直接发 review 文件
   - review.md 不存在：跳过（share 依赖 report task 生成的完整报告，不自行生成）
@@ -21,7 +25,10 @@
   "qq": {
     "napcat_ws_url": "ws://127.0.0.1:6700",   # NapCat WebSocket 地址
     "napcat_token": "",                        # NapCat 鉴权 token（如启用）
-    "group_id": 123456789                      # 目标 QQ 群号
+    "group_id": 123456789,                     # 目标 QQ 群号
+    "send_mode": "text_and_file"               # 发送模式：
+                                               #   text_and_file（默认）文案 + review 文件
+                                               #   file_only 只发 review 文件（不生成/不发文案）
   }
 
 用法：
@@ -392,22 +399,31 @@ def send_contest_share(contest_folder):
               "must run first).")
         return False
 
-    # 1. 生成 qq-share.txt（存在则跳过：上次发送失败遗留，直接重试发送）
-    gen = generate_qq_share(contest_folder)
+    # 0. 发送模式：text_and_file（默认，文案+文件）/ file_only（只发文件）
+    qq_cfg = _load_qq_config()
+    send_mode = str(qq_cfg.get("send_mode") or "text_and_file").strip().lower()
+    file_only = send_mode == "file_only"
+
+    # 1. 生成 qq-share.txt（存在则跳过：上次发送失败遗留，直接重试发送）。
+    #    file_only 模式不生成/不读取文案，直接跳到发送文件。
     qq_path = os.path.join(contest_folder, "qq-share.txt")
     text = ""
-    if os.path.isfile(qq_path):
-        try:
-            with open(qq_path, "r", encoding="utf-8") as f:
-                text = f.read().strip()
-        except Exception as e:
-            print(f"[qq-share] Failed to read {qq_path}: {e}")
-    if not text:
-        print(f"[qq-share] qq-share text empty/missing for {folder_name}; "
-              "sending review file only (recorded in log).")
+    if not file_only:
+        gen = generate_qq_share(contest_folder)
+        if os.path.isfile(qq_path):
+            try:
+                with open(qq_path, "r", encoding="utf-8") as f:
+                    text = f.read().strip()
+            except Exception as e:
+                print(f"[qq-share] Failed to read {qq_path}: {e}")
+        if not text:
+            print(f"[qq-share] qq-share text empty/missing for {folder_name}; "
+                  "sending review file only (recorded in log).")
+    else:
+        print(f"[qq-share] send_mode=file_only: 只发 review 文件，跳过文案 "
+              f"（{folder_name}）。")
 
-    # 2. NapCat 配置检查
-    qq_cfg = _load_qq_config()
+    # 2. NapCat 配置检查（qq_cfg 已在第 0 步加载）
     ws_url = qq_cfg.get("napcat_ws_url", "")
     group_id = qq_cfg.get("group_id", 0)
     if not ws_url or not group_id:
@@ -443,8 +459,9 @@ def send_contest_share(contest_folder):
         print(f"[qq-share] 发送失败（文字与文件均未成功）；{folder_name} 保留待重试。")
         return False
 
-    # 4. 发送成功 → 删除 qq-share.txt（临时产物，不进入 git）
-    if os.path.isfile(qq_path):
+    # 4. 发送成功 → 删除 qq-share.txt（临时产物，不进入 git）。
+    #    file_only 模式从未生成/使用文案，不删除 qq-share.txt。
+    if not file_only and os.path.isfile(qq_path):
         try:
             os.remove(qq_path)
             print(f"[qq-share] Removed {qq_path}（发送完成，不入 git）。")
