@@ -30,6 +30,7 @@
 - **复盘报告触发条件改为订阅 `end_time`**（`daemon.py` 的 sync/fire）：报告条件从「本次爬取新建比赛」（`report.py --from-crawl` + `new-contests.json`）改为「订阅填了 `end_time`」（EXPIRED / RETRY / fire due），按订阅链接反查 `contests/` 生成（`report.py --links`）——比赛此前已归档过（非本次新建）也要生成，避免漏掉复盘。RETRY 按原任务 `end_time` 判断：空 = 原 HISTORY 不生成报告，非空 = 原 EXPIRED/planned 生成报告
 - **HTML→Markdown 公式乱码（pandoc 版本差异）**：pandoc 3.1.x（Debian apt 版）会把 KaTeX 视觉 HTML（`span.katex-html`，`aria-hidden`）当普通内容输出，产生 `[[$x$][[[]{.strut...}...]]` 嵌套乱码，而 3.7+ 自动忽略。修复：转换前用 BeautifulSoup 删除 `span.katex-html` / `span.katex-error`（TeX 源码在 `span.katex-mathml` 的 `<annotation>` 里，保留不受影响），使新旧 pandoc 输出一致；顺带修复空 `<div>` 产生的多冒号 `:::::` 容器残留，与 `::: katex-display` 块级公式容器被压成单行的问题
 - **`sync` / `fire` 日志不再「爬完才一次性输出」**（`daemon.py`）：`run_py` 改为流式转发子进程输出（`Popen` + 逐行 `log_raw`，stderr 并入同一管道避免双管道死锁），长爬取任务每行实时写入日志并打印；`log` / `log_raw` 的 `print` 加 `flush=True`，systemd/journald 场景下实时落盘
+- **订阅文件格式有问题时 sync 立刻提示**（`alarm.py` + `daemon.py`）：`plan` 读取订阅时接住 `load_subscriptions_dir` 的 error/warning 诊断（此前 `log=None` 静默跳过），输出 `[alarm] ERROR/WARNING` 与汇总行计数（`subscription diag: N errors, M warnings`），坏文件条目不会同步；`daemon.py` 的 `sync` 转发所有 `[alarm]` 行到日志，用户无需翻日志文件也能在终端/systemd journal 立刻看到
 
 ## [0.2.1] - 2026-08-12
 
