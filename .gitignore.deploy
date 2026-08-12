@@ -70,6 +70,8 @@ crawler/platforms/*/input_*.json
 crawler/server-task.log
 crawler/daemon.log
 crawler/daemon-state.json
+# QQ 群分享临时产物（发送成功后删除；gitignore 兜底防止误提交）
+contests/*/qq-share.txt
 
 # test script
 *test.sh

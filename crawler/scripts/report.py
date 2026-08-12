@@ -6,8 +6,13 @@
 - 原始提交序列（含代码与时间戳）直接送 LLM，不做分析性预处理
 - review.md 已存在则跳过（幂等，避免重复消耗 token）
 
-生成完整报告后自动串联生成 QQ 群分享简化版 qq-share.txt
-（逻辑在独立模块 crawler/scripts/qq_share.py，此处仅转调）。
+与 QQ 群分享解耦：QQ 分享（crawler/scripts/qq_share.py）由 daemon 在 report
+成功后按 config.json 的 ai_tasks.share.enabled 单独调用，本模块不再串联。
+
+退出码约定（daemon 依赖）：
+  - --links 路径：任一应生成报告的比赛的 review 生成失败 → 返回非零，
+    daemon 据此阻断 sync/fire（不 mark archived，下次 sync 重试）
+  - 其余路径：失败返回非零（仅告警），跳过不算失败
 
 API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变量）。
 
@@ -20,7 +25,6 @@ API key 从环境变量 DEEPSEEK_API_KEY 读取（CI secret / 服务器环境变
         # 只对本次新建中指定订阅链接的比赛生成（手动过滤用）
     python3 crawler/scripts/report.py                    # 扫描所有已结束且缺报告的比赛
     python3 crawler/scripts/report.py <contest_folder>   # 只生成指定比赛（文件夹相对仓库根）
-    python3 crawler/scripts/report.py --qq-only          # 兼容入口：转调 qq_share.py（详见该模块）
 """
 import json
 import os
@@ -33,7 +37,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".
 
 from crawler.llm.deepseek_client import call_deepseek
 from crawler.scripts.new_contests import load_new_contests
-from crawler.scripts.qq_share import generate_qq_share, generate_qq_shares_for_all
 
 # 北京时间（UTC+8）
 from datetime import timezone, timedelta
@@ -329,38 +332,45 @@ def build_prompt(contest_folder):
 
 
 def generate_review(contest_folder):
-    """为单场比赛生成 review.md。已存在或缺少关键数据时跳过。返回 True 表示生成成功。"""
+    """为单场比赛生成 review.md。
+
+    返回状态字符串：
+      "generated"  成功生成
+      "skipped"    条件不满足而跳过（review 已存在 / 无 submissions / 未结束等）
+      "failed"     生成失败（缺 API key / DeepSeek 调用失败 / 写入失败）——
+                   daemon 的 --links 路径据此阻断 sync/fire（不 mark archived）
+    """
     review_path = os.path.join(contest_folder, "review.md")
     if os.path.exists(review_path):
         print(f"[report] Skipped {contest_folder}: review.md already exists.")
-        return False
+        return "skipped"
 
     api_key = os.getenv("DEEPSEEK_API_KEY")
     if not api_key:
         print("[report] DEEPSEEK_API_KEY not set, skipping report generation.")
-        return False
+        return "failed"
 
     contest = load_json(os.path.join(contest_folder, "contest.json")) or {}
     submissions = load_json(os.path.join(contest_folder, "submissions.json")) or []
     if not submissions:
         print(f"[report] Skipped {contest_folder}: no submissions.json data.")
-        return False
+        return "skipped"
 
     # 只有已结束的比赛才生成报告
     end_time = contest.get("end_time")
     if not end_time:
         print(f"[report] Skipped {contest_folder}: contest has no end_time.")
-        return False
+        return "skipped"
     try:
         end_dt = datetime.fromisoformat(str(end_time).replace("Z", "+00:00"))
         if end_dt.tzinfo is None:
             end_dt = end_dt.replace(tzinfo=beijing)
         if end_dt.astimezone(beijing) > datetime.now(beijing):
             print(f"[report] Skipped {contest_folder}: contest has not ended yet.")
-            return False
+            return "skipped"
     except ValueError as e:
         print(f"[report] Skipped {contest_folder}: invalid end_time {end_time}: {e}")
-        return False
+        return "skipped"
 
     print(f"[report] Generating review for {contest_folder} ...")
     prompt = build_prompt(contest_folder)
@@ -368,31 +378,40 @@ def generate_review(contest_folder):
         content = call_deepseek(prompt, api_key)
     except Exception as e:
         print(f"[report] DeepSeek call failed for {contest_folder}: {e}")
-        return False
+        return "failed"
 
-    with open(review_path, "w", encoding="utf-8") as f:
-        f.write(content)
+    try:
+        with open(review_path, "w", encoding="utf-8") as f:
+            f.write(content)
+    except OSError as e:
+        print(f"[report] Failed to write {review_path}: {e}")
+        return "failed"
     print(f"[report] Wrote {review_path}.")
-
-    # 串联生成 QQ 群分享简化版（独立 API 调用，失败不阻断完整报告）
-    generate_qq_share(contest_folder)
-    return True
+    return "generated"
 
 
 def generate_reviews_for_all(contests_root="contests"):
-    """扫描所有已结束且缺 review.md 的比赛，逐个生成报告。返回成功生成的数量。"""
+    """扫描所有已结束且缺 review.md 的比赛，逐个生成报告。
+
+    返回 (generated, failed)：generated 为成功生成数量，failed 为生成失败
+    数量（跳过不算失败）。
+    """
     if not os.path.isdir(contests_root):
         print(f"[report] {contests_root} does not exist, nothing to do.")
-        return 0
+        return 0, 0
 
     generated = 0
+    failed = 0
     for name in sorted(os.listdir(contests_root)):
         contest_folder = os.path.join(contests_root, name)
         if not os.path.isdir(contest_folder):
             continue
-        if generate_review(contest_folder):
+        status = generate_review(contest_folder)
+        if status == "generated":
             generated += 1
-    return generated
+        elif status == "failed":
+            failed += 1
+    return generated, failed
 
 
 def generate_reviews_for_links(links_filter, contests_root="contests"):
@@ -402,25 +421,32 @@ def generate_reviews_for_links(links_filter, contests_root="contests"):
     daemon 的 sync/fire 使用：报告条件 = 订阅里**填了 end_time** 的比赛
     （EXPIRED / RETRY / fire due），与"本次是否新建"无关——比赛此前已
     归档过（非新建）也要生成，否则会漏掉复盘。
+
+    返回 (generated, failed)：failed 非零时 daemon 阻断 sync/fire
+    （不 mark archived，下次 sync 重试）。
     """
     if not os.path.isdir(contests_root):
         print(f"[report] {contests_root} does not exist, nothing to do.")
-        return 0
+        return 0, 0
     generated = 0
+    failed = 0
     for name in sorted(os.listdir(contests_root)):
         contest_folder = os.path.join(contests_root, name)
         if not os.path.isdir(contest_folder):
             continue
         contest = load_json(os.path.join(contest_folder, "contest.json")) or {}
         link = str(contest.get("link") or "").rstrip("/")
-        if link in links_filter and generate_review(contest_folder):
-            generated += 1
-    return generated
+        if link in links_filter:
+            status = generate_review(contest_folder)
+            if status == "generated":
+                generated += 1
+            elif status == "failed":
+                failed += 1
+    return generated, failed
 
 
 if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    qq_only = "--qq-only" in sys.argv[1:]
     from_crawl = "--from-crawl" in sys.argv[1:]
 
     # --links "link1,link2"：只对指定订阅链接的比赛生成（服务器 sync 补抓已过期
@@ -445,32 +471,27 @@ if __name__ == "__main__":
         return kept
 
     if from_crawl:
-        # 只对本次爬取新建的比赛生成（手动场景；review.md / qq-share 存在仍幂等跳过）
+        # 只对本次爬取新建的比赛生成（手动场景；review.md 存在仍幂等跳过）
         folders = _filter_by_links(load_new_contests())
-        if qq_only:
-            count = sum(1 for f in folders if generate_qq_share(f))
-            print(f"[report] Generated {count} qq-share(s) from crawl.")
-            sys.exit(0)
-        count = sum(1 for f in folders if generate_review(f))
-        print(f"[report] Generated {count} review(s) from crawl.")
-        sys.exit(0)
+        statuses = [generate_review(f) for f in folders]
+        generated = statuses.count("generated")
+        failed = statuses.count("failed")
+        print(f"[report] Generated {generated} review(s) from crawl ({failed} failed).")
+        sys.exit(1 if failed else 0)
     elif links_filter:
         # 订阅驱动（daemon 的 sync/fire）：报告条件 = 订阅里填了 end_time 的
         # 比赛（EXPIRED / RETRY / fire due），按链接反查比赛文件夹生成，
         # 不依赖 new-contests.json（与本次是否新建无关）。
-        count = generate_reviews_for_links(links_filter)
-        print(f"[report] Generated {count} review(s) for links.")
-        sys.exit(0)
-    elif qq_only:
-        if args:
-            ok = generate_qq_share(args[0])
-            sys.exit(0 if ok else 1)
-        count = generate_qq_shares_for_all()
-        print(f"[report] Generated {count} qq-share(s).")
+        # 失败返回非零 → daemon 阻断 sync/fire（不 mark archived，下次重试）。
+        generated, failed = generate_reviews_for_links(links_filter)
+        print(f"[report] Generated {generated} review(s) for links ({failed} failed).")
+        sys.exit(1 if failed else 0)
     elif args:
         target = args[0]
-        ok = generate_review(target)
-        sys.exit(0 if ok else 1)
+        status = generate_review(target)
+        print(f"[report] {target}: {status}.")
+        sys.exit(0 if status != "failed" else 1)
     else:
-        count = generate_reviews_for_all()
-        print(f"[report] Generated {count} review(s).")
+        generated, failed = generate_reviews_for_all()
+        print(f"[report] Generated {generated} review(s) ({failed} failed).")
+        sys.exit(1 if failed else 0)

@@ -7,6 +7,11 @@
   - sync         同步订阅：历史/过期立即爬，未来比赛写入闹钟
   - incremental  提交增量同步（scheduled_task.py --submissions-only）
 
+复盘报告（report.py）：sync/fire 爬取成功后生成；任一应生成报告的比赛的
+review 生成失败 → 该次 sync/fire 中止（不 mark archived、不提交推送，下次
+重试）。QQ 群分享（qq_share.py）：report 全部成功后按 config.json 的
+ai_tasks.share.enabled 单独调用；NapCat 未配置/发送失败仅告警不阻断。
+
 与 server-task.sh 语义一致（git 流程、闹钟分类、失败标记原样保留），
 提交规则调整为：仅 contests/ 有实质更新才提交推送（带 [contests-changed] 标记），
 仅 crawler 状态/日志变化时不提交（已在本地持久化）。区别是：
@@ -60,6 +65,7 @@ from dotenv import load_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from crawler.platforms.base import beijing  # noqa: E402
+from crawler.scripts.qq_share import ai_task_enabled  # noqa: E402
 
 try:
     from croniter import croniter
@@ -296,6 +302,9 @@ def cmd_sync():
     爬取失败 → 本次涉及的全部链接 mark --failed（下次 sync 重试）。
     报告条件 = 订阅填了 end_time：EXPIRED 必生成；RETRY 仅当原任务填了
     end_time（第 3 列非空）才生成；HISTORY 不生成。
+    review 生成失败 → 本次 sync 中止（不 mark archived、不提交推送）。
+    report 成功后若 ai_tasks.share.enabled 开启 → 调 qq_share.py 群发
+    （失败仅告警，不阻断 sync）。
     """
     def _run():
         log("=== sync ===")
@@ -336,6 +345,8 @@ def cmd_sync():
         #    反查比赛文件夹生成（report.py --links），不依赖 new-contests.json。
         #    EXPIRED 必生成；RETRY 按第 3 列 end_time 判断：非空 = 原
         #    EXPIRED/planned（生成），空 = 原 HISTORY（不生成）。
+        #    任一应生成报告的比赛的 review 生成失败 → 中止本次 sync
+        #    （不 mark archived、不提交推送；下次 sync 重试）。
         report_links = list(
             dict.fromkeys(expired_links + [link for link, et in retry_links if et])
         )
@@ -343,7 +354,14 @@ def cmd_sync():
             log("Generating reviews for expired/retried contests.")
             p = run_py("report.py", "--links", ",".join(report_links))
             if p.returncode != 0:
-                log("[WARN] report.py failed (skipped review generation).")
+                log("[WARN] review generation failed; aborting before mark "
+                    "archived (retried next sync).")
+                return p.returncode
+            # QQ 群分享（share AI task）：report 成功后按 config.json 的
+            # ai_tasks.share.enabled 显式开启才调用；失败仅告警不阻断。
+            if ai_task_enabled("share"):
+                log("Generating QQ group shares for reports.")
+                run_py("qq_share.py", "--links", ",".join(report_links))
 
         # 4. 标记已处理完（archived；保留历史，plan 下次跳过）
         for link in all_links:
@@ -372,6 +390,9 @@ def cmd_fire():
 
     爬取失败 → mark --failed（fire 只查 planned，失败后不再自动重试，
     靠下次 sync 重试一次）。
+    review 生成失败 → 本次 fire 中止（不 mark archived、不提交推送）。
+    report 成功后若 ai_tasks.share.enabled 开启 → 调 qq_share.py 群发
+    （失败仅告警，不阻断 fire）。
     """
     # 先读闹钟表（轻量）；无到期则安静退出（不写日志、不碰 git）
     due_links = _due_links()
@@ -394,14 +415,23 @@ def cmd_fire():
                 run_py("alarm.py", "mark", link, "--failed", capture=True)
             return p.returncode
 
-        # 到期比赛（填了 end_time 的未来比赛）都要生成报告；失败仅告警。
-        # 报告条件 = 订阅的 end_time 标记（fire due），按链接反查比赛文件夹
-        # 生成（report.py --links），不依赖 new-contests.json——比赛此前已
+        # 到期比赛（填了 end_time 的未来比赛）都要生成报告。报告条件 =
+        # 订阅的 end_time 标记（fire due），按链接反查比赛文件夹生成
+        # （report.py --links），不依赖 new-contests.json——比赛此前已
         # 归档过（非本次新建）也要生成，否则会漏掉复盘。
+        # 任一应生成报告的比赛的 review 生成失败 → 中止本次 fire
+        # （不 mark archived；下次 sync 兜底重试）。
         log("Generating reviews for due contests.")
         p = run_py("report.py", "--links", ",".join(due_links))
         if p.returncode != 0:
-            log("[WARN] report.py failed (skipped review generation).")
+            log("[WARN] review generation failed; aborting before mark "
+                "archived (retried next sync).")
+            return p.returncode
+        # QQ 群分享（share AI task）：report 成功后按 config.json 的
+        # ai_tasks.share.enabled 显式开启才调用；失败仅告警不阻断。
+        if ai_task_enabled("share"):
+            log("Generating QQ group shares for reports.")
+            run_py("qq_share.py", "--links", ",".join(due_links))
 
         for link in due_links:
             run_py("alarm.py", "mark", link, "--archived", capture=True)

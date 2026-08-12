@@ -56,6 +56,8 @@ __pycache__/
 # 开发分支忽略爬虫数据与增量状态；deploy 分支使用 .gitignore.deploy（CI 提交前
 # 覆盖 .gitignore），将 contests/ 与状态文件纳入版本控制，保证增量同步生效。
 /contests/
+# QQ 群分享临时产物（发送成功后删除；gitignore 兜底防止误提交）
+contests/*/qq-share.txt
 crawler/chrome-linux64
 crawler/chromedriver-linux64
 crawler/global.log.json

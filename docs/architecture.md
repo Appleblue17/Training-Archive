@@ -190,7 +190,7 @@ contests/
 
 `--contests-only` 实现要点：`run_platform` 在 `fetch_contests` 后检查 `crawler._new_contests`，为空直接结束；非空则置 `crawler._contests_only = True` 再 `fetch_submissions()`——HDU/NowCoder 只遍历本次新建的比赛，QOJ 以最早新比赛开始时间为提交截止，`BaseCrawler.finish()` 在 contests-only 模式始终不推进 `last-update.json`。
 
-守护进程在爬虫步骤之后均追加独立的报告生成步骤（`report.py --links`），与爬虫解耦：爬虫失败不生成报告，报告失败不阻断提交/部署。报告条件 = 订阅里**填了 `end_time`** 的比赛（EXPIRED / RETRY / fire due），按订阅链接反查 `contests/` 下比赛文件夹生成（见 4.4），与"本次是否新建"无关——比赛此前已归档过（非本次新建）也要生成，否则会漏掉复盘。
+守护进程在爬虫步骤之后均追加独立的报告生成步骤（`report.py --links`），与爬虫解耦：爬虫失败不生成报告；报告失败（`report.py --links` 任一应生成报告的比赛的 review 生成失败）→ 该次 sync/fire 中止（不 `mark --archived`、不提交推送，下次 sync 重试），避免「已归档但缺复盘」。报告全部成功后，若 `config.json` 的 `ai_tasks.share.enabled` 开启，再单独调用 `qq_share.py --links` 群发（失败仅告警，不阻断）。报告条件 = 订阅里**填了 `end_time`** 的比赛（EXPIRED / RETRY / fire due），按订阅链接反查 `contests/` 下比赛文件夹生成（见 4.4），与"本次是否新建"无关——比赛此前已归档过（非本次新建）也要生成，否则会漏掉复盘。
 
 ### 4.4 复盘报告（`crawler/scripts/report.py`，独立总结脚本）
 
@@ -204,7 +204,7 @@ contests/
 - 比赛抓取模式结束时把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时状态文件，gitignore；无新建比赛时删除），`report.py` / `qq_share.py` 以 `--from-crawl` 读取；读写逻辑统一在共享模块 `crawler/scripts/new_contests.py`。
 - 读取 `contest.json`、`submissions.json`、`problems/<letter>/submissions/<id>.<ext>`，**不做分析性预处理**，原始提交序列直接送 DeepSeek（OpenAI 兼容接口，`deepseek-chat`，API key 从环境变量 `DEEPSEEK_API_KEY` 读取）。
 - 输出 `contests/<date> <name>/review.md`；`review.md` 已存在即跳过（幂等）。只对 `end_time` 已过且有提交数据的比赛生成。
-- QQ 群分享简化版（`qq-share.txt`）由 `crawler/scripts/qq_share.py` 生成，完整报告生成后自动串联，也支持 `--from-crawl` 单独补生成。
+- QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**与 report 解耦**：不再由 `report.py` 串联；由 daemon 的 sync/fire 在 report 全部成功后按 `config.json` 的 `ai_tasks.share.enabled`（缺省 `false`）单独调用 `qq_share.py --links`。流程：把 `review.md` 改写成轻松随性的纯文本 `qq-share.txt`（DeepSeek 独立调用）→ 通过 NapCat（OneBot 11 正向 WebSocket，`config.json` 的 `qq` 块配置 `napcat_ws_url` / `napcat_token` / `group_id`）群发文字 + 上传 `review.md` 文件 → 发送成功后删除 `qq-share.txt`（临时产物，两个 `.gitignore` 均忽略）。文字缺失 → 跳过文字只发文件；NapCat 未配置 / 连接 / 发送失败 → 仅告警不阻断 daemon（`qq-share.txt` 保留供下次重试）。也支持 `--from-crawl` / `<folder>` / 全量扫描补发。
 
 ### 4.5 增量抓取逻辑
 
@@ -245,8 +245,8 @@ contests/
 
 `daemon.py` 集成（v0.3.0 起替代 v0.2.x 的 `server-task.sh`，子命令语义不变）：
 
-- `sync`（`python3 crawler/scripts/daemon.py sync`）：①`plan` 分类订阅并写闹钟表，有 `RETRY`/`WARNING` 时记录日志；②爬取 HISTORY + EXPIRED + RETRY 比赛（`--contests-only --links`）；③生成报告（`report.py --links`）：EXPIRED 必生成，RETRY 仅当原任务填了 `end_time`（第 3 列非空，原 EXPIRED/planned）才生成，HISTORY 不生成；④全部 `mark --archived`。**爬取失败时本次涉及的全部链接 `mark --failed`**（下次 sync 重试），不再静默退出。
-- `fire`（`python3 crawler/scripts/daemon.py fire`）：先 `due`，**无到期闹钟安静退出**；有则走与 `sync` 相同的完整流程（爬取 → 报告 → mark archived）。**爬取失败 `mark --failed`**——fire 只查 planned，失败后不再自动重试，靠下次 sync 重试一次（成功 → `archived`，失败保持 `failed`）。
+- `sync`（`python3 crawler/scripts/daemon.py sync`）：①`plan` 分类订阅并写闹钟表，有 `RETRY`/`WARNING` 时记录日志；②爬取 HISTORY + EXPIRED + RETRY 比赛（`--contests-only --links`）；③生成报告（`report.py --links`）：EXPIRED 必生成，RETRY 仅当原任务填了 `end_time`（第 3 列非空，原 EXPIRED/planned）才生成，HISTORY 不生成；**报告失败（任一应生成报告的比赛的 review 生成失败）→ 本次 sync 中止（不 `mark --archived`、不提交推送，下次重试）**；报告成功后若 `ai_tasks.share.enabled` 开启再调 `qq_share.py --links`（失败仅告警）；④全部 `mark --archived`。**爬取失败时本次涉及的全部链接 `mark --failed`**（下次 sync 重试），不再静默退出。
+- `fire`（`python3 crawler/scripts/daemon.py fire`）：先 `due`，**无到期闹钟安静退出**；有则走与 `sync` 相同的完整流程（爬取 → 报告 → 可选 QQ 分享 → mark archived）；报告失败同样中止（不 `mark --archived`，下次 sync 兜底重试）。**爬取失败 `mark --failed`**——fire 只查 planned，失败后不再自动重试，靠下次 sync 重试一次（成功 → `archived`，失败保持 `failed`）。
 - `incremental`（`python3 crawler/scripts/daemon.py incremental`）：对应 `scheduled_task.py --submissions-only`，每日对所有已开始/进行中的比赛做增量提交抓取。
 - `run` 主循环用 croniter 解析 `crawler/config.json` 的 `scheduled` 块调度上述三个任务；`install` 注册开机自启（Linux systemd user / macOS launchd / Windows schtasks，默认登录后启动），`install --system`（仅 Linux）注册系统级 systemd service（`/etc/systemd/system/`，`WantedBy=multi-user.target`，开机即启动、无需登录会话，适合无头服务器；服务以实际用户身份运行，sudo 时取 `SUDO_USER`），`status` 展示闹钟表与调度状态。
 
