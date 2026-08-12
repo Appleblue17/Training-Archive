@@ -246,7 +246,7 @@ contests/
 - `sync`（`python3 crawler/scripts/daemon.py sync`）：①`plan` 分类订阅并写闹钟表，有 `RETRY`/`WARNING` 时记录日志；②爬取 HISTORY + EXPIRED + RETRY 比赛（`--contests-only --links`）；③对 EXPIRED 与 RETRY 生成报告（`report.py --from-crawl --links`，幂等）；④全部 `mark --archived`。**爬取失败时本次涉及的全部链接 `mark --failed`**（下次 sync 重试），不再静默退出。
 - `fire`（`python3 crawler/scripts/daemon.py fire`）：先 `due`，**无到期闹钟安静退出**；有则走与 `sync` 相同的完整流程（爬取 → 报告 → mark archived）。**爬取失败 `mark --failed`**——fire 只查 planned，失败后不再自动重试，靠下次 sync 重试一次（成功 → `archived`，失败保持 `failed`）。
 - `incremental`（`python3 crawler/scripts/daemon.py incremental`）：对应 `scheduled_task.py --submissions-only`，每日对所有已开始/进行中的比赛做增量提交抓取。
-- `run` 主循环用 croniter 解析 `crawler/config.json` 的 `scheduled` 块调度上述三个任务；`install` 注册开机自启（Linux systemd user / macOS launchd / Windows schtasks），`status` 展示闹钟表与调度状态。
+- `run` 主循环用 croniter 解析 `crawler/config.json` 的 `scheduled` 块调度上述三个任务；`install` 注册开机自启（Linux systemd user / macOS launchd / Windows schtasks，默认登录后启动），`install --system`（仅 Linux）注册系统级 systemd service（`/etc/systemd/system/`，`WantedBy=multi-user.target`，开机即启动、无需登录会话，适合无头服务器；服务以实际用户身份运行，sudo 时取 `SUDO_USER`），`status` 展示闹钟表与调度状态。
 
 **静态版唯一调度**：`alarm.py` 与 `sync`/`fire`/`incremental` 为静态版自托管调度使用（v0.2.x 为 `server-task.sh` + cron，v0.3.0 起为 `daemon.py` + 跨平台自启）。
 

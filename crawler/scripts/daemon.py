@@ -14,6 +14,8 @@
   - run 主循环：croniter 解析表达式 + 状态文件防重复；睡眠恢复后每个任务
     只补跑一次（不追赶历史，靠任务自身增量/幂等覆盖错过时段）
   - install 按 OS 注册开机自启：systemd user / launchd / schtasks
+  - install --system（仅 Linux）：注册系统级 systemd service，开机即启动、
+    无需登录会话（适合无头服务器）；服务以实际用户身份运行（User=<owner>）
   - 跨平台文件锁：filelock（替代 flock）
 
 用法:
@@ -21,8 +23,10 @@
   python3 crawler/scripts/daemon.py sync           同步订阅（一次性）
   python3 crawler/scripts/daemon.py fire           闹钟到点触发（一次性；无到期安静退出）
   python3 crawler/scripts/daemon.py incremental    提交增量同步（一次性）
-  python3 crawler/scripts/daemon.py install        注册开机自启（按 OS）
+  python3 crawler/scripts/daemon.py install        注册开机自启（按 OS；默认登录后启动）
+  python3 crawler/scripts/daemon.py install --system   仅 Linux：注册系统级服务（开机即启动，需 sudo）
   python3 crawler/scripts/daemon.py uninstall      注销开机自启
+  python3 crawler/scripts/daemon.py uninstall --system  仅 Linux：注销系统级服务（需 root）
   python3 crawler/scripts/daemon.py status         查看状态（scheduled / 闹钟 / 自启 / git / 日志）
   python3 crawler/scripts/daemon.py log [N]        查看最近 N 行运行日志（默认 50）
   python3 crawler/scripts/daemon.py --help         显示本帮助
@@ -30,12 +34,16 @@
 环境要求:
   - 已 clone 本仓库（deploy 分支）
   - 仓库根目录存在 .env（凭据；已被 gitignore，不会提交）
-  - pip install -r crawler/requirements.txt
+  - 建议使用 venv：python3 -m venv .venv && .venv/bin/pip install -r
+    crawler/requirements.txt；install 用哪个 python 执行，服务就用哪个
+    python 运行（务必用 .venv/bin/python 执行 install）
   - Chrome / Chromedriver（见 README 部署指引；Linux 默认
     crawler/chrome-linux64/ 与 crawler/chromedriver-linux64/）
-  - push 到 GitHub 的凭据已配置（SSH key 或 token）
+  - pandoc（HDU / NowCoder 题目 HTML→Markdown 转换必需）
+  - push 到 GitHub 的凭据已配置（SSH key 或 token；deploy 分支写权限）
 """
 
+import getpass
 import json
 import os
 import platform
@@ -478,8 +486,12 @@ def _service_command():
     return [sys.executable, os.path.join(REPO_ROOT, "crawler", "scripts", "daemon.py"), "run"]
 
 
-def install_linux():
-    """优先 systemd user unit；无 systemd 时回落 cron @reboot。"""
+def install_linux(system=False):
+    """注册开机自启：默认 systemd user unit（登录后启动）；system=True 时注册
+    系统级 systemd service（开机即启动，无需登录会话，适合无头服务器）。
+    无 systemd 时回落 cron @reboot（仅 user 模式）。"""
+    if system:
+        return install_linux_system()
     systemd_dir = os.path.expanduser("~/.config/systemd/user")
     if shutil.which("systemctl") and (os.path.isdir(systemd_dir) or True):
         os.makedirs(systemd_dir, exist_ok=True)
@@ -517,6 +529,53 @@ WantedBy=default.target
     lines.append(entry)
     subprocess.run(["crontab", "-"], input="\n".join(lines) + "\n", text=True)
     log("Installed cron @reboot (systemd not available).")
+
+
+def install_linux_system():
+    """注册系统级 systemd service（/etc/systemd/system，WantedBy=multi-user.target）。
+
+    开机即启动、不依赖登录会话（适合无头服务器）。服务以实际用户身份运行
+    （User=<owner>，sudo 执行时取 SUDO_USER），保证 git 凭据 / .env 与手动
+    运行一致。需要 root，请用：
+        sudo .venv/bin/python crawler/scripts/daemon.py install --system
+    """
+    if not shutil.which("systemctl"):
+        log("[ERROR] systemd not available on this host; cannot install system service.")
+        return 1
+    if os.geteuid() != 0:
+        log("[ERROR] 'install --system' needs root to write /etc/systemd/system.")
+        log("Run: sudo .venv/bin/python crawler/scripts/daemon.py install --system")
+        return 1
+    owner = os.environ.get("SUDO_USER") or getpass.getuser()
+    unit = f"/etc/systemd/system/{UNIT_NAME}.service"
+    py, script, run = _service_command()
+    content = f"""[Unit]
+Description=Training Archive Crawler Daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User={owner}
+ExecStart={py} {script} {run}
+WorkingDirectory={REPO_ROOT}
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(unit, "w", encoding="utf-8") as f:
+        f.write(content)
+    subprocess.run(["systemctl", "daemon-reload"], check=False)
+    subprocess.run(
+        ["systemctl", "enable", "--now", f"{UNIT_NAME}.service"],
+        check=False,
+    )
+    log(f"Installed systemd system unit: {unit} (User={owner})")
+    log("Starts at boot without login (multi-user.target).")
+    log("Manage: systemctl status/enable/disable training-archive-daemon.service")
+    return 0
 
 
 def install_macos():
@@ -577,11 +636,16 @@ def install_windows():
     log(f"Installed scheduled task: {SCHTASKS_NAME} (ONLOGON)")
 
 
-def cmd_install():
-    """按 OS 注册开机自启（默认「登录时启动」；服务器可手动改为系统级服务）。"""
+def cmd_install(system=False):
+    """按 OS 注册开机自启。system=True：注册系统级服务（目前仅 Linux systemd，
+    开机即启动、无需登录会话，适合无头服务器）；其余平台忽略并回落默认行为。"""
     s = _system()
+    if system and s != "linux":
+        log(f"[WARN] '--system' is only supported on Linux (current: {s}); "
+            "falling back to user autostart.")
+        system = False
     if s == "linux":
-        install_linux()
+        return install_linux(system)
     elif s == "macos":
         install_macos()
     elif s == "windows":
@@ -593,7 +657,9 @@ def cmd_install():
     return 0
 
 
-def uninstall_linux():
+def uninstall_linux(system=False):
+    if system:
+        return uninstall_linux_system()
     unit = os.path.expanduser(f"~/.config/systemd/user/{UNIT_NAME}.service")
     if os.path.exists(unit):
         subprocess.run(
@@ -610,6 +676,23 @@ def uninstall_linux():
     log("Removed cron @reboot entry.")
 
 
+def uninstall_linux_system():
+    unit = f"/etc/systemd/system/{UNIT_NAME}.service"
+    if not os.path.exists(unit):
+        log("(system service not installed)")
+        return
+    if os.geteuid() != 0:
+        log("[ERROR] 'uninstall --system' needs root to remove /etc/systemd/system.")
+        log("Run: sudo .venv/bin/python crawler/scripts/daemon.py uninstall --system")
+        return 1
+    subprocess.run(
+        ["systemctl", "disable", "--now", f"{UNIT_NAME}.service"], check=False
+    )
+    os.remove(unit)
+    subprocess.run(["systemctl", "daemon-reload"], check=False)
+    log(f"Removed systemd system unit: {unit}")
+
+
 def uninstall_macos():
     plist = os.path.expanduser(f"~/Library/LaunchAgents/{PLIST_LABEL}.plist")
     if os.path.exists(plist):
@@ -623,10 +706,14 @@ def uninstall_windows():
     log(f"Removed scheduled task: {SCHTASKS_NAME}")
 
 
-def cmd_uninstall():
+def cmd_uninstall(system=False):
     s = _system()
+    if system and s != "linux":
+        log(f"[WARN] '--system' is only supported on Linux (current: {s}); "
+            "falling back to user autostart removal.")
+        system = False
     if s == "linux":
-        uninstall_linux()
+        return uninstall_linux(system)
     elif s == "macos":
         uninstall_macos()
     elif s == "windows":
@@ -644,6 +731,11 @@ def cmd_uninstall():
 def _autostart_info():
     s = _system()
     if s == "linux":
+        sys_unit = f"/etc/systemd/system/{UNIT_NAME}.service"
+        if os.path.exists(sys_unit):
+            r = subprocess.run(["systemctl", "is-enabled", f"{UNIT_NAME}.service"],
+                               text=True, capture_output=True)
+            return f"systemd system unit: {sys_unit} ({r.stdout.strip()})"
         unit = os.path.expanduser(f"~/.config/systemd/user/{UNIT_NAME}.service")
         if os.path.exists(unit):
             r = subprocess.run(["systemctl", "--user", "is-enabled", f"{UNIT_NAME}.service"],
@@ -718,9 +810,9 @@ def main():
         elif cmd == "incremental":
             sys.exit(cmd_incremental())
         elif cmd == "install":
-            sys.exit(cmd_install())
+            sys.exit(cmd_install("--system" in args[1:]))
         elif cmd == "uninstall":
-            sys.exit(cmd_uninstall())
+            sys.exit(cmd_uninstall("--system" in args[1:]))
         elif cmd == "status":
             cmd_status()
         elif cmd == "log":
