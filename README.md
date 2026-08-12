@@ -111,26 +111,30 @@ GitHub 云端定时运行爬虫，自动提交并部署到 GitHub Pages：
 关闭工作流的定时（保留手动触发），在服务器上用 cron 跑同一套脚本，产物 push 回 `deploy` 分支，由 GitHub Actions 的 `deploy.yml` 自动构建部署 Pages。提供一键管理脚本 `crawler/server-task.sh`（复刻 Action 完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
 
 ```bash
-# 提交增量同步（--submissions-only；每日一次，install 的 cron 自动调用）
+# 提交增量同步（--submissions-only；每日，install 的 cron 自动调用）
 crawler/server-task.sh incremental
 
-# 更新订阅后手动同步（闹钟机制）：
+# 同步订阅（cron 每 3 小时自动调用，也可手动）：
 #   历史比赛（订阅不填 end_time）→ 立即爬取归档，不生成报告
 #   过期比赛（end_time 已过）    → 立即爬取并生成报告（如闹钟失败后补漏）
 #   未来比赛（end_time 未到）    → 写入闹钟表，到点由 fire 触发
 #   失败重试（上次 failed）      → 重试一次：成功 → archived，失败保持 failed（日志会提示）
 crawler/server-task.sh sync
 
-# 安装 / 卸载 cron 定时（闹钟检查每分钟 + 提交增量每日，自动适配服务器时区）
+# 安装 / 卸载 cron 定时（从 crawler/config.json 的 scheduled 块读取表达式：
+#   fire 每 5 分钟 + sync 每 3 小时 + incremental 每日；改 config 后重跑 install 生效）
 crawler/server-task.sh install
 crawler/server-task.sh uninstall
 
-# 查看状态（cron / 闹钟 / git / 日志）/ 查看日志
+# 查看状态 / 查看日志
 crawler/server-task.sh status
 crawler/server-task.sh log [N]
+
+# 列出当前闹钟
+python3 crawler/scripts/alarm.py list
 ```
 
-**闹钟机制（方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式，如 `"2026-08-15T23:00:00+08:00"`）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交）并标记为 `planned`，cron 每分钟调用 `fire` 检查：到点即爬取该场比赛（`--contests-only --links`）并立即生成复盘报告，精确到分钟，替代原来的 30 分钟轮询。闹钟状态模型：`planned`（未来等 fire）/ `pending`（sync 待立即处理）/ `archived`（已处理完，fire 忽略）/ `failed`（爬取失败，fire 忽略）。**爬取失败即标记 `failed`（不再自动重试），下次手动 `sync` 重试一次：成功 → `archived`，失败保持 `failed`，且 sync 日志会提示用户**。订阅里修改 `end_time` 或删除条目时，`sync` 会相应重新安排或剪除闹钟。方式一（GitHub Actions）仍用轮询，不读取 `end_time` 字段。
+**闹钟机制（方式二专用）**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式，如 `"2026-08-15T23:00:00+08:00"`）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交）并标记为 `planned`，cron 每 5 分钟调用 `fire` 检查：到点即爬取该场比赛（`--contests-only --links`）并立即生成复盘报告，精确到 5 分钟，替代原来的 30 分钟轮询。闹钟状态模型：`planned`（未来等 fire）/ `pending`（sync 待立即处理）/ `archived`（已处理完，fire 忽略）/ `failed`（爬取失败，fire 忽略）。**爬取失败即标记 `failed`（不再自动重试），由每 3 小时一次的自动 `sync` 重试：成功 → `archived`，失败保持 `failed`，且 sync 日志会提示用户**。订阅里修改 `end_time` 或删除条目时，`sync` 会相应重新安排或剪除闹钟。方式一（GitHub Actions）仍用轮询，不读取 `end_time` 字段。
 
 服务器环境要求：已 clone 仓库、根目录有 `.env` 凭据、`pip install -r crawler/requirements.txt`、Chrome/Chromedriver 在 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`、已配置 push 凭据（SSH key 或 token）。
 
