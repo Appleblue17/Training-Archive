@@ -39,6 +39,8 @@
 
 - 生产构建要求本地存在 `contests/`；`deploy.yml` 会先复制 `contests/` → `public/contests/` 再 `pnpm build`。
 - `NODE_ENV=production` 时启用 `output: "export"` 与 `basePath: "/Training-Archive"`；本地开发（`pnpm dev`）使用根路径。
+- **daemon 用 venv 运行**：系统 `python3` 可能缺 `dotenv`/`croniter`/`filelock`，统一用 `.venv/bin/python crawler/scripts/daemon.py ...`（`python3 -m venv .venv && .venv/bin/pip install -r crawler/requirements.txt`）。`install`/`install --system` 会把「执行 install 的 python」写进服务启动命令，务必用 `.venv/bin/python` 执行。
+- **无头服务器**：user unit（默认 install）依赖登录会话；服务器用 `install --system`（系统级 systemd，`WantedBy=multi-user.target`，开机即启动，需 sudo）。
 
 ### 爬虫
 
@@ -86,6 +88,7 @@ python3 crawler/scripts/daemon.py sync            # 同步订阅：历史/过期
 python3 crawler/scripts/daemon.py fire            # 闹钟到点触发（无到期安静退出）
 python3 crawler/scripts/daemon.py incremental     # 提交增量同步（--submissions-only；每日）
 python3 crawler/scripts/daemon.py install         # 注册开机自启（Linux systemd / macOS launchd / Windows schtasks）
+sudo .venv/bin/python crawler/scripts/daemon.py install --system  # 仅 Linux：系统级服务（开机即启动、无需登录；需 root）
 python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
 python3 crawler/scripts/daemon.py status          # 查看状态 / 闹钟 / git / 日志
 ```

@@ -11,6 +11,7 @@
 - **跨平台守护进程 `crawler/scripts/daemon.py`**（替代 v0.2.x 的 `crawler/server-task.sh`）：
   - 子命令 `run` / `sync` / `fire` / `incremental` / `install` / `uninstall` / `status` / `log`；`run` 主循环用 croniter 解析 `config.json` 的 `scheduled` 块调度任务，睡眠/关机恢复后每个任务只补跑一次
   - `install` 按操作系统注册开机自启：Linux systemd user unit、macOS launchd、Windows schtasks（默认「登录时启动」）
+  - `install --system`（仅 Linux）：注册系统级 systemd service（`/etc/systemd/system/`，`WantedBy=multi-user.target`），开机即启动、无需登录会话（适合无头服务器）；服务以实际用户身份运行（`User=<owner>`，sudo 时取 `SUDO_USER`），需 root 执行
   - 跨平台串行锁改用 filelock（替代 flock），新增依赖 `croniter` / `filelock`（`crawler/requirements.txt`）
 - **fork 部署参数化**：`next.config.ts` 的 `basePath` / `assetPrefix` 与 `global.ts` 的 `REPO_URL` / `BASE_URL` / `PREFIX_URL` 支持 env 覆盖（`NEXT_PUBLIC_BASE_PATH` / `NEXT_PUBLIC_SITE_URL` / `NEXT_PUBLIC_REPO_URL`，默认值不变）
 

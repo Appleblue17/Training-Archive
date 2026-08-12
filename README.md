@@ -88,16 +88,33 @@ python3 crawler/scripts/daemon.py sync            # 同步订阅：历史/过期
 python3 crawler/scripts/daemon.py fire            # 闹钟到点触发（无到期安静退出）
 python3 crawler/scripts/daemon.py incremental     # 提交增量同步（--submissions-only）
 python3 crawler/scripts/daemon.py install         # 注册开机自启（按 OS：systemd user / launchd / schtasks）
+python3 crawler/scripts/daemon.py install --system   # 仅 Linux：系统级服务（开机即启动、无需登录，需 sudo）
 python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
+python3 crawler/scripts/daemon.py uninstall --system # 仅 Linux：注销系统级服务（需 sudo）
 python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 ```
 
 - **主循环调度**：`run` 用 croniter 解析 `config.json` 的 `scheduled` 块（三个表达式），睡眠/关机恢复后每个任务只补跑一次（不追赶历史，靠任务自身增量/幂等覆盖错过时段）。
-- **开机自启**：`install` 按操作系统注册——Linux systemd user unit、macOS launchd、Windows schtasks（默认「登录时启动」；服务器可手动改为系统级服务）。
+- **开机自启**：`install` 按操作系统注册——Linux systemd user unit、macOS launchd、Windows schtasks（默认「登录时启动」，适合个人电脑）。
+- **无头服务器**：`install --system`（仅 Linux）注册系统级 systemd service（`/etc/systemd/system/`，`WantedBy=multi-user.target`），开机即启动、无需登录会话；服务以实际用户身份运行（`User=<owner>`，sudo 时取 `SUDO_USER`），git 凭据 / `.env` 与手动运行一致。需 root：
+  ```bash
+  sudo .venv/bin/python crawler/scripts/daemon.py install --system
+  ```
 
 **闹钟机制**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交）并标记为 `planned`，守护进程主循环按 `config.json` 的 `scheduled` 块间隔调度 `fire`：到点即爬取该场比赛并立即生成复盘报告。状态模型：`planned` / `pending` / `archived` / `failed`；爬取失败即 `failed`（不再自动重试），由自动 `sync` 重试：成功 → `archived`，失败保持 `failed`。订阅里修改 `end_time` 或删除条目时，`sync` 会相应重新安排或剪除闹钟。详见 [docs/architecture.md](docs/architecture.md) §4.6。
 
-**运行环境要求**：已 clone 仓库、根目录有 `.env` 凭据、`pip install -r crawler/requirements.txt`、已配置 push 凭据（SSH key 或 token）、本机可用 Chrome 与 chromedriver（见下）。
+**前置依赖**（自托管运行机器需全部具备）：
+
+1. **Python 3 + venv**（推荐）：已 clone 本仓库，然后
+   ```bash
+   python3 -m venv .venv
+   .venv/bin/pip install -r crawler/requirements.txt
+   ```
+   ⚠️ 后续所有 `daemon.py` 命令（尤其 `install`）都用 `.venv/bin/python` 执行——`install` 会把「执行 install 的 python 解释器」写进服务启动命令，若用系统 python3（可能缺 `dotenv`/`croniter`/`filelock`）注册，服务启动会因缺依赖失败。
+2. **Chrome + Chromedriver**：见下节（Linux 仓库已带 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`）。
+3. **pandoc**：HDU / NowCoder 题目 HTML→Markdown 转换必需（Linux `apt install pandoc` / macOS `brew install pandoc` / Windows winget）。
+4. **`.env` 凭据**：仓库根目录（QOJ 账号等；已被 gitignore，不会提交）。
+5. **git push 凭据**：SSH key 或 token，对 `deploy` 分支有写权限（daemon 启动后会自动 checkout `deploy` 分支并 pull，检测到竞赛变化后 push）。
 
 ### Chrome 环境准备（按平台）
 
