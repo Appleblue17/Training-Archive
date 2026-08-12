@@ -379,3 +379,84 @@ could not detect version_main.therefore, we are assuming it is chrome 108 or hig
 [qq-share] Generating qq-share for contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6） ...
 [qq-share] Wrote contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）/qq-share.txt.
 [report] Generated 1 review(s) for links.
+[2026-08-13 01:52:09] [run] task due: fire
+[2026-08-13 01:52:10] [run] task due: sync
+[2026-08-13 01:52:10] === sync ===
+[2026-08-13 01:52:14] [alarm] plan: 0 history, 1 expired, 0 retry, 6 alarms tracked.
+[2026-08-13 01:52:14] Crawling: https://acm.hdu.edu.cn/contest/problems?cid=1234
+[2026-08-13 01:52:14] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --contests-only --links https://acm.hdu.edu.cn/contest/problems?cid=1234
+[task] Only fetching links: ['https://acm.hdu.edu.cn/contest/problems?cid=1234']
+[task] Enabled platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[2026-08-13T01:52:19.644928+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（6） (2026-08-06)
+[2026-08-13T01:52:19.684074+08:00] [WARNING] Contest folder already exists: contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）. Skipped.
+[2026-08-13T01:52:19.908385+08:00] [WARNING] Submissions fetch was not marked complete; last-update not advanced.
+[task] No new contests; removed crawler/new-contests.json.
+[task] Completed platforms: hdu
+[2026-08-13 01:52:20] Generating reviews for expired/retried contests.
+[2026-08-13 01:52:20] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/report.py --links https://acm.hdu.edu.cn/contest/problems?cid=1234
+[report] Skipped contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）: review.md already exists.
+[report] Generated 0 review(s) for links (0 failed).
+[2026-08-13 01:52:22] No contest data changes; skip commit/push (crawler state persists locally).
+[2026-08-13 01:52:22] === sync done ===
+[2026-08-13 01:55:22] [run] task due: fire
+[2026-08-13 02:00:22] [run] task due: fire
+[2026-08-13 02:03:35] === sync ===
+[2026-08-13 02:03:40] [alarm] plan: 0 history, 0 expired, 0 retry, 6 alarms tracked.
+[2026-08-13 02:03:40] No history/expired/retry links; nothing to crawl.
+[2026-08-13 02:03:40] === sync done ===
+[2026-08-13 02:04:24] === sync ===
+[2026-08-13 02:04:28] [alarm] plan: 1 history, 0 expired, 0 retry, 7 alarms tracked.
+[2026-08-13 02:04:28] Crawling: https://acm.hdu.edu.cn/contest/problems?cid=1234
+[2026-08-13 02:04:28] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --contests-only --links https://acm.hdu.edu.cn/contest/problems?cid=1234
+[task] Only fetching links: ['https://acm.hdu.edu.cn/contest/problems?cid=1234']
+[task] Enabled platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[2026-08-13T02:04:32.455028+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（6） (2026-08-06)
+[2026-08-13T02:04:32.456265+08:00] [WARNING] Contest folder already exists: contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）. Skipped.
+[2026-08-13T02:04:32.564746+08:00] [WARNING] Submissions fetch was not marked complete; last-update not advanced.
+[task] Completed platforms: hdu
+[2026-08-13 02:04:34] No contest data changes; skip commit/push (crawler state persists locally).
+[2026-08-13 02:04:34] === sync done ===
+[2026-08-13 02:05:22] [run] task due: fire
+[2026-08-13 02:10:23] [run] task due: fire
+[2026-08-13 02:15:23] [run] task due: fire
+[2026-08-13 02:20:23] [run] task due: fire
+[2026-08-13 02:25:24] [run] task due: fire
+[2026-08-13 02:30:24] [run] task due: fire
+[2026-08-13 02:30:25] === fire ===
+[2026-08-13 02:30:28] Fire due: https://acm.hdu.edu.cn/contest/problems?cid=1235
+[2026-08-13 02:30:28] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --contests-only --links https://acm.hdu.edu.cn/contest/problems?cid=1235
+[task] Only fetching links: ['https://acm.hdu.edu.cn/contest/problems?cid=1235']
+[task] Enabled platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[2026-08-13T02:30:32.083289+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（7） (2026-08-11)
+[2026-08-13T02:30:32.086574+08:00] [INFO] Created contest folder: contests/2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7）
+[2026-08-13T02:30:34.992262+08:00] [INFO] Login successful with username and password.
+[2026-08-13T02:30:45.075432+08:00] [INFO] Finished fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（7） (2026-08-11)
+[2026-08-13T02:30:45.077692+08:00] [INFO] Start updating staged submissions...
+[2026-08-13T02:30:45.080772+08:00] [INFO] Start fetching new submissions...
+[2026-08-13T02:30:45.082196+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1229 not new in this run; skipped (contests-only).
+[2026-08-13T02:30:45.082947+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1230 not new in this run; skipped (contests-only).
+[2026-08-13T02:30:45.083625+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1231 not new in this run; skipped (contests-only).
+[2026-08-13T02:30:45.084476+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1232 not new in this run; skipped (contests-only).
+[2026-08-13T02:30:45.085494+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1233 not new in this run; skipped (contests-only).
+[2026-08-13T02:30:45.086647+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1234 not new in this run; skipped (contests-only).
+[2026-08-13T02:30:45.087664+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1235.
+[2026-08-13T02:30:45.663287+08:00] [INFO] Already logged in with username and password. Skipping login.
+[2026-08-13T02:30:46.207943+08:00] [WARNING] File contests/2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7）/submissions.json does not exist, creating a new one.
+[2026-08-13T02:31:05.833581+08:00] [INFO] Fetched 45 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1235, page 1.
+[2026-08-13T02:31:06.227558+08:00] [INFO] Reached the end of submissions or no more pages to fetch. Stopped.
+[2026-08-13T02:31:06.260489+08:00] [INFO] Contests-only run; last-update not advanced (incremental sync is handled by task B).
+[task] New contests recorded for report: ['contests/2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7）']
+[task] Completed platforms: hdu
+[2026-08-13 02:31:06] Generating reviews for due contests.
+[2026-08-13 02:31:06] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/report.py --links https://acm.hdu.edu.cn/contest/problems?cid=1235
+[report] Generating review for contests/2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7） ...
+[report] Wrote contests/2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7）/review.md.
+[report] Generated 1 review(s) for links (0 failed).
+[2026-08-13 02:32:21] Generating QQ group shares for reports.
+[2026-08-13 02:32:21] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/qq_share.py --links https://acm.hdu.edu.cn/contest/problems?cid=1235
+[qq-share] send_mode=file_only: 只发 review 文件，跳过文案（2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7））。
+[qq-share] Sent 2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7） to group 1014450820.
+[qq-share] Sent 1 share(s) for links.

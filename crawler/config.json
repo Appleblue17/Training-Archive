@@ -4,6 +4,18 @@
     "sync": "0 */3 * * *",
     "incremental": "0 4 * * *"
   },
+  "ai_tasks": {
+    "report": {
+      "enabled": true
+    },
+    "share": {
+      "enabled": true
+    }
+  },
+  "qq": {
+    "napcat_ws_url": "ws://127.0.0.1:6700",
+    "send_mode": "file_only"
+  },
   "qoj": {
     "enabled": false,
     "base_url": "https://qoj.ac",

@@ -33,7 +33,13 @@
     "platform": "hdu",
     "link": "https://acm.hdu.edu.cn/contest/problems?cid=1234",
     "comments": "6",
+    "enabled": true
+  },
+  {
+    "platform": "hdu",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1235",
+    "comments": "7",
     "enabled": true,
-    "end_time": "2026-08-12T22:30:00+08:00"
+    "end_time": "2026-08-13T02:30:00+08:00"
   }
 ]
