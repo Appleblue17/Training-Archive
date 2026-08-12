@@ -4,3 +4,5 @@ openai
 setuptools
 python-dotenv
 socksio
+croniter
+filelock

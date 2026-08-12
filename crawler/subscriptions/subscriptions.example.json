@@ -1,0 +1,27 @@
+[
+  {
+    "platform": "qoj",
+    "link": "https://qoj.ac/contest/123",
+    "end_time": "2026-08-15T23:00:00+08:00",
+    "comments": "示例：未来比赛（服务器方式二写闹钟，到点爬取并生成报告）",
+    "enabled": true
+  },
+  {
+    "platform": "qoj",
+    "link": "https://qoj.ac/contest/456",
+    "comments": "示例：历史比赛（不填 end_time，sync 立即爬取归档，不生成报告）",
+    "enabled": true
+  },
+  {
+    "platform": "hdu",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1229",
+    "comments": "示例：某场 HDU 比赛（可留空）",
+    "enabled": true
+  },
+  {
+    "platform": "nowcoder",
+    "link": "https://ac.nowcoder.com/acm/contest/12345",
+    "comments": "示例：某场 NowCoder 比赛（可留空）",
+    "enabled": false
+  }
+]

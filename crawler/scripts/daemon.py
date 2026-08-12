@@ -1,0 +1,739 @@
+#!/usr/bin/env python3
+"""daemon.py — 跨平台守护进程（v0.3.0 起替代 crawler/server-task.sh）
+
+在服务器或个人电脑上持续运行，按 crawler/config.json 的 scheduled 块
+（cron 表达式）+ 闹钟表 crawler/alarms.json 调度爬虫任务：
+  - fire         闹钟到点触发（无到期闹钟安静退出）
+  - sync         同步订阅：历史/过期立即爬，未来比赛写入闹钟
+  - incremental  提交增量同步（scheduled_task.py --submissions-only）
+
+与 server-task.sh 语义一致（git 流程、闹钟分类、失败标记原样保留），
+提交规则调整为：仅 contests/ 有实质更新才提交推送（带 [contests-changed] 标记），
+仅 crawler 状态/日志变化时不提交（已在本地持久化）。区别是：
+  - 跨平台：Linux / macOS / Windows 均可运行
+  - run 主循环：croniter 解析表达式 + 状态文件防重复；睡眠恢复后每个任务
+    只补跑一次（不追赶历史，靠任务自身增量/幂等覆盖错过时段）
+  - install 按 OS 注册开机自启：systemd user / launchd / schtasks
+  - 跨平台文件锁：filelock（替代 flock）
+
+用法:
+  python3 crawler/scripts/daemon.py run            主循环（前台运行；安装为服务后由系统拉起）
+  python3 crawler/scripts/daemon.py sync           同步订阅（一次性）
+  python3 crawler/scripts/daemon.py fire           闹钟到点触发（一次性；无到期安静退出）
+  python3 crawler/scripts/daemon.py incremental    提交增量同步（一次性）
+  python3 crawler/scripts/daemon.py install        注册开机自启（按 OS）
+  python3 crawler/scripts/daemon.py uninstall      注销开机自启
+  python3 crawler/scripts/daemon.py status         查看状态（scheduled / 闹钟 / 自启 / git / 日志）
+  python3 crawler/scripts/daemon.py log [N]        查看最近 N 行运行日志（默认 50）
+  python3 crawler/scripts/daemon.py --help         显示本帮助
+
+环境要求:
+  - 已 clone 本仓库（deploy 分支）
+  - 仓库根目录存在 .env（凭据；已被 gitignore，不会提交）
+  - pip install -r crawler/requirements.txt
+  - Chrome / Chromedriver（见 README 部署指引；Linux 默认
+    crawler/chrome-linux64/ 与 crawler/chromedriver-linux64/）
+  - push 到 GitHub 的凭据已配置（SSH key 或 token）
+"""
+
+import json
+import os
+import platform
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+from datetime import datetime
+
+from dotenv import load_dotenv
+
+# 让 `from crawler.platforms.base import beijing` 可用（与其他 scripts 一致）
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+from crawler.platforms.base import beijing  # noqa: E402
+
+try:
+    from croniter import croniter
+    from filelock import FileLock, Timeout
+except ImportError as e:
+    print(
+        f"[daemon] Missing dependency {e.name}. "
+        "Run: pip install -r crawler/requirements.txt",
+        file=sys.stderr,
+    )
+    sys.exit(1)
+
+# ---------------------------------------------------------------------------
+# 常量
+# ---------------------------------------------------------------------------
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+SCRIPT_DIR = os.path.join(REPO_ROOT, "crawler", "scripts")
+LOG_FILE = os.path.join(REPO_ROOT, "crawler", "daemon.log")
+STATE_FILE = os.path.join(REPO_ROOT, "crawler", "daemon-state.json")
+CONFIG_PATH = os.path.join(REPO_ROOT, "crawler", "config.json")
+DEPLOY_BRANCH = "deploy"
+LOCK_PATH = os.path.join(tempfile.gettempdir(), "training-archive-daemon.lock")
+POLL_INTERVAL = 30  # 主循环检查间隔（秒）
+
+# 任务名 → config.json scheduled 块键名（默认表达式与 config.example.json 一致）
+TASKS = ("fire", "sync", "incremental")
+DEFAULT_SCHEDULED = {
+    "fire": "*/5 * * * *",        # 闹钟检查
+    "sync": "0 */3 * * *",        # 订阅同步
+    "incremental": "0 4 * * *",   # 提交增量（每日）
+}
+
+# systemd / launchd 服务名
+UNIT_NAME = "training-archive-daemon"
+PLIST_LABEL = "com.trainingarchive.daemon"
+SCHTASKS_NAME = "TrainingArchiveDaemon"
+
+
+# ---------------------------------------------------------------------------
+# 日志
+# ---------------------------------------------------------------------------
+def log(msg):
+    """带时间戳写入 daemon.log 并打印到 stdout（服务日志/终端可见）。"""
+    line = f"[{datetime.now(beijing).strftime('%Y-%m-%d %H:%M:%S')}] {msg}"
+    print(line)
+    try:
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(line + "\n")
+    except OSError:
+        pass
+
+
+def log_raw(text):
+    """子进程原始输出：原样写入日志文件并打印（不带时间戳）。"""
+    text = text.rstrip("\n")
+    if not text:
+        return
+    print(text)
+    try:
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(text + "\n")
+    except OSError:
+        pass
+
+
+# ---------------------------------------------------------------------------
+# 子进程 / git 工具
+# ---------------------------------------------------------------------------
+def run_py(script, *args, capture=False):
+    """运行 crawler/scripts/ 下的脚本（用当前解释器，保证依赖一致）。
+
+    capture=True 时返回 subprocess.CompletedProcess（不写日志，用于 due 等轻量查询）。
+    默认继承 stdout/stderr，并把输出原样追加到 daemon.log。
+    """
+    cmd = [sys.executable, os.path.join(SCRIPT_DIR, script), *args]
+    if capture:
+        return subprocess.run(cmd, text=True, capture_output=True)
+    log("$ " + " ".join(cmd))
+    proc = subprocess.run(cmd, text=True, capture_output=True)
+    if proc.stdout:
+        log_raw(proc.stdout)
+    if proc.stderr:
+        log_raw(proc.stderr)
+    return proc
+
+
+def git(*args, check=True):
+    return subprocess.run(["git", *args], text=True, capture_output=True, check=check)
+
+
+def setup_env():
+    """加载根目录 .env（cron/服务环境不继承 shell 环境变量）。"""
+    env_file = os.path.join(REPO_ROOT, ".env")
+    if os.path.exists(env_file):
+        load_dotenv(env_file)
+    else:
+        log("[WARN] .env not found; platform logins may fail.")
+
+
+def ensure_deploy_branch():
+    """切到 deploy 分支并 pull（与 server-task.sh 一致；pull 失败不阻断）。"""
+    os.chdir(REPO_ROOT)
+    r = git("rev-parse", "--verify", DEPLOY_BRANCH, check=False)
+    if r.returncode != 0:
+        log(f"Branch '{DEPLOY_BRANCH}' not found. Create it first (e.g. from master).")
+        raise SystemExit(1)
+    git("checkout", DEPLOY_BRANCH, check=False)
+    git("pull", "--ff-only", "origin", DEPLOY_BRANCH, check=False)
+
+
+def commit_and_push():
+    """提交并推送——仅当 contests/ 有实质更新时。
+
+    无实质更新（contests/ 未变化）时不提交不推送：爬虫状态与日志
+    （last-update.json、staged-submissions.json、log.json、daemon.log 等）
+    已在本地文件系统持久化（deploy 分支工作区），无需同步远端。
+    仅 contests/ 变化（新比赛 / 新提交 / 新报告）才发 [contests-changed]
+    提交，触发 deploy.yml 部署。
+    """
+    git("config", "user.name", "server-task[bot]", check=False)
+    git("config", "user.email", "server-task[bot]@users.noreply.github.com", check=False)
+    shutil.copy(os.path.join(REPO_ROOT, ".gitignore.deploy"), os.path.join(REPO_ROOT, ".gitignore"))
+    git("add", ".gitignore", "crawler", "contests", check=False)
+    git("reset", "HEAD", "crawler/chromedriver-linux64/chromedriver", check=False)
+
+    # core.quotepath=false：比赛名含中文时 git 默认转义非 ASCII 路径，
+    # grep '^contests/' 会误判；统一用 quotepath=false 取文件名判断。
+    r = git("-c", "core.quotepath=false", "diff", "--cached", "--name-only", check=False)
+    changed = [line for line in r.stdout.splitlines() if line.startswith("contests/")]
+    if not changed:
+        log("No contest data changes; skip commit/push (crawler state persists locally).")
+        return
+
+    git("commit", "-m", "[auto] [contests-changed] Update contest and submission data")
+    git("push", "origin", DEPLOY_BRANCH)
+    log(f"Pushed to {DEPLOY_BRANCH}.")
+
+
+# ---------------------------------------------------------------------------
+# 文件锁（跨平台，替代 flock -n）
+# ---------------------------------------------------------------------------
+def with_lock(fn):
+    """非阻塞获取锁；拿不到则记日志跳过（与 server-task.sh flock -n 一致）。"""
+    lock = FileLock(LOCK_PATH)
+    try:
+        lock.acquire(timeout=0)
+    except Timeout:
+        log("Another task is already running, skip this run.")
+        return 1
+    try:
+        return fn()
+    finally:
+        lock.release()
+
+
+# ---------------------------------------------------------------------------
+# 任务：incremental / sync / fire（逻辑与 server-task.sh 一一对应）
+# ---------------------------------------------------------------------------
+def _deps_ok():
+    """Python 依赖检查（与 server-task.sh 一致）。"""
+    try:
+        import undetected_chromedriver  # noqa: F401
+        return True
+    except ImportError:
+        log("Missing Python dependencies. Run: pip install -r crawler/requirements.txt")
+        return False
+
+
+def cmd_incremental():
+    """提交增量同步：scheduled_task.py --submissions-only + 报告 + 提交推送。"""
+    def _run():
+        log("=== incremental (--submissions-only) ===")
+        ensure_deploy_branch()
+        setup_env()
+        if not _deps_ok():
+            return 1
+        # 与 action/server-task 一致：增量同步失败即中止，不提交推送
+        p = run_py("scheduled_task.py", "--submissions-only")
+        if p.returncode != 0:
+            log("[WARN] scheduled_task --submissions-only failed; aborting before commit.")
+            return p.returncode
+        # 复盘报告：无新建比赛时 --from-crawl 自然跳过；失败仅告警
+        p = run_py("report.py", "--from-crawl")
+        if p.returncode != 0:
+            log("[WARN] report.py failed (skipped review generation).")
+        run_py("clean-log.py", capture=True)
+        commit_and_push()
+        log("=== done (incremental) ===")
+        return 0
+
+    return with_lock(_run)
+
+
+def _parse_plan_output(plan_out):
+    """解析 alarm.py plan 的 tab 分隔输出为 (history, expired, retry) 链接列表。"""
+    history, expired, retry = [], [], []
+    for line in plan_out.splitlines():
+        if line.startswith("HISTORY\t"):
+            history.append(line.split("\t", 1)[1])
+        elif line.startswith("EXPIRED\t"):
+            expired.append(line.split("\t", 1)[1])
+        elif line.startswith("RETRY\t"):
+            retry.append(line.split("\t", 1)[1])
+    return history, expired, retry
+
+
+def cmd_sync():
+    """同步订阅：plan 分类 → 爬取 HISTORY/EXPIRED/RETRY → 报告 → mark archived。
+
+    爬取失败 → 本次涉及的全部链接 mark --failed（下次 sync 重试）。
+    """
+    def _run():
+        log("=== sync ===")
+        ensure_deploy_branch()
+        setup_env()
+        if not _deps_ok():
+            return 1
+
+        # 1. plan 分类订阅并写闹钟表（同时输出 WARNING 提示 failed 重试）
+        proc = run_py("alarm.py", "plan", capture=True)
+        plan_out = proc.stdout
+        summary = [l for l in plan_out.splitlines() if l.startswith("[alarm] plan:")]
+        warn = [l for l in plan_out.splitlines() if l.startswith("[alarm] WARNING:")]
+        for l in summary + warn:
+            log(l)
+        history_links, expired_links, retry_links = _parse_plan_output(plan_out)
+        all_links = list(dict.fromkeys(history_links + expired_links + retry_links))
+
+        if not all_links:
+            log("No history/expired/retry links; nothing to crawl.")
+            log("=== sync done ===")
+            return 0
+
+        # 2. 爬取（失败：本次涉及的全部链接 mark --failed，下次 sync 重试）
+        links_csv = ",".join(all_links)
+        log(f"Crawling: {links_csv}")
+        p = run_py("scheduled_task.py", "--contests-only", "--links", links_csv)
+        if p.returncode != 0:
+            log("Sync crawl failed; marking involved alarms as failed.")
+            for link in all_links:
+                run_py("alarm.py", "mark", link, "--failed", capture=True)
+            return p.returncode
+
+        # 3. 复盘报告：只对过期比赛和失败重试生成（历史比赛不生成）
+        report_links = list(dict.fromkeys(expired_links + retry_links))
+        if report_links:
+            log("Generating reviews for expired/retried contests.")
+            p = run_py("report.py", "--from-crawl", "--links", ",".join(report_links))
+            if p.returncode != 0:
+                log("[WARN] report.py failed (skipped review generation).")
+
+        # 4. 标记已处理完（archived；保留历史，plan 下次跳过）
+        for link in all_links:
+            run_py("alarm.py", "mark", link, "--archived", capture=True)
+
+        run_py("clean-log.py", capture=True)
+        commit_and_push()
+        log("=== sync done ===")
+        return 0
+
+    return with_lock(_run)
+
+
+def _due_links():
+    """alarm.py due 输出 DUE\t<link>；无到期闹钟返回空列表（安静，不写日志）。"""
+    proc = run_py("alarm.py", "due", capture=True)
+    links = []
+    for line in proc.stdout.splitlines():
+        if line.startswith("DUE\t"):
+            links.append(line.split("\t", 1)[1])
+    return links
+
+
+def cmd_fire():
+    """闹钟到点触发：due 无到期安静退出；有则爬取 + 报告 + mark archived。
+
+    爬取失败 → mark --failed（fire 只查 planned，失败后不再自动重试，
+    靠下次 sync 重试一次）。
+    """
+    # 先读闹钟表（轻量）；无到期则安静退出（不写日志、不碰 git）
+    due_links = _due_links()
+    if not due_links:
+        return 0
+
+    def _run():
+        log("=== fire ===")
+        ensure_deploy_branch()
+        setup_env()
+        if not _deps_ok():
+            return 1
+
+        links_csv = ",".join(due_links)
+        log(f"Fire due: {links_csv}")
+        p = run_py("scheduled_task.py", "--contests-only", "--links", links_csv)
+        if p.returncode != 0:
+            log("Fire crawl failed; marking due alarms as failed.")
+            for link in due_links:
+                run_py("alarm.py", "mark", link, "--failed", capture=True)
+            return p.returncode
+
+        # 到期比赛（未来比赛）都要生成报告；失败仅告警
+        p = run_py("report.py", "--from-crawl")
+        if p.returncode != 0:
+            log("[WARN] report.py failed (skipped review generation).")
+
+        for link in due_links:
+            run_py("alarm.py", "mark", link, "--archived", capture=True)
+
+        run_py("clean-log.py", capture=True)
+        commit_and_push()
+        log("=== fire done ===")
+        return 0
+
+    return with_lock(_run)
+
+
+# ---------------------------------------------------------------------------
+# 主循环（run）
+# ---------------------------------------------------------------------------
+def load_scheduled():
+    """读取 config.json scheduled 块（缺失/非法回落默认值），返回 {task: expr}。"""
+    scheduled = dict(DEFAULT_SCHEDULED)
+    if os.path.exists(CONFIG_PATH):
+        try:
+            with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+                cfg = json.load(f)
+            block = cfg.get("scheduled", {})
+            for task in TASKS:
+                expr = block.get(task)
+                if expr and croniter.is_valid(expr):
+                    scheduled[task] = expr
+                elif expr:
+                    log(f"[run] invalid cron for {task}: {expr!r}; using default {scheduled[task]}")
+        except Exception as e:
+            log(f"[run] failed to parse {CONFIG_PATH}: {e}; using defaults")
+    return scheduled
+
+
+def load_state():
+    """读取 daemon-state.json（运行时状态，gitignore）。缺失/损坏返回空 dict。"""
+    if not os.path.exists(STATE_FILE):
+        return {"last_run": {}}
+    try:
+        with open(STATE_FILE, "r", encoding="utf-8") as f:
+            state = json.load(f)
+        if not isinstance(state, dict):
+            return {"last_run": {}}
+        state.setdefault("last_run", {})
+        return state
+    except Exception as e:
+        log(f"[run] failed to read {STATE_FILE}: {e}; starting fresh.")
+        return {"last_run": {}}
+
+
+def save_state(state):
+    with open(STATE_FILE, "w", encoding="utf-8") as f:
+        json.dump(state, f, ensure_ascii=False, indent=2)
+
+
+def _is_due(task, expr, now, state):
+    """任务是否到期：首次运行视为到期（启动即跑一次）；此后按 cron 表达式判断。
+
+    睡眠恢复后：从 last_run 计算下一次，若 <= now 则到期（只补跑一次，
+    不追赶历史——执行后 last_run 更新为 now，下次计算自然跳到未来）。
+    """
+    last = state.get("last_run", {}).get(task)
+    if not last:
+        return True
+    try:
+        dt = datetime.fromisoformat(last)
+        nxt = croniter(expr, dt).get_next(datetime)
+    except (ValueError, KeyError) as e:
+        log(f"[run] bad state/last_run for {task}: {e}; treating as due.")
+        return True
+    return nxt <= now
+
+
+def cmd_run():
+    """主循环：每 POLL_INTERVAL 秒检查三个任务是否到期，到期则执行。"""
+    log("=== daemon run started ===")
+    log(f"Lock: {LOCK_PATH}")
+    scheduled = load_scheduled()
+    log("[run] scheduled: " + ", ".join(f"{k}={v}" for k, v in scheduled.items()))
+    try:
+        while True:
+            now = datetime.now(beijing)
+            state = load_state()
+            for task in TASKS:
+                if not _is_due(task, scheduled[task], now, state):
+                    continue
+                log(f"[run] task due: {task}")
+                try:
+                    if task == "fire":
+                        cmd_fire()
+                    elif task == "sync":
+                        cmd_sync()
+                    elif task == "incremental":
+                        cmd_incremental()
+                except SystemExit as e:
+                    # 任务失败（returncode 非零）不应杀死 daemon；记日志继续
+                    log(f"[run] task {task} exited with code {e.code}")
+                except Exception as e:
+                    log(f"[run] task {task} failed: {e}")
+                # 无论成败都推进 last_run：下次触发按 cron 排程（失败的任务
+                # 由 sync 兜底重试，与 server-task.sh 语义一致）
+                state = load_state()
+                state["last_run"][task] = now.isoformat()
+                save_state(state)
+            time.sleep(POLL_INTERVAL)
+    except KeyboardInterrupt:
+        log("=== daemon stopped (Ctrl+C) ===")
+
+
+# ---------------------------------------------------------------------------
+# 开机自启注册（install / uninstall）
+# ---------------------------------------------------------------------------
+def _system():
+    s = platform.system()
+    return {"Linux": "linux", "Darwin": "macos", "Windows": "windows"}.get(s, s.lower())
+
+
+def _service_command():
+    """安装为服务时拉起 run 的完整命令（[python, script, run]）。"""
+    return [sys.executable, os.path.join(REPO_ROOT, "crawler", "scripts", "daemon.py"), "run"]
+
+
+def install_linux():
+    """优先 systemd user unit；无 systemd 时回落 cron @reboot。"""
+    systemd_dir = os.path.expanduser("~/.config/systemd/user")
+    if shutil.which("systemctl") and (os.path.isdir(systemd_dir) or True):
+        os.makedirs(systemd_dir, exist_ok=True)
+        unit = os.path.join(systemd_dir, f"{UNIT_NAME}.service")
+        py, script, run = _service_command()
+        content = f"""[Unit]
+Description=Training Archive Crawler Daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart={py} {script} {run}
+WorkingDirectory={REPO_ROOT}
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target
+"""
+        with open(unit, "w", encoding="utf-8") as f:
+            f.write(content)
+        subprocess.run(["systemctl", "--user", "daemon-reload"], check=False)
+        subprocess.run(
+            ["systemctl", "--user", "enable", "--now", f"{UNIT_NAME}.service"],
+            check=False,
+        )
+        log(f"Installed systemd user unit: {unit}")
+        log("Start at login: systemctl --user enable --now training-archive-daemon.service")
+        return
+    # fallback: cron @reboot
+    entry = f"@reboot cd {REPO_ROOT} && {' '.join(_service_command())} >> {LOG_FILE} 2>&1"
+    crontab = subprocess.run(["crontab", "-l"], text=True, capture_output=True)
+    lines = [l for l in crontab.stdout.splitlines() if UNIT_NAME not in l]
+    lines.append(entry)
+    subprocess.run(["crontab", "-"], input="\n".join(lines) + "\n", text=True)
+    log("Installed cron @reboot (systemd not available).")
+
+
+def install_macos():
+    """launchd LaunchAgent：登录时启动 + KeepAlive（崩溃自动拉起）。"""
+    agents_dir = os.path.expanduser("~/Library/LaunchAgents")
+    os.makedirs(agents_dir, exist_ok=True)
+    plist = os.path.join(agents_dir, f"{PLIST_LABEL}.plist")
+    py, script, run = _service_command()
+    content = f"""<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>{PLIST_LABEL}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{py}</string>
+        <string>{script}</string>
+        <string>{run}</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>{REPO_ROOT}</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>{LOG_FILE}</string>
+    <key>StandardErrorPath</key>
+    <string>{LOG_FILE}</string>
+</dict>
+</plist>
+"""
+    with open(plist, "w", encoding="utf-8") as f:
+        f.write(content)
+    subprocess.run(["launchctl", "unload", plist], check=False)
+    subprocess.run(["launchctl", "load", plist], check=False)
+    log(f"Installed launchd agent: {plist}")
+
+
+def install_windows():
+    """schtasks ONLOGON：登录时启动（pythonw 无控制台窗口）。"""
+    python = sys.executable
+    pythonw = python.replace("python.exe", "pythonw.exe")
+    if os.path.exists(pythonw):
+        python = pythonw
+    script = os.path.join(REPO_ROOT, "crawler", "scripts", "daemon.py")
+    # schtasks 的 TR 参数引号规则：命令本身和每个含空格的参数都要包引号
+    tr = f'"{python}" "{script}" run'
+    r = subprocess.run(
+        ["schtasks", "/Create", "/F", "/TN", SCHTASKS_NAME, "/SC", "ONLOGON",
+         "/TR", tr, "/RL", "LIMITED"],
+        text=True, capture_output=True,
+    )
+    if r.returncode != 0:
+        log(f"[WARN] schtasks failed: {r.stdout.strip()} {r.stderr.strip()}")
+        return 1
+    log(f"Installed scheduled task: {SCHTASKS_NAME} (ONLOGON)")
+
+
+def cmd_install():
+    """按 OS 注册开机自启（默认「登录时启动」；服务器可手动改为系统级服务）。"""
+    s = _system()
+    if s == "linux":
+        install_linux()
+    elif s == "macos":
+        install_macos()
+    elif s == "windows":
+        install_windows()
+    else:
+        log(f"[WARN] unsupported platform: {platform.system()}; manual setup required.")
+        return 1
+    log("Install done. Run 'daemon.py run' once now to verify, or start via the service.")
+    return 0
+
+
+def uninstall_linux():
+    unit = os.path.expanduser(f"~/.config/systemd/user/{UNIT_NAME}.service")
+    if os.path.exists(unit):
+        subprocess.run(
+            ["systemctl", "--user", "disable", "--now", f"{UNIT_NAME}.service"], check=False
+        )
+        os.remove(unit)
+        subprocess.run(["systemctl", "--user", "daemon-reload"], check=False)
+        log(f"Removed systemd user unit: {unit}")
+        return
+    # fallback cron
+    crontab = subprocess.run(["crontab", "-l"], text=True, capture_output=True)
+    lines = [l for l in crontab.stdout.splitlines() if UNIT_NAME not in l]
+    subprocess.run(["crontab", "-"], input="\n".join(lines) + "\n", text=True)
+    log("Removed cron @reboot entry.")
+
+
+def uninstall_macos():
+    plist = os.path.expanduser(f"~/Library/LaunchAgents/{PLIST_LABEL}.plist")
+    if os.path.exists(plist):
+        subprocess.run(["launchctl", "unload", plist], check=False)
+        os.remove(plist)
+        log(f"Removed launchd agent: {plist}")
+
+
+def uninstall_windows():
+    subprocess.run(["schtasks", "/Delete", "/F", "/TN", SCHTASKS_NAME], check=False)
+    log(f"Removed scheduled task: {SCHTASKS_NAME}")
+
+
+def cmd_uninstall():
+    s = _system()
+    if s == "linux":
+        uninstall_linux()
+    elif s == "macos":
+        uninstall_macos()
+    elif s == "windows":
+        uninstall_windows()
+    else:
+        log(f"[WARN] unsupported platform: {platform.system()}")
+        return 1
+    log("Uninstall done.")
+    return 0
+
+
+# ---------------------------------------------------------------------------
+# status / log
+# ---------------------------------------------------------------------------
+def _autostart_info():
+    s = _system()
+    if s == "linux":
+        unit = os.path.expanduser(f"~/.config/systemd/user/{UNIT_NAME}.service")
+        if os.path.exists(unit):
+            r = subprocess.run(["systemctl", "--user", "is-enabled", f"{UNIT_NAME}.service"],
+                               text=True, capture_output=True)
+            return f"systemd user unit: {unit} ({r.stdout.strip()})"
+        crontab = subprocess.run(["crontab", "-l"], text=True, capture_output=True)
+        if UNIT_NAME in crontab.stdout:
+            return "cron @reboot"
+        return "(not installed)"
+    if s == "macos":
+        plist = os.path.expanduser(f"~/Library/LaunchAgents/{PLIST_LABEL}.plist")
+        return f"launchd agent: {plist}" if os.path.exists(plist) else "(not installed)"
+    if s == "windows":
+        r = subprocess.run(["schtasks", "/Query", "/TN", SCHTASKS_NAME],
+                           text=True, capture_output=True)
+        return f"schtasks: {SCHTASKS_NAME}" if r.returncode == 0 else "(not installed)"
+    return "(unsupported platform)"
+
+
+def cmd_status():
+    print("== scheduled (config.json) ==")
+    for k, v in load_scheduled().items():
+        print(f"  {k}: {v}")
+    print("\n== state ==")
+    state = load_state()
+    print(f"  last_run: {state.get('last_run') or '(none yet; first run will execute all)'}")
+    print(f"  state file: {STATE_FILE}")
+    print("\n== autostart ==")
+    print(f"  {_autostart_info()}")
+    print("\n== alarms ==")
+    proc = run_py("alarm.py", "list", capture=True)
+    print(proc.stdout or "(no alarms)")
+    print("\n== git ==")
+    r = git("branch", "--show-current", check=False)
+    print(f"  branch: {r.stdout.strip()}")
+    r = git("status", "-sb", check=False)
+    print("  " + "\n  ".join(r.stdout.splitlines()[:3]))
+    print("\n== last runs ==")
+    print_cmd_log(20)
+
+
+def print_cmd_log(n):
+    if os.path.exists(LOG_FILE):
+        with open(LOG_FILE, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+        print("".join(lines[-n:]), end="")
+    else:
+        print("(no log yet)")
+
+
+def cmd_log(n=50):
+    print_cmd_log(n)
+
+
+def cmd_help():
+    print(__doc__)
+
+
+# ---------------------------------------------------------------------------
+def main():
+    args = sys.argv[1:]
+    cmd = args[0] if args else ""
+    try:
+        if cmd in ("--help", "-h", ""):
+            cmd_help()
+        elif cmd == "run":
+            cmd_run()
+        elif cmd == "fire":
+            sys.exit(cmd_fire())
+        elif cmd == "sync":
+            sys.exit(cmd_sync())
+        elif cmd == "incremental":
+            sys.exit(cmd_incremental())
+        elif cmd == "install":
+            sys.exit(cmd_install())
+        elif cmd == "uninstall":
+            sys.exit(cmd_uninstall())
+        elif cmd == "status":
+            cmd_status()
+        elif cmd == "log":
+            n = int(args[1]) if len(args) > 1 and args[1].isdigit() else 50
+            cmd_log(n)
+        else:
+            print(f"unknown command: {cmd}", file=sys.stderr)
+            cmd_help()
+            sys.exit(1)
+    except KeyboardInterrupt:
+        log("interrupted.")
+        sys.exit(130)
+
+
+if __name__ == "__main__":
+    main()

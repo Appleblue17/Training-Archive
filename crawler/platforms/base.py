@@ -8,6 +8,7 @@ import time
 from datetime import datetime, timedelta, timezone
 
 import os
+import sys
 import undetected_chromedriver as uc
 
 # 北京时间（UTC+8）。所有时间统一使用该时区。
@@ -422,17 +423,42 @@ class BaseCrawler:
             json.dump(lists, f, indent=2)
             f.truncate()
 
+    def _resolve_driver_paths(self):
+        """按平台解析 Chrome 与 chromedriver 路径。
+
+        环境变量（CHROME_BINARY / CHROMEDRIVER_PATH）优先，缺省按平台回落：
+        - Linux:   crawler/chrome-linux64/chrome + crawler/chromedriver-linux64/chromedriver
+        - Windows: crawler/chrome-win64/chrome.exe + crawler/chromedriver-win64/chromedriver.exe
+        - macOS:   系统安装的 Google Chrome + crawler/chromedriver-mac*/chromedriver
+          （glob 匹配版本目录；未找到时返回 None，交给 undetected_chromedriver 自动查找）
+        """
+        sys_platform = sys.platform
+        if sys_platform.startswith("win"):
+            chrome_default = os.path.abspath("crawler/chrome-win64/chrome.exe")
+            driver_default = os.path.abspath(
+                "crawler/chromedriver-win64/chromedriver.exe"
+            )
+        elif sys_platform == "darwin":
+            chrome_default = (
+                "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            )
+            matches = sorted(glob.glob("crawler/chromedriver-mac*/chromedriver"))
+            driver_default = os.path.abspath(matches[0]) if matches else None
+        else:  # linux 及未知平台，保持 v0.2.x 约定
+            chrome_default = os.path.abspath("crawler/chrome-linux64/chrome")
+            driver_default = os.path.abspath(
+                "crawler/chromedriver-linux64/chromedriver"
+            )
+
+        chrome_binary = os.environ.get("CHROME_BINARY") or chrome_default
+        chromedriver_path = os.environ.get("CHROMEDRIVER_PATH") or driver_default
+        return chrome_binary, chromedriver_path
+
     def init_driver(self):
         options = uc.ChromeOptions()
-        if os.environ.get("GITHUB_ACTIONS"):
-            # On GitHub Actions, use system chromium/chromedriver
-            options.binary_location = os.environ.get("CHROME_BINARY")
-        else:
-            # Specify the path to the Chromium executable
-            options.binary_location = os.path.abspath("crawler/chrome-linux64/chrome")
-        chromedriver_path = os.environ.get(
-            "CHROMEDRIVER_PATH"
-        ) or os.path.abspath("crawler/chromedriver-linux64/chromedriver")
+        chrome_binary, chromedriver_path = self._resolve_driver_paths()
+        if chrome_binary:
+            options.binary_location = chrome_binary
 
         # Set preferences
         prefs = {
@@ -445,10 +471,11 @@ class BaseCrawler:
         options.add_experimental_option("prefs", prefs)
 
         options.add_argument("--headless")  # Uncomment for headless mode
+        driver_kwargs = {"options": options}
+        if chromedriver_path:
+            driver_kwargs["driver_executable_path"] = chromedriver_path
         try:
-            self.driver = uc.Chrome(
-                options=options, driver_executable_path=chromedriver_path
-            )
+            self.driver = uc.Chrome(**driver_kwargs)
         except Exception as e:
             self.log("fatal", f"Failed to start Chromium: {e}")
 

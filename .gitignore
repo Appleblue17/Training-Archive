@@ -62,15 +62,14 @@ __pycache__/
 # crawler
 crawler/chrome-linux64
 crawler/chromedriver-linux64
-# 日志纳入版本控制（deploy 分支云端可查看 /log 页面；clean-log.py 控制大小）
-# crawler/global.log.json
-# crawler/platforms/*/log.json
+crawler/global.log.json
 crawler/new-contests.json
 crawler/alarms.json
-crawler/prompts/prompt.template.md
-crawler/prompts/qq-share.template.md
+crawler/platforms/*/log.json
 crawler/platforms/*/input_*.json
 crawler/server-task.log
+crawler/daemon.log
+crawler/daemon-state.json
 
 # test script
 *test.sh

@@ -10,46 +10,44 @@
 
 | 版本 | 部署形态 | 适用场景 |
 |------|----------|----------|
-| **静态版（v0.2.0）** | GitHub Pages（`output: "export"`，现状不变） | 公开只读内容，零运维 |
-| **动态版（v0.3.0）** | 服务器 / Docker（同代码库加 API routes 或独立 service） | 账号、个人数据、正式资源保护、实时能力 |
+| **静态版（v0.2.x → v0.3.0）** | GitHub Pages（`output: "export"`） | 公开只读内容 |
+| **动态版（v0.4.0）** | 服务器 / Docker（同代码库加 API routes 或独立 service） | 账号、个人数据、正式资源保护、实时能力 |
 
 构建开关建议：环境变量（如 `NEXT_PUBLIC_DEPLOY_MODE=static|dynamic`）区分构建模式。数据流上保留「文件为事实来源」：爬虫不变，动态版在服务端把 `contests/` 数据灌入 DB 供 API 查询。
 
-### 1.1 三种部署方式（2026-08-10 确认）
+### 1.1 部署方式演进（2026-08-12 确认 v0.3.0 格局）
 
-静态版（v0.2.0）有**两种部署方式**，差异只在「自动任务跑在哪 + 产物如何触发部署」，**爬虫/报告脚本完全共用**；动态版（v0.3.x）单列：
+**v0.2.x**：静态版有两种部署方式（方式一 Actions 轮询 / 方式二自建服务器 cron + 闹钟）。
+**v0.3.0 起**：静态版统一为**一种部署方式**——自托管爬虫（跨平台守护进程）+ GitHub Pages 部署；删除方式一（Actions 爬虫链路）。动态版顺延 **v0.4.0**。
 
 | # | 部署形态 | 自动任务（爬取/总结） | 版本 | 操作 |
 |---|----------|----------------------|------|------|
-| 1 | GitHub Pages（静态导出） | **GitHub Actions**（cron 定时） | v0.2.0 | 开启两个 workflow 的 `schedule` 即完成，零运维 |
-| 2 | GitHub Pages（静态导出） | **自建服务器**（cron 定时） | v0.2.0 | 关闭 workflow 的 `schedule`，服务器 cron 跑同一套脚本，产物 push 回 `deploy` 分支触发部署 |
-| 3 | 自建服务器（Next.js 动态） | 服务器内 APScheduler / `at`（精确到分钟） | v0.3.x | roadmap §3，需 API routes / Docker |
+| 1 | GitHub Pages（静态导出） | **自托管守护进程**（`crawler/scripts/daemon.py`，Win / Mac / Linux） | v0.3.0 | `daemon.py install` 注册自启 + `run` 主循环；产物 push 回 `deploy` 分支触发部署 |
+| 2 | 自建服务器（Next.js 动态） | 服务器内 APScheduler / `at`（精确到分钟） | v0.4.0 | 见 §3，需 API routes / Docker |
 
-#### 方案 1：GitHub Actions 自动任务（当前默认）
-- **开启定时**（取消注释）：
-  - `.github/workflows/crawler-scheduled.yml`：`schedule` cron `*/30 * * * *`（`--contests-only`：查订阅/新建比赛）
-  - `.github/workflows/crawler.yml`：`schedule` cron `0 20 * * *`（`--submissions-only`：每日提交增量同步）
-- 爬虫跑完带 `[contests-changed]` 标记 push 到 `deploy` 分支 → `deploy.yml`（`workflow_run` 监听两个 crawler workflow）自动构建并部署 Pages。
-- 优点：完全托管云端、零运维；缺点：Actions 无原生单次调度，预订比赛用轮询模拟（延迟 15~30 分钟）。
+> **删除方式一的理由（2026-08-12 确认）**：Actions 轮询无法表达「比赛结束精确触发」的语义——方式一 `--contests-only` 在比赛**开始**时建目录回填提交，但报告只对**已结束**比赛生成，导致预订的未来比赛在轮询下报告永远不自动生成（目录已存在后跳过）；且频繁触发 Action 不经济。统一为守护进程后，闹钟 `due`（`fire_at <= now`）天然表达精确触发。代价是零运维入口消失，fork 使用者需自备运行环境（服务器或个人电脑）。
 
-#### 方案 2：自建服务器跑脚本
-- **关闭定时**（保留 `workflow_dispatch` 手动触发即可）。
-- 提供一键管理脚本 **`crawler/server-task.sh`**（复刻 Action 完整流程：pull → 爬取 → 报告 → 清理 → 提交推送）：
+#### 方案 1（唯一，v0.3.0 起）：自托管守护进程 + GitHub Pages 部署
+
+- 提供跨平台守护进程 **`crawler/scripts/daemon.py`**（替代 v0.2.x 的 `crawler/server-task.sh`，逻辑搬迁：git 流程、闹钟分类、失败标记、提交规则原样保留）：
   ```bash
-  crawler/server-task.sh incremental   # 提交增量同步（scheduled_task.py --submissions-only；每日，cron 自动）
-  crawler/server-task.sh sync        # 同步订阅：历史/过期立即爬，未来比赛写入闹钟（cron 每 3 小时自动 + 可手动）
-  crawler/server-task.sh fire        # 闹钟到点触发（cron 每 5 分钟调用；无到期闹钟时安静退出）
-  crawler/server-task.sh install     # 安装 cron 定时（从 crawler/config.json 的 scheduled 块读取表达式）
-  crawler/server-task.sh uninstall   # 卸载 cron
-  crawler/server-task.sh status      # 查看 cron / 闹钟 / git / 最近日志
-  crawler/server-task.sh log [N]     # 查看运行日志
+  python3 crawler/scripts/daemon.py run            # 主循环（前台运行，按需安装为系统服务）
+  python3 crawler/scripts/daemon.py sync           # 同步订阅：历史/过期立即爬，未来比赛写入闹钟
+  python3 crawler/scripts/daemon.py fire           # 闹钟到点触发（无到期安静退出）
+  python3 crawler/scripts/daemon.py incremental    # 提交增量同步（--submissions-only）
+  python3 crawler/scripts/daemon.py install        # 注册开机自启（按 OS：systemd user / launchd / schtasks）
+  python3 crawler/scripts/daemon.py status         # 查看状态 / 日志
   ```
-- 脚本内建：`flock` 防并发、自动切到 `deploy` 分支 + `--ff-only` pull、加载根目录 `.env`（cron 环境不继承）、`TZ=Asia/Shanghai`、venv 自动探测、依赖检查、提交规则与 action 一致（`contests/` 变化带 `[contests-changed]` 标记）。
-- **预订比赛用闹钟机制（方式二专用）**：订阅条目可选填 `end_time`，`sync` 把未来比赛写入闹钟表 `crawler/alarms.json`（gitignore，不提交）并标记 `planned`，cron 每 5 分钟 `fire` 检查到点即爬取并立即生成报告（精确到 5 分钟，替代 30 分钟轮询）；不填 `end_time` 的历史比赛 `sync` 立即爬取归档不生成报告；已过 `end_time` 的过期比赛（闹钟失败后补漏）`sync` 立即爬取 + 报告。状态模型 `planned`/`pending`/`archived`/`failed`：**爬取失败即 `failed`（fire 不再自动重试），每 3 小时自动 `sync` 重试一次（成功 → `archived`，失败保持 `failed`）**；订阅修改 `end_time` 或删除条目时 `sync` 相应重新安排/剪除闹钟。方式一（Actions）不读取 `end_time`、保持轮询原样。
-- **部署触发**：`deploy.yml` 已加 `on: push: branches: [deploy]`——带 `[contests-changed]` 标记的提交才部署，仅状态变化的提交跳过（push 事件免日期校验；`workflow_dispatch` 仍无条件部署）。
-- 优点：调度精确到 5 分钟（闹钟替代轮询）、不消耗 Actions 配额；缺点：需自备服务器与 Chrome/Chromedriver 环境。
+- **主循环调度**：croniter 解析 `config.json` 的 `scheduled` 块（三个表达式，语义与 v0.2.x 完全一致）+ 闹钟表 `fire_at`；睡眠恢复后每个任务**只补跑一次**（不追赶历史，靠任务自身增量/幂等覆盖错过时段）。
+- **自启注册**：默认「登录时启动」（个人电脑语义）；服务器可选系统级服务（开机即跑）。
+- **预订比赛用闹钟机制**：订阅条目可选填 `end_time`（不填 = 历史比赛立即爬取归档不生成报告；已过 = 过期比赛立即爬取 + 报告），`sync` 把未来比赛写入闹钟表 `crawler/alarms.json`（gitignore，不提交）并标记 `planned`，到点 `fire` 爬取并立即生成报告。状态模型 `planned` / `pending` / `archived` / `failed`：**爬取失败即 `failed`（fire 不再自动重试），自动 `sync` 重试一次（成功 → `archived`，失败保持 `failed`）**；订阅修改 `end_time` 或删除条目时 `sync` 相应重新安排/剪除闹钟。
+- **部署触发**：`deploy.yml` 保留 `on: push: branches: [deploy]`——带 `[contests-changed]` 标记的提交才部署，仅状态变化的提交跳过（push 事件免日期校验；`workflow_dispatch` 仍无条件部署）。
+- **fork 部署参数化**：`next.config.ts` 的 `basePath` / `assetPrefix` 与 `global.ts` 的 `REPO_URL` / `BASE_URL` / `PREFIX_URL` 改为 env 可覆盖（默认值保持现状）。
+- 优点：调度精确（闹钟 + 到点执行，替代轮询）、不消耗 Actions 配额、支持个人电脑（Win / Mac / Linux）；缺点：需自备运行环境与 Chrome/Chromedriver（README 部署指引写明）。
 
-#### 方案 3：动态版（v0.3.x）
+> **历史方案（v0.3.0 已删除）**：方式一 GitHub Actions 自动任务（`crawler-scheduled.yml` + `crawler.yml` 定时轮询）。因无法精确表达「比赛结束触发」且频繁触发 Action 不经济，v0.3.0 起删除，静态版统一为方案 1。
+
+#### 方案 2（v0.4.0）：动态版
 - 自建服务器 / Docker，Next.js API routes 或独立 service。
 - 数据流：爬虫不变，服务端把 `contests/` 灌入 DB 供 API 查询；账号系统、个人收藏、正式资源保护见 §5 / §6。
 - 调度：APScheduler / `at` 按 `end_time` 排一次性任务，精确到分钟，跑完即删（见 §3）。
@@ -60,16 +58,16 @@
 
 | 功能 | 静态版 | 动态版 | 存储方案 / 说明 |
 |------|:---:|:---:|------|
-| 题目标签（队内共享） | ✅ | ✅ | 写入 `problem.json` 的 `tags` 字段，随 git 同步（用户已确认：不区分人、可持久化到文件跨设备同步） |
-| 个人收藏 / 稍后再做 | ⚠️ 仅 localStorage 降级 | ✅ | DB 按 user 存储（用户已确认：收藏/稍后再做应区分每个人） |
+| 题目标签（队内共享） | ✅ | ✅ | 写入 `problem.json` 的 `tags` 字段，随 git 同步（不区分人、可持久化到文件跨设备同步） |
+| 个人收藏 / 稍后再做 | ⚠️ 仅 localStorage 降级 | ✅ | DB 按 user 存储（区分每个人） |
 | 题目搜索 | ✅ | ✅ | 构建时生成 `search-index.json`（标题/比赛/标签/平台/日期），前端过滤 |
 | 资源保护 | ⚠️ 仅客户端加密（过渡，非正式） | ✅ | 动态版账号鉴权为正式方案；受保护资源不进公开仓库 |
 | Dashboard 统计 / 最近动态 | ✅ | ✅ | 构建时从 `solve_time`/`submit_time` 聚合写 JSON |
 | contribution 绿点图 | ✅ | ✅ | 纯 SVG/CSS，按提交/解决时间聚合 |
 | 「我的收藏 vs 队内收藏」 | ❌ | ✅ | 依赖账号系统 |
 | 账号系统 | ❌ | ✅ | GitHub OAuth + httpOnly session cookie |
-| 比赛复盘 + LLM 报告 | ✅（CI 预生成） | ✅（可按需重新生成） | 报告存为 `review.md` 进仓库 / DB |
-| 预订比赛 / 触发 | ✅（Actions 模拟一次性任务） | ✅（精确到分钟） | 见 §3 |
+| 比赛复盘 + LLM 报告 | ✅（守护进程预生成） | ✅（可按需重新生成） | 报告存为 `review.md` 进仓库 / DB |
+| 预订比赛 / 触发 | ✅（守护进程闹钟精确触发） | ✅（精确到分钟） | 见 §3 |
 | 订阅管理 UI | ❌（编辑 JSON 提交） | ✅（网站内操作） | 动态版加分项 |
 
 ---
@@ -81,9 +79,8 @@
 ### 预订比赛抓取 + 复盘（一次性任务）
 - 语义：某场**预订**的比赛结束后 → 抓取整场比赛数据 → 立即生成复盘报告。
 - 调度：
-  - 动态版：APScheduler / `at` 按 `end_time` 排一次性 job，**精确到分钟**，跑完即删。
-  - 静态版（GitHub Actions，方式一）：Actions 无原生单次调度，用 **cron 每 15~30 分钟轮询**「到点且未跑过的预订比赛」模拟一次性执行（平台限制，非设计上的轮询）。用户已确认可接受此延迟。
-  - 静态版（自建服务器，方式二）：订阅条目填 `end_time`（不填 = 历史比赛，`sync` 立即爬取归档不生成报告；已过 = 过期比赛，立即爬取 + 报告），`sync` 把未来比赛写入闹钟表，cron 每 5 分钟 `fire` 到点爬取 + 立即生成报告，**精确到 5 分钟**；状态模型 `planned`/`pending`/`archived`/`failed`，**失败即 `failed`（fire 不再自动重试），每 3 小时自动 `sync` 重试一次（成功 → `archived`，失败保持 `failed`）**。方式一（Actions）不读取 `end_time` 字段。
+  - 动态版（v0.4.0）：APScheduler / `at` 按 `end_time` 排一次性 job，**精确到分钟**，跑完即删。
+  - 静态版（v0.3.0 起唯一方式）：订阅条目填 `end_time`（不填 = 历史比赛，`sync` 立即爬取归档不生成报告；已过 = 过期比赛，立即爬取 + 报告），`sync` 把未来比赛写入闹钟表，守护进程按 `scheduled` 块间隔检查、`fire` 到点爬取 + 立即生成报告；状态模型 `planned`/`pending`/`archived`/`failed`，**失败即 `failed`（fire 不再自动重试），自动 `sync` 重试一次（成功 → `archived`，失败保持 `failed`）**。
 - 幂等：每场比赛记录「已抓取 / 已生成报告」状态标记，重跑只补未完成的。
 - 只抓该场次数据，与提交增量同步无耦合。
 
@@ -92,8 +89,8 @@
 - 沿用现有 `last-update.json` 增量机制。
 
 ### 订阅配置
-- 统一 `crawler/subscriptions/` 目录（已实现，取代单文件与三平台零散的 `input_contests.json`），每个 `.json` 文件一份订阅列表（文件名随意，按 `link` 去重合并），模板 `crawler/subscriptions/subscriptions.example.json`。
-- 条目含 `link` / `platform` / `enabled`（订阅级开关，缺省启用）；可选填 `end_time`（比赛结束时间，仅方式二闹钟机制读取）。
+- 统一 `crawler/subscriptions/` 目录（每个 `.json` 文件一份订阅列表，文件名随意，按 `link` 去重合并），模板 `crawler/subscriptions/subscriptions.example.json`。
+- 条目含 `link` / `platform` / `enabled`（订阅级开关，缺省启用）；可选填 `end_time`（比赛结束时间，仅静态版守护进程闹钟机制读取）。
 - 初期从空模板开始，链接由用户填充。
 
 ---
@@ -109,7 +106,7 @@
 ### 报告生成（用户已确认）
 - 读取 `submissions.json`，**不做任何预处理**，原始提交序列（含代码与时间戳）直接送 LLM 分析。
 - 每场一份报告，输出 `contests/<date> <name>/review.md`。
-- LLM：**DeepSeek API**，OpenAI 兼容接口（`base_url=https://api.deepseek.com`，模型 `deepseek-chat`），密钥放 CI secret（静态版）/ 服务器环境变量（动态版）。token 用量很小，不考虑成本。
+- LLM：**DeepSeek API**，OpenAI 兼容接口（`base_url=https://api.deepseek.com`，模型 `deepseek-chat`），密钥放 CI secret（静态版）/ 服务器环境变量（动态版）。
 - 已生成则跳过（`review.md` 存在即跳过），避免重复消耗。
 
 ---
@@ -127,7 +124,7 @@
 
 - **静态版**：客户端加密（口令派生密钥 PBKDF2 → AES-GCM，`.enc` 文件随仓库发布，浏览器 WebCrypto 解密）只能作为**过渡方案**，无法区分访问者、无法单独吊销；元数据（竞赛名/日期）默认仍公开。
 - **动态版（正式）**：账号鉴权，受保护资源**不进公开仓库**。
-- **决策：v0.2.0 默认不做资源保护**，放 v0.3.0 动态版正式实现（用户确认与「动态版必须账号系统」一致）。
+- **决策：v0.2.0 默认不做资源保护**，放 v0.3.0 动态版正式实现。
 
 ---
 
@@ -135,15 +132,9 @@
 
 1. **标签**：`problem.json` 增 `tags`，竞赛列表页与题目页显示标记。
 2. **搜索**：构建索引 + 前端过滤（不引搜索库，数据量小；必要时加 Fuse.js）。
-3. **Dashboard**：
-   - 最近动态（最近比赛、最近完成的题目）
-   - 统计信息（总题目数等）
-   - contribution 绿点图
-   - **复盘报告区：当前报告 + 往期报告列表**（扫描各 `review.md` 渲染/链接，用户已确认）
+3. **Dashboard**：最近动态、统计信息、contribution 绿点图、复盘报告区（当前报告 + 往期列表）。
 4. **复盘时间轴页**：按 `submit_time` 展示每次提交序列，附 LLM 报告。
-5. **UI 库与图标库**（用户授权先行选定）：
-   - **UI 库：shadcn/ui**（基于 Radix + Tailwind，与现有 Tailwind 体系一致，深色主题友好，静态导出兼容，组件可复制引入）。
-   - **图标库：lucide-react**，替换现有杂乱的 `react-icons`（Feather/VSCode 混用）。
+5. **UI 库与图标库**（用户授权先行选定）：UI 库 **shadcn/ui**（Radix + Tailwind，与现有体系一致，深色主题友好，静态导出兼容）；图标库 **lucide-react**（替换 `react-icons`）。
 6. **质量与体验**：评审清单修复（见 §8）+ 响应式 + 可访问性。
 
 ---
@@ -153,7 +144,7 @@
 ### 前端（已在 08c3f721 全部修复）
 - [x] `platform-badge.tsx` fallback 分支误用 `platform === "codeforces"`，导致未知平台无背景色
 - [x] `contest-table.tsx` 固定 17 列题号（A–Q）与魔法数 `colSpan={19}`
-- [x] 竞赛列表未显式排序（依赖 `readdirSync` 顺序）；`page0` 等分页边界脆弱
+- [x] 竞赛列表未显式排序（依赖 `readdirSync` 顺序）；分页边界脆弱
 - [x] 客户端组件 `import path` 依赖 polyfill，统一用 `src/utils/url.ts` 的 `joinUrl`
 - [x] `metadata-display.tsx` 纯工具函数抽到 `src/utils/format.ts`
 - [x] 两个文件查看页逻辑重复，抽公共组件 `file-viewer-page.tsx`
@@ -184,7 +175,15 @@ v0.2.0（静态版增强 + 爬虫数据层升级，分支 dev/v0.2.0）
 ├─ C. 前端：标签、搜索、Dashboard(+报告区+contribution)、复盘时间轴页、UI/图标库迁移、响应式与可访问性
 └─ D. 可选：静态版客户端加密资源保护（默认不做）
 
-v0.3.0（动态版）
+v0.3.0（部署方式重构：静态版统一为自托管守护进程 + GitHub Pages）
+├─ 跨平台守护进程 `crawler/scripts/daemon.py`（替代 `server-task.sh`：run 主循环 + install 自启 + sync/fire/incremental）
+├─ `base.py` 驱动路径按 `platform.system()` 分发（Linux 保留 repo 自带二进制兜底；macOS / Windows 优先系统 Chrome）
+├─ 删除 Actions 爬虫链路（`crawler-scheduled.yml` / `crawler.yml`；`deploy.yml` 清理 `workflow_run`）
+├─ fork 部署参数化（`next.config.ts` basePath / `global.ts` URL 常量 env 化）
+├─ 部署指引文档（Win / Mac / Linux + Chrome 环境准备）
+└─ 方式二端到端实测（`install` 自启 + `fire` 真实比赛触发 + 部署链路）
+
+v0.4.0（动态版）
 ├─ 同代码库 API routes / Docker 部署骨架
 ├─ GitHub OAuth + session（登录=队员）
 ├─ 个人收藏 / 稍后再做（DB）
@@ -212,11 +211,13 @@ v0.3.0（动态版）
 | 11 | UI 库 | shadcn/ui |
 | 12 | 图标库 | lucide-react（替换 react-icons） |
 | 13 | CI secret | `DEEPSEEK_API_KEY` |
-| 14 | 方式二预订比赛调度（2026-08-11，2026-08-12 重构状态模型 + cron 配置外置） | 闹钟机制：订阅填 `end_time`，`sync` 写闹钟表、cron 每 5 分钟 `fire` 到点爬取 + 立即生成报告（精确到 5 分钟，替代 30 分钟轮询）；状态模型 `planned`/`pending`/`archived`/`failed`，**失败即 `failed`（fire 不再自动重试），每 3 小时自动 `sync` 重试一次（成功 → `archived`，失败保持 `failed`）**；订阅修改 `end_time`/删除条目时 `sync` 相应重新安排/剪除；cron 表达式统一放 `crawler/config.json` 的 `scheduled` 块（`install` 读取生成 crontab，服务器可改）；方式一（Actions 轮询）不读取 `end_time` |
+| 14 | 方式二预订比赛调度（2026-08-11，2026-08-12 重构状态模型 + cron 配置外置） | 闹钟机制：订阅填 `end_time`，`sync` 写闹钟表、cron 按 `config.json` 的 `scheduled` 块间隔 `fire` 到点爬取 + 立即生成报告；状态模型 `planned`/`pending`/`archived`/`failed`，**失败即 `failed`（fire 不再自动重试），自动 `sync` 重试一次（成功 → `archived`，失败保持 `failed`）**；订阅修改 `end_time`/删除条目时 `sync` 相应重新安排/剪除；方式一（Actions 轮询）不读取 `end_time` |
+| 15 | 静态版部署方式统一（2026-08-12） | 删除方式一（Actions 爬虫链路），静态版统一为「自托管守护进程爬虫 + GitHub Pages 部署」；动态版顺延 v0.4.0 |
+| 16 | Actions 爬虫 workflow（2026-08-12） | 彻底删除 `crawler-scheduled.yml` / `crawler.yml`；`deploy.yml` 去掉 `workflow_run` 监听，保留 `push` 触发 |
+| 17 | 个人电脑模式（2026-08-12） | 支持跨平台守护进程 `daemon.py`（Win / Mac / Linux）：`run` 主循环按 config `scheduled` 块 + 闹钟到点执行、睡眠恢复只补跑一次；`install` 按 OS 注册登录自启（systemd user / launchd / schtasks ONLOGON） |
+| 18 | 服务对象（2026-08-12） | 别人 fork 自己部署自己的站；fork 需参数化 basePath / URL 常量（env 覆盖，默认保持现状） |
 
 ## 11. 遗留 / 待定
 
-- [x] Dashboard 占位页、README 页（v0.2.0 顺带实现或评估）
 - [ ] 复盘报告内容细节：是否含每道题 AC 时间线/WA 次数（数据已全量采集，倾向包含）
 - [ ] 前端测试策略评估
-- [x] `clang-format` 等模板残留清理确认（2026-08-08 复查：仓库内无 clang-format 文件与模板占位符残留，仅文档待办提及，可关闭）
