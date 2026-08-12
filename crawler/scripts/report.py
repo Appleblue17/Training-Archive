@@ -256,9 +256,45 @@ def _build_submissions_block(submissions_sorted, source_by_letter, letter_for, b
     return "\n".join(lines)
 
 
+def _filter_submissions_before_end(submissions, contest):
+    """只保留在比赛结束时间（contest.end_time）之前提交的记录。
+
+    赛后补题等提交不属于比赛复盘范围，不应送给 LLM 分析。
+    - contest 无 end_time：不过滤（新建/未填结束时间的比赛）
+    - submit_time 缺失或无法解析：保留（无法判断是否赛后）
+    返回过滤后的列表（保持原顺序）。
+    """
+    end_time = contest.get("end_time")
+    if not end_time:
+        return list(submissions)
+    try:
+        end_dt = datetime.fromisoformat(str(end_time).replace("Z", "+00:00"))
+        if end_dt.tzinfo is None:
+            end_dt = end_dt.replace(tzinfo=beijing)
+    except ValueError:
+        # end_time 非法：无法判断，不过滤
+        return list(submissions)
+
+    out = []
+    for sub in submissions:
+        st = sub.get("submit_time")
+        try:
+            st_dt = datetime.fromisoformat(str(st).replace("Z", "+00:00"))
+        except (TypeError, ValueError):
+            out.append(sub)  # 无法解析，保留
+            continue
+        if st_dt.tzinfo is None:
+            st_dt = st_dt.replace(tzinfo=beijing)
+        if st_dt <= end_dt:
+            out.append(sub)
+    return out
+
+
 def build_prompt(contest_folder):
     contest = load_json(os.path.join(contest_folder, "contest.json")) or {}
     submissions = load_json(os.path.join(contest_folder, "submissions.json")) or []
+    # 只保留比赛结束前的提交（赛后补题不计入复盘）
+    submissions = _filter_submissions_before_end(submissions, contest)
     problems_map = _problem_letter_map(contest_folder)
 
     # 提交 -> 题目字母：优先按 link 匹配，其次按 problem_id，最后按 name
