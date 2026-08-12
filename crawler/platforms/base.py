@@ -10,6 +10,7 @@ from datetime import datetime, timedelta, timezone
 import os
 import sys
 import undetected_chromedriver as uc
+from bs4 import BeautifulSoup
 
 # 北京时间（UTC+8）。所有时间统一使用该时区。
 # 注意：不要在模块导入时缓存 now，长任务跨午夜会用到过期时间，需实时获取。
@@ -199,14 +200,38 @@ class BaseCrawler:
         return self._convert_to_beijing_time(dt)
 
     def _clean_pandoc_markdown(self, md: str) -> str:
-        # 1. Remove ::: block with attributes
-        md = re.sub(r"^:::\s*\{[^\}]*\}\s*$", "", md, flags=re.MULTILINE)
-        md = re.sub(r"^:::\s*$", "", md, flags=re.MULTILINE)
+        # 0. Block-level formula container ::: katex-display ... ::: -> $$...$$
+        # 需在删纯 ::: 行之前处理（闭合行会被第 1 步删掉）。
+        # 内容（pandoc 输出）形如 [[$\frac{a+b}{2}$]{.katex-mathml}]{.katex}，
+        # 删属性后剥掉 [[ ] 与 $ 包裹，还原为块级 LaTeX。
+        def _block_math(m):
+            inner = m.group(1)
+            inner = re.sub(r"\{\.katex-mathml\}", "", inner)
+            inner = re.sub(r"\{\.katex\}", "", inner)
+            inner = re.sub(r"\{\.katex-display\}", "", inner)
+            inner = re.sub(r"\{\.katex-html\}", "", inner)
+            inner = re.sub(r"^\[+\s*", "", inner)
+            inner = re.sub(r"\s*\]+$", "", inner)
+            inner = inner.strip().strip("$").strip()
+            return f"\n$$\n{inner}\n$$\n"
 
-        # 2. Remove { .katex-mathml } { .katex } { .katex-display }
+        md = re.sub(
+            r"^::+\s*katex-display\s*\n(.*?)^::+\s*$",
+            _block_math,
+            md,
+            flags=re.MULTILINE | re.DOTALL,
+        )
+
+        # 1. Remove ::: block with attributes（支持多冒号：空 <div> 会输出 :::::
+        #    等变长容器，pandoc 3.1.x 与 3.7 都有）
+        md = re.sub(r"^::+\s*\{[^\}]*\}\s*$", "", md, flags=re.MULTILINE)
+        md = re.sub(r"^::+\s*$", "", md, flags=re.MULTILINE)
+
+        # 2. Remove { .katex-mathml } { .katex } { .katex-display } { .katex-html }
         md = re.sub(r"\{\.katex-mathml\}", "", md)
         md = re.sub(r"\{\.katex\}", "", md)
         md = re.sub(r"\{\.katex-display\}", "", md)
+        md = re.sub(r"\{\.katex-html\}", "", md)
 
         # 3. Extract and replace math formulas
         # Block-level [[[...]]] -> $$...$$
@@ -249,6 +274,22 @@ class BaseCrawler:
         import subprocess
         import tempfile
         import os
+
+        # --- 0. 预处理：删除 KaTeX 视觉 HTML（span.katex-html / span.katex-error）---
+        # KaTeX 数学由两部分组成：<span class="katex-mathml"> 内含 MathML 与
+        # <annotation>（TeX 源码），以及 <span class="katex-html" aria-hidden="true">
+        # 的视觉 HTML（浏览器渲染用）。pandoc 3.7+ 会自动忽略视觉部分，但
+        # 3.1.x（Debian stable 的 apt 版本）会把 aria-hidden 的视觉 span 当普通
+        # 内容输出，产生 [[$x$][[[]{.strut...}{.katex-html...}]] 嵌套乱码。
+        # 统一在转换前删除视觉 span，只保留 mathml（TeX 源码在 annotation 里），
+        # 使新旧 pandoc 输出一致，且 TeX 内容不受影响。
+        try:
+            soup = BeautifulSoup(html, "html.parser")
+            for node in soup.select("span.katex-html, span.katex-error"):
+                node.decompose()
+            html = str(soup)
+        except Exception as e:
+            self.log("warning", f"KaTeX preprocess failed (fallback to raw html): {e}")
 
         # --- 1. Write to temporary HTML file ---
         with tempfile.NamedTemporaryFile(
