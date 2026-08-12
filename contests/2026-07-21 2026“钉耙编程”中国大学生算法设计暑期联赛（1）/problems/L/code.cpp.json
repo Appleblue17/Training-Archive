@@ -1,11 +1,11 @@
 {
-  "submission_id": "12615",
+  "submission_id": "10878",
   "status": "AC",
-  "time": "2921 MS",
-  "memory": "26136 K",
+  "time": "1171 MS",
+  "memory": "45648 K",
   "language": "G++",
-  "submit_time": "2026-08-03T11:11:44+08:00",
+  "submit_time": "2026-07-21T16:34:36+08:00",
   "problem_id": "1012",
-  "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1230&pid=1012",
-  "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1230&rid=12615"
+  "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1229&pid=1012",
+  "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1229&rid=10878"
 }
