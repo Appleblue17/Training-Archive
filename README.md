@@ -64,7 +64,8 @@ python3 crawler/scripts/scheduled_task.py --contests-only
 python3 crawler/scripts/scheduled_task.py --contests-only --links "https://qoj.ac/contest/123"
 # 提交增量模式（每日增量提交同步）
 python3 crawler/scripts/scheduled_task.py --submissions-only
-# 复盘报告（--from-crawl 只对本次爬取新建的比赛生成）
+# 复盘报告（--links 按订阅链接反查生成，报告条件 = 订阅填了 end_time；--from-crawl 只对本次爬取新建的比赛生成）
+python3 crawler/scripts/report.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456"
 python3 crawler/scripts/report.py --from-crawl
 python3 crawler/scripts/report.py --from-crawl --links "https://qoj.ac/contest/123"
 # 补生成：扫描所有缺报告的已结束比赛，或只生成指定比赛

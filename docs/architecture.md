@@ -190,15 +190,17 @@ contests/
 
 `--contests-only` 实现要点：`run_platform` 在 `fetch_contests` 后检查 `crawler._new_contests`，为空直接结束；非空则置 `crawler._contests_only = True` 再 `fetch_submissions()`——HDU/NowCoder 只遍历本次新建的比赛，QOJ 以最早新比赛开始时间为提交截止，`BaseCrawler.finish()` 在 contests-only 模式始终不推进 `last-update.json`。
 
-守护进程在爬虫步骤之后均追加独立的报告生成步骤（`report.py --from-crawl`），与爬虫解耦：爬虫失败不生成报告，报告失败不阻断提交/部署。`--from-crawl` 只对本次新建的比赛生成（读取 `crawler/new-contests.json`，见 4.4），`--submissions-only`（无新建比赛）自然跳过。
+守护进程在爬虫步骤之后均追加独立的报告生成步骤（`report.py --links`），与爬虫解耦：爬虫失败不生成报告，报告失败不阻断提交/部署。报告条件 = 订阅里**填了 `end_time`** 的比赛（EXPIRED / RETRY / fire due），按订阅链接反查 `contests/` 下比赛文件夹生成（见 4.4），与"本次是否新建"无关——比赛此前已归档过（非本次新建）也要生成，否则会漏掉复盘。
 
 ### 4.4 复盘报告（`crawler/scripts/report.py`，独立总结脚本）
 
-- 四种模式：
-  - `python3 crawler/scripts/report.py --from-crawl`（**推荐**）：只对本次爬取新建的比赛生成（读 `crawler/new-contests.json`，无文件/空列表时跳过）
-  - `python3 crawler/scripts/report.py --from-crawl --links "link1,link2"`：只对**指定订阅链接**的比赛生成（同批爬取只对过期比赛生成报告）
+- 五种模式：
+  - `python3 crawler/scripts/report.py --links "link1,link2"`（**推荐**，daemon 的 sync/fire 用）：按订阅链接反查 `contests/` 下比赛文件夹生成。报告条件 = 订阅里**填了 `end_time`** 的比赛（EXPIRED / RETRY / fire due），与"本次是否新建"无关——比赛此前已归档过（非新建）也要生成，否则会漏掉复盘
+  - `python3 crawler/scripts/report.py --from-crawl`（手动）：只对本次爬取新建的比赛生成（读 `crawler/new-contests.json`，无文件/空列表时跳过）
+  - `python3 crawler/scripts/report.py --from-crawl --links "link1,link2"`：只对本次新建中**指定订阅链接**的比赛生成（手动过滤用）
   - `python3 crawler/scripts/report.py`：扫描所有已结束且缺 `review.md` 的比赛补生成
   - `python3 crawler/scripts/report.py <contest_folder>`：只生成指定比赛
+- `report.py --links` 扫描 `contests/` 下所有比赛的 `contest.json` 按 `link` 反查匹配（尾斜杠归一化），不依赖 `new-contests.json`。
 - 比赛抓取模式结束时把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时状态文件，gitignore；无新建比赛时删除），`report.py` / `qq_share.py` 以 `--from-crawl` 读取；读写逻辑统一在共享模块 `crawler/scripts/new_contests.py`。
 - 读取 `contest.json`、`submissions.json`、`problems/<letter>/submissions/<id>.<ext>`，**不做分析性预处理**，原始提交序列直接送 DeepSeek（OpenAI 兼容接口，`deepseek-chat`，API key 从环境变量 `DEEPSEEK_API_KEY` 读取）。
 - 输出 `contests/<date> <name>/review.md`；`review.md` 已存在即跳过（幂等）。只对 `end_time` 已过且有提交数据的比赛生成。
@@ -235,7 +237,7 @@ contests/
 
 | 子命令 | 职责 |
 |--------|------|
-| `alarm.py plan` | 扫描订阅：输出 `HISTORY` / `EXPIRED` / `RETRY` 链接，写未来闹钟（`planned`）。archived 且信息未变跳过；failed 且信息未变输出 `RETRY`（保持 failed 不重置）；其余按 `end_time` 重新分类。有 failed 重试时输出 `WARNING`。剪除订阅中已删除条目的闹钟 |
+| `alarm.py plan` | 扫描订阅：输出 `HISTORY` / `EXPIRED` / `RETRY` 链接，写未来闹钟（`planned`）。archived 且信息未变跳过；failed 且信息未变输出 `RETRY`（保持 failed 不重置），`RETRY` 第 3 列为原任务的 `end_time`（空 = 原 HISTORY，重试成功不生成报告；非空 = 原 EXPIRED/planned，重试成功要生成报告）；其余按 `end_time` 重新分类。有 failed 重试时输出 `WARNING`。剪除订阅中已删除条目的闹钟 |
 | `alarm.py due` | 输出 `status == planned` 且 `fire_at` 已到的闹钟；pending/archived/failed 一律忽略；无则空输出 |
 | `alarm.py mark <link> --archived` | 标记已处理完（attempts 清零，plan 下次跳过） |
 | `alarm.py mark <link> --failed` | attempts +1、置 `failed`（fire 不再重试；下次 sync 重试一次） |
@@ -243,7 +245,7 @@ contests/
 
 `daemon.py` 集成（v0.3.0 起替代 v0.2.x 的 `server-task.sh`，子命令语义不变）：
 
-- `sync`（`python3 crawler/scripts/daemon.py sync`）：①`plan` 分类订阅并写闹钟表，有 `RETRY`/`WARNING` 时记录日志；②爬取 HISTORY + EXPIRED + RETRY 比赛（`--contests-only --links`）；③对 EXPIRED 与 RETRY 生成报告（`report.py --from-crawl --links`，幂等）；④全部 `mark --archived`。**爬取失败时本次涉及的全部链接 `mark --failed`**（下次 sync 重试），不再静默退出。
+- `sync`（`python3 crawler/scripts/daemon.py sync`）：①`plan` 分类订阅并写闹钟表，有 `RETRY`/`WARNING` 时记录日志；②爬取 HISTORY + EXPIRED + RETRY 比赛（`--contests-only --links`）；③生成报告（`report.py --links`）：EXPIRED 必生成，RETRY 仅当原任务填了 `end_time`（第 3 列非空，原 EXPIRED/planned）才生成，HISTORY 不生成；④全部 `mark --archived`。**爬取失败时本次涉及的全部链接 `mark --failed`**（下次 sync 重试），不再静默退出。
 - `fire`（`python3 crawler/scripts/daemon.py fire`）：先 `due`，**无到期闹钟安静退出**；有则走与 `sync` 相同的完整流程（爬取 → 报告 → mark archived）。**爬取失败 `mark --failed`**——fire 只查 planned，失败后不再自动重试，靠下次 sync 重试一次（成功 → `archived`，失败保持 `failed`）。
 - `incremental`（`python3 crawler/scripts/daemon.py incremental`）：对应 `scheduled_task.py --submissions-only`，每日对所有已开始/进行中的比赛做增量提交抓取。
 - `run` 主循环用 croniter 解析 `crawler/config.json` 的 `scheduled` 块调度上述三个任务；`install` 注册开机自启（Linux systemd user / macOS launchd / Windows schtasks，默认登录后启动），`install --system`（仅 Linux）注册系统级 systemd service（`/etc/systemd/system/`，`WantedBy=multi-user.target`，开机即启动、无需登录会话，适合无头服务器；服务以实际用户身份运行，sudo 时取 `SUDO_USER`），`status` 展示闹钟表与调度状态。
