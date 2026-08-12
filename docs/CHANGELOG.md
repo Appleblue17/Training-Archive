@@ -2,6 +2,27 @@
 
 > 格式基于 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [0.3.1] - 2026-08-12
+
+### Added
+
+- **QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**：将比赛复盘（`review.md`）改写成轻松随性的纯文本（`qq-share.txt`，DeepSeek 独立调用、更高 temperature），并通过 NapCat（OneBot 11 正向 WebSocket，Bearer token 鉴权）发送到 QQ 群——群发文字（`send_group_msg`，CQ 码转义 + Markdown 清洗）+ 上传 `review.md` 文件（`upload_group_file`）；发送成功后删除 `qq-share.txt`（临时产物，不入 git）
+  - 文字缺失（生成失败/为空）：记 log，跳过文字直接发 review 文件
+  - `review.md` 不存在：跳过（share 依赖 report 生成的完整报告，不自行生成）
+  - NapCat 未配置 / 连接失败 / 发送失败：仅告警不阻断 daemon（`qq-share.txt` 保留供下次重试）
+  - 新增 `ai_tasks.share.enabled` 配置开关（显式开启才调用；缺省 `false`）与 `qq` 块（`napcat_ws_url` / `napcat_token` / `group_id`）；`config.example.json` 已更新
+  - 新增依赖 `websocket-client`（`crawler/requirements.txt`）
+
+### Changed
+
+- **report 与 share 解耦**（`report.py` / `daemon.py`）：`report.py` 不再串联生成 `qq-share.txt`；由 daemon 的 sync/fire 在 report 全部成功后按 `ai_tasks.share.enabled` 单独调用 `qq_share.py --links`
+- **review 生成失败阻断归档**（`daemon.py` + `report.py`）：`report.py --links` 任一应生成报告的比赛的 review 生成失败 → 返回非零；sync/fire 据此中止（不 `mark --archived`、不提交推送，下次 sync 重试），避免「已归档但缺复盘」
+- **`qq-share.txt` 不进 git**：`.gitignore` / `.gitignore.deploy` 忽略 `contests/*/qq-share.txt`；deploy 分支 `git rm --cached` 清理已跟踪的遗留文件
+
+### Removed
+
+- **`report.py --qq-only` 兼容入口**：转调 qq_share.py 的入口已由 qq_share.py 直接提供（`--links` / `--from-crawl` / `<folder>` / 全量扫描）
+
 ## [0.3.0] - 2026-08-12
 
 ### Added

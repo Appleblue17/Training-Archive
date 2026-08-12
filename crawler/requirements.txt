@@ -6,3 +6,4 @@ python-dotenv
 socksio
 croniter
 filelock
+websocket-client

@@ -60,6 +60,12 @@ next-env.d.ts
 __pycache__/
 
 # crawler
+# QQ 群分享临时产物（发送成功后删除；gitignore 兜底防止误提交）
+contests/*/qq-share.txt
+# NapCat 本地数据库（测试时在仓库根生成，勿提交）
+/guild1.db
+/guild1.db-shm
+/guild1.db-wal
 crawler/chrome-linux64
 crawler/chromedriver-linux64
 crawler/global.log.json
