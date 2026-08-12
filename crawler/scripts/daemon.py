@@ -104,7 +104,7 @@ SCHTASKS_NAME = "TrainingArchiveDaemon"
 def log(msg):
     """带时间戳写入 daemon.log 并打印到 stdout（服务日志/终端可见）。"""
     line = f"[{datetime.now(beijing).strftime('%Y-%m-%d %H:%M:%S')}] {msg}"
-    print(line)
+    print(line, flush=True)
     try:
         with open(LOG_FILE, "a", encoding="utf-8") as f:
             f.write(line + "\n")
@@ -117,7 +117,7 @@ def log_raw(text):
     text = text.rstrip("\n")
     if not text:
         return
-    print(text)
+    print(text, flush=True)
     try:
         with open(LOG_FILE, "a", encoding="utf-8") as f:
             f.write(text + "\n")
@@ -132,17 +132,23 @@ def run_py(script, *args, capture=False):
     """运行 crawler/scripts/ 下的脚本（用当前解释器，保证依赖一致）。
 
     capture=True 时返回 subprocess.CompletedProcess（不写日志，用于 due 等轻量查询）。
-    默认继承 stdout/stderr，并把输出原样追加到 daemon.log。
+    默认流式转发输出：子进程每产生一行，立即 log_raw 写入日志并打印——
+    sync/fire 爬取长任务时实时可见，而不是等任务结束后一次性输出。
+    stderr 并入同一流（日志本就区分 stdout/stderr）。
+    返回 Popen（已 wait，returncode 可用）。
     """
     cmd = [sys.executable, os.path.join(SCRIPT_DIR, script), *args]
     if capture:
         return subprocess.run(cmd, text=True, capture_output=True)
     log("$ " + " ".join(cmd))
-    proc = subprocess.run(cmd, text=True, capture_output=True)
-    if proc.stdout:
-        log_raw(proc.stdout)
-    if proc.stderr:
-        log_raw(proc.stderr)
+    # stderr=STDOUT 合并为单一管道：避免双管道各自读、互等填满造成死锁
+    proc = subprocess.Popen(
+        cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1
+    )
+    assert proc.stdout is not None
+    for line in proc.stdout:
+        log_raw(line)
+    proc.wait()
     return proc
 
 
