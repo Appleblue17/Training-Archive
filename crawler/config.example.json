@@ -15,7 +15,8 @@
   "qq": {
     "napcat_ws_url": "ws://127.0.0.1:6700",
     "napcat_token": "",
-    "group_id": 123456789
+    "group_id": 123456789,
+    "send_mode": "text_and_file"
   },
   "qoj": {
     "enabled": false,
