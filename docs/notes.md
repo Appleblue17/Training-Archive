@@ -17,11 +17,11 @@
 
 ### v0.3.0（部署方式重构）
 
-- [ ] 端到端实测（v0.3.0 改造完成后统一验证：`install` 自启 + `fire` 真实比赛触发 + 部署链路；用户已做过初步测试）
 - [x] `daemon.py` 跨平台守护进程（替代 `server-task.sh`；已实现 commit `e502c2bb`）
 - [x] 删除 Actions 爬虫链路（`crawler-scheduled.yml` / `crawler.yml` 已删；`deploy.yml` 已去掉 `workflow_run` 监听，保留 `push` 触发）
-- [ ] fork 部署参数化（`next.config.ts` basePath、`global.ts` URL 常量 env 化）
-- [ ] 部署指引文档（Win / Mac / Linux + Chrome 环境准备）
+- [x] fork 部署参数化（`next.config.ts` basePath、`global.ts` URL 常量 env 化：`NEXT_PUBLIC_BASE_PATH` / `NEXT_PUBLIC_SITE_URL` / `NEXT_PUBLIC_REPO_URL`）
+- [x] 部署指引文档（README：Chrome 环境准备按平台 + fork 参数化说明）
+- [ ] 端到端实测（v0.3.0 改造完成后统一验证：`install` 自启 + `fire` 真实比赛触发 + 部署链路；用户已做过初步测试）
 
 ### 常规
 

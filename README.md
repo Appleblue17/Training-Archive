@@ -96,7 +96,42 @@ python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 
 **闹钟机制**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交）并标记为 `planned`，守护进程主循环按 `config.json` 的 `scheduled` 块间隔调度 `fire`：到点即爬取该场比赛并立即生成复盘报告。状态模型：`planned` / `pending` / `archived` / `failed`；爬取失败即 `failed`（不再自动重试），由自动 `sync` 重试：成功 → `archived`，失败保持 `failed`。订阅里修改 `end_time` 或删除条目时，`sync` 会相应重新安排或剪除闹钟。详见 [docs/architecture.md](docs/architecture.md) §4.6。
 
-运行环境要求：已 clone 仓库、根目录有 `.env` 凭据、`pip install -r crawler/requirements.txt`、Chrome/Chromedriver 在 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`、已配置 push 凭据（SSH key 或 token）。
+**运行环境要求**：已 clone 仓库、根目录有 `.env` 凭据、`pip install -r crawler/requirements.txt`、已配置 push 凭据（SSH key 或 token）、本机可用 Chrome 与 chromedriver（见下）。
+
+### Chrome 环境准备（按平台）
+
+爬虫用 undetected_chromedriver 驱动无头 Chrome，驱动路径按平台自动解析（`CHROME_BINARY` / `CHROMEDRIVER_PATH` 环境变量可覆盖默认路径）：
+
+| 平台 | Chrome | Chromedriver |
+|------|--------|--------------|
+| Linux | `crawler/chrome-linux64/chrome` | `crawler/chromedriver-linux64/chromedriver` |
+| Windows | `crawler/chrome-win64/chrome.exe` | `crawler/chromedriver-win64/chromedriver.exe` |
+| macOS | 系统 Google Chrome | `crawler/chromedriver-mac*/chromedriver`（缺失时交给自动查找） |
+
+- **Linux**：仓库已带 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`，直接可用。
+- **Windows / macOS**：下载与 Chrome 大版本匹配的 chromedriver 放入对应目录，或直接用 `CHROME_BINARY` / `CHROMEDRIVER_PATH` 指向自备路径。
+- **版本匹配**：chromedriver 需与 Chrome 主版本一致（下载：<https://googlechromelabs.github.io/chrome-for-testing/>）。
+- HDU / NowCoder 题目 HTML→Markdown 依赖 **pandoc**（Linux `apt install pandoc` / macOS `brew install pandoc` / Windows winget）。
+
+### fork 部署（参数化）
+
+前端常量已 env 化，fork 后构建时设置以下变量即可不改代码部署到自己的 GitHub Pages：
+
+| 环境变量 | 默认值 | 说明 |
+|----------|--------|------|
+| `NEXT_PUBLIC_BASE_PATH` | `/Training-Archive` | 仓库子路径（GitHub Pages project site 为 `/<仓库名>`，自定义域名根部署设空） |
+| `NEXT_PUBLIC_SITE_URL` | `https://appleblue17.github.io` | 站点根域名（`https://<用户名>.github.io`） |
+| `NEXT_PUBLIC_REPO_URL` | `https://github.com/appleblue17/Training-Archive/` | 仓库地址（页脚 / README 页 / Actions 链接） |
+
+示例（fork 到 `yourname/my-training-archive`）：
+
+```yaml
+# deploy.yml 的 Build 步骤追加：
+env:
+  NEXT_PUBLIC_BASE_PATH: /my-training-archive
+  NEXT_PUBLIC_SITE_URL: https://yourname.github.io
+  NEXT_PUBLIC_REPO_URL: https://github.com/yourname/my-training-archive/
+```
 
 > `deploy.yml` 通过 `push` 到 `deploy` 分支触发：带 `[contests-changed]` 标记的提交才会部署，仅状态变化的提交会跳过。
 

@@ -139,7 +139,7 @@ contests/
 
 其他基础设施：
 
-- **浏览器**：`undetected_chromedriver`，无头模式；CI 用 `CHROME_BINARY` / `CHROMEDRIVER_PATH` 环境变量，本地用 `crawler/chrome-linux64` 与 `crawler/chromedriver-linux64`。
+- **浏览器**：`undetected_chromedriver`，无头模式。驱动路径按平台自动解析（env `CHROME_BINARY` / `CHROMEDRIVER_PATH` 可覆盖）：Linux 用 `crawler/chrome-linux64` 与 `crawler/chromedriver-linux64`；Windows 用 `crawler/chrome-win64` 与 `crawler/chromedriver-win64`；macOS 用系统 Google Chrome 与 `crawler/chromedriver-mac*`（见 4.1 `_resolve_driver_paths`）。
 - **日志**：`log()` 写平台日志（`crawler/platforms/<platform>/log.json`），`important`/`error`/`fatal` 同时写全局日志（`crawler/global.log.json`）；`fatal` 抛出异常终止。
 - **HTML→Markdown**：`_convert_html_to_markdown()` 调用 **pandoc**（HDU/NowCoder 题目），随后 `_clean_pandoc_markdown()` 清理 KaTeX 标记、数学公式与多余空行。
 - **时间**：`beijing = timezone(timedelta(hours=8))`，所有时间解析与写入统一北京时间。
