@@ -10,13 +10,17 @@
 - HDU / NowCoder 爬虫默认停用（`crawler/config.json` 的 `enabled` 字段控制）。
 - 方式二闹钟机制已实现（`crawler/scripts/alarm.py` + `crawler/server-task.sh sync/fire`）：订阅条目可选填 `end_time`，未来比赛写闹钟表 `crawler/alarms.json`（gitignore），到点由 `fire` 爬取 + 立即生成报告；状态模型 `planned` / `pending` / `archived` / `failed`。
 - `contests/` 数据目录为空（git 忽略），本地开发需先准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
-- **v0.2.1 开发中**（deploy 标记检查、动态路由占位、quotepath 中文路径、闹钟机制等），**未完成、未创建 PR**，规划见 `docs/roadmap.md`。
+- **v0.2.1 已发布（2026-08-12）**。下一版本 **v0.3.0 = 部署方式重构**：跨平台守护进程 `daemon.py` 替代 `server-task.sh`、删除 Actions 爬虫链路（方式一）、fork 部署参数化（basePath / URL 常量 env 化）。
 
 ## 待办
 
-### v0.2.1
+### v0.3.0（部署方式重构）
 
-- [ ] 方式二服务器端到端实测（`install` cron + `fire` 真实比赛触发 + 部署链路）
+- [ ] 方式二端到端实测（v0.3.0 改造完成后统一验证：`install` 自启 + `fire` 真实比赛触发 + 部署链路；用户已做过初步测试）
+- [ ] `daemon.py` 跨平台守护进程（替代 `server-task.sh`）
+- [ ] 删除 Actions 爬虫链路（`crawler-scheduled.yml` / `crawler.yml`，`deploy.yml` 清理 `workflow_run`）
+- [ ] fork 部署参数化（`next.config.ts` basePath、`global.ts` URL 常量 env 化）
+- [ ] 部署指引文档（Win / Mac / Linux + Chrome 环境准备）
 
 ### 常规
 

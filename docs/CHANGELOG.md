@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+> 下一版本规划为 v0.3.0（部署方式重构），见 `docs/roadmap.md`。
+
+## [0.2.1] - 2026-08-12
+
 ### Added
 
 - **服务器闹钟机制（部署方式二专用）**：订阅条目可选填 `end_time`，未来比赛写入闹钟表 `crawler/alarms.json`（gitignore），到点由 `fire` 触发爬取并立即生成复盘报告；方式一（GitHub Actions 轮询）不读取该字段
