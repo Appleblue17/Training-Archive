@@ -167,11 +167,8 @@ void solve(){
     }
     
     //SC
-    for(int l=1;l<=13;l++){
-        for(int r=l;r<=13;r++){
-            if(r == 13){
-                if(l != 13)continue;
-            }
+    for(int l=1;l<=12;l++){
+        for(int r=l+1;r<=12;r++){
             for(int i=1;i<=15;i++)c[i] = cnt[i];
             for(int j=l;j<=r;j++)c[j]-=3;
             C = r-l+1;

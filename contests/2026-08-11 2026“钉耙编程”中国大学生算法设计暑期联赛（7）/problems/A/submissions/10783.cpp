@@ -1,23 +1,29 @@
 #pragma GCC optimize(2)
 #include <bits/stdc++.h>
 using namespace std;
-const int N=2e5+50, B=450, mod=998244353;
+const int N=2e5+50, B=330, mod=998244353;
 bool st;
 int T,n;
 char s[N];
 int sl[N], sr[N], len[N];
 int ans[N];
 int lim;
+int ful[N];
 vector<int> e[N];
 int fa[N];
-int sz[N], son[N], dfn[N], seq[N], timer, dep[N];
+int ed[N];
+int sz[N], son[N], dfn[N], seq[N], timer, dep[N], rl[N];
 void dfs(int x){
     dep[x]=dep[fa[x]]+1;
-    sz[x]=1; son[x]=0; dfn[x]=++timer; seq[timer]=x;
+	if(ful[x]) ++timer;
+    sz[x]=1; son[x]=0; dfn[x]=timer; 
+	if(ful[x]) rl[x]=timer;
+	else rl[x]=rl[fa[x]];
     for(auto y:e[x]){
         dfs(y); sz[x]+=sz[y];
         if(sz[y]>sz[son[x]]) son[x]=y;
     }
+    ed[x]=timer;
 }
 int tp[N], bot[N];
 void dfs2(int x, int top){
@@ -77,13 +83,15 @@ struct ACAM{
         for(int i=2; i<=idx; ++i) e[fa[i]].push_back(i);
         timer=0;
         fa[1]=0;
+		
+        ful[1]=1;
         dfs(1);
         dfs2(1, 1);
     }
     void clr(){
         for(int i=1; i<=idx; ++i) {
             for(int j=0; j<26; ++j) tr[i][j]=0;
-            e[i].clear(); fa[i]=0;
+            e[i].clear(); fa[i]=0; ful[i]=0;
         }
         idx=1;
     }
@@ -93,14 +101,15 @@ struct ACAM{
             if(!tr[p][s[j]-'a']) tr[p][s[j]-'a']=++idx;
             p=tr[p][s[j]-'a'];
         }
+        ful[p]=1;
     }
 }A;
 int lp[N], rp[N], bid[N];
 struct DS{
-    int slf[N], tag[450];
+    int slf[N], tag[330];
     void clr(){
-        for(int i=1; i<=sr[n]+1; ++i) slf[i]=0;
-        for(int i=1; i<=bid[sr[n]+1]; ++i) tag[i]=0;
+        for(int i=1; i<=n+1; ++i) slf[i]=0;
+        for(int i=1; i<=bid[n+1]; ++i) tag[i]=0;
     }
     void add(int l, int r, int v){
         if(bid[l]==bid[r]){
@@ -114,9 +123,8 @@ struct DS{
     inline int get(int x){
         return slf[x]+tag[bid[x]];
     }
-}D[636];
-long long tmp[636];
-bool ed;
+}D[455];
+long long tmp[455];
 void solve(){
     scanf("%d", &n);
     for(int i=1; i<=n; ++i) ans[i]=0;
@@ -129,38 +137,40 @@ void solve(){
         A.ins(i);
     }
     A.build();
-    // for(int i=2; i<=A.idx; ++i) cout<<fa[i]<<' ';
-    // cout<<endl;
     lim=1;
     while(1ll*(lim+1)*(lim+2)<=2*sr[n]) ++lim;
     lim=min(lim, n);
-    for(int i=1; i<=sr[n]+1; ++i) bid[i]=(i-1)/B+1;
-    for(int i=1; i<=bid[sr[n]+1]; ++i){
+    for(int i=1; i<=n+1; ++i) bid[i]=(i-1)/B+1;
+    for(int i=1; i<=bid[n+1]; ++i){
         lp[i]=rp[i-1]+1; rp[i]=rp[i-1]+B;
     }
-    rp[bid[sr[n]+1]]=sr[n]+1;
+    rp[bid[n+1]]=n+1;
     for(int i=1; i<=lim; ++i) D[i].clr();
     for(int i=1; i<=n; ++i){
         int p=1;
-        for(int j=1; j<=len[i]&&j<=lim; ++j) tmp[j]=0;
+		int cur=min(min(len[i], len[i-1]+1), min(i, lim));
+        for(int j=1; j<=cur; ++j) tmp[j]=0;
         tmp[1]=1;
         for(int j=sl[i]; j<=sr[i]; ++j){
             p=A.tr[p][s[j]-'a'];
             int q=fnd(p);
             if(p==q) continue;
-            for(int k=1; k<lim&&k<=len[i-1]&&k<len[i]&&k<i; ++k){
-                tmp[k+1]=(tmp[k+1]+D[k].get(dfn[p]));
+			// cout<<dfn[p]<<' '<<dfn[q]<<endl;
+            for(int k=1; k<cur; ++k){
+                tmp[k+1]=(tmp[k+1]+D[k].get(rl[p]));
             }
             if(q!=0){
-                for(int k=1; k<lim&&k<=len[i-1]&&k<i; ++k){
-                    tmp[k+1]=(tmp[k+1]+mod*2-D[k].get(dfn[q]));
+                for(int k=1; k<cur; ++k){
+                    tmp[k+1]=(tmp[k+1]+mod*2-D[k].get(rl[q]));
                 }
             }
         }
-        for(int j=1; j<=len[i]&&j<=lim; ++j){
+        assert(ful[p]==1);
+        for(int j=1; j<=cur; ++j){
             tmp[j]%=mod;
             ans[j]=(ans[j]+tmp[j])%mod;
-            D[j].add(dfn[p], dfn[p]+sz[p]-1, tmp[j]);
+			// cout<<dfn[p]<<' '<<ed[p]<<endl;
+            D[j].add(dfn[p], ed[p], tmp[j]);
         }
         p=1;
         for(int j=sl[i]; j<=sr[i]; ++j){
@@ -174,7 +184,8 @@ void solve(){
     putchar('\n');
 }
 int main(){
-    // cout<<(&st-&ed)/1024/1024<<endl;
+	// freopen("D:\\nya\\acm\\A\\test.in","r",stdin);
+	// freopen("D:\\nya\\acm\\A\\test.out","w",stdout);
     scanf("%d",&T);
     while(T--){
         solve();
