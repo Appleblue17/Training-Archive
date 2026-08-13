@@ -1,25 +1,24 @@
 1:"$Sreact.fragment"
 2:I[48521,[],""]
-3:I[89900,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-3ad219a6236c735b.js"],"default"]
+3:I[17058,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-d11893d92812b6df.js"],"default"]
 4:I[31661,[],""]
-5:I[86070,["329","static/chunks/329-3322297afe79dac4.js","76","static/chunks/app/(main)/layout-54c6267882e70643.js"],"default"]
+5:I[86070,["177","static/chunks/app/layout-47885cc15503d1d7.js"],"default"]
 6:I[52236,["329","static/chunks/329-3322297afe79dac4.js","343","static/chunks/343-c5433323e67c6075.js","619","static/chunks/app/(main)/page-d244cda825945327.js"],""]
 9:I[47055,[],"OutletBoundary"]
 b:I[39909,[],"AsyncMetadataOutlet"]
 f:I[50939,[],""]
 :HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
-:HL["/Training-Archive/_next/static/css/baa0e101e3a2d945.css","style"]
-0:{"P":null,"b":"G50z0nXsczwtj5vBF_Kbx","p":"/Training-Archive","c":["","readme"],"i":false,"f":[[["",{"children":["(main)",{"children":["readme",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/baa0e101e3a2d945.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["readme",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L8",null,["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]]}],{},null,false]},null,false]},null,false]},[["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],"$Ld"]}]]}],[],[]],false],"$Le",false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+:HL["/Training-Archive/_next/static/css/9ce25ada458b6567.css","style"]
+0:{"P":null,"b":"KhJXlb8Z6_exRP-9WOfoQ","p":"/Training-Archive","c":["","readme"],"i":false,"f":[[["",{"children":["(main)",{"children":["readme",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/9ce25ada458b6567.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["readme",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L8",null,["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]]}],{},null,false]},null,false]},null,false]},[["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],"$Ld"]}]]}],[],[]],false],"$Le",false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
 10:I[47055,[],"ViewportBoundary"]
 12:I[47055,[],"MetadataBoundary"]
 13:"$Sreact.suspense"
-15:I[80175,["329","static/chunks/329-3322297afe79dac4.js","76","static/chunks/app/(main)/layout-54c6267882e70643.js"],"default"]
-16:I[83266,["329","static/chunks/329-3322297afe79dac4.js","76","static/chunks/app/(main)/layout-54c6267882e70643.js"],"default"]
+15:I[21634,["329","static/chunks/329-3322297afe79dac4.js","76","static/chunks/app/(main)/layout-c92c8bdbd6b676dc.js"],"default"]
 d:["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]
 e:["$","$1","h",{"children":[null,[["$","$L10",null,{"children":"$L11"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L12",null,{"children":["$","div",null,{"hidden":true,"children":["$","$13",null,{"fallback":null,"children":"$L14"}]}]}]]}]
-7:["$","div",null,{"className":"mt-4 flex w-full justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/5 min-w-[64rem] px-4","children":[["$","header",null,{"className":"w-full rounded-lg py-4 text-slate-300","children":["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]}],["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/actions","target":"_blank","rel":"noopener noreferrer","className":"absolute right-0 top-4 flex items-center gap-3 rounded-lg bg-zinc-700/80 px-4 py-2 text-sm transition-colors duration-150 hover:bg-zinc-600/80","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["circle",{"cx":"12","cy":"12","r":"10","key":"1mglay"}],["path",{"d":"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20","key":"13o1zl"}],["path",{"d":"M2 12h20","key":"9i4pu4"}]],"className":"lucide-globe size-5 text-stone-400"}],["$","$L15",null,{"minTimeISO":"2026-01-26T03:00:32.617Z"}]]}],["$","$L16",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
-17:I[16005,["986","static/chunks/app/(main)/readme/page-7082f35ef19b9958.js"],"default"]
-18:T2e8a,# Training Archive
+7:["$","div",null,{"className":"mt-4 flex w-full justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/5 min-w-[64rem] px-4","children":[["$","header",null,{"className":"w-full rounded-lg py-4 text-slate-300","children":["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]}],["$","$L15",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
+16:I[16005,["986","static/chunks/app/(main)/readme/page-7082f35ef19b9958.js"],"default"]
+17:T3b0f,# Training Archive
 
 算法竞赛训练归档站：自动抓取 QOJ / HDU / NowCoder 的参赛提交与题目，归档为静态站点，便于回溯自己的训练记录与解题代码。
 
@@ -31,7 +30,8 @@ e:["$","$1","h",{"children":[null,[["$","$L10",null,{"children":"$L11"}],["$","m
 - **题目状态标记**：AC / 尝试未解决（黄色背景）等提交状态一目了然，显示提交时间与解决耗时
 - **文件查看器**：在线预览 Markdown（GFM / 数学公式 / KaTeX / 代码高亮）、PDF、源码文件，支持下载
 - **复盘报告**：每场完赛自动生成 LLM 复盘报告（DeepSeek）与 QQ 群分享文本
-- **日志页面**：查看各平台爬虫运行日志与 staged submissions
+- **赛前提醒**：预订的比赛开始前自动在 QQ 群发提醒
+- **状态页面**：查看爬虫配置、各平台最后更新时间、待回填提交与订阅列表（/status）
 - **自动抓取**：自托管守护进程（`crawler/scripts/daemon.py`）定时运行爬虫，检测到竞赛变化后自动提交并部署到 GitHub Pages
 
 ## 技术栈
@@ -47,7 +47,7 @@ e:["$","$1","h",{"children":[null,[["$","$L10",null,{"children":"$L11"}],["$","m
 ## 目录结构
 
 ```
-├── src/                        # Next.js 前端（列表、搜索、Dashboard、复盘、文件查看器）
+├── src/                        # Next.js 前端（列表、搜索、Dashboard、复盘、状态页、文件查看器）
 ├── crawler/                    # Python 爬虫
 │   ├── platforms/              # BaseCrawler 基类 + qoj/hdu/nowcoder 平台实现
 │   ├── scripts/                # scheduled_task.py / report.py / alarm.py / daemon.py
@@ -99,6 +99,49 @@ python3 crawler/scripts/qq_share.py "contests/2026-08-01 xxx"
 
 爬虫会生成 `contests/` 数据目录与各平台日志文件（均已被 `.gitignore` 忽略）。
 
+### QQ 群机器人（可选）
+
+`crawler/scripts/qq_bot.py` 是常驻 QQ 群机器人：在群里 **@机器人** 发指令，即可查询 daemon 运行状态、即将开始的比赛、闹钟概览、已归档比赛与复盘状态。它轮询 NapCat 的群消息记录增量拉取（无需修改 NapCat 的上报配置），默认每 3 秒一次。
+
+**前置条件**：
+
+1. **NapCat**（QQ 机器人框架）已启动并启用正向 WS 服务（如 `ws://127.0.0.1:6700`，在 `onebot11_<qq>.json` 中开启）。
+2. **配置**（敏感项放 `.env`，请自行填写，不会提交）：
+   - `crawler/config.json` 的 `qq` 块：`napcat_ws_url`（NapCat 正向 WS 地址）
+   - `.env`：`QQ_NAPCAT_TOKEN`（NapCat Bearer token）、`QQ_GROUP_ID`（目标群号，数字）、`QQ_BOT_UID`（机器人 QQ 号，用于识别「@我」）
+
+**运行**：
+
+```bash
+# 前台常驻轮询（调试用）
+python3 crawler/scripts/qq_bot.py run
+# 拉取一次消息并处理（调试用）
+python3 crawler/scripts/qq_bot.py once
+
+# 注册为独立自启服务（可单独管理，与 daemon 互不影响）
+python3 crawler/scripts/daemon.py install-qqbot
+sudo .venv/bin/python crawler/scripts/daemon.py install-qqbot --system   # 仅 Linux：系统级服务（开机即启动，需 sudo）
+python3 crawler/scripts/daemon.py uninstall-qqbot                        # 注销服务
+```
+
+**指令列表**（须在群里 **@机器人** 才生效；`/status` 也可用自然语言，如「@机器人 状态」）：
+
+| 指令 | 别名 | 说明 |
+|------|------|------|
+| `/status` | `/st` | daemon 运行状态（计划 / 最近运行 / 闹钟概览，不含已归档） |
+| `/upcoming` | `/u` | 即将开始的比赛（闹钟内未来比赛，按开始时间排序） |
+| `/alarms` | `/a` | 闹钟概览（不含已归档，含 due / scheduled / failed） |
+| `/contests` | `/c` | 已归档比赛（最近 10 场）+ 复盘状态 ✓/✗ |
+| `/review` | `/rv` | 复盘查询（无参数 = 最近复盘；带关键词 = 搜索摘要） |
+| `/fortune` | `/f` | 今日运势（按人 + 日期确定性选择 + 幸运数字 + 今日 / 明日比赛提醒） |
+| `/subs` | - | 订阅列表；`/subs add <link> [end=时间] [start=时间] [备注]` 新增、`/subs del <link>` 删除（改动后自动同步）；时间格式 `ISO 8601 北京时间`（如 `2026-08-15T23:00:00+08:00`），格式错误会提示并拒绝写入；只有一个时间参数时可省略 `end=` 前缀（自动识别） |
+| `/sync` | - | 触发一次完整同步（后台执行，完成后群里回复结果） |
+| `/help` | `/h` | 指令列表 |
+
+> 订阅管理（`/subs`）与 `/sync` 仅在 `deploy` 分支工作区生效（防止在非生产分支误改订阅）；`/fortune` 按人 + 北京日期确定性生成，同一天同一人结果一致，可通过 `config.json` 的 `qq.fortune_salt` 更换盐值。
+
+日志写入 `crawler/qq-bot.log`，增量进度存 `crawler/bot-state.json`（两者均被 gitignore，不提交）。
+
 ## 部署方式
 
 静态版（v0.3.0 起）统一为**一种部署方式**：自托管脚本运行爬虫，产物 push 回 `deploy` 分支，由 GitHub Actions 的 `deploy.yml` 自动构建并部署到 GitHub Pages。动态版（v0.4.0）规划中，详见 [docs/roadmap.md](docs/roadmap.md) §1.1。
@@ -112,21 +155,26 @@ python3 crawler/scripts/daemon.py run             # 主循环（前台运行；�
 python3 crawler/scripts/daemon.py sync            # 同步订阅：历史/过期立即爬，未来比赛写入闹钟
 python3 crawler/scripts/daemon.py fire            # 闹钟到点触发（无到期安静退出）
 python3 crawler/scripts/daemon.py incremental     # 提交增量同步（--submissions-only）
+python3 crawler/scripts/daemon.py remind          # 赛前提醒检查（开始前向 QQ 群发提醒）
 python3 crawler/scripts/daemon.py install         # 注册开机自启（按 OS：systemd user / launchd / schtasks）
 python3 crawler/scripts/daemon.py install --system   # 仅 Linux：系统级服务（开机即启动、无需登录，需 sudo）
 python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
 python3 crawler/scripts/daemon.py uninstall --system # 仅 Linux：注销系统级服务（需 sudo）
+python3 crawler/scripts/daemon.py install-qqbot       # 注册 QQ 群机器人独立服务（见「快速开始 → QQ 群机器人」）
+python3 crawler/scripts/daemon.py uninstall-qqbot     # 注销 QQ 群机器人服务
 python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 ```
 
-- **主循环调度**：`run` 用 croniter 解析 `config.json` 的 `scheduled` 块（三个表达式），睡眠/关机恢复后每个任务只补跑一次（不追赶历史，靠任务自身增量/幂等覆盖错过时段）。
+- **主循环调度**：`run` 按 `config.json` 的 `scheduled` 块调度任务（`fire` / `sync` / `incremental` / `remind`），睡眠/关机恢复后每个任务只补跑一次。
 - **开机自启**：`install` 按操作系统注册——Linux systemd user unit、macOS launchd、Windows schtasks（默认「登录时启动」，适合个人电脑）。
 - **无头服务器**：`install --system`（仅 Linux）注册系统级 systemd service（`/etc/systemd/system/`，`WantedBy=multi-user.target`），开机即启动、无需登录会话；服务以实际用户身份运行（`User=<owner>`，sudo 时取 `SUDO_USER`），git 凭据 / `.env` 与手动运行一致。需 root：
   ```bash
   sudo .venv/bin/python crawler/scripts/daemon.py install --system
   ```
 
-**闹钟机制**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交）并标记为 `planned`，守护进程主循环按 `config.json` 的 `scheduled` 块间隔调度 `fire`：到点即爬取该场比赛并立即生成复盘报告。状态模型：`planned` / `pending` / `archived` / `failed`；爬取失败即 `failed`（不再自动重试），由自动 `sync` 重试：成功 → `archived`，失败保持 `failed`。订阅里修改 `end_time` 或删除条目时，`sync` 会相应重新安排或剪除闹钟。详见 [docs/architecture.md](docs/architecture.md) §4.6。
+**闹钟机制**：订阅条目可选填 `end_time`（比赛结束时间）。未来比赛由 `sync` 写入闹钟表，`fire` 到点爬取并生成复盘报告；订阅修改或删除时会相应重新安排或剪除闹钟。详见 [docs/architecture.md](docs/architecture.md) §4.6。
+
+**赛前提醒**：闹钟内的未来比赛，开始前自动在 QQ 群发提醒（可填 `start_time` 指定开始时间，未填按 `end_time` 推算）。详见 [docs/architecture.md](docs/architecture.md) §4.6。
 
 **前置依赖**（自托管运行机器需全部具备）：
 
@@ -197,7 +245,7 @@ env:
 [MIT](LICENSE) © Appleblue17
 
 本项目仅用于学习与个人归档用途。
-19:T3f37,
+18:T51f9,
 <h1>Training Archive</h1>
 <p>算法竞赛训练归档站：自动抓取 QOJ / HDU / NowCoder 的参赛提交与题目，归档为静态站点，便于回溯自己的训练记录与解题代码。</p>
 <p>在线访问：<a href="https://appleblue17.github.io/Training-Archive/">https://appleblue17.github.io/Training-Archive/</a></p>
@@ -207,7 +255,8 @@ env:
   <li><strong>题目状态标记</strong>：AC / 尝试未解决（黄色背景）等提交状态一目了然，显示提交时间与解决耗时</li>
   <li><strong>文件查看器</strong>：在线预览 Markdown（GFM / 数学公式 / KaTeX / 代码高亮）、PDF、源码文件，支持下载</li>
   <li><strong>复盘报告</strong>：每场完赛自动生成 LLM 复盘报告（DeepSeek）与 QQ 群分享文本</li>
-  <li><strong>日志页面</strong>：查看各平台爬虫运行日志与 staged submissions</li>
+  <li><strong>赛前提醒</strong>：预订的比赛开始前自动在 QQ 群发提醒</li>
+  <li><strong>状态页面</strong>：查看爬虫配置、各平台最后更新时间、待回填提交与订阅列表（/status）</li>
   <li><strong>自动抓取</strong>：自托管守护进程（<code>crawler/scripts/daemon.py</code>）定时运行爬虫，检测到竞赛变化后自动提交并部署到 GitHub Pages</li>
 </ul>
 <h2>技术栈</h2>
@@ -242,7 +291,7 @@ env:
   </tbody>
 </table>
 <h2>目录结构</h2>
-<pre><code class="hljs language-bash">├── src/                        <span class="hljs-comment"># Next.js 前端（列表、搜索、Dashboard、复盘、文件查看器）</span>
+<pre><code class="hljs language-bash">├── src/                        <span class="hljs-comment"># Next.js 前端（列表、搜索、Dashboard、复盘、状态页、文件查看器）</span>
 ├── crawler/                    <span class="hljs-comment"># Python 爬虫</span>
 │   ├── platforms/              <span class="hljs-comment"># BaseCrawler 基类 + qoj/hdu/nowcoder 平台实现</span>
 │   ├── scripts/                <span class="hljs-comment"># scheduled_task.py / report.py / alarm.py / daemon.py</span>
@@ -286,6 +335,90 @@ python3 crawler/scripts/qq_share.py --links <span class="hljs-string">"https://q
 python3 crawler/scripts/qq_share.py <span class="hljs-string">"contests/2026-08-01 xxx"</span>
 </code></pre>
 <p>爬虫会生成 <code>contests/</code> 数据目录与各平台日志文件（均已被 <code>.gitignore</code> 忽略）。</p>
+<h3>QQ 群机器人（可选）</h3>
+<p><code>crawler/scripts/qq_bot.py</code> 是常驻 QQ 群机器人：在群里 <strong>@机器人</strong> 发指令，即可查询 daemon 运行状态、即将开始的比赛、闹钟概览、已归档比赛与复盘状态。它轮询 NapCat 的群消息记录增量拉取（无需修改 NapCat 的上报配置），默认每 3 秒一次。</p>
+<p><strong>前置条件</strong>：</p>
+<ol>
+  <li><strong>NapCat</strong>（QQ 机器人框架）已启动并启用正向 WS 服务（如 <code>ws://127.0.0.1:6700</code>，在 <code>onebot11_&#x3C;qq>.json</code> 中开启）。</li>
+  <li><strong>配置</strong>（敏感项放 <code>.env</code>，请自行填写，不会提交）：
+    <ul>
+      <li><code>crawler/config.json</code> 的 <code>qq</code> 块：<code>napcat_ws_url</code>（NapCat 正向 WS 地址）</li>
+      <li><code>.env</code>：<code>QQ_NAPCAT_TOKEN</code>（NapCat Bearer token）、<code>QQ_GROUP_ID</code>（目标群号，数字）、<code>QQ_BOT_UID</code>（机器人 QQ 号，用于识别「@我」）</li>
+    </ul>
+  </li>
+</ol>
+<p><strong>运行</strong>：</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># 前台常驻轮询（调试用）</span>
+python3 crawler/scripts/qq_bot.py run
+<span class="hljs-comment"># 拉取一次消息并处理（调试用）</span>
+python3 crawler/scripts/qq_bot.py once
+
+<span class="hljs-comment"># 注册为独立自启服务（可单独管理，与 daemon 互不影响）</span>
+python3 crawler/scripts/daemon.py install-qqbot
+<span class="hljs-built_in">sudo</span> .venv/bin/python crawler/scripts/daemon.py install-qqbot --system   <span class="hljs-comment"># 仅 Linux：系统级服务（开机即启动，需 sudo）</span>
+python3 crawler/scripts/daemon.py uninstall-qqbot                        <span class="hljs-comment"># 注销服务</span>
+</code></pre>
+<p><strong>指令列表</strong>（须在群里 <strong>@机器人</strong> 才生效；<code>/status</code> 也可用自然语言，如「@机器人 状态」）：</p>
+<table>
+  <thead>
+    <tr>
+      <th>指令</th>
+      <th>别名</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/status</code></td>
+      <td><code>/st</code></td>
+      <td>daemon 运行状态（计划 / 最近运行 / 闹钟概览，不含已归档）</td>
+    </tr>
+    <tr>
+      <td><code>/upcoming</code></td>
+      <td><code>/u</code></td>
+      <td>即将开始的比赛（闹钟内未来比赛，按开始时间排序）</td>
+    </tr>
+    <tr>
+      <td><code>/alarms</code></td>
+      <td><code>/a</code></td>
+      <td>闹钟概览（不含已归档，含 due / scheduled / failed）</td>
+    </tr>
+    <tr>
+      <td><code>/contests</code></td>
+      <td><code>/c</code></td>
+      <td>已归档比赛（最近 10 场）+ 复盘状态 ✓/✗</td>
+    </tr>
+    <tr>
+      <td><code>/review</code></td>
+      <td><code>/rv</code></td>
+      <td>复盘查询（无参数 = 最近复盘；带关键词 = 搜索摘要）</td>
+    </tr>
+    <tr>
+      <td><code>/fortune</code></td>
+      <td><code>/f</code></td>
+      <td>今日运势（按人 + 日期确定性选择 + 幸运数字 + 今日 / 明日比赛提醒）</td>
+    </tr>
+    <tr>
+      <td><code>/subs</code></td>
+      <td>-</td>
+      <td>订阅列表；<code>/subs add &#x3C;link> [end=时间] [start=时间] [备注]</code> 新增、<code>/subs del &#x3C;link></code> 删除（改动后自动同步）；时间格式 <code>ISO 8601 北京时间</code>（如 <code>2026-08-15T23:00:00+08:00</code>），格式错误会提示并拒绝写入；只有一个时间参数时可省略 <code>end=</code> 前缀（自动识别）</td>
+    </tr>
+    <tr>
+      <td><code>/sync</code></td>
+      <td>-</td>
+      <td>触发一次完整同步（后台执行，完成后群里回复结果）</td>
+    </tr>
+    <tr>
+      <td><code>/help</code></td>
+      <td><code>/h</code></td>
+      <td>指令列表</td>
+    </tr>
+  </tbody>
+</table>
+<blockquote>
+  <p>订阅管理（<code>/subs</code>）与 <code>/sync</code> 仅在 <code>deploy</code> 分支工作区生效（防止在非生产分支误改订阅）；<code>/fortune</code> 按人 + 北京日期确定性生成，同一天同一人结果一致，可通过 <code>config.json</code> 的 <code>qq.fortune_salt</code> 更换盐值。</p>
+</blockquote>
+<p>日志写入 <code>crawler/qq-bot.log</code>，增量进度存 <code>crawler/bot-state.json</code>（两者均被 gitignore，不提交）。</p>
 <h2>部署方式</h2>
 <p>静态版（v0.3.0 起）统一为<strong>一种部署方式</strong>：自托管脚本运行爬虫，产物 push 回 <code>deploy</code> 分支，由 GitHub Actions 的 <code>deploy.yml</code> 自动构建并部署到 GitHub Pages。动态版（v0.4.0）规划中，详见 <a href="docs/roadmap.md">docs/roadmap.md</a> §1.1。</p>
 <h3>部署（唯一方式）：跨平台守护进程 + GitHub Pages</h3>
@@ -294,21 +427,25 @@ python3 crawler/scripts/qq_share.py <span class="hljs-string">"contests/2026-08-
 python3 crawler/scripts/daemon.py <span class="hljs-built_in">sync</span>            <span class="hljs-comment"># 同步订阅：历史/过期立即爬，未来比赛写入闹钟</span>
 python3 crawler/scripts/daemon.py fire            <span class="hljs-comment"># 闹钟到点触发（无到期安静退出）</span>
 python3 crawler/scripts/daemon.py incremental     <span class="hljs-comment"># 提交增量同步（--submissions-only）</span>
+python3 crawler/scripts/daemon.py remind          <span class="hljs-comment"># 赛前提醒检查（开始前向 QQ 群发提醒）</span>
 python3 crawler/scripts/daemon.py install         <span class="hljs-comment"># 注册开机自启（按 OS：systemd user / launchd / schtasks）</span>
 python3 crawler/scripts/daemon.py install --system   <span class="hljs-comment"># 仅 Linux：系统级服务（开机即启动、无需登录，需 sudo）</span>
 python3 crawler/scripts/daemon.py uninstall       <span class="hljs-comment"># 注销开机自启</span>
 python3 crawler/scripts/daemon.py uninstall --system <span class="hljs-comment"># 仅 Linux：注销系统级服务（需 sudo）</span>
+python3 crawler/scripts/daemon.py install-qqbot       <span class="hljs-comment"># 注册 QQ 群机器人独立服务（见「快速开始 → QQ 群机器人」）</span>
+python3 crawler/scripts/daemon.py uninstall-qqbot     <span class="hljs-comment"># 注销 QQ 群机器人服务</span>
 python3 crawler/scripts/daemon.py status          <span class="hljs-comment"># 查看状态 / 日志</span>
 </code></pre>
 <ul>
-  <li><strong>主循环调度</strong>：<code>run</code> 用 croniter 解析 <code>config.json</code> 的 <code>scheduled</code> 块（三个表达式），睡眠/关机恢复后每个任务只补跑一次（不追赶历史，靠任务自身增量/幂等覆盖错过时段）。</li>
+  <li><strong>主循环调度</strong>：<code>run</code> 按 <code>config.json</code> 的 <code>scheduled</code> 块调度任务（<code>fire</code> / <code>sync</code> / <code>incremental</code> / <code>remind</code>），睡眠/关机恢复后每个任务只补跑一次。</li>
   <li><strong>开机自启</strong>：<code>install</code> 按操作系统注册——Linux systemd user unit、macOS launchd、Windows schtasks（默认「登录时启动」，适合个人电脑）。</li>
   <li><strong>无头服务器</strong>：<code>install --system</code>（仅 Linux）注册系统级 systemd service（<code>/etc/systemd/system/</code>，<code>WantedBy=multi-user.target</code>），开机即启动、无需登录会话；服务以实际用户身份运行（<code>User=&#x3C;owner></code>，sudo 时取 <code>SUDO_USER</code>），git 凭据 / <code>.env</code> 与手动运行一致。需 root：
     <pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> .venv/bin/python crawler/scripts/daemon.py install --system
 </code></pre>
   </li>
 </ul>
-<p><strong>闹钟机制</strong>：订阅条目可选填 <code>end_time</code>（比赛结束时间，ISO 格式）。<code>sync</code> 把未来比赛写入运行时状态文件 <code>crawler/alarms.json</code>（gitignore，不提交）并标记为 <code>planned</code>，守护进程主循环按 <code>config.json</code> 的 <code>scheduled</code> 块间隔调度 <code>fire</code>：到点即爬取该场比赛并立即生成复盘报告。状态模型：<code>planned</code> / <code>pending</code> / <code>archived</code> / <code>failed</code>；爬取失败即 <code>failed</code>（不再自动重试），由自动 <code>sync</code> 重试：成功 → <code>archived</code>，失败保持 <code>failed</code>。订阅里修改 <code>end_time</code> 或删除条目时，<code>sync</code> 会相应重新安排或剪除闹钟。详见 <a href="docs/architecture.md">docs/architecture.md</a> §4.6。</p>
+<p><strong>闹钟机制</strong>：订阅条目可选填 <code>end_time</code>（比赛结束时间）。未来比赛由 <code>sync</code> 写入闹钟表，<code>fire</code> 到点爬取并生成复盘报告；订阅修改或删除时会相应重新安排或剪除闹钟。详见 <a href="docs/architecture.md">docs/architecture.md</a> §4.6。</p>
+<p><strong>赛前提醒</strong>：闹钟内的未来比赛，开始前自动在 QQ 群发提醒（可填 <code>start_time</code> 指定开始时间，未填按 <code>end_time</code> 推算）。详见 <a href="docs/architecture.md">docs/architecture.md</a> §4.6。</p>
 <p><strong>前置依赖</strong>（自托管运行机器需全部具备）：</p>
 <ol>
   <li><strong>Python 3 + venv</strong>（推荐）：已 clone 本仓库，然后
@@ -429,7 +566,7 @@ python3 crawler/scripts/daemon.py status          <span class="hljs-comment"># �
 <h2>License</h2>
 <p><a href="LICENSE">MIT</a> © Appleblue17</p>
 <p>本项目仅用于学习与个人归档用途。</p>
-8:["$","$L17",null,{"raw":"$18","htmlContent":"$19"}]
+8:["$","$L16",null,{"raw":"$17","htmlContent":"$18"}]
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 a:null
 c:{"metadata":[],"error":null,"digest":"$undefined"}

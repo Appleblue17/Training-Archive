@@ -1,99 +1,74 @@
 1:"$Sreact.fragment"
 2:I[48521,[],""]
-3:I[89900,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-3ad219a6236c735b.js"],"default"]
+3:I[17058,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-d11893d92812b6df.js"],"default"]
 4:I[31661,[],""]
-5:I[86070,["329","static/chunks/329-3322297afe79dac4.js","76","static/chunks/app/(main)/layout-54c6267882e70643.js"],"default"]
+5:I[86070,["177","static/chunks/app/layout-47885cc15503d1d7.js"],"default"]
 6:I[52236,["329","static/chunks/329-3322297afe79dac4.js","343","static/chunks/343-c5433323e67c6075.js","619","static/chunks/app/(main)/page-d244cda825945327.js"],""]
-8:I[21324,["424","static/chunks/424-4e50f469f5981384.js","754","static/chunks/app/(main)/log/page-52f4a48e5426d2e2.js"],"default"]
-f:I[50939,[],""]
+8:I[1945,["424","static/chunks/424-4e50f469f5981384.js","246","static/chunks/app/(main)/status/page-deeb971bbf79114c.js"],"default"]
+e:I[50939,[],""]
 :HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
-:HL["/Training-Archive/_next/static/css/baa0e101e3a2d945.css","style"]
-9:Taa3,[
-  {
-    "time": "2026-08-10T23:50:13.768507+08:00",
-    "level": "fatal",
-    "platform": "hdu",
-    "msg": "Failed to start Chromium: [Errno 2] No such file or directory: '/root/Training-Archive/crawler/chromedriver-linux64/chromedriver'"
-  },
-  {
-    "time": "2026-08-10T23:54:16.801168+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:16.806891+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:16.807699+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:16.808627+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:18.632293+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:18.636081+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:18.638334+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:18.640249+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:20.739094+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:20.745253+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:20.746337+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-10T23:54:20.747465+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Pandoc conversion failed: [Errno 2] No such file or directory: 'pandoc'"
-  },
-  {
-    "time": "2026-08-11T00:53:58.730228+08:00",
-    "level": "error",
-    "platform": "hdu",
-    "msg": "Failed to parse subscriptions file crawler/subscriptions/hdu-2026.json: Expecting value: line 14 column 1 (char 301)"
-  }
-]a:T54ac,[
+:HL["/Training-Archive/_next/static/css/9ce25ada458b6567.css","style"]
+9:T5ea,{
+  "hdu-2026": [
+    {
+      "platform": "hdu",
+      "link": "https://acm.hdu.edu.cn/contest/problems?cid=1229",
+      "comments": "2026“钉耙编程”中国大学生算法设计暑期联赛（1）",
+      "enabled": true
+    },
+    {
+      "platform": "hdu",
+      "link": "https://acm.hdu.edu.cn/contest/problems?cid=1230",
+      "comments": "2",
+      "enabled": true
+    },
+    {
+      "platform": "hdu",
+      "link": "https://acm.hdu.edu.cn/contest/problems?cid=1231",
+      "comments": "3",
+      "enabled": true
+    },
+    {
+      "platform": "hdu",
+      "link": "https://acm.hdu.edu.cn/contest/problems?cid=1232",
+      "comments": "4",
+      "enabled": true
+    },
+    {
+      "platform": "hdu",
+      "link": "https://acm.hdu.edu.cn/contest/problems?cid=1233",
+      "comments": "5",
+      "enabled": true
+    },
+    {
+      "platform": "hdu",
+      "link": "https://acm.hdu.edu.cn/contest/problems?cid=1234",
+      "comments": "6",
+      "enabled": true
+    },
+    {
+      "platform": "hdu",
+      "link": "https://acm.hdu.edu.cn/contest/problems?cid=1235",
+      "comments": "7th",
+      "enabled": true
+    },
+    {
+      "platform": "hdu",
+      "link": "https://acm.hdu.edu.cn/contest/problems?cid=1236",
+      "comments": "8",
+      "enabled": true,
+      "end_time": "2026-08-13T17:00:00+08:00"
+    }
+  ],
+  "qqbot": [
+    {
+      "platform": "hdu",
+      "link": "https://acm.hdu.edu.cn/contest/problems?cid=1237",
+      "enabled": true,
+      "comments": "2026.08.13-20:00:00"
+    }
+  ]
+}a:T54ac,[
   {
     "submission_id": "#1171358",
     "problem_name": "\u7edd\u5bf9\u9632\u5fa1",
@@ -810,320 +785,18 @@ f:I[50939,[],""]
     "problem_link": "https://qoj.ac/contest/2036/problem/11105",
     "submission_link": "https://qoj.ac/submission/1911377"
   }
-]b:T2c38,[
-  {
-    "time": "2026-08-13T04:00:30.356233+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-08-13T04:00:30.664813+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Reached last update (Submission 10772), stopping."
-  },
-  {
-    "time": "2026-08-13T04:00:30.665946+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Fetched 19 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1232, page 1."
-  },
-  {
-    "time": "2026-08-13T04:00:30.666720+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1233."
-  },
-  {
-    "time": "2026-08-13T04:00:33.630182+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-08-13T04:00:34.052558+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Reached last update (Submission 11881), stopping."
-  },
-  {
-    "time": "2026-08-13T04:00:34.053424+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Fetched 38 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1233, page 1."
-  },
-  {
-    "time": "2026-08-13T04:00:34.054132+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1234."
-  },
-  {
-    "time": "2026-08-13T04:00:37.217523+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-08-13T04:00:37.422926+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Reached last update (Submission 13435), stopping."
-  },
-  {
-    "time": "2026-08-13T04:00:37.423774+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Fetched 43 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1234, page 1."
-  },
-  {
-    "time": "2026-08-13T04:00:37.424805+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1235."
-  },
-  {
-    "time": "2026-08-13T04:00:40.491210+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-08-13T04:00:41.066751+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Reached last update (Submission 10885), stopping."
-  },
-  {
-    "time": "2026-08-13T04:00:41.067667+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Fetched 45 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1235, page 1."
-  },
-  {
-    "time": "2026-08-13T10:54:13.246880+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09 (2026-07-21)"
-  },
-  {
-    "time": "2026-08-13T10:54:13.249943+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Contest folder already exists: contests/2026-07-21 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff081\uff09. Skipped."
-  },
-  {
-    "time": "2026-08-13T10:54:13.250633+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff082\uff09 (2026-07-23)"
-  },
-  {
-    "time": "2026-08-13T10:54:13.251599+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Contest folder already exists: contests/2026-07-23 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff082\uff09. Skipped."
-  },
-  {
-    "time": "2026-08-13T10:54:13.252116+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff083\uff09 (2026-07-28)"
-  },
-  {
-    "time": "2026-08-13T10:54:13.252643+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Contest folder already exists: contests/2026-07-28 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff083\uff09. Skipped."
-  },
-  {
-    "time": "2026-08-13T10:54:13.253178+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff084\uff09 (2026-07-30)"
-  },
-  {
-    "time": "2026-08-13T10:54:13.253757+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Contest folder already exists: contests/2026-07-30 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff084\uff09. Skipped."
-  },
-  {
-    "time": "2026-08-13T10:54:13.254285+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff085\uff09 (2026-08-04)"
-  },
-  {
-    "time": "2026-08-13T10:54:13.254820+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Contest folder already exists: contests/2026-08-04 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff085\uff09. Skipped."
-  },
-  {
-    "time": "2026-08-13T10:54:13.255374+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff086\uff09 (2026-08-06)"
-  },
-  {
-    "time": "2026-08-13T10:54:13.256001+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Contest folder already exists: contests/2026-08-06 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff086\uff09. Skipped."
-  },
-  {
-    "time": "2026-08-13T10:54:13.256573+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff087\uff09 (2026-08-11)"
-  },
-  {
-    "time": "2026-08-13T10:54:13.257271+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Contest folder already exists: contests/2026-08-11 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff087\uff09. Skipped."
-  },
-  {
-    "time": "2026-08-13T10:54:13.298260+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Submissions fetch was not marked complete; last-update not advanced."
-  },
-  {
-    "time": "2026-08-13T17:00:41.149013+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "Submissions fetch was not marked complete; last-update not advanced."
-  },
-  {
-    "time": "2026-08-13T17:06:52.381956+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff088\uff09 (2026-08-13)"
-  },
-  {
-    "time": "2026-08-13T17:06:52.383859+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Created contest folder: contests/2026-08-13 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff088\uff09"
-  },
-  {
-    "time": "2026-08-13T17:06:55.321344+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Login successful with username and password."
-  },
-  {
-    "time": "2026-08-13T17:07:02.789511+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Finished fetching contest: 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff088\uff09 (2026-08-13)"
-  },
-  {
-    "time": "2026-08-13T17:07:02.791515+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start updating staged submissions..."
-  },
-  {
-    "time": "2026-08-13T17:07:02.792580+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching new submissions..."
-  },
-  {
-    "time": "2026-08-13T17:07:02.793888+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1229 not new in this run; skipped (contests-only)."
-  },
-  {
-    "time": "2026-08-13T17:07:02.794542+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1230 not new in this run; skipped (contests-only)."
-  },
-  {
-    "time": "2026-08-13T17:07:02.795189+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1231 not new in this run; skipped (contests-only)."
-  },
-  {
-    "time": "2026-08-13T17:07:02.796106+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1232 not new in this run; skipped (contests-only)."
-  },
-  {
-    "time": "2026-08-13T17:07:02.797024+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1233 not new in this run; skipped (contests-only)."
-  },
-  {
-    "time": "2026-08-13T17:07:02.799083+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1234 not new in this run; skipped (contests-only)."
-  },
-  {
-    "time": "2026-08-13T17:07:02.800021+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Contest https://acm.hdu.edu.cn/contest/problems?cid=1235 not new in this run; skipped (contests-only)."
-  },
-  {
-    "time": "2026-08-13T17:07:02.801069+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1236."
-  },
-  {
-    "time": "2026-08-13T17:07:03.082537+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Already logged in with username and password. Skipping login."
-  },
-  {
-    "time": "2026-08-13T17:07:04.188636+08:00",
-    "level": "warning",
-    "platform": "hdu",
-    "msg": "File contests/2026-08-13 2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff088\uff09/submissions.json does not exist, creating a new one."
-  },
-  {
-    "time": "2026-08-13T17:07:13.829776+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Fetched 24 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1236, page 1."
-  },
-  {
-    "time": "2026-08-13T17:07:14.016059+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Reached the end of submissions or no more pages to fetch. Stopped."
-  },
-  {
-    "time": "2026-08-13T17:07:14.124249+08:00",
-    "level": "info",
-    "platform": "hdu",
-    "msg": "Contests-only run; last-update not advanced (incremental sync is handled by task B)."
-  }
-]0:{"P":null,"b":"G50z0nXsczwtj5vBF_Kbx","p":"/Training-Archive","c":["","log"],"i":false,"f":[[["",{"children":["(main)",{"children":["log",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/baa0e101e3a2d945.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["log",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L8",null,{"fileContentList":["$9","{\n  \"qoj\": \"2026-01-26T11:00:32.617572+08:00\",\n  \"nowcoder\": \"2026-01-26T11:00:36.500114+08:00\",\n  \"hdu\": \"2026-08-13T04:00:41.175225+08:00\"\n}","","$a","$b","[]","",""]}],null,"$Lc"]}],{},null,false]},null,false]},null,false]},["$Ld",[],[]],false],"$Le",false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
-10:I[47055,[],"OutletBoundary"]
-12:I[39909,[],"AsyncMetadataOutlet"]
-14:I[47055,[],"ViewportBoundary"]
-16:I[47055,[],"MetadataBoundary"]
-17:"$Sreact.suspense"
-19:I[80175,["329","static/chunks/329-3322297afe79dac4.js","76","static/chunks/app/(main)/layout-54c6267882e70643.js"],"default"]
-1a:I[83266,["329","static/chunks/329-3322297afe79dac4.js","76","static/chunks/app/(main)/layout-54c6267882e70643.js"],"default"]
-c:["$","$L10",null,{"children":["$L11",["$","$L12",null,{"promise":"$@13"}]]}]
-d:["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}]
-e:["$","$1","h",{"children":[null,[["$","$L14",null,{"children":"$L15"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L16",null,{"children":["$","div",null,{"hidden":true,"children":["$","$17",null,{"fallback":null,"children":"$L18"}]}]}]]}]
-7:["$","div",null,{"className":"mt-4 flex w-full justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/5 min-w-[64rem] px-4","children":[["$","header",null,{"className":"w-full rounded-lg py-4 text-slate-300","children":["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]}],["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/actions","target":"_blank","rel":"noopener noreferrer","className":"absolute right-0 top-4 flex items-center gap-3 rounded-lg bg-zinc-700/80 px-4 py-2 text-sm transition-colors duration-150 hover:bg-zinc-600/80","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["circle",{"cx":"12","cy":"12","r":"10","key":"1mglay"}],["path",{"d":"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20","key":"13o1zl"}],["path",{"d":"M2 12h20","key":"9i4pu4"}]],"className":"lucide-globe size-5 text-stone-400"}],["$","$L19",null,{"minTimeISO":"2026-01-26T03:00:32.617Z"}]]}],["$","$L1a",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
-15:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-11:null
-13:{"metadata":[],"error":null,"digest":"$undefined"}
-18:"$13:metadata"
+]0:{"P":null,"b":"KhJXlb8Z6_exRP-9WOfoQ","p":"/Training-Archive","c":["","status"],"i":false,"f":[[["",{"children":["(main)",{"children":["status",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/9ce25ada458b6567.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}],["$","title",null,{"children":"Training Archive"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["status",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L8",null,{"fileContentList":["{\n  \"qoj\": \"2026-01-26T11:00:32.617572+08:00\",\n  \"nowcoder\": \"2026-01-26T11:00:36.500114+08:00\",\n  \"hdu\": \"2026-08-13T23:28:40.202558+08:00\"\n}","{\n  \"scheduled\": {\n    \"fire\": \"*/5 * * * *\",\n    \"sync\": \"0 */3 * * *\",\n    \"incremental\": \"0 4 * * *\"\n  },\n  \"ai_tasks\": {\n    \"report\": {\n      \"enabled\": true\n    },\n    \"share\": {\n      \"enabled\": true\n    }\n  },\n  \"qq\": {\n    \"napcat_ws_url\": \"ws://127.0.0.1:6700\",\n    \"send_mode\": \"file_only\"\n  },\n  \"qoj\": {\n    \"enabled\": false,\n    \"base_url\": \"https://qoj.ac\",\n    \"min_wait_time\": 0.5,\n    \"max_wait_time\": 2\n  },\n  \"hdu\": {\n    \"enabled\": true,\n    \"base_url\": \"https://acm.hdu.edu.cn\",\n    \"min_wait_time\": 0,\n    \"max_wait_time\": 0.5\n  },\n  \"nowcoder\": {\n    \"enabled\": false,\n    \"base_url\": \"https://ac.nowcoder.com\",\n    \"min_wait_time\": 0,\n    \"max_wait_time\": 0.5\n  }\n}\n","$9","$a","[]",""]}],null,"$Lb"]}],{},null,false]},null,false]},null,false]},["$Lc",[],[]],false],"$Ld",false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+f:I[47055,[],"OutletBoundary"]
+11:I[39909,[],"AsyncMetadataOutlet"]
+13:I[47055,[],"ViewportBoundary"]
+15:I[47055,[],"MetadataBoundary"]
+16:"$Sreact.suspense"
+18:I[21634,["329","static/chunks/329-3322297afe79dac4.js","76","static/chunks/app/(main)/layout-c92c8bdbd6b676dc.js"],"default"]
+b:["$","$Lf",null,{"children":["$L10",["$","$L11",null,{"promise":"$@12"}]]}]
+c:["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}]
+d:["$","$1","h",{"children":[null,[["$","$L13",null,{"children":"$L14"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L15",null,{"children":["$","div",null,{"hidden":true,"children":["$","$16",null,{"fallback":null,"children":"$L17"}]}]}]]}]
+7:["$","div",null,{"className":"mt-4 flex w-full justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/5 min-w-[64rem] px-4","children":[["$","header",null,{"className":"w-full rounded-lg py-4 text-slate-300","children":["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]}],["$","$L18",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
+14:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+10:null
+12:{"metadata":[],"error":null,"digest":"$undefined"}
+17:"$12:metadata"
