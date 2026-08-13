@@ -82,6 +82,9 @@ crawler/platforms/*/input_*.json
 crawler/server-task.log
 crawler/daemon.log
 crawler/daemon-state.json
+# qq-bot 轮询运行时状态/日志（勿提交）
+crawler/qq-bot.log
+crawler/bot-state.json
 # 但保留配置模板可提交
 !crawler/config.example.json
 !crawler/prompts/prompt.template.example.md
