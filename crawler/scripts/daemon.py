@@ -226,6 +226,16 @@ def commit_and_push():
     shutil.copy(os.path.join(REPO_ROOT, ".gitignore.deploy"), os.path.join(REPO_ROOT, ".gitignore"))
     git("add", ".gitignore", "crawler", "contests", check=False)
     git("reset", "HEAD", "crawler/chromedriver-linux64/chromedriver", check=False)
+    # 移除不应提交的运行时日志/状态文件：它们是历史遗留被跟踪的文件，
+    # gitignore 对已跟踪文件无效，git add crawler 会把其改动暂存——
+    # 不排除的话每次 auto 提交都会把 daemon.log / daemon-state.json /
+    # 平台 log.json 等运行时噪音一起提交。
+    git("reset", "HEAD", "--",
+        "crawler/daemon.log",
+        "crawler/daemon-state.json",
+        "crawler/global.log.json",
+        "crawler/platforms/*/log.json",
+        check=False)
 
     # core.quotepath=false：比赛名含中文时 git 默认转义非 ASCII 路径，
     # grep '^contests/' 会误判；统一用 quotepath=false 取文件名判断。
