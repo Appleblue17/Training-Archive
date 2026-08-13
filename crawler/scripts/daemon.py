@@ -32,6 +32,10 @@ ai_tasks.share.enabled 单独调用；NapCat 未配置/发送失败仅告警不�
   python3 crawler/scripts/daemon.py install --system   仅 Linux：注册系统级服务（开机即启动，需 sudo）
   python3 crawler/scripts/daemon.py uninstall      注销开机自启
   python3 crawler/scripts/daemon.py uninstall --system  仅 Linux：注销系统级服务（需 root）
+  python3 crawler/scripts/daemon.py install-qqbot      注册 qq-bot 独立服务（QQ 群指令轮询）
+  python3 crawler/scripts/daemon.py install-qqbot --system  仅 Linux：注册系统级 qq-bot 服务（需 sudo）
+  python3 crawler/scripts/daemon.py uninstall-qqbot      注销 qq-bot 服务
+  python3 crawler/scripts/daemon.py uninstall-qqbot --system  仅 Linux：注销系统级 qq-bot 服务（需 root）
   python3 crawler/scripts/daemon.py status         查看状态（scheduled / 闹钟 / 自启 / git / 日志）
   python3 crawler/scripts/daemon.py log [N]        查看最近 N 行运行日志（默认 50）
   python3 crawler/scripts/daemon.py --help         显示本帮助
@@ -102,6 +106,11 @@ DEFAULT_SCHEDULED = {
 UNIT_NAME = "training-archive-daemon"
 PLIST_LABEL = "com.trainingarchive.daemon"
 SCHTASKS_NAME = "TrainingArchiveDaemon"
+
+# qq-bot 服务（独立于 daemon，可单独管理）
+QQBOT_UNIT_NAME = "training-archive-qqbot"
+QQBOT_PLIST_LABEL = "com.trainingarchive.qqbot"
+QQBOT_SCHTASKS_NAME = "TrainingArchiveQQBot"
 
 
 # ---------------------------------------------------------------------------
@@ -554,6 +563,11 @@ def _service_command():
     return [sys.executable, os.path.join(REPO_ROOT, "crawler", "scripts", "daemon.py"), "run"]
 
 
+def _qqbot_service_command():
+    """安装为服务时拉起 qq-bot 的完整命令（[python, qq_bot.py, run]）。"""
+    return [sys.executable, os.path.join(REPO_ROOT, "crawler", "scripts", "qq_bot.py"), "run"]
+
+
 def install_linux(system=False):
     """注册开机自启：默认 systemd user unit（登录后启动）；system=True 时注册
     系统级 systemd service（开机即启动，无需登录会话，适合无头服务器）。
@@ -725,6 +739,229 @@ def cmd_install(system=False):
     return 0
 
 
+# ---------------------------------------------------------------------------
+# qq-bot 服务安装（独立于 daemon；install-qqbot / uninstall-qqbot）
+# ---------------------------------------------------------------------------
+def install_qqbot_linux(system=False):
+    """注册 qq-bot 自启：默认 systemd user unit；system=True 时系统级。"""
+    if system:
+        return install_qqbot_linux_system()
+    systemd_dir = os.path.expanduser("~/.config/systemd/user")
+    if shutil.which("systemctl") and (os.path.isdir(systemd_dir) or True):
+        os.makedirs(systemd_dir, exist_ok=True)
+        unit = os.path.join(systemd_dir, f"{QQBOT_UNIT_NAME}.service")
+        py, script, run = _qqbot_service_command()
+        content = f"""[Unit]
+Description=Training Archive QQ Bot (group command polling)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart={py} {script} {run}
+WorkingDirectory={REPO_ROOT}
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target
+"""
+        with open(unit, "w", encoding="utf-8") as f:
+            f.write(content)
+        subprocess.run(["systemctl", "--user", "daemon-reload"], check=False)
+        subprocess.run(
+            ["systemctl", "--user", "enable", "--now", f"{QQBOT_UNIT_NAME}.service"],
+            check=False,
+        )
+        log(f"Installed systemd user unit: {unit}")
+        log("Start at login: systemctl --user enable --now training-archive-qqbot.service")
+        return
+    log("[ERROR] qq-bot needs systemd (user unit); no fallback available.")
+    return 1
+
+
+def install_qqbot_linux_system():
+    """系统级 qq-bot service（/etc/systemd/system，开机即启动）。"""
+    if not shutil.which("systemctl"):
+        log("[ERROR] systemd not available on this host; cannot install qq-bot service.")
+        return 1
+    if os.geteuid() != 0:
+        log("[ERROR] 'install-qqbot --system' needs root to write /etc/systemd/system.")
+        log("Run: sudo .venv/bin/python crawler/scripts/daemon.py install-qqbot --system")
+        return 1
+    owner = os.environ.get("SUDO_USER") or getpass.getuser()
+    unit = f"/etc/systemd/system/{QQBOT_UNIT_NAME}.service"
+    py, script, run = _qqbot_service_command()
+    content = f"""[Unit]
+Description=Training Archive QQ Bot (group command polling)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User={owner}
+ExecStart={py} {script} {run}
+WorkingDirectory={REPO_ROOT}
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(unit, "w", encoding="utf-8") as f:
+        f.write(content)
+    subprocess.run(["systemctl", "daemon-reload"], check=False)
+    subprocess.run(
+        ["systemctl", "enable", "--now", f"{QQBOT_UNIT_NAME}.service"],
+        check=False,
+    )
+    log(f"Installed systemd system unit: {unit} (User={owner})")
+    log("Manage: systemctl status/enable/disable training-archive-qqbot.service")
+    return 0
+
+
+def install_qqbot_macos():
+    """launchd LaunchAgent：登录时启动 + KeepAlive。"""
+    agents_dir = os.path.expanduser("~/Library/LaunchAgents")
+    os.makedirs(agents_dir, exist_ok=True)
+    plist = os.path.join(agents_dir, f"{QQBOT_PLIST_LABEL}.plist")
+    py, script, run = _qqbot_service_command()
+    content = f"""<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>{QQBOT_PLIST_LABEL}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{py}</string>
+        <string>{script}</string>
+        <string>{run}</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>{REPO_ROOT}</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>{LOG_FILE}</string>
+    <key>StandardErrorPath</key>
+    <string>{LOG_FILE}</string>
+</dict>
+</plist>
+"""
+    with open(plist, "w", encoding="utf-8") as f:
+        f.write(content)
+    subprocess.run(["launchctl", "unload", plist], check=False)
+    subprocess.run(["launchctl", "load", plist], check=False)
+    log(f"Installed launchd agent: {plist}")
+
+
+def install_qqbot_windows():
+    """schtasks ONLOGON：登录时启动（pythonw 无控制台窗口）。"""
+    python = sys.executable
+    pythonw = python.replace("python.exe", "pythonw.exe")
+    if os.path.exists(pythonw):
+        python = pythonw
+    script = os.path.join(REPO_ROOT, "crawler", "scripts", "qq_bot.py")
+    tr = f'"{python}" "{script}" run'
+    r = subprocess.run(
+        ["schtasks", "/Create", "/F", "/TN", QQBOT_SCHTASKS_NAME, "/SC", "ONLOGON",
+         "/TR", tr, "/RL", "LIMITED"],
+        text=True, capture_output=True,
+    )
+    if r.returncode != 0:
+        log(f"[WARN] schtasks failed: {r.stdout.strip()} {r.stderr.strip()}")
+        return 1
+    log(f"Installed scheduled task: {QQBOT_SCHTASKS_NAME} (ONLOGON)")
+
+
+def cmd_install_qqbot(system=False):
+    """注册 qq-bot 自启（独立服务，可单独管理）。"""
+    s = _system()
+    if system and s != "linux":
+        log(f"[WARN] '--system' is only supported on Linux (current: {s}); "
+            "falling back to user autostart.")
+        system = False
+    if s == "linux":
+        return install_qqbot_linux(system)
+    elif s == "macos":
+        install_qqbot_macos()
+    elif s == "windows":
+        install_qqbot_windows()
+    else:
+        log(f"[WARN] unsupported platform: {platform.system()}; manual setup required.")
+        return 1
+    log("Install done. Start via the service, or run 'qq_bot.py run' to verify.")
+    return 0
+
+
+def uninstall_qqbot_linux(system=False):
+    if system:
+        return uninstall_qqbot_linux_system()
+    unit = os.path.expanduser(f"~/.config/systemd/user/{QQBOT_UNIT_NAME}.service")
+    if os.path.exists(unit):
+        subprocess.run(
+            ["systemctl", "--user", "disable", "--now", f"{QQBOT_UNIT_NAME}.service"], check=False
+        )
+        os.remove(unit)
+        subprocess.run(["systemctl", "--user", "daemon-reload"], check=False)
+        log(f"Removed systemd user unit: {unit}")
+        return
+    log("(qq-bot user service not installed)")
+
+
+def uninstall_qqbot_linux_system():
+    unit = f"/etc/systemd/system/{QQBOT_UNIT_NAME}.service"
+    if not os.path.exists(unit):
+        log("(qq-bot system service not installed)")
+        return
+    if os.geteuid() != 0:
+        log("[ERROR] 'uninstall-qqbot --system' needs root to remove /etc/systemd/system.")
+        return 1
+    subprocess.run(
+        ["systemctl", "disable", "--now", f"{QQBOT_UNIT_NAME}.service"], check=False
+    )
+    os.remove(unit)
+    subprocess.run(["systemctl", "daemon-reload"], check=False)
+    log(f"Removed systemd system unit: {unit}")
+
+
+def uninstall_qqbot_macos():
+    plist = os.path.expanduser(f"~/Library/LaunchAgents/{QQBOT_PLIST_LABEL}.plist")
+    if os.path.exists(plist):
+        subprocess.run(["launchctl", "unload", plist], check=False)
+        os.remove(plist)
+        log(f"Removed launchd agent: {plist}")
+    else:
+        log("(qq-bot launchd agent not installed)")
+
+
+def uninstall_qqbot_windows():
+    subprocess.run(["schtasks", "/Delete", "/F", "/TN", QQBOT_SCHTASKS_NAME], check=False)
+    log(f"Removed scheduled task: {QQBOT_SCHTASKS_NAME}")
+
+
+def cmd_uninstall_qqbot(system=False):
+    s = _system()
+    if system and s != "linux":
+        log(f"[WARN] '--system' is only supported on Linux (current: {s}); "
+            "falling back to user autostart removal.")
+        system = False
+    if s == "linux":
+        return uninstall_qqbot_linux(system)
+    elif s == "macos":
+        uninstall_qqbot_macos()
+    elif s == "windows":
+        uninstall_qqbot_windows()
+    else:
+        log(f"[WARN] unsupported platform: {platform.system()}")
+        return 1
+    log("Uninstall done.")
+    return 0
+
+
 def uninstall_linux(system=False):
     if system:
         return uninstall_linux_system()
@@ -823,6 +1060,31 @@ def _autostart_info():
     return "(unsupported platform)"
 
 
+def _qqbot_autostart_info():
+    """qq-bot 服务自启状态（独立服务）。"""
+    s = _system()
+    if s == "linux":
+        sys_unit = f"/etc/systemd/system/{QQBOT_UNIT_NAME}.service"
+        if os.path.exists(sys_unit):
+            r = subprocess.run(["systemctl", "is-enabled", f"{QQBOT_UNIT_NAME}.service"],
+                               text=True, capture_output=True)
+            return f"systemd system unit: {sys_unit} ({r.stdout.strip()})"
+        unit = os.path.expanduser(f"~/.config/systemd/user/{QQBOT_UNIT_NAME}.service")
+        if os.path.exists(unit):
+            r = subprocess.run(["systemctl", "--user", "is-enabled", f"{QQBOT_UNIT_NAME}.service"],
+                               text=True, capture_output=True)
+            return f"systemd user unit: {unit} ({r.stdout.strip()})"
+        return "(not installed)"
+    if s == "macos":
+        plist = os.path.expanduser(f"~/Library/LaunchAgents/{QQBOT_PLIST_LABEL}.plist")
+        return f"launchd agent: {plist}" if os.path.exists(plist) else "(not installed)"
+    if s == "windows":
+        r = subprocess.run(["schtasks", "/Query", "/TN", QQBOT_SCHTASKS_NAME],
+                           text=True, capture_output=True)
+        return f"schtasks: {QQBOT_SCHTASKS_NAME}" if r.returncode == 0 else "(not installed)"
+    return "(unsupported platform)"
+
+
 def cmd_status():
     print("== scheduled (config.json) ==")
     for k, v in load_scheduled().items():
@@ -832,7 +1094,19 @@ def cmd_status():
     print(f"  last_run: {state.get('last_run') or '(none yet; first run will execute all)'}")
     print(f"  state file: {STATE_FILE}")
     print("\n== autostart ==")
-    print(f"  {_autostart_info()}")
+    print(f"  daemon: {_autostart_info()}")
+    print(f"  qq-bot: {_qqbot_autostart_info()}")
+    print("\n== qq-bot ==")
+    qqbot_state = os.path.join(REPO_ROOT, "crawler", "bot-state.json")
+    if os.path.exists(qqbot_state):
+        try:
+            with open(qqbot_state, "r", encoding="utf-8") as f:
+                bs = json.load(f)
+            print(f"  last_seq: {bs.get('last_seq') or '(none)'}")
+        except Exception:
+            print("  last_seq: (unreadable)")
+    else:
+        print("  last_seq: (no state yet)")
     print("\n== alarms ==")
     proc = run_py("alarm.py", "list", capture=True)
     print(proc.stdout or "(no alarms)")
@@ -881,6 +1155,10 @@ def main():
             sys.exit(cmd_install("--system" in args[1:]))
         elif cmd == "uninstall":
             sys.exit(cmd_uninstall("--system" in args[1:]))
+        elif cmd == "install-qqbot":
+            sys.exit(cmd_install_qqbot("--system" in args[1:]))
+        elif cmd == "uninstall-qqbot":
+            sys.exit(cmd_uninstall_qqbot("--system" in args[1:]))
         elif cmd == "status":
             cmd_status()
         elif cmd == "log":

@@ -78,6 +78,44 @@ python3 crawler/scripts/qq_share.py "contests/2026-08-01 xxx"
 
 爬虫会生成 `contests/` 数据目录与各平台日志文件（均已被 `.gitignore` 忽略）。
 
+### QQ 群机器人（可选）
+
+`crawler/scripts/qq_bot.py` 是常驻 QQ 群机器人：在群里 **@机器人** 发指令，即可查询 daemon 运行状态、即将开始的比赛、闹钟概览、已归档比赛与复盘状态。它通过轮询 NapCat 的 `get_group_msg_history` 增量拉取群消息（无需修改 NapCat 的上报配置），默认每 3 秒轮询一次，并按 `message_seq` 去重。
+
+**前置条件**：
+
+1. **NapCat**（QQ 机器人框架）已启动并启用正向 WS 服务（如 `ws://127.0.0.1:6700`，在 `onebot11_<qq>.json` 中开启）。
+2. **配置**（敏感项放 `.env`，请自行填写，不会提交）：
+   - `crawler/config.json` 的 `qq` 块：`napcat_ws_url`（NapCat 正向 WS 地址）
+   - `.env`：`QQ_NAPCAT_TOKEN`（NapCat Bearer token）、`QQ_GROUP_ID`（目标群号，数字）、`QQ_BOT_UID`（机器人 QQ 号，用于识别「@我」）
+
+**运行**：
+
+```bash
+# 前台常驻轮询（调试用）
+python3 crawler/scripts/qq_bot.py run
+# 拉取一次消息并处理（调试用）
+python3 crawler/scripts/qq_bot.py once
+
+# 注册为独立自启服务（可单独管理，与 daemon 互不影响）
+python3 crawler/scripts/daemon.py install-qqbot
+sudo .venv/bin/python crawler/scripts/daemon.py install-qqbot --system   # 仅 Linux：系统级服务（开机即启动，需 sudo）
+python3 crawler/scripts/daemon.py uninstall-qqbot                        # 注销服务
+```
+
+**指令列表**（须在群里 **@机器人** 才生效；`/status` 也可用自然语言，如「@机器人 状态」）：
+
+| 指令 | 别名 | 说明 |
+|------|------|------|
+| `/status` | `/st` | daemon 运行状态（计划 / 最近运行 / 闹钟概览，不含已归档） |
+| `/upcoming` | `/u` | 即将开始的比赛（未来闹钟按时间排序） |
+| `/alarms` | `/a` | 闹钟概览（不含已归档，含 due / scheduled / failed） |
+| `/contests` | `/c` | 已归档比赛（最近 10 场）+ 复盘状态 ✓/✗ |
+| `/fortune` | `/f` | 今日运势（随机趣味签 + 今日 / 明日比赛提醒） |
+| `/help` | `/h` | 指令列表 |
+
+日志写入 `crawler/qq-bot.log`，增量进度存 `crawler/bot-state.json`（两者均被 gitignore，不提交）。
+
 ## 部署方式
 
 静态版（v0.3.0 起）统一为**一种部署方式**：自托管脚本运行爬虫，产物 push 回 `deploy` 分支，由 GitHub Actions 的 `deploy.yml` 自动构建并部署到 GitHub Pages。动态版（v0.4.0）规划中，详见 [docs/roadmap.md](docs/roadmap.md) §1.1。
@@ -95,6 +133,8 @@ python3 crawler/scripts/daemon.py install         # 注册开机自启（按 OS�
 python3 crawler/scripts/daemon.py install --system   # 仅 Linux：系统级服务（开机即启动、无需登录，需 sudo）
 python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
 python3 crawler/scripts/daemon.py uninstall --system # 仅 Linux：注销系统级服务（需 sudo）
+python3 crawler/scripts/daemon.py install-qqbot       # 注册 QQ 群机器人独立服务（见「快速开始 → QQ 群机器人」）
+python3 crawler/scripts/daemon.py uninstall-qqbot     # 注销 QQ 群机器人服务
 python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 ```
 
