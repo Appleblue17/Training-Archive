@@ -16,7 +16,7 @@
   /alarms    闹钟概览（不含 archived，含 due / scheduled / failed）
   /contests  已归档比赛（含复盘状态 ✓/✗）
   /review    复盘查询（无参数 = 最近有复盘的比赛；带关键词 = 搜索摘要）
-  /fortune   今日运势（按人+日期确定性选择 + 今日比赛提醒）
+  /fortune   今日运势（按人+日期确定性选择：档位加权 + 语句池 + 名言 + 今日比赛提醒）
   /subs      列出订阅
   /subs add <link> [end=时间] [start=时间] [备注]   新增订阅（platform 自动推断，写入 qqbot.json）
   /subs del <link>                          删除订阅（从所有订阅文件移除）
@@ -374,6 +374,87 @@ def _deterministic_seed(scope, user_id):
     today = datetime.now(beijing).date().isoformat()
     key = f"{scope}:{user_id or 'anonymous'}:{today}:{_fortune_salt()}"
     return int(hashlib.md5(key.encode("utf-8")).hexdigest()[:8], 16)
+
+
+# ---------------------------------------------------------------------------
+# 今日运势数据（档位权重 + 语句池 + 名言池）
+# ---------------------------------------------------------------------------
+# 档位权重（%）：中间档概率最大，极值档最低。语句池每档多条，确定性轮换。
+FORTUNE_RANKS = [
+    ("大吉", 5, [
+        "今天想做的事就大胆去做，好运站你这边！",
+        "灵感在线，想到就记下来，说不定是个好点子。",
+        "出门会遇见小惊喜，记得对生活微笑。",
+    ]),
+    ("吉", 25, [
+        "适合迈出第一步，试试平时不敢提的想法。",
+        "今天的小目标大概率能完成，别贪多。",
+        "身边会有贵人出没，多听少说准没错。",
+    ]),
+    ("中吉", 40, [
+        "平稳的一天，按计划走就不会出错。",
+        "适度放空有益身心，但要记得及时收心。",
+        "别太较真，顺其自然反而更顺利。",
+    ]),
+    ("小吉", 20, [
+        "小事顺遂，大事别急，慢慢来比较快。",
+        "今天可能有点小波折，笑一笑就过去了。",
+        "适合处理琐碎杂事，清完会很有成就感。",
+    ]),
+    ("凶", 8, [
+        "今天别做重要决定，先睡个午觉冷静下。",
+        "出门前多检查一遍，钥匙、卡、充电宝。",
+        "别跟人争论对错，赢了道理输了心情。",
+    ]),
+    ("大凶", 2, [
+        "宜躺平，忌上头。点杯奶茶犒劳自己吧~",
+        "今天诸事不宜？那就只做一件事：好好吃饭。",
+        "别立 flag，今天的任务就是好好休息。",
+    ]),
+]
+assert sum(w for _, w, _ in FORTUNE_RANKS) == 100, "FORTUNE_RANKS 权重和必须为 100"
+
+# /fortune 名言池（本地确定性选择，离线可用；风格参考 quotable）
+FORTUNE_QUOTES = [
+    ("Life is what happens when you're busy making other plans.", "John Lennon"),
+    ("The best way to predict the future is to invent it.", "Alan Kay"),
+    ("Simplicity is the ultimate sophistication.", "Leonardo da Vinci"),
+    ("In the middle of difficulty lies opportunity.", "Albert Einstein"),
+    ("It does not matter how slowly you go as long as you do not stop.", "Confucius"),
+    ("Whether you think you can or you think you can't, you're right.", "Henry Ford"),
+    ("Do what you can, with what you have, where you are.", "Theodore Roosevelt"),
+    ("The secret of getting ahead is getting started.", "Mark Twain"),
+    ("The only way to do great work is to love what you do.", "Steve Jobs"),
+    ("Success is not final, failure is not fatal: it is the courage to continue that counts.", "Winston Churchill"),
+    ("生活不止眼前的苟且，还有诗和远方。", "高晓松"),
+    ("世界上只有一种真正的英雄主义，那就是认清生活的真相后依然热爱生活。", "罗曼·罗兰"),
+    ("凡是过往，皆为序章。", "莎士比亚"),
+    ("慢慢来，比较快。", "网络"),
+    ("山重水复疑无路，柳暗花明又一村。", "陆游"),
+    ("千里之行，始于足下。", "老子"),
+    ("保持热爱，奔赴山海。", "网络"),
+    ("与其诅咒黑暗，不如点亮蜡烛。", "谚语"),
+    ("种一棵树最好的时间是十年前，其次是现在。", "谚语"),
+    ("生活是苦难的，我又划着我的断桨出发了。", "博尔赫斯"),
+]
+
+
+def _pick_fortune(seed):
+    """按权重选档位，再在档内确定性选一句。返回 (rank, advice)。"""
+    w = seed % 100
+    acc = 0
+    for rank, weight, advices in FORTUNE_RANKS:
+        acc += weight
+        if w < acc:
+            return rank, advices[(seed // 100) % len(advices)]
+    # 兜底（权重和不足 100 时）
+    rank, _, advices = FORTUNE_RANKS[-1]
+    return rank, advices[seed % len(advices)]
+
+
+def _pick_quote(seed):
+    """从名言池确定性选一条。返回 (content, author)。"""
+    return FORTUNE_QUOTES[seed % len(FORTUNE_QUOTES)]
 
 
 def _truncate(s, n=28):
@@ -829,20 +910,18 @@ def cmd_review(args, ctx):
 
 @command("fortune", "f", keywords=("运势", "今日运势", "运气"))
 def cmd_fortune(args, ctx):
-    """今日运势：按 user+日期 确定性选择（同一天同一人固定，跨天变化）+ 今日/明日比赛提醒。"""
-    fortunes = [
-        ("大吉", "今天 AC 手感爆棚，难题也能一遍过！"),
-        ("吉", "适合写题，注意边界条件别翻车~"),
-        ("中吉", "稳扎稳打能出成绩，别急着提交。"),
-        ("小吉", "今天的 WA 都是明天的经验，加油！"),
-        ("凶", "建议先看题面再动手，避免低级失误。"),
-        ("大凶", "今天就别硬磕难题了，补补题放松下~"),
-    ]
+    """今日运势：按 user+日期 确定性选择（同一天同一人固定，跨天变化）。
+
+    档位按权重（中间档概率最大），档内多句轮换 + 名言池 + 今日/明日比赛提醒。
+    """
     seed = _deterministic_seed("fortune", ctx.get("user_id"))
-    rank, advice = fortunes[seed % len(fortunes)]
+    rank, advice = _pick_fortune(seed)
     lucky = seed % 100
+    q_seed = _deterministic_seed("fortune-quote", ctx.get("user_id"))
+    quote, author = _pick_quote(q_seed)
     lines = [f"今日运势：{rank}（幸运数字 {lucky}）"]
     lines.append(advice)
+    lines.append(f"「{quote}」——{author}")
     # 今日/明日比赛提醒
     alarms = _load_alarms()
     now = datetime.now(beijing)
