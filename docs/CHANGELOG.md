@@ -10,6 +10,7 @@
 - **qq-bot 新指令**（`qq_bot.py`）：
   - `/review`（`/rv`）复盘查询：无参数返回最近有复盘的比赛，带关键词搜索并返回摘要（截断 400 字符）
   - `/subs` 订阅管理：列出全部订阅；`/subs add <link> [end=时间] [start=时间] [备注]` 新增（platform 自动推断，写入 `crawler/subscriptions/qqbot.json`；`end=`/`start=` 可选键值，顺序任意，其余 token 拼为备注，时间格式 `ISO 8601 北京时间`）；`/subs del <link>` 删除（从所有订阅文件移除）；改动后后台触发一次 `daemon.py sync` 并在群里回复结果
+  - `/subs add` 裸时间自动识别（`qq_bot.py`）：**恰好一个可解析为时间的裸 token**（未带 `end=` 前缀）自动作为 `end_time`——如 `@机器人 /subs add <link> 2026-08-13-20:00:00+08:00` 可省略 `end=`（Python `fromisoformat` 接受 `-` 分隔的 ISO 时间）；多个裸 token 一律当备注、已有 `end=` 时裸 token 不覆盖
   - `/sync` 手动触发一次完整同步（后台执行，完成后群里回复结果）
   - `/subs` 与 `/sync` 仅 `deploy` 分支工作区生效（`PROD_BRANCH` 保护，防止在非生产分支误改订阅）
 - **今日运势确定性**（`qq_bot.py`）：`/fortune` 从随机改为按「user_id + 北京日期 + salt」确定性选择（同一天同一人结果一致，跨天变化），新增幸运数字；salt 可配 `config.json` 的 `qq.fortune_salt`（缺省固定值）
