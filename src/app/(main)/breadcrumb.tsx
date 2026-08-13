@@ -1,5 +1,5 @@
 "use client";
-import { BarChart2, Edit3, Home, Info, Search } from "lucide-react";
+import { Activity, BarChart2, Home, Info, Search } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
@@ -24,10 +24,10 @@ const links = [
     icon: Search,
   },
   {
-    title: "Log",
-    name: "log",
-    href: "/log",
-    icon: Edit3,
+    title: "Status",
+    name: "status",
+    href: "/status",
+    icon: Activity,
   },
   {
     title: "README.md",
