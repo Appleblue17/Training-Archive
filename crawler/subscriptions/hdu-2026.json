@@ -38,8 +38,14 @@
   {
     "platform": "hdu",
     "link": "https://acm.hdu.edu.cn/contest/problems?cid=1235",
-    "comments": "7",
+    "comments": "7th",
+    "enabled": true
+  },
+  {
+    "platform": "hdu",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1236",
+    "comments": "8",
     "enabled": true,
-    "end_time": "2026-08-13T02:30:00+08:00"
+    "end_time": "2026-08-13T17:00:00+08:00"
   }
 ]

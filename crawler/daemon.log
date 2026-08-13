@@ -460,3 +460,343 @@ could not detect version_main.therefore, we are assuming it is chrome 108 or hig
 [qq-share] send_mode=file_only: 只发 review 文件，跳过文案（2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7））。
 [qq-share] Sent 2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7） to group 1014450820.
 [qq-share] Sent 1 share(s) for links.
+[2026-08-13 02:32:30] Pushed to deploy.
+[2026-08-13 02:32:30] === fire done ===
+[2026-08-13 02:35:00] [run] task due: fire
+[2026-08-13 02:40:00] [run] task due: fire
+[2026-08-13 02:45:00] [run] task due: fire
+[2026-08-13 02:50:01] [run] task due: fire
+[2026-08-13 02:55:01] [run] task due: fire
+[2026-08-13 03:00:01] [run] task due: fire
+[2026-08-13 03:00:02] [run] task due: sync
+[2026-08-13 03:00:02] === sync ===
+[2026-08-13 03:00:07] [alarm] plan: 0 history, 0 expired, 0 retry, 7 alarms tracked.
+[2026-08-13 03:00:07] No history/expired/retry links; nothing to crawl.
+[2026-08-13 03:00:07] === sync done ===
+[2026-08-13 03:05:07] [run] task due: fire
+[2026-08-13 03:10:07] [run] task due: fire
+[2026-08-13 03:15:07] [run] task due: fire
+[2026-08-13 03:20:08] [run] task due: fire
+[2026-08-13 03:25:08] [run] task due: fire
+[2026-08-13 03:30:08] [run] task due: fire
+[2026-08-13 03:35:09] [run] task due: fire
+[2026-08-13 03:40:09] [run] task due: fire
+[2026-08-13 03:45:09] [run] task due: fire
+[2026-08-13 03:50:10] [run] task due: fire
+[2026-08-13 03:55:10] [run] task due: fire
+[2026-08-13 04:00:10] [run] task due: fire
+[2026-08-13 04:00:11] [run] task due: incremental
+[2026-08-13 04:00:11] === incremental (--submissions-only) ===
+[2026-08-13 04:00:14] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --submissions-only
+[task] Enabled platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[2026-08-13T04:00:17.914822+08:00] [INFO] Start updating staged submissions...
+[2026-08-13T04:00:17.965686+08:00] [INFO] Start fetching new submissions...
+[2026-08-13T04:00:18.014903+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1229.
+[2026-08-13T04:00:21.251693+08:00] [INFO] Login successful with username and password.
+[2026-08-13T04:00:21.746761+08:00] [INFO] Reached last update (Submission 17851), stopping.
+[2026-08-13T04:00:21.747524+08:00] [INFO] Fetched 20 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1229, page 1.
+[2026-08-13T04:00:21.748146+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1230.
+[2026-08-13T04:00:24.171894+08:00] [INFO] Login successful with username and password.
+[2026-08-13T04:00:24.711512+08:00] [INFO] Reached last update (Submission 12615), stopping.
+[2026-08-13T04:00:24.712446+08:00] [INFO] Fetched 25 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1230, page 1.
+[2026-08-13T04:00:24.713203+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1231.
+[2026-08-13T04:00:27.676393+08:00] [INFO] Login successful with username and password.
+[2026-08-13T04:00:27.984193+08:00] [WARNING] No submissions found on this page. Probably no submission was made.
+[2026-08-13T04:00:27.985060+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1232.
+[2026-08-13T04:00:30.356233+08:00] [INFO] Login successful with username and password.
+[2026-08-13T04:00:30.664813+08:00] [INFO] Reached last update (Submission 10772), stopping.
+[2026-08-13T04:00:30.665946+08:00] [INFO] Fetched 19 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1232, page 1.
+[2026-08-13T04:00:30.666720+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1233.
+[2026-08-13T04:00:33.630182+08:00] [INFO] Login successful with username and password.
+[2026-08-13T04:00:34.052558+08:00] [INFO] Reached last update (Submission 11881), stopping.
+[2026-08-13T04:00:34.053424+08:00] [INFO] Fetched 38 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1233, page 1.
+[2026-08-13T04:00:34.054132+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1234.
+[2026-08-13T04:00:37.217523+08:00] [INFO] Login successful with username and password.
+[2026-08-13T04:00:37.422926+08:00] [INFO] Reached last update (Submission 13435), stopping.
+[2026-08-13T04:00:37.423774+08:00] [INFO] Fetched 43 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1234, page 1.
+[2026-08-13T04:00:37.424805+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1235.
+[2026-08-13T04:00:40.491210+08:00] [INFO] Login successful with username and password.
+[2026-08-13T04:00:41.066751+08:00] [INFO] Reached last update (Submission 10885), stopping.
+[2026-08-13T04:00:41.067667+08:00] [INFO] Fetched 45 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1235, page 1.
+[task] Completed platforms: hdu
+[2026-08-13 04:00:41] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/report.py --from-crawl
+[report] Skipped contests/2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7）: review.md already exists.
+[report] Generated 0 review(s) from crawl (0 failed).
+[2026-08-13 04:00:42] No contest data changes; skip commit/push (crawler state persists locally).
+[2026-08-13 04:00:42] === done (incremental) ===
+[2026-08-13 04:05:12] [run] task due: fire
+[2026-08-13 04:10:13] [run] task due: fire
+[2026-08-13 04:15:13] [run] task due: fire
+[2026-08-13 04:20:13] [run] task due: fire
+[2026-08-13 04:25:13] [run] task due: fire
+[2026-08-13 04:30:14] [run] task due: fire
+[2026-08-13 04:35:14] [run] task due: fire
+[2026-08-13 04:40:14] [run] task due: fire
+[2026-08-13 04:45:15] [run] task due: fire
+[2026-08-13 04:50:15] [run] task due: fire
+[2026-08-13 04:55:15] [run] task due: fire
+[2026-08-13 05:00:16] [run] task due: fire
+[2026-08-13 05:05:16] [run] task due: fire
+[2026-08-13 05:10:16] [run] task due: fire
+[2026-08-13 05:15:17] [run] task due: fire
+[2026-08-13 05:20:17] [run] task due: fire
+[2026-08-13 05:25:18] [run] task due: fire
+[2026-08-13 05:30:18] [run] task due: fire
+[2026-08-13 05:35:18] [run] task due: fire
+[2026-08-13 05:40:18] [run] task due: fire
+[2026-08-13 05:45:19] [run] task due: fire
+[2026-08-13 05:50:19] [run] task due: fire
+[2026-08-13 05:55:19] [run] task due: fire
+[2026-08-13 06:00:20] [run] task due: fire
+[2026-08-13 06:00:20] [run] task due: sync
+[2026-08-13 06:00:20] === sync ===
+[2026-08-13 06:00:24] [alarm] plan: 0 history, 0 expired, 0 retry, 7 alarms tracked.
+[2026-08-13 06:00:24] No history/expired/retry links; nothing to crawl.
+[2026-08-13 06:00:24] === sync done ===
+[2026-08-13 06:05:24] [run] task due: fire
+[2026-08-13 06:10:25] [run] task due: fire
+[2026-08-13 06:15:25] [run] task due: fire
+[2026-08-13 06:20:25] [run] task due: fire
+[2026-08-13 06:25:26] [run] task due: fire
+[2026-08-13 06:30:26] [run] task due: fire
+[2026-08-13 06:35:26] [run] task due: fire
+[2026-08-13 06:40:27] [run] task due: fire
+[2026-08-13 06:45:27] [run] task due: fire
+[2026-08-13 06:50:27] [run] task due: fire
+[2026-08-13 06:55:28] [run] task due: fire
+[2026-08-13 07:00:28] [run] task due: fire
+[2026-08-13 07:05:28] [run] task due: fire
+[2026-08-13 07:10:29] [run] task due: fire
+[2026-08-13 07:15:29] [run] task due: fire
+[2026-08-13 07:20:29] [run] task due: fire
+[2026-08-13 07:25:00] [run] task due: fire
+[2026-08-13 07:30:00] [run] task due: fire
+[2026-08-13 07:35:00] [run] task due: fire
+[2026-08-13 07:40:01] [run] task due: fire
+[2026-08-13 07:45:01] [run] task due: fire
+[2026-08-13 07:50:01] [run] task due: fire
+[2026-08-13 07:55:02] [run] task due: fire
+[2026-08-13 08:00:02] [run] task due: fire
+[2026-08-13 08:05:02] [run] task due: fire
+[2026-08-13 08:10:03] [run] task due: fire
+[2026-08-13 08:15:03] [run] task due: fire
+[2026-08-13 08:20:03] [run] task due: fire
+[2026-08-13 08:25:04] [run] task due: fire
+[2026-08-13 08:30:04] [run] task due: fire
+[2026-08-13 08:35:04] [run] task due: fire
+[2026-08-13 08:40:05] [run] task due: fire
+[2026-08-13 08:45:05] [run] task due: fire
+[2026-08-13 08:50:05] [run] task due: fire
+[2026-08-13 08:55:06] [run] task due: fire
+[2026-08-13 09:00:06] [run] task due: fire
+[2026-08-13 09:00:06] [run] task due: sync
+[2026-08-13 09:00:06] === sync ===
+[2026-08-13 09:00:10] [alarm] plan: 0 history, 0 expired, 0 retry, 7 alarms tracked.
+[2026-08-13 09:00:10] No history/expired/retry links; nothing to crawl.
+[2026-08-13 09:00:10] === sync done ===
+[2026-08-13 09:05:10] [run] task due: fire
+[2026-08-13 09:10:11] [run] task due: fire
+[2026-08-13 09:15:11] [run] task due: fire
+[2026-08-13 09:20:11] [run] task due: fire
+[2026-08-13 09:25:12] [run] task due: fire
+[2026-08-13 09:30:12] [run] task due: fire
+[2026-08-13 09:35:12] [run] task due: fire
+[2026-08-13 09:40:13] [run] task due: fire
+[2026-08-13 09:45:13] [run] task due: fire
+[2026-08-13 09:50:13] [run] task due: fire
+[2026-08-13 09:55:14] [run] task due: fire
+[2026-08-13 10:00:14] [run] task due: fire
+[2026-08-13 10:05:14] [run] task due: fire
+[2026-08-13 10:10:15] [run] task due: fire
+[2026-08-13 10:15:15] [run] task due: fire
+[2026-08-13 10:20:15] [run] task due: fire
+[2026-08-13 10:25:16] [run] task due: fire
+[2026-08-13 10:30:16] [run] task due: fire
+[2026-08-13 10:35:16] [run] task due: fire
+[2026-08-13 10:40:17] [run] task due: fire
+[2026-08-13 10:45:17] [run] task due: fire
+[2026-08-13 10:50:17] [run] task due: fire
+[2026-08-13 10:53:33] === sync ===
+[2026-08-13 10:53:37] [alarm] ERROR: Failed to parse subscriptions file /root/Training-Archive/crawler/subscriptions/hdu-2026.json: Expecting property name enclosed in double quotes: line 43 column 3 (char 984)
+[2026-08-13 10:53:37] [alarm] ERROR: subscription file(s) with format problems were skipped; their contests will NOT be synced. Fix them and re-run sync.
+[2026-08-13 10:53:37] [alarm] plan: 0 history, 0 expired, 0 retry, 0 alarms tracked, subscription diag: 1 errors, 0 warnings.
+[2026-08-13 10:53:37] No history/expired/retry links; nothing to crawl.
+[2026-08-13 10:53:37] === sync done ===
+[2026-08-13 10:53:54] === sync ===
+[2026-08-13 10:53:58] [alarm] plan: 7 history, 0 expired, 0 retry, 8 alarms tracked.
+[2026-08-13 10:53:58] Crawling: https://acm.hdu.edu.cn/contest/problems?cid=1229,https://acm.hdu.edu.cn/contest/problems?cid=1230,https://acm.hdu.edu.cn/contest/problems?cid=1231,https://acm.hdu.edu.cn/contest/problems?cid=1232,https://acm.hdu.edu.cn/contest/problems?cid=1233,https://acm.hdu.edu.cn/contest/problems?cid=1234,https://acm.hdu.edu.cn/contest/problems?cid=1235
+[2026-08-13 10:53:58] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --contests-only --links https://acm.hdu.edu.cn/contest/problems?cid=1229,https://acm.hdu.edu.cn/contest/problems?cid=1230,https://acm.hdu.edu.cn/contest/problems?cid=1231,https://acm.hdu.edu.cn/contest/problems?cid=1232,https://acm.hdu.edu.cn/contest/problems?cid=1233,https://acm.hdu.edu.cn/contest/problems?cid=1234,https://acm.hdu.edu.cn/contest/problems?cid=1235
+[task] Only fetching links: ['https://acm.hdu.edu.cn/contest/problems?cid=1229', 'https://acm.hdu.edu.cn/contest/problems?cid=1230', 'https://acm.hdu.edu.cn/contest/problems?cid=1231', 'https://acm.hdu.edu.cn/contest/problems?cid=1232', 'https://acm.hdu.edu.cn/contest/problems?cid=1233', 'https://acm.hdu.edu.cn/contest/problems?cid=1234', 'https://acm.hdu.edu.cn/contest/problems?cid=1235']
+[task] Enabled platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[2026-08-13T10:54:13.246880+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（1） (2026-07-21)
+[2026-08-13T10:54:13.249943+08:00] [WARNING] Contest folder already exists: contests/2026-07-21 2026“钉耙编程”中国大学生算法设计暑期联赛（1）. Skipped.
+[2026-08-13T10:54:13.250633+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（2） (2026-07-23)
+[2026-08-13T10:54:13.251599+08:00] [WARNING] Contest folder already exists: contests/2026-07-23 2026“钉耙编程”中国大学生算法设计暑期联赛（2）. Skipped.
+[2026-08-13T10:54:13.252116+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（3） (2026-07-28)
+[2026-08-13T10:54:13.252643+08:00] [WARNING] Contest folder already exists: contests/2026-07-28 2026“钉耙编程”中国大学生算法设计暑期联赛（3）. Skipped.
+[2026-08-13T10:54:13.253178+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（4） (2026-07-30)
+[2026-08-13T10:54:13.253757+08:00] [WARNING] Contest folder already exists: contests/2026-07-30 2026“钉耙编程”中国大学生算法设计暑期联赛（4）. Skipped.
+[2026-08-13T10:54:13.254285+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（5） (2026-08-04)
+[2026-08-13T10:54:13.254820+08:00] [WARNING] Contest folder already exists: contests/2026-08-04 2026“钉耙编程”中国大学生算法设计暑期联赛（5）. Skipped.
+[2026-08-13T10:54:13.255374+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（6） (2026-08-06)
+[2026-08-13T10:54:13.256001+08:00] [WARNING] Contest folder already exists: contests/2026-08-06 2026“钉耙编程”中国大学生算法设计暑期联赛（6）. Skipped.
+[2026-08-13T10:54:13.256573+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（7） (2026-08-11)
+[2026-08-13T10:54:13.257271+08:00] [WARNING] Contest folder already exists: contests/2026-08-11 2026“钉耙编程”中国大学生算法设计暑期联赛（7）. Skipped.
+[2026-08-13T10:54:13.298260+08:00] [WARNING] Submissions fetch was not marked complete; last-update not advanced.
+[task] No new contests; removed crawler/new-contests.json.
+[task] Completed platforms: hdu
+[2026-08-13 10:54:17] No contest data changes; skip commit/push (crawler state persists locally).
+[2026-08-13 10:54:17] === sync done ===
+[2026-08-13 10:55:18] [run] task due: fire
+[2026-08-13 10:58:41] === sync ===
+[2026-08-13 10:58:45] [alarm] plan: 0 history, 0 expired, 0 retry, 8 alarms tracked.
+[2026-08-13 10:58:45] No history/expired/retry links; nothing to crawl.
+[2026-08-13 10:58:45] === sync done ===
+[2026-08-13 10:59:06] === sync ===
+[2026-08-13 10:59:10] [alarm] plan: 0 history, 0 expired, 0 retry, 8 alarms tracked.
+[2026-08-13 10:59:10] No history/expired/retry links; nothing to crawl.
+[2026-08-13 10:59:10] === sync done ===
+[2026-08-13 11:00:18] [run] task due: fire
+[2026-08-13 11:04:47] === sync ===
+[2026-08-13 11:04:51] [alarm] plan: 0 history, 0 expired, 0 retry, 7 alarms tracked.
+[2026-08-13 11:04:51] No history/expired/retry links; nothing to crawl.
+[2026-08-13 11:04:51] === sync done ===
+[2026-08-13 11:05:09] === sync ===
+[2026-08-13 11:05:13] [alarm] plan: 0 history, 0 expired, 0 retry, 8 alarms tracked.
+[2026-08-13 11:05:13] No history/expired/retry links; nothing to crawl.
+[2026-08-13 11:05:13] === sync done ===
+[2026-08-13 11:05:18] [run] task due: fire
+[2026-08-13 11:10:19] [run] task due: fire
+[2026-08-13 11:15:19] [run] task due: fire
+[2026-08-13 11:20:20] [run] task due: fire
+[2026-08-13 11:25:20] [run] task due: fire
+[2026-08-13 11:30:20] [run] task due: fire
+[2026-08-13 11:35:21] [run] task due: fire
+[2026-08-13 11:40:21] [run] task due: fire
+[2026-08-13 11:45:21] [run] task due: fire
+[2026-08-13 11:50:22] [run] task due: fire
+[2026-08-13 11:55:22] [run] task due: fire
+[2026-08-13 12:00:23] [run] task due: fire
+[2026-08-13 12:00:23] [run] task due: sync
+[2026-08-13 12:00:23] === sync ===
+[2026-08-13 12:00:27] [alarm] plan: 0 history, 0 expired, 0 retry, 8 alarms tracked.
+[2026-08-13 12:00:27] No history/expired/retry links; nothing to crawl.
+[2026-08-13 12:00:27] === sync done ===
+[2026-08-13 12:05:27] [run] task due: fire
+[2026-08-13 12:10:28] [run] task due: fire
+[2026-08-13 12:15:28] [run] task due: fire
+[2026-08-13 12:20:29] [run] task due: fire
+[2026-08-13 12:25:29] [run] task due: fire
+[2026-08-13 12:30:29] [run] task due: fire
+[2026-08-13 12:35:00] [run] task due: fire
+[2026-08-13 12:40:00] [run] task due: fire
+[2026-08-13 12:45:00] [run] task due: fire
+[2026-08-13 12:50:01] [run] task due: fire
+[2026-08-13 12:55:01] [run] task due: fire
+[2026-08-13 13:00:01] [run] task due: fire
+[2026-08-13 13:05:02] [run] task due: fire
+[2026-08-13 13:10:02] [run] task due: fire
+[2026-08-13 13:15:03] [run] task due: fire
+[2026-08-13 13:20:03] [run] task due: fire
+[2026-08-13 13:25:03] [run] task due: fire
+[2026-08-13 13:30:04] [run] task due: fire
+[2026-08-13 13:35:04] [run] task due: fire
+[2026-08-13 13:40:04] [run] task due: fire
+[2026-08-13 13:45:05] [run] task due: fire
+[2026-08-13 13:50:05] [run] task due: fire
+[2026-08-13 13:55:05] [run] task due: fire
+[2026-08-13 14:00:06] [run] task due: fire
+[2026-08-13 14:05:06] [run] task due: fire
+[2026-08-13 14:10:06] [run] task due: fire
+[2026-08-13 14:15:07] [run] task due: fire
+[2026-08-13 14:20:07] [run] task due: fire
+[2026-08-13 14:25:07] [run] task due: fire
+[2026-08-13 14:30:08] [run] task due: fire
+[2026-08-13 14:35:08] [run] task due: fire
+[2026-08-13 14:40:08] [run] task due: fire
+[2026-08-13 14:45:09] [run] task due: fire
+[2026-08-13 14:50:09] [run] task due: fire
+[2026-08-13 14:55:09] [run] task due: fire
+[2026-08-13 15:00:10] [run] task due: fire
+[2026-08-13 15:00:10] [run] task due: sync
+[2026-08-13 15:00:10] === sync ===
+[2026-08-13 15:00:14] [alarm] plan: 0 history, 0 expired, 0 retry, 8 alarms tracked.
+[2026-08-13 15:00:14] No history/expired/retry links; nothing to crawl.
+[2026-08-13 15:00:14] === sync done ===
+[2026-08-13 15:05:14] [run] task due: fire
+[2026-08-13 15:10:15] [run] task due: fire
+[2026-08-13 15:15:15] [run] task due: fire
+[2026-08-13 15:20:15] [run] task due: fire
+[2026-08-13 15:25:16] [run] task due: fire
+[2026-08-13 15:30:16] [run] task due: fire
+[2026-08-13 15:35:16] [run] task due: fire
+[2026-08-13 15:40:17] [run] task due: fire
+[2026-08-13 15:45:17] [run] task due: fire
+[2026-08-13 15:50:17] [run] task due: fire
+[2026-08-13 15:55:18] [run] task due: fire
+[2026-08-13 16:00:18] [run] task due: fire
+[2026-08-13 16:05:19] [run] task due: fire
+[2026-08-13 16:10:19] [run] task due: fire
+[2026-08-13 16:15:19] [run] task due: fire
+[2026-08-13 16:20:20] [run] task due: fire
+[2026-08-13 16:25:20] [run] task due: fire
+[2026-08-13 16:30:20] [run] task due: fire
+[2026-08-13 16:35:21] [run] task due: fire
+[2026-08-13 16:40:21] [run] task due: fire
+[2026-08-13 16:45:22] [run] task due: fire
+[2026-08-13 16:50:22] [run] task due: fire
+[2026-08-13 16:55:22] [run] task due: fire
+[2026-08-13 17:00:23] [run] task due: fire
+[2026-08-13 17:00:23] === fire ===
+[2026-08-13 17:00:27] Fire due: https://acm.hdu.edu.cn/contest/problems?cid=1236
+[2026-08-13 17:00:27] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --contests-only --links https://acm.hdu.edu.cn/contest/problems?cid=1236
+[task] Only fetching links: ['https://acm.hdu.edu.cn/contest/problems?cid=1236']
+[task] Enabled platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[task] hdu failed: 'NoneType' object has no attribute 'find'
+[2026-08-13T17:00:41.149013+08:00] [WARNING] Submissions fetch was not marked complete; last-update not advanced.
+[task] Platform hdu did not complete successfully.
+[task] All platforms failed. Exiting with error.
+[2026-08-13 17:00:41] Fire crawl failed; marking due alarms as failed.
+[2026-08-13 17:05:12] [run] task due: fire
+[2026-08-13 17:06:44] === sync ===
+[2026-08-13 17:06:48] [alarm] WARNING: 1 previously failed alarm(s) will be retried: https://acm.hdu.edu.cn/contest/problems?cid=1236
+[2026-08-13 17:06:48] [alarm] plan: 0 history, 0 expired, 1 retry, 8 alarms tracked.
+[2026-08-13 17:06:48] Crawling: https://acm.hdu.edu.cn/contest/problems?cid=1236
+[2026-08-13 17:06:48] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/scheduled_task.py --contests-only --links https://acm.hdu.edu.cn/contest/problems?cid=1236
+[task] Only fetching links: ['https://acm.hdu.edu.cn/contest/problems?cid=1236']
+[task] Enabled platforms: hdu
+could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+[2026-08-13T17:06:52.381956+08:00] [INFO] Start fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（8） (2026-08-13)
+[2026-08-13T17:06:52.383859+08:00] [INFO] Created contest folder: contests/2026-08-13 2026“钉耙编程”中国大学生算法设计暑期联赛（8）
+[2026-08-13T17:06:55.321344+08:00] [INFO] Login successful with username and password.
+[2026-08-13T17:07:02.789511+08:00] [INFO] Finished fetching contest: 2026“钉耙编程”中国大学生算法设计暑期联赛（8） (2026-08-13)
+[2026-08-13T17:07:02.791515+08:00] [INFO] Start updating staged submissions...
+[2026-08-13T17:07:02.792580+08:00] [INFO] Start fetching new submissions...
+[2026-08-13T17:07:02.793888+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1229 not new in this run; skipped (contests-only).
+[2026-08-13T17:07:02.794542+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1230 not new in this run; skipped (contests-only).
+[2026-08-13T17:07:02.795189+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1231 not new in this run; skipped (contests-only).
+[2026-08-13T17:07:02.796106+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1232 not new in this run; skipped (contests-only).
+[2026-08-13T17:07:02.797024+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1233 not new in this run; skipped (contests-only).
+[2026-08-13T17:07:02.799083+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1234 not new in this run; skipped (contests-only).
+[2026-08-13T17:07:02.800021+08:00] [INFO] Contest https://acm.hdu.edu.cn/contest/problems?cid=1235 not new in this run; skipped (contests-only).
+[2026-08-13T17:07:02.801069+08:00] [INFO] Start fetching submissions from https://acm.hdu.edu.cn/contest/problems?cid=1236.
+[2026-08-13T17:07:03.082537+08:00] [INFO] Already logged in with username and password. Skipping login.
+[2026-08-13T17:07:04.188636+08:00] [WARNING] File contests/2026-08-13 2026“钉耙编程”中国大学生算法设计暑期联赛（8）/submissions.json does not exist, creating a new one.
+[2026-08-13T17:07:13.829776+08:00] [INFO] Fetched 24 submissions from https://acm.hdu.edu.cn/contest/problems?cid=1236, page 1.
+[2026-08-13T17:07:14.016059+08:00] [INFO] Reached the end of submissions or no more pages to fetch. Stopped.
+[2026-08-13T17:07:14.124249+08:00] [INFO] Contests-only run; last-update not advanced (incremental sync is handled by task B).
+[task] New contests recorded for report: ['contests/2026-08-13 2026“钉耙编程”中国大学生算法设计暑期联赛（8）']
+[task] Completed platforms: hdu
+[2026-08-13 17:07:14] Generating reviews for expired/retried contests.
+[2026-08-13 17:07:14] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/report.py --links https://acm.hdu.edu.cn/contest/problems?cid=1236
+[report] Generating review for contests/2026-08-13 2026“钉耙编程”中国大学生算法设计暑期联赛（8） ...
+[report] Wrote contests/2026-08-13 2026“钉耙编程”中国大学生算法设计暑期联赛（8）/review.md.
+[report] Generated 1 review(s) for links (0 failed).
+[2026-08-13 17:08:08] Generating QQ group shares for reports.
+[2026-08-13 17:08:08] $ /root/Training-Archive/.venv/bin/python3 /root/Training-Archive/crawler/scripts/qq_share.py --links https://acm.hdu.edu.cn/contest/problems?cid=1236
+[qq-share] send_mode=file_only: 只发 review 文件，跳过文案（2026-08-13 2026“钉耙编程”中国大学生算法设计暑期联赛（8））。
+[qq-share] NapCat 连接失败 ws://127.0.0.1:6700: [Errno 111] Connection refused；跳过发送 2026-08-13 2026“钉耙编程”中国大学生算法设计暑期联赛（8）。
+[qq-share] Sent 0 share(s) for links.
