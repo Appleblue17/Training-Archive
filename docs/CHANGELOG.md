@@ -14,6 +14,7 @@
   - `/sync` 手动触发一次完整同步（后台执行，完成后群里回复结果）
   - `/subs` 与 `/sync` 仅 `deploy` 分支工作区生效（`PROD_BRANCH` 保护，防止在非生产分支误改订阅）
 - **今日运势确定性**（`qq_bot.py`）：`/fortune` 从随机改为按「user_id + 北京日期 + salt」确定性选择（同一天同一人结果一致，跨天变化），新增幸运数字；salt 可配 `config.json` 的 `qq.fortune_salt`（缺省固定值）
+- **今日运势丰富**（`qq_bot.py`）：档位改为**加权随机**（大吉 5% / 吉 25% / 中吉 40% / 小吉 20% / 凶 8% / 大凶 2%，中间档概率最大），每档 3 句**生活化文案**语句池（档内按 seed 轮换，不再绑定 ACM）；新增**每日名言**（本地确定性选中英 20 条，同人同天固定），文案示例：`今日运势：中吉（幸运数字 42）` + 语句 + `「名言」——作者`
 - **赛前提醒（`alarm.py remind` + `daemon.py remind`）**：planned 闹钟在比赛开始前 `qq.remind_before_minutes` 分钟（缺省 15）向 QQ 群发【赛前提醒】🏁，发送成功后 `mark --reminded`（失败下轮重试）；订阅可填 `start_time`（未填回退 `end_time - 5h`）；`scheduled` 块新增 `remind`（缺省 `*/5 * * * *`）；`/upcoming` 改用 `start_time` 排序、闹钟显示名优先取 `comments`
 
 ### Fixed
