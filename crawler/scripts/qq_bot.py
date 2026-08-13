@@ -290,8 +290,10 @@ def _short_contest_name(contest_folder):
     return m.group(1) if m else name
 
 
-def _alarm_display_name(link):
-    """从 link 找比赛名（contests/ 下匹配 contest.json 的 link）。"""
+def _alarm_display_name(link, entry=None):
+    """从闹钟条目显示比赛名：comments 优先；否则去 contests/ 匹配 contest.json。"""
+    if entry and entry.get("comments"):
+        return str(entry["comments"])
     if os.path.isdir(CONTESTS_ROOT):
         for name in sorted(os.listdir(CONTESTS_ROOT)):
             folder = os.path.join(CONTESTS_ROOT, name)
@@ -357,15 +359,14 @@ def cmd_status(args, ctx):
 
 @command("upcoming", "u", keywords=("最近比赛", "即将", "接下来", "有什么比赛", "比赛"))
 def cmd_upcoming(args, ctx):
-    """即将开始的比赛：未来闹钟按时间排序。"""
+    """即将开始的比赛：未来闹钟按开始时间排序（无 start_time 用 fire_at）。"""
     alarms = _load_alarms()
     now = datetime.now(beijing)
     upcoming = []
     for e in alarms.values():
         if e.get("status") != "planned":
             continue
-        fire_at = e.get("fire_at")
-        dt = _parse_time(fire_at)
+        dt = _parse_time(e.get("start_time")) or _parse_time(e.get("fire_at"))
         if dt and dt > now:
             upcoming.append((dt, e))
     upcoming.sort(key=lambda x: x[0])
@@ -373,7 +374,7 @@ def cmd_upcoming(args, ctx):
         return "最近没有已安排的未来比赛。"
     lines = ["【即将开始的比赛】"]
     for dt, e in upcoming[:MAX_LIST_ITEMS]:
-        name = _alarm_display_name(e.get("link", ""))
+        name = _alarm_display_name(e.get("link", ""), e)
         lines.append(f"· {_format_dt(dt, now)}  {name}")
     if len(upcoming) > MAX_LIST_ITEMS:
         lines.append(f"... 共 {len(upcoming)} 场")

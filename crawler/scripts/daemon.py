@@ -6,6 +6,7 @@
   - fire         闹钟到点触发（无到期闹钟安静退出）
   - sync         同步订阅：历史/过期立即爬，未来比赛写入闹钟
   - incremental  提交增量同步（scheduled_task.py --submissions-only）
+  - remind       赛前提醒：planned 比赛开始前 15 分钟向 QQ 群发提醒
 
 复盘报告（report.py）：sync/fire 爬取成功后生成；任一应生成报告的比赛的
 review 生成失败 → 该次 sync/fire 中止（不 mark archived、不提交推送，下次
@@ -28,6 +29,7 @@ ai_tasks.share.enabled 单独调用；NapCat 未配置/发送失败仅告警不�
   python3 crawler/scripts/daemon.py sync           同步订阅（一次性）
   python3 crawler/scripts/daemon.py fire           闹钟到点触发（一次性；无到期安静退出）
   python3 crawler/scripts/daemon.py incremental    提交增量同步（一次性）
+  python3 crawler/scripts/daemon.py remind         赛前提醒检查（一次性；发 QQ 群提醒）
   python3 crawler/scripts/daemon.py install        注册开机自启（按 OS；默认登录后启动）
   python3 crawler/scripts/daemon.py install --system   仅 Linux：注册系统级服务（开机即启动，需 sudo）
   python3 crawler/scripts/daemon.py uninstall      注销开机自启
@@ -69,7 +71,13 @@ from dotenv import load_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from crawler.platforms.base import beijing  # noqa: E402
-from crawler.scripts.qq_share import ai_task_enabled  # noqa: E402
+from crawler.scripts.qq_share import (  # noqa: E402
+    QQGroupSender,
+    _load_qq_config,
+    ai_task_enabled,
+    clean_for_qq,
+    create_connection,
+)
 
 try:
     from croniter import croniter
@@ -95,11 +103,12 @@ LOCK_PATH = os.path.join(tempfile.gettempdir(), "training-archive-daemon.lock")
 POLL_INTERVAL = 30  # 主循环检查间隔（秒）
 
 # 任务名 → config.json scheduled 块键名（默认表达式与 config.example.json 一致）
-TASKS = ("fire", "sync", "incremental")
+TASKS = ("fire", "sync", "incremental", "remind")
 DEFAULT_SCHEDULED = {
     "fire": "*/5 * * * *",        # 闹钟检查
     "sync": "0 */3 * * *",        # 订阅同步
     "incremental": "0 4 * * *",   # 提交增量（每日）
+    "remind": "*/5 * * * *",      # 赛前提醒（开始前 15 分钟发 QQ 群提醒）
 }
 
 # systemd / launchd 服务名
@@ -453,6 +462,99 @@ def cmd_fire():
     return with_lock(_run)
 
 
+def _remind_minutes_left(start_iso, now):
+    """距离比赛开始的分钟数（四舍五入，至少 1）；解析失败返回 None。"""
+    try:
+        start = datetime.fromisoformat(str(start_iso))
+        if start.tzinfo is None:
+            start = start.replace(tzinfo=beijing)
+        start = start.astimezone(beijing)
+    except (TypeError, ValueError):
+        return None
+    minutes = (start - now).total_seconds() / 60.0
+    return max(1, int(round(minutes)))
+
+
+def _fmt_remind_time(start_iso, now):
+    """提醒消息里的开始时间：今天/明天 HH:MM，更远则 MM-DD HH:MM。"""
+    try:
+        start = datetime.fromisoformat(str(start_iso))
+        if start.tzinfo is None:
+            start = start.replace(tzinfo=beijing)
+        start = start.astimezone(beijing)
+    except (TypeError, ValueError):
+        return str(start_iso)
+    day = (start.date() - now.date()).days
+    hm = start.strftime("%H:%M")
+    if day == 0:
+        return f"今天 {hm}"
+    if day == 1:
+        return f"明天 {hm}"
+    return start.strftime("%m-%d %H:%M")
+
+
+def cmd_remind():
+    """赛前提醒：planned 且进入提醒窗口的比赛，向 QQ 群发提醒并标记 reminded。
+
+    alarm.py remind 只读输出 REMIND\t<link>\t<start_time>\t<comments>；
+    发送成功后调 mark --reminded（发送失败不标记，下轮重试）。NapCat 未配置 /
+    连接失败 / 发送失败仅告警，不阻断 daemon 主流程。
+    """
+    def _run():
+        proc = run_py("alarm.py", "remind", capture=True)
+        reminds = []
+        for line in proc.stdout.splitlines():
+            if not line.startswith("REMIND\t"):
+                continue
+            parts = line.split("\t", 3)
+            reminds.append({
+                "link": parts[1],
+                "start_time": parts[2] if len(parts) > 2 else "",
+                "comments": parts[3] if len(parts) > 3 else "",
+            })
+        if not reminds:
+            return 0
+
+        qq_cfg = _load_qq_config()
+        ws_url = qq_cfg.get("napcat_ws_url", "")
+        group_id = qq_cfg.get("group_id", 0)
+        if not ws_url or not group_id:
+            log(f"赛前提醒：NapCat 未配置（{len(reminds)} 条待提醒），跳过发送。")
+            return 0
+        if create_connection is None:
+            log("赛前提醒：websocket-client 未安装，跳过发送。")
+            return 0
+
+        sender = QQGroupSender(ws_url, group_id, qq_cfg.get("napcat_token", ""))
+        try:
+            sender._connect()
+        except Exception as e:
+            log(f"赛前提醒：NapCat 连接失败 {ws_url}: {e}")
+            return 0
+        try:
+            for r in reminds:
+                now = datetime.now(beijing)
+                mins = _remind_minutes_left(r["start_time"], now)
+                name = r["comments"] or r["link"]
+                if mins is None:
+                    st = str(r["start_time"])
+                else:
+                    st = _fmt_remind_time(r["start_time"], now)
+                head = "【赛前提醒】"
+                body = f"「{name}」将于 {st} 开始，还有约 {mins} 分钟，记得提前做好准备！"
+                ok = sender.send_text(clean_for_qq(f"{head}\n{body}"))
+                if ok:
+                    run_py("alarm.py", "mark", r["link"], "--reminded", capture=True)
+                    log(f"赛前提醒已发送：{name}（{st} 开始）。")
+                else:
+                    log(f"赛前提醒发送失败（下轮重试）：{name}。")
+        finally:
+            sender._close()
+        return len(reminds)
+
+    return with_lock(_run)
+
+
 # ---------------------------------------------------------------------------
 # 主循环（run）
 # ---------------------------------------------------------------------------
@@ -535,6 +637,8 @@ def cmd_run():
                         cmd_sync()
                     elif task == "incremental":
                         cmd_incremental()
+                    elif task == "remind":
+                        cmd_remind()
                 except SystemExit as e:
                     # 任务失败（returncode 非零）不应杀死 daemon；记日志继续
                     log(f"[run] task {task} exited with code {e.code}")
@@ -1151,6 +1255,8 @@ def main():
             sys.exit(cmd_sync())
         elif cmd == "incremental":
             sys.exit(cmd_incremental())
+        elif cmd == "remind":
+            sys.exit(cmd_remind())
         elif cmd == "install":
             sys.exit(cmd_install("--system" in args[1:]))
         elif cmd == "uninstall":

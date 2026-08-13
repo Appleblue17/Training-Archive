@@ -2,7 +2,8 @@
   "scheduled": {
     "fire": "*/5 * * * *",
     "sync": "0 */3 * * *",
-    "incremental": "0 4 * * *"
+    "incremental": "0 4 * * *",
+    "remind": "*/5 * * * *"
   },
   "ai_tasks": {
     "report": {
@@ -14,7 +15,8 @@
   },
   "qq": {
     "napcat_ws_url": "ws://127.0.0.1:6700",
-    "send_mode": "text_and_file"
+    "send_mode": "text_and_file",
+    "remind_before_minutes": 15
   },
   "qoj": {
     "enabled": false,

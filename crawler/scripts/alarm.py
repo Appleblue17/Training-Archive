@@ -6,6 +6,12 @@
   - end_time 在未来  = 未来比赛：sync 写入闹钟表，到点（fire）爬取并生成报告
   - end_time 已过    = 过期比赛：sync 立即爬取并生成报告（如闹钟失败后补漏）
 
+未来比赛可另填 start_time（比赛开始时间，可选）：
+  - 填了 start_time → 赛前提醒用该时间
+  - 没填 → 回退为 end_time - 5 小时（HDU 暑期联赛默认 5 小时）
+  daemon 的 remind 任务在 start_time 前 15 分钟（config.json qq.
+  remind_before_minutes，缺省 15）向 QQ 群发提醒，发成功后标记 reminded_at。
+
 闹钟表 crawler/alarms.json 是运行时状态文件（gitignore，不提交），由本模块
 统一读写；daemon.py 的 sync / fire 子命令编排：
   sync  → alarm.py plan   （输出 HISTORY / EXPIRED / RETRY 链接，写未来闹钟）
@@ -36,9 +42,14 @@
   python3 crawler/scripts/alarm.py due
       输出 DUE\t<link>：status == planned、fire_at 已到、未失败的闹钟；
       无则无输出（fire 每分钟调用，保持安静避免刷日志）。pending/archived/failed 忽略。
-  python3 crawler/scripts/alarm.py mark <link> --archived|--failed
+  python3 crawler/scripts/alarm.py remind
+      输出 REMIND\t<link>\t<start_time>\t<comments>：planned 且已进入赛前提醒
+      窗口（start_time 前 remind_before_minutes 分钟内）且未提醒过（reminded_at
+      为空）的闹钟；daemon 发送成功后调 mark --reminded 标记。
+  python3 crawler/scripts/alarm.py mark <link> --archived|--failed|--reminded
       标记状态：--archived 置 archived（attempts 清零，sync/fire 处理成功）；
-      --failed attempts +1、置 failed（fire 不再重试，下次 sync 重试一次）。
+      --failed attempts +1、置 failed（fire 不再重试，下次 sync 重试一次）；
+      --reminded 置 reminded_at（赛前提醒已发送，不再重复提醒）。
   python3 crawler/scripts/alarm.py list
       人类可读列出全部闹钟（server-task.sh status 用）。
 """
@@ -46,7 +57,7 @@
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
@@ -66,6 +77,11 @@ STATUS_PLANNED = "planned"      # 未来比赛：等 fire（fire_at = end_time�
 STATUS_PENDING = "pending"      # sync 已安排立即处理（HISTORY/EXPIRED 待爬，fire_at 为空）
 STATUS_ARCHIVED = "archived"    # 已处理完：sync 跳过、fire 忽略
 STATUS_FAILED = "failed"        # 爬取失败：fire 忽略，下次 sync 重试一次
+
+# 赛前提醒：缺 start_time 时用 end_time - DEFAULT_CONTEST_DURATION_HOURS 推算
+# （HDU 暑期联赛默认 5 小时）；提醒窗口为 start_time 前 REMIND_MINUTES 分钟。
+DEFAULT_CONTEST_DURATION_HOURS = 5
+REMIND_MINUTES = 15
 
 
 def _load_alarms():
@@ -148,13 +164,38 @@ def _parse_time(s):
     return dt.astimezone(beijing)
 
 
-def _new_entry(platform, link, end_time, fire_at, status):
+def _effective_start_time(s):
+    """订阅 → 比赛开始时间（ISO）：显式 start_time 优先；否则 end_time - 5 小时。"""
+    st = _parse_time(s.get("start_time"))
+    if st is not None:
+        return st.isoformat()
+    end = _parse_time(s.get("end_time"))
+    if end is not None:
+        return (end - timedelta(hours=DEFAULT_CONTEST_DURATION_HOURS)).isoformat()
+    return None
+
+
+def _remind_window_minutes():
+    """赛前提醒提前量（分钟）：config.json qq.remind_before_minutes，缺省 15。"""
+    try:
+        with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+            config = json.load(f)
+        qq = config.get("qq", {})
+        v = int(qq.get("remind_before_minutes", REMIND_MINUTES))
+        return v if v > 0 else REMIND_MINUTES
+    except Exception:
+        return REMIND_MINUTES
+
+
+def _new_entry(platform, link, end_time, fire_at, status, start_time=None, comments=""):
     return {
         "platform": platform,
         "link": link,
         "end_time": end_time,
+        "start_time": start_time,
         "fire_at": fire_at,
         "status": status,
+        "comments": comments,
         "attempts": 0,
         "updated_at": datetime.now(beijing).isoformat(),
     }
@@ -219,7 +260,14 @@ def cmd_plan():
 
         if existing is not None:
             st = existing.get("status")
-            unchanged = existing.get("end_time") == end_time
+            unchanged = (
+                existing.get("end_time") == end_time
+                and existing.get("start_time") == _effective_start_time(s)
+            )
+            if unchanged and existing.get("comments") != str(s.get("comments") or ""):
+                # comments 仅展示用（赛前提醒 / 列表）：原地更新，不触发重分类
+                existing["comments"] = str(s.get("comments") or "")
+                existing["updated_at"] = datetime.now(beijing).isoformat()
             if unchanged and st == STATUS_ARCHIVED:
                 # 已处理完且订阅未变：跳过
                 continue
@@ -239,19 +287,23 @@ def cmd_plan():
         if end_dt is None:
             # 历史比赛：立即爬取，不生成报告
             alarms[link] = _new_entry(
-                s.get("platform"), link, None, None, STATUS_PENDING
+                s.get("platform"), link, None, None, STATUS_PENDING,
+                comments=str(s.get("comments") or ""),
             )
             history_links.append(link)
         elif end_dt <= now:
             # 过期比赛：立即爬取 + 生成报告（如闹钟失败后补漏）
             alarms[link] = _new_entry(
-                s.get("platform"), link, end_time, None, STATUS_PENDING
+                s.get("platform"), link, end_time, None, STATUS_PENDING,
+                comments=str(s.get("comments") or ""),
             )
             expired_links.append(link)
         else:
-            # 未来比赛：写闹钟，等 fire
+            # 未来比赛：写闹钟，等 fire（赛前提醒用 start_time）
             alarms[link] = _new_entry(
-                s.get("platform"), link, end_time, end_time, STATUS_PLANNED
+                s.get("platform"), link, end_time, end_time, STATUS_PLANNED,
+                start_time=_effective_start_time(s),
+                comments=str(s.get("comments") or ""),
             )
 
     # 剪除已不在订阅中的闹钟（含 archived 历史）
@@ -316,6 +368,30 @@ def cmd_due():
         print(f"DUE\t{link}")
 
 
+def cmd_remind():
+    """输出 REMIND\t<link>\t<start_time>\t<comments>：planned 且进入赛前提醒窗口。
+
+    提醒窗口 = [start_time - remind_before_minutes, start_time)。已提醒过
+    （reminded_at 非空）不再输出。无待提醒时**无任何输出**（daemon 每 5 分钟
+    调用，保持安静避免刷日志）。daemon 发送成功后调 mark --reminded 标记。
+    """
+    window = timedelta(minutes=_remind_window_minutes())
+    alarms = _load_alarms()
+    now = datetime.now(beijing)
+    for e in sorted(alarms.values(), key=lambda x: x.get("start_time") or ""):
+        if e.get("status") != STATUS_PLANNED:
+            continue
+        start = _parse_time(e.get("start_time"))
+        if start is None:
+            continue
+        if not (start - window <= now < start):
+            continue
+        if e.get("reminded_at"):
+            continue
+        comments = str(e.get("comments") or "").replace("\t", " ").replace("\n", " ")
+        print(f"REMIND\t{e['link']}\t{start.isoformat()}\t{comments}")
+
+
 def cmd_mark(link, state):
     """标记闹钟状态。
 
@@ -342,6 +418,10 @@ def cmd_mark(link, state):
             f"[alarm] mark {link}: failed "
             f"(attempts={e['attempts']}); will retry on next sync."
         )
+    elif state == "reminded":
+        e["reminded_at"] = datetime.now(beijing).isoformat()
+        e["updated_at"] = datetime.now(beijing).isoformat()
+        print(f"[alarm] mark {link}: reminded.")
     else:
         print(f"[alarm] mark: unknown state {state!r}.", file=sys.stderr)
         sys.exit(1)
@@ -355,9 +435,10 @@ def cmd_list():
         print("(no alarms)")
         return
     now = datetime.now(beijing)
-    print(f"{'link':<56} {'platform':<8} {'status':<10} {'fire_at':<26} attempts")
+    print(f"{'link':<56} {'platform':<8} {'status':<10} {'start_time':<26} {'fire_at':<26} attempts")
     for e in sorted(alarms.values(), key=lambda x: x.get("link", "")):
         fire_at = e.get("fire_at") or "-"
+        start_at = e.get("start_time") or "-"
         status = e.get("status", "?")
         if status == STATUS_PLANNED:
             dt = _parse_time(fire_at)
@@ -372,7 +453,7 @@ def cmd_list():
             state = status
         print(
             f"{e['link']:<56} {e.get('platform', ''):<8} "
-            f"{status:<10} {fire_at:<26} {e.get('attempts', 0)}"
+            f"{status:<10} {start_at:<26} {fire_at:<26} {e.get('attempts', 0)}"
         )
 
 
@@ -386,9 +467,11 @@ def main():
         cmd_plan()
     elif cmd == "due":
         cmd_due()
+    elif cmd == "remind":
+        cmd_remind()
     elif cmd == "mark":
         if len(args) < 3:
-            print("usage: alarm.py mark <link> --archived|--failed", file=sys.stderr)
+            print("usage: alarm.py mark <link> --archived|--failed|--reminded", file=sys.stderr)
             sys.exit(1)
         cmd_mark(args[1], args[2].lstrip("-"))
     elif cmd == "list":
