@@ -16,7 +16,7 @@
   /alarms    闹钟概览（不含 archived，含 due / scheduled / failed）
   /contests  已归档比赛（含复盘状态 ✓/✗）
   /review    复盘查询（无参数 = 最近有复盘的比赛；带关键词 = 搜索摘要）
-  /fortune   今日运势（按人+日期确定性选择：档位加权 + 语句池 + 名言 + 今日比赛提醒）
+  /fortune   今日运势（按人+日期确定性选择：档位加权 + 名言 + 今日比赛提醒）
   /subs      列出订阅
   /subs add <link> [end=时间] [start=时间] [备注]   新增订阅（platform 自动推断，写入 qqbot.json）
   /subs del <link>                          删除订阅（从所有订阅文件移除）
@@ -64,6 +64,12 @@ except ImportError as e:  # pragma: no cover
     _WS_IMPORT_ERROR = e
     create_connection = None
 
+# requests（名言补充拉取；可选，缺失时降级内置池）
+try:
+    import requests
+except ImportError:  # pragma: no cover
+    requests = None
+
 from crawler.platforms.base import beijing, load_subscriptions_dir
 
 # 仓库根 / 配置路径
@@ -76,6 +82,9 @@ ALARMS_PATH = os.path.join(REPO_ROOT, "crawler", "alarms.json")
 BOT_STATE_PATH = os.path.join(REPO_ROOT, "crawler", "bot-state.json")
 QQ_BOT_LOG = os.path.join(REPO_ROOT, "crawler", "qq-bot.log")
 SUBSCRIPTIONS_DIR = os.path.join(REPO_ROOT, "crawler", "subscriptions")
+# /fortune 名言补充：quotable 缓存 + 当日运势结果缓存
+QUOTES_CACHE_PATH = os.path.join(REPO_ROOT, "crawler", "quotes-cache.json")
+FORTUNE_CACHE_PATH = os.path.join(REPO_ROOT, "crawler", "fortune-cache.json")
 # bot 管理的订阅写入文件（crawler/subscriptions/*.json 之一，按约定合并加载）
 BOT_SUBS_FILE = os.path.join(SUBSCRIPTIONS_DIR, "qqbot.json")
 # 生产分支：管理命令（改订阅 / 触发 sync）只在 deploy 分支工作区生效
@@ -108,6 +117,15 @@ WARN_CONN_INTERVAL = 30.0     # 连接失败告警间隔
 _last_config_warn_ts = 0.0
 _last_conn_warn_ts = 0.0
 
+# /fortune 名言补充（quotable API → 本地缓存，失败降级内置池）
+QUOTES_API_URL = "https://api.quotable.io/quotes/random"
+QUOTES_FETCH_LIMIT = 50      # 每次批量拉取的条数（quotable 上限 50）
+QUOTES_MAX_LENGTH = 120      # 名言最大字符数（防止超长刷屏）
+QUOTES_FETCH_TIMEOUT = 8     # 单次拉取超时（秒）
+QUOTES_CACHE_MAX = 300       # 缓存池去重后最大条数
+QUOTES_RETRY_INTERVAL = 600  # 拉取失败后至少间隔多久再重试（秒）
+_quotes_lock = threading.Lock()
+_quotes_last_attempt_ts = 0.0
 
 # ---------------------------------------------------------------------------
 # 配置读取（与 qq_share.py 保持一致）
@@ -377,42 +395,18 @@ def _deterministic_seed(scope, user_id):
 
 
 # ---------------------------------------------------------------------------
-# 今日运势数据（档位权重 + 语句池 + 名言池）
+# 今日运势数据（档位权重 + 名言池）
 # ---------------------------------------------------------------------------
-# 档位权重（%）：中间档概率最大，极值档最低。语句池每档多条，确定性轮换。
+# 档位权重（%）：中间档概率最大，极值档最低。
 FORTUNE_RANKS = [
-    ("大吉", 5, [
-        "今天想做的事就大胆去做，好运站你这边！",
-        "灵感在线，想到就记下来，说不定是个好点子。",
-        "出门会遇见小惊喜，记得对生活微笑。",
-    ]),
-    ("吉", 25, [
-        "适合迈出第一步，试试平时不敢提的想法。",
-        "今天的小目标大概率能完成，别贪多。",
-        "身边会有贵人出没，多听少说准没错。",
-    ]),
-    ("中吉", 40, [
-        "平稳的一天，按计划走就不会出错。",
-        "适度放空有益身心，但要记得及时收心。",
-        "别太较真，顺其自然反而更顺利。",
-    ]),
-    ("小吉", 20, [
-        "小事顺遂，大事别急，慢慢来比较快。",
-        "今天可能有点小波折，笑一笑就过去了。",
-        "适合处理琐碎杂事，清完会很有成就感。",
-    ]),
-    ("凶", 8, [
-        "今天别做重要决定，先睡个午觉冷静下。",
-        "出门前多检查一遍，钥匙、卡、充电宝。",
-        "别跟人争论对错，赢了道理输了心情。",
-    ]),
-    ("大凶", 2, [
-        "宜躺平，忌上头。点杯奶茶犒劳自己吧~",
-        "今天诸事不宜？那就只做一件事：好好吃饭。",
-        "别立 flag，今天的任务就是好好休息。",
-    ]),
+    ("SSS+", 5),
+    ("SSS", 25),
+    ("SS+", 40),
+    ("SS", 20),
+    ("S+", 8),
+    ("S", 2),
 ]
-assert sum(w for _, w, _ in FORTUNE_RANKS) == 100, "FORTUNE_RANKS 权重和必须为 100"
+assert sum(w for _, w in FORTUNE_RANKS) == 100, "FORTUNE_RANKS 权重和必须为 100"
 
 # /fortune 名言池（本地确定性选择，离线可用；风格参考 quotable）
 FORTUNE_QUOTES = [
@@ -440,21 +434,122 @@ FORTUNE_QUOTES = [
 
 
 def _pick_fortune(seed):
-    """按权重选档位，再在档内确定性选一句。返回 (rank, advice)。"""
+    """按权重选档位。返回档位名（如 "SS+"）。"""
     w = seed % 100
     acc = 0
-    for rank, weight, advices in FORTUNE_RANKS:
+    for rank, weight in FORTUNE_RANKS:
         acc += weight
         if w < acc:
-            return rank, advices[(seed // 100) % len(advices)]
+            return rank
     # 兜底（权重和不足 100 时）
-    rank, _, advices = FORTUNE_RANKS[-1]
-    return rank, advices[seed % len(advices)]
+    return FORTUNE_RANKS[-1][0]
 
 
-def _pick_quote(seed):
-    """从名言池确定性选一条。返回 (content, author)。"""
-    return FORTUNE_QUOTES[seed % len(FORTUNE_QUOTES)]
+def _pick_quote(seed, extra=()):
+    """从名言池（内置 + 远端补充）确定性选一条。返回 (content, author)。"""
+    pool = list(FORTUNE_QUOTES) + list(extra)
+    if not pool:
+        return "", ""
+    return pool[seed % len(pool)]
+
+
+def _quotes_api_enabled():
+    """是否启用 quotable API 补充名言（config.json qq.fortune_quotes_api，缺省 true）。"""
+    cfg = _load_config()
+    qq = cfg.get("qq", {}) or {}
+    return bool(qq.get("fortune_quotes_api", True))
+
+
+def _fetch_quotes():
+    """从 quotable 批量拉取名言。成功返回 [(content, author), ...]；失败返回 []。
+
+    quotable 免费 API，180 次/分限额（本实现每天至多拉一次，远低于限额）。
+    系统 CA 证书异常时降级 verify=False（名言非敏感数据）。requests 缺失
+    或网络异常一律返回 []，由调用方降级到内置池。
+    """
+    if requests is None:
+        return []
+    try:
+        kwargs = dict(
+            params={"limit": QUOTES_FETCH_LIMIT, "maxLength": QUOTES_MAX_LENGTH},
+            timeout=QUOTES_FETCH_TIMEOUT,
+        )
+        try:
+            resp = requests.get(QUOTES_API_URL, **kwargs)
+        except Exception:
+            # 服务器 CA 证书过期（实测本机）时降级不校验证书
+            resp = requests.get(QUOTES_API_URL, verify=False, **kwargs)
+        resp.raise_for_status()
+        items = resp.json() or []
+        out = []
+        for q in items:
+            content = (q.get("content") or "").strip()
+            author = (q.get("author") or "Unknown").strip()
+            if content and len(content) <= QUOTES_MAX_LENGTH:
+                out.append((content, author))
+        return out
+    except Exception as e:
+        print(f"[qq-bot] quotable 拉取失败: {e}")
+        return []
+
+
+def _load_quotes_cache():
+    """读取名言缓存。返回 (date, [(content, author), ...])。"""
+    data = _load_json(QUOTES_CACHE_PATH, {}) or {}
+    if not isinstance(data, dict):
+        return "", []
+    quotes = data.get("quotes") or []
+    out = []
+    for q in quotes:
+        if isinstance(q, list) and len(q) == 2 and q[0]:
+            out.append((str(q[0]), str(q[1])))
+    return str(data.get("date") or ""), out
+
+
+def _save_quotes_cache(date, quotes):
+    try:
+        with open(QUOTES_CACHE_PATH, "w", encoding="utf-8") as f:
+            json.dump({"date": date, "quotes": quotes}, f, ensure_ascii=False, indent=2)
+    except OSError as e:
+        print(f"[qq-bot] 写入名言缓存失败: {e}")
+
+
+def _merge_quotes(a, b, limit=QUOTES_CACHE_MAX):
+    """合并两批名言并按 (content, author) 去重，保留前 limit 条。"""
+    seen = set()
+    merged = []
+    for item in list(a) + list(b):
+        key = (item[0], item[1])
+        if key not in seen:
+            seen.add(key)
+            merged.append(item)
+    return merged[:limit] if limit else merged
+
+
+def _ensure_quotes():
+    """确保名言池已刷新（每天至多拉取一次，失败降级旧缓存）。
+
+    返回 (extra_quotes, is_remote)。extra_quotes 为远端补充名言（可为空），
+    与内置池合并后确定性选择。并发安全（_quotes_lock）。
+    """
+    global _quotes_last_attempt_ts
+    if not _quotes_api_enabled():
+        return [], False
+    with _quotes_lock:
+        today = datetime.now(beijing).date().isoformat()
+        cached_date, cached = _load_quotes_cache()
+        if cached_date == today and cached:
+            return cached, True
+        # 拉取失败后 QUOTES_RETRY_INTERVAL 内不重试（避免频繁请求）
+        if time.time() - _quotes_last_attempt_ts < QUOTES_RETRY_INTERVAL:
+            return cached, False
+        _quotes_last_attempt_ts = time.time()
+        fetched = _fetch_quotes()
+        if not fetched:
+            return cached, False
+        merged = _merge_quotes(cached, fetched)
+        _save_quotes_cache(today, merged)
+        return merged, True
 
 
 def _truncate(s, n=28):
@@ -908,20 +1003,35 @@ def cmd_review(args, ctx):
     return "\n".join(lines)
 
 
-@command("fortune", "f", keywords=("运势", "今日运势", "运气"))
-def cmd_fortune(args, ctx):
-    """今日运势：按 user+日期 确定性选择（同一天同一人固定，跨天变化）。
+def _load_fortune_cache():
+    """读取当日运势缓存 {date, by_user:{uid:text}}。"""
+    data = _load_json(FORTUNE_CACHE_PATH, {}) or {}
+    return data if isinstance(data, dict) else {}
 
-    档位按权重（中间档概率最大），档内多句轮换 + 名言池 + 今日/明日比赛提醒。
+
+def _save_fortune_cache(cache):
+    try:
+        with open(FORTUNE_CACHE_PATH, "w", encoding="utf-8") as f:
+            json.dump(cache, f, ensure_ascii=False, indent=2)
+    except OSError as e:
+        print(f"[qq-bot] 写入运势缓存失败: {e}")
+
+
+def _build_fortune_text(user_id):
+    """计算运势文本：档位加权 + 名言（内置+远端补充）+ 今日比赛提醒。
+
+    名言池当天可能因 quotable 补充而扩大，但 cmd_fortune 的当日结果缓存
+    保证同一天同一人固定（详见 cmd_fortune）。
     """
-    seed = _deterministic_seed("fortune", ctx.get("user_id"))
-    rank, advice = _pick_fortune(seed)
+    seed = _deterministic_seed("fortune", user_id)
+    rank = _pick_fortune(seed)
     lucky = seed % 100
-    q_seed = _deterministic_seed("fortune-quote", ctx.get("user_id"))
-    quote, author = _pick_quote(q_seed)
-    lines = [f"今日运势：{rank}（幸运数字 {lucky}）"]
-    lines.append(advice)
-    lines.append(f"「{quote}」——{author}")
+    q_seed = _deterministic_seed("fortune-quote", user_id)
+    extra, _ = _ensure_quotes()
+    quote, author = _pick_quote(q_seed, extra)
+    lines = [f"测算中……您今天的运势是……{rank}！幸运数字是 {lucky}"]
+    if quote and author:
+        lines.append(f"「{quote}」——{author}")
     # 今日/明日比赛提醒
     alarms = _load_alarms()
     now = datetime.now(beijing)
@@ -939,6 +1049,27 @@ def cmd_fortune(args, ctx):
         for dt, e in soon[:3]:
             lines.append(f"· {_format_dt(dt, now)}  {_alarm_display_name(e.get('link', ''), e)}")
     return "\n".join(lines)
+
+
+@command("fortune", "f", keywords=("运势", "今日运势", "运气"))
+def cmd_fortune(args, ctx):
+    """今日运势：按 user+日期 确定性选择（同一天同一人固定，跨天变化）。
+
+    当日结果缓存到 FORTUNE_CACHE_PATH：即使名言池在当天内因 quotable
+    补充而扩大，同一天同一人的回复也保持固定；次日自动重置重算。
+    """
+    user_id = str(ctx.get("user_id") or "anonymous")
+    today = datetime.now(beijing).date().isoformat()
+    cache = _load_fortune_cache()
+    by_user = cache.get("by_user") or {}
+    if cache.get("date") == today and user_id in by_user:
+        return by_user[user_id]
+    text = _build_fortune_text(user_id)
+    by_user[user_id] = text
+    cache["date"] = today
+    cache["by_user"] = by_user
+    _save_fortune_cache(cache)
+    return text
 
 
 @command("subs", keywords=("订阅", "订阅列表"))
