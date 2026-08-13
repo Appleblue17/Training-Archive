@@ -60,13 +60,13 @@ contests/
 | 路由 | 职责 |
 |------|------|
 | `layout.tsx` | 根布局：全局字体、页脚、favicon、markdown 样式（github-markdown-dark / katex / github-dark 全局加载） |
-| `(main)/layout.tsx` | 主布局：标题、爬虫状态徽章、面包屑导航 |
+| `(main)/layout.tsx` | 主布局：标题、面包屑导航 |
 | `(main)/page.tsx` + `(main)/(home)/[page]/page.tsx` | 竞赛列表（服务端取数 + 分页，每页 20 条），与根路径共用 `home-view.tsx` |
 | `(main)/(home)/[page]/contest-table.tsx` | 竞赛表格（客户端）：可展开行、题目状态、悬停元数据面板 |
 | `(main)/search/page.tsx` + `search-client.tsx` | 搜索页（服务端读构建时索引，客户端过滤） |
 | `(main)/dashboard/page.tsx` + `dashboard-client.tsx` | 数据看板（统计卡片、绿点图、最近动态、复盘报告） |
 | `(main)/review/[contest]/page.tsx` + `review-timeline.tsx` | 复盘时间轴页：提交序列 + LLM 报告 |
-| `(main)/log/page.tsx` + `log-page.tsx` | 日志页：各平台日志与 staged submissions |
+| `(main)/status/page.tsx` + `status-page.tsx` | 状态页：config / last-update / 各平台 staged submissions / 订阅（JSON 展示 + 复制） |
 | `(main)/readme/page.tsx` | README 页（构建时渲染仓库根 README） |
 | `view/contests/[contest]/[file]/page.tsx` | 竞赛级文件查看页 |
 | `view/contests/[contest]/problems/[problem]/[file]/page.tsx` | 题目级文件查看页 |
@@ -77,7 +77,7 @@ contests/
 | 模块 | 职责 |
 |------|------|
 | `src/lib/types.ts` | 数据类型：`FileMetadataType` / `CodeFileType` / `ProblemInfoType` / `ContestInfoType` / `SearchIndexEntryType` |
-| `src/lib/global.ts` | 全局配置：`BASE_URL` / `PREFIX_URL` / `REPO_URL`、`allowedExtensions`、`logFileList`、`ITEMS_PER_PAGE` |
+| `src/lib/global.ts` | 全局配置：`BASE_URL` / `PREFIX_URL` / `REPO_URL`、`allowedExtensions`、`statusFileList`、`ITEMS_PER_PAGE` |
 | `src/lib/contests-data.ts` | 服务端数据读取（仅服务端 import）：`getContests` / `getAllSubmissions` / `getReviews` / `safeParseJson` |
 | `scripts/generate-search-index.mjs` | 构建时扫描 `contests/` 生成 `public/search-index.json`（问题级索引） |
 | `src/utils/get-file-metadata.ts` | 读取文件元数据，合并 `<file>.json` 侧车文件 |
@@ -214,7 +214,7 @@ contests/
 - 提交抓取**完整性校验**：只有遍历完所有分页或到达 last-update 才标记完整；`finish()` 仅在此情况下推进 `last-update.json`，否则下次重跑，避免静默漏提交。
 - **contests-only 不回填已有比赛、不推进 `last-update.json`**：新建比赛的提交以该场 `start_time` 为截止全量回填（`_deadline_for`，与默认模式首次抓取一致），已有比赛的增量由每日 `--submissions-only` 推进。
 
-**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/platforms/*/contests.json`、`crawler/platforms/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。自托管守护进程（`daemon.py`）在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。**仅 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送**（消息带 `[contests-changed]` 标记，触发部署）；仅 crawler 状态/日志变化时不提交不推送（这些文件已在本地文件系统持久化，无需同步远端）。日志、chromedriver 二进制、`new-contests.json`（临时报告列表）与 `alarms.json`（闹钟表，见 4.6）始终不提交。
+**deploy 分支状态跟踪约定**：开发分支（`main`）的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/platforms/*/contests.json`、`crawler/platforms/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**（deploy 分支专用），其中这些文件均纳入版本控制。自托管守护进程（`daemon.py`）在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。**仅 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送**（消息带 `[contests-changed]` 标记，触发部署）；仅 crawler 状态/日志变化时不提交不推送（这些文件已在本地文件系统持久化，无需同步远端）。`config.json` / `last-update.json` / 各平台 `staged-submissions.json` / `subscriptions/` 均在 deploy 分支入库跟踪，供前端 `/status` 页面展示（见 3.1）。日志、chromedriver 二进制、`new-contests.json`（临时报告列表）与 `alarms.json`（闹钟表，见 4.6）始终不提交。
 
 ### 4.6 闹钟机制（`crawler/scripts/alarm.py`）
 
@@ -266,7 +266,7 @@ contests/
 | 时间统一北京时间 | 竞赛平台均为中国时区，避免时区转换歧义 | 前端 `parseToBeijingTime` 与爬虫 `_convert_to_beijing_time` 双端一致 |
 | URL 双端常量（`BASE_URL`/`PREFIX_URL`） | 区分页面路由前缀与资源前缀，适配 GitHub Pages `basePath` | 内部路由用根相对路径 + `next/link`（Link 自动添加一次 `basePath`）；`PREFIX_URL` 仅用于 `<a>` 外部/下载类链接。二者混用会产生双前缀 404 |
 | 爬虫数据不纳入 `main` 分支 | 避免大量二进制/JSON 数据污染主分支；`deploy` 分支专管数据与部署 | 主分支本地开发需自行准备 `contests/` |
-| 爬虫状态文件在 `deploy` 分支纳入版本控制 | 增量同步依赖跨运行持久的状态（last-update / 平台索引 / staged） | 开发分支 `.gitignore` 忽略；CI 用 `.gitignore.deploy` 覆盖后正常 `git add` |
+| 爬虫状态文件在 `deploy` 分支纳入版本控制 | 增量同步依赖跨运行持久的状态（last-update / 平台索引 / staged）；config 与状态也供 `/status` 页面展示 | 开发分支 `.gitignore` 忽略；daemon 提交前用 `.gitignore.deploy` 覆盖后正常 `git add` |
 | 订阅模型 `crawler/subscriptions/` 目录 | 统一管理预订比赛；多文件按 `link` 去重合并，文件名随意便于分组 | 三平台均为订阅驱动；订阅目录开发分支 gitignore，deploy 分支纳入版本控制 |
 | 全量提交采集（`submissions/` + `submissions.json`） | 复盘报告需要完整提交序列（含每份源码） | 每次提交都抓源码，初始同步耗时更长 |
 | LLM 复盘报告（DeepSeek） | 每场一份 `review.md`，原始提交序列直接送 LLM，不做预处理 | 依赖 `DEEPSEEK_API_KEY`；存在即跳过（幂等） |

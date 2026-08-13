@@ -33,6 +33,7 @@
 - **移除顶部爬虫状态徽章**（`layout.tsx` + `crawler-status.tsx`）：原右上角 "Updated X ago" + 链接 GitHub Actions 的徽章删除，不再跳外站；更新时间改在 `/status` 页面的 `last-update.json` 中查看
 - **gitignore 保持 dev/deploy 双机制**：`.gitignore.deploy` 保留（deploy 分支专用），daemon 提交前 `cp .gitignore.deploy .gitignore` 覆盖；deploy 分支跟踪 `contests/`、`config.json`、`last-update.json`、`platforms/*/contests.json`、`staged-submissions.json`、`subscriptions/`（供 `/status` 展示与 CI 增量同步），仅忽略 log 与运行时临时产物（`daemon.log` / `global.log.json` / `platforms/*/log.json` / `qq-bot.log` / `bot-state.json` / `daemon-state.json` / `alarms.json` / `new-contests.json` / `server-task.log` / `input_*.json` / `qq-share.txt` / chromedriver / `public/contests`）
 - **sync 结果摘要回复**（`qq_bot.py`）：`/subs add` / `/subs del` / `/sync` 后台同步完成后，群里回复由「原始日志尾部 8 行」改为**结构化摘要**——待处理分类（历史/过期/重试）、爬取结果（新建/已存在/未开始，未开始给出比赛名）、复盘与分享数、推送状态；失败时给出中止原因（订阅时间格式错误 / 订阅文件格式 / 爬取出错 / 复盘生成失败）与修复提示，不再把原始日志刷到群里（详情仍在服务器 daemon 日志）
+
 ## [0.3.1] - 2026-08-12
 
 ### Added

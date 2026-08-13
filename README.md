@@ -11,7 +11,7 @@
 - **文件查看器**：在线预览 Markdown（GFM / 数学公式 / KaTeX / 代码高亮）、PDF、源码文件，支持下载
 - **复盘报告**：每场完赛自动生成 LLM 复盘报告（DeepSeek）与 QQ 群分享文本
 - **赛前提醒**：预订的比赛开始前自动在 QQ 群发提醒
-- **日志页面**：查看各平台爬虫运行日志与 staged submissions
+- **状态页面**：查看爬虫配置、各平台最后更新时间、待回填提交与订阅列表（/status）
 - **自动抓取**：自托管守护进程（`crawler/scripts/daemon.py`）定时运行爬虫，检测到竞赛变化后自动提交并部署到 GitHub Pages
 
 ## 技术栈
@@ -27,7 +27,7 @@
 ## 目录结构
 
 ```
-├── src/                        # Next.js 前端（列表、搜索、Dashboard、复盘、文件查看器）
+├── src/                        # Next.js 前端（列表、搜索、Dashboard、复盘、状态页、文件查看器）
 ├── crawler/                    # Python 爬虫
 │   ├── platforms/              # BaseCrawler 基类 + qoj/hdu/nowcoder 平台实现
 │   ├── scripts/                # scheduled_task.py / report.py / alarm.py / daemon.py
@@ -68,6 +68,7 @@ python3 crawler/scripts/scheduled_task.py --submissions-only
 # 复盘报告（--links 按订阅链接反查生成，报告条件 = 订阅填了 end_time；--from-crawl 只对本次爬取新建的比赛生成）
 python3 crawler/scripts/report.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456"
 python3 crawler/scripts/report.py --from-crawl
+python3 crawler/scripts/report.py --from-crawl --links "https://qoj.ac/contest/123"
 # 补生成：扫描所有缺报告的已结束比赛，或只生成指定比赛
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
