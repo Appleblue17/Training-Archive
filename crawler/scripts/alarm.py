@@ -315,13 +315,18 @@ def cmd_plan():
             # 历史比赛：立即爬取，不生成报告
             alarms[link] = _new_entry(
                 s.get("platform"), link, None, None, STATUS_PENDING,
+                start_time=_effective_start_time(s),
                 comments=str(s.get("comments") or ""),
             )
             history_links.append(link)
         elif end_dt <= now:
-            # 过期比赛：立即爬取 + 生成报告（如闹钟失败后补漏）
+            # 过期比赛：立即爬取 + 生成报告（如闹钟失败后补漏）。
+            # start_time 存计算值（end_time - 5h）：下次 plan 的 unchanged
+            # 比较才成立，否则 archived 条目 start_time=null != 计算值，
+            # 每次 sync 都把同一场当 EXPIRED 重爬。
             alarms[link] = _new_entry(
                 s.get("platform"), link, end_time, None, STATUS_PENDING,
+                start_time=_effective_start_time(s),
                 comments=str(s.get("comments") or ""),
             )
             expired_links.append(link)

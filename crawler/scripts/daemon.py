@@ -233,6 +233,10 @@ def commit_and_push():
     changed = [line for line in r.stdout.splitlines() if line.startswith("contests/")]
     if not changed:
         log("No contest data changes; skip commit/push (crawler state persists locally).")
+        # 取消暂存所有（含 crawler 运行时文件）：git add crawler 会把
+        # daemon.log / log.json / 订阅文件等暂存，不清理会遗留在 index 里，
+        # 下一次手动 git commit 时被一并提交。
+        git("reset", check=False)
         return
 
     git("commit", "-m", "[auto] [contests-changed] Update contest and submission data")
