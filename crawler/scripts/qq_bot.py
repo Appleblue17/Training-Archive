@@ -376,12 +376,126 @@ def _deterministic_seed(scope, user_id):
     return int(hashlib.md5(key.encode("utf-8")).hexdigest()[:8], 16)
 
 
+def _truncate(s, n=28):
+    """截断到 n 字符，超出加省略号。"""
+    s = (s or "").strip()
+    return s if len(s) <= n else s[: n - 1] + "…"
+
+
+def _sync_failure_summary(lines, text):
+    """失败场景摘要：优先提取中止原因，不再转发原始日志行。"""
+    m = re.search(
+        r"\[alarm\] ERROR: subscription (\S+) has invalid (end_time|start_time) '([^']*)'",
+        text,
+    )
+    if m:
+        link, field, val = m.group(1), m.group(2), m.group(3)
+        field_cn = "结束时间" if field == "end_time" else "开始时间"
+        return "\n".join([
+            "⚠️ 同步中止：订阅时间格式错误",
+            f"· {_truncate(link)} 的{field_cn} {val!r} 无效",
+            "· 该订阅已跳过；请修正后重试（/subs del 删除后重新 /subs add）",
+        ])
+    if "subscription file(s) with format problems" in text:
+        return "\n".join([
+            "⚠️ 同步中止：订阅文件格式有问题",
+            "· 部分订阅被跳过（详见服务器 daemon 日志）",
+            "· 请修正订阅文件后重试",
+        ])
+    if "Sync crawl failed" in text:
+        return "\n".join([
+            "⚠️ 同步失败：爬取出错",
+            "· 相关比赛已标记 failed，下次 sync 自动重试",
+        ])
+    if "review generation failed" in text:
+        return "\n".join([
+            "⚠️ 同步中止：复盘生成失败",
+            "· 未归档，下次 sync 将重试",
+        ])
+    # 兜底：返回退出码 + 最后几行
+    head = next((l for l in lines if l.startswith("[ERROR]") or "aborting sync" in l), None)
+    tail = "\n".join(lines[-3:] or ["(无输出)"])
+    return "⚠️ 同步失败\n" + (f"· {head}\n" if head else "") + tail
+
+
+def _sync_ok_summary(lines, text):
+    """成功场景摘要：待处理分类 / 爬取结果 / 复盘分享 / 推送状态。"""
+    parts = ["✅ 同步完成"]
+
+    # 待处理（alarm.py plan 分类）
+    m = re.search(
+        r"\[alarm\] plan:\s*(\d+)\s*history,\s*(\d+)\s*expired,\s*(\d+)\s*retry,\s*(\d+)\s*alarms",
+        text,
+    )
+    if m:
+        n_hist, n_exp, n_retry, n_alarms = map(int, m.groups())
+        total = n_hist + n_exp + n_retry
+        if total == 0:
+            parts.append(f"· 没有待处理的比赛（闹钟 {n_alarms} 条）")
+        else:
+            label = []
+            if n_hist:
+                label.append(f"{n_hist} 历史")
+            if n_exp:
+                label.append(f"{n_exp} 过期")
+            if n_retry:
+                label.append(f"{n_retry} 重试")
+            parts.append("· 待处理：" + " / ".join(label))
+
+    # 爬取结果（daemon 的 Crawling 行 + 爬虫输出分类）
+    crawl = next((l for l in lines if "Crawling:" in l), None)
+    if crawl:
+        n_links = len([x for x in crawl.split("Crawling:", 1)[1].split(",") if x.strip()])
+        finished = len(re.findall(r"Finished fetching contest:", text))
+        already = len(re.findall(r"Contest folder already exists", text)) + len(
+            re.findall(r"not new in this run", text)
+        )
+        not_started = re.findall(r"Contest (.+?) has not started yet", text)
+        detail = []
+        if finished:
+            detail.append(f"{finished} 场新建")
+        if already:
+            detail.append(f"{already} 场已存在")
+        for name in not_started[:2]:
+            detail.append(f"1 场未开始（{_truncate(name)}）")
+        if len(not_started) > 2:
+            detail.append(f"等 {len(not_started)} 场未开始")
+        parts.append(
+            "· 爬取 " + str(n_links) + " 场"
+            + ("：" + "，".join(detail) if detail else "（无结果）")
+        )
+
+    # 复盘 / 分享
+    m = re.search(r"\[report\] Generated (\d+) review\(s\).*?\((\d+) failed\)", text)
+    if m:
+        line = f"· 复盘 {m.group(1)} 篇"
+        if int(m.group(2)):
+            line += f"（{m.group(2)} 篇失败）"
+        parts.append(line)
+    m = re.search(r"\[qq-share\] Sent (\d+) share\(s\)", text)
+    if m:
+        parts.append(f"· 分享 {m.group(1)} 条")
+
+    # 推送状态
+    if "Pushed to deploy." in text:
+        parts.append("· 已推送 deploy")
+    elif "No contest data changes" in text:
+        parts.append("· 无数据变更，未推送")
+
+    return "\n".join(parts)
+
+
 def _sync_summary(returncode, out):
-    """把 daemon.py sync 输出压缩成结果摘要（取最后几行）。"""
+    """把 daemon.py sync 输出压缩成易读摘要（替代原始 log 尾部转发）。
+
+    解析 plan 分类、爬取结果（新建/已存在/未开始/失败）、复盘与分享数、
+    推送状态；失败时给出中止原因。不再把原始日志行发到群里。
+    """
     lines = [ln for ln in out.splitlines() if ln.strip()]
-    head = "✅ sync 完成" if returncode == 0 else f"⚠️ sync 失败（exit {returncode}）"
-    tail = lines[-8:] if lines else ["(无输出)"]
-    return head + "\n" + "\n".join(tail)
+    text = "\n".join(lines)
+    if returncode != 0:
+        return _sync_failure_summary(lines, text)
+    return _sync_ok_summary(lines, text)
 
 
 def _run_sync_and_report():

@@ -27,6 +27,12 @@
 - **订阅时间格式校验**（`qq_bot.py` + `alarm.py` + `daemon.py`）：`/subs add` 的 `end=`/`start=` 时间格式错误 → 终止不写入并提示（给出 `ISO 8601 北京时间` 示例）；手动 `sync` 时 `alarm.py plan` 发现订阅条目时间字段存在但解析失败 → 跳过该条目并输出 `[alarm] ERROR`（汇总行追加 `N invalid time`），`daemon.py sync` 收到非零返回即中止（不爬取不提交），避免把填错时间当 HISTORY 立即爬掉
 - **qq-bot 增量游标改用消息 `time`**（`qq_bot.py`）：NapCat 的 `message_seq` / `message_id` 并非全局递增，用作游标会把新消息永久挡掉；改为按非自己消息的 `time` 推进
 
+### Changed
+
+- **前端 `/log` 日志页弃用删除，改为 `/status` 状态页**（`src/app/(main)/status/`）：日志为运行时噪音（不入库），不再上网页展示；`/status` 展示 deploy 分支入库跟踪的**状态数据**——`crawler/config.json`（平台启用 / 调度 / QQ 配置）、`crawler/last-update.json`（各平台最后更新时间）、各平台 `staged-submissions.json`（待回填提交）、`crawler/subscriptions/` 订阅列表（JSON 渲染 + 复制按钮）。面包屑导航 "Log" → "Status"（图标 `Activity`）；`global.ts` 的 `logFileList` → `statusFileList`
+- **移除顶部爬虫状态徽章**（`layout.tsx` + `crawler-status.tsx`）：原右上角 "Updated X ago" + 链接 GitHub Actions 的徽章删除，不再跳外站；更新时间改在 `/status` 页面的 `last-update.json` 中查看
+- **gitignore 保持 dev/deploy 双机制**：`.gitignore.deploy` 保留（deploy 分支专用），daemon 提交前 `cp .gitignore.deploy .gitignore` 覆盖；deploy 分支跟踪 `contests/`、`config.json`、`last-update.json`、`platforms/*/contests.json`、`staged-submissions.json`、`subscriptions/`（供 `/status` 展示与 CI 增量同步），仅忽略 log 与运行时临时产物（`daemon.log` / `global.log.json` / `platforms/*/log.json` / `qq-bot.log` / `bot-state.json` / `daemon-state.json` / `alarms.json` / `new-contests.json` / `server-task.log` / `input_*.json` / `qq-share.txt` / chromedriver / `public/contests`）
+- **sync 结果摘要回复**（`qq_bot.py`）：`/subs add` / `/subs del` / `/sync` 后台同步完成后，群里回复由「原始日志尾部 8 行」改为**结构化摘要**——待处理分类（历史/过期/重试）、爬取结果（新建/已存在/未开始，未开始给出比赛名）、复盘与分享数、推送状态；失败时给出中止原因（订阅时间格式错误 / 订阅文件格式 / 爬取出错 / 复盘生成失败）与修复提示，不再把原始日志刷到群里（详情仍在服务器 daemon 日志）
 ## [0.3.1] - 2026-08-12
 
 ### Added
