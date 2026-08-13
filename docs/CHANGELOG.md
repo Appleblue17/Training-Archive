@@ -26,6 +26,7 @@
 - **`commit_and_push` 跳过提交时遗留暂存文件**（`daemon.py`）：`git add .gitignore crawler contests` 会把 crawler 运行时文件（`daemon.log` / `log.json` / 订阅文件等）暂存，发现 contests/ 无变化决定不提交时只 `reset` 了 chromedriver、其余文件留在 index——下一次手动 `git commit` 会把这些运行时文件一并提交。修复：跳过提交前 `git reset` 取消全部暂存
 - **订阅时间格式校验**（`qq_bot.py` + `alarm.py` + `daemon.py`）：`/subs add` 的 `end=`/`start=` 时间格式错误 → 终止不写入并提示（给出 `ISO 8601 北京时间` 示例）；手动 `sync` 时 `alarm.py plan` 发现订阅条目时间字段存在但解析失败 → 跳过该条目并输出 `[alarm] ERROR`（汇总行追加 `N invalid time`），`daemon.py sync` 收到非零返回即中止（不爬取不提交），避免把填错时间当 HISTORY 立即爬掉
 - **qq-bot 增量游标改用消息 `time`**（`qq_bot.py`）：NapCat 的 `message_seq` / `message_id` 并非全局递增，用作游标会把新消息永久挡掉；改为按非自己消息的 `time` 推进
+- **未配置 `QQ_BOT_UID` 时 bot 刷屏**（`qq_bot.py`）：`bot_uid` 为空时无法识别 @，原实现退化为处理所有非自己消息——群聊每条普通消息都会触发「收到！可用 /help」逐条回复，且含关键词（比赛/报告/状态/订阅/运势等）的闲聊会误执行指令。修复：未配置 `bot_uid` 时**只响应明确以 `/` 开头的指令**、未匹配指令静默跳过（普通聊天完全忽略）；`process_once` 按 60s 节流告警提示配置 `.env QQ_BOT_UID`，`process_force` 单次提示
 
 ### Changed
 
