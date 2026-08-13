@@ -111,8 +111,13 @@ python3 crawler/scripts/daemon.py uninstall-qqbot                        # 注�
 | `/upcoming` | `/u` | 即将开始的比赛（闹钟内未来比赛，按开始时间排序） |
 | `/alarms` | `/a` | 闹钟概览（不含已归档，含 due / scheduled / failed） |
 | `/contests` | `/c` | 已归档比赛（最近 10 场）+ 复盘状态 ✓/✗ |
-| `/fortune` | `/f` | 今日运势（随机趣味签 + 今日 / 明日比赛提醒） |
+| `/review` | `/rv` | 复盘查询（无参数 = 最近复盘；带关键词 = 搜索摘要） |
+| `/fortune` | `/f` | 今日运势（按人 + 日期确定性选择 + 幸运数字 + 今日 / 明日比赛提醒） |
+| `/subs` | - | 订阅列表；`/subs add <link> [end_time] [备注]` 新增、`/subs del <link>` 删除（改动后自动同步） |
+| `/sync` | - | 触发一次完整同步（后台执行，完成后群里回复结果） |
 | `/help` | `/h` | 指令列表 |
+
+> 订阅管理（`/subs`）与 `/sync` 仅在 `deploy` 分支工作区生效（防止在非生产分支误改订阅）；`/fortune` 按人 + 北京日期确定性生成，同一天同一人结果一致，可通过 `config.json` 的 `qq.fortune_salt` 更换盐值。
 
 日志写入 `crawler/qq-bot.log`，增量进度存 `crawler/bot-state.json`（两者均被 gitignore，不提交）。
 

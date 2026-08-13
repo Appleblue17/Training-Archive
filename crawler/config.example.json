@@ -16,7 +16,8 @@
   "qq": {
     "napcat_ws_url": "ws://127.0.0.1:6700",
     "send_mode": "text_and_file",
-    "remind_before_minutes": 15
+    "remind_before_minutes": 15,
+    "fortune_salt": ""
   },
   "qoj": {
     "enabled": false,

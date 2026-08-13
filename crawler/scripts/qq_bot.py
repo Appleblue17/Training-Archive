@@ -15,7 +15,12 @@
   /upcoming  即将开始的比赛（未来闹钟按时间排序）
   /alarms    闹钟概览（不含 archived，含 due / scheduled / failed）
   /contests  已归档比赛（含复盘状态 ✓/✗）
-  /fortune   今日运势（随机趣味 + 今日比赛提醒）
+  /review    复盘查询（无参数 = 最近有复盘的比赛；带关键词 = 搜索摘要）
+  /fortune   今日运势（按人+日期确定性选择 + 今日比赛提醒）
+  /subs      列出订阅
+  /subs add <link> [end_time] [comments]   新增订阅（platform 自动推断，写入 qqbot.json）
+  /subs del <link>                          删除订阅（从所有订阅文件移除）
+  /sync      触发一次完整同步（daemon.py sync，后台执行）
   /help      指令列表
 
 自然语言示例（需 @机器人）：
@@ -27,11 +32,13 @@
     python3 crawler/scripts/qq_bot.py run      # 常驻轮询
     python3 crawler/scripts/qq_bot.py once     # 拉一次消息并处理（调试用）
 """
+import hashlib
 import json
 import os
-import random
 import re
+import subprocess
 import sys
+import threading
 import time
 import uuid
 from datetime import datetime, timedelta
@@ -51,10 +58,11 @@ except ImportError as e:  # pragma: no cover
     _WS_IMPORT_ERROR = e
     create_connection = None
 
-from crawler.platforms.base import beijing
+from crawler.platforms.base import beijing, load_subscriptions_dir
 
 # 仓库根 / 配置路径
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(REPO_ROOT, "crawler", "config.json")
 ENV_PATH = os.path.join(REPO_ROOT, ".env")
 CONTESTS_ROOT = os.path.join(REPO_ROOT, "contests")
@@ -62,6 +70,10 @@ ALARMS_PATH = os.path.join(REPO_ROOT, "crawler", "alarms.json")
 BOT_STATE_PATH = os.path.join(REPO_ROOT, "crawler", "bot-state.json")
 QQ_BOT_LOG = os.path.join(REPO_ROOT, "crawler", "qq-bot.log")
 SUBSCRIPTIONS_DIR = os.path.join(REPO_ROOT, "crawler", "subscriptions")
+# bot 管理的订阅写入文件（crawler/subscriptions/*.json 之一，按约定合并加载）
+BOT_SUBS_FILE = os.path.join(SUBSCRIPTIONS_DIR, "qqbot.json")
+# 生产分支：管理命令（改订阅 / 触发 sync）只在 deploy 分支工作区生效
+PROD_BRANCH = "deploy"
 
 # 消息发送频率控制（复用 qq_share 的间隔，避免风控）
 MIN_SEND_INTERVAL = 1.5
@@ -306,6 +318,183 @@ def _alarm_display_name(link, entry=None):
 
 
 # ---------------------------------------------------------------------------
+# 订阅管理 / 确定性随机 / 后台 sync 辅助
+# ---------------------------------------------------------------------------
+def _load_all_subscriptions():
+    """加载全部订阅（含 enabled:false，按 link 去重；与 alarm.py plan 一致）。"""
+    try:
+        return load_subscriptions_dir(SUBSCRIPTIONS_DIR) or []
+    except Exception:
+        return []
+
+
+def _infer_platform(link):
+    """从链接推断平台。返回 qoj/hdu/nowcoder 或 None。"""
+    link = (link or "").lower()
+    if "qoj.ac" in link:
+        return "qoj"
+    if "hdu.edu.cn" in link:
+        return "hdu"
+    if "nowcoder.com" in link:
+        return "nowcoder"
+    return None
+
+
+def _current_branch():
+    """当前 git 分支名（异常返回空串）。"""
+    try:
+        r = subprocess.run(
+            ["git", "-C", REPO_ROOT, "rev-parse", "--abbrev-ref", "HEAD"],
+            capture_output=True, text=True,
+        )
+        return (r.stdout or "").strip()
+    except Exception:
+        return ""
+
+
+def _fortune_salt():
+    """确定性 salt：config.json qq.fortune_salt 可配；缺省固定值。"""
+    cfg = _load_config()
+    qq = cfg.get("qq", {}) or {}
+    salt = (qq.get("fortune_salt") or "").strip()
+    return salt or "training-archive"
+
+
+def _deterministic_seed(scope, user_id):
+    """按 scope + user_id + 北京日期 + salt 生成确定性种子（同一天同一人固定）。"""
+    today = datetime.now(beijing).date().isoformat()
+    key = f"{scope}:{user_id or 'anonymous'}:{today}:{_fortune_salt()}"
+    return int(hashlib.md5(key.encode("utf-8")).hexdigest()[:8], 16)
+
+
+def _sync_summary(returncode, out):
+    """把 daemon.py sync 输出压缩成结果摘要（取最后几行）。"""
+    lines = [ln for ln in out.splitlines() if ln.strip()]
+    head = "✅ sync 完成" if returncode == 0 else f"⚠️ sync 失败（exit {returncode}）"
+    tail = lines[-8:] if lines else ["(无输出)"]
+    return head + "\n" + "\n".join(tail)
+
+
+def _run_sync_and_report():
+    """后台执行 daemon.py sync，完成后向群发送结果摘要（独立 WS 连接）。"""
+    try:
+        proc = subprocess.run(
+            [sys.executable, os.path.join(SCRIPT_DIR, "daemon.py"), "sync"],
+            capture_output=True, text=True,
+        )
+        summary = _sync_summary(proc.returncode, (proc.stdout or "") + (proc.stderr or ""))
+    except Exception as e:
+        summary = f"sync 执行异常：{e}"
+    qq = load_qq_config()
+    ws_url = qq.get("napcat_ws_url", "")
+    group_id = qq.get("group_id", 0)
+    if not ws_url or not group_id:
+        print(f"[qq-bot] sync 完成但无法发送结果（NapCat 未配置）: {summary}")
+        return
+    client = NapCatClient(ws_url, qq.get("napcat_token", ""))
+    try:
+        client._connect()
+    except Exception as e:
+        print(f"[qq-bot] 发送 sync 结果失败: {e}")
+        return
+    try:
+        client.send_text(group_id, summary)
+    finally:
+        client._close()
+
+
+def _subs_list():
+    """列出全部订阅。"""
+    subs = _load_all_subscriptions()
+    if not subs:
+        return "暂无订阅。"
+    lines = [f"【订阅列表】共 {len(subs)} 条"]
+    for s in subs:
+        flag = "✓" if s.get("enabled", True) else "✗"
+        plat = s.get("platform", "?")
+        link = s.get("link", "")
+        line = f"· {flag} [{plat}] {link}"
+        if s.get("end_time"):
+            line += f"  end={s['end_time']}"
+        if s.get("comments"):
+            line += f"  ({s['comments']})"
+        lines.append(line)
+    return "\n".join(lines)
+
+
+def _subs_add(parts):
+    """新增订阅：写入 BOT_SUBS_FILE，随后后台触发 sync。"""
+    if not parts:
+        return "用法：/subs add <link> [end_time] [comments]"
+    link = parts[0].strip()
+    if not re.match(r"^https?://", link):
+        return "link 需以 http:// 或 https:// 开头。"
+    for s in _load_all_subscriptions():
+        if str(s.get("link", "")).rstrip("/") == link.rstrip("/"):
+            return f"已存在该订阅：{link}"
+    platform = _infer_platform(link)
+    if not platform:
+        return "无法推断平台（支持 qoj.ac / hdu.edu.cn / nowcoder.com），请检查链接。"
+    entry = {"platform": platform, "link": link, "enabled": True}
+    if len(parts) >= 2 and parts[1].strip():
+        et = parts[1].strip()
+        if _parse_time(et) is None:
+            # 第二段不是合法时间：后面没有独立备注段 → 把该段当备注（省略 end_time）；
+            # 后面还有备注段（add link end_time comments）→ 报错提示
+            if len(parts) >= 3:
+                return f"end_time 无法解析：{et!r}（需 ISO 格式，如 2026-08-15T23:00:00+08:00）"
+            entry["comments"] = et
+        else:
+            entry["end_time"] = et
+    if len(parts) >= 3 and parts[2].strip():
+        entry["comments"] = parts[2].strip()
+    os.makedirs(SUBSCRIPTIONS_DIR, exist_ok=True)
+    items = _load_json(BOT_SUBS_FILE, []) or []
+    if not isinstance(items, list):
+        items = []
+    items.append(entry)
+    with open(BOT_SUBS_FILE, "w", encoding="utf-8") as f:
+        json.dump(items, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    threading.Thread(target=_run_sync_and_report, daemon=True).start()
+    msg = f"已添加订阅 [{platform}] {link}"
+    if entry.get("end_time"):
+        msg += f"  end={entry['end_time']}"
+    if entry.get("comments"):
+        msg += f"  ({entry['comments']})"
+    return msg + "\n开始同步（完成后回复结果）。"
+
+
+def _subs_del(link):
+    """删除订阅：从所有订阅文件移除该 link 条目，随后后台触发 sync。"""
+    if not link:
+        return "用法：/subs del <link>"
+    link = link.strip()
+    removed = 0
+    if not os.path.isdir(SUBSCRIPTIONS_DIR):
+        return f"未找到订阅：{link}"
+    for fname in sorted(os.listdir(SUBSCRIPTIONS_DIR)):
+        if not fname.endswith(".json") or fname.endswith(".example.json"):
+            continue
+        path = os.path.join(SUBSCRIPTIONS_DIR, fname)
+        items = _load_json(path, []) or []
+        if not isinstance(items, list):
+            continue
+        new_items = [s for s in items
+                     if str(s.get("link", "")).rstrip("/") != link.rstrip("/")]
+        if len(new_items) == len(items):
+            continue
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(new_items, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+        removed += len(items) - len(new_items)
+    if not removed:
+        return f"未找到订阅：{link}"
+    threading.Thread(target=_run_sync_and_report, daemon=True).start()
+    return f"已删除订阅 {link}（{removed} 条）。开始同步（完成后回复结果）。"
+
+
+# ---------------------------------------------------------------------------
 # 指令实现
 # ---------------------------------------------------------------------------
 @command("help", "h", keywords=("帮助", "菜单", "指令"))
@@ -316,7 +505,12 @@ def cmd_help(args, ctx):
         "/upcoming 即将开始的比赛",
         "/alarms 闹钟概览",
         "/contests 最近比赛 + 复盘状态",
+        "/review 复盘查询（/review 关键词）",
         "/fortune 今日运势",
+        "/subs 订阅列表",
+        "/subs add <link> [end_time] [备注]",
+        "/subs del <link>",
+        "/sync 触发同步",
         "/help 本菜单",
     ]
     return "\n".join(lines)
@@ -429,9 +623,52 @@ def cmd_contests(args, ctx):
     return "\n".join(lines)
 
 
+@command("review", "rv", keywords=("复盘", "复盘报告", "报告", "review"))
+def cmd_review(args, ctx):
+    """复盘查询：无参数 = 最近有复盘的比赛；带关键词 = 搜索并返回摘要。"""
+    if not os.path.isdir(CONTESTS_ROOT):
+        return "暂无比赛数据。"
+    keyword = args.strip()
+    entries = []
+    for name in sorted(os.listdir(CONTESTS_ROOT)):
+        folder = os.path.join(CONTESTS_ROOT, name)
+        if not os.path.isdir(folder):
+            continue
+        review_path = os.path.join(folder, "review.md")
+        if not os.path.isfile(review_path):
+            continue
+        if keyword and keyword.lower() not in name.lower():
+            continue
+        try:
+            with open(review_path, "r", encoding="utf-8") as f:
+                text = f.read()
+        except OSError:
+            text = ""
+        entries.append((name, text))
+    if not entries:
+        if keyword:
+            return f"没有找到包含「{keyword}」的复盘。"
+        return "暂无复盘报告。"
+    entries.sort(key=lambda x: x[0])
+    if keyword:
+        lines = [f"【复盘】「{keyword}」匹配 {len(entries)} 场"]
+        for name, text in entries[:MAX_LIST_ITEMS]:
+            title = _short_contest_name(name)
+            snippet = "\n".join(l for l in text.splitlines() if l.strip())[:400]
+            lines.append(f"\n· {title}\n{snippet}")
+        if len(entries) > MAX_LIST_ITEMS:
+            lines.append(f"... 共 {len(entries)} 场，可用更具体的关键词。")
+    else:
+        lines = ["【最近复盘】"]
+        for name, text in entries[-MAX_LIST_ITEMS:][::-1]:
+            lines.append(f"· {_short_contest_name(name)}")
+        lines.append("可用 /review <关键词> 查看摘要。")
+    return "\n".join(lines)
+
+
 @command("fortune", "f", keywords=("运势", "今日运势", "运气"))
 def cmd_fortune(args, ctx):
-    """今日运势：随机趣味签 + 今日/明日比赛提醒。"""
+    """今日运势：按 user+日期 确定性选择（同一天同一人固定，跨天变化）+ 今日/明日比赛提醒。"""
     fortunes = [
         ("大吉", "今天 AC 手感爆棚，难题也能一遍过！"),
         ("吉", "适合写题，注意边界条件别翻车~"),
@@ -440,8 +677,10 @@ def cmd_fortune(args, ctx):
         ("凶", "建议先看题面再动手，避免低级失误。"),
         ("大凶", "今天就别硬磕难题了，补补题放松下~"),
     ]
-    rank, advice = random.choice(fortunes)
-    lines = [f"今日运势：{rank}"]
+    seed = _deterministic_seed("fortune", ctx.get("user_id"))
+    rank, advice = fortunes[seed % len(fortunes)]
+    lucky = seed % 100
+    lines = [f"今日运势：{rank}（幸运数字 {lucky}）"]
     lines.append(advice)
     # 今日/明日比赛提醒
     alarms = _load_alarms()
@@ -458,8 +697,35 @@ def cmd_fortune(args, ctx):
         lines.append("")
         lines.append("近期比赛：")
         for dt, e in soon[:3]:
-            lines.append(f"· {_format_dt(dt, now)}  {_alarm_display_name(e.get('link', ''))}")
+            lines.append(f"· {_format_dt(dt, now)}  {_alarm_display_name(e.get('link', ''), e)}")
     return "\n".join(lines)
+
+
+@command("subs", keywords=("订阅", "订阅列表"))
+def cmd_subs(args, ctx):
+    """订阅管理：无参数列出；add 新增；del 删除（改订阅会后台触发 sync）。"""
+    # maxsplit=3：add <link> <end_time> <备注> 三段都要保留（备注可含空格），
+    # 否则 maxsplit=2 会把 end_time 与备注合并成一个 token 导致时间解析失败
+    parts = args.split(None, 3)
+    op = parts[0].lower() if parts else ""
+    if op == "add":
+        if _current_branch() != PROD_BRANCH:
+            return f"订阅管理仅在 {PROD_BRANCH} 分支可用（当前分支 {_current_branch()}）。"
+        return _subs_add(parts[1:] if len(parts) > 1 else [])
+    if op == "del":
+        if _current_branch() != PROD_BRANCH:
+            return f"订阅管理仅在 {PROD_BRANCH} 分支可用（当前分支 {_current_branch()}）。"
+        return _subs_del(parts[1] if len(parts) > 1 else "")
+    return _subs_list()
+
+
+@command("sync", keywords=("同步", "同步一次", "运行同步"))
+def cmd_sync(args, ctx):
+    """触发一次完整同步（daemon.py sync，后台执行；完成后群里回复结果）。"""
+    if _current_branch() != PROD_BRANCH:
+        return f"同步仅在 {PROD_BRANCH} 分支可用（当前分支 {_current_branch()}）。"
+    threading.Thread(target=_run_sync_and_report, daemon=True).start()
+    return "收到，开始同步（爬取 → 报告 → 推送，约几分钟），完成后回复结果。"
 
 
 # ---------------------------------------------------------------------------
@@ -543,8 +809,13 @@ def _handle_messages(client, group_id, messages, bot_uid, log=lambda s: None):
             client.send_text(group_id, "收到！可用 /help 查看指令。", log=log)
             replied += 1
             continue
+        ctx = {
+            "group_id": group_id,
+            "user_id": str(msg.get("user_id") or ""),
+            "client": client,
+        }
         try:
-            reply = fn(arg, {"group_id": group_id})
+            reply = fn(arg, ctx)
         except Exception as e:
             print(f"[qq-bot] 指令处理异常: {e}")
             reply = f"处理出错：{e}"
