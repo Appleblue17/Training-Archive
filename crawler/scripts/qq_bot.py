@@ -3,12 +3,14 @@
 
 架构：
   - 轮询 NapCat 的 get_group_msg_history 拉取群消息（方案 A，不改 NapCat 配置）
-  - 增量追踪：按 message_seq 去重，last_seq 持久化到 crawler/bot-state.json
+  - 增量追踪：按消息 time（Unix 秒）去重，last_time 持久化到
+    crawler/bot-state.json（注意：NapCat 的 message_seq / message_id 并非
+    全局递增，不能用作增量游标，必须用 time）
   - 必须 @机器人 才响应（检测消息段的 at，qq == 机器人 UID）
   - 指令注册表：装饰器 @command 注册，支持 /指令 前缀 + 自然语言关键词
   - 回复自动限长分条，避免刷屏
 
-指令（先做基础版）：
+指令：
   /status    daemon 运行状态（scheduled / 最近运行 / 闹钟概览，不含 archived）
   /upcoming  即将开始的比赛（未来闹钟按时间排序）
   /alarms    闹钟概览（不含 archived，含 due / scheduled / failed）
@@ -71,7 +73,7 @@ POLL_INTERVAL = 3.0
 MAX_MSG_CHARS = 1200
 
 # 列表类指令的最大条目数（避免刷屏）
-MAX_LIST_ITEMS = 10
+MAX_LIST_ITEMS = 5
 
 # 机器人自己的 UID（config.json qq.bot_uid，缺省从 .env QQ_BOT_UID 读）
 # 用于过滤自己发的消息 + 检测 @ 自己
@@ -307,11 +309,11 @@ def _alarm_display_name(link):
 @command("help", "h", keywords=("帮助", "菜单", "指令"))
 def cmd_help(args, ctx):
     lines = [
-        "可用指令（需 @我）：",
-        "/status 运行状态（不含已归档）",
+        "指令列表",
+        "/status 运行状态",
         "/upcoming 即将开始的比赛",
         "/alarms 闹钟概览",
-        "/contests 已归档比赛 + 复盘状态",
+        "/contests 最近比赛 + 复盘状态",
         "/fortune 今日运势",
         "/help 本菜单",
     ]
@@ -410,14 +412,14 @@ def cmd_alarms(args, ctx):
 
 @command("contests", "c", keywords=("归档", "已归档", "比赛列表", "历史比赛"))
 def cmd_contests(args, ctx):
-    """已归档比赛（近 10 场）+ 复盘状态。"""
+    """已归档比赛（近 5 场）+ 复盘状态。"""
     if not os.path.isdir(CONTESTS_ROOT):
         return "暂无比赛数据。"
     folders = [f for f in sorted(os.listdir(CONTESTS_ROOT))
                if os.path.isdir(os.path.join(CONTESTS_ROOT, f))]
     if not folders:
         return "暂无已归档比赛。"
-    lines = ["【最近比赛 + 复盘状态】"]
+    lines = ["【最近比赛】"]
     for name in folders[-MAX_LIST_ITEMS:][::-1]:
         folder = os.path.join(CONTESTS_ROOT, name)
         has_review = os.path.isfile(os.path.join(folder, "review.md"))
@@ -578,7 +580,7 @@ def process_once(qq_cfg, log=print):
         return 0
 
     state = _load_bot_state()
-    last_seq = state.get("last_seq") or 0
+    last_time = state.get("last_time") or 0
 
     client = NapCatClient(ws_url, token)
     try:
@@ -602,26 +604,24 @@ def process_once(qq_cfg, log=print):
         messages = data.get("messages") or []
         if not messages:
             return 0
-        # 按 message_seq 增量过滤
-        new_msgs = [m for m in messages if (m.get("message_seq") or 0) > last_seq]
-        new_msgs.sort(key=lambda m: m.get("message_seq") or 0)
-        if not new_msgs:
-            return 0
-        # 自己发的消息不参与处理、也不推进 last_seq：否则 bot 自己发的
-        # 文件/文本（seq 往往最大）会把用户的增量窗口整体顶掉，用户消息
-        # 被永久跳过。只基于非自己消息推进游标。
+        # 增量游标用消息 time（Unix 秒）：NapCat 的 message_seq / message_id
+        # 并非全局递增（各发送者独立/随机），按 seq 过滤会把新消息永久挡掉。
+        # 只基于非自己消息推进游标：bot 自己发的文件/文本（time 往往最新）
+        # 不参与推进，避免把用户的增量窗口整体顶掉。
         non_self = [
-            m for m in new_msgs
+            m for m in messages
             if not (m.get("post_type") == "message_sent"
                     or m.get("message_sent_type") == "self")
         ]
-        if not non_self:
-            # 这批全是自己发的消息：不推进 last_seq，下轮继续拉（仍会跳过）
+        new_msgs = [m for m in non_self if (m.get("time") or 0) > last_time]
+        new_msgs.sort(key=lambda m: m.get("time") or 0)
+        if not new_msgs:
+            # 无新消息（含全为自己消息的情况）：不推进 last_time
             return 0
-        # 更新 last_seq 为这批非自己消息里最大的
-        max_seq = max((m.get("message_seq") or 0) for m in non_self)
-        replied = _handle_messages(client, group_id, non_self, bot_uid, log=log)
-        state["last_seq"] = max(state.get("last_seq") or 0, max_seq)
+        # 更新 last_time 为这批非自己消息里最大的 time
+        max_time = max((m.get("time") or 0) for m in new_msgs)
+        replied = _handle_messages(client, group_id, new_msgs, bot_uid, log=log)
+        state["last_time"] = max(state.get("last_time") or 0, max_time)
         _save_bot_state(state)
         return replied
     finally:
@@ -629,7 +629,7 @@ def process_once(qq_cfg, log=print):
 
 
 def process_force(qq_cfg, log=print):
-    """调试用：忽略 last_seq，处理最近一批所有非自己消息（不写状态文件）。"""
+    """调试用：忽略 last_time，处理最近一批所有非自己消息（不写状态文件）。"""
     ws_url = qq_cfg.get("napcat_ws_url", "")
     token = qq_cfg.get("napcat_token", "")
     group_id = qq_cfg.get("group_id", 0)
@@ -653,17 +653,17 @@ def process_force(qq_cfg, log=print):
             log("get_group_msg_history 失败。")
             return 0
         messages = (resp.get("data") or {}).get("messages") or []
-        messages.sort(key=lambda m: m.get("message_seq") or 0)
+        messages.sort(key=lambda m: m.get("time") or 0)
         if not messages:
             log("无消息。")
             return 0
         for m in messages:
             text, ats = _message_text_and_at(m)
             is_self = m.get("post_type") == "message_sent" or m.get("message_sent_type") == "self"
-            print(f"  seq={m.get('message_seq')} self={is_self} user={m.get('user_id')} "
+            print(f"  time={m.get('time')} self={is_self} user={m.get('user_id')} "
                   f"at={ats} text={text[:50]!r}")
         replied = _handle_messages(client, group_id, messages, bot_uid, log=log)
-        log(f"处理 {len(messages)} 条，回复 {replied} 条（调试模式，不更新 last_seq）。")
+        log(f"处理 {len(messages)} 条，回复 {replied} 条（调试模式，不更新 last_time）。")
         return replied
     finally:
         client._close()

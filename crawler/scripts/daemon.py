@@ -1102,11 +1102,11 @@ def cmd_status():
         try:
             with open(qqbot_state, "r", encoding="utf-8") as f:
                 bs = json.load(f)
-            print(f"  last_seq: {bs.get('last_seq') or '(none)'}")
+            print(f"  last_time: {bs.get('last_time') or '(none)'}")
         except Exception:
-            print("  last_seq: (unreadable)")
+            print("  last_time: (unreadable)")
     else:
-        print("  last_seq: (no state yet)")
+        print("  last_time: (no state yet)")
     print("\n== alarms ==")
     proc = run_py("alarm.py", "list", capture=True)
     print(proc.stdout or "(no alarms)")
