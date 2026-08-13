@@ -88,7 +88,7 @@ python3 crawler/scripts/qq_share.py "contests/2026-08-01 xxx"
 1. **NapCat**（QQ 机器人框架）已启动并启用正向 WS 服务（如 `ws://127.0.0.1:6700`，在 `onebot11_<qq>.json` 中开启）。
 2. **配置**（敏感项放 `.env`，请自行填写，不会提交）：
    - `crawler/config.json` 的 `qq` 块：`napcat_ws_url`（NapCat 正向 WS 地址）
-   - `.env`：`QQ_NAPCAT_TOKEN`（NapCat Bearer token）、`QQ_GROUP_ID`（目标群号，数字）、`QQ_BOT_UID`（机器人 QQ 号，用于识别「@我」）
+   - `.env`：`QQ_NAPCAT_TOKEN`（NapCat Bearer token）、`QQ_GROUP_ID`（目标群号，数字）、`QQ_BOT_UID`（机器人 QQ 号，用于识别「@我」；未配置时 bot 仅响应 `/指令`，不处理普通聊天）
 
 **运行**：
 

@@ -948,9 +948,11 @@ def _save_bot_state(state):
 def _handle_messages(client, group_id, messages, bot_uid, log=lambda s: None):
     """处理一批群消息：找出 @机器人 的指令并回复。返回回复条数。
 
-    bot_uid 未配置（None/空）时无法识别 @，退化为处理所有非自己发的消息
-    （风险：可能响应无关消息；建议配置 .env QQ_BOT_UID）。自己发的消息
-    （user_id == bot_uid 或 message_sent_type == self）一律跳过，避免自触发。
+    bot_uid 已配置：仅响应 @ 自己的消息；被 @ 但没匹配到指令时给 /help 提示。
+    bot_uid 未配置（None/空）：无法识别 @，退化为只响应明确以 / 开头的指令，
+    且未匹配指令时静默跳过（不回提示）——避免把群聊普通消息当指令，逐条
+    回「/help」刷屏。仍建议配置 .env QQ_BOT_UID 以获得 @ 识别。
+    自己发的消息（user_id == bot_uid 或 message_sent_type == self）一律跳过。
     """
     replied = 0
     for msg in messages:
@@ -960,11 +962,17 @@ def _handle_messages(client, group_id, messages, bot_uid, log=lambda s: None):
         text, ats = _message_text_and_at(msg)
         if not text:
             continue
-        # bot_uid 配置了才要求 @机器人；否则退化为响应所有非自己消息
+        # bot_uid 配置了才要求 @机器人
         if bot_uid and bot_uid not in ats:
+            continue
+        # bot_uid 未配置：只处理 /指令，普通聊天一律忽略（防刷屏）
+        if not bot_uid and not text.startswith("/"):
             continue
         fn, arg = _match_command(text)
         if not fn:
+            if not bot_uid:
+                # 未配置 bot_uid 时 /xxx 未匹配指令也静默，避免逐条回复刷屏
+                continue
             # 被 @ 但没匹配到指令：提示
             client.send_text(group_id, "收到！可用 /help 查看指令。", log=log)
             replied += 1
@@ -1010,6 +1018,12 @@ def process_once(qq_cfg, log=print):
     if create_connection is None:
         log("websocket-client 未安装。")
         return 0
+    if not bot_uid:
+        _last_config_warn_ts = _throttled_log(
+            _last_config_warn_ts, WARN_CONFIG_INTERVAL, log,
+            "QQ_BOT_UID 未配置：无法识别 @，仅响应 /指令（普通消息忽略）；"
+            "建议在 .env 配置 QQ_BOT_UID。",
+        )
 
     state = _load_bot_state()
     last_time = state.get("last_time") or 0
@@ -1069,6 +1083,8 @@ def process_force(qq_cfg, log=print):
     if not ws_url or not group_id or create_connection is None:
         log("配置缺失或 websocket-client 未安装。")
         return 0
+    if not bot_uid:
+        log("QQ_BOT_UID 未配置：无法识别 @，仅响应 /指令（普通消息忽略）。")
     client = NapCatClient(ws_url, token)
     try:
         client._connect()
