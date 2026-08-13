@@ -1,8 +1,8 @@
-# 此文件是 deploy 分支专用的 gitignore。
-# deploy 分支托管竞赛数据与爬虫增量状态，因此 contests/ 与 crawler 状态文件
-# （last-update / 平台索引 / staged / config / subscriptions）都纳入版本控制，
-# 支持 CI 增量同步跨运行生效，也支持在仓库中手动上传代码。
-# CI 工作流会在提交前用本文件覆盖 .gitignore。
+# 此文件是 deploy 分支专用的 gitignore（守护进程提交前覆盖 .gitignore 后 git add）。
+# deploy 分支托管竞赛数据与爬虫增量状态：contests/、config.json 与状态文件
+# （last-update / 平台索引 / staged / subscriptions）都纳入版本控制，支持 CI
+# 增量同步跨运行生效、支持在仓库中手动上传代码，也供前端 /status 页面展示。
+# 仅 log 与运行时临时文件被忽略（不入库）。
 # 开发分支请使用根目录的 .gitignore（忽略上述文件）。
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
@@ -59,7 +59,7 @@ next-env.d.ts
 .venv
 __pycache__/
 
-# crawler
+# crawler（仅忽略 log 与运行时临时文件；config / 状态 / 订阅均跟踪）
 crawler/chrome-linux64
 crawler/chromedriver-linux64
 crawler/global.log.json

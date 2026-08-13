@@ -85,10 +85,11 @@ REMIND_MINUTES = 15
 
 
 def _load_alarms():
-    """读取闹钟表，返回 {link: entry}。文件缺失/损坏时返回空 dict。
+    """读取闹钟表，返回 {link: entry}。
 
-    兼容旧格式迁移：旧条目用 fired/failed 布尔推断状态，统一为
-    status 字段（fired → archived，failed → failed，其余 → planned）。
+    文件不存在 = 首次运行，返回 {}（正常从零开始）。
+    文件存在但读取/解析失败 = 状态损坏：返回 None（调用方必须处理——
+    cmd_plan 据此中止返回非零，避免把全部闹钟当空表重建导致已归档比赛重爬）。
     """
     if not os.path.exists(ALARMS_PATH):
         return {}
@@ -96,10 +97,12 @@ def _load_alarms():
         with open(ALARMS_PATH, "r", encoding="utf-8") as f:
             entries = json.load(f)
     except Exception as e:
-        print(f"[alarm] Failed to read {ALARMS_PATH}: {e}; starting fresh.")
-        return {}
+        print(f"[alarm] ERROR: Failed to read {ALARMS_PATH}: {e}; "
+              "alarm state may be lost if we continue.")
+        return None
     if not isinstance(entries, list):
-        return {}
+        print(f"[alarm] ERROR: {ALARMS_PATH} is not a list; alarm state may be lost.")
+        return None
     alarms = {}
     for e in entries:
         link = e.get("link", "")
@@ -251,6 +254,12 @@ def cmd_plan():
         if s.get("platform") in enabled and s.get("enabled", True)
     ]
     alarms = _load_alarms()
+    if alarms is None:
+        # 闹钟表损坏：中止（返回非零，daemon sync 不爬取不提交）。不能当
+        # 空表继续——那样会把全部 archived 状态丢掉，已归档比赛全部重爬。
+        print("[alarm] ERROR: alarms.json unreadable; aborting plan. "
+              "Fix or remove crawler/alarms.json, then re-run sync.")
+        return 1
     now = datetime.now(beijing)
 
     history_links = []
@@ -262,11 +271,14 @@ def cmd_plan():
         link = str(s.get("link") or "").rstrip("/")
         if not link:
             continue
+        # 只要订阅里存在该 link 就加入 active_links：即使时间字段非法被跳过
+        # 也不剪除其既有闹钟（否则填错时间会把 archived/planned 闹钟删掉）。
+        active_links.add(link)
         end_time = s.get("end_time")
         start_time = s.get("start_time")
-        # 时间格式校验：字段存在但无法解析 → ERROR + 跳过（不加入 active，
-        # 不参与分类；既有闹钟保留，修复后下次 plan 再处理）。避免把
-        # "填错时间" 静默当作 "未填"（HISTORY 立即爬取且不生成报告）。
+        # 时间格式校验：字段存在但无法解析 → ERROR + 跳过（不参与分类，
+        # 既有闹钟保留，修复后下次 plan 再处理）。避免把"填错时间"静默当作
+        # "未填"（HISTORY 立即爬取且不生成报告）。
         if _has_time_value(end_time) and _parse_time(end_time) is None:
             time_errors += 1
             print(
@@ -281,7 +293,6 @@ def cmd_plan():
                 f"{start_time!r}; skipped."
             )
             continue
-        active_links.add(link)
         end_dt = _parse_time(end_time)
         existing = alarms.get(link)
 
@@ -305,7 +316,11 @@ def cmd_plan():
                 retry_links.append((link, end_time))
                 continue
             if unchanged and st == STATUS_PLANNED and end_dt is not None and end_dt > now:
-                # 未来闹钟未到点：等 fire
+                # 未来闹钟未到点：等 fire。fire_at 与 end_time 不一致（损坏/
+                # 被外部改过）时顺手修正，否则可能永不触发或提前触发。
+                if existing.get("fire_at") != end_time:
+                    existing["fire_at"] = end_time
+                    existing["updated_at"] = datetime.now(beijing).isoformat()
                 continue
             # 其余情况（新建 / 信息变更 / pending 遗留 / planned 已到点 / failed 但信息变更）
             # → 重新分类。重建条目（信息变更时 attempts 清零属合理重置）。
@@ -389,6 +404,8 @@ def cmd_due():
     pending / archived / failed 一律忽略（fire 只处理未来闹钟）。
     """
     alarms = _load_alarms()
+    if alarms is None:
+        return
     now = datetime.now(beijing)
     due = []
     for e in alarms.values():
@@ -398,7 +415,10 @@ def cmd_due():
         if not fire_at:
             continue
         dt = _parse_time(fire_at)
-        if dt is None or dt <= now:
+        if dt is None:
+            # fire_at 损坏：跳过（不当作到期触发），plan 下次会修正 fire_at
+            continue
+        if dt <= now:
             due.append(e.get("link"))
     for link in sorted(due):
         print(f"DUE\t{link}")
@@ -413,6 +433,8 @@ def cmd_remind():
     """
     window = timedelta(minutes=_remind_window_minutes())
     alarms = _load_alarms()
+    if alarms is None:
+        return
     now = datetime.now(beijing)
     for e in sorted(alarms.values(), key=lambda x: x.get("start_time") or ""):
         if e.get("status") != STATUS_PLANNED:
@@ -437,6 +459,9 @@ def cmd_mark(link, state):
     """
     link = link.rstrip("/")
     alarms = _load_alarms()
+    if alarms is None:
+        print(f"[alarm] ERROR: alarms.json unreadable; cannot mark {link}.", file=sys.stderr)
+        sys.exit(1)
     e = alarms.get(link)
     if e is None:
         e = _new_entry("", link, None, None, STATUS_PENDING)
@@ -467,6 +492,9 @@ def cmd_mark(link, state):
 def cmd_list():
     """人类可读列出全部闹钟（server-task.sh status 用）。"""
     alarms = _load_alarms()
+    if alarms is None:
+        print("(alarms.json unreadable)")
+        return
     if not alarms:
         print("(no alarms)")
         return
