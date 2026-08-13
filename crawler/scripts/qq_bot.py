@@ -27,6 +27,7 @@
   end=   比赛结束时间（ISO 8601 北京时间，如 2026-08-15T23:00:00+08:00）
   start= 比赛开始时间（可选，用于赛前提醒；不填回退 end-5h）
   键值顺序任意；其余文字自动作为备注；时间格式错误会终止并提示。
+  只有一个时间参数时可省略 end= 前缀（如 /subs add <link> 2026-08-15T23:00:00+08:00）。
 
 自然语言示例（需 @机器人）：
   @机器人 状态          → /status
@@ -437,14 +438,15 @@ def _subs_add_usage():
     return "\n".join([
         "用法：/subs add <link> [end=结束时间] [start=开始时间] [备注]",
         "时间格式：" + TIME_FMT_HINT,
-        "示例：/subs add https://qoj.ac/contest/123 "
-        "end=2026-08-15T23:00:00+08:00 start=2026-08-15T18:00:00+08:00 联赛（1）",
+        "（只有一个时间参数时可省略 end=，如 /subs add <link> 2026-08-15T23:00:00+08:00）",
     ])
 
 
 def _subs_add(parts):
     """新增订阅：end=/start= 键值（顺序任意）+ 其余拼为备注；写入 qqbot.json 后后台 sync。
 
+    恰好一个裸 token（无 end=/start= 前缀）且能解析为时间 → 自动作为
+    end_time（省去 end= 前缀）；多个裸 token 不识别（避免把备注误判为时间）。
     时间格式错误：终止（不写入）并提示，格式见 TIME_FMT_HINT。
     """
     if not parts:
@@ -472,6 +474,12 @@ def _subs_add(parts):
             start_time = v
         else:
             comments.append(t)
+    # 裸时间 token 自动识别：恰好一个裸 token 且能解析为时间 → 作为 end_time
+    if not end_time and len(comments) == 1:
+        v = comments[0]
+        if _parse_time(v) is not None:
+            end_time = v
+            comments = []
     for s in _load_all_subscriptions():
         if str(s.get("link", "")).rstrip("/") == link.rstrip("/"):
             return f"已存在该订阅：{link}"
