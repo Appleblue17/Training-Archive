@@ -3,7 +3,8 @@
     "platform": "qoj",
     "link": "https://qoj.ac/contest/123",
     "end_time": "2026-08-15T23:00:00+08:00",
-    "comments": "示例：未来比赛（服务器方式二写闹钟，到点爬取并生成报告）",
+    "start_time": "2026-08-15T18:00:00+08:00",
+    "comments": "示例：未来比赛（end_time 到点爬取+报告；start_time 用于赛前提醒，不填则回退 end_time-5h）",
     "enabled": true
   },
   {

@@ -2,6 +2,17 @@
 
 > 格式基于 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [0.3.2] - 2026-08-13
+
+### Added
+
+- **QQ 群机器人（`crawler/scripts/qq_bot.py`）**：常驻轮询 NapCat 群消息记录增量拉取（无需修改上报配置），在群里 **@机器人** 发指令即可查询 daemon 状态 / 即将开始的比赛 / 闹钟概览 / 已归档比赛与复盘状态 / 今日运势（`/status` `/upcoming` `/alarms` `/contests` `/fortune` `/help` + 自然语言关键词）；`daemon.py` 新增 `install-qqbot` / `uninstall-qqbot` 独立自启服务
+- **赛前提醒（`alarm.py remind` + `daemon.py remind`）**：planned 闹钟在比赛开始前 `qq.remind_before_minutes` 分钟（缺省 15）向 QQ 群发【赛前提醒】🏁，发送成功后 `mark --reminded`（失败下轮重试）；订阅可填 `start_time`（未填回退 `end_time - 5h`）；`scheduled` 块新增 `remind`（缺省 `*/5 * * * *`）；`/upcoming` 改用 `start_time` 排序、闹钟显示名优先取 `comments`
+
+### Fixed
+
+- **qq-bot 增量游标改用消息 `time`**（`qq_bot.py`）：NapCat 的 `message_seq` / `message_id` 并非全局递增，用作游标会把新消息永久挡掉；改为按非自己消息的 `time` 推进
+
 ## [0.3.1] - 2026-08-12
 
 ### Added

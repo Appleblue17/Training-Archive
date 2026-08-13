@@ -10,6 +10,7 @@
 - **题目状态标记**：AC / 尝试未解决（黄色背景）等提交状态一目了然，显示提交时间与解决耗时
 - **文件查看器**：在线预览 Markdown（GFM / 数学公式 / KaTeX / 代码高亮）、PDF、源码文件，支持下载
 - **复盘报告**：每场完赛自动生成 LLM 复盘报告（DeepSeek）与 QQ 群分享文本
+- **赛前提醒**：预订的比赛开始前自动在 QQ 群发提醒
 - **日志页面**：查看各平台爬虫运行日志与 staged submissions
 - **自动抓取**：自托管守护进程（`crawler/scripts/daemon.py`）定时运行爬虫，检测到竞赛变化后自动提交并部署到 GitHub Pages
 
@@ -80,7 +81,7 @@ python3 crawler/scripts/qq_share.py "contests/2026-08-01 xxx"
 
 ### QQ 群机器人（可选）
 
-`crawler/scripts/qq_bot.py` 是常驻 QQ 群机器人：在群里 **@机器人** 发指令，即可查询 daemon 运行状态、即将开始的比赛、闹钟概览、已归档比赛与复盘状态。它通过轮询 NapCat 的 `get_group_msg_history` 增量拉取群消息（无需修改 NapCat 的上报配置），默认每 3 秒轮询一次，并按 `message_seq` 去重。
+`crawler/scripts/qq_bot.py` 是常驻 QQ 群机器人：在群里 **@机器人** 发指令，即可查询 daemon 运行状态、即将开始的比赛、闹钟概览、已归档比赛与复盘状态。它轮询 NapCat 的群消息记录增量拉取（无需修改 NapCat 的上报配置），默认每 3 秒一次。
 
 **前置条件**：
 
@@ -108,7 +109,7 @@ python3 crawler/scripts/daemon.py uninstall-qqbot                        # 注�
 | 指令 | 别名 | 说明 |
 |------|------|------|
 | `/status` | `/st` | daemon 运行状态（计划 / 最近运行 / 闹钟概览，不含已归档） |
-| `/upcoming` | `/u` | 即将开始的比赛（未来闹钟按时间排序） |
+| `/upcoming` | `/u` | 即将开始的比赛（闹钟内未来比赛，按开始时间排序） |
 | `/alarms` | `/a` | 闹钟概览（不含已归档，含 due / scheduled / failed） |
 | `/contests` | `/c` | 已归档比赛（最近 10 场）+ 复盘状态 ✓/✗ |
 | `/fortune` | `/f` | 今日运势（随机趣味签 + 今日 / 明日比赛提醒） |
@@ -129,6 +130,7 @@ python3 crawler/scripts/daemon.py run             # 主循环（前台运行；�
 python3 crawler/scripts/daemon.py sync            # 同步订阅：历史/过期立即爬，未来比赛写入闹钟
 python3 crawler/scripts/daemon.py fire            # 闹钟到点触发（无到期安静退出）
 python3 crawler/scripts/daemon.py incremental     # 提交增量同步（--submissions-only）
+python3 crawler/scripts/daemon.py remind          # 赛前提醒检查（开始前向 QQ 群发提醒）
 python3 crawler/scripts/daemon.py install         # 注册开机自启（按 OS：systemd user / launchd / schtasks）
 python3 crawler/scripts/daemon.py install --system   # 仅 Linux：系统级服务（开机即启动、无需登录，需 sudo）
 python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
@@ -138,14 +140,16 @@ python3 crawler/scripts/daemon.py uninstall-qqbot     # 注销 QQ 群机器人�
 python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 ```
 
-- **主循环调度**：`run` 用 croniter 解析 `config.json` 的 `scheduled` 块（三个表达式），睡眠/关机恢复后每个任务只补跑一次（不追赶历史，靠任务自身增量/幂等覆盖错过时段）。
+- **主循环调度**：`run` 按 `config.json` 的 `scheduled` 块调度任务（`fire` / `sync` / `incremental` / `remind`），睡眠/关机恢复后每个任务只补跑一次。
 - **开机自启**：`install` 按操作系统注册——Linux systemd user unit、macOS launchd、Windows schtasks（默认「登录时启动」，适合个人电脑）。
 - **无头服务器**：`install --system`（仅 Linux）注册系统级 systemd service（`/etc/systemd/system/`，`WantedBy=multi-user.target`），开机即启动、无需登录会话；服务以实际用户身份运行（`User=<owner>`，sudo 时取 `SUDO_USER`），git 凭据 / `.env` 与手动运行一致。需 root：
   ```bash
   sudo .venv/bin/python crawler/scripts/daemon.py install --system
   ```
 
-**闹钟机制**：订阅条目可选填 `end_time`（比赛结束时间，ISO 格式）。`sync` 把未来比赛写入运行时状态文件 `crawler/alarms.json`（gitignore，不提交）并标记为 `planned`，守护进程主循环按 `config.json` 的 `scheduled` 块间隔调度 `fire`：到点即爬取该场比赛并立即生成复盘报告。状态模型：`planned` / `pending` / `archived` / `failed`；爬取失败即 `failed`（不再自动重试），由自动 `sync` 重试：成功 → `archived`，失败保持 `failed`。订阅里修改 `end_time` 或删除条目时，`sync` 会相应重新安排或剪除闹钟。详见 [docs/architecture.md](docs/architecture.md) §4.6。
+**闹钟机制**：订阅条目可选填 `end_time`（比赛结束时间）。未来比赛由 `sync` 写入闹钟表，`fire` 到点爬取并生成复盘报告；订阅修改或删除时会相应重新安排或剪除闹钟。详见 [docs/architecture.md](docs/architecture.md) §4.6。
+
+**赛前提醒**：闹钟内的未来比赛，开始前自动在 QQ 群发提醒（可填 `start_time` 指定开始时间，未填按 `end_time` 推算）。详见 [docs/architecture.md](docs/architecture.md) §4.6。
 
 **前置依赖**（自托管运行机器需全部具备）：
 

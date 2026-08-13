@@ -6,9 +6,10 @@
 
 ## 当前状态
 
-- 主功能可用（竞赛列表、文件查看、日志、搜索、Dashboard、复盘时间轴）；爬虫双模式已建（`--contests-only` + `--submissions-only`），由自托管守护进程调度（`daemon.py`：`fire` / `sync` / `incremental`，表达式在 `crawler/config.json` 的 `scheduled` 块）。
+- 主功能可用（竞赛列表、文件查看、日志、搜索、Dashboard、复盘时间轴）；爬虫双模式已建（`--contests-only` + `--submissions-only`），由自托管守护进程调度（`daemon.py`：`fire` / `sync` / `incremental` / `remind`，表达式在 `crawler/config.json` 的 `scheduled` 块）。
 - **v0.3.0 已发布（2026-08-12，部署方式重构）**：静态版统一为自托管爬虫 + GitHub Pages（已删除 Actions 爬虫链路）；跨平台守护进程 `daemon.py` 替代 `server-task.sh`；fork 部署参数化（basePath / URL 常量 env 化）。服务器 + 本地 Linux 已端到端实测通过（`install` 自启 + `sync`/`fire` + 部署链路）；Windows / macOS 测试留待后续。
-- **v0.3.1（开发中）QQ 群分享（share AI task）**：`qq_share.py` 扩展为完整 share 流程（生成 `qq-share.txt` → NapCat 群发文字 + `review.md` 文件 → 删除）；与 report 解耦（daemon sync/fire 在 report 成功后按 `ai_tasks.share.enabled` 单独调用）；`report.py --links` review 失败返回非零 → sync/fire 阻断（不 mark archived）。NapCat 技术路径复用 Miniese（正向 WebSocket + Bearer token + CQ 码清洗 + 频率控制），Miniese 是私聊、本项目是群聊。
+- **v0.3.1 已发布（2026-08-12）QQ 群分享（share AI task）**：`qq_share.py` 扩展为完整 share 流程（生成 `qq-share.txt` → NapCat 群发文字 + `review.md` 文件 → 删除）；与 report 解耦（daemon sync/fire 在 report 成功后按 `ai_tasks.share.enabled` 单独调用）；`report.py --links` review 失败返回非零 → sync/fire 阻断（不 mark archived）。NapCat 技术路径复用 Miniese（正向 WebSocket + Bearer token + CQ 码清洗 + 频率控制），Miniese 是私聊、本项目是群聊。
+- **v0.3.2（开发中）QQ 群机器人 + 赛前提醒**：`qq_bot.py` 常驻轮询 NapCat 群消息，@触发指令查询（/status /upcoming /alarms /contests /fortune /help）；增量游标用消息 `time`（NapCat `message_seq` 非全局递增）。赛前提醒：planned 闹钟开始前 `qq.remind_before_minutes` 分钟（缺省 15）发 QQ 群提醒，订阅可填 `start_time`，缺省回退 `end_time - 5h`。
 - HDU / NowCoder 爬虫默认停用（`crawler/config.json` 的 `enabled` 字段控制）。
 - 闹钟机制已实现（`crawler/scripts/alarm.py` + `crawler/scripts/daemon.py sync/fire`）：订阅条目可选填 `end_time`，未来比赛写闹钟表 `crawler/alarms.json`（gitignore），到点由 `fire` 爬取 + 立即生成报告；状态模型 `planned` / `pending` / `archived` / `failed`。
 - `contests/` 数据目录为空（git 忽略），本地开发需先准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
@@ -50,6 +51,7 @@
 - **平台启用/禁用**：`crawler/config.json` 的 `enabled` 字段（缺省 `false` 视为禁用，配置文件缺失/解析失败时全部禁用）；模板 `crawler/config.example.json`。
 - **订阅条目**（`crawler/subscriptions/` 下各 `.json`）：`enabled` 为订阅级开关（缺省启用，与平台级缺省禁用不同）；按文件名排序合并、重复 `link` 去重、模板文件 `*.example.json` 跳过。
 - **闹钟机制（静态版专用）**：订阅条目可选填 `end_time`（北京时间 ISO）。`daemon.py sync` 先 `plan` 分类：不填 = 历史比赛立即爬不生成报告；已过 = 立即爬 + 报告；未来 = 写闹钟表；`failed` = 输出 `RETRY` 重试一次（成功 → `archived`，失败保持 `failed`，`plan` 输出 `WARNING`；`RETRY` 第 3 列为原任务的 `end_time`，**重试成功后仅当原任务填了 `end_time` 才生成报告**）。`fire`：`due` 无到期闹钟安静退出，有则爬取（`--contests-only --links`）+ 报告 + `mark --archived`；**爬取失败 `mark --failed`**（fire 只查 `planned`，失败后不再自动重试，靠自动 `sync` 兜底）。报告条件 = 订阅填了 `end_time`（EXPIRED / RETRY / fire due），按链接反查生成（`report.py --links`），与"本次是否新建"无关。订阅修改 `end_time` → 重新安排，订阅删除 → 剪除闹钟。注意：`--links` 与 `--submissions-only` 互斥、无值报错。
+- **赛前提醒（remind）**：未来比赛订阅可选填 `start_time`（未填回退 `end_time - 5h`）。`daemon.py remind` 按 `scheduled.remind`（缺省 `*/5 * * * *`）调 `alarm.py remind`：planned 且进入 `qq.remind_before_minutes`（缺省 15）窗口且未提醒 → 输出 `REMIND`，NapCat 群发成功后 `mark --reminded`（失败下轮重试）；NapCat 未配置/异常仅告警不阻断。
 - **AI task 开关（`ai_tasks`）**：`crawler/config.json` 的 `ai_tasks.<name>.enabled` 控制（缺省 `false`，显式开启才启用）。`report` 恒开（缺省 `true`）；`share`（QQ 群分享）缺省关闭，开启后 daemon 的 sync/fire 在 report 全部成功后调用 `qq_share.py --links`。NapCat 配置在 `qq` 块（`napcat_ws_url` / `napcat_token` / `group_id`）；NapCat 未配置/连接/发送失败仅告警不阻断 daemon。
 - **review 失败阻断归档**：`report.py --links` 任一应生成报告的比赛的 review 生成失败 → 返回非零，daemon sync/fire 中止（不 `mark --archived`、不提交推送，下次 sync 重试）。`qq-share.txt` 是临时产物（发送成功即删除），已在 `.gitignore` / `.gitignore.deploy` 忽略。
 - **凭据**：一律走环境变量（`.env` / CI secrets），`config.json` 只放非敏感参数。本地运行爬虫/报告脚本自动加载根目录 `.env`（`load_dotenv()`，不覆盖已有变量）。
@@ -90,14 +92,17 @@ python3 crawler/scripts/qq_share.py                     # 补发：扫描遗留 
 
 python3 crawler/scripts/alarm.py plan              # 扫描订阅：分类 HISTORY/EXPIRED/RETRY，写未来闹钟
 python3 crawler/scripts/alarm.py due               # 列出到点的 planned 闹钟（无则空输出）
+python3 crawler/scripts/alarm.py remind            # 输出进入赛前提醒窗口的 planned 闹钟（REMIND\tlink\tstart_time\tcomments）
 python3 crawler/scripts/alarm.py mark <link> --archived  # 标记已处理完
 python3 crawler/scripts/alarm.py mark <link> --failed    # 标记失败（下次 sync 重试）
+python3 crawler/scripts/alarm.py mark <link> --reminded  # 标记赛前提醒已发送（不再重复提醒）
 python3 crawler/scripts/alarm.py list              # 列出全部闹钟
 
 python3 crawler/scripts/daemon.py run             # 主循环（前台运行；安装为服务后由系统拉起）
 python3 crawler/scripts/daemon.py sync            # 同步订阅：历史/过期立即爬，未来写闹钟表（自动 + 可手动）
 python3 crawler/scripts/daemon.py fire            # 闹钟到点触发（无到期安静退出）
 python3 crawler/scripts/daemon.py incremental     # 提交增量同步（--submissions-only；每日）
+python3 crawler/scripts/daemon.py remind          # 赛前提醒检查：planned 开始前 15 分钟发 QQ 群提醒（一次）
 python3 crawler/scripts/daemon.py install         # 注册开机自启（Linux systemd / macOS launchd / Windows schtasks）
 sudo .venv/bin/python crawler/scripts/daemon.py install --system  # 仅 Linux：系统级服务（开机即启动、无需登录；需 root）
 python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
