@@ -17,6 +17,8 @@
 
 ### Fixed
 
+- **EXPIRED 订阅每次 sync 重爬**（`alarm.py`）：过期比赛（`end_time` 已过）建闹钟条目时未存 `start_time`（null），而 `plan` 的「订阅未变化」比较用 `_effective_start_time(s)`（`end_time - 5h`）——`null != 计算值` 恒成立，archived 条目每次都被重新分类为 EXPIRED，导致同一场比赛每次 sync 都重爬（爬取/报告/分享重复执行）。修复：HISTORY / EXPIRED 分支统一存 `start_time=_effective_start_time(s)`（与 planned 一致），archived 后不再重复触发
+- **`commit_and_push` 跳过提交时遗留暂存文件**（`daemon.py`）：`git add .gitignore crawler contests` 会把 crawler 运行时文件（`daemon.log` / `log.json` / 订阅文件等）暂存，发现 contests/ 无变化决定不提交时只 `reset` 了 chromedriver、其余文件留在 index——下一次手动 `git commit` 会把这些运行时文件一并提交。修复：跳过提交前 `git reset` 取消全部暂存
 - **订阅时间格式校验**（`qq_bot.py` + `alarm.py` + `daemon.py`）：`/subs add` 的 `end=`/`start=` 时间格式错误 → 终止不写入并提示（给出 `ISO 8601 北京时间` 示例）；手动 `sync` 时 `alarm.py plan` 发现订阅条目时间字段存在但解析失败 → 跳过该条目并输出 `[alarm] ERROR`（汇总行追加 `N invalid time`），`daemon.py sync` 收到非零返回即中止（不爬取不提交），避免把填错时间当 HISTORY 立即爬掉
 - **qq-bot 增量游标改用消息 `time`**（`qq_bot.py`）：NapCat 的 `message_seq` / `message_id` 并非全局递增，用作游标会把新消息永久挡掉；改为按非自己消息的 `time` 推进
 
