@@ -164,6 +164,11 @@ def _parse_time(s):
     return dt.astimezone(beijing)
 
 
+def _has_time_value(v):
+    """订阅时间字段是否有实际值（None / 空串视为未填）。"""
+    return v is not None and str(v).strip() != ""
+
+
 def _effective_start_time(s):
     """订阅 → 比赛开始时间（ISO）：显式 start_time 优先；否则 end_time - 5 小时。"""
     st = _parse_time(s.get("start_time"))
@@ -231,7 +236,10 @@ def cmd_plan():
         未来 → planned（fire_at = end_time）。
     - 订阅中已删除的 link 剪除闹钟（含 archived 历史）。
     - 订阅文件解析失败 / 非列表 / 条目缺 link / 重复 link：输出
-      [alarm] ERROR/WARNING 诊断（不阻断其余正常文件，但用户能立刻看到）。
+      [alarm] ERROR/WARNING 诊断。
+    - 订阅条目的 end_time / start_time 字段存在但格式无法解析：输出
+      [alarm] ERROR 并**跳过该条目**（不当 HISTORY 静默处理），且本命令返回
+      非零——daemon sync 检测到后中止（含 /sync 手动触发），修复后重跑。
     """
     enabled = set(_load_enabled_platforms())
     sub_log, sub_diag = _subscription_diag()
@@ -249,12 +257,31 @@ def cmd_plan():
     expired_links = []
     retry_links = []
     active_links = set()
+    time_errors = 0
     for s in active:
         link = str(s.get("link") or "").rstrip("/")
         if not link:
             continue
-        active_links.add(link)
         end_time = s.get("end_time")
+        start_time = s.get("start_time")
+        # 时间格式校验：字段存在但无法解析 → ERROR + 跳过（不加入 active，
+        # 不参与分类；既有闹钟保留，修复后下次 plan 再处理）。避免把
+        # "填错时间" 静默当作 "未填"（HISTORY 立即爬取且不生成报告）。
+        if _has_time_value(end_time) and _parse_time(end_time) is None:
+            time_errors += 1
+            print(
+                f"[alarm] ERROR: subscription {link} has invalid end_time "
+                f"{end_time!r}; skipped."
+            )
+            continue
+        if _has_time_value(start_time) and _parse_time(start_time) is None:
+            time_errors += 1
+            print(
+                f"[alarm] ERROR: subscription {link} has invalid start_time "
+                f"{start_time!r}; skipped."
+            )
+            continue
+        active_links.add(link)
         end_dt = _parse_time(end_time)
         existing = alarms.get(link)
 
@@ -328,21 +355,25 @@ def cmd_plan():
             f"{len(retry_links)} previously failed alarm(s) will be retried: "
             f"{', '.join(link for link, _ in retry_links)}"
         )
-    if sub_diag["errors"]:
+    if sub_diag["errors"] or time_errors:
         print(
             "[alarm] ERROR: subscription file(s) with format problems were skipped; "
             "their contests will NOT be synced. Fix them and re-run sync."
         )
     diag = ""
-    if sub_diag["errors"] or sub_diag["warnings"]:
+    if sub_diag["errors"] or sub_diag["warnings"] or time_errors:
         diag = (
             f", subscription diag: {sub_diag['errors']} errors, "
             f"{sub_diag['warnings']} warnings"
         )
+        if time_errors:
+            diag += f", {time_errors} invalid time"
     print(
         f"[alarm] plan: {len(history_links)} history, {len(expired_links)} expired, "
         f"{len(retry_links)} retry, {len(alarms)} alarms tracked{diag}."
     )
+    # 格式有问题（文件坏 / 时间非法）→ 返回非零，daemon sync 据此中止
+    return 1 if (sub_diag["errors"] or time_errors) else 0
 
 
 def cmd_due():
@@ -464,7 +495,7 @@ def main():
         sys.exit(1)
     cmd = args[0]
     if cmd == "plan":
-        cmd_plan()
+        sys.exit(cmd_plan())
     elif cmd == "due":
         cmd_due()
     elif cmd == "remind":

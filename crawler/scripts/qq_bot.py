@@ -18,10 +18,15 @@
   /review    复盘查询（无参数 = 最近有复盘的比赛；带关键词 = 搜索摘要）
   /fortune   今日运势（按人+日期确定性选择 + 今日比赛提醒）
   /subs      列出订阅
-  /subs add <link> [end_time] [comments]   新增订阅（platform 自动推断，写入 qqbot.json）
+  /subs add <link> [end=时间] [start=时间] [备注]   新增订阅（platform 自动推断，写入 qqbot.json）
   /subs del <link>                          删除订阅（从所有订阅文件移除）
   /sync      触发一次完整同步（daemon.py sync，后台执行）
   /help      指令列表
+
+/subs add 的时间参数：
+  end=   比赛结束时间（ISO 8601 北京时间，如 2026-08-15T23:00:00+08:00）
+  start= 比赛开始时间（可选，用于赛前提醒；不填回退 end-5h）
+  键值顺序任意；其余文字自动作为备注；时间格式错误会终止并提示。
 
 自然语言示例（需 @机器人）：
   @机器人 状态          → /status
@@ -74,6 +79,9 @@ SUBSCRIPTIONS_DIR = os.path.join(REPO_ROOT, "crawler", "subscriptions")
 BOT_SUBS_FILE = os.path.join(SUBSCRIPTIONS_DIR, "qqbot.json")
 # 生产分支：管理命令（改订阅 / 触发 sync）只在 deploy 分支工作区生效
 PROD_BRANCH = "deploy"
+
+# /subs add 的时间格式提示（用法说明 / 错误消息共用）
+TIME_FMT_HINT = "ISO 8601 北京时间，如 2026-08-15T23:00:00+08:00"
 
 # 消息发送频率控制（复用 qq_share 的间隔，避免风控）
 MIN_SEND_INTERVAL = 1.5
@@ -414,6 +422,8 @@ def _subs_list():
         plat = s.get("platform", "?")
         link = s.get("link", "")
         line = f"· {flag} [{plat}] {link}"
+        if s.get("start_time"):
+            line += f"  start={s['start_time']}"
         if s.get("end_time"):
             line += f"  end={s['end_time']}"
         if s.get("comments"):
@@ -422,13 +432,46 @@ def _subs_list():
     return "\n".join(lines)
 
 
+def _subs_add_usage():
+    """/subs add 用法说明（含时间格式）。"""
+    return "\n".join([
+        "用法：/subs add <link> [end=结束时间] [start=开始时间] [备注]",
+        "时间格式：" + TIME_FMT_HINT,
+        "示例：/subs add https://qoj.ac/contest/123 "
+        "end=2026-08-15T23:00:00+08:00 start=2026-08-15T18:00:00+08:00 联赛（1）",
+    ])
+
+
 def _subs_add(parts):
-    """新增订阅：写入 BOT_SUBS_FILE，随后后台触发 sync。"""
+    """新增订阅：end=/start= 键值（顺序任意）+ 其余拼为备注；写入 qqbot.json 后后台 sync。
+
+    时间格式错误：终止（不写入）并提示，格式见 TIME_FMT_HINT。
+    """
     if not parts:
-        return "用法：/subs add <link> [end_time] [comments]"
+        return _subs_add_usage()
     link = parts[0].strip()
     if not re.match(r"^https?://", link):
         return "link 需以 http:// 或 https:// 开头。"
+    # 解析键值参数（end=/start=）与备注（其余 token 拼合）
+    end_time = start_time = None
+    comments = []
+    for tok in parts[1:]:
+        t = tok.strip()
+        if not t:
+            continue
+        low = t.lower()
+        if low.startswith("end="):
+            v = t[len("end="):].strip()
+            if _parse_time(v) is None:
+                return f"end 时间格式错误：{v!r}（应为 {TIME_FMT_HINT}）"
+            end_time = v
+        elif low.startswith("start="):
+            v = t[len("start="):].strip()
+            if _parse_time(v) is None:
+                return f"start 时间格式错误：{v!r}（应为 {TIME_FMT_HINT}）"
+            start_time = v
+        else:
+            comments.append(t)
     for s in _load_all_subscriptions():
         if str(s.get("link", "")).rstrip("/") == link.rstrip("/"):
             return f"已存在该订阅：{link}"
@@ -436,18 +479,12 @@ def _subs_add(parts):
     if not platform:
         return "无法推断平台（支持 qoj.ac / hdu.edu.cn / nowcoder.com），请检查链接。"
     entry = {"platform": platform, "link": link, "enabled": True}
-    if len(parts) >= 2 and parts[1].strip():
-        et = parts[1].strip()
-        if _parse_time(et) is None:
-            # 第二段不是合法时间：后面没有独立备注段 → 把该段当备注（省略 end_time）；
-            # 后面还有备注段（add link end_time comments）→ 报错提示
-            if len(parts) >= 3:
-                return f"end_time 无法解析：{et!r}（需 ISO 格式，如 2026-08-15T23:00:00+08:00）"
-            entry["comments"] = et
-        else:
-            entry["end_time"] = et
-    if len(parts) >= 3 and parts[2].strip():
-        entry["comments"] = parts[2].strip()
+    if end_time:
+        entry["end_time"] = end_time
+    if start_time:
+        entry["start_time"] = start_time
+    if comments:
+        entry["comments"] = " ".join(comments)
     os.makedirs(SUBSCRIPTIONS_DIR, exist_ok=True)
     items = _load_json(BOT_SUBS_FILE, []) or []
     if not isinstance(items, list):
@@ -460,6 +497,8 @@ def _subs_add(parts):
     msg = f"已添加订阅 [{platform}] {link}"
     if entry.get("end_time"):
         msg += f"  end={entry['end_time']}"
+    if entry.get("start_time"):
+        msg += f"  start={entry['start_time']}"
     if entry.get("comments"):
         msg += f"  ({entry['comments']})"
     return msg + "\n开始同步（完成后回复结果）。"
@@ -508,7 +547,7 @@ def cmd_help(args, ctx):
         "/review 复盘查询（/review 关键词）",
         "/fortune 今日运势",
         "/subs 订阅列表",
-        "/subs add <link> [end_time] [备注]",
+        "/subs add <link> [end=时间] [start=时间] [备注]",
         "/subs del <link>",
         "/sync 触发同步",
         "/help 本菜单",
@@ -704,9 +743,8 @@ def cmd_fortune(args, ctx):
 @command("subs", keywords=("订阅", "订阅列表"))
 def cmd_subs(args, ctx):
     """订阅管理：无参数列出；add 新增；del 删除（改订阅会后台触发 sync）。"""
-    # maxsplit=3：add <link> <end_time> <备注> 三段都要保留（备注可含空格），
-    # 否则 maxsplit=2 会把 end_time 与备注合并成一个 token 导致时间解析失败
-    parts = args.split(None, 3)
+    # 全部按空白切分：add 的 end=/start=/备注 在 _subs_add 内逐个解析
+    parts = args.split()
     op = parts[0].lower() if parts else ""
     if op == "add":
         if _current_branch() != PROD_BRANCH:

@@ -333,12 +333,18 @@ def cmd_sync():
 
         # 1. plan 分类订阅并写闹钟表。转发所有 [alarm] 诊断行到日志：
         #    plan 汇总、WARNING（failed 重试 / 订阅条目告警）、ERROR（订阅文件
-        #    格式有问题被跳过）——用户能立刻看到，而不只是静默跳过。
+        #    格式有问题 / 时间字段非法被跳过）。plan 返回非零（格式有问题）→
+        #    **中止本次 sync**：不爬取不提交，用户修复订阅后重跑——避免把
+        #    "填错时间" 静默当作 HISTORY 立即爬掉且不生成报告。
         proc = run_py("alarm.py", "plan", capture=True)
         plan_out = proc.stdout
         for l in plan_out.splitlines():
             if l.startswith("[alarm]"):
                 log(l)
+        if proc.returncode != 0:
+            log("[ERROR] alarm.py plan failed (subscription file / time format "
+                "problems); aborting sync. Fix the subscriptions and re-run.")
+            return proc.returncode
         history_links, expired_links, retry_links = _parse_plan_output(plan_out)
         retry_all = [link for link, _ in retry_links]
         all_links = list(dict.fromkeys(history_links + expired_links + retry_all))
