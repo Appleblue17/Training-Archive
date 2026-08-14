@@ -220,9 +220,11 @@ def commit_and_push():
     已在本地文件系统持久化（deploy 分支工作区），无需同步远端。
     仅 contests/ 变化（新比赛 / 新提交 / 新报告）才发 [contests-changed]
     提交，触发 deploy.yml 部署。
+
+    提交身份：用 `git -c` 临时指定 bot 身份，不写 .git/config——避免覆盖
+    开发者在仓库里配置的 user.name / user.email（否则后续手动提交全变成
+    server-task[bot]）。
     """
-    git("config", "user.name", "server-task[bot]", check=False)
-    git("config", "user.email", "server-task[bot]@users.noreply.github.com", check=False)
     shutil.copy(os.path.join(REPO_ROOT, ".gitignore.deploy"), os.path.join(REPO_ROOT, ".gitignore"))
     git("add", ".gitignore", "crawler", "contests", check=False)
     git("reset", "HEAD", "crawler/chromedriver-linux64/chromedriver", check=False)
@@ -239,7 +241,9 @@ def commit_and_push():
         git("reset", check=False)
         return
 
-    git("commit", "-m", "[auto] [contests-changed] Update contest and submission data")
+    git("-c", "user.name=server-task[bot]",
+        "-c", "user.email=server-task[bot]@users.noreply.github.com",
+        "commit", "-m", "[auto] [contests-changed] Update contest and submission data")
     git("push", "origin", DEPLOY_BRANCH)
     log(f"Pushed to {DEPLOY_BRANCH}.")
 
