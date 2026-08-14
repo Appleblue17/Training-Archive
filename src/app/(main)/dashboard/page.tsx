@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { getContests, getAllSubmissions, getReviews, getTotalCodeBytes } from "@/lib/contests-data";
 import DashboardClient from "./dashboard-client";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
 
 /**
  * Dashboard（C3）：统计 + 最近动态 + contribution 绿点图。

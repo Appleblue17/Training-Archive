@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { safeParseJson } from "@/lib/contests-data";
 import renderMarkdown from "@/utils/render-markdown";
@@ -62,6 +63,19 @@ function readContest(folder: string): ContestData | null {
 
 /** 无可用数据时的占位参数，保证 output: export 下动态路由可构建。 */
 const PLACEHOLDER = "~no-data~";
+
+export async function generateMetadata(props: {
+  params: Promise<{ contest: string }>;
+}): Promise<Metadata> {
+  const { contest } = await props.params;
+  const contestFolder = decodeURIComponent(contest);
+  if (contestFolder === PLACEHOLDER) {
+    return { title: "Review" };
+  }
+  const data = readContest(contestFolder);
+  const name = String(data?.contest?.name ?? "") || contestFolder;
+  return { title: `${name} · Review` };
+}
 
 export async function generateStaticParams() {
   const contestsDir = path.join(process.cwd(), "contests");
