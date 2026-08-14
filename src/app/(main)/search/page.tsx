@@ -1,7 +1,12 @@
 import fs from "fs";
 import path from "path";
+import type { Metadata } from "next";
 import SearchClient from "./search-client";
 import { SearchIndexEntryType } from "@/lib/types";
+
+export const metadata: Metadata = {
+  title: "Search",
+};
 
 // search-index.json is generated at build time by
 // scripts/generate-search-index.mjs (part of `pnpm build`).

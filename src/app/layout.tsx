@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import type { Metadata } from "next";
 import "@/lib/globals.css";
 import "@public/github-markdown-dark.css";
 import "@public/katex.min.css";
@@ -8,6 +9,13 @@ import { BASE_URL, REPO_URL } from "@/lib/global";
 
 export const experimental_ppr = true;
 
+export const metadata: Metadata = {
+  title: {
+    default: "Training Archive",
+    template: "%s · Training Archive",
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -15,7 +23,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/png" href={BASE_URL + "archive-bot.png"} />
-        <title>Training Archive</title>
       </head>
       <body className={`${inter.className} antialiased`}>
         {children}

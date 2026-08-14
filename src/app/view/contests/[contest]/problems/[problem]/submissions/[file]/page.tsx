@@ -1,11 +1,46 @@
 import fs from "fs";
 import path from "path";
+import type { Metadata } from "next";
 import FileViewerPage from "@/components/file-viewer/file-viewer-page";
 
 import getFileMetadata from "@/utils/get-file-metadata";
 
 /** 无可用数据时的占位参数，保证 output: export 下动态路由可构建。 */
 const PLACEHOLDER = "~no-data~";
+
+export async function generateMetadata(props: {
+  params: Promise<{ contest: string; problem: string; file: string }>;
+}): Promise<Metadata> {
+  const { contest, problem, file } = await props.params;
+  const contestFolder = decodeURIComponent(contest);
+  const problemFolder = decodeURIComponent(problem);
+  const fileName = decodeURIComponent(file);
+  if (
+    contestFolder === PLACEHOLDER ||
+    problemFolder === PLACEHOLDER ||
+    fileName === PLACEHOLDER
+  ) {
+    return { title: "Submission" };
+  }
+  const contestMetadata = getFileMetadata(
+    path.join(process.cwd(), "contests", contestFolder),
+    path.join(process.cwd(), "contests", contestFolder, "contest.json"),
+  );
+  const problemMetadata = getFileMetadata(
+    path.join(process.cwd(), "contests", contestFolder, "problems", problemFolder),
+    path.join(
+      process.cwd(),
+      "contests",
+      contestFolder,
+      "problems",
+      problemFolder,
+      "problem.json",
+    ),
+  );
+  const contestName = String(contestMetadata.name ?? "") || contestFolder;
+  const problemName = String(problemMetadata.name ?? "") || problemFolder;
+  return { title: `${fileName} · ${problemName} · ${contestName}` };
+}
 
 export async function generateStaticParams() {
   const contestsDir = path.join(process.cwd(), "contests");

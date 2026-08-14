@@ -1,7 +1,12 @@
 import fs from "fs";
 import path from "path";
+import type { Metadata } from "next";
 import StatusPage from "./status-page";
 import { statusFileList } from "@/lib/global";
+
+export const metadata: Metadata = {
+  title: "Status",
+};
 
 export default function Page() {
   const fileContentList = statusFileList.map((file) => {

@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import type { Metadata } from "next";
 
 import HomeView from "../home-view";
 
@@ -16,6 +17,14 @@ export async function generateStaticParams() {
   return Array.from({ length: totalPages }, (_, i) => ({
     page: `page${i + 1}`,
   }));
+}
+
+export async function generateMetadata(props: {
+  params: Promise<{ page: string }>;
+}): Promise<Metadata> {
+  const { page } = await props.params;
+  const pageNum = Math.max(1, parseInt(page.replace("page", ""), 10) || 1);
+  return { title: `Page ${pageNum}` };
 }
 
 export default async function HomePage(props: { params: Promise<{ page: string }> }) {
