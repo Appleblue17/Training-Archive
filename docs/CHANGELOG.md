@@ -2,10 +2,16 @@
 
 > 格式基于 [Keep a Changelog](https://keepachangelog.com/)。
 
-## [0.3.2] - 2026-08-13
+## [0.3.1] - 2026-08-13
 
 ### Added
 
+- **QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**：将比赛复盘（`review.md`）改写成轻松随性的纯文本（`qq-share.txt`，DeepSeek 独立调用、更高 temperature），并通过 NapCat（OneBot 11 正向 WebSocket，Bearer token 鉴权）发送到 QQ 群——群发文字（`send_group_msg`，CQ 码转义 + Markdown 清洗）+ 上传 `review.md` 文件（`upload_group_file`）；发送成功后删除 `qq-share.txt`（临时产物，不入 git）
+  - 文字缺失（生成失败/为空）：记 log，跳过文字直接发 review 文件
+  - `review.md` 不存在：跳过（share 依赖 report 生成的完整报告，不自行生成）
+  - NapCat 未配置 / 连接失败 / 发送失败：仅告警不阻断 daemon（`qq-share.txt` 保留供下次重试）
+  - 新增 `ai_tasks.share.enabled` 配置开关（显式开启才调用；缺省 `false`）与 `qq` 块（`napcat_ws_url` / `napcat_token` / `group_id`）；`config.example.json` 已更新
+  - 新增依赖 `websocket-client`（`crawler/requirements.txt`）
 - **QQ 群机器人（`crawler/scripts/qq_bot.py`）**：常驻轮询 NapCat 群消息记录增量拉取（无需修改上报配置），在群里 **@机器人** 发指令即可查询 daemon 状态 / 即将开始的比赛 / 闹钟概览 / 已归档比赛与复盘状态 / 今日运势（`/status` `/upcoming` `/alarms` `/contests` `/fortune` `/help` + 自然语言关键词）；`daemon.py` 新增 `install-qqbot` / `uninstall-qqbot` 独立自启服务
 - **qq-bot 新指令**（`qq_bot.py`）：
   - `/review`（`/rv`）复盘查询：无参数返回最近有复盘的比赛，带关键词搜索并返回摘要（截断 400 字符）
@@ -14,8 +20,17 @@
   - `/sync` 手动触发一次完整同步（后台执行，完成后群里回复结果）
   - `/subs` 与 `/sync` 仅 `deploy` 分支工作区生效（`PROD_BRANCH` 保护，防止在非生产分支误改订阅）
 - **今日运势确定性**（`qq_bot.py`）：`/fortune` 从随机改为按「user_id + 北京日期 + salt」确定性选择（同一天同一人结果一致，跨天变化），新增幸运数字；salt 可配 `config.json` 的 `qq.fortune_salt`（缺省固定值）
-- **今日运势丰富**（`qq_bot.py`）：档位改为**加权随机**（大吉 5% / 吉 25% / 中吉 40% / 小吉 20% / 凶 8% / 大凶 2%，中间档概率最大），每档 3 句**生活化文案**语句池（档内按 seed 轮换，不再绑定 ACM）；新增**每日名言**（本地确定性选中英 20 条，同人同天固定），文案示例：`今日运势：中吉（幸运数字 42）` + 语句 + `「名言」——作者`
 - **赛前提醒（`alarm.py remind` + `daemon.py remind`）**：planned 闹钟在比赛开始前 `qq.remind_before_minutes` 分钟（缺省 15）向 QQ 群发【赛前提醒】🏁，发送成功后 `mark --reminded`（失败下轮重试）；订阅可填 `start_time`（未填回退 `end_time - 5h`）；`scheduled` 块新增 `remind`（缺省 `*/5 * * * *`）；`/upcoming` 改用 `start_time` 排序、闹钟显示名优先取 `comments`
+
+### Changed
+
+- **report 与 share 解耦**（`report.py` / `daemon.py`）：`report.py` 不再串联生成 `qq-share.txt`；由 daemon 的 sync/fire 在 report 全部成功后按 `ai_tasks.share.enabled` 单独调用 `qq_share.py --links`
+- **review 生成失败阻断归档**（`daemon.py` + `report.py`）：`report.py --links` 任一应生成报告的比赛的 review 生成失败 → 返回非零；sync/fire 据此中止（不 `mark --archived`、不提交推送，下次 sync 重试），避免「已归档但缺复盘」
+- **`qq-share.txt` 不进 git**：`.gitignore` / `.gitignore.deploy` 忽略 `contests/*/qq-share.txt`；deploy 分支 `git rm --cached` 清理已跟踪的遗留文件
+- **前端 `/log` 日志页弃用删除，改为 `/status` 状态页**（`src/app/(main)/status/`）：日志为运行时噪音（不入库），不再上网页展示；`/status` 展示 deploy 分支入库跟踪的**状态数据**——`crawler/config.json`（平台启用 / 调度 / QQ 配置）、`crawler/last-update.json`（各平台最后更新时间）、各平台 `staged-submissions.json`（待回填提交）、`crawler/subscriptions/` 订阅列表（JSON 渲染 + 复制按钮）。面包屑导航 "Log" → "Status"（图标 `Activity`）；`global.ts` 的 `logFileList` → `statusFileList`
+- **移除顶部爬虫状态徽章**（`layout.tsx` + `crawler-status.tsx`）：原右上角 "Updated X ago" + 链接 GitHub Actions 的徽章删除，不再跳外站；更新时间改在 `/status` 页面的 `last-update.json` 中查看
+- **gitignore 保持 dev/deploy 双机制**：`.gitignore.deploy` 保留（deploy 分支专用），daemon 提交前 `cp .gitignore.deploy .gitignore` 覆盖；deploy 分支跟踪 `contests/`、`config.json`、`last-update.json`、`platforms/*/contests.json`、`staged-submissions.json`、`subscriptions/`（供 `/status` 展示与 CI 增量同步），仅忽略 log 与运行时临时产物（`daemon.log` / `global.log.json` / `platforms/*/log.json` / `qq-bot.log` / `bot-state.json` / `daemon-state.json` / `alarms.json` / `new-contests.json` / `server-task.log` / `input_*.json` / `qq-share.txt` / chromedriver / `public/contests`）
+- **sync 结果摘要回复**（`qq_bot.py`）：`/subs add` / `/subs del` / `/sync` 后台同步完成后，群里回复由「原始日志尾部 8 行」改为**结构化摘要**——待处理分类（历史/过期/重试）、爬取结果（新建/已存在/未开始，未开始给出比赛名）、复盘与分享数、推送状态；失败时给出中止原因（订阅时间格式错误 / 订阅文件格式 / 爬取出错 / 复盘生成失败）与修复提示，不再把原始日志刷到群里（详情仍在服务器 daemon 日志）
 
 ### Fixed
 
@@ -28,30 +43,6 @@
 - **订阅时间格式校验**（`qq_bot.py` + `alarm.py` + `daemon.py`）：`/subs add` 的 `end=`/`start=` 时间格式错误 → 终止不写入并提示（给出 `ISO 8601 北京时间` 示例）；手动 `sync` 时 `alarm.py plan` 发现订阅条目时间字段存在但解析失败 → 跳过该条目并输出 `[alarm] ERROR`（汇总行追加 `N invalid time`），`daemon.py sync` 收到非零返回即中止（不爬取不提交），避免把填错时间当 HISTORY 立即爬掉
 - **qq-bot 增量游标改用消息 `time`**（`qq_bot.py`）：NapCat 的 `message_seq` / `message_id` 并非全局递增，用作游标会把新消息永久挡掉；改为按非自己消息的 `time` 推进
 - **未配置 `QQ_BOT_UID` 时 bot 刷屏**（`qq_bot.py`）：`bot_uid` 为空时无法识别 @，原实现退化为处理所有非自己消息——群聊每条普通消息都会触发「收到！可用 /help」逐条回复，且含关键词（比赛/报告/状态/订阅/运势等）的闲聊会误执行指令。修复：未配置 `bot_uid` 时**只响应明确以 `/` 开头的指令**、未匹配指令静默跳过（普通聊天完全忽略）；`process_once` 按 60s 节流告警提示配置 `.env QQ_BOT_UID`，`process_force` 单次提示
-
-### Changed
-
-- **前端 `/log` 日志页弃用删除，改为 `/status` 状态页**（`src/app/(main)/status/`）：日志为运行时噪音（不入库），不再上网页展示；`/status` 展示 deploy 分支入库跟踪的**状态数据**——`crawler/config.json`（平台启用 / 调度 / QQ 配置）、`crawler/last-update.json`（各平台最后更新时间）、各平台 `staged-submissions.json`（待回填提交）、`crawler/subscriptions/` 订阅列表（JSON 渲染 + 复制按钮）。面包屑导航 "Log" → "Status"（图标 `Activity`）；`global.ts` 的 `logFileList` → `statusFileList`
-- **移除顶部爬虫状态徽章**（`layout.tsx` + `crawler-status.tsx`）：原右上角 "Updated X ago" + 链接 GitHub Actions 的徽章删除，不再跳外站；更新时间改在 `/status` 页面的 `last-update.json` 中查看
-- **gitignore 保持 dev/deploy 双机制**：`.gitignore.deploy` 保留（deploy 分支专用），daemon 提交前 `cp .gitignore.deploy .gitignore` 覆盖；deploy 分支跟踪 `contests/`、`config.json`、`last-update.json`、`platforms/*/contests.json`、`staged-submissions.json`、`subscriptions/`（供 `/status` 展示与 CI 增量同步），仅忽略 log 与运行时临时产物（`daemon.log` / `global.log.json` / `platforms/*/log.json` / `qq-bot.log` / `bot-state.json` / `daemon-state.json` / `alarms.json` / `new-contests.json` / `server-task.log` / `input_*.json` / `qq-share.txt` / chromedriver / `public/contests`）
-- **sync 结果摘要回复**（`qq_bot.py`）：`/subs add` / `/subs del` / `/sync` 后台同步完成后，群里回复由「原始日志尾部 8 行」改为**结构化摘要**——待处理分类（历史/过期/重试）、爬取结果（新建/已存在/未开始，未开始给出比赛名）、复盘与分享数、推送状态；失败时给出中止原因（订阅时间格式错误 / 订阅文件格式 / 爬取出错 / 复盘生成失败）与修复提示，不再把原始日志刷到群里（详情仍在服务器 daemon 日志）
-
-## [0.3.1] - 2026-08-12
-
-### Added
-
-- **QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**：将比赛复盘（`review.md`）改写成轻松随性的纯文本（`qq-share.txt`，DeepSeek 独立调用、更高 temperature），并通过 NapCat（OneBot 11 正向 WebSocket，Bearer token 鉴权）发送到 QQ 群——群发文字（`send_group_msg`，CQ 码转义 + Markdown 清洗）+ 上传 `review.md` 文件（`upload_group_file`）；发送成功后删除 `qq-share.txt`（临时产物，不入 git）
-  - 文字缺失（生成失败/为空）：记 log，跳过文字直接发 review 文件
-  - `review.md` 不存在：跳过（share 依赖 report 生成的完整报告，不自行生成）
-  - NapCat 未配置 / 连接失败 / 发送失败：仅告警不阻断 daemon（`qq-share.txt` 保留供下次重试）
-  - 新增 `ai_tasks.share.enabled` 配置开关（显式开启才调用；缺省 `false`）与 `qq` 块（`napcat_ws_url` / `napcat_token` / `group_id`）；`config.example.json` 已更新
-  - 新增依赖 `websocket-client`（`crawler/requirements.txt`）
-
-### Changed
-
-- **report 与 share 解耦**（`report.py` / `daemon.py`）：`report.py` 不再串联生成 `qq-share.txt`；由 daemon 的 sync/fire 在 report 全部成功后按 `ai_tasks.share.enabled` 单独调用 `qq_share.py --links`
-- **review 生成失败阻断归档**（`daemon.py` + `report.py`）：`report.py --links` 任一应生成报告的比赛的 review 生成失败 → 返回非零；sync/fire 据此中止（不 `mark --archived`、不提交推送，下次 sync 重试），避免「已归档但缺复盘」
-- **`qq-share.txt` 不进 git**：`.gitignore` / `.gitignore.deploy` 忽略 `contests/*/qq-share.txt`；deploy 分支 `git rm --cached` 清理已跟踪的遗留文件
 
 ### Removed
 
