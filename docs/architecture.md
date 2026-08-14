@@ -60,13 +60,13 @@ contests/
 | 路由 | 职责 |
 |------|------|
 | `layout.tsx` | 根布局：全局字体、页脚、favicon、markdown 样式（github-markdown-dark / katex / github-dark 全局加载） |
-| `(main)/layout.tsx` | 主布局：标题、爬虫状态徽章、面包屑导航 |
+| `(main)/layout.tsx` | 主布局：标题、面包屑导航 |
 | `(main)/page.tsx` + `(main)/(home)/[page]/page.tsx` | 竞赛列表（服务端取数 + 分页，每页 20 条），与根路径共用 `home-view.tsx` |
 | `(main)/(home)/[page]/contest-table.tsx` | 竞赛表格（客户端）：可展开行、题目状态、悬停元数据面板 |
 | `(main)/search/page.tsx` + `search-client.tsx` | 搜索页（服务端读构建时索引，客户端过滤） |
 | `(main)/dashboard/page.tsx` + `dashboard-client.tsx` | 数据看板（统计卡片、绿点图、最近动态、复盘报告） |
 | `(main)/review/[contest]/page.tsx` + `review-timeline.tsx` | 复盘时间轴页：提交序列 + LLM 报告 |
-| `(main)/log/page.tsx` + `log-page.tsx` | 日志页：各平台日志与 staged submissions |
+| `(main)/status/page.tsx` + `status-page.tsx` | 状态页：config / last-update / 各平台 staged submissions / 订阅（JSON 展示 + 复制） |
 | `(main)/readme/page.tsx` | README 页（构建时渲染仓库根 README） |
 | `view/contests/[contest]/[file]/page.tsx` | 竞赛级文件查看页 |
 | `view/contests/[contest]/problems/[problem]/[file]/page.tsx` | 题目级文件查看页 |
@@ -77,7 +77,7 @@ contests/
 | 模块 | 职责 |
 |------|------|
 | `src/lib/types.ts` | 数据类型：`FileMetadataType` / `CodeFileType` / `ProblemInfoType` / `ContestInfoType` / `SearchIndexEntryType` |
-| `src/lib/global.ts` | 全局配置：`BASE_URL` / `PREFIX_URL` / `REPO_URL`、`allowedExtensions`、`logFileList`、`ITEMS_PER_PAGE` |
+| `src/lib/global.ts` | 全局配置：`BASE_URL` / `PREFIX_URL` / `REPO_URL`、`allowedExtensions`、`statusFileList`、`ITEMS_PER_PAGE` |
 | `src/lib/contests-data.ts` | 服务端数据读取（仅服务端 import）：`getContests` / `getAllSubmissions` / `getReviews` / `safeParseJson` |
 | `scripts/generate-search-index.mjs` | 构建时扫描 `contests/` 生成 `public/search-index.json`（问题级索引） |
 | `src/utils/get-file-metadata.ts` | 读取文件元数据，合并 `<file>.json` 侧车文件 |
@@ -164,20 +164,20 @@ contests/
 ]
 ```
 
-订阅条目 `enabled` 为**订阅级**开关（缺省视为启用）；可选填 `end_time`（比赛结束时间，北京时间 ISO），**静态版闹钟机制读取**（见 4.6）。三平台均以订阅为唯一来源。
+订阅条目 `enabled` 为**订阅级**开关（缺省视为启用）；可选填 `end_time`（比赛结束时间，北京时间 ISO），**静态版闹钟机制读取**（见 4.6）；未来比赛还可选填 `start_time`（比赛开始时间，ISO），**赛前提醒读取**（见 4.6，不填回退 `end_time - 5h`）。三平台均以订阅为唯一来源。
 
 **平台启用/禁用**：`crawler/config.json` 中每个平台条目用 `enabled` 字段控制（缺省 `false` 视为禁用），`scheduled_task.py` 启动时读取过滤平台；与订阅级 `enabled` 是两套独立配置。`config.json` 只存放**非敏感**运行参数（`enabled` / `base_url` / `min_wait_time` / `max_wait_time` / `scheduled`）；登录凭据一律走环境变量（`.env` / CI secrets）。
 
 ```json
 {
-  "scheduled": { "fire": "*/5 * * * *", "sync": "0 */3 * * *", "incremental": "0 4 * * *" },
+  "scheduled": { "fire": "*/5 * * * *", "sync": "0 */3 * * *", "incremental": "0 4 * * *", "remind": "*/5 * * * *" },
   "qoj":    { "enabled": true,  "base_url": "https://qoj.ac", "min_wait_time": 0.5, "max_wait_time": 2 },
   "hdu":    { "enabled": false, "base_url": "https://acm.hdu.edu.cn", "min_wait_time": 0, "max_wait_time": 0.5 },
   "nowcoder": { "enabled": false, "base_url": "https://ac.nowcoder.com", "min_wait_time": 0, "max_wait_time": 0.5 }
 }
 ```
 
-`scheduled` 块为**自托管守护进程**的 cron 表达式（`daemon.py` 用 croniter 解析，主循环按此调度，见 4.6）：`fire`（闹钟检查）、`sync`（订阅同步）、`incremental`（提交增量）。本机可直接修改后重启 `daemon.py run` 生效。
+`scheduled` 块为**自托管守护进程**的 cron 表达式（`daemon.py` 用 croniter 解析，主循环按此调度，见 4.6）：`fire`（闹钟检查）、`sync`（订阅同步）、`incremental`（提交增量）、`remind`（赛前提醒）。本机可直接修改后重启 `daemon.py run` 生效。
 
 `scheduled_task.py` 提供三个入口（**只负责爬虫**，复盘报告由 `report.py` 独立生成，见 4.4）：
 
@@ -190,7 +190,7 @@ contests/
 
 `--contests-only` 实现要点：`run_platform` 在 `fetch_contests` 后检查 `crawler._new_contests`，为空直接结束；非空则置 `crawler._contests_only = True` 再 `fetch_submissions()`——HDU/NowCoder 只遍历本次新建的比赛，QOJ 以最早新比赛开始时间为提交截止，`BaseCrawler.finish()` 在 contests-only 模式始终不推进 `last-update.json`。
 
-守护进程在爬虫步骤之后均追加独立的报告生成步骤（`report.py --links`），与爬虫解耦：爬虫失败不生成报告，报告失败不阻断提交/部署。报告条件 = 订阅里**填了 `end_time`** 的比赛（EXPIRED / RETRY / fire due），按订阅链接反查 `contests/` 下比赛文件夹生成（见 4.4），与"本次是否新建"无关——比赛此前已归档过（非本次新建）也要生成，否则会漏掉复盘。
+守护进程在爬虫步骤之后均追加独立的报告生成步骤（`report.py --links`），与爬虫解耦：爬虫失败不生成报告；报告失败（`report.py --links` 任一应生成报告的比赛的 review 生成失败）→ 该次 sync/fire 中止（不 `mark --archived`、不提交推送，下次 sync 重试），避免「已归档但缺复盘」。报告全部成功后，若 `config.json` 的 `ai_tasks.share.enabled` 开启，再单独调用 `qq_share.py --links` 群发（失败仅告警，不阻断）。报告条件 = 订阅里**填了 `end_time`** 的比赛（EXPIRED / RETRY / fire due），按订阅链接反查 `contests/` 下比赛文件夹生成（见 4.4），与"本次是否新建"无关——比赛此前已归档过（非本次新建）也要生成，否则会漏掉复盘。
 
 ### 4.4 复盘报告（`crawler/scripts/report.py`，独立总结脚本）
 
@@ -204,7 +204,7 @@ contests/
 - 比赛抓取模式结束时把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时状态文件，gitignore；无新建比赛时删除），`report.py` / `qq_share.py` 以 `--from-crawl` 读取；读写逻辑统一在共享模块 `crawler/scripts/new_contests.py`。
 - 读取 `contest.json`、`submissions.json`、`problems/<letter>/submissions/<id>.<ext>`，**不做分析性预处理**，原始提交序列直接送 DeepSeek（OpenAI 兼容接口，`deepseek-chat`，API key 从环境变量 `DEEPSEEK_API_KEY` 读取）。
 - 输出 `contests/<date> <name>/review.md`；`review.md` 已存在即跳过（幂等）。只对 `end_time` 已过且有提交数据的比赛生成。
-- QQ 群分享简化版（`qq-share.txt`）由 `crawler/scripts/qq_share.py` 生成，完整报告生成后自动串联，也支持 `--from-crawl` 单独补生成。
+- QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**与 report 解耦**：不再由 `report.py` 串联；由 daemon 的 sync/fire 在 report 全部成功后按 `config.json` 的 `ai_tasks.share.enabled`（缺省 `false`）单独调用 `qq_share.py --links`。流程：把 `review.md` 改写成轻松随性的纯文本 `qq-share.txt`（DeepSeek 独立调用）→ 通过 NapCat（OneBot 11 正向 WebSocket，`config.json` 的 `qq` 块配置 `napcat_ws_url` / `napcat_token` / `group_id`）群发文字 + 上传 `review.md` 文件 → 发送成功后删除 `qq-share.txt`（临时产物，两个 `.gitignore` 均忽略）。文字缺失 → 跳过文字只发文件；NapCat 未配置 / 连接 / 发送失败 → 仅告警不阻断 daemon（`qq-share.txt` 保留供下次重试）。也支持 `--from-crawl` / `<folder>` / 全量扫描补发。
 
 ### 4.5 增量抓取逻辑
 
@@ -214,13 +214,13 @@ contests/
 - 提交抓取**完整性校验**：只有遍历完所有分页或到达 last-update 才标记完整；`finish()` 仅在此情况下推进 `last-update.json`，否则下次重跑，避免静默漏提交。
 - **contests-only 不回填已有比赛、不推进 `last-update.json`**：新建比赛的提交以该场 `start_time` 为截止全量回填（`_deadline_for`，与默认模式首次抓取一致），已有比赛的增量由每日 `--submissions-only` 推进。
 
-**deploy 分支状态跟踪约定**：开发分支的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/platforms/*/contests.json`、`crawler/platforms/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**，其中这些文件均纳入版本控制。自托管守护进程（`daemon.py`）在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。**仅 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送**（消息带 `[contests-changed]` 标记，触发部署）；仅 crawler 状态/日志变化时不提交不推送（这些文件已在本地文件系统持久化，无需同步远端）。日志、chromedriver 二进制、`new-contests.json`（临时报告列表）与 `alarms.json`（闹钟表，见 4.6）始终不提交。
+**deploy 分支状态跟踪约定**：开发分支（`main`）的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/platforms/*/contests.json`、`crawler/platforms/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**（deploy 分支专用），其中这些文件均纳入版本控制。自托管守护进程（`daemon.py`）在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。**仅 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送**（消息带 `[contests-changed]` 标记，触发部署）；仅 crawler 状态/日志变化时不提交不推送（这些文件已在本地文件系统持久化，无需同步远端）。`config.json` / `last-update.json` / 各平台 `staged-submissions.json` / `subscriptions/` 均在 deploy 分支入库跟踪，供前端 `/status` 页面展示（见 3.1）。日志、chromedriver 二进制、`new-contests.json`（临时报告列表）与 `alarms.json`（闹钟表，见 4.6）始终不提交。
 
 ### 4.6 闹钟机制（`crawler/scripts/alarm.py`）
 
 **背景**：早期沿用轮询思路（cron 定期扫描所有订阅、比较时间判断是否到点），精确度差且每次跑全量扫描。改用**闹钟表 + 定期检查**：订阅条目填 `end_time`（见 4.3），`sync` 时把未来比赛写入闹钟表，守护进程主循环按 `config.json` 的 `scheduled` 块间隔检查到点即触发。
 
-**闹钟表 `crawler/alarms.json`**：运行时状态文件，`alarm.py` 统一读写，两个 `.gitignore` 均忽略、**不提交**。每条记录含 `link` / `platform` / `end_time` / `fire_at` / `status` / `attempts` / `updated_at`。
+**闹钟表 `crawler/alarms.json`**：运行时状态文件，`alarm.py` 统一读写，两个 `.gitignore` 均忽略、**不提交**。每条记录含 `link` / `platform` / `end_time` / `start_time`（可选，赛前提醒用，缺省由 `end_time - 5h` 推算）/ `fire_at` / `status` / `comments`（展示用）/ `attempts` / `reminded_at`（赛前提醒已发送时间）/ `updated_at`。
 
 **状态模型**：
 
@@ -237,20 +237,25 @@ contests/
 
 | 子命令 | 职责 |
 |--------|------|
-| `alarm.py plan` | 扫描订阅：输出 `HISTORY` / `EXPIRED` / `RETRY` 链接，写未来闹钟（`planned`）。archived 且信息未变跳过；failed 且信息未变输出 `RETRY`（保持 failed 不重置），`RETRY` 第 3 列为原任务的 `end_time`（空 = 原 HISTORY，重试成功不生成报告；非空 = 原 EXPIRED/planned，重试成功要生成报告）；其余按 `end_time` 重新分类。有 failed 重试时输出 `WARNING`。剪除订阅中已删除条目的闹钟 |
+| `alarm.py plan` | 扫描订阅：输出 `HISTORY` / `EXPIRED` / `RETRY` 链接，写未来闹钟（`planned`）。archived 且信息未变跳过；failed 且信息未变输出 `RETRY`（保持 failed 不重置），`RETRY` 第 3 列为原任务的 `end_time`（空 = 原 HISTORY，重试成功不生成报告；非空 = 原 EXPIRED/planned，重试成功要生成报告）；其余按 `end_time` 重新分类。有 failed 重试时输出 `WARNING`。剪除订阅中已删除条目的闹钟。未来比赛写 `start_time`（订阅填了用订阅值，否则 `end_time - 5h`）；`comments` 仅展示用，原地同步不触发重分类 |
 | `alarm.py due` | 输出 `status == planned` 且 `fire_at` 已到的闹钟；pending/archived/failed 一律忽略；无则空输出 |
+| `alarm.py remind` | 输出 `REMIND\t<link>\t<start_time>\t<comments>`：`status == planned`、已进入赛前提醒窗口（`start_time` 前 `qq.remind_before_minutes` 分钟，缺省 15）、且 `reminded_at` 为空；无则空输出 |
 | `alarm.py mark <link> --archived` | 标记已处理完（attempts 清零，plan 下次跳过） |
 | `alarm.py mark <link> --failed` | attempts +1、置 `failed`（fire 不再重试；下次 sync 重试一次） |
+| `alarm.py mark <link> --reminded` | 置 `reminded_at`（赛前提醒已发送，不再重复提醒） |
 | `alarm.py list` | 列出全部闹钟 |
 
 `daemon.py` 集成（v0.3.0 起替代 v0.2.x 的 `server-task.sh`，子命令语义不变）：
 
-- `sync`（`python3 crawler/scripts/daemon.py sync`）：①`plan` 分类订阅并写闹钟表，有 `RETRY`/`WARNING` 时记录日志；②爬取 HISTORY + EXPIRED + RETRY 比赛（`--contests-only --links`）；③生成报告（`report.py --links`）：EXPIRED 必生成，RETRY 仅当原任务填了 `end_time`（第 3 列非空，原 EXPIRED/planned）才生成，HISTORY 不生成；④全部 `mark --archived`。**爬取失败时本次涉及的全部链接 `mark --failed`**（下次 sync 重试），不再静默退出。
-- `fire`（`python3 crawler/scripts/daemon.py fire`）：先 `due`，**无到期闹钟安静退出**；有则走与 `sync` 相同的完整流程（爬取 → 报告 → mark archived）。**爬取失败 `mark --failed`**——fire 只查 planned，失败后不再自动重试，靠下次 sync 重试一次（成功 → `archived`，失败保持 `failed`）。
+- `sync`（`python3 crawler/scripts/daemon.py sync`）：①`plan` 分类订阅并写闹钟表，有 `RETRY`/`WARNING` 时记录日志；②爬取 HISTORY + EXPIRED + RETRY 比赛（`--contests-only --links`）；③生成报告（`report.py --links`）：EXPIRED 必生成，RETRY 仅当原任务填了 `end_time`（第 3 列非空，原 EXPIRED/planned）才生成，HISTORY 不生成；**报告失败（任一应生成报告的比赛的 review 生成失败）→ 本次 sync 中止（不 `mark --archived`、不提交推送，下次重试）**；报告成功后若 `ai_tasks.share.enabled` 开启再调 `qq_share.py --links`（失败仅告警）；④全部 `mark --archived`。**爬取失败时本次涉及的全部链接 `mark --failed`**（下次 sync 重试），不再静默退出。
+- `fire`（`python3 crawler/scripts/daemon.py fire`）：先 `due`，**无到期闹钟安静退出**；有则走与 `sync` 相同的完整流程（爬取 → 报告 → 可选 QQ 分享 → mark archived）；报告失败同样中止（不 `mark --archived`，下次 sync 兜底重试）。**爬取失败 `mark --failed`**——fire 只查 planned，失败后不再自动重试，靠下次 sync 重试一次（成功 → `archived`，失败保持 `failed`）。
 - `incremental`（`python3 crawler/scripts/daemon.py incremental`）：对应 `scheduled_task.py --submissions-only`，每日对所有已开始/进行中的比赛做增量提交抓取。
-- `run` 主循环用 croniter 解析 `crawler/config.json` 的 `scheduled` 块调度上述三个任务；`install` 注册开机自启（Linux systemd user / macOS launchd / Windows schtasks，默认登录后启动），`install --system`（仅 Linux）注册系统级 systemd service（`/etc/systemd/system/`，`WantedBy=multi-user.target`，开机即启动、无需登录会话，适合无头服务器；服务以实际用户身份运行，sudo 时取 `SUDO_USER`），`status` 展示闹钟表与调度状态。
+- `remind`（`python3 crawler/scripts/daemon.py remind`）：赛前提醒。调 `alarm.py remind` 读待提醒闹钟（`REMIND\t<link>\t<start_time>\t<comments>`），通过 NapCat（OneBot 11 正向 WS，`qq` 块配置）向群发【赛前提醒】🏁；发送成功 → `mark --reminded`（失败不标记，下轮重试）。NapCat 未配置 / 连接失败 / 发送失败仅告警不阻断 daemon。
+- `run` 主循环用 croniter 解析 `crawler/config.json` 的 `scheduled` 块调度上述四个任务；`install` 注册开机自启（Linux systemd user / macOS launchd / Windows schtasks，默认登录后启动），`install --system`（仅 Linux）注册系统级 systemd service（`/etc/systemd/system/`，`WantedBy=multi-user.target`，开机即启动、无需登录会话，适合无头服务器；服务以实际用户身份运行，sudo 时取 `SUDO_USER`），`status` 展示闹钟表与调度状态。
 
-**静态版唯一调度**：`alarm.py` 与 `sync`/`fire`/`incremental` 为静态版自托管调度使用（v0.2.x 为 `server-task.sh` + cron，v0.3.0 起为 `daemon.py` + 跨平台自启）。
+**赛前提醒**：未来比赛闹钟的 `start_time` 取订阅的 `start_time`，未填回退 `end_time - 5 小时`（`DEFAULT_CONTEST_DURATION_HOURS`）。提醒提前量取 `qq.remind_before_minutes`（缺省 15），窗口 = `[start_time - 提前量, start_time)`；进入窗口且未提醒即发，发送成功后 `mark --reminded` 避免重复。闹钟显示名优先取 `comments`。
+
+**静态版唯一调度**：`alarm.py` 与 `sync`/`fire`/`incremental`/`remind` 为静态版自托管调度使用（v0.2.x 为 `server-task.sh` + cron，v0.3.0 起为 `daemon.py` + 跨平台自启）。
 
 ## 5. 关键技术决策记录（ADR）
 
@@ -261,12 +266,12 @@ contests/
 | 时间统一北京时间 | 竞赛平台均为中国时区，避免时区转换歧义 | 前端 `parseToBeijingTime` 与爬虫 `_convert_to_beijing_time` 双端一致 |
 | URL 双端常量（`BASE_URL`/`PREFIX_URL`） | 区分页面路由前缀与资源前缀，适配 GitHub Pages `basePath` | 内部路由用根相对路径 + `next/link`（Link 自动添加一次 `basePath`）；`PREFIX_URL` 仅用于 `<a>` 外部/下载类链接。二者混用会产生双前缀 404 |
 | 爬虫数据不纳入 `main` 分支 | 避免大量二进制/JSON 数据污染主分支；`deploy` 分支专管数据与部署 | 主分支本地开发需自行准备 `contests/` |
-| 爬虫状态文件在 `deploy` 分支纳入版本控制 | 增量同步依赖跨运行持久的状态（last-update / 平台索引 / staged） | 开发分支 `.gitignore` 忽略；CI 用 `.gitignore.deploy` 覆盖后正常 `git add` |
+| 爬虫状态文件在 `deploy` 分支纳入版本控制 | 增量同步依赖跨运行持久的状态（last-update / 平台索引 / staged）；config 与状态也供 `/status` 页面展示 | 开发分支 `.gitignore` 忽略；daemon 提交前用 `.gitignore.deploy` 覆盖后正常 `git add` |
 | 订阅模型 `crawler/subscriptions/` 目录 | 统一管理预订比赛；多文件按 `link` 去重合并，文件名随意便于分组 | 三平台均为订阅驱动；订阅目录开发分支 gitignore，deploy 分支纳入版本控制 |
 | 全量提交采集（`submissions/` + `submissions.json`） | 复盘报告需要完整提交序列（含每份源码） | 每次提交都抓源码，初始同步耗时更长 |
 | LLM 复盘报告（DeepSeek） | 每场一份 `review.md`，原始提交序列直接送 LLM，不做预处理 | 依赖 `DEEPSEEK_API_KEY`；存在即跳过（幂等） |
 | 爬虫调度恢复为定时（两个模式） | `--contests-only`（查订阅/新建比赛）与 `--submissions-only`（提交增量同步）分离；复盘报告由 `report.py` 独立运行 | `daemon.py` 的 `sync`/`fire`/`incremental`（守护进程主循环按 `scheduled` 块调度，filelock 串行防冲突） |
-| 闹钟机制 | 用闹钟表 + 定期检查替代轮询：订阅填 `end_time`，`sync` 写闹钟、`fire` 到点触发 | `crawler/scripts/alarm.py` + `crawler/alarms.json`（gitignore）；`daemon.py` 的 `sync`/`fire`/`incremental` 与 `run`（croniter 从 `config.json` 的 `scheduled` 块调度）；状态模型 `planned/pending/archived/failed`，fire 失败即 failed、由 sync 重试 |
+| 闹钟机制 | 用闹钟表 + 定期检查替代轮询：订阅填 `end_time`，`sync` 写闹钟、`fire` 到点触发；`remind` 在开始前发 QQ 群提醒 | `crawler/scripts/alarm.py` + `crawler/alarms.json`（gitignore）；`daemon.py` 的 `sync`/`fire`/`incremental`/`remind` 与 `run`（croniter 从 `config.json` 的 `scheduled` 块调度）；状态模型 `planned/pending/archived/failed`，fire 失败即 failed、由 sync 重试；赛前提醒 `start_time`（缺省 `end_time-5h`）+ `qq.remind_before_minutes` + `mark --reminded` |
 | 平台启用/禁用由 `config.json` 控制 | 快速开关功能 | 每个平台条目 `enabled` 字段（缺省 false 视为禁用），`scheduled_task.py` 启动时过滤；代码保留，未删除 |
 
 ## 6. 已知限制

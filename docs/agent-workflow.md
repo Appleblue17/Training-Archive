@@ -136,7 +136,7 @@
 
 > 历史提交中使用过 `[update]`、`[clean]`、`[optimize]`、`[feature]` 等标签，新提交统一按上述 type 归类。
 
-**语言**：统一使用英文
+**语言**：统一使用中文，除非涉及技术名词或外部依赖
 
 **示例**：`feat(article): add publish API with review option`
 

@@ -24,6 +24,48 @@ export const PREFIX_URL = isProd ? (basePath ? "/" + basePath : "/") : "/";
 
 export const ITEMS_PER_PAGE = 20;
 
+// /status 页面展示的状态文件（deploy 分支入库跟踪，可被前端展示）：
+// config / last-update / 各平台 staged-submissions / subscriptions 目录。
+// 日志与临时产物（global.log.json、platforms/*/log.json 等）不入库、不展示。
+export const statusFileList = [
+  {
+    name: "Last Update",
+    path: "crawler/last-update.json",
+    type: "json",
+    category: "global",
+  },
+  {
+    name: "Config",
+    path: "crawler/config.json",
+    type: "json",
+    category: "global",
+  },
+  {
+    name: "Subscriptions",
+    path: "crawler/subscriptions",
+    type: "dir",
+    category: "global",
+  },
+  {
+    name: "Staged Submissions",
+    path: "crawler/platforms/qoj/staged-submissions.json",
+    type: "json",
+    category: "qoj",
+  },
+  {
+    name: "Staged Submissions",
+    path: "crawler/platforms/hdu/staged-submissions.json",
+    type: "json",
+    category: "hdu",
+  },
+  {
+    name: "Staged Submissions",
+    path: "crawler/platforms/nowcoder/staged-submissions.json",
+    type: "json",
+    category: "nowcoder",
+  },
+];
+
 export const allowedExtensions = [
   ".pdf",
   ".md",
@@ -49,55 +91,4 @@ export const allowedExtensions = [
   ".html",
   ".css",
   ".xml",
-];
-
-export const logFileList = [
-  {
-    name: "Global Log",
-    path: "crawler/global.log.json",
-    type: "log",
-    category: "global",
-  },
-  {
-    name: "Last Update",
-    path: "crawler/last-update.json",
-    type: "json",
-    category: "global",
-  },
-  {
-    name: "Log",
-    path: "crawler/platforms/qoj/log.json",
-    type: "log",
-    category: "qoj",
-  },
-  {
-    name: "Staged Submissions",
-    path: "crawler/platforms/qoj/staged-submissions.json",
-    type: "json",
-    category: "qoj",
-  },
-  {
-    name: "Log",
-    path: "crawler/platforms/hdu/log.json",
-    type: "log",
-    category: "hdu",
-  },
-  {
-    name: "Staged Submissions",
-    path: "crawler/platforms/hdu/staged-submissions.json",
-    type: "json",
-    category: "hdu",
-  },
-  {
-    name: "Log",
-    path: "crawler/platforms/nowcoder/log.json",
-    type: "log",
-    category: "nowcoder",
-  },
-  {
-    name: "Staged Submissions",
-    path: "crawler/platforms/nowcoder/staged-submissions.json",
-    type: "json",
-    category: "nowcoder",
-  },
 ];

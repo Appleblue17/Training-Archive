@@ -2,6 +2,53 @@
 
 > 格式基于 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [0.3.1] - 2026-08-13
+
+### Added
+
+- **QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**：将比赛复盘（`review.md`）改写成轻松随性的纯文本（`qq-share.txt`，DeepSeek 独立调用、更高 temperature），并通过 NapCat（OneBot 11 正向 WebSocket，Bearer token 鉴权）发送到 QQ 群——群发文字（`send_group_msg`，CQ 码转义 + Markdown 清洗）+ 上传 `review.md` 文件（`upload_group_file`）；发送成功后删除 `qq-share.txt`（临时产物，不入 git）
+  - 文字缺失（生成失败/为空）：记 log，跳过文字直接发 review 文件
+  - `review.md` 不存在：跳过（share 依赖 report 生成的完整报告，不自行生成）
+  - NapCat 未配置 / 连接失败 / 发送失败：仅告警不阻断 daemon（`qq-share.txt` 保留供下次重试）
+  - 新增 `ai_tasks.share.enabled` 配置开关（显式开启才调用；缺省 `false`）与 `qq` 块（`napcat_ws_url` / `napcat_token` / `group_id`）；`config.example.json` 已更新
+  - 新增依赖 `websocket-client`（`crawler/requirements.txt`）
+- **QQ 群机器人（`crawler/scripts/qq_bot.py`）**：常驻轮询 NapCat 群消息记录增量拉取（无需修改上报配置），在群里 **@机器人** 发指令即可查询 daemon 状态 / 即将开始的比赛 / 闹钟概览 / 已归档比赛与复盘状态 / 今日运势（`/status` `/upcoming` `/alarms` `/contests` `/fortune` `/help` + 自然语言关键词）；`daemon.py` 新增 `install-qqbot` / `uninstall-qqbot` 独立自启服务
+- **qq-bot 新指令**（`qq_bot.py`）：
+  - `/review`（`/rv`）复盘查询：无参数返回最近有复盘的比赛，带关键词搜索并返回摘要（截断 400 字符）
+  - `/subs` 订阅管理：列出全部订阅；`/subs add <link> [end=时间] [start=时间] [备注]` 新增（platform 自动推断，写入 `crawler/subscriptions/qqbot.json`；`end=`/`start=` 可选键值，顺序任意，其余 token 拼为备注，时间格式 `ISO 8601 北京时间`）；`/subs del <link>` 删除（从所有订阅文件移除）；改动后后台触发一次 `daemon.py sync` 并在群里回复结果
+  - `/subs add` 裸时间自动识别（`qq_bot.py`）：**恰好一个可解析为时间的裸 token**（未带 `end=` 前缀）自动作为 `end_time`——如 `@机器人 /subs add <link> 2026-08-13-20:00:00+08:00` 可省略 `end=`（Python `fromisoformat` 接受 `-` 分隔的 ISO 时间）；多个裸 token 一律当备注、已有 `end=` 时裸 token 不覆盖
+  - `/sync` 手动触发一次完整同步（后台执行，完成后群里回复结果）
+  - `/subs` 与 `/sync` 仅 `deploy` 分支工作区生效（`PROD_BRANCH` 保护，防止在非生产分支误改订阅）
+- **今日运势确定性**（`qq_bot.py`）：`/fortune` 从随机改为按「user_id + 北京日期 + salt」确定性选择（同一天同一人结果一致，跨天变化），新增幸运数字；salt 可配 `config.json` 的 `qq.fortune_salt`（缺省固定值）
+- **赛前提醒（`alarm.py remind` + `daemon.py remind`）**：planned 闹钟在比赛开始前 `qq.remind_before_minutes` 分钟（缺省 15）向 QQ 群发【赛前提醒】🏁，发送成功后 `mark --reminded`（失败下轮重试）；订阅可填 `start_time`（未填回退 `end_time - 5h`）；`scheduled` 块新增 `remind`（缺省 `*/5 * * * *`）；`/upcoming` 改用 `start_time` 排序、闹钟显示名优先取 `comments`
+
+### Changed
+
+- **report 与 share 解耦**（`report.py` / `daemon.py`）：`report.py` 不再串联生成 `qq-share.txt`；由 daemon 的 sync/fire 在 report 全部成功后按 `ai_tasks.share.enabled` 单独调用 `qq_share.py --links`
+- **review 生成失败阻断归档**（`daemon.py` + `report.py`）：`report.py --links` 任一应生成报告的比赛的 review 生成失败 → 返回非零；sync/fire 据此中止（不 `mark --archived`、不提交推送，下次 sync 重试），避免「已归档但缺复盘」
+- **`qq-share.txt` 不进 git**：`.gitignore` / `.gitignore.deploy` 忽略 `contests/*/qq-share.txt`；deploy 分支 `git rm --cached` 清理已跟踪的遗留文件
+- **前端 `/log` 日志页弃用删除，改为 `/status` 状态页**（`src/app/(main)/status/`）：日志为运行时噪音（不入库），不再上网页展示；`/status` 展示 deploy 分支入库跟踪的**状态数据**——`crawler/config.json`（平台启用 / 调度 / QQ 配置）、`crawler/last-update.json`（各平台最后更新时间）、各平台 `staged-submissions.json`（待回填提交）、`crawler/subscriptions/` 订阅列表（JSON 渲染 + 复制按钮）。面包屑导航 "Log" → "Status"（图标 `Activity`）；`global.ts` 的 `logFileList` → `statusFileList`
+- **移除顶部爬虫状态徽章**（`layout.tsx` + `crawler-status.tsx`）：原右上角 "Updated X ago" + 链接 GitHub Actions 的徽章删除，不再跳外站；更新时间改在 `/status` 页面的 `last-update.json` 中查看
+- **gitignore 保持 dev/deploy 双机制**：`.gitignore.deploy` 保留（deploy 分支专用），daemon 提交前 `cp .gitignore.deploy .gitignore` 覆盖；deploy 分支跟踪 `contests/`、`config.json`、`last-update.json`、`platforms/*/contests.json`、`staged-submissions.json`、`subscriptions/`（供 `/status` 展示与 CI 增量同步），仅忽略 log 与运行时临时产物（`daemon.log` / `global.log.json` / `platforms/*/log.json` / `qq-bot.log` / `bot-state.json` / `daemon-state.json` / `alarms.json` / `new-contests.json` / `server-task.log` / `input_*.json` / `qq-share.txt` / chromedriver / `public/contests`）
+- **sync 结果摘要回复**（`qq_bot.py`）：`/subs add` / `/subs del` / `/sync` 后台同步完成后，群里回复由「原始日志尾部 8 行」改为**结构化摘要**——待处理分类（历史/过期/重试）、爬取结果（新建/已存在/未开始，未开始给出比赛名）、复盘与分享数、推送状态；失败时给出中止原因（订阅时间格式错误 / 订阅文件格式 / 爬取出错 / 复盘生成失败）与修复提示，不再把原始日志刷到群里（详情仍在服务器 daemon 日志）
+
+### Fixed
+
+- **时间非法的订阅条目不剪除既有闹钟**（`alarm.py`）：`plan` 的时间格式校验跳过条目时未加入 `active_links`，剪除逻辑把该链接的既有闹钟（含 archived / planned）一并删除——用户填错 `end_time`/`start_time` 时虽然 sync 中止不爬取，但闹钟表已被破坏（archived 丢失，修复后该比赛会重爬）。修复：只要订阅里存在该 link 就加入 `active_links`，时间非法仅影响本次分类
+- **`alarms.json` 损坏时 plan 中止而非静默重建**（`alarm.py`）：`_load_alarms` 读取失败原返回空 dict，plan 继续把所有闹钟当空表重建——全部 archived 状态丢失、已归档比赛全部重爬。修复：损坏返回 `None`，`cmd_plan` 据此返回非零中止（daemon sync 不爬取不提交），`due`/`remind` 安静跳过、`mark` 报错退出、`list` 提示
+- **`cmd_due` 对 fire_at 损坏条目不再当作到期触发**（`alarm.py`）：原 `dt is None or dt <= now` 会把 fire_at 无法解析的 planned 条目当到期触发爬取。修复：解析失败跳过（不触发）；`plan` 在 planned 条目未变时发现 `fire_at != end_time` 顺手修正，避免损坏的 fire_at 永不触发或提前触发
+- **移除已跟踪的运行时文件**（`daemon.log` / `daemon-state.json` / `global.log.json` / `platforms/hdu/log.json`）：这些文件在 `.gitignore` / `.gitignore.deploy` 中本就列入忽略，但 deploy 分支早期提交把它们**跟踪**了——gitignore 对已跟踪文件无效，`git add crawler` 会把其改动一起暂存，导致每次 `[auto] [contests-changed]` 提交都夹带运行时日志噪音（其他分支 master/v0.2.x/v0.3.0 均未跟踪）。修复：`git rm --cached` 一次性移除跟踪（工作区文件保留），与 dev 分支行为统一，gitignore 规则此后真正生效；`commit_and_push` 不再需要手动 reset 排除
+- **EXPIRED 订阅每次 sync 重爬**（`alarm.py`）：过期比赛（`end_time` 已过）建闹钟条目时未存 `start_time`（null），而 `plan` 的「订阅未变化」比较用 `_effective_start_time(s)`（`end_time - 5h`）——`null != 计算值` 恒成立，archived 条目每次都被重新分类为 EXPIRED，导致同一场比赛每次 sync 都重爬（爬取/报告/分享重复执行）。修复：HISTORY / EXPIRED 分支统一存 `start_time=_effective_start_time(s)`（与 planned 一致），archived 后不再重复触发
+- **`commit_and_push` 跳过提交时遗留暂存文件**（`daemon.py`）：`git add .gitignore crawler contests` 会把 crawler 运行时文件（`daemon.log` / `log.json` / 订阅文件等）暂存，发现 contests/ 无变化决定不提交时只 `reset` 了 chromedriver、其余文件留在 index——下一次手动 `git commit` 会把这些运行时文件一并提交。修复：跳过提交前 `git reset` 取消全部暂存
+- **daemon 自动提交覆盖开发者 git 身份**（`daemon.py`）：`commit_and_push` 用 `git config` 把 `server-task[bot]` 身份持久写进 `.git/config`，覆盖开发者在仓库配置的 `user.name` / `user.email`——daemon 跑过一次后，后续手动提交全部变成 bot 身份（v0.3.1 的提交即因此显示为 server-task[bot]）。修复：commit 改用 `git -c user.name=... -c user.email=...` 临时指定 bot 身份（仅对单次提交生效），不再写 `.git/config`，开发者身份保持不变
+- **订阅时间格式校验**（`qq_bot.py` + `alarm.py` + `daemon.py`）：`/subs add` 的 `end=`/`start=` 时间格式错误 → 终止不写入并提示（给出 `ISO 8601 北京时间` 示例）；手动 `sync` 时 `alarm.py plan` 发现订阅条目时间字段存在但解析失败 → 跳过该条目并输出 `[alarm] ERROR`（汇总行追加 `N invalid time`），`daemon.py sync` 收到非零返回即中止（不爬取不提交），避免把填错时间当 HISTORY 立即爬掉
+- **qq-bot 增量游标改用消息 `time`**（`qq_bot.py`）：NapCat 的 `message_seq` / `message_id` 并非全局递增，用作游标会把新消息永久挡掉；改为按非自己消息的 `time` 推进
+- **未配置 `QQ_BOT_UID` 时 bot 刷屏**（`qq_bot.py`）：`bot_uid` 为空时无法识别 @，原实现退化为处理所有非自己消息——群聊每条普通消息都会触发「收到！可用 /help」逐条回复，且含关键词（比赛/报告/状态/订阅/运势等）的闲聊会误执行指令。修复：未配置 `bot_uid` 时**只响应明确以 `/` 开头的指令**、未匹配指令静默跳过（普通聊天完全忽略）；`process_once` 按 60s 节流告警提示配置 `.env QQ_BOT_UID`，`process_force` 单次提示
+
+### Removed
+
+- **`report.py --qq-only` 兼容入口**：转调 qq_share.py 的入口已由 qq_share.py 直接提供（`--links` / `--from-crawl` / `<folder>` / 全量扫描）
+
 ## [0.3.0] - 2026-08-12
 
 ### Added

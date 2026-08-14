@@ -6,6 +6,12 @@
   - fire         闹钟到点触发（无到期闹钟安静退出）
   - sync         同步订阅：历史/过期立即爬，未来比赛写入闹钟
   - incremental  提交增量同步（scheduled_task.py --submissions-only）
+  - remind       赛前提醒：planned 比赛开始前 15 分钟向 QQ 群发提醒
+
+复盘报告（report.py）：sync/fire 爬取成功后生成；任一应生成报告的比赛的
+review 生成失败 → 该次 sync/fire 中止（不 mark archived、不提交推送，下次
+重试）。QQ 群分享（qq_share.py）：report 全部成功后按 config.json 的
+ai_tasks.share.enabled 单独调用；NapCat 未配置/发送失败仅告警不阻断。
 
 与 server-task.sh 语义一致（git 流程、闹钟分类、失败标记原样保留），
 提交规则调整为：仅 contests/ 有实质更新才提交推送（带 [contests-changed] 标记），
@@ -23,10 +29,15 @@
   python3 crawler/scripts/daemon.py sync           同步订阅（一次性）
   python3 crawler/scripts/daemon.py fire           闹钟到点触发（一次性；无到期安静退出）
   python3 crawler/scripts/daemon.py incremental    提交增量同步（一次性）
+  python3 crawler/scripts/daemon.py remind         赛前提醒检查（一次性；发 QQ 群提醒）
   python3 crawler/scripts/daemon.py install        注册开机自启（按 OS；默认登录后启动）
   python3 crawler/scripts/daemon.py install --system   仅 Linux：注册系统级服务（开机即启动，需 sudo）
   python3 crawler/scripts/daemon.py uninstall      注销开机自启
   python3 crawler/scripts/daemon.py uninstall --system  仅 Linux：注销系统级服务（需 root）
+  python3 crawler/scripts/daemon.py install-qqbot      注册 qq-bot 独立服务（QQ 群指令轮询）
+  python3 crawler/scripts/daemon.py install-qqbot --system  仅 Linux：注册系统级 qq-bot 服务（需 sudo）
+  python3 crawler/scripts/daemon.py uninstall-qqbot      注销 qq-bot 服务
+  python3 crawler/scripts/daemon.py uninstall-qqbot --system  仅 Linux：注销系统级 qq-bot 服务（需 root）
   python3 crawler/scripts/daemon.py status         查看状态（scheduled / 闹钟 / 自启 / git / 日志）
   python3 crawler/scripts/daemon.py log [N]        查看最近 N 行运行日志（默认 50）
   python3 crawler/scripts/daemon.py --help         显示本帮助
@@ -60,6 +71,13 @@ from dotenv import load_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from crawler.platforms.base import beijing  # noqa: E402
+from crawler.scripts.qq_share import (  # noqa: E402
+    QQGroupSender,
+    _load_qq_config,
+    ai_task_enabled,
+    clean_for_qq,
+    create_connection,
+)
 
 try:
     from croniter import croniter
@@ -85,17 +103,23 @@ LOCK_PATH = os.path.join(tempfile.gettempdir(), "training-archive-daemon.lock")
 POLL_INTERVAL = 30  # 主循环检查间隔（秒）
 
 # 任务名 → config.json scheduled 块键名（默认表达式与 config.example.json 一致）
-TASKS = ("fire", "sync", "incremental")
+TASKS = ("fire", "sync", "incremental", "remind")
 DEFAULT_SCHEDULED = {
     "fire": "*/5 * * * *",        # 闹钟检查
     "sync": "0 */3 * * *",        # 订阅同步
     "incremental": "0 4 * * *",   # 提交增量（每日）
+    "remind": "*/5 * * * *",      # 赛前提醒（开始前 15 分钟发 QQ 群提醒）
 }
 
 # systemd / launchd 服务名
 UNIT_NAME = "training-archive-daemon"
 PLIST_LABEL = "com.trainingarchive.daemon"
 SCHTASKS_NAME = "TrainingArchiveDaemon"
+
+# qq-bot 服务（独立于 daemon，可单独管理）
+QQBOT_UNIT_NAME = "training-archive-qqbot"
+QQBOT_PLIST_LABEL = "com.trainingarchive.qqbot"
+QQBOT_SCHTASKS_NAME = "TrainingArchiveQQBot"
 
 
 # ---------------------------------------------------------------------------
@@ -196,9 +220,11 @@ def commit_and_push():
     已在本地文件系统持久化（deploy 分支工作区），无需同步远端。
     仅 contests/ 变化（新比赛 / 新提交 / 新报告）才发 [contests-changed]
     提交，触发 deploy.yml 部署。
+
+    提交身份：用 `git -c` 临时指定 bot 身份，不写 .git/config——避免覆盖
+    开发者在仓库里配置的 user.name / user.email（否则后续手动提交全变成
+    server-task[bot]）。
     """
-    git("config", "user.name", "server-task[bot]", check=False)
-    git("config", "user.email", "server-task[bot]@users.noreply.github.com", check=False)
     shutil.copy(os.path.join(REPO_ROOT, ".gitignore.deploy"), os.path.join(REPO_ROOT, ".gitignore"))
     git("add", ".gitignore", "crawler", "contests", check=False)
     git("reset", "HEAD", "crawler/chromedriver-linux64/chromedriver", check=False)
@@ -209,9 +235,15 @@ def commit_and_push():
     changed = [line for line in r.stdout.splitlines() if line.startswith("contests/")]
     if not changed:
         log("No contest data changes; skip commit/push (crawler state persists locally).")
+        # 取消暂存所有（含 crawler 运行时文件）：git add crawler 会把
+        # daemon.log / log.json / 订阅文件等暂存，不清理会遗留在 index 里，
+        # 下一次手动 git commit 时被一并提交。
+        git("reset", check=False)
         return
 
-    git("commit", "-m", "[auto] [contests-changed] Update contest and submission data")
+    git("-c", "user.name=server-task[bot]",
+        "-c", "user.email=server-task[bot]@users.noreply.github.com",
+        "commit", "-m", "[auto] [contests-changed] Update contest and submission data")
     git("push", "origin", DEPLOY_BRANCH)
     log(f"Pushed to {DEPLOY_BRANCH}.")
 
@@ -296,6 +328,9 @@ def cmd_sync():
     爬取失败 → 本次涉及的全部链接 mark --failed（下次 sync 重试）。
     报告条件 = 订阅填了 end_time：EXPIRED 必生成；RETRY 仅当原任务填了
     end_time（第 3 列非空）才生成；HISTORY 不生成。
+    review 生成失败 → 本次 sync 中止（不 mark archived、不提交推送）。
+    report 成功后若 ai_tasks.share.enabled 开启 → 调 qq_share.py 群发
+    （失败仅告警，不阻断 sync）。
     """
     def _run():
         log("=== sync ===")
@@ -306,12 +341,18 @@ def cmd_sync():
 
         # 1. plan 分类订阅并写闹钟表。转发所有 [alarm] 诊断行到日志：
         #    plan 汇总、WARNING（failed 重试 / 订阅条目告警）、ERROR（订阅文件
-        #    格式有问题被跳过）——用户能立刻看到，而不只是静默跳过。
+        #    格式有问题 / 时间字段非法被跳过）。plan 返回非零（格式有问题）→
+        #    **中止本次 sync**：不爬取不提交，用户修复订阅后重跑——避免把
+        #    "填错时间" 静默当作 HISTORY 立即爬掉且不生成报告。
         proc = run_py("alarm.py", "plan", capture=True)
         plan_out = proc.stdout
         for l in plan_out.splitlines():
             if l.startswith("[alarm]"):
                 log(l)
+        if proc.returncode != 0:
+            log("[ERROR] alarm.py plan failed (subscription file / time format "
+                "problems); aborting sync. Fix the subscriptions and re-run.")
+            return proc.returncode
         history_links, expired_links, retry_links = _parse_plan_output(plan_out)
         retry_all = [link for link, _ in retry_links]
         all_links = list(dict.fromkeys(history_links + expired_links + retry_all))
@@ -336,6 +377,8 @@ def cmd_sync():
         #    反查比赛文件夹生成（report.py --links），不依赖 new-contests.json。
         #    EXPIRED 必生成；RETRY 按第 3 列 end_time 判断：非空 = 原
         #    EXPIRED/planned（生成），空 = 原 HISTORY（不生成）。
+        #    任一应生成报告的比赛的 review 生成失败 → 中止本次 sync
+        #    （不 mark archived、不提交推送；下次 sync 重试）。
         report_links = list(
             dict.fromkeys(expired_links + [link for link, et in retry_links if et])
         )
@@ -343,7 +386,14 @@ def cmd_sync():
             log("Generating reviews for expired/retried contests.")
             p = run_py("report.py", "--links", ",".join(report_links))
             if p.returncode != 0:
-                log("[WARN] report.py failed (skipped review generation).")
+                log("[WARN] review generation failed; aborting before mark "
+                    "archived (retried next sync).")
+                return p.returncode
+            # QQ 群分享（share AI task）：report 成功后按 config.json 的
+            # ai_tasks.share.enabled 显式开启才调用；失败仅告警不阻断。
+            if ai_task_enabled("share"):
+                log("Generating QQ group shares for reports.")
+                run_py("qq_share.py", "--links", ",".join(report_links))
 
         # 4. 标记已处理完（archived；保留历史，plan 下次跳过）
         for link in all_links:
@@ -372,6 +422,9 @@ def cmd_fire():
 
     爬取失败 → mark --failed（fire 只查 planned，失败后不再自动重试，
     靠下次 sync 重试一次）。
+    review 生成失败 → 本次 fire 中止（不 mark archived、不提交推送）。
+    report 成功后若 ai_tasks.share.enabled 开启 → 调 qq_share.py 群发
+    （失败仅告警，不阻断 fire）。
     """
     # 先读闹钟表（轻量）；无到期则安静退出（不写日志、不碰 git）
     due_links = _due_links()
@@ -394,14 +447,23 @@ def cmd_fire():
                 run_py("alarm.py", "mark", link, "--failed", capture=True)
             return p.returncode
 
-        # 到期比赛（填了 end_time 的未来比赛）都要生成报告；失败仅告警。
-        # 报告条件 = 订阅的 end_time 标记（fire due），按链接反查比赛文件夹
-        # 生成（report.py --links），不依赖 new-contests.json——比赛此前已
+        # 到期比赛（填了 end_time 的未来比赛）都要生成报告。报告条件 =
+        # 订阅的 end_time 标记（fire due），按链接反查比赛文件夹生成
+        # （report.py --links），不依赖 new-contests.json——比赛此前已
         # 归档过（非本次新建）也要生成，否则会漏掉复盘。
+        # 任一应生成报告的比赛的 review 生成失败 → 中止本次 fire
+        # （不 mark archived；下次 sync 兜底重试）。
         log("Generating reviews for due contests.")
         p = run_py("report.py", "--links", ",".join(due_links))
         if p.returncode != 0:
-            log("[WARN] report.py failed (skipped review generation).")
+            log("[WARN] review generation failed; aborting before mark "
+                "archived (retried next sync).")
+            return p.returncode
+        # QQ 群分享（share AI task）：report 成功后按 config.json 的
+        # ai_tasks.share.enabled 显式开启才调用；失败仅告警不阻断。
+        if ai_task_enabled("share"):
+            log("Generating QQ group shares for reports.")
+            run_py("qq_share.py", "--links", ",".join(due_links))
 
         for link in due_links:
             run_py("alarm.py", "mark", link, "--archived", capture=True)
@@ -410,6 +472,99 @@ def cmd_fire():
         commit_and_push()
         log("=== fire done ===")
         return 0
+
+    return with_lock(_run)
+
+
+def _remind_minutes_left(start_iso, now):
+    """距离比赛开始的分钟数（四舍五入，至少 1）；解析失败返回 None。"""
+    try:
+        start = datetime.fromisoformat(str(start_iso))
+        if start.tzinfo is None:
+            start = start.replace(tzinfo=beijing)
+        start = start.astimezone(beijing)
+    except (TypeError, ValueError):
+        return None
+    minutes = (start - now).total_seconds() / 60.0
+    return max(1, int(round(minutes)))
+
+
+def _fmt_remind_time(start_iso, now):
+    """提醒消息里的开始时间：今天/明天 HH:MM，更远则 MM-DD HH:MM。"""
+    try:
+        start = datetime.fromisoformat(str(start_iso))
+        if start.tzinfo is None:
+            start = start.replace(tzinfo=beijing)
+        start = start.astimezone(beijing)
+    except (TypeError, ValueError):
+        return str(start_iso)
+    day = (start.date() - now.date()).days
+    hm = start.strftime("%H:%M")
+    if day == 0:
+        return f"今天 {hm}"
+    if day == 1:
+        return f"明天 {hm}"
+    return start.strftime("%m-%d %H:%M")
+
+
+def cmd_remind():
+    """赛前提醒：planned 且进入提醒窗口的比赛，向 QQ 群发提醒并标记 reminded。
+
+    alarm.py remind 只读输出 REMIND\t<link>\t<start_time>\t<comments>；
+    发送成功后调 mark --reminded（发送失败不标记，下轮重试）。NapCat 未配置 /
+    连接失败 / 发送失败仅告警，不阻断 daemon 主流程。
+    """
+    def _run():
+        proc = run_py("alarm.py", "remind", capture=True)
+        reminds = []
+        for line in proc.stdout.splitlines():
+            if not line.startswith("REMIND\t"):
+                continue
+            parts = line.split("\t", 3)
+            reminds.append({
+                "link": parts[1],
+                "start_time": parts[2] if len(parts) > 2 else "",
+                "comments": parts[3] if len(parts) > 3 else "",
+            })
+        if not reminds:
+            return 0
+
+        qq_cfg = _load_qq_config()
+        ws_url = qq_cfg.get("napcat_ws_url", "")
+        group_id = qq_cfg.get("group_id", 0)
+        if not ws_url or not group_id:
+            log(f"赛前提醒：NapCat 未配置（{len(reminds)} 条待提醒），跳过发送。")
+            return 0
+        if create_connection is None:
+            log("赛前提醒：websocket-client 未安装，跳过发送。")
+            return 0
+
+        sender = QQGroupSender(ws_url, group_id, qq_cfg.get("napcat_token", ""))
+        try:
+            sender._connect()
+        except Exception as e:
+            log(f"赛前提醒：NapCat 连接失败 {ws_url}: {e}")
+            return 0
+        try:
+            for r in reminds:
+                now = datetime.now(beijing)
+                mins = _remind_minutes_left(r["start_time"], now)
+                name = r["comments"] or r["link"]
+                if mins is None:
+                    st = str(r["start_time"])
+                else:
+                    st = _fmt_remind_time(r["start_time"], now)
+                head = "【赛前提醒】"
+                body = f"「{name}」将于 {st} 开始，还有约 {mins} 分钟，记得提前做好准备！"
+                ok = sender.send_text(clean_for_qq(f"{head}\n{body}"))
+                if ok:
+                    run_py("alarm.py", "mark", r["link"], "--reminded", capture=True)
+                    log(f"赛前提醒已发送：{name}（{st} 开始）。")
+                else:
+                    log(f"赛前提醒发送失败（下轮重试）：{name}。")
+        finally:
+            sender._close()
+        return len(reminds)
 
     return with_lock(_run)
 
@@ -496,6 +651,8 @@ def cmd_run():
                         cmd_sync()
                     elif task == "incremental":
                         cmd_incremental()
+                    elif task == "remind":
+                        cmd_remind()
                 except SystemExit as e:
                     # 任务失败（returncode 非零）不应杀死 daemon；记日志继续
                     log(f"[run] task {task} exited with code {e.code}")
@@ -522,6 +679,11 @@ def _system():
 def _service_command():
     """安装为服务时拉起 run 的完整命令（[python, script, run]）。"""
     return [sys.executable, os.path.join(REPO_ROOT, "crawler", "scripts", "daemon.py"), "run"]
+
+
+def _qqbot_service_command():
+    """安装为服务时拉起 qq-bot 的完整命令（[python, qq_bot.py, run]）。"""
+    return [sys.executable, os.path.join(REPO_ROOT, "crawler", "scripts", "qq_bot.py"), "run"]
 
 
 def install_linux(system=False):
@@ -695,6 +857,229 @@ def cmd_install(system=False):
     return 0
 
 
+# ---------------------------------------------------------------------------
+# qq-bot 服务安装（独立于 daemon；install-qqbot / uninstall-qqbot）
+# ---------------------------------------------------------------------------
+def install_qqbot_linux(system=False):
+    """注册 qq-bot 自启：默认 systemd user unit；system=True 时系统级。"""
+    if system:
+        return install_qqbot_linux_system()
+    systemd_dir = os.path.expanduser("~/.config/systemd/user")
+    if shutil.which("systemctl") and (os.path.isdir(systemd_dir) or True):
+        os.makedirs(systemd_dir, exist_ok=True)
+        unit = os.path.join(systemd_dir, f"{QQBOT_UNIT_NAME}.service")
+        py, script, run = _qqbot_service_command()
+        content = f"""[Unit]
+Description=Training Archive QQ Bot (group command polling)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart={py} {script} {run}
+WorkingDirectory={REPO_ROOT}
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target
+"""
+        with open(unit, "w", encoding="utf-8") as f:
+            f.write(content)
+        subprocess.run(["systemctl", "--user", "daemon-reload"], check=False)
+        subprocess.run(
+            ["systemctl", "--user", "enable", "--now", f"{QQBOT_UNIT_NAME}.service"],
+            check=False,
+        )
+        log(f"Installed systemd user unit: {unit}")
+        log("Start at login: systemctl --user enable --now training-archive-qqbot.service")
+        return
+    log("[ERROR] qq-bot needs systemd (user unit); no fallback available.")
+    return 1
+
+
+def install_qqbot_linux_system():
+    """系统级 qq-bot service（/etc/systemd/system，开机即启动）。"""
+    if not shutil.which("systemctl"):
+        log("[ERROR] systemd not available on this host; cannot install qq-bot service.")
+        return 1
+    if os.geteuid() != 0:
+        log("[ERROR] 'install-qqbot --system' needs root to write /etc/systemd/system.")
+        log("Run: sudo .venv/bin/python crawler/scripts/daemon.py install-qqbot --system")
+        return 1
+    owner = os.environ.get("SUDO_USER") or getpass.getuser()
+    unit = f"/etc/systemd/system/{QQBOT_UNIT_NAME}.service"
+    py, script, run = _qqbot_service_command()
+    content = f"""[Unit]
+Description=Training Archive QQ Bot (group command polling)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User={owner}
+ExecStart={py} {script} {run}
+WorkingDirectory={REPO_ROOT}
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(unit, "w", encoding="utf-8") as f:
+        f.write(content)
+    subprocess.run(["systemctl", "daemon-reload"], check=False)
+    subprocess.run(
+        ["systemctl", "enable", "--now", f"{QQBOT_UNIT_NAME}.service"],
+        check=False,
+    )
+    log(f"Installed systemd system unit: {unit} (User={owner})")
+    log("Manage: systemctl status/enable/disable training-archive-qqbot.service")
+    return 0
+
+
+def install_qqbot_macos():
+    """launchd LaunchAgent：登录时启动 + KeepAlive。"""
+    agents_dir = os.path.expanduser("~/Library/LaunchAgents")
+    os.makedirs(agents_dir, exist_ok=True)
+    plist = os.path.join(agents_dir, f"{QQBOT_PLIST_LABEL}.plist")
+    py, script, run = _qqbot_service_command()
+    content = f"""<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>{QQBOT_PLIST_LABEL}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{py}</string>
+        <string>{script}</string>
+        <string>{run}</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>{REPO_ROOT}</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>{LOG_FILE}</string>
+    <key>StandardErrorPath</key>
+    <string>{LOG_FILE}</string>
+</dict>
+</plist>
+"""
+    with open(plist, "w", encoding="utf-8") as f:
+        f.write(content)
+    subprocess.run(["launchctl", "unload", plist], check=False)
+    subprocess.run(["launchctl", "load", plist], check=False)
+    log(f"Installed launchd agent: {plist}")
+
+
+def install_qqbot_windows():
+    """schtasks ONLOGON：登录时启动（pythonw 无控制台窗口）。"""
+    python = sys.executable
+    pythonw = python.replace("python.exe", "pythonw.exe")
+    if os.path.exists(pythonw):
+        python = pythonw
+    script = os.path.join(REPO_ROOT, "crawler", "scripts", "qq_bot.py")
+    tr = f'"{python}" "{script}" run'
+    r = subprocess.run(
+        ["schtasks", "/Create", "/F", "/TN", QQBOT_SCHTASKS_NAME, "/SC", "ONLOGON",
+         "/TR", tr, "/RL", "LIMITED"],
+        text=True, capture_output=True,
+    )
+    if r.returncode != 0:
+        log(f"[WARN] schtasks failed: {r.stdout.strip()} {r.stderr.strip()}")
+        return 1
+    log(f"Installed scheduled task: {QQBOT_SCHTASKS_NAME} (ONLOGON)")
+
+
+def cmd_install_qqbot(system=False):
+    """注册 qq-bot 自启（独立服务，可单独管理）。"""
+    s = _system()
+    if system and s != "linux":
+        log(f"[WARN] '--system' is only supported on Linux (current: {s}); "
+            "falling back to user autostart.")
+        system = False
+    if s == "linux":
+        return install_qqbot_linux(system)
+    elif s == "macos":
+        install_qqbot_macos()
+    elif s == "windows":
+        install_qqbot_windows()
+    else:
+        log(f"[WARN] unsupported platform: {platform.system()}; manual setup required.")
+        return 1
+    log("Install done. Start via the service, or run 'qq_bot.py run' to verify.")
+    return 0
+
+
+def uninstall_qqbot_linux(system=False):
+    if system:
+        return uninstall_qqbot_linux_system()
+    unit = os.path.expanduser(f"~/.config/systemd/user/{QQBOT_UNIT_NAME}.service")
+    if os.path.exists(unit):
+        subprocess.run(
+            ["systemctl", "--user", "disable", "--now", f"{QQBOT_UNIT_NAME}.service"], check=False
+        )
+        os.remove(unit)
+        subprocess.run(["systemctl", "--user", "daemon-reload"], check=False)
+        log(f"Removed systemd user unit: {unit}")
+        return
+    log("(qq-bot user service not installed)")
+
+
+def uninstall_qqbot_linux_system():
+    unit = f"/etc/systemd/system/{QQBOT_UNIT_NAME}.service"
+    if not os.path.exists(unit):
+        log("(qq-bot system service not installed)")
+        return
+    if os.geteuid() != 0:
+        log("[ERROR] 'uninstall-qqbot --system' needs root to remove /etc/systemd/system.")
+        return 1
+    subprocess.run(
+        ["systemctl", "disable", "--now", f"{QQBOT_UNIT_NAME}.service"], check=False
+    )
+    os.remove(unit)
+    subprocess.run(["systemctl", "daemon-reload"], check=False)
+    log(f"Removed systemd system unit: {unit}")
+
+
+def uninstall_qqbot_macos():
+    plist = os.path.expanduser(f"~/Library/LaunchAgents/{QQBOT_PLIST_LABEL}.plist")
+    if os.path.exists(plist):
+        subprocess.run(["launchctl", "unload", plist], check=False)
+        os.remove(plist)
+        log(f"Removed launchd agent: {plist}")
+    else:
+        log("(qq-bot launchd agent not installed)")
+
+
+def uninstall_qqbot_windows():
+    subprocess.run(["schtasks", "/Delete", "/F", "/TN", QQBOT_SCHTASKS_NAME], check=False)
+    log(f"Removed scheduled task: {QQBOT_SCHTASKS_NAME}")
+
+
+def cmd_uninstall_qqbot(system=False):
+    s = _system()
+    if system and s != "linux":
+        log(f"[WARN] '--system' is only supported on Linux (current: {s}); "
+            "falling back to user autostart removal.")
+        system = False
+    if s == "linux":
+        return uninstall_qqbot_linux(system)
+    elif s == "macos":
+        uninstall_qqbot_macos()
+    elif s == "windows":
+        uninstall_qqbot_windows()
+    else:
+        log(f"[WARN] unsupported platform: {platform.system()}")
+        return 1
+    log("Uninstall done.")
+    return 0
+
+
 def uninstall_linux(system=False):
     if system:
         return uninstall_linux_system()
@@ -793,6 +1178,31 @@ def _autostart_info():
     return "(unsupported platform)"
 
 
+def _qqbot_autostart_info():
+    """qq-bot 服务自启状态（独立服务）。"""
+    s = _system()
+    if s == "linux":
+        sys_unit = f"/etc/systemd/system/{QQBOT_UNIT_NAME}.service"
+        if os.path.exists(sys_unit):
+            r = subprocess.run(["systemctl", "is-enabled", f"{QQBOT_UNIT_NAME}.service"],
+                               text=True, capture_output=True)
+            return f"systemd system unit: {sys_unit} ({r.stdout.strip()})"
+        unit = os.path.expanduser(f"~/.config/systemd/user/{QQBOT_UNIT_NAME}.service")
+        if os.path.exists(unit):
+            r = subprocess.run(["systemctl", "--user", "is-enabled", f"{QQBOT_UNIT_NAME}.service"],
+                               text=True, capture_output=True)
+            return f"systemd user unit: {unit} ({r.stdout.strip()})"
+        return "(not installed)"
+    if s == "macos":
+        plist = os.path.expanduser(f"~/Library/LaunchAgents/{QQBOT_PLIST_LABEL}.plist")
+        return f"launchd agent: {plist}" if os.path.exists(plist) else "(not installed)"
+    if s == "windows":
+        r = subprocess.run(["schtasks", "/Query", "/TN", QQBOT_SCHTASKS_NAME],
+                           text=True, capture_output=True)
+        return f"schtasks: {QQBOT_SCHTASKS_NAME}" if r.returncode == 0 else "(not installed)"
+    return "(unsupported platform)"
+
+
 def cmd_status():
     print("== scheduled (config.json) ==")
     for k, v in load_scheduled().items():
@@ -802,7 +1212,19 @@ def cmd_status():
     print(f"  last_run: {state.get('last_run') or '(none yet; first run will execute all)'}")
     print(f"  state file: {STATE_FILE}")
     print("\n== autostart ==")
-    print(f"  {_autostart_info()}")
+    print(f"  daemon: {_autostart_info()}")
+    print(f"  qq-bot: {_qqbot_autostart_info()}")
+    print("\n== qq-bot ==")
+    qqbot_state = os.path.join(REPO_ROOT, "crawler", "bot-state.json")
+    if os.path.exists(qqbot_state):
+        try:
+            with open(qqbot_state, "r", encoding="utf-8") as f:
+                bs = json.load(f)
+            print(f"  last_time: {bs.get('last_time') or '(none)'}")
+        except Exception:
+            print("  last_time: (unreadable)")
+    else:
+        print("  last_time: (no state yet)")
     print("\n== alarms ==")
     proc = run_py("alarm.py", "list", capture=True)
     print(proc.stdout or "(no alarms)")
@@ -847,10 +1269,16 @@ def main():
             sys.exit(cmd_sync())
         elif cmd == "incremental":
             sys.exit(cmd_incremental())
+        elif cmd == "remind":
+            sys.exit(cmd_remind())
         elif cmd == "install":
             sys.exit(cmd_install("--system" in args[1:]))
         elif cmd == "uninstall":
             sys.exit(cmd_uninstall("--system" in args[1:]))
+        elif cmd == "install-qqbot":
+            sys.exit(cmd_install_qqbot("--system" in args[1:]))
+        elif cmd == "uninstall-qqbot":
+            sys.exit(cmd_uninstall_qqbot("--system" in args[1:]))
         elif cmd == "status":
             cmd_status()
         elif cmd == "log":
