@@ -3,5 +3,7 @@
   "name": "\u6570\u8f74\u4e0a\u7684\u67d3\u8272\u7ffb\u8f6c\u600e\u4e48\u8fd8\u6709\u6062\u590d\u4e0e\u52a0\u5bc6",
   "time_limit": "5000 MS",
   "memory_limit": "524288 K",
-  "solved": false
+  "solved": true,
+  "submit_time": "2026-08-15T14:24:38+08:00",
+  "solve_time": "2026-08-15T14:21:16+08:00"
 }
