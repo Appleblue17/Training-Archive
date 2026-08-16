@@ -3,6 +3,7 @@
   "name": "\u4eca\u665a\u5403\u9ed1\u5b50",
   "time_limit": "1000 MS",
   "memory_limit": "524288 K",
-  "solved": false,
-  "submit_time": "2026-08-11T16:59:40+08:00"
+  "solved": true,
+  "submit_time": "2026-08-16T19:38:18+08:00",
+  "solve_time": "2026-08-16T19:36:17+08:00"
 }

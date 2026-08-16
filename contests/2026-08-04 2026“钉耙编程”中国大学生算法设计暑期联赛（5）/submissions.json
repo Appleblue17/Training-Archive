@@ -416,5 +416,71 @@
     "problem_id": "1008",
     "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1008",
     "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1233&rid=323"
+  },
+  {
+    "submission_id": "13398",
+    "status": "AC",
+    "time": "6531 MS",
+    "memory": "356724 K",
+    "language": "G++",
+    "submit_time": "2026-08-16T19:22:21+08:00",
+    "problem_id": "1011",
+    "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1011",
+    "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1233&rid=13398"
+  },
+  {
+    "submission_id": "13397",
+    "status": "TLE",
+    "time": "10000 MS",
+    "memory": "322280 K",
+    "language": "G++",
+    "submit_time": "2026-08-16T19:19:20+08:00",
+    "problem_id": "1011",
+    "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1011",
+    "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1233&rid=13397"
+  },
+  {
+    "submission_id": "13396",
+    "status": "MLE",
+    "time": "3343 MS",
+    "memory": "524808 K",
+    "language": "G++",
+    "submit_time": "2026-08-16T19:18:59+08:00",
+    "problem_id": "1011",
+    "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1011",
+    "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1233&rid=13396"
+  },
+  {
+    "submission_id": "13395",
+    "status": "MLE",
+    "time": "3375 MS",
+    "memory": "525152 K",
+    "language": "G++",
+    "submit_time": "2026-08-16T19:18:14+08:00",
+    "problem_id": "1011",
+    "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1011",
+    "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1233&rid=13395"
+  },
+  {
+    "submission_id": "13394",
+    "status": "MLE",
+    "time": "250 MS",
+    "memory": "560016 K",
+    "language": "G++",
+    "submit_time": "2026-08-16T19:17:51+08:00",
+    "problem_id": "1011",
+    "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1011",
+    "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1233&rid=13394"
+  },
+  {
+    "submission_id": "13393",
+    "status": "RE",
+    "time": "3390 MS",
+    "memory": "338708 K",
+    "language": "G++",
+    "submit_time": "2026-08-16T19:17:16+08:00",
+    "problem_id": "1011",
+    "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1233&pid=1011",
+    "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1233&rid=13393"
   }
 ]
