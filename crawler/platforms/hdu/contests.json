@@ -2088,5 +2088,74 @@
         "link": "https://acm.hdu.edu.cn/contest/problem?cid=1236&pid=1012"
       }
     ]
+  },
+  {
+    "name": "2026\u201c\u9489\u8019\u7f16\u7a0b\u201d\u4e2d\u56fd\u5927\u5b66\u751f\u7b97\u6cd5\u8bbe\u8ba1\u6691\u671f\u8054\u8d5b\uff089\uff09",
+    "date": "2026-08-18",
+    "link": "https://acm.hdu.edu.cn/contest/problems?cid=1237",
+    "start_time": "2026-08-18T12:00:00+08:00",
+    "end_time": "2026-08-18T17:00:00+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "\u6b6a\u6b6a\u5de7\u514b\u529b",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1001"
+      },
+      {
+        "letter": "B",
+        "name": "\u5c0f\u7b28\u86cb",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1002"
+      },
+      {
+        "letter": "C",
+        "name": "Secluded Sensei",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1003"
+      },
+      {
+        "letter": "D",
+        "name": "\u6b6a\u6b6a01\u4e32",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1004"
+      },
+      {
+        "letter": "E",
+        "name": "Cartesian Sensei",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1005"
+      },
+      {
+        "letter": "F",
+        "name": "\u597d\u591a\u77f3\u5934",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1006"
+      },
+      {
+        "letter": "G",
+        "name": "\u5c0f\u4e56\u7684\u5728\u76ca\u8d77",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1007"
+      },
+      {
+        "letter": "H",
+        "name": "\u6c34\u8c5a\u565c\u565c\u7684\u5e73\u8861\u6811",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1008"
+      },
+      {
+        "letter": "I",
+        "name": "\u606f\u606f\u58e4\u58e4\u6b66\u9675\u7684\u7ba1\u9053",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1009"
+      },
+      {
+        "letter": "J",
+        "name": "\u5408\u6cd5\u62ec\u53f7",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1010"
+      },
+      {
+        "letter": "K",
+        "name": "\u5976\u9f99\u548c\u565c\u565c\u7684\u7cd6\u8c46",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1011"
+      },
+      {
+        "letter": "L",
+        "name": "Grand Swap Master",
+        "link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1012"
+      }
+    ]
   }
 ]
