@@ -1,0 +1,585 @@
+1:"$Sreact.fragment"
+2:I[48521,[],""]
+3:I[17058,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-d11893d92812b6df.js"],"default"]
+4:I[31661,[],""]
+5:I[86070,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+6:I[52236,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],""]
+e:I[50939,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/338c2b79a2f4c1b0.css","style"]
+0:{"P":null,"b":"5yWRvQQrbYmN_6RtJOUI_","p":"/Training-Archive","c":["","view","contests","2026-08-18%202026%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%889%EF%BC%89","problems","C","statement.md"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2026-08-18%202026%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%889%EF%BC%89","d"],{"children":["problems",{"children":[["problem","C","d"],{"children":[["file","statement.md","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/338c2b79a2f4c1b0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2026-08-18%202026%E2%80%9C%E9%92%89%E8%80%99%E7%BC%96%E7%A8%8B%E2%80%9D%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%9A%91%E6%9C%9F%E8%81%94%E8%B5%9B%EF%BC%889%EF%BC%89","d"],"$L7",{"children":["problems","$L8",{"children":[["problem","C","d"],"$L9",{"children":[["file","statement.md","d"],"$La",{"children":["__PAGE__","$Lb",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},["$Lc",[],[]],false],"$Ld",false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+10:I[47055,[],"OutletBoundary"]
+12:I[39909,[],"AsyncMetadataOutlet"]
+14:I[47055,[],"ViewportBoundary"]
+16:I[47055,[],"MetadataBoundary"]
+17:"$Sreact.suspense"
+7:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+8:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+a:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+b:["$","$1","c",{"children":["$Lf",null,["$","$L10",null,{"children":["$L11",["$","$L12",null,{"promise":"$@13"}]]}]]}]
+c:["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}]
+d:["$","$1","h",{"children":[null,[["$","$L14",null,{"children":"$L15"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L16",null,{"children":["$","div",null,{"hidden":true,"children":["$","$17",null,{"fallback":null,"children":"$L18"}]}]}]]}]
+f:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","$L6",null,{"href":"/","children":["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8","key":"5wwlr5"}],["path",{"d":"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z","key":"r6nss1"}]],"className":"lucide-house absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400"}]}],["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2026-08-18 2026“钉耙编程”中国大学生算法设计暑期联赛（9）",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"C","$undefined"],["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"statement.md"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2026-08-18 2026“钉耙编程”中国大学生算法设计暑期联赛（9）/problems/C/statement.md","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M12 15V3","key":"m9g1x1"}],["path",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","key":"ih7n3h"}],["path",{"d":"m7 10 5 5 5-5","key":"brsn70"}]],"className":"lucide-download mr-2 inline-block text-base size-4"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2026-08-18 2026“钉耙编程”中国大学生算法设计暑期联赛（9）/problems/C/statement.md","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z","key":"1oefj6"}],["path",{"d":"M14 2v5a1 1 0 0 0 1 1h5","key":"wfsgrz"}],["path",{"d":"M10 9H8","key":"b1mrlr"}],["path",{"d":"M16 13H8","key":"t4e002"}],["path",{"d":"M16 17H8","key":"z1uh3a"}]],"className":"lucide-file-text mr-2 inline-block text-base size-4"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":"$L19"}],["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"statement.md"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"3.636 KB (3723 B)"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Secluded Sensei"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1003","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1003"}]]}],"$L1a","$L1b","$L1c","$L1d","$L1e"]}]]}],"$L1f"]}]]}]]}]}]
+1a:["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"4000 MS"}]]}]
+1b:["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"524288 K"}]]}]
+1c:["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}]
+1d:["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/08/18 14:43:51"}]]}]
+1e:["$","div","solve_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solve Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/08/18 14:43:51"}]]}]
+1f:["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"2026“钉耙编程”中国大学生算法设计暑期联赛（9）"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026-08-18"}]]}],["$","div","platform",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Platform","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"hdu"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/08/18 12:00:00"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/08/18 17:00:00"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://acm.hdu.edu.cn/contest/problems?cid=1237","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://acm.hdu.edu.cn/contest/problems?cid=1237"}]]}]]}]]}]
+20:I[16005,["329","static/chunks/329-3322297afe79dac4.js","424","static/chunks/424-4e50f469f5981384.js","947","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/%5Bfile%5D/page-b0e5ff54d4d1f8e8.js"],"default"]
+21:Te8b,## C. Secluded Sensei
+
+### Problem Description
+
+![](https://cdn.luogu.com.cn/upload/image_hosting/9z8enxb0.png)
+
+（来源：[\[Fanmade\] Map of Kivotos ver. 10 (by \@ayetlee_179) :
+r/BlueArchive](https://www.reddit.com/r/BlueArchive/comments/1unucqm/fanmade_map_of_kivotos_ver_10_by_ayetlee_179/?utm_source=chatgpt.com)）
+
+众所周知，基沃托斯一共有数千个学院。作为一名夏莱的
+Sensei，每天都要奔赴各处处理事务。但正如凯伊所指出的那样，夏莱承担着极为繁重的行政职责------因此
+Sensei
+可能仅仅只是走在路上，就会撞见无数意料之外、需要亲自出手解决的突发状况。
+
+但今天不同！
+
+某位不知名的夏莱 Sensei hezlik
+早已在桃信上与小夏约好，要一同前往百鬼夜行联合学院的百夜堂，品尝新推出的限定甜品。为了能和可爱的小夏**准时**享用美味，Sensei
+必须选择一条从夏莱通往百夜堂的**最短**路线。
+
+然而，路途并不太平。每当经过的路径与其他学院的辖区**接壤**，就极有可能招来层出不穷的麻烦。为了把与其他学院接壤的范围压到最小，hezlik
+希望在**所有最短路线**中，挑选那条「接触到的学院总数」最少的方案。
+
+与此同时，为了防止邪恶的千年科技学院截获并破解出行规划，hezlik
+还需要知道：满足上述所有条件的最优路线一共有**多少条**，以便选择一条隐秘的路径准时到达。
+
+于是，hezlik 把这项严峻的任务，郑重地交到了你的手上。
+- -----------------------------------------------------------------------
+
+给定一个包含$n$ 个点、$m$ 条边的无向无权连通图 $G = (V,E)$，以及起点 $s$ 和终点 $t$。
+
+对于图中的一个点集 $S \subseteq V$，定义其**闭邻域**为：
+
+$$N\lbrack S\rbrack = {\mid\left\{ x \in V \middle| x \in S\text{~或~}\exists y \in S,\ (x,y) \in E \right\}\mid}$$
+
+即点集$S$ 中所有点及其相邻点构成的集合的大小。
+
+对于一条从 $s$ 到 $t$ 的路径 $P$，设其经过的点集为 $V(P)$，则该路径的闭邻域定义为 $N\lbrack V(P)\rbrack$。
+
+请你在**所有从 $s$ 到$t$ 的最短路径**中，求出闭邻域的**最小值**，以及取得该最小值的**路径数量**。
+
+### Input
+
+**本题包含多组测试数据。**
+
+第一行包含一个整数 $T$，表示测试数据的组数。
+
+对于每组测试数据：
+
+第一行包含四个整数 $n,m,s,t$，分别表示点数、边数、起点和终点。
+
+接下来 $m$ 行，每行包含两个整数 $u,v$，表示点$u$ 与点 $v$ 之间有一条无向边。
+- $1 \leq T$ -$1 \leq n \leq 500$ -$1 \leq \sum n \leq 2000$ -$n - 1 \leq m \leq \left( \frac{n}{2} \right)$ -   $1 \leq s,t \leq n$，$s \neq t$ -   $1 \leq u,v \leq n$，$u \neq v$ -   保证图中**无重边、无自环**
+- 保证 $s$ 和 $t$ 连通
+
+### Output
+
+对于每组测试数据，输出一行两个整数，用空格隔开，分别表示满足条件的路径的闭邻域的**最小值**和取得该最小值的**路径数量**。
+
+由于路径数量可能很大，请将其对$998244353$ 取模后输出。
+
+### Sample Input
+
+```plain
+3
+6 5 1 2
+1 2
+1 3
+2 4
+3 5
+4 6
+8 8 1 6
+1 2
+2 4
+4 6
+1 3
+3 5
+5 6
+2 7
+4 8
+6 8 1 6
+1 2
+1 3
+2 4
+2 5
+3 4
+3 5
+4 6
+5 6
+```
+
+### Sample Output
+
+```plain
+4 1
+6 1
+6 4
+```
+
+### Hint
+
+这是第二组样例的图与解释：
+
+![](https://cdn.luogu.com.cn/upload/image_hosting/9l5zbhek.png)
+
+两条从 $1$ 到$6$ 的最短路径如下：
+
+   最短路径  闭临域
+- --------- -------------------
+   1→2→4→6   {1,2,3,4,5,6,7,8}
+   1→3→5→6   {1,2,3,4,5,6}
+
+可以发现，路径 1→3→5→6 的闭临域更小，因此最优闭临域大小为 $6$。
+
+22:T8429,
+<h2>C. Secluded Sensei</h2>
+<h3>Problem Description</h3>
+<p>
+  <img src="https://cdn.luogu.com.cn/upload/image_hosting/9z8enxb0.png" alt="">
+</p>
+<p>（来源：<a href="https://www.reddit.com/r/BlueArchive/comments/1unucqm/fanmade_map_of_kivotos_ver_10_by_ayetlee_179/?utm_source=chatgpt.com">[Fanmade] Map of Kivotos ver. 10 (by @ayetlee_179) :
+r/BlueArchive</a>）</p>
+<p>
+  众所周知，基沃托斯一共有数千个学院。作为一名夏莱的
+  Sensei，每天都要奔赴各处处理事务。但正如凯伊所指出的那样，夏莱承担着极为繁重的行政职责------因此
+  Sensei
+  可能仅仅只是走在路上，就会撞见无数意料之外、需要亲自出手解决的突发状况。
+</p>
+<p>但今天不同！</p>
+<p>
+  某位不知名的夏莱 Sensei hezlik
+  早已在桃信上与小夏约好，要一同前往百鬼夜行联合学院的百夜堂，品尝新推出的限定甜品。为了能和可爱的小夏<strong>准时</strong>享用美味，Sensei
+  必须选择一条从夏莱通往百夜堂的<strong>最短</strong>路线。
+</p>
+<p>
+  然而，路途并不太平。每当经过的路径与其他学院的辖区<strong>接壤</strong>，就极有可能招来层出不穷的麻烦。为了把与其他学院接壤的范围压到最小，hezlik
+  希望在<strong>所有最短路线</strong>中，挑选那条「接触到的学院总数」最少的方案。
+</p>
+<p>
+  与此同时，为了防止邪恶的千年科技学院截获并破解出行规划，hezlik
+  还需要知道：满足上述所有条件的最优路线一共有<strong>多少条</strong>，以便选择一条隐秘的路径准时到达。
+</p>
+<p>于是，hezlik 把这项严峻的任务，郑重地交到了你的手上。</p>
+<hr>
+<p>给定一个包含<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个点、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>m</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">m</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 条边的无向无权连通图 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>G</mi>
+            <mo>=</mo>
+            <mo stretchy="false">(</mo>
+            <mi>V</mi>
+            <mo separator="true">,</mo>
+            <mi>E</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">G = (V,E)</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span></span>，以及起点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>s</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">s</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span> 和终点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>t</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">t</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>。</p>
+<p>对于图中的一个点集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>S</mi>
+            <mo>⊆</mo>
+            <mi>V</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">S \subseteq V</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>，定义其<strong>闭邻域</strong>为：</p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+          <mrow>
+            <mi>N</mi>
+            <mo stretchy="false">[</mo>
+            <mi>S</mi>
+            <mo stretchy="false">]</mo>
+            <mo>=</mo>
+            <mrow>
+              <mo>∣</mo>
+              <mrow>
+                <mo fence="true">{</mo>
+                <mi>x</mi>
+                <mo>∈</mo>
+                <mi>V</mi>
+                <mo fence="true" lspace="0.05em" rspace="0.05em">|</mo>
+                <mi>x</mi>
+                <mo>∈</mo>
+                <mi>S</mi>
+                <mtext> 或 </mtext>
+                <mi mathvariant="normal">∃</mi>
+                <mi>y</mi>
+                <mo>∈</mo>
+                <mi>S</mi>
+                <mo separator="true">,</mo>
+                <mtext> </mtext>
+                <mo stretchy="false">(</mo>
+                <mi>x</mi>
+                <mo separator="true">,</mo>
+                <mi>y</mi>
+                <mo stretchy="false">)</mo>
+                <mo>∈</mo>
+                <mi>E</mi>
+                <mo fence="true">}</mo>
+              </mrow>
+              <mo>∣</mo>
+            </mrow>
+          </mrow>
+          <annotation encoding="application/x-tex">N\lbrack S\rbrack = {\mid\left\{ x \in V \middle| x \in S\text{~或~}\exists y \in S,\ (x,y) \in E \right\}\mid}</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">{</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="delimcenter" style="top:0em;">∣</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord text"><span class="mord nobreak"> </span><span class="mord cjk_fallback">或</span><span class="mord nobreak"> </span></span><span class="mord">∃</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose delimcenter" style="top:0em;">}</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span></span></span></span></span></span>
+<p>即点集<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>S</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">S</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 中所有点及其相邻点构成的集合的大小。</p>
+<p>对于一条从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>s</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">s</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>t</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">t</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> 的路径 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>P</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">P</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>，设其经过的点集为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>V</mi>
+            <mo stretchy="false">(</mo>
+            <mi>P</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">V(P)</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span></span></span></span>，则该路径的闭邻域定义为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>N</mi>
+            <mo stretchy="false">[</mo>
+            <mi>V</mi>
+            <mo stretchy="false">(</mo>
+            <mi>P</mi>
+            <mo stretchy="false">)</mo>
+            <mo stretchy="false">]</mo>
+          </mrow>
+          <annotation encoding="application/x-tex">N\lbrack V(P)\rbrack</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)]</span></span></span></span>。</p>
+<p>请你在<strong>所有从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>s</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">s</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span> 到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>t</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">t</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> 的最短路径</strong>中，求出闭邻域的<strong>最小值</strong>，以及取得该最小值的<strong>路径数量</strong>。</p>
+<h3>Input</h3>
+<p><strong>本题包含多组测试数据。</strong></p>
+<p>第一行包含一个整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>T</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">T</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>，表示测试数据的组数。</p>
+<p>对于每组测试数据：</p>
+<p>第一行包含四个整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>n</mi>
+            <mo separator="true">,</mo>
+            <mi>m</mi>
+            <mo separator="true">,</mo>
+            <mi>s</mi>
+            <mo separator="true">,</mo>
+            <mi>t</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">n,m,s,t</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span></span></span></span>，分别表示点数、边数、起点和终点。</p>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>m</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">m</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 行，每行包含两个整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>u</mi>
+            <mo separator="true">,</mo>
+            <mi>v</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">u,v</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>，表示点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>u</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">u</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 与点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mi>v</mi>
+          </mrow>
+          <annotation encoding="application/x-tex">v</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 之间有一条无向边。</p>
+<ul>
+  <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>T</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">1 \leq T</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> -<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>n</mi>
+              <mo>≤</mo>
+              <mn>500</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">1 \leq n \leq 500</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">500</span></span></span></span> -<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mo>∑</mo>
+              <mi>n</mi>
+              <mo>≤</mo>
+              <mn>2000</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">1 \leq \sum n \leq 2000</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2000</span></span></span></span> -<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>n</mi>
+              <mo>−</mo>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>m</mi>
+              <mo>≤</mo>
+              <mrow>
+                <mo fence="true">(</mo>
+                <mfrac>
+                  <mi>n</mi>
+                  <mn>2</mn>
+                </mfrac>
+                <mo fence="true">)</mo>
+              </mrow>
+            </mrow>
+            <annotation encoding="application/x-tex">n - 1 \leq m \leq \left( \frac{n}{2} \right)</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span> - <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>s</mi>
+              <mo separator="true">,</mo>
+              <mi>t</mi>
+              <mo>≤</mo>
+              <mi>n</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">1 \leq s,t \leq n</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>s</mi>
+              <mo mathvariant="normal">≠</mo>
+              <mi>t</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">s \neq t</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> - <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mn>1</mn>
+              <mo>≤</mo>
+              <mi>u</mi>
+              <mo separator="true">,</mo>
+              <mi>v</mi>
+              <mo>≤</mo>
+              <mi>n</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">1 \leq u,v \leq n</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>u</mi>
+              <mo mathvariant="normal">≠</mo>
+              <mi>v</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">u \neq v</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> - 保证图中<strong>无重边、无自环</strong></li>
+  <li>保证 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>s</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">s</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+            <mrow>
+              <mi>t</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">t</annotation>
+          </semantics>
+        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> 连通</li>
+</ul>
+<h3>Output</h3>
+<p>对于每组测试数据，输出一行两个整数，用空格隔开，分别表示满足条件的路径的闭邻域的<strong>最小值</strong>和取得该最小值的<strong>路径数量</strong>。</p>
+<p>由于路径数量可能很大，请将其对<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>998244353</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">998244353</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">998244353</span></span></span></span> 取模后输出。</p>
+<h3>Sample Input</h3>
+<pre><code class="hljs language-plain">3
+6 5 1 2
+1 2
+1 3
+2 4
+3 5
+4 6
+8 8 1 6
+1 2
+2 4
+4 6
+1 3
+3 5
+5 6
+2 7
+4 8
+6 8 1 6
+1 2
+1 3
+2 4
+2 5
+3 4
+3 5
+4 6
+5 6
+</code></pre>
+<h3>Sample Output</h3>
+<pre><code class="hljs language-plain">4 1
+6 1
+6 4
+</code></pre>
+<h3>Hint</h3>
+<p>这是第二组样例的图与解释：</p>
+<p>
+  <img src="https://cdn.luogu.com.cn/upload/image_hosting/9l5zbhek.png" alt="">
+</p>
+<p>两条从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>1</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">1</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>6</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">6</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span> 的最短路径如下：</p>
+<p>最短路径 闭临域</p>
+<hr>
+<p>
+  1→2→4→6 {1,2,3,4,5,6,7,8}
+  1→3→5→6 {1,2,3,4,5,6}
+</p>
+<p>可以发现，路径 1→3→5→6 的闭临域更小，因此最优闭临域大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <semantics>
+          <mrow>
+            <mn>6</mn>
+          </mrow>
+          <annotation encoding="application/x-tex">6</annotation>
+        </semantics>
+      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span>。</p>
+19:["$","$L20",null,{"raw":"$21","htmlContent":"$22"}]
+15:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+11:null
+13:{"metadata":[["$","title","0",{"children":"statement.md · Secluded Sensei · 2026“钉耙编程”中国大学生算法设计暑期联赛（9） · Training Archive"}]],"error":null,"digest":"$undefined"}
+18:"$13:metadata"
