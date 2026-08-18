@@ -218,5 +218,16 @@
     "problem_id": "1001",
     "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1001",
     "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1237&rid=54"
+  },
+  {
+    "submission_id": "7976",
+    "status": "TLE",
+    "time": "8000 MS",
+    "memory": "2956 K",
+    "language": "G++",
+    "submit_time": "2026-08-18T17:01:46+08:00",
+    "problem_id": "1006",
+    "problem_link": "https://acm.hdu.edu.cn/contest/problem?cid=1237&pid=1006",
+    "submission_link": "https://acm.hdu.edu.cn/contest/view-code?cid=1237&rid=7976"
   }
 ]
