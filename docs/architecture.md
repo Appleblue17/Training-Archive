@@ -64,7 +64,7 @@ contests/
 | `(main)/layout.tsx` | 主布局：标题、面包屑导航 |
 | `(main)/page.tsx` + `(main)/(home)/[page]/page.tsx` | 竞赛列表（服务端取数 + 分页，每页 20 条），与根路径共用 `home-view.tsx` |
 | `(main)/(home)/[page]/contest-table.tsx` | 竞赛表格（客户端）：可展开行、题目状态、悬停元数据面板 |
-| `(main)/search/page.tsx` + `search-client.tsx` | 搜索页（服务端读构建时索引，客户端过滤） |
+| `(main)/search/page.tsx` + `search-client.tsx` | 搜索页（服务端读构建时索引，客户端过滤，按 `ITEMS_PER_PAGE` 分页） |
 | `(main)/dashboard/page.tsx` + `dashboard-client.tsx` | 数据看板（统计卡片、绿点图、最近动态、复盘报告） |
 | `(main)/review/[contest]/page.tsx` + `review-timeline.tsx` | 复盘时间轴页：提交序列 + LLM 报告 |
 | `(main)/status/page.tsx` + `status-page.tsx` | 状态页：config / last-update / 各平台 staged submissions / 订阅（JSON 展示 + 复制） |
@@ -107,8 +107,8 @@ contests/
 
 - 所有页面通过 `generateStaticParams` + 构建时 `fs` 扫描 `contests/` 生成静态路由；`contests/` 不存在或无可匹配数据时返回占位参数，页面渲染"暂无数据"。
 - 生产构建（`NODE_ENV=production`）时 `next.config.ts` 启用 `output: "export"`、`basePath: "/Training-Archive"`；`BASE_URL` / `PREFIX_URL` 据此切换（见 `src/lib/global.ts`）。
-- 搜索索引：`pnpm build` 先运行 `scripts/generate-search-index.mjs` 生成 `public/search-index.json`，搜索页在构建时读取并传给客户端组件过滤（方案 A：构建索引 + 前端过滤；动态版 v0.3.0 改服务端 API + DB）。
-- `deploy.yml` 先将 `contests/` 复制到 `public/contests/`，再执行 `pnpm build`，最后由 `actions-gh-pages` 发布 `out/`。
+- 搜索索引：`pnpm build` 先运行 `scripts/generate-search-index.mjs` 生成 `public/search-index.json`，搜索页在构建时读取并传给客户端组件过滤（方案 A：构建索引 + 前端过滤，搜索页按 `ITEMS_PER_PAGE` 分页；动态版 v0.4.0 改服务端 API + DB）。
+- `pnpm build` / `pnpm dev` 先运行 `scripts/prepare-public-contests.mjs`（复制 `contests/` → `public/contests/`，排除受保护比赛），再执行 `next build`；`deploy.yml` 只运行 `pnpm build`，最后由 `actions-gh-pages` 发布 `out/`。
 - 主分支（`main`）不含 `contests/` 数据；实际爬取与部署都在 `deploy` 分支进行。
 
 ### 3.5 UI 组件与图标

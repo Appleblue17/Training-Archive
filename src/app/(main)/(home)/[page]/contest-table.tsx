@@ -8,6 +8,11 @@ import MetaDataDisplay from "@/components/metadata-display";
 import { formatDate } from "@/utils/format";
 import { joinUrl } from "@/utils/url";
 import PlatformBadge from "@/components/platform-badge";
+import {
+  CONTEST_METADATA_BANNER,
+  FILE_METADATA_BANNER,
+  PROBLEM_METADATA_BANNER,
+} from "@/lib/metadata-fields";
 
 // Helper: Parse time string to Date object in Beijing time
 function parseToBeijingTime(timeStr: string | Date): Date {
@@ -505,7 +510,7 @@ export default function ContestTable({ contests }: { contests: ContestInfoType[]
       const file = problem.files[selectedFileIdx];
       setDisplayMetadataName("File");
       setDisplayMetadata(file);
-      setDisplayMetadataBanner(["link"]);
+      setDisplayMetadataBanner(FILE_METADATA_BANNER);
     } else if (selectedProblemIdx !== null && expandedRow !== null) {
       // Show problem metadata
       const contest = contests[expandedRow];
@@ -513,21 +518,13 @@ export default function ContestTable({ contests }: { contests: ContestInfoType[]
       if (!problemInfo) return; // 受保护比赛详情在 ResourceGate 内自行处理
       setDisplayMetadataName("Problem");
       setDisplayMetadata(problemInfo);
-      setDisplayMetadataBanner(["rel_path", "files", "link"]);
+      setDisplayMetadataBanner(PROBLEM_METADATA_BANNER);
     } else if (expandedRow !== null) {
       // Show contest metadata
       const contestInfo = contests[expandedRow];
       setDisplayMetadataName("Contest");
       setDisplayMetadata(contestInfo);
-      setDisplayMetadataBanner([
-        "rel_path",
-        "problems",
-        "files",
-        "link",
-        "protected",
-        "protectedData",
-        "protectionMisconfigured",
-      ]);
+      setDisplayMetadataBanner(CONTEST_METADATA_BANNER);
     }
   }, [expandedRow, selectedProblemIdx, selectedFileIdx, contests]);
 

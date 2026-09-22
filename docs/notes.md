@@ -39,8 +39,7 @@
 ### 后续
 
 - [ ] Windows / macOS 守护进程实测（`daemon.py` install / run；v0.3.0 已在 Linux 实测通过）
-- [ ] 评估是否引入前端测试（当前仅 lint）
-- [ ] 复盘报告内容细节：是否含每道题 AC 时间线/WA 次数（数据已全量采集，倾向包含）
+- [x] 引入前端组件/单元测试（Vitest + React Testing Library；见 `docs/roadmap.md` 决策 #19）
 
 ## 注意事项
 
@@ -48,10 +47,11 @@
 
 - **UI 库**：shadcn/ui（Radix + Tailwind），新增组件通过其 CLI 或手工复制引入。
 - **图标库**：lucide-react；**禁止新增 `react-icons`**。
+- **前端测试**：Vitest + React Testing Library（jsdom，`vitest.config.ts` + `vitest.setup.ts`），测试文件与源码同目录 `*.test.ts(x)`，`pnpm test` 运行；服务端加密/客户端解密往返测试用 `// @vitest-environment node`。
 
 ### 构建与运行
 
-- 生产构建要求本地存在 `contests/`；`deploy.yml` 会先复制 `contests/` → `public/contests/` 再 `pnpm build`。
+- 生产构建要求本地存在 `contests/`；`pnpm build` / `pnpm dev` 先运行 `scripts/prepare-public-contests.mjs`（复制 `contests/` → `public/contests`，排除受保护比赛），`deploy.yml` 不再直接 `cp -r`。
 - `NODE_ENV=production` 时启用 `output: "export"` 与 `basePath: "/Training-Archive"`；本地开发（`pnpm dev`）使用根路径。
 - **daemon 用 venv 运行**：系统 `python3` 可能缺 `dotenv`/`croniter`/`filelock`，统一用 `.venv/bin/python crawler/scripts/daemon.py ...`（`python3 -m venv .venv && .venv/bin/pip install -r crawler/requirements.txt`）。`install`/`install --system` 会把「执行 install 的 python」写进服务启动命令，务必用 `.venv/bin/python` 执行。
 - **无头服务器**：user unit（默认 install）依赖登录会话；服务器用 `install --system`（系统级 systemd，`WantedBy=multi-user.target`，开机即启动，需 sudo）。
@@ -77,7 +77,7 @@
 
 - Markdown 渲染在服务端完成（`file-viewer-markdown-wrapper.tsx`），HTML 通过 `dangerouslySetInnerHTML` 注入，依赖 `rehype-sanitize` 安全过滤。
 - 数学公式：`$$\n...\n$$` 在 wrapper 中改写后再走 KaTeX 流水线；修改渲染管线时注意保持该预处理。
-- **资源保护（静态版）**：密码走构建时环境变量 `RESOURCE_PASSWORD`（**不加** `NEXT_PUBLIC_` 前缀）；受保护比赛由 `contest.json` 的 `protected: true` 或 `protected-contests.json` 标记（并集）。服务端 `src/lib/resource-protection.ts` 构建时加密，客户端 `resource-protection-client.ts` + `resource-gate.tsx` 解密并记 `localStorage`。`pnpm build`/`pnpm dev` 会先跑 `scripts/prepare-public-contests.mjs`（`public/contests` 排除受保护比赛），`generate-search-index.mjs` 跳过受保护比赛；首页 `home-view.tsx` 只给受保护比赛加 `protected` 锁标记、`contest-table.tsx` 正常渲染（不再有 `protectedData`，避免元数据面板显示该字段）；搜索索引与 Dashboard 正常包含受保护比赛。文件查看页 / 复盘页用 `ResourceGate`，原始文件不进 `public/contests`。未配置密码时受保护页由 `protection-not-configured.tsx` 提示、不渲染内容。`localStorage` 存明文密码属过渡方案（动态版 v0.4.0 用账号鉴权）。
+- **资源保护（静态版）**：密码走构建时环境变量 `RESOURCE_PASSWORD`（**不加** `NEXT_PUBLIC_` 前缀）；受保护比赛由 `contest.json` 的 `protected: true` 或 `protected-contests.json` 标记（并集）。服务端 `src/lib/resource-protection.ts` 构建时加密，客户端 `resource-protection-client.ts` + `resource-gate.tsx` 解密并记 `localStorage`。`pnpm build`/`pnpm dev` 会先跑 `scripts/prepare-public-contests.mjs`（`public/contests` 排除受保护比赛）；首页 `home-view.tsx` 只给受保护比赛加 `protected` 锁标记、`contest-table.tsx` 正常渲染（不再有 `protectedData`，避免元数据面板显示该字段）；搜索索引与 Dashboard 正常包含受保护比赛。文件查看页 / 复盘页用 `ResourceGate`，原始文件不进 `public/contests`。未配置密码时受保护页由 `protection-not-configured.tsx` 提示、不渲染内容。`localStorage` 存明文密码属过渡方案（动态版 v0.4.0 用账号鉴权）。
 
 ## 命令速查
 
@@ -86,6 +86,7 @@ pnpm install        # 安装前端依赖
 pnpm dev            # 开发模式
 pnpm build          # 生产构建（NODE_ENV=production 时导出 out/）
 pnpm lint           # ESLint 检查
+pnpm test           # Vitest 组件/单元测试
 
 pip install -r crawler/requirements.txt   # 爬虫依赖
 python3 crawler/scripts/scheduled_task.py                # 默认模式：抓订阅比赛 + 全量增量提交（手动/临时）

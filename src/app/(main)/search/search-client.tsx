@@ -4,69 +4,33 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 
 import { SearchIndexEntryType } from "@/lib/types";
+import { filterEntries, getAllTags, paginate } from "@/lib/search";
 import { joinUrl } from "@/utils/url";
 import { cn } from "@/lib/utils";
 import { ITEMS_PER_PAGE } from "@/lib/global";
 import PlatformBadge from "@/components/platform-badge";
 import { Input } from "@/components/ui/input";
 
-// Fields that are searched, in priority order.
-const SEARCH_FIELDS: (keyof SearchIndexEntryType)[] = [
-  "name",
-  "letter",
-  "tags",
-  "contest",
-  "platform",
-  "date",
-];
-
-function entryToSearchable(entry: SearchIndexEntryType): string {
-  return SEARCH_FIELDS.flatMap((field) => {
-    const value = entry[field];
-    if (Array.isArray(value)) return value.map(String);
-    return [String(value ?? "")];
-  })
-    .join(" ")
-    .toLowerCase();
-}
-
 export default function SearchClient({ entries }: { entries: SearchIndexEntryType[] }) {
   const [query, setQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [page, setPage] = useState(1);
 
-  // All tags present in the index, for tag-based filtering.
-  const allTags = useMemo(() => {
-    const set = new Set<string>();
-    for (const entry of entries) for (const tag of entry.tags) set.add(tag);
-    return Array.from(set).sort();
-  }, [entries]);
+  const allTags = useMemo(() => getAllTags(entries), [entries]);
 
-  const results = useMemo(() => {
-    const tokens = query
-      .toLowerCase()
-      .split(/\s+/)
-      .filter((t) => t.length > 0);
-
-    return entries.filter((entry) => {
-      const haystack = entryToSearchable(entry);
-      const matchesQuery = tokens.every((token) => haystack.includes(token));
-      const matchesTags =
-        selectedTags.length === 0 || selectedTags.every((tag) => entry.tags.includes(tag));
-      return matchesQuery && matchesTags;
-    });
-  }, [entries, query, selectedTags]);
+  const results = useMemo(
+    () => filterEntries(entries, query, selectedTags),
+    [entries, query, selectedTags],
+  );
 
   const totalMatches = results.length;
   const hasQueryOrTags = query.trim().length > 0 || selectedTags.length > 0;
 
-  // 分页：结果按 ITEMS_PER_PAGE 切页；页码越界时钳制到最后有效页
-  // （查询/标签变化会主动重置到第 1 页，见下方 onChange / onClick）。
-  const totalPages = Math.max(1, Math.ceil(totalMatches / ITEMS_PER_PAGE));
-  const currentPage = Math.min(page, totalPages);
-  const pagedResults = results.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE,
+  // 分页：查询/标签变化会主动重置到第 1 页（见下方 onChange / onClick）。
+  const { page: currentPage, totalPages, items: pagedResults } = paginate(
+    results,
+    page,
+    ITEMS_PER_PAGE,
   );
 
   return (

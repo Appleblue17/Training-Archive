@@ -17,39 +17,10 @@ import { joinUrl } from "@/utils/url";
 import { formatDateTime, formatSize } from "@/utils/format";
 import PlatformBadge from "@/components/platform-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-interface RecentContest {
-  name: string;
-  date: string;
-  platform: string;
-  link?: string;
-  relPath: string;
-  contestFolder: string;
-  hasReview: boolean;
-  problemCount: number;
-}
-
-interface RecentSolved {
-  contestName: string;
-  contestDate: string;
-  contestFolder: string;
-  letter: string;
-  name: string;
-  solveTime: string;
-  viewFile: string;
-  codeFile: string;
-  codeSize: number | null;
-}
+import type { DashboardStats, RecentContest, RecentSolved } from "@/lib/dashboard";
 
 export interface DashboardClientProps {
-  stats: {
-    contestCount: number;
-    problemCount: number;
-    solvedProblemCount: number;
-    submissionCount: number;
-    totalCodeBytes: number;
-    platformCounts: Record<string, number>;
-  };
+  stats: DashboardStats;
   recentContests: RecentContest[];
   recentSolved: RecentSolved[];
   contribution: Record<string, number>;

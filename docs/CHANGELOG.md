@@ -20,6 +20,7 @@
   - 浏览器端 WebCrypto 解密（`resource-gate.tsx`），验证成功后把密码记入 `localStorage`，下次自动解锁；密码错误重新提示
   - 覆盖面（方案 A：只保护文件内容）：文件查看器三条路由（内容 + 元数据整体加密，Download/Raw 改 Blob）与复盘页；比赛名 / 题目 / 标签 / 统计等元数据公开，首页 / 搜索 / Dashboard 正常展示（首页带锁标记），`public/contests` 不复制受保护比赛原始文件
   - 未配置 `RESOURCE_PASSWORD` 时受保护页面只显示提示、不渲染内容（不泄露明文）
+- **前端组件/单元测试**（Vitest + React Testing Library，jsdom）：`pnpm test` 运行 33 条用例，覆盖格式化/URL 工具、搜索过滤与分页、Dashboard 聚合、元数据面板内部字段跳过（`[ProtectedData]` 回归）、资源保护加解密往返与 `ResourceGate`、`ContestTable` 锁标记、搜索分页导航；为可测性把搜索过滤/分页抽到 `src/lib/search.ts`、Dashboard 聚合抽到 `src/lib/dashboard.ts`、元数据 banner 常量抽到 `src/lib/metadata-fields.ts`
 
 ### Changed
 

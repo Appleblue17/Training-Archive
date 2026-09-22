@@ -3,6 +3,12 @@
 # dependencies
 /node_modules
 /.pnp
+# 本机沙箱测试用的 workspace 内 pnpm store / corepack（勿提交）
+/.pnpm-home
+/.pnpm-store
+/.pnpm-cache
+/.pnpm-xdg
+/.corepack
 .pnp.*
 .yarn/*
 !.yarn/patches
