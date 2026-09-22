@@ -1,6 +1,37 @@
 # Changelog
 
-> 格式基于 [Keep a Changelog](https://keepachangelog.com/)。
+> 记录会影响用户、开发者或贡献者体验的重要变更。面向人类阅读，应随版本发布更新。
+> 格式参考 [Keep a Changelog](https://keepachangelog.com/)。
+> [备忘] 变更类型：Added（新增）、Changed（变更）、Deprecated（弃用）、Removed（移除）、Fixed（修复）、Security（安全）。
+
+> [注意] 本文档是项目历史的单一事实来源，应随项目演进保持更新。
+> [注意] 本文档不是所有变更的完整清单；只记录重要变更并保持简洁易读。完整变更见版本控制系统（如 Git）历史。
+
+## [Unreleased]
+
+### Added
+
+- **archive-bot logo**（`(main)/layout.tsx`）：主标题左侧放置 logo（`next/image` + `unoptimized` + `priority`，适配静态导出）
+- **浏览器 tab 标题细化**（各页面 `metadata`）：根 layout 使用 `title.template`（`%s · Training Archive`）；`/pageN` → `Page N`，`/dashboard` → `Dashboard`，`/search` → `Search`，`/readme` → `README`，`/status` → `Status`，`/review/<比赛>` → `<比赛名> · Review`，文件查看页 → `<文件> · <比赛名>`（题目/提交页含题名；无数据占位页回退 `File` / `Submission`）
+- **`/search` 分页**（`search-client.tsx`）：搜索结果按 `ITEMS_PER_PAGE`（20）分页并新增页码导航；输入或标签变化时回到第 1 页（此前全部题目堆在同一页）
+- **资源保护（静态版客户端加密）**：可把某场比赛标记为受保护，其题目 / 源码 / PDF / 附件 / 复盘需要全站统一密码才能查看
+  - 标记（并集）：`contests/<文件夹>/contest.json` 的 `"protected": true`（推荐；爬虫只在新建比赛时写 `contest.json`，之后不会覆盖），或仓库根 `protected-contests.json` 的 `protected` 数组
+  - 密码取构建时环境变量 `RESOURCE_PASSWORD`（`.env` / GitHub Actions secret，**非** `NEXT_PUBLIC_`），服务端 PBKDF2-SHA256（100k）+ AES-256-GCM 加密，产物只含密文
+  - 浏览器端 WebCrypto 解密（`resource-gate.tsx`），验证成功后把密码记入 `localStorage`，下次自动解锁；密码错误重新提示
+  - 覆盖面（方案 A：只保护文件内容）：文件查看器三条路由（内容 + 元数据整体加密，Download/Raw 改 Blob）与复盘页；比赛名 / 题目 / 标签 / 统计等元数据公开，首页 / 搜索 / Dashboard 正常展示（首页带锁标记），`public/contests` 不复制受保护比赛原始文件
+  - 未配置 `RESOURCE_PASSWORD` 时受保护页面只显示提示、不渲染内容（不泄露明文）
+
+### Changed
+
+- **构建流程**：`pnpm build` / `pnpm dev` 先执行 `scripts/prepare-public-contests.mjs`（复制 `contests/ → public/contests` 时排除受保护比赛）；`deploy.yml` 不再直接 `cp -r`，构建步骤注入 `RESOURCE_PASSWORD` secret
+
+### Fixed
+
+- **首页受保护比赛展开详情显示 `[ProtectedData]` 字段**：加密载荷曾挂在比赛对象上、被元数据面板当普通字段渲染。方案 A 下不再把加密载荷挂到比赛对象；元数据面板同时跳过 `protected` / `protectedData` / `protectionMisconfigured` 等内部字段
+
+### Security
+
+- 受保护比赛的**文件内容**与原始文件不进入公开静态产物；元数据（比赛名 / 题目 / 标签 / 统计）仍公开。未验证者只能拿到 AES-GCM 密文。静态版客户端加密 + `localStorage` 存密码仍属过渡方案（无访问者区分 / 无法单独吊销 / XSS 风险），正式方案为 v0.4.0 动态版账号鉴权
 
 ## [0.3.1] - 2026-08-13
 

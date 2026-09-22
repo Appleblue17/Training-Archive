@@ -13,6 +13,7 @@ export const metadata: Metadata = {
  */
 
 export default async function DashboardPage() {
+  // 资源保护（方案 A）：Dashboard 正常统计全部比赛（元数据公开）。
   const contests = getContests();
   const submissions = getAllSubmissions();
 

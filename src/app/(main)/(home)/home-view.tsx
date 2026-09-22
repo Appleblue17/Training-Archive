@@ -4,16 +4,22 @@ import ContestTable from "./[page]/contest-table";
 
 import { ITEMS_PER_PAGE } from "@/lib/global";
 import { getContests } from "@/lib/contests-data";
+import { isProtectedContestFolder } from "@/lib/resource-protection";
 
 /**
  * 首页视图（服务端组件）：按页码渲染竞赛列表与分页。
  * `/`（page1）与 `/pageN` 共用。
  */
 export default async function HomeView({ pageNum }: { pageNum: number }) {
-  // 显式按日期降序排序（最新在前），不依赖 readdir 的目录顺序
-  const contests = getContests().sort((a, b) =>
-    `${b.date} ${b.name}`.localeCompare(`${a.date} ${a.name}`),
-  );
+  // 显式按日期降序排序（最新在前），不依赖 readdir 的目录顺序。
+  // 资源保护（方案 A：只保护文件内容）：元数据（比赛名/题目/状态）正常公开，
+  // 只给受保护比赛打一个锁标记；点进文件查看页/复盘页时才需要密码。
+  const contests = getContests()
+    .sort((a, b) => `${b.date} ${b.name}`.localeCompare(`${a.date} ${a.name}`))
+    .map((contest) => {
+      const folder = contest.rel_path.split("/")[1] ?? "";
+      return isProtectedContestFolder(folder) ? { ...contest, protected: true } : contest;
+    });
   const totalPages = Math.ceil(contests.length / ITEMS_PER_PAGE);
 
   const start = (pageNum - 1) * ITEMS_PER_PAGE;

@@ -2,7 +2,16 @@ import fs from "fs";
 import path from "path";
 import type { Metadata } from "next";
 import FileViewerPage from "@/components/file-viewer/file-viewer-page";
+import ProtectedFileViewerPage from "@/components/file-viewer/protected-file-viewer-page";
+import ProtectionNotConfigured from "@/components/protection-not-configured";
 
+import { BASE_URL } from "@/lib/global";
+import {
+  buildProtectedContent,
+  encryptResource,
+  isProtectedContestFolder,
+  isProtectionConfigured,
+} from "@/lib/resource-protection";
 import getFileMetadata from "@/utils/get-file-metadata";
 
 /** 无可用数据时的占位参数，保证 output: export 下动态路由可构建。 */
@@ -21,6 +30,9 @@ export async function generateMetadata(props: {
     fileName === PLACEHOLDER
   ) {
     return { title: "File" };
+  }
+  if (isProtectedContestFolder(contestFolder)) {
+    return { title: "Protected resource" };
   }
   const contestMetadata = getFileMetadata(
     path.join(process.cwd(), "contests", contestFolder),
@@ -110,6 +122,26 @@ export default async function FilePage(props: {
     path.join(process.cwd(), "contests", contest, "problems", problem, file),
     path.join(process.cwd(), "contests", contest, "problems", problem, file + ".json"),
   );
+
+  if (isProtectedContestFolder(contest)) {
+    if (!isProtectionConfigured()) return <ProtectionNotConfigured />;
+    const content = await buildProtectedContent(
+      path.join(process.cwd(), "contests", contest, "problems", problem, file),
+      path.join(BASE_URL, "contests", contest, "problems", problem),
+    );
+    const payload = encryptResource(
+      JSON.stringify({ content, fileMetadata, contestMetadata, problemMetadata }),
+    );
+    return (
+      <ProtectedFileViewerPage
+        contest={contest}
+        file={file}
+        problem={problem}
+        fileMetadataBanner={["problem_link"]}
+        payload={payload}
+      />
+    );
+  }
 
   return (
     <FileViewerPage

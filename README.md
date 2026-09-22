@@ -9,6 +9,7 @@
 - **竞赛归档**：按平台（QOJ / HDU / NowCoder）归档竞赛，展示竞赛列表、题目状态与文件
 - **题目状态标记**：AC / 尝试未解决（黄色背景）等提交状态一目了然，显示提交时间与解决耗时
 - **文件查看器**：在线预览 Markdown（GFM / 数学公式 / KaTeX / 代码高亮）、PDF、源码文件，支持下载
+- **资源保护**：可把某场比赛标记为受保护（`contest.json` 的 `"protected": true` 或 `protected-contests.json` 清单），其**文件内容**（题目文件 / 源码 / PDF / 复盘）在构建时用全站密码加密、原始文件不发布；浏览器输一次密码后记住（`localStorage`）。比赛名 / 题目 / 标签 / 统计等元数据仍公开
 - **复盘报告**：每场完赛自动生成 LLM 复盘报告（DeepSeek）与 QQ 群分享文本
 - **赛前提醒**：预订的比赛开始前自动在 QQ 群发提醒
 - **状态页面**：查看爬虫配置、各平台最后更新时间、待回填提交与订阅列表（/status）
@@ -206,9 +207,21 @@ env:
 
 > `deploy.yml` 通过 `push` 到 `deploy` 分支触发；守护进程只在 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送（带 `[contests-changed]` 标记触发部署），仅 crawler 状态 / 日志变化时不发提交（已在本地持久化）。
 
-### 动态版（v0.4.0 规划中）
+### 资源保护（可选）
 
-自建服务器 / Docker 部署 Next.js 动态服务，支持账号系统、个人收藏、正式资源保护与精确到分钟的调度，详见 [docs/roadmap.md](docs/roadmap.md) §1.1 / §3 / §5。
+全站统一密码通过构建时环境变量提供（**不要**加 `NEXT_PUBLIC_` 前缀，否则会进前端产物）：
+
+```bash
+# .env（本地） / GitHub Actions secret（部署）
+RESOURCE_PASSWORD=your-password
+```
+
+标记受保护比赛（二选一，取并集）：
+
+- 在该比赛的 `contests/<文件夹>/contest.json` 中加 `"protected": true`（推荐；爬虫只在新建比赛时写 `contest.json`，之后不会覆盖）；
+- 或在仓库根 `protected-contests.json` 的 `protected` 数组里列出比赛文件夹名。
+
+`pnpm build` 会把受保护比赛的**文件内容**（题面 / 源码 / PDF / 复盘 / 附件）用 PBKDF2 + AES-GCM 加密进页面，**不**把原始文件复制到 `public/contests`。比赛名、题目名、标签、通过状态与统计等**元数据公开**（首页 / 搜索 / Dashboard 正常展示，首页仅带锁标记）；点进文件查看页或复盘页时才需要密码。浏览器验证成功后把密码记入 `localStorage`，下次自动解锁。未配置 `RESOURCE_PASSWORD` 时，受保护文件的查看页只显示提示、不渲染内容。
 
 ## 文档
 

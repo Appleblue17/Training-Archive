@@ -6,6 +6,7 @@ import Link from "next/link";
 import { SearchIndexEntryType } from "@/lib/types";
 import { joinUrl } from "@/utils/url";
 import { cn } from "@/lib/utils";
+import { ITEMS_PER_PAGE } from "@/lib/global";
 import PlatformBadge from "@/components/platform-badge";
 import { Input } from "@/components/ui/input";
 
@@ -32,6 +33,7 @@ function entryToSearchable(entry: SearchIndexEntryType): string {
 export default function SearchClient({ entries }: { entries: SearchIndexEntryType[] }) {
   const [query, setQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [page, setPage] = useState(1);
 
   // All tags present in the index, for tag-based filtering.
   const allTags = useMemo(() => {
@@ -58,6 +60,15 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
   const totalMatches = results.length;
   const hasQueryOrTags = query.trim().length > 0 || selectedTags.length > 0;
 
+  // 分页：结果按 ITEMS_PER_PAGE 切页；页码越界时钳制到最后有效页
+  // （查询/标签变化会主动重置到第 1 页，见下方 onChange / onClick）。
+  const totalPages = Math.max(1, Math.ceil(totalMatches / ITEMS_PER_PAGE));
+  const currentPage = Math.min(page, totalPages);
+  const pagedResults = results.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
   return (
     <div className="w-full pt-1">
       {/* Search input */}
@@ -66,7 +77,10 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
         <Input
           type="search"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setPage(1);
+          }}
           placeholder="Search problems, contests, tags, platforms..."
           aria-label="Search problems"
           className="pl-10"
@@ -86,11 +100,12 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
             return (
               <button
                 key={tag}
-                onClick={() =>
+                onClick={() => {
                   setSelectedTags((prev) =>
                     active ? prev.filter((t) => t !== tag) : [...prev, tag],
-                  )
-                }
+                  );
+                  setPage(1);
+                }}
                 className={cn(
                   "rounded-full px-2.5 py-0.5 text-xs transition-colors",
                   active
@@ -111,6 +126,7 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
         {hasQueryOrTags
           ? `${totalMatches} result${totalMatches === 1 ? "" : "s"}`
           : `${entries.length} problems indexed`}
+        {totalPages > 1 && ` · page ${currentPage}/${totalPages}`}
       </p>
 
       {/* Results */}
@@ -120,7 +136,7 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
         </p>
       ) : (
         <ul className="space-y-1">
-          {results.map((entry) => {
+          {pagedResults.map((entry) => {
             const href = entry.viewFile
               ? joinUrl(
                   "/",
@@ -166,6 +182,42 @@ export default function SearchClient({ entries }: { entries: SearchIndexEntryTyp
             );
           })}
         </ul>
+      )}
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <nav
+          className="mt-6 flex flex-wrap items-center justify-center gap-1"
+          aria-label="Search results pagination"
+        >
+          <button
+            onClick={() => setPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="rounded bg-slate-700 px-3 py-1.5 text-sm text-white hover:bg-gray-600 disabled:pointer-events-none disabled:opacity-50"
+          >
+            Previous
+          </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+            <button
+              key={p}
+              onClick={() => setPage(p)}
+              aria-current={p === currentPage ? "page" : undefined}
+              className={cn(
+                "rounded px-3 py-1.5 text-sm text-white hover:bg-gray-600",
+                p === currentPage ? "bg-blue-800" : "bg-slate-700",
+              )}
+            >
+              {p}
+            </button>
+          ))}
+          <button
+            onClick={() => setPage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="rounded bg-slate-700 px-3 py-1.5 text-sm text-white hover:bg-gray-600 disabled:pointer-events-none disabled:opacity-50"
+          >
+            Next
+          </button>
+        </nav>
       )}
     </div>
   );
