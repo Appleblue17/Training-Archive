@@ -25,6 +25,7 @@
 ### Changed
 
 - **构建流程**：`pnpm build` / `pnpm dev` 先执行 `scripts/prepare-public-contests.mjs`（复制 `contests/ → public/contests` 时排除受保护比赛）；`deploy.yml` 不再直接 `cp -r`，构建步骤注入 `RESOURCE_PASSWORD` secret
+- **升级 Next.js**：`15.4.2-canary.5` → `15.5.25`（`eslint-config-next` 同步）。canary 的 webpack 生产构建在冷缓存下会卡死并堆溢出（`Creating an optimized production build` 阶段），稳定版可正常完成构建
 
 ### Fixed
 

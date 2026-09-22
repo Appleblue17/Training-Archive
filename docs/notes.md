@@ -52,6 +52,7 @@
 ### 构建与运行
 
 - 生产构建要求本地存在 `contests/`；`pnpm build` / `pnpm dev` 先运行 `scripts/prepare-public-contests.mjs`（复制 `contests/` → `public/contests`，排除受保护比赛），`deploy.yml` 不再直接 `cp -r`。
+- **Next 版本：`15.5.25`（稳定版）**。旧版 `15.4.2-canary.5` 的 webpack 生产构建在冷缓存下会卡死/OOM（`next build --turbopack` 能过但会强制输出生产 source map，故不采用）；升级到 15.5.25 后 `pnpm build` 正常（Node 20/22 均已验证）。注意 15.5 起 `next lint` 已标记废弃（Next 16 移除），后续可迁移到 ESLint CLI。
 - `NODE_ENV=production` 时启用 `output: "export"` 与 `basePath: "/Training-Archive"`；本地开发（`pnpm dev`）使用根路径。
 - **daemon 用 venv 运行**：系统 `python3` 可能缺 `dotenv`/`croniter`/`filelock`，统一用 `.venv/bin/python crawler/scripts/daemon.py ...`（`python3 -m venv .venv && .venv/bin/pip install -r crawler/requirements.txt`）。`install`/`install --system` 会把「执行 install 的 python」写进服务启动命令，务必用 `.venv/bin/python` 执行。
 - **无头服务器**：user unit（默认 install）依赖登录会话；服务器用 `install --system`（系统级 systemd，`WantedBy=multi-user.target`，开机即启动，需 sudo）。
