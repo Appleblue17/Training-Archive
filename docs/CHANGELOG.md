@@ -9,6 +9,8 @@
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-09-22
+
 ### Added
 
 - **archive-bot logo**（`(main)/layout.tsx`）：主标题左侧放置 logo（`next/image` + `unoptimized` + `priority`，适配静态导出）
