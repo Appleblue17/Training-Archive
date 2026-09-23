@@ -219,7 +219,11 @@ v0.4.0（动态版）
 | 17 | 个人电脑模式（2026-08-12） | 支持跨平台守护进程 `daemon.py`（Win / Mac / Linux）：`run` 主循环按 config `scheduled` 块 + 闹钟到点执行、睡眠恢复只补跑一次；`install` 按 OS 注册登录自启（systemd user / launchd / schtasks ONLOGON） |
 | 18 | 服务对象（2026-08-12） | 别人 fork 自己部署自己的站；fork 需参数化 basePath / URL 常量（env 覆盖，默认保持现状） |
 | 19 | 前端测试（2026-09-22） | 采用 **Vitest + React Testing Library（jsdom）** 做组件/单元测试（T1 纯逻辑 + T2 组件，`pnpm test`）；不引入 E2E，留 v0.4.0 再评估 |
+| 20 | 爬虫测试（2026-09-23） | 采用 **pytest**（`crawler/tests/`，`requirements-dev.txt`，CI `crawler-tests.yml`）做纯逻辑单元测试；不启动 Chrome、不发网络请求。测试先行的 P0 修复随 v0.3.3 交付 |
 
 ## 11. 遗留 / 待定
 
 - [ ] Windows / macOS 守护进程端到端实测（v0.3.0 交付项；Linux 已实测通过，见 `docs/notes.md`）
+- [ ] 爬虫"逐场完整性"语义（v0.3.3 发现，待讨论）：已修「抓取中途异常不推进 last-update」，但 HDU / NowCoder 的翻页结束判断、以及"某场翻页失败静默 break 仍可能推进全局水位"尚未处理；需要真实的平台 HTML 或抓取 fixture 才能安全修
+- [ ] qq_share `send_mode=file_only` 下 `send_contest_shares_for_all` 永不触发（无 `qq-share.txt`）；且文字成功 / 文件失败时会删除 `qq-share.txt`，文件不再重试——需要独立的"已发送"标记，属设计取舍，待讨论
+- [ ] qq-bot 增量游标按秒（`time > last_time`），同一秒内两条消息跨轮询时可能漏第二条；需要 message_id 去重集合，待讨论

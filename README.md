@@ -58,6 +58,10 @@ pnpm lint       # 代码检查
 ```bash
 pip install -r crawler/requirements.txt
 
+# 爬虫单元测试（纯逻辑，不启动 Chrome；需先安装 requirements-dev.txt）
+pip install -r crawler/requirements-dev.txt
+python3 -m pytest crawler/tests
+
 # 默认模式：抓订阅比赛 + 全量增量提交（手动/临时）
 python3 crawler/scripts/scheduled_task.py
 # 只查订阅/新建比赛（有新建才回填其提交；高频触发推荐）

@@ -9,6 +9,23 @@
 
 ## [Unreleased]
 
+### Added
+
+- **爬虫测试套件（pytest，`crawler/tests/`，168 条用例）**：纯逻辑单元测试覆盖时间解析（HDU / QOJ / ISO）、订阅加载与去重、报告 prompt 构建、闹钟分类与状态迁移、qq-bot 指令匹配与 `/subs add` 解析、qq-share 文本清洗、daemon plan 解析与调度判断、clean-log；新增 `crawler/requirements-dev.txt` / `crawler/pytest.ini`，运行 `.venv/bin/python -m pytest crawler/tests`
+- **爬虫测试 CI**（`.github/workflows/crawler-tests.yml`）：`crawler/**` 变更时自动安装依赖并运行 pytest
+
+### Fixed
+
+- **last-update 水位改用抓取开始时间**（`platforms/base.py`）：`finish()` 原写抓取**结束**时间，会漏掉抓取期间新产生、但在下次抓取开始时已早于水位的提交；改为记录抓取开始时间，并保证水位单调不回退
+- **抓取中途异常不再推进 last-update**（`platforms/base.py`）：多场比赛时若前一场已标记完成、后一场抛异常，原逻辑仍会推进全局水位，导致失败比赛早于水位的提交被永久跳过；异常时作废本次完整性标记
+- **空 `--links` 退化为全量扫描**（`report.py` / `qq_share.py`）：`--links` 存在但解析为空时会命中"扫描全部比赛"分支，report 会静默对全部缺报告比赛调用 DeepSeek、qq_share 可能群发全部待发比赛；现返回非零并拒绝扫描
+- **空 / None 复盘输出写坏 `review.md`**（`report.py`）：模型返回空内容时写出 0 字节 `review.md`，之后因"文件已存在"被永久跳过；现判定为失败且不落盘，写入改为临时文件 + `os.replace` 原子替换
+- **配置不可读时剪除全部闹钟**（`alarm.py`）：`config.json` 缺失 / 损坏时 `_load_enabled_platforms` 返回空列表，plan 的剪除逻辑会把全部闹钟（含 archived 历史）删除；现返回 None 并中止 plan
+- **单平台构造失败中断其余平台**（`scheduled_task.py`）：`crawler_for()` 构造在 `try` 之外，缺依赖 / 驱动初始化失败会抛出中断 main 循环；现移入 `try`，失败仅影响该平台
+- **daemon 主循环健壮性**（`daemon.py`）：`_is_due` 遇到损坏的 `last_run`（非字符串）抛 `TypeError` 会杀死 daemon；现捕获所有异常，主循环每轮包裹异常处理并继续；`ensure_deploy_branch` 的 `git checkout` 失败改为中止，避免在错误分支上提交推送
+- **QOJ 比赛时长解析**（`platforms/qoj/qoj.py`）：原 `split("hours")` 无法处理 `[90 minutes]` / `[2 hour]` / 空串（`ValueError` 中断整场抓取）；改为正则解析，无法识别时记录并跳过该比赛；提交页无法定位当前页时不再抛 `AttributeError`
+- **qq-bot 自然语言关键词按最长匹配**（`qq_bot.py`）：`历史比赛` 曾先命中更早注册的短关键词 `比赛`（`/upcoming`）；现最长关键词优先
+
 ## [0.3.2] - 2026-09-22
 
 ### Added

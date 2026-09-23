@@ -11,6 +11,7 @@
 - **v0.3.0 已发布（2026-08-12，部署方式重构）**：静态版统一为自托管爬虫 + GitHub Pages（已删除 Actions 爬虫链路）；跨平台守护进程 `daemon.py` 替代 `server-task.sh`；fork 部署参数化（basePath / URL 常量 env 化）。服务器 + 本地 Linux 已端到端实测通过（`install` 自启 + `sync`/`fire` + 部署链路）；Windows / macOS 测试留待后续。
 - **v0.3.1 已发布（2026-08-13）QQ 群分享 + QQ 群机器人 + 赛前提醒**：`qq_share.py` 扩展为完整 share 流程（生成 `qq-share.txt` → NapCat 群发文字 + `review.md` 文件 → 删除）；与 report 解耦（daemon sync/fire 在 report 成功后按 `ai_tasks.share.enabled` 单独调用）；`report.py --links` review 失败返回非零 → sync/fire 阻断（不 mark archived）。NapCat 技术路径复用 Miniese（正向 WebSocket + Bearer token + CQ 码清洗 + 频率控制），Miniese 是私聊、本项目是群聊。`qq_bot.py` 常驻轮询 NapCat 群消息，@触发指令查询（/status /upcoming /alarms /contests /review /fortune /subs /sync /help）；增量游标用消息 `time`（NapCat `message_seq` 非全局递增）。赛前提醒：planned 闹钟开始前 `qq.remind_before_minutes` 分钟（缺省 15）发 QQ 群提醒，订阅可填 `start_time`，缺省回退 `end_time - 5h`。`/fortune` 按 user_id + 北京日期确定性选择（可配 `qq.fortune_salt`）；`/subs add` 支持 `end=`/`start=` 键值语法，且恰好一个可解析为时间的裸 token 自动作为 `end_time`（时间格式 ISO 8601 北京时间，错误终止并提示）；`/subs`（add/del，改动后自动 sync）与 `/sync` 仅在 deploy 分支工作区生效，且 `plan` 校验订阅时间格式、`sync` 遇非法时间中止。
 - **v0.3.2（已定稿，分支 `v0.3.2`）**：补 `docs/CHANGELOG.md` 的 `[Unreleased]`（logo / tab 标题 / /search 分页）；`/search` 按 `ITEMS_PER_PAGE` 分页；**资源保护已实现（静态版客户端加密）**——`contest.json` 的 `protected: true`（或 `protected-contests.json` 清单）标记，构建时用 `RESOURCE_PASSWORD` 派生 AES-256-GCM 密钥加密文件/元数据/复盘，浏览器 WebCrypto 解密并把密码记 `localStorage`；只保护文件内容（`public/contests` 不发布原始文件），比赛名 / 题目 / 统计等元数据公开，首页 / 搜索 / Dashboard 正常展示（首页带锁标记）。
+- **v0.3.3（进行中，分支 `v0.3.3`）爬虫测试 + 修复**：新增 pytest 测试套件（`crawler/tests/`，168 条，`requirements-dev.txt` + `pytest.ini` + CI）；修复 last-update 水位（用抓取开始时间、异常不推进）、空 `--links` 退化全量扫描、空复盘输出写坏 `review.md`、config 不可读时 plan 剪除全部闹钟、单平台构造失败中断其余平台、daemon 主循环健壮性、QOJ 时长解析、qq-bot 关键词最长匹配等（详见 `docs/CHANGELOG.md` `[Unreleased]`）。
 - HDU / NowCoder 爬虫默认停用（`crawler/config.json` 的 `enabled` 字段控制）。
 - 闹钟机制已实现（`crawler/scripts/alarm.py` + `crawler/scripts/daemon.py sync/fire`）：订阅条目可选填 `end_time`，未来比赛写闹钟表 `crawler/alarms.json`（gitignore），到点由 `fire` 爬取 + 立即生成报告；状态模型 `planned` / `pending` / `archived` / `failed`。
 - `contests/` 数据目录为空（git 忽略），本地开发需先准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
@@ -26,6 +27,21 @@
 - [x] 方案 A（只保护文件内容）：文件查看器 + 复盘页加密，`public/contests` 排除原始文件；元数据公开，首页/搜索/Dashboard 正常展示
 - [x] 端到端人工验收（浏览器输密码/记住状态；多浏览器、移动端）
 - [x] 版本号 + CHANGELOG 定稿（`package.json` 0.3.2、`[0.3.2] - 2026-09-22`）
+
+### v0.3.3（进行中）
+
+- [x] 搭建爬虫 pytest 脚手架（`crawler/requirements-dev.txt` / `crawler/pytest.ini` / `crawler/tests/`）
+- [x] 纯逻辑单元测试（时间解析 / 订阅加载 / report 构建 / alarm 分类 / qq 工具 / daemon 调度 / clean-log）
+- [x] 修复 last-update 水位（抓取开始时间 + 异常不推进）
+- [x] 修复空 `--links` 退化全量扫描（report / qq_share）
+- [x] 修复空复盘输出写坏 `review.md`（原子写入）
+- [x] 修复 config 不可读时 alarm plan 剪除全部闹钟
+- [x] 修复 scheduled_task 单平台构造失败中断其余平台
+- [x] 修复 daemon 主循环 / `_is_due` / `ensure_deploy_branch` 健壮性
+- [x] 修复 QOJ 时长解析 + 提交页当前页定位
+- [x] 修复 qq-bot 自然语言关键词最长匹配
+- [x] 爬虫测试 CI（`.github/workflows/crawler-tests.yml`）
+- [ ] 待讨论：多平台"逐场完整性"语义（HDU/NowCoder 页判断）、qq_share `file_only` 扫全量 / 部分成功删除 `qq-share.txt`、qq-bot 同秒消息游标（见 CHANGELOG `[Unreleased]` 之外的遗留项）
 
 ### v1.x.x（动态版）
 
@@ -50,6 +66,7 @@
 - **UI 库**：shadcn/ui（Radix + Tailwind），新增组件通过其 CLI 或手工复制引入。
 - **图标库**：lucide-react；**禁止新增 `react-icons`**。
 - **前端测试**：Vitest + React Testing Library（jsdom，`vitest.config.ts` + `vitest.setup.ts`），测试文件与源码同目录 `*.test.ts(x)`，`pnpm test` 运行；服务端加密/客户端解密往返测试用 `// @vitest-environment node`。
+- **爬虫测试**：pytest，测试在 `crawler/tests/`，用 `.venv/bin/python -m pytest crawler/tests` 运行（`.venv` 需装 `crawler/requirements-dev.txt`）。只测纯逻辑、不启动 Chrome / 不发网络请求；`BaseCrawler` 用 `__new__` 构造裸对象并 stub `log`。
 
 ### 构建与运行
 
@@ -91,7 +108,9 @@ pnpm build          # 生产构建（NODE_ENV=production 时导出 out/）
 pnpm lint           # ESLint 检查
 pnpm test           # Vitest 组件/单元测试
 
-pip install -r crawler/requirements.txt   # 爬虫依赖
+pip install -r crawler/requirements.txt        # 爬虫依赖
+pip install -r crawler/requirements-dev.txt    # 爬虫依赖 + pytest（测试用）
+python3 -m pytest crawler/tests                # 爬虫单元测试
 python3 crawler/scripts/scheduled_task.py                # 默认模式：抓订阅比赛 + 全量增量提交（手动/临时）
 python3 crawler/scripts/scheduled_task.py --contests-only     # 只查订阅/新建比赛（高频触发）
 python3 crawler/scripts/scheduled_task.py --contests-only --links "https://qoj.ac/contest/123"  # 只抓指定订阅链接
