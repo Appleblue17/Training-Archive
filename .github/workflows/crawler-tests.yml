@@ -1,0 +1,32 @@
+name: Crawler Tests
+
+on:
+  push:
+    branches: [master, v0.3.3]
+    paths:
+      - "crawler/**"
+      - ".github/workflows/crawler-tests.yml"
+  pull_request:
+    paths:
+      - "crawler/**"
+      - ".github/workflows/crawler-tests.yml"
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: crawler/requirements-dev.txt
+
+      - name: Install dependencies
+        run: pip install -r crawler/requirements-dev.txt
+
+      - name: Run crawler tests
+        run: python -m pytest crawler/tests
