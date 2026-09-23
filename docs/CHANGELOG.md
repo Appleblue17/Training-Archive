@@ -11,12 +11,14 @@
 
 ### Added
 
-- **爬虫测试套件（pytest，`crawler/tests/`，168 条用例）**：纯逻辑单元测试覆盖时间解析（HDU / QOJ / ISO）、订阅加载与去重、报告 prompt 构建、闹钟分类与状态迁移、qq-bot 指令匹配与 `/subs add` 解析、qq-share 文本清洗、daemon plan 解析与调度判断、clean-log；新增 `crawler/requirements-dev.txt` / `crawler/pytest.ini`，运行 `.venv/bin/python -m pytest crawler/tests`
+- **爬虫测试套件（pytest，`crawler/tests/`，189 条用例）**：纯逻辑单元测试覆盖时间解析（HDU / QOJ / ISO）、订阅加载与去重、报告 prompt 构建、闹钟分类与状态迁移、qq-bot 指令匹配 / `/subs add` 解析 / 同秒游标、qq-share 文本清洗与已发送标记、daemon plan 解析与调度判断、clean-log、NowCoder 登录态判断、QOJ 源码提取；新增 `crawler/requirements-dev.txt` / `crawler/pytest.ini`，运行 `.venv/bin/python -m pytest crawler/tests`
 - **爬虫测试 CI**（`.github/workflows/crawler-tests.yml`）：`crawler/**` 变更时自动安装依赖并运行 pytest
 
 ### Changed
 
 - **QQ 群分享只发送 `review.md` 文件**（`qq_share.py`）：移除文案生成与群发（`qq-share.txt`、DeepSeek 简化版模板、`qq.send_mode` / `--file-only`）。发送成功后在比赛文件夹写入 `qq-share.sent` 已发送标记（两个 `.gitignore` 均忽略），补发扫描跳过已发送与无 review 的比赛；同时删除不再使用的 `crawler/prompts/qq-share.template.example.md`
+
+- **Chrome 无头模式可通过 `CHROME_HEADLESS=0` 关闭**（`platforms/base.py`）：默认仍为无头；QOJ 等站点对 headless 有 Cloudflare Turnstile 检测，在 Xvfb / 有显示器的环境用 `xvfb-run -a env CHROME_HEADLESS=0 ...` 跑非 headless 可通过（本机三平台实测即用此方式）
 
 ### Fixed
 
@@ -31,6 +33,8 @@
 - **daemon 主循环健壮性**（`daemon.py`）：`_is_due` 遇到损坏的 `last_run`（非字符串）抛 `TypeError` 会杀死 daemon；现捕获所有异常，主循环每轮包裹异常处理并继续；`ensure_deploy_branch` 的 `git checkout` 失败改为中止，避免在错误分支上提交推送
 - **QOJ 比赛时长解析**（`platforms/qoj/qoj.py`）：原 `split("hours")` 无法处理 `[90 minutes]` / `[2 hour]` / 空串（`ValueError` 中断整场抓取）；改为正则解析，无法识别时记录并跳过该比赛；提交页无法定位当前页时不再抛 `AttributeError`
 - **qq-bot 自然语言关键词按最长匹配**（`qq_bot.py`）：`历史比赛` 曾先命中更早注册的短关键词 `比赛`（`/upcoming`）；现最长关键词优先
+- **NowCoder 登录态误报**（`platforms/nowcoder/nowcoder.py`）：`NOWCODER_USERNAME` 未配置时 `self.username in html` 恒为真，无效 Cookie 也被当作"登录成功"；现无昵称时改用页面特征（有「退出」入口 / 用户主页链接）校验，并在缺昵称时告警
+- **QOJ 提交源码偶发抓取失败**（`platforms/qoj/qoj.py`）：长任务中 Cloudflare 偶发返回挑战页（无 `pre.sh_sourceCode`）时原代码抛 `AttributeError`、源码静默缺失；现提取失败退避后重试一次，仍失败给出明确错误
 
 ## [0.3.2] - 2026-09-22
 

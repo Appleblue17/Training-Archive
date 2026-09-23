@@ -224,6 +224,7 @@ v0.4.0（动态版）
 ## 11. 遗留 / 待定
 
 - [ ] Windows / macOS 守护进程端到端实测（v0.3.0 交付项；Linux 已实测通过，见 `docs/notes.md`）
-- [ ] **完整测试三个平台（QOJ / HDU / NowCoder）的抓取功能**（v0.3.3 后续排期）：含翻页结束判断与"逐场完整性"语义。已修「抓取中途异常不推进 last-update」，但 HDU 用 `li.page-item disabled` 判断当前页（Bootstrap 惯例是 `active`，需真实状态页 HTML / 抓取 fixture 验证）；QOJ / NowCoder 翻页请求失败时静默 `break` 仍可能推进全局水位
+- [ ] **NowCoder 用有效 Cookie 重测抓取**（2026-09-23 实测 Cookie 失效，见 `docs/notes.md`；已修 `NOWCODER_USERNAME` 缺省时登录态恒真的误报）
+- [ ] 三平台翻页 / 逐场完整性深入：HDU 状态页**无分页**（第一场 cid=1229 共 20 条，`&page=2` 返回同内容；第二场 cid=1230 抓到 25 条，现有"无分页→第一页处理完即完整"逻辑正确）；QOJ 长任务下会偶发 Cloudflare 挑战页，已加一次重试，后续可考虑更长退避 / 降速
 - [x] qq_share 文案模式问题（v0.3.3 解决）：**移除文案生成 / 群发**，只发送 `review.md` 文件 + `qq-share.sent` 已发送标记（`file_only` 永不触发 / 部分成功不回补一并消除）
 - [x] qq-bot 同秒消息游标（v0.3.3 解决）：边界秒用 `time >= last_time` + message_id 去重集合

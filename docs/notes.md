@@ -11,7 +11,7 @@
 - **v0.3.0 已发布（2026-08-12，部署方式重构）**：静态版统一为自托管爬虫 + GitHub Pages（已删除 Actions 爬虫链路）；跨平台守护进程 `daemon.py` 替代 `server-task.sh`；fork 部署参数化（basePath / URL 常量 env 化）。服务器 + 本地 Linux 已端到端实测通过（`install` 自启 + `sync`/`fire` + 部署链路）；Windows / macOS 测试留待后续。
 - **v0.3.1 已发布（2026-08-13）QQ 群分享 + QQ 群机器人 + 赛前提醒**：`qq_share.py` 扩展为完整 share 流程（生成 `qq-share.txt` → NapCat 群发文字 + `review.md` 文件 → 删除）；与 report 解耦（daemon sync/fire 在 report 成功后按 `ai_tasks.share.enabled` 单独调用）；`report.py --links` review 失败返回非零 → sync/fire 阻断（不 mark archived）。NapCat 技术路径复用 Miniese（正向 WebSocket + Bearer token + CQ 码清洗 + 频率控制），Miniese 是私聊、本项目是群聊。`qq_bot.py` 常驻轮询 NapCat 群消息，@触发指令查询（/status /upcoming /alarms /contests /review /fortune /subs /sync /help）；增量游标用消息 `time`（NapCat `message_seq` 非全局递增）。赛前提醒：planned 闹钟开始前 `qq.remind_before_minutes` 分钟（缺省 15）发 QQ 群提醒，订阅可填 `start_time`，缺省回退 `end_time - 5h`。`/fortune` 按 user_id + 北京日期确定性选择（可配 `qq.fortune_salt`）；`/subs add` 支持 `end=`/`start=` 键值语法，且恰好一个可解析为时间的裸 token 自动作为 `end_time`（时间格式 ISO 8601 北京时间，错误终止并提示）；`/subs`（add/del，改动后自动 sync）与 `/sync` 仅在 deploy 分支工作区生效，且 `plan` 校验订阅时间格式、`sync` 遇非法时间中止。
 - **v0.3.2（已定稿，分支 `v0.3.2`）**：补 `docs/CHANGELOG.md` 的 `[Unreleased]`（logo / tab 标题 / /search 分页）；`/search` 按 `ITEMS_PER_PAGE` 分页；**资源保护已实现（静态版客户端加密）**——`contest.json` 的 `protected: true`（或 `protected-contests.json` 清单）标记，构建时用 `RESOURCE_PASSWORD` 派生 AES-256-GCM 密钥加密文件/元数据/复盘，浏览器 WebCrypto 解密并把密码记 `localStorage`；只保护文件内容（`public/contests` 不发布原始文件），比赛名 / 题目 / 统计等元数据公开，首页 / 搜索 / Dashboard 正常展示（首页带锁标记）。
-- **v0.3.3（进行中，分支 `v0.3.3`）爬虫测试 + 修复**：新增 pytest 测试套件（`crawler/tests/`，183 条，`requirements-dev.txt` + `pytest.ini` + CI）；修复 last-update 水位（用抓取开始时间、异常不推进）、空 `--links` 退化全量扫描、空复盘输出写坏 `review.md`、config 不可读时 plan 剪除全部闹钟、单平台构造失败中断其余平台、daemon 主循环健壮性、QOJ 时长解析、qq-bot 关键词最长匹配与同秒游标；**移除 QQ 分享文案**（只发 `review.md` 文件 + `qq-share.sent` 已发送标记）。详见 `docs/CHANGELOG.md` `[Unreleased]`。
+- **v0.3.3（进行中，分支 `v0.3.3`）爬虫测试 + 修复**：新增 pytest 测试套件（`crawler/tests/`，189 条，`requirements-dev.txt` + `pytest.ini` + CI）；修复 last-update 水位（用抓取开始时间、异常不推进）、空 `--links` 退化全量扫描、空复盘输出写坏 `review.md`、config 不可读时 plan 剪除全部闹钟、单平台构造失败中断其余平台、daemon 主循环健壮性、QOJ 时长解析、qq-bot 关键词最长匹配与同秒游标；**移除 QQ 分享文案**（只发 `review.md` 文件 + `qq-share.sent` 已发送标记）。详见 `docs/CHANGELOG.md` `[Unreleased]`。
 - HDU / NowCoder 爬虫默认停用（`crawler/config.json` 的 `enabled` 字段控制）。
 - 闹钟机制已实现（`crawler/scripts/alarm.py` + `crawler/scripts/daemon.py sync/fire`）：订阅条目可选填 `end_time`，未来比赛写闹钟表 `crawler/alarms.json`（gitignore），到点由 `fire` 爬取 + 立即生成报告；状态模型 `planned` / `pending` / `archived` / `failed`。
 - `contests/` 数据目录为空（git 忽略），本地开发需先准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
@@ -43,7 +43,10 @@
 - [x] 爬虫测试 CI（`.github/workflows/crawler-tests.yml`）
 - [x] 移除 QQ 分享文案，只发送 `review.md` 文件（新增 `qq-share.sent` 已发送标记，修复 `file_only` 永不触发 / 部分成功不回补）
 - [x] 修复 qq-bot 同秒消息游标（`>= ` 边界秒 + message_id 去重）
-- [ ] **稍后：完整测试三个平台（QOJ / HDU / NowCoder）的抓取功能**（含翻页/完整性判断；HDU 页判断需真实 HTML 夹具）
+- [x] 三平台抓取实测（2026-09-23，Xvfb 非 headless）：
+  - **HDU cid=1230 ✅**：比赛（2026-07-23 钉耙编程（2））12 题 + 12 题面、25 条提交 + 25 份源码；状态页无分页（第一场 cid=1229 共 20 条，`&page=2` 不生效），现有"无分页则第一页处理完即完整"的逻辑正确
+  - **QOJ 3588 ✅（源码偶发失败已修）**：比赛 = The 4th Universal Cup Extra Stage 5: Shenzhen，13 题 PDF 题面、50 条提交；长任务中部分提交源码被 Cloudflare 挑战页挡住（新会话重抓可成功），已加一次退避重试
+  - **NowCoder 140489 ❌ 待有效 Cookie**：题目/题面正常（6 题），提交 0 条；`onlyMyStatusFilter` 视图"暂无数据"，且确认主页无登录态 → **Cookie 失效**；同时修复了缺 `NOWCODER_USERNAME` 时登录校验恒真的误报
 
 ### v1.x.x（动态版）
 
@@ -93,6 +96,7 @@
 - **`--contests-only`**：只检查订阅有没有触发，有新建比赛才回填其提交；**不推进 `last-update.json`**（已有比赛增量由每日 `--submissions-only` 负责）。若新建比赛提交回填失败（如超时），文件夹已存在，后续运行不会当新建重试，需手动处理。
 - 早于比赛开始时间的提交统一丢弃（跨赛季复用题目）；staged 中此类旧提交下次运行清除。
 - HDU / NowCoder 的 HTML→Markdown 依赖 **pandoc**（CI 安装 3.6.3；本地需自行安装）。
+- **QOJ 有 Cloudflare Turnstile**：headless Chrome 会被拦（登录页停在 "Just a moment..."）。本地/服务器可用虚拟显示跑非 headless：`xvfb-run -a env CHROME_HEADLESS=0 .venv/bin/python crawler/scripts/scheduled_task.py ...`（`CHROME_HEADLESS=0` 关闭 `--headless`；默认仍无头）。
 - 爬虫驱动：CI 用 `browser-actions/setup-chrome` 并通过环境变量传路径；本地需准备 `crawler/chrome-linux64` 与 `crawler/chromedriver-linux64`。
 - `_get_extension_name()` 语言识别为启发式映射，未识别语言 fallback `.txt`。
 
