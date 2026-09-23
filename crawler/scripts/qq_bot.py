@@ -1134,14 +1134,19 @@ def _match_command(text):
         if fn:
             return fn, arg
         return None, None
-    # 自然语言关键词
+    # 自然语言关键词：按最长匹配优先。否则 "历史比赛" 会先命中注册更早的
+    # 短关键词 "比赛"（/upcoming），永远到不了 /contests。
+    best_fn = None
+    best_len = 0
     for name, val in COMMANDS.items():
         if not name.startswith("__kw__"):
             continue
         keywords, fn = val
         for kw in keywords:
-            if kw in text:
-                return fn, text
+            if kw in text and len(kw) > best_len:
+                best_fn, best_len = fn, len(kw)
+    if best_fn is not None:
+        return best_fn, text
     return None, None
 
 

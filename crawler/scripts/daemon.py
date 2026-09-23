@@ -208,7 +208,14 @@ def ensure_deploy_branch():
     if r.returncode != 0:
         log(f"Branch '{DEPLOY_BRANCH}' not found. Create it first (e.g. from master).")
         raise SystemExit(1)
-    git("checkout", DEPLOY_BRANCH, check=False)
+    r = git("checkout", DEPLOY_BRANCH, check=False)
+    if r.returncode != 0:
+        # checkout 失败（脏工作区 / 分支冲突）时不能静默继续：后续
+        # commit_and_push 会 push origin deploy，若当前仍在别的分支上，
+        # 会把错误分支的提交推到 deploy。
+        log(f"[ERROR] git checkout {DEPLOY_BRANCH} failed (code {r.returncode}); "
+            "aborting to avoid committing on the wrong branch.")
+        raise SystemExit(1)
     git("pull", "--ff-only", "origin", DEPLOY_BRANCH, check=False)
 
 
@@ -623,8 +630,12 @@ def _is_due(task, expr, now, state):
         return True
     try:
         dt = datetime.fromisoformat(last)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=beijing)
         nxt = croniter(expr, dt).get_next(datetime)
-    except (ValueError, KeyError) as e:
+    except Exception as e:
+        # 非字符串 last_run / croniter 异常等都可能出现；必须兜住，
+        # 否则异常会冒泡出主循环（外层只捕获 KeyboardInterrupt）杀死 daemon。
         log(f"[run] bad state/last_run for {task}: {e}; treating as due.")
         return True
     return nxt <= now
@@ -638,31 +649,36 @@ def cmd_run():
     log("[run] scheduled: " + ", ".join(f"{k}={v}" for k, v in scheduled.items()))
     try:
         while True:
-            now = datetime.now(beijing)
-            state = load_state()
-            for task in TASKS:
-                if not _is_due(task, scheduled[task], now, state):
-                    continue
-                log(f"[run] task due: {task}")
-                try:
-                    if task == "fire":
-                        cmd_fire()
-                    elif task == "sync":
-                        cmd_sync()
-                    elif task == "incremental":
-                        cmd_incremental()
-                    elif task == "remind":
-                        cmd_remind()
-                except SystemExit as e:
-                    # 任务失败（returncode 非零）不应杀死 daemon；记日志继续
-                    log(f"[run] task {task} exited with code {e.code}")
-                except Exception as e:
-                    log(f"[run] task {task} failed: {e}")
-                # 无论成败都推进 last_run：下次触发按 cron 排程（失败的任务
-                # 由 sync 兜底重试，与 server-task.sh 语义一致）
+            try:
+                now = datetime.now(beijing)
                 state = load_state()
-                state["last_run"][task] = now.isoformat()
-                save_state(state)
+                for task in TASKS:
+                    if not _is_due(task, scheduled[task], now, state):
+                        continue
+                    log(f"[run] task due: {task}")
+                    try:
+                        if task == "fire":
+                            cmd_fire()
+                        elif task == "sync":
+                            cmd_sync()
+                        elif task == "incremental":
+                            cmd_incremental()
+                        elif task == "remind":
+                            cmd_remind()
+                    except SystemExit as e:
+                        # 任务失败（returncode 非零）不应杀死 daemon；记日志继续
+                        log(f"[run] task {task} exited with code {e.code}")
+                    except Exception as e:
+                        log(f"[run] task {task} failed: {e}")
+                    # 无论成败都推进 last_run：下次触发按 cron 排程（失败的任务
+                    # 由 sync 兜底重试，与 server-task.sh 语义一致）
+                    state = load_state()
+                    state["last_run"][task] = now.isoformat()
+                    save_state(state)
+            except Exception as e:
+                # 单次迭代的任何意外（状态文件损坏、cron 解析等）都记日志后
+                # 继续下一轮，避免整个 daemon 因一次异常退出。
+                log(f"[run] loop iteration failed: {e}")
             time.sleep(POLL_INTERVAL)
     except KeyboardInterrupt:
         log("=== daemon stopped (Ctrl+C) ===")

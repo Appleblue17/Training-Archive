@@ -416,11 +416,27 @@ def generate_review(contest_folder):
         print(f"[report] DeepSeek call failed for {contest_folder}: {e}")
         return "failed"
 
+    # 空/None 输出不能落盘：否则会写出 0 字节 review.md，之后
+    # generate_review 因 "review.md 已存在" 永久跳过这场比赛的复盘。
+    if not isinstance(content, str) or not content.strip():
+        print(
+            f"[report] DeepSeek returned empty/invalid content for {contest_folder}; "
+            "not writing review.md (will retry)."
+        )
+        return "failed"
+
+    # 原子写入：先写临时文件再 os.replace，避免中途失败留下半截/0 字节文件。
+    tmp_path = review_path + ".tmp"
     try:
-        with open(review_path, "w", encoding="utf-8") as f:
+        with open(tmp_path, "w", encoding="utf-8") as f:
             f.write(content)
+        os.replace(tmp_path, review_path)
     except OSError as e:
         print(f"[report] Failed to write {review_path}: {e}")
+        try:
+            os.remove(tmp_path)
+        except OSError:
+            pass
         return "failed"
     print(f"[report] Wrote {review_path}.")
     return "generated"
@@ -481,19 +497,30 @@ def generate_reviews_for_links(links_filter, contests_root="contests"):
     return generated, failed
 
 
-if __name__ == "__main__":
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    from_crawl = "--from-crawl" in sys.argv[1:]
+def main(argv=None):
+    """CLI 入口，返回进程退出码。
+
+    --links 存在但解析后为空时返回 1 且不扫描：否则会退化为"全量扫描"，
+    对全部缺 review 的比赛都调用 DeepSeek（静默消耗 token）。
+    """
+    if argv is None:
+        argv = sys.argv[1:]
+    argv = list(argv)
+    args = [a for a in argv if not a.startswith("--")]
+    from_crawl = "--from-crawl" in argv
 
     # --links "link1,link2"：只对指定订阅链接的比赛生成（服务器 sync 补抓已过期
     # 比赛时，同一批爬取可能同时含历史比赛，历史比赛不生成报告，用 --links 过滤）。
     links_filter = None
-    if "--links" in sys.argv[1:]:
-        idx = sys.argv[1:].index("--links")
-        raw = sys.argv[1:][idx + 1] if idx + 1 < len(sys.argv[1:]) else ""
+    if "--links" in argv:
+        idx = argv.index("--links")
+        raw = argv[idx + 1] if idx + 1 < len(argv) else ""
         links_filter = {
             l.strip().rstrip("/") for l in raw.split(",") if l.strip()
         }
+        if not links_filter:
+            print("[report] --links provided but empty; refusing to scan all contests.")
+            return 1
 
     def _filter_by_links(folders):
         if not links_filter:
@@ -513,21 +540,24 @@ if __name__ == "__main__":
         generated = statuses.count("generated")
         failed = statuses.count("failed")
         print(f"[report] Generated {generated} review(s) from crawl ({failed} failed).")
-        sys.exit(1 if failed else 0)
-    elif links_filter:
+        return 1 if failed else 0
+    if links_filter:
         # 订阅驱动（daemon 的 sync/fire）：报告条件 = 订阅里填了 end_time 的
         # 比赛（EXPIRED / RETRY / fire due），按链接反查比赛文件夹生成，
         # 不依赖 new-contests.json（与本次是否新建无关）。
         # 失败返回非零 → daemon 阻断 sync/fire（不 mark archived，下次重试）。
         generated, failed = generate_reviews_for_links(links_filter)
         print(f"[report] Generated {generated} review(s) for links ({failed} failed).")
-        sys.exit(1 if failed else 0)
-    elif args:
+        return 1 if failed else 0
+    if args:
         target = args[0]
         status = generate_review(target)
         print(f"[report] {target}: {status}.")
-        sys.exit(0 if status != "failed" else 1)
-    else:
-        generated, failed = generate_reviews_for_all()
-        print(f"[report] Generated {generated} review(s) ({failed} failed).")
-        sys.exit(1 if failed else 0)
+        return 0 if status != "failed" else 1
+    generated, failed = generate_reviews_for_all()
+    print(f"[report] Generated {generated} review(s) ({failed} failed).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

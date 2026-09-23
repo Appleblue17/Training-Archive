@@ -606,12 +606,17 @@ def main(argv=None):
     from_crawl = "--from-crawl" in argv
     force_file_only = "--file-only" in argv
 
-    # --links "link1,link2"：按订阅链接反查比赛（daemon sync/fire 用）
+    # --links "link1,link2"：按订阅链接反查比赛（daemon sync/fire 用）。
+    # --links 存在但解析为空时直接返回：否则会退化为"全量扫描"，
+    # 在 text_and_file 模式下可能把全部待发比赛都群发出去。
     links_filter = None
     if "--links" in argv:
         idx = argv.index("--links")
         raw = argv[idx + 1] if idx + 1 < len(argv) else ""
         links_filter = {l.strip().rstrip("/") for l in raw.split(",") if l.strip()}
+        if not links_filter:
+            print("[qq-share] --links provided but empty; refusing to scan all contests.")
+            return 1
 
     if from_crawl:
         sent = send_contest_shares_from_crawl(force_file_only=force_file_only)
