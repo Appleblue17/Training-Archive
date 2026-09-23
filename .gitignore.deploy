@@ -75,7 +75,8 @@ crawler/qq-bot.log
 crawler/bot-state.json
 crawler/fortune-cache.json
 crawler/quotes-cache.json
-# QQ 群分享临时产物（发送成功后删除；gitignore 兜底防止误提交）
+# QQ 群分享：已发送标记（发送成功后写入；勿提交）；qq-share.txt 为旧版文案遗留
+contests/*/qq-share.sent
 contests/*/qq-share.txt
 # NapCat 本地数据库（测试时在仓库根生成，勿提交）
 /guild1.db

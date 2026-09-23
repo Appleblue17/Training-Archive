@@ -1,4 +1,4 @@
-"""crawler/scripts/qq_share.py 单元测试。"""
+"""crawler/scripts/qq_share.py 单元测试（v0.3.3 起：只发 review 文件）。"""
 
 import json
 
@@ -8,7 +8,7 @@ from crawler.scripts import qq_share as qs
 
 
 # ---------------------------------------------------------------------------
-# clean_for_qq / _strip_code_fence
+# clean_for_qq
 # ---------------------------------------------------------------------------
 def test_clean_for_qq_escapes_cq_brackets():
     assert qs.clean_for_qq("a[b]c") == "a&#91;b&#93;c"
@@ -20,12 +20,6 @@ def test_clean_for_qq_strips_markdown():
     assert "**" not in out and "~~" not in out and "`" not in out
     assert "粗" in out and "行内" in out and "标题" in out
     assert "code" not in out
-
-
-def test_strip_code_fence():
-    assert qs._strip_code_fence("```markdown\nhello\n```") == "hello"
-    assert qs._strip_code_fence("plain") == "plain"
-    assert qs._strip_code_fence("```only-fence") == ""
 
 
 # ---------------------------------------------------------------------------
@@ -58,7 +52,6 @@ def test_ai_task_enabled(monkeypatch):
     assert qs.ai_task_enabled("share") is False
     monkeypatch.setattr(qs, "_load_config", lambda: {})
     assert qs.ai_task_enabled("share") is False
-    # 简写布尔形式
     monkeypatch.setattr(qs, "_load_config", lambda: {"ai_tasks": {"share": True}})
     assert qs.ai_task_enabled("share") is True
 
@@ -79,10 +72,132 @@ def test_load_env_qq_ignores_bad_group_id(tmp_path, monkeypatch, capsys):
 
 
 # ---------------------------------------------------------------------------
+# send_contest_share（只发文件 + 已发送标记）
+# ---------------------------------------------------------------------------
+class FakeSender:
+    result = True
+    last = None
+
+    def __init__(self, ws_url, group_id, token=""):
+        self.sent = []
+        self.closed = False
+        FakeSender.last = self
+
+    def _connect(self):
+        if self.connect_error:
+            raise RuntimeError("connect refused")
+
+    connect_error = False
+
+    def _close(self):
+        self.closed = True
+
+    def send_file(self, file_path, file_name=None):
+        self.sent.append((file_path, file_name))
+        return self.result
+
+
+def _make_contest(tmp_path, name="2026-01-01 x", review=True):
+    folder = tmp_path / "contests" / name
+    folder.mkdir(parents=True)
+    if review:
+        (folder / "review.md").write_text("# 复盘", encoding="utf-8")
+    return folder
+
+
+@pytest.fixture()
+def send_env(tmp_path, monkeypatch):
+    FakeSender.result = True
+    FakeSender.last = None
+    FakeSender.connect_error = False
+    monkeypatch.setattr(qs, "QQGroupSender", FakeSender)
+    monkeypatch.setattr(qs, "create_connection", lambda *a, **k: object())
+    monkeypatch.setattr(qs, "_load_qq_config",
+                        lambda: {"napcat_ws_url": "ws://x", "group_id": 123})
+    return tmp_path
+
+
+def test_send_contest_share_missing_review_skips(send_env):
+    folder = _make_contest(send_env, review=False)
+    assert qs.send_contest_share(str(folder)) is False
+    assert FakeSender.last is None
+
+
+def test_send_contest_share_already_sent_skips(send_env):
+    folder = _make_contest(send_env)
+    qs._mark_sent(str(folder))
+    assert qs.send_contest_share(str(folder)) is False
+    assert FakeSender.last is None
+
+
+def test_send_contest_share_unconfigured_napcat_skips(send_env, monkeypatch):
+    monkeypatch.setattr(qs, "_load_qq_config", lambda: {})
+    folder = _make_contest(send_env)
+    assert qs.send_contest_share(str(folder)) is False
+    assert not qs._is_sent(str(folder))
+
+
+def test_send_contest_share_success_marks_sent(send_env):
+    folder = _make_contest(send_env)
+    assert qs.send_contest_share(str(folder)) is True
+    assert qs._is_sent(str(folder))
+    assert FakeSender.last.sent and FakeSender.last.sent[0][0].endswith("review.md")
+    assert FakeSender.last.closed is True
+
+
+def test_send_contest_share_file_failure_not_marked(send_env):
+    FakeSender.result = False
+    folder = _make_contest(send_env)
+    assert qs.send_contest_share(str(folder)) is False
+    assert not qs._is_sent(str(folder))
+
+
+def test_send_contest_share_connect_failure_not_marked(send_env):
+    FakeSender.connect_error = True
+    folder = _make_contest(send_env)
+    assert qs.send_contest_share(str(folder)) is False
+    assert not qs._is_sent(str(folder))
+
+
+# ---------------------------------------------------------------------------
+# 入口选择逻辑
+# ---------------------------------------------------------------------------
+def test_send_for_all_skips_sent_and_missing_review(tmp_path, monkeypatch):
+    sent_names = []
+    monkeypatch.setattr(qs, "send_contest_share",
+                        lambda folder: sent_names.append(folder) or True)
+    _make_contest(tmp_path, "a")
+    marked = _make_contest(tmp_path, "b")
+    qs._mark_sent(str(marked))
+    _make_contest(tmp_path, "c", review=False)
+    n = qs.send_contest_shares_for_all(contests_root=str(tmp_path / "contests"))
+    assert n == 1
+    assert sent_names == [str(tmp_path / "contests" / "a")]
+
+
+def test_send_for_links_filters_by_link(tmp_path, monkeypatch):
+    sent = []
+    monkeypatch.setattr(qs, "send_contest_share", lambda folder: sent.append(folder) or True)
+    root = tmp_path / "contests"
+    for name, link in [("a", "https://qoj.ac/contest/1"), ("b", "https://qoj.ac/contest/2")]:
+        folder = root / name
+        folder.mkdir(parents=True)
+        (folder / "contest.json").write_text(json.dumps({"link": link}), encoding="utf-8")
+    n = qs.send_contest_shares_for_links({"https://qoj.ac/contest/2"}, contests_root=str(root))
+    assert n == 1
+    assert sent == [str(root / "b")]
+
+
+def test_send_from_crawl(monkeypatch):
+    monkeypatch.setattr(qs, "load_new_contests", lambda: ["f1", "f2"])
+    monkeypatch.setattr(qs, "send_contest_share", lambda folder: folder == "f2")
+    assert qs.send_contest_shares_from_crawl() == 1
+
+
+# ---------------------------------------------------------------------------
 # CLI main()
 # ---------------------------------------------------------------------------
-def test_main_empty_links_does_not_scan_all(monkeypatch, capsys):
-    """回归：--links 为空不得退化为全量扫描（可能群发全部比赛）。"""
+def test_main_empty_links_does_not_scan_all(monkeypatch):
     called = []
     monkeypatch.setattr(qs, "send_contest_shares_for_all",
                         lambda **k: called.append("all") or 0)
@@ -93,3 +208,10 @@ def test_main_empty_links_does_not_scan_all(monkeypatch, capsys):
 def test_main_links(monkeypatch):
     monkeypatch.setattr(qs, "send_contest_shares_for_links", lambda links, **k: 2)
     assert qs.main(["--links", "https://qoj.ac/contest/1"]) == 0
+
+
+def test_main_single_folder(monkeypatch):
+    seen = []
+    monkeypatch.setattr(qs, "send_contest_share", lambda folder: seen.append(folder))
+    assert qs.main(["contests/x"]) == 0
+    assert seen == ["contests/x"]
