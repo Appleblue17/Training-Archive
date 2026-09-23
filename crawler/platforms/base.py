@@ -516,7 +516,11 @@ class BaseCrawler:
         }
         options.add_experimental_option("prefs", prefs)
 
-        options.add_argument("--headless")  # Uncomment for headless mode
+        # 默认无头（服务器友好）。设置 CHROME_HEADLESS=0 可关闭无头——QOJ 等站点
+        # 对 headless 有 Cloudflare Turnstile 检测，在 Xvfb / 有显示器的环境用
+        # 非 headless（配合 xvfb-run）可正常通过。
+        if os.environ.get("CHROME_HEADLESS", "1").strip().lower() not in ("0", "false", "no"):
+            options.add_argument("--headless")
         driver_kwargs = {"options": options}
         if chromedriver_path:
             driver_kwargs["driver_executable_path"] = chromedriver_path
