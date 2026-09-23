@@ -1,6 +1,7 @@
 # 架构设计
 
-> 本文档描述 Training Archive 的系统架构、组件职责与关键技术决策。相对稳定，重大变更时更新。
+> 本文档是系统的技术设计文档，也是架构的单一事实来源，面向开发者与 AI 协作者。
+> 细节与杂项信息放在其他文档中并在此引用；随系统演进持续更新。
 
 ---
 
@@ -63,7 +64,7 @@ contests/
 | `(main)/layout.tsx` | 主布局：标题、面包屑导航 |
 | `(main)/page.tsx` + `(main)/(home)/[page]/page.tsx` | 竞赛列表（服务端取数 + 分页，每页 20 条），与根路径共用 `home-view.tsx` |
 | `(main)/(home)/[page]/contest-table.tsx` | 竞赛表格（客户端）：可展开行、题目状态、悬停元数据面板 |
-| `(main)/search/page.tsx` + `search-client.tsx` | 搜索页（服务端读构建时索引，客户端过滤） |
+| `(main)/search/page.tsx` + `search-client.tsx` | 搜索页（服务端读构建时索引，客户端过滤，按 `ITEMS_PER_PAGE` 分页） |
 | `(main)/dashboard/page.tsx` + `dashboard-client.tsx` | 数据看板（统计卡片、绿点图、最近动态、复盘报告） |
 | `(main)/review/[contest]/page.tsx` + `review-timeline.tsx` | 复盘时间轴页：提交序列 + LLM 报告 |
 | `(main)/status/page.tsx` + `status-page.tsx` | 状态页：config / last-update / 各平台 staged submissions / 订阅（JSON 展示 + 复制） |
@@ -106,8 +107,8 @@ contests/
 
 - 所有页面通过 `generateStaticParams` + 构建时 `fs` 扫描 `contests/` 生成静态路由；`contests/` 不存在或无可匹配数据时返回占位参数，页面渲染"暂无数据"。
 - 生产构建（`NODE_ENV=production`）时 `next.config.ts` 启用 `output: "export"`、`basePath: "/Training-Archive"`；`BASE_URL` / `PREFIX_URL` 据此切换（见 `src/lib/global.ts`）。
-- 搜索索引：`pnpm build` 先运行 `scripts/generate-search-index.mjs` 生成 `public/search-index.json`，搜索页在构建时读取并传给客户端组件过滤（方案 A：构建索引 + 前端过滤；动态版 v0.3.0 改服务端 API + DB）。
-- `deploy.yml` 先将 `contests/` 复制到 `public/contests/`，再执行 `pnpm build`，最后由 `actions-gh-pages` 发布 `out/`。
+- 搜索索引：`pnpm build` 先运行 `scripts/generate-search-index.mjs` 生成 `public/search-index.json`，搜索页在构建时读取并传给客户端组件过滤（方案 A：构建索引 + 前端过滤，搜索页按 `ITEMS_PER_PAGE` 分页；动态版 v0.4.0 改服务端 API + DB）。
+- `pnpm build` / `pnpm dev` 先运行 `scripts/prepare-public-contests.mjs`（复制 `contests/` → `public/contests/`，排除受保护比赛），再执行 `next build`；`deploy.yml` 只运行 `pnpm build`，最后由 `actions-gh-pages` 发布 `out/`。
 - 主分支（`main`）不含 `contests/` 数据；实际爬取与部署都在 `deploy` 分支进行。
 
 ### 3.5 UI 组件与图标
@@ -257,6 +258,29 @@ contests/
 
 **静态版唯一调度**：`alarm.py` 与 `sync`/`fire`/`incremental`/`remind` 为静态版自托管调度使用（v0.2.x 为 `server-task.sh` + cron，v0.3.0 起为 `daemon.py` + 跨平台自启）。
 
+### 4.7 资源保护（静态版客户端加密）
+
+**约束**：站点是 GitHub Pages 纯静态导出，运行时没有服务端，密码只能在浏览器端校验/解密。因此采用**构建时加密、客户端解密**：构建时用全站统一密码派生密钥加密受保护比赛资源，产物只含密文，浏览器输密码后解密展示。
+
+**标记**（并集，见 `src/lib/resource-protection.ts` / `scripts/lib/protected-contests.mjs`）：
+
+- `contests/<文件夹>/contest.json` 的 `"protected": true`（推荐；爬虫只在新建比赛时写 `contest.json`，之后跳过已存在文件夹，不会覆盖该字段）；
+- 仓库根 `protected-contests.json` 的 `protected` 数组（中央清单）。
+
+**密钥与格式**：密码取环境变量 `RESOURCE_PASSWORD`（非 `NEXT_PUBLIC_`，不进前端产物）。服务端 `crypto.pbkdf2Sync(password, salt, 100000, 32, sha256)` 派生素钥，AES-256-GCM 加密，随机 12 字节 IV，输出 `{v, alg, iter, salt, iv, data}`（`data = 密文 || GCM tag`，base64）。密钥在单次构建进程内缓存；salt 每进程随机、随载荷下发，客户端按载荷参数重新派生，因此每次构建/每个 worker 可不同。
+
+**客户端**（`resource-protection-client.ts` + `resource-gate.tsx`）：WebCrypto PBKDF2 派生 + AES-GCM 解密；解密成功即验证通过，密码存入 `localStorage`（“输入一次后记住”），下次自动解密；密码错误 GCM 认证失败 → 清除并重新提示。
+
+**覆盖面**：
+
+- 文件查看器三条路由（竞赛级 / 题目级 / 历史提交）：`content` + `fileMetadata` + `contestMetadata` + `problemMetadata` 整体加密；Download / Raw File 改为客户端解密后的 Blob 链接；受保护页 `generateMetadata` 返回通用标题，标题不泄露题名。
+- 复盘页：`ReviewData`（提交时间轴 + 预渲染 `reviewHtml`）整体加密，客户端解密渲染。
+- 范围（方案 A：**只保护文件内容**）：比赛名、题目名、标签、通过状态与统计等**元数据公开**——首页 / 搜索 / Dashboard 正常展示；首页仅给受保护比赛加锁标记（`home-view.tsx` / `contest-table.tsx`），搜索索引与 Dashboard **包含**受保护比赛。
+- 文件内容：文件查看器三条路由与复盘页整体加密（内容 + 元数据），Download / Raw 改客户端 Blob；受保护比赛的原始文件不复制到 `public/contests`（`prepare-public-contests.mjs`）。
+- 原始文件：`scripts/prepare-public-contests.mjs` 复制 `contests/ → public/contests/` 时排除受保护比赛；`pnpm build` / `pnpm dev` 先执行该脚本，`deploy.yml` 不再直接 `cp -r`。
+
+**已知局限**：客户端加密 + `localStorage` 存密码是**过渡方案**（无访问者区分、无法单独吊销，存在 XSS 时密码可能泄露）；正式方案为 v0.4.0 动态版账号鉴权（受保护资源不进公开仓库）。markdown 内嵌图片仍会指向原始文件 URL（受保护比赛不发布原始文件，图片可能失效）；大文件会把密文内联进 HTML，增大页面体积。
+
 ## 5. 关键技术决策记录（ADR）
 
 | 决策 | 理由 | 影响 |
@@ -273,6 +297,7 @@ contests/
 | 爬虫调度恢复为定时（两个模式） | `--contests-only`（查订阅/新建比赛）与 `--submissions-only`（提交增量同步）分离；复盘报告由 `report.py` 独立运行 | `daemon.py` 的 `sync`/`fire`/`incremental`（守护进程主循环按 `scheduled` 块调度，filelock 串行防冲突） |
 | 闹钟机制 | 用闹钟表 + 定期检查替代轮询：订阅填 `end_time`，`sync` 写闹钟、`fire` 到点触发；`remind` 在开始前发 QQ 群提醒 | `crawler/scripts/alarm.py` + `crawler/alarms.json`（gitignore）；`daemon.py` 的 `sync`/`fire`/`incremental`/`remind` 与 `run`（croniter 从 `config.json` 的 `scheduled` 块调度）；状态模型 `planned/pending/archived/failed`，fire 失败即 failed、由 sync 重试；赛前提醒 `start_time`（缺省 `end_time-5h`）+ `qq.remind_before_minutes` + `mark --reminded` |
 | 平台启用/禁用由 `config.json` 控制 | 快速开关功能 | 每个平台条目 `enabled` 字段（缺省 false 视为禁用），`scheduled_task.py` 启动时过滤；代码保留，未删除 |
+| 资源保护用构建时客户端加密（静态版） | 静态站无服务端，无法做正式鉴权；roadmap 已定客户端加密为过渡方案 | `contest.json` 的 `protected` 或 `protected-contests.json` 标记；`RESOURCE_PASSWORD` 构建时加密（PBKDF2 + AES-GCM），`ResourceGate` 客户端解密 + `localStorage` 记住；只加密文件内容、原始文件不进 public，元数据公开；正式方案留 v0.4.0 |
 
 ## 6. 已知限制
 

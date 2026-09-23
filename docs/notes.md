@@ -1,6 +1,7 @@
 # 开发笔记
 
-> 短期 temp 文档：只记录当前进度、待办与注意事项，不保留历史。历史变更见 `docs/CHANGELOG.md`。
+> 短期临时文档：只记录当前进度、TODO 与注意事项，不保留历史。历史变更见 `docs/CHANGELOG.md`。
+> 仅作为开发草稿纸，不是永久文档，也不属于项目正式文档。
 
 ---
 
@@ -9,6 +10,7 @@
 - 主功能可用（竞赛列表、文件查看、日志、搜索、Dashboard、复盘时间轴）；爬虫双模式已建（`--contests-only` + `--submissions-only`），由自托管守护进程调度（`daemon.py`：`fire` / `sync` / `incremental` / `remind`，表达式在 `crawler/config.json` 的 `scheduled` 块）。
 - **v0.3.0 已发布（2026-08-12，部署方式重构）**：静态版统一为自托管爬虫 + GitHub Pages（已删除 Actions 爬虫链路）；跨平台守护进程 `daemon.py` 替代 `server-task.sh`；fork 部署参数化（basePath / URL 常量 env 化）。服务器 + 本地 Linux 已端到端实测通过（`install` 自启 + `sync`/`fire` + 部署链路）；Windows / macOS 测试留待后续。
 - **v0.3.1 已发布（2026-08-13）QQ 群分享 + QQ 群机器人 + 赛前提醒**：`qq_share.py` 扩展为完整 share 流程（生成 `qq-share.txt` → NapCat 群发文字 + `review.md` 文件 → 删除）；与 report 解耦（daemon sync/fire 在 report 成功后按 `ai_tasks.share.enabled` 单独调用）；`report.py --links` review 失败返回非零 → sync/fire 阻断（不 mark archived）。NapCat 技术路径复用 Miniese（正向 WebSocket + Bearer token + CQ 码清洗 + 频率控制），Miniese 是私聊、本项目是群聊。`qq_bot.py` 常驻轮询 NapCat 群消息，@触发指令查询（/status /upcoming /alarms /contests /review /fortune /subs /sync /help）；增量游标用消息 `time`（NapCat `message_seq` 非全局递增）。赛前提醒：planned 闹钟开始前 `qq.remind_before_minutes` 分钟（缺省 15）发 QQ 群提醒，订阅可填 `start_time`，缺省回退 `end_time - 5h`。`/fortune` 按 user_id + 北京日期确定性选择（可配 `qq.fortune_salt`）；`/subs add` 支持 `end=`/`start=` 键值语法，且恰好一个可解析为时间的裸 token 自动作为 `end_time`（时间格式 ISO 8601 北京时间，错误终止并提示）；`/subs`（add/del，改动后自动 sync）与 `/sync` 仅在 deploy 分支工作区生效，且 `plan` 校验订阅时间格式、`sync` 遇非法时间中止。
+- **v0.3.2（已定稿，分支 `v0.3.2`）**：补 `docs/CHANGELOG.md` 的 `[Unreleased]`（logo / tab 标题 / /search 分页）；`/search` 按 `ITEMS_PER_PAGE` 分页；**资源保护已实现（静态版客户端加密）**——`contest.json` 的 `protected: true`（或 `protected-contests.json` 清单）标记，构建时用 `RESOURCE_PASSWORD` 派生 AES-256-GCM 密钥加密文件/元数据/复盘，浏览器 WebCrypto 解密并把密码记 `localStorage`；只保护文件内容（`public/contests` 不发布原始文件），比赛名 / 题目 / 统计等元数据公开，首页 / 搜索 / Dashboard 正常展示（首页带锁标记）。
 - HDU / NowCoder 爬虫默认停用（`crawler/config.json` 的 `enabled` 字段控制）。
 - 闹钟机制已实现（`crawler/scripts/alarm.py` + `crawler/scripts/daemon.py sync/fire`）：订阅条目可选填 `end_time`，未来比赛写闹钟表 `crawler/alarms.json`（gitignore），到点由 `fire` 爬取 + 立即生成报告；状态模型 `planned` / `pending` / `archived` / `failed`。
 - `contests/` 数据目录为空（git 忽略），本地开发需先准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
@@ -16,7 +18,18 @@
 
 ## 待办
 
-### v0.4.0（动态版）
+### v0.3.2（已定稿）
+
+- [x] CHANGELOG 补 `[Unreleased]` 改动（logo / tab 标题 / /search 分页）
+- [x] `/search` 分页
+- [x] 资源保护：受保护比赛（`contest.json` / 中央清单）+ 全站统一密码（`RESOURCE_PASSWORD`）+ 浏览器记住验证状态（客户端 AES-GCM 解密）
+- [x] 方案 A（只保护文件内容）：文件查看器 + 复盘页加密，`public/contests` 排除原始文件；元数据公开，首页/搜索/Dashboard 正常展示
+- [x] 端到端人工验收（浏览器输密码/记住状态；多浏览器、移动端）
+- [x] 版本号 + CHANGELOG 定稿（`package.json` 0.3.2、`[0.3.2] - 2026-09-22`）
+
+### v1.x.x（动态版）
+
+暂时推迟，先发静态版 v1.0.0 Release.
 
 - [ ] 同代码库 API routes / Docker 部署骨架
 - [ ] GitHub OAuth + session（登录=队员）
@@ -28,8 +41,7 @@
 ### 后续
 
 - [ ] Windows / macOS 守护进程实测（`daemon.py` install / run；v0.3.0 已在 Linux 实测通过）
-- [ ] 评估是否引入前端测试（当前仅 lint）
-- [ ] 复盘报告内容细节：是否含每道题 AC 时间线/WA 次数（数据已全量采集，倾向包含）
+- [x] 引入前端组件/单元测试（Vitest + React Testing Library；见 `docs/roadmap.md` 决策 #19）
 
 ## 注意事项
 
@@ -37,10 +49,12 @@
 
 - **UI 库**：shadcn/ui（Radix + Tailwind），新增组件通过其 CLI 或手工复制引入。
 - **图标库**：lucide-react；**禁止新增 `react-icons`**。
+- **前端测试**：Vitest + React Testing Library（jsdom，`vitest.config.ts` + `vitest.setup.ts`），测试文件与源码同目录 `*.test.ts(x)`，`pnpm test` 运行；服务端加密/客户端解密往返测试用 `// @vitest-environment node`。
 
 ### 构建与运行
 
-- 生产构建要求本地存在 `contests/`；`deploy.yml` 会先复制 `contests/` → `public/contests/` 再 `pnpm build`。
+- 生产构建要求本地存在 `contests/`；`pnpm build` / `pnpm dev` 先运行 `scripts/prepare-public-contests.mjs`（复制 `contests/` → `public/contests`，排除受保护比赛），`deploy.yml` 不再直接 `cp -r`。
+- **Next 版本：`15.5.25`（稳定版）**。旧版 `15.4.2-canary.5` 的 webpack 生产构建在冷缓存下会卡死/OOM（`next build --turbopack` 能过但会强制输出生产 source map，故不采用）；升级到 15.5.25 后 `pnpm build` 正常（Node 20/22 均已验证）。注意 15.5 起 `next lint` 已标记废弃（Next 16 移除），后续可迁移到 ESLint CLI。
 - `NODE_ENV=production` 时启用 `output: "export"` 与 `basePath: "/Training-Archive"`；本地开发（`pnpm dev`）使用根路径。
 - **daemon 用 venv 运行**：系统 `python3` 可能缺 `dotenv`/`croniter`/`filelock`，统一用 `.venv/bin/python crawler/scripts/daemon.py ...`（`python3 -m venv .venv && .venv/bin/pip install -r crawler/requirements.txt`）。`install`/`install --system` 会把「执行 install 的 python」写进服务启动命令，务必用 `.venv/bin/python` 执行。
 - **无头服务器**：user unit（默认 install）依赖登录会话；服务器用 `install --system`（系统级 systemd，`WantedBy=multi-user.target`，开机即启动，需 sudo）。
@@ -66,6 +80,7 @@
 
 - Markdown 渲染在服务端完成（`file-viewer-markdown-wrapper.tsx`），HTML 通过 `dangerouslySetInnerHTML` 注入，依赖 `rehype-sanitize` 安全过滤。
 - 数学公式：`$$\n...\n$$` 在 wrapper 中改写后再走 KaTeX 流水线；修改渲染管线时注意保持该预处理。
+- **资源保护（静态版）**：密码走构建时环境变量 `RESOURCE_PASSWORD`（**不加** `NEXT_PUBLIC_` 前缀）；受保护比赛由 `contest.json` 的 `protected: true` 或 `protected-contests.json` 标记（并集）。服务端 `src/lib/resource-protection.ts` 构建时加密，客户端 `resource-protection-client.ts` + `resource-gate.tsx` 解密并记 `localStorage`。`pnpm build`/`pnpm dev` 会先跑 `scripts/prepare-public-contests.mjs`（`public/contests` 排除受保护比赛）；首页 `home-view.tsx` 只给受保护比赛加 `protected` 锁标记、`contest-table.tsx` 正常渲染（不再有 `protectedData`，避免元数据面板显示该字段）；搜索索引与 Dashboard 正常包含受保护比赛。文件查看页 / 复盘页用 `ResourceGate`，原始文件不进 `public/contests`。未配置密码时受保护页由 `protection-not-configured.tsx` 提示、不渲染内容。`localStorage` 存明文密码属过渡方案（动态版 v0.4.0 用账号鉴权）。
 
 ## 命令速查
 
@@ -74,6 +89,7 @@ pnpm install        # 安装前端依赖
 pnpm dev            # 开发模式
 pnpm build          # 生产构建（NODE_ENV=production 时导出 out/）
 pnpm lint           # ESLint 检查
+pnpm test           # Vitest 组件/单元测试
 
 pip install -r crawler/requirements.txt   # 爬虫依赖
 python3 crawler/scripts/scheduled_task.py                # 默认模式：抓订阅比赛 + 全量增量提交（手动/临时）

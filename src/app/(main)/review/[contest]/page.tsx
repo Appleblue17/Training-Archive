@@ -1,13 +1,16 @@
 import fs from "fs";
 import path from "path";
-import Link from "next/link";
+import type { Metadata } from "next";
 
 import { safeParseJson } from "@/lib/contests-data";
 import renderMarkdown from "@/utils/render-markdown";
-import { joinUrl } from "@/utils/url";
-import PlatformBadge from "@/components/platform-badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import ReviewTimeline from "./review-timeline";
+import ProtectionNotConfigured from "@/components/protection-not-configured";
+import {
+  encryptResource,
+  isProtectedContestFolder,
+  isProtectionConfigured,
+} from "@/lib/resource-protection";
+import ReviewClient, { ReviewData } from "./review-client";
 
 interface ContestData {
   folder: string;
@@ -62,6 +65,19 @@ function readContest(folder: string): ContestData | null {
 
 /** 无可用数据时的占位参数，保证 output: export 下动态路由可构建。 */
 const PLACEHOLDER = "~no-data~";
+
+export async function generateMetadata(props: {
+  params: Promise<{ contest: string }>;
+}): Promise<Metadata> {
+  const { contest } = await props.params;
+  const contestFolder = decodeURIComponent(contest);
+  if (contestFolder === PLACEHOLDER) {
+    return { title: "Review" };
+  }
+  const data = readContest(contestFolder);
+  const name = String(data?.contest?.name ?? "") || contestFolder;
+  return { title: `${name} · Review` };
+}
 
 export async function generateStaticParams() {
   const contestsDir = path.join(process.cwd(), "contests");
@@ -145,74 +161,33 @@ export default async function ReviewPage(props: {
     ? await renderMarkdown(data.reviewContent, path.join(process.cwd(), "contests", contestFolder))
     : null;
 
-  return (
-    <div className="w-full space-y-6">
-      {/* 比赛信息 */}
-      <Card className="p-4">
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="text-xl font-semibold text-slate-100">{name}</h1>
-          <PlatformBadge platform={platform} />
-          <span className="text-sm text-gray-400">{date}</span>
-          {link && (
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-blue-300 hover:text-blue-200"
-            >
-              Contest link ↗
-            </a>
-          )}
-        </div>
-        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-400">
-          <span>{Object.keys(data.problems).length} problems</span>
-          <span>{sortedSubmissions.length} submissions</span>
-        </div>
-      </Card>
+  const reviewData: ReviewData = {
+    name,
+    date,
+    platform,
+    link,
+    contestFolder,
+    problemCount: Object.keys(data.problems).length,
+    submissions: sortedSubmissions.map((sub) => ({
+      submissionId: String(sub.submission_id ?? ""),
+      problemLetter: letterFor(sub),
+      problemName: String(sub.problem_name ?? ""),
+      status: String(sub.status ?? ""),
+      language: String(sub.language ?? ""),
+      time: sub.time != null ? String(sub.time) : null,
+      memory: sub.memory != null ? String(sub.memory) : null,
+      submitTime: String(sub.submit_time ?? ""),
+      submissionLink: sub.submission_link ? String(sub.submission_link) : null,
+      sourceFile: sourceFor(letterFor(sub), String(sub.submission_id ?? "")),
+    })),
+    reviewHtml,
+  };
 
-      {/* 提交时间轴 */}
-      <ReviewTimeline
-        submissions={sortedSubmissions.map((sub) => ({
-          submissionId: String(sub.submission_id ?? ""),
-          problemLetter: letterFor(sub),
-          problemName: String(sub.problem_name ?? ""),
-          status: String(sub.status ?? ""),
-          language: String(sub.language ?? ""),
-          time: sub.time != null ? String(sub.time) : null,
-          memory: sub.memory != null ? String(sub.memory) : null,
-          submitTime: String(sub.submit_time ?? ""),
-          submissionLink: sub.submission_link ? String(sub.submission_link) : null,
-          sourceFile: sourceFor(letterFor(sub), String(sub.submission_id ?? "")),
-        }))}
-        contestFolder={contestFolder}
-      />
+  // 资源保护：受保护比赛的复盘数据整体加密，客户端验证密码后渲染。
+  if (isProtectedContestFolder(contestFolder)) {
+    if (!isProtectionConfigured()) return <ProtectionNotConfigured />;
+    return <ReviewClient payload={encryptResource(JSON.stringify(reviewData))} />;
+  }
 
-      {/* LLM 复盘报告 */}
-      {reviewHtml && (
-        <Card asChild>
-          <section aria-label="Review report">
-            <CardHeader className="pb-2">
-              <CardTitle>Review Report</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div
-                className="markdown-body rounded border border-gray-700 p-4"
-                dangerouslySetInnerHTML={{ __html: reviewHtml }}
-              />
-              <div className="mt-3 text-right">
-                <Link
-                  href={joinUrl("/", "view", "contests", contestFolder, "review.md")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-blue-300 hover:text-blue-200"
-                >
-                  View raw markdown ↗
-                </Link>
-              </div>
-            </CardContent>
-          </section>
-        </Card>
-      )}
-    </div>
-  );
+  return <ReviewClient data={reviewData} />;
 }

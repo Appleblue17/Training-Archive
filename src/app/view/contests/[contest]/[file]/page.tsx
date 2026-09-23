@@ -1,11 +1,41 @@
 import fs from "fs";
 import path from "path";
+import type { Metadata } from "next";
 import FileViewerPage from "@/components/file-viewer/file-viewer-page";
+import ProtectedFileViewerPage from "@/components/file-viewer/protected-file-viewer-page";
+import ProtectionNotConfigured from "@/components/protection-not-configured";
 
+import { BASE_URL } from "@/lib/global";
+import {
+  buildProtectedContent,
+  encryptResource,
+  isProtectedContestFolder,
+  isProtectionConfigured,
+} from "@/lib/resource-protection";
 import getFileMetadata from "@/utils/get-file-metadata";
 
 /** 无可用数据时的占位参数，保证 output: export 下动态路由可构建。 */
 const PLACEHOLDER = "~no-data~";
+
+export async function generateMetadata(props: {
+  params: Promise<{ contest: string; file: string }>;
+}): Promise<Metadata> {
+  const { contest, file } = await props.params;
+  const contestFolder = decodeURIComponent(contest);
+  const fileName = decodeURIComponent(file);
+  if (contestFolder === PLACEHOLDER || fileName === PLACEHOLDER) {
+    return { title: "File" };
+  }
+  if (isProtectedContestFolder(contestFolder)) {
+    return { title: "Protected resource" };
+  }
+  const contestMetadata = getFileMetadata(
+    path.join(process.cwd(), "contests", contestFolder),
+    path.join(process.cwd(), "contests", contestFolder, "contest.json"),
+  );
+  const contestName = String(contestMetadata.name ?? "") || contestFolder;
+  return { title: `${fileName} · ${contestName}` };
+}
 
 export async function generateStaticParams() {
   const contestsDir = path.join(process.cwd(), "contests");
@@ -64,6 +94,22 @@ export default async function FilePage(props: {
     path.join(process.cwd(), "contests", contest, file),
     path.join(process.cwd(), "contests", contest, file + ".json"),
   );
+
+  // 资源保护：受保护比赛在构建时加密，客户端输密码后解密渲染。
+  if (isProtectedContestFolder(contest)) {
+    if (!isProtectionConfigured()) return <ProtectionNotConfigured />;
+    const content = await buildProtectedContent(
+      path.join(process.cwd(), "contests", contest, file),
+      path.join(BASE_URL, "contests", contest),
+    );
+    // 内容与元数据整体加密（题目名/标签等不进静态产物）
+    const payload = encryptResource(
+      JSON.stringify({ content, fileMetadata, contestMetadata }),
+    );
+    return (
+      <ProtectedFileViewerPage contest={contest} file={file} payload={payload} />
+    );
+  }
 
   return (
     <FileViewerPage

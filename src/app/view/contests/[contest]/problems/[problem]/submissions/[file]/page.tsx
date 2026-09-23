@@ -1,11 +1,58 @@
 import fs from "fs";
 import path from "path";
+import type { Metadata } from "next";
 import FileViewerPage from "@/components/file-viewer/file-viewer-page";
+import ProtectedFileViewerPage from "@/components/file-viewer/protected-file-viewer-page";
+import ProtectionNotConfigured from "@/components/protection-not-configured";
 
+import { BASE_URL } from "@/lib/global";
+import {
+  buildProtectedContent,
+  encryptResource,
+  isProtectedContestFolder,
+  isProtectionConfigured,
+} from "@/lib/resource-protection";
 import getFileMetadata from "@/utils/get-file-metadata";
 
 /** 无可用数据时的占位参数，保证 output: export 下动态路由可构建。 */
 const PLACEHOLDER = "~no-data~";
+
+export async function generateMetadata(props: {
+  params: Promise<{ contest: string; problem: string; file: string }>;
+}): Promise<Metadata> {
+  const { contest, problem, file } = await props.params;
+  const contestFolder = decodeURIComponent(contest);
+  const problemFolder = decodeURIComponent(problem);
+  const fileName = decodeURIComponent(file);
+  if (
+    contestFolder === PLACEHOLDER ||
+    problemFolder === PLACEHOLDER ||
+    fileName === PLACEHOLDER
+  ) {
+    return { title: "Submission" };
+  }
+  if (isProtectedContestFolder(contestFolder)) {
+    return { title: "Protected resource" };
+  }
+  const contestMetadata = getFileMetadata(
+    path.join(process.cwd(), "contests", contestFolder),
+    path.join(process.cwd(), "contests", contestFolder, "contest.json"),
+  );
+  const problemMetadata = getFileMetadata(
+    path.join(process.cwd(), "contests", contestFolder, "problems", problemFolder),
+    path.join(
+      process.cwd(),
+      "contests",
+      contestFolder,
+      "problems",
+      problemFolder,
+      "problem.json",
+    ),
+  );
+  const contestName = String(contestMetadata.name ?? "") || contestFolder;
+  const problemName = String(problemMetadata.name ?? "") || problemFolder;
+  return { title: `${fileName} · ${problemName} · ${contestName}` };
+}
 
 export async function generateStaticParams() {
   const contestsDir = path.join(process.cwd(), "contests");
@@ -84,6 +131,27 @@ export default async function SubmissionFilePage(props: {
       file + ".json",
     ),
   );
+
+  if (isProtectedContestFolder(contest)) {
+    if (!isProtectionConfigured()) return <ProtectionNotConfigured />;
+    const content = await buildProtectedContent(
+      path.join(process.cwd(), "contests", contest, "problems", problem, "submissions", file),
+      path.join(BASE_URL, "contests", contest, "problems", problem, "submissions"),
+    );
+    const payload = encryptResource(
+      JSON.stringify({ content, fileMetadata, contestMetadata, problemMetadata }),
+    );
+    return (
+      <ProtectedFileViewerPage
+        contest={contest}
+        file={file}
+        problem={problem}
+        fileMetadataBanner={["problem_link"]}
+        subdir="submissions"
+        payload={payload}
+      />
+    );
+  }
 
   return (
     <FileViewerPage

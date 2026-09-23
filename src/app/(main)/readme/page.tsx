@@ -1,8 +1,13 @@
 import fs from "fs";
 import path from "path";
+import type { Metadata } from "next";
 
 import renderMarkdown from "@/utils/render-markdown";
 import FileViewerMarkdown from "@/components/file-viewer/file-viewer-markdown";
+
+export const metadata: Metadata = {
+  title: "README",
+};
 
 export default async function ReadmePage() {
   const readmePath = path.join(process.cwd(), "README.md");
