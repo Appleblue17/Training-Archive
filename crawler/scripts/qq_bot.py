@@ -105,6 +105,9 @@ MAX_MSG_CHARS = 1200
 # 列表类指令的最大条目数（避免刷屏）
 MAX_LIST_ITEMS = 5
 
+# 增量游标边界秒最多记录的 message_id 数（防止 bot-state.json 无限增长）
+MAX_SEEN_IDS = 200
+
 # 机器人自己的 UID（config.json qq.bot_uid，缺省从 .env QQ_BOT_UID 读）
 # 用于过滤自己发的消息 + 检测 @ 自己
 
@@ -1217,6 +1220,48 @@ def _throttled_log(last_ts, interval, log, msg):
     return now
 
 
+def _message_id(msg):
+    """取消息唯一 id（NapCat message_id；缺省退回 message_seq）。无则返回 ""。"""
+    mid = msg.get("message_id")
+    if mid is None:
+        mid = msg.get("message_seq")
+    return str(mid) if mid is not None else ""
+
+
+def _select_new_messages(messages, last_time, seen_ids):
+    """按 (last_time, seen_ids) 游标选出新消息。
+
+    返回 (new_msgs, new_last_time, new_seen_ids)。
+
+    NapCat 的 time 精度为秒：同一秒内、两次轮询之间到达的消息若只用
+    `time > last_time` 过滤会被漏掉。这里对 `time == last_time` 的边界秒
+    用 message_id 去重补足；游标推进到新的秒后，只保留新边界秒的 id。
+    """
+    seen = set(seen_ids or [])
+    new_msgs = []
+    for m in messages:
+        t = m.get("time") or 0
+        if t > last_time:
+            new_msgs.append(m)
+        elif t == last_time:
+            mid = _message_id(m)
+            if mid and mid not in seen:
+                new_msgs.append(m)
+    new_msgs.sort(key=lambda m: m.get("time") or 0)
+    if not new_msgs:
+        return [], last_time, list(seen_ids or [])
+
+    max_time = max((m.get("time") or 0) for m in new_msgs)
+    if max_time > last_time:
+        # 新边界秒：只记住该秒已处理的消息 id
+        new_seen = [_message_id(m) for m in new_msgs if (m.get("time") or 0) == max_time]
+    else:
+        # 只在原边界秒内新增（max_time == last_time）
+        new_seen = list(seen | {_message_id(m) for m in new_msgs})
+    new_seen = sorted({i for i in new_seen if i})[-MAX_SEEN_IDS:]
+    return new_msgs, max(last_time, max_time), new_seen
+
+
 def process_once(qq_cfg, log=print):
     """轮询一次：拉取新消息并处理。返回处理条数。"""
     global _last_config_warn_ts, _last_conn_warn_ts
@@ -1242,6 +1287,7 @@ def process_once(qq_cfg, log=print):
 
     state = _load_bot_state()
     last_time = state.get("last_time") or 0
+    seen_ids = state.get("seen_ids") or []
 
     client = NapCatClient(ws_url, token)
     try:
@@ -1269,20 +1315,21 @@ def process_once(qq_cfg, log=print):
         # 并非全局递增（各发送者独立/随机），按 seq 过滤会把新消息永久挡掉。
         # 只基于非自己消息推进游标：bot 自己发的文件/文本（time 往往最新）
         # 不参与推进，避免把用户的增量窗口整体顶掉。
+        # time 精度为秒，边界秒用 message_id 去重补足（见 _select_new_messages）。
         non_self = [
             m for m in messages
             if not (m.get("post_type") == "message_sent"
                     or m.get("message_sent_type") == "self")
         ]
-        new_msgs = [m for m in non_self if (m.get("time") or 0) > last_time]
-        new_msgs.sort(key=lambda m: m.get("time") or 0)
+        new_msgs, new_last_time, new_seen = _select_new_messages(
+            non_self, last_time, seen_ids
+        )
         if not new_msgs:
             # 无新消息（含全为自己消息的情况）：不推进 last_time
             return 0
-        # 更新 last_time 为这批非自己消息里最大的 time
-        max_time = max((m.get("time") or 0) for m in new_msgs)
         replied = _handle_messages(client, group_id, new_msgs, bot_uid, log=log)
-        state["last_time"] = max(state.get("last_time") or 0, max_time)
+        state["last_time"] = new_last_time
+        state["seen_ids"] = new_seen
         _save_bot_state(state)
         return replied
     finally:

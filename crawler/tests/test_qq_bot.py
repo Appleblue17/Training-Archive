@@ -141,3 +141,55 @@ def test_subs_add_duplicate(subs_env, monkeypatch):
     monkeypatch.setattr(bot, "_load_all_subscriptions",
                         lambda: [{"link": "https://qoj.ac/contest/1"}])
     assert "已存在该订阅" in bot._subs_add(["https://qoj.ac/contest/1"])
+
+
+# ---------------------------------------------------------------------------
+# _select_new_messages（同秒边界游标）
+# ---------------------------------------------------------------------------
+def _m(mid, time):
+    return {"message_id": mid, "time": time, "user_id": "1"}
+
+
+def test_select_new_messages_newer_than_cursor():
+    msgs = [_m("1", 11), _m("2", 12)]
+    new, last, seen = bot._select_new_messages(msgs, 10, [])
+    assert [m["message_id"] for m in new] == ["1", "2"]
+    assert last == 12
+    assert seen == ["2"]  # 只保留新边界秒（12）的 id
+
+
+def test_select_new_messages_same_second_boundary():
+    """回归：同一秒内、游标之后到达的消息必须被补上。"""
+    msgs = [_m("1", 10), _m("2", 10)]
+    new, last, seen = bot._select_new_messages(msgs, 10, ["1"])
+    assert [m["message_id"] for m in new] == ["2"]
+    assert last == 10
+    assert seen == ["1", "2"]
+
+
+def test_select_new_messages_advance_resets_boundary_ids():
+    msgs = [_m("3", 11)]
+    new, last, seen = bot._select_new_messages(msgs, 10, ["1", "2"])
+    assert [m["message_id"] for m in new] == ["3"]
+    assert last == 11
+    assert seen == ["3"]  # 旧边界秒的 id 不再保留
+
+
+def test_select_new_messages_empty_id_boundary_skipped():
+    msgs = [{"time": 10, "user_id": "1"}]
+    new, last, seen = bot._select_new_messages(msgs, 10, [])
+    assert new == []
+    assert last == 10
+
+
+def test_select_new_messages_none():
+    new, last, seen = bot._select_new_messages([], 5, ["a"])
+    assert new == []
+    assert last == 5
+    assert seen == ["a"]
+
+
+def test_message_id_prefers_message_id_then_seq():
+    assert bot._message_id({"message_id": 7}) == "7"
+    assert bot._message_id({"message_seq": 8}) == "8"
+    assert bot._message_id({}) == ""
