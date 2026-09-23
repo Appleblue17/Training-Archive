@@ -25,3 +25,23 @@ def test_parse_qoj_duration(text, expected):
 def test_parse_qoj_duration_invalid(text):
     with pytest.raises(ValueError):
         _parse_qoj_duration(text)
+
+# ---------------------------------------------------------------------------
+# _extract_source_code
+# ---------------------------------------------------------------------------
+def test_extract_source_code_ok():
+    from crawler.platforms.qoj.qoj import _extract_source_code
+    html = '<pre class="sh_sourceCode"><code class="sh_cpp">int main(){}</code></pre>'
+    assert _extract_source_code(html) == "int main(){}"
+
+
+def test_extract_source_code_no_pre():
+    from crawler.platforms.qoj.qoj import _extract_source_code
+    assert _extract_source_code("<html><body>Just a moment...</body></html>") is None
+    assert _extract_source_code("") is None
+    assert _extract_source_code(None) is None
+
+
+def test_extract_source_code_pre_without_code():
+    from crawler.platforms.qoj.qoj import _extract_source_code
+    assert _extract_source_code('<pre class="sh_sourceCode"></pre>') is None
