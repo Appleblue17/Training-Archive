@@ -11,7 +11,7 @@
 - **v0.3.0 已发布（2026-08-12，部署方式重构）**：静态版统一为自托管爬虫 + GitHub Pages（已删除 Actions 爬虫链路）；跨平台守护进程 `daemon.py` 替代 `server-task.sh`；fork 部署参数化（basePath / URL 常量 env 化）。服务器 + 本地 Linux 已端到端实测通过（`install` 自启 + `sync`/`fire` + 部署链路）；Windows / macOS 测试留待后续。
 - **v0.3.1 已发布（2026-08-13）QQ 群分享 + QQ 群机器人 + 赛前提醒**：`qq_share.py` 扩展为完整 share 流程（生成 `qq-share.txt` → NapCat 群发文字 + `review.md` 文件 → 删除）；与 report 解耦（daemon sync/fire 在 report 成功后按 `ai_tasks.share.enabled` 单独调用）；`report.py --links` review 失败返回非零 → sync/fire 阻断（不 mark archived）。NapCat 技术路径复用 Miniese（正向 WebSocket + Bearer token + CQ 码清洗 + 频率控制），Miniese 是私聊、本项目是群聊。`qq_bot.py` 常驻轮询 NapCat 群消息，@触发指令查询（/status /upcoming /alarms /contests /review /fortune /subs /sync /help）；增量游标用消息 `time`（NapCat `message_seq` 非全局递增）。赛前提醒：planned 闹钟开始前 `qq.remind_before_minutes` 分钟（缺省 15）发 QQ 群提醒，订阅可填 `start_time`，缺省回退 `end_time - 5h`。`/fortune` 按 user_id + 北京日期确定性选择（可配 `qq.fortune_salt`）；`/subs add` 支持 `end=`/`start=` 键值语法，且恰好一个可解析为时间的裸 token 自动作为 `end_time`（时间格式 ISO 8601 北京时间，错误终止并提示）；`/subs`（add/del，改动后自动 sync）与 `/sync` 仅在 deploy 分支工作区生效，且 `plan` 校验订阅时间格式、`sync` 遇非法时间中止。
 - **v0.3.2（已定稿，分支 `v0.3.2`）**：补 `docs/CHANGELOG.md` 的 `[Unreleased]`（logo / tab 标题 / /search 分页）；`/search` 按 `ITEMS_PER_PAGE` 分页；**资源保护已实现（静态版客户端加密）**——`contest.json` 的 `protected: true`（或 `protected-contests.json` 清单）标记，构建时用 `RESOURCE_PASSWORD` 派生 AES-256-GCM 密钥加密文件/元数据/复盘，浏览器 WebCrypto 解密并把密码记 `localStorage`；只保护文件内容（`public/contests` 不发布原始文件），比赛名 / 题目 / 统计等元数据公开，首页 / 搜索 / Dashboard 正常展示（首页带锁标记）。
-- **v0.3.3（进行中，分支 `v0.3.3`）爬虫测试 + 修复**：新增 pytest 测试套件（`crawler/tests/`，168 条，`requirements-dev.txt` + `pytest.ini` + CI）；修复 last-update 水位（用抓取开始时间、异常不推进）、空 `--links` 退化全量扫描、空复盘输出写坏 `review.md`、config 不可读时 plan 剪除全部闹钟、单平台构造失败中断其余平台、daemon 主循环健壮性、QOJ 时长解析、qq-bot 关键词最长匹配等（详见 `docs/CHANGELOG.md` `[Unreleased]`）。
+- **v0.3.3（进行中，分支 `v0.3.3`）爬虫测试 + 修复**：新增 pytest 测试套件（`crawler/tests/`，183 条，`requirements-dev.txt` + `pytest.ini` + CI）；修复 last-update 水位（用抓取开始时间、异常不推进）、空 `--links` 退化全量扫描、空复盘输出写坏 `review.md`、config 不可读时 plan 剪除全部闹钟、单平台构造失败中断其余平台、daemon 主循环健壮性、QOJ 时长解析、qq-bot 关键词最长匹配与同秒游标；**移除 QQ 分享文案**（只发 `review.md` 文件 + `qq-share.sent` 已发送标记）。详见 `docs/CHANGELOG.md` `[Unreleased]`。
 - HDU / NowCoder 爬虫默认停用（`crawler/config.json` 的 `enabled` 字段控制）。
 - 闹钟机制已实现（`crawler/scripts/alarm.py` + `crawler/scripts/daemon.py sync/fire`）：订阅条目可选填 `end_time`，未来比赛写闹钟表 `crawler/alarms.json`（gitignore），到点由 `fire` 爬取 + 立即生成报告；状态模型 `planned` / `pending` / `archived` / `failed`。
 - `contests/` 数据目录为空（git 忽略），本地开发需先准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
@@ -41,7 +41,9 @@
 - [x] 修复 QOJ 时长解析 + 提交页当前页定位
 - [x] 修复 qq-bot 自然语言关键词最长匹配
 - [x] 爬虫测试 CI（`.github/workflows/crawler-tests.yml`）
-- [ ] 待讨论：多平台"逐场完整性"语义（HDU/NowCoder 页判断）、qq_share `file_only` 扫全量 / 部分成功删除 `qq-share.txt`、qq-bot 同秒消息游标（见 CHANGELOG `[Unreleased]` 之外的遗留项）
+- [x] 移除 QQ 分享文案，只发送 `review.md` 文件（新增 `qq-share.sent` 已发送标记，修复 `file_only` 永不触发 / 部分成功不回补）
+- [x] 修复 qq-bot 同秒消息游标（`>= ` 边界秒 + message_id 去重）
+- [ ] **稍后：完整测试三个平台（QOJ / HDU / NowCoder）的抓取功能**（含翻页/完整性判断；HDU 页判断需真实 HTML 夹具）
 
 ### v1.x.x（动态版）
 
@@ -84,7 +86,8 @@
 - **赛前提醒（remind）**：未来比赛订阅可选填 `start_time`（未填回退 `end_time - 5h`）。`daemon.py remind` 按 `scheduled.remind`（缺省 `*/5 * * * *`）调 `alarm.py remind`：planned 且进入 `qq.remind_before_minutes`（缺省 15）窗口且未提醒 → 输出 `REMIND`，NapCat 群发成功后 `mark --reminded`（失败下轮重试）；NapCat 未配置/异常仅告警不阻断。
 - **qq-bot 订阅管理 / 同步**：`/subs add <link> [end=时间] [start=时间] [备注]` 写 `crawler/subscriptions/qqbot.json`（bot 管理文件，按约定与其他订阅文件合并加载）；`end=`/`start=` 为可选键值（顺序任意、大小写不敏感，其余 token 拼为备注），时间格式 `ISO 8601 北京时间`（如 `2026-08-15T23:00:00+08:00`）；**恰好一个裸时间 token（未带 `end=` 前缀但可解析为时间）自动作为 `end_time`**（如 `2026-08-13-20:00:00+08:00`），多个裸 token 一律当备注，已有 `end=` 时裸 token 不覆盖；`/subs del <link>` 从所有订阅文件移除匹配 link；两种改动都会后台触发一次 `daemon.py sync` 并在群里回复**结构化摘要**（不再转发原始日志：待处理分类 / 爬取结果（新建/已存在/未开始）/ 复盘分享数 / 推送状态；失败时给出中止原因，如订阅时间格式错误、订阅文件格式、爬取出错、复盘失败）。**时间格式校验**：`/subs add` 时间格式错误 → 终止不写入并提示；`alarm.py plan` 发现订阅条目时间字段存在但解析失败 → 跳过该条目并输出 `[alarm] ERROR`（计入汇总行 `N invalid time`），`daemon.py sync` 收到非零返回 → 中止（不爬取不提交，避免把填错时间当 HISTORY 立即爬掉）。`/subs` 与 `/sync` 仅 `deploy` 分支工作区生效（`PROD_BRANCH` 保护，防止在非生产分支误改订阅）。`/fortune` 确定性种子 = md5(`scope:user_id:北京日期:salt`)，salt 可配 `config.json` 的 `qq.fortune_salt`（缺省固定值 `training-archive`）。
 - **AI task 开关（`ai_tasks`）**：`crawler/config.json` 的 `ai_tasks.<name>.enabled` 控制（缺省 `false`，显式开启才启用）。`report` 恒开（缺省 `true`）；`share`（QQ 群分享）缺省关闭，开启后 daemon 的 sync/fire 在 report 全部成功后调用 `qq_share.py --links`。NapCat 配置在 `qq` 块（`napcat_ws_url` / `napcat_token` / `group_id`）；NapCat 未配置/连接/发送失败仅告警不阻断 daemon。
-- **review 失败阻断归档**：`report.py --links` 任一应生成报告的比赛的 review 生成失败 → 返回非零，daemon sync/fire 中止（不 `mark --archived`、不提交推送，下次 sync 重试）。`qq-share.txt` 是临时产物（发送成功即删除），已在 `.gitignore` / `.gitignore.deploy` 忽略。
+- **review 失败阻断归档**：`report.py --links` 任一应生成报告的比赛的 review 生成失败 → 返回非零，daemon sync/fire 中止（不 `mark --archived`、不提交推送，下次 sync 重试）。
+- **QQ 分享只发文件**（v0.3.3）：`qq_share.py` 不再生成/群发文案（`qq-share.txt` / DeepSeek 简化版已移除），只上传 `review.md`；发送成功后在比赛文件夹写入 `qq-share.sent` 标记（`.gitignore` / `.gitignore.deploy` 均忽略），补发扫描跳过已发送与无 review 的比赛。
 - **凭据**：一律走环境变量（`.env` / CI secrets），`config.json` 只放非敏感参数。本地运行爬虫/报告脚本自动加载根目录 `.env`（`load_dotenv()`，不覆盖已有变量）。
 - **提交抓取截止**：非首次按全局 `last-update.json` 增量；首次抓取的新比赛以 `start_time` 为截止全量回填。QOJ 补订旧比赛需手动重置该平台 last-update 触发全量重抓。
 - **`--contests-only`**：只检查订阅有没有触发，有新建比赛才回填其提交；**不推进 `last-update.json`**（已有比赛增量由每日 `--submissions-only` 负责）。若新建比赛提交回填失败（如超时），文件夹已存在，后续运行不会当新建重试，需手动处理。
@@ -123,7 +126,7 @@ python3 crawler/scripts/report.py                        # 补生成：扫描所
 python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123"  # QQ 群分享（daemon sync/fire 用；report 成功后按 ai_tasks.share.enabled 调用）
 python3 crawler/scripts/qq_share.py --from-crawl        # 手动：只对本次爬取新建的比赛分享
 python3 crawler/scripts/qq_share.py <contest_folder>    # 手动：指定比赛（文件夹相对仓库根）
-python3 crawler/scripts/qq_share.py                     # 补发：扫描遗留 qq-share.txt 的比赛重试发送
+python3 crawler/scripts/qq_share.py                     # 补发：扫描所有未发送（缺 qq-share.sent 标记）的比赛
 
 python3 crawler/scripts/alarm.py plan              # 扫描订阅：分类 HISTORY/EXPIRED/RETRY，写未来闹钟
 python3 crawler/scripts/alarm.py due               # 列出到点的 planned 闹钟（无则空输出）

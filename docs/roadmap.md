@@ -224,6 +224,6 @@ v0.4.0（动态版）
 ## 11. 遗留 / 待定
 
 - [ ] Windows / macOS 守护进程端到端实测（v0.3.0 交付项；Linux 已实测通过，见 `docs/notes.md`）
-- [ ] 爬虫"逐场完整性"语义（v0.3.3 发现，待讨论）：已修「抓取中途异常不推进 last-update」，但 HDU / NowCoder 的翻页结束判断、以及"某场翻页失败静默 break 仍可能推进全局水位"尚未处理；需要真实的平台 HTML 或抓取 fixture 才能安全修
-- [ ] qq_share `send_mode=file_only` 下 `send_contest_shares_for_all` 永不触发（无 `qq-share.txt`）；且文字成功 / 文件失败时会删除 `qq-share.txt`，文件不再重试——需要独立的"已发送"标记，属设计取舍，待讨论
-- [ ] qq-bot 增量游标按秒（`time > last_time`），同一秒内两条消息跨轮询时可能漏第二条；需要 message_id 去重集合，待讨论
+- [ ] **完整测试三个平台（QOJ / HDU / NowCoder）的抓取功能**（v0.3.3 后续排期）：含翻页结束判断与"逐场完整性"语义。已修「抓取中途异常不推进 last-update」，但 HDU 用 `li.page-item disabled` 判断当前页（Bootstrap 惯例是 `active`，需真实状态页 HTML / 抓取 fixture 验证）；QOJ / NowCoder 翻页请求失败时静默 `break` 仍可能推进全局水位
+- [x] qq_share 文案模式问题（v0.3.3 解决）：**移除文案生成 / 群发**，只发送 `review.md` 文件 + `qq-share.sent` 已发送标记（`file_only` 永不触发 / 部分成功不回补一并消除）
+- [x] qq-bot 同秒消息游标（v0.3.3 解决）：边界秒用 `time >= last_time` + message_id 去重集合

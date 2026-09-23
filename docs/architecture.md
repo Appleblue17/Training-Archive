@@ -205,7 +205,7 @@ contests/
 - 比赛抓取模式结束时把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时状态文件，gitignore；无新建比赛时删除），`report.py` / `qq_share.py` 以 `--from-crawl` 读取；读写逻辑统一在共享模块 `crawler/scripts/new_contests.py`。
 - 读取 `contest.json`、`submissions.json`、`problems/<letter>/submissions/<id>.<ext>`，**不做分析性预处理**，原始提交序列直接送 DeepSeek（OpenAI 兼容接口，`deepseek-chat`，API key 从环境变量 `DEEPSEEK_API_KEY` 读取）。
 - 输出 `contests/<date> <name>/review.md`；`review.md` 已存在即跳过（幂等）。只对 `end_time` 已过且有提交数据的比赛生成。
-- QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**与 report 解耦**：不再由 `report.py` 串联；由 daemon 的 sync/fire 在 report 全部成功后按 `config.json` 的 `ai_tasks.share.enabled`（缺省 `false`）单独调用 `qq_share.py --links`。流程：把 `review.md` 改写成轻松随性的纯文本 `qq-share.txt`（DeepSeek 独立调用）→ 通过 NapCat（OneBot 11 正向 WebSocket，`config.json` 的 `qq` 块配置 `napcat_ws_url` / `napcat_token` / `group_id`）群发文字 + 上传 `review.md` 文件 → 发送成功后删除 `qq-share.txt`（临时产物，两个 `.gitignore` 均忽略）。文字缺失 → 跳过文字只发文件；NapCat 未配置 / 连接 / 发送失败 → 仅告警不阻断 daemon（`qq-share.txt` 保留供下次重试）。也支持 `--from-crawl` / `<folder>` / 全量扫描补发。
+- QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**与 report 解耦**：不再由 `report.py` 串联；由 daemon 的 sync/fire 在 report 全部成功后按 `config.json` 的 `ai_tasks.share.enabled`（缺省 `false`）单独调用 `qq_share.py --links`。**只发送 `review.md` 文件**（v0.3.3 起移除了文案生成 / 群发）：连接 NapCat（OneBot 11 正向 WebSocket，`config.json` 的 `qq` 块配置 `napcat_ws_url`，token / group_id 从仓库根 `.env` 读）→ `upload_group_file` 上传 `review.md`（文件名带日期与比赛名）→ 成功后在比赛文件夹写入 `qq-share.sent` 已发送标记（两个 `.gitignore` 均忽略），失败不写标记、下次重试。review.md 不存在或已有标记 → 跳过；NapCat 未配置 / 连接 / 发送失败 → 仅告警不阻断 daemon。也支持 `--from-crawl` / `<folder>` / 补发扫描（跳过已发送与无 review 的比赛）。
 
 ### 4.5 增量抓取逻辑
 

@@ -14,8 +14,14 @@
 - **爬虫测试套件（pytest，`crawler/tests/`，168 条用例）**：纯逻辑单元测试覆盖时间解析（HDU / QOJ / ISO）、订阅加载与去重、报告 prompt 构建、闹钟分类与状态迁移、qq-bot 指令匹配与 `/subs add` 解析、qq-share 文本清洗、daemon plan 解析与调度判断、clean-log；新增 `crawler/requirements-dev.txt` / `crawler/pytest.ini`，运行 `.venv/bin/python -m pytest crawler/tests`
 - **爬虫测试 CI**（`.github/workflows/crawler-tests.yml`）：`crawler/**` 变更时自动安装依赖并运行 pytest
 
+### Changed
+
+- **QQ 群分享只发送 `review.md` 文件**（`qq_share.py`）：移除文案生成与群发（`qq-share.txt`、DeepSeek 简化版模板、`qq.send_mode` / `--file-only`）。发送成功后在比赛文件夹写入 `qq-share.sent` 已发送标记（两个 `.gitignore` 均忽略），补发扫描跳过已发送与无 review 的比赛；同时删除不再使用的 `crawler/prompts/qq-share.template.example.md`
+
 ### Fixed
 
+- **QQ 分享在 `file_only` 下永不触发 / 部分成功不回补**（`qq_share.py`）：`send_contest_shares_for_all` 依赖 `qq-share.txt` 判定未发送，而 `file_only` 模式不产生该文件 → 永不触发；且文字成功、文件失败时会删除 `qq-share.txt`，文件不再重试。随文案移除改为 `qq-share.sent` 标记
+- **qq-bot 同秒消息可能漏处理**（`qq_bot.py`）：增量游标 `time > last_time` 精度到秒，同一秒内、两次轮询之间到达的消息会被跳过；现对边界秒用 message_id 去重补足（`bot-state.json` 新增 `seen_ids`）
 - **last-update 水位改用抓取开始时间**（`platforms/base.py`）：`finish()` 原写抓取**结束**时间，会漏掉抓取期间新产生、但在下次抓取开始时已早于水位的提交；改为记录抓取开始时间，并保证水位单调不回退
 - **抓取中途异常不再推进 last-update**（`platforms/base.py`）：多场比赛时若前一场已标记完成、后一场抛异常，原逻辑仍会推进全局水位，导致失败比赛早于水位的提交被永久跳过；异常时作废本次完整性标记
 - **空 `--links` 退化为全量扫描**（`report.py` / `qq_share.py`）：`--links` 存在但解析为空时会命中"扫描全部比赛"分支，report 会静默对全部缺报告比赛调用 DeepSeek、qq_share 可能群发全部待发比赛；现返回非零并拒绝扫描
