@@ -7,6 +7,42 @@
 > [注意] 本文档是项目历史的单一事实来源，应随项目演进保持更新。
 > [注意] 本文档不是所有变更的完整清单；只记录重要变更并保持简洁易读。完整变更见版本控制系统（如 Git）历史。
 
+## [Unreleased]
+
+> 本段为 v1.0.0-beta.1（静态版稳定版）发布准备。实测通过后改标题为
+> `[1.0.0-beta.1] - <发布日期>`，并同步 `package.json` 版本号；发布检查清单见
+> `docs/release-checklist.md`。
+
+### Added
+
+- **跨平台端到端测试脚本**（`crawler/scripts/e2e_test.py`）：`check` / `unit` / `offline` /
+  `live` / `service` / `events`；所有写操作在 `.e2e/` 隔离沙箱（本地裸 origin）内执行，
+  不污染真实仓库、不向 GitHub 推送、不改真实订阅。`offline` 覆盖编排逻辑与特殊情况
+  （锁、状态损坏自愈、赛前提醒等 20 项）；`live` 对真实链接跑完整抓取 / 复盘 / 推送
+- **端到端测试手册**（`docs/e2e-testing.md`）：Linux / Windows 全链路步骤，以及
+  睡眠 / 休眠 / 关机重启 / 断网 / 进程被杀 / 断电 / 双实例 / 时区 / 长时运行等
+  特殊情况的操作、预期、验证与通过标准
+- **前端测试 CI**（`.github/workflows/frontend-tests.yml`）：lint + `tsc --noEmit` + vitest，
+  此前前端测试只在 deploy 分支的部署流程里运行
+- **爬虫测试 CI 增强**：`crawler-tests.yml` 去掉写死的分支过滤并新增 `windows-latest`
+  矩阵与 `e2e-offline` job（测试脚本本身也在 ubuntu + windows 上运行）
+
+### Changed
+
+- **CI Node 20 → 22**（`deploy.yml` / `frontend-tests.yml`）：jsdom 30 / undici 8 在
+  Node 20 下 vitest forks worker 启动失败
+- **deploy 的 Next 构建缓存 key 改用 `pnpm-lock.yaml`**：原用 `package-lock.json`，
+  缓存永不随依赖失效
+
+### Fixed
+
+- **`computeContribution` 按北京时间日期聚合**（`src/lib/dashboard.ts`）：原用运行环境
+  本地时区的日期，导致同一份数据在 UTC 的 CI 与 UTC+8 浏览器上落到不同日期
+- **子进程强制 UTF-8 编码**（`daemon.py` / `qq_bot.py` / `e2e_test.py`）：Windows 中文区域
+  （cp936）下按 locale 解码 UTF-8 的中文比赛名 / 路径会 `UnicodeDecodeError`
+- **入口脚本 stdout 切 UTF-8**（`daemon.py` / `e2e_test.py`）：Windows cp1252 控制台打印
+  中文结果时 `UnicodeEncodeError` 导致进程退出
+
 ## [0.3.3] - 2026-10-06
 
 ### Added
