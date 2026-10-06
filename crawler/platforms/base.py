@@ -125,6 +125,11 @@ class BaseCrawler:
         # 提交抓取是否完整结束（只有完整抓取才推进 last-update，避免静默丢提交）
         self._submissions_fetch_complete = False
 
+        # 本次提交抓取的开始时间：finish() 用它作为 last-update 水位。
+        # 必须用「开始时间」而非「结束时间」——否则抓取过程中新产生、但在
+        # 下次抓取开始时已早于水位（结束时间）的提交会被永久跳过。
+        self._fetch_started_at = None
+
         # 本次运行新建的比赛（contest_link -> start_time ISO 字符串）。
         # 首次抓取该比赛时（补订已完成比赛），提交抓取以比赛开始时间为截止全量回填，
         # 否则 status 页第一条提交就早于全局 last-update 而被跳过，一场都抓不到。
@@ -511,7 +516,11 @@ class BaseCrawler:
         }
         options.add_experimental_option("prefs", prefs)
 
-        options.add_argument("--headless")  # Uncomment for headless mode
+        # 默认无头（服务器友好）。设置 CHROME_HEADLESS=0 可关闭无头——QOJ 等站点
+        # 对 headless 有 Cloudflare Turnstile 检测，在 Xvfb / 有显示器的环境用
+        # 非 headless（配合 xvfb-run）可正常通过。
+        if os.environ.get("CHROME_HEADLESS", "1").strip().lower() not in ("0", "false", "no"):
+            options.add_argument("--headless")
         driver_kwargs = {"options": options}
         if chromedriver_path:
             driver_kwargs["driver_executable_path"] = chromedriver_path
@@ -986,6 +995,11 @@ class BaseCrawler:
         return False
 
     def fetch_submissions(self):
+        # 记录抓取开始时间作为 last-update 水位（见 finish()）
+        self._fetch_started_at = datetime.now(beijing)
+        # 每次抓取从"未完成"开始；即使实例被复用也不会沿用上次的完成标记
+        self._submissions_fetch_complete = False
+
         # Load last update time and staged submissions
         self.last_update = self._load_file(self.last_update_path, default={})
         last_update_time_str = self.last_update.get(
@@ -1020,7 +1034,14 @@ class BaseCrawler:
 
         # Fetch new submissions
         self.log("info", "Start fetching new submissions...")
-        self.fetch_submissions_get_submissions()
+        try:
+            self.fetch_submissions_get_submissions()
+        except Exception:
+            # 抓取中途异常（多场比赛时会发生在某一场）：作废本次完整性标记。
+            # 否则若前一场已 _mark_submissions_complete()，finish() 仍会推进
+            # 全局 last-update，导致失败那场早于水位的提交被永久跳过。
+            self._submissions_fetch_complete = False
+            raise
 
     def _mark_submissions_complete(self):
         """标记提交抓取已完整结束（到达 last-update 或遍历完所有页）。
@@ -1049,5 +1070,17 @@ class BaseCrawler:
             )
             return
         self.last_update = self._load_file(self.last_update_path, default={})
-        self.last_update[self.platform_name] = datetime.now(beijing).isoformat()
+        watermark = self._fetch_started_at or datetime.now(beijing)
+        previous = self.last_update.get(self.platform_name)
+        if previous:
+            # 水位单调不回退：系统时钟回拨/乱序时不倒退，避免重复抓取或漏抓。
+            try:
+                prev_dt = datetime.fromisoformat(str(previous))
+                if prev_dt.tzinfo is None:
+                    prev_dt = prev_dt.replace(tzinfo=beijing)
+                if prev_dt > watermark:
+                    watermark = prev_dt
+            except (TypeError, ValueError):
+                pass
+        self.last_update[self.platform_name] = watermark.isoformat()
         self._write_file(self.last_update_path, self.last_update)

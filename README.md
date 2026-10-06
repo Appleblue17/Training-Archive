@@ -58,6 +58,10 @@ pnpm lint       # 代码检查
 ```bash
 pip install -r crawler/requirements.txt
 
+# 爬虫单元测试（纯逻辑，不启动 Chrome；需先安装 requirements-dev.txt）
+pip install -r crawler/requirements-dev.txt
+python3 -m pytest crawler/tests
+
 # 默认模式：抓订阅比赛 + 全量增量提交（手动/临时）
 python3 crawler/scripts/scheduled_task.py
 # 只查订阅/新建比赛（有新建才回填其提交；高频触发推荐）
@@ -74,7 +78,7 @@ python3 crawler/scripts/report.py --from-crawl --links "https://qoj.ac/contest/1
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
 # QQ 群分享（可选，config.json 的 ai_tasks.share.enabled 开启后 daemon 自动调用；NapCat 配置见 crawler/config.example.json 的 qq 块）
-python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456" [--file-only]
+python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456"
 python3 crawler/scripts/qq_share.py "contests/2026-08-01 xxx"
 ```
 

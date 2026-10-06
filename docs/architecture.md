@@ -136,7 +136,7 @@ contests/
 | `_archive_submission()` | 单份提交全量归档 | 按 `submission_id` 幂等去重；源码抓取失败不阻断元数据记录 |
 | `_load_subscriptions()` | 加载订阅配置 | 合并 `crawler/subscriptions/` 目录下所有 `.json`（按 `link` 去重），按 `platform` + `enabled` 过滤 |
 | `_mark_submissions_complete()` | 标记提交抓取完整 | 仅在完整结束时调用；`finish()` 据此决定是否推进 `last-update.json` |
-| `finish()` | 收尾 | 关闭驱动；**仅当** `_mark_submissions_complete()` 被调用过才更新 `last-update.json`；**contests-only 模式始终不推进** |
+| `finish()` | 收尾 | 关闭驱动；**仅当** `_mark_submissions_complete()` 被调用过才更新 `last-update.json`；写入的是 `fetch_submissions()` 开始时间（`_fetch_started_at`，非结束时间，避免抓取窗口内新提交被跳过），且水位单调不回退；**contests-only 模式始终不推进** |
 
 其他基础设施：
 
@@ -205,14 +205,15 @@ contests/
 - 比赛抓取模式结束时把本次新建的比赛文件夹写入 `crawler/new-contests.json`（临时状态文件，gitignore；无新建比赛时删除），`report.py` / `qq_share.py` 以 `--from-crawl` 读取；读写逻辑统一在共享模块 `crawler/scripts/new_contests.py`。
 - 读取 `contest.json`、`submissions.json`、`problems/<letter>/submissions/<id>.<ext>`，**不做分析性预处理**，原始提交序列直接送 DeepSeek（OpenAI 兼容接口，`deepseek-chat`，API key 从环境变量 `DEEPSEEK_API_KEY` 读取）。
 - 输出 `contests/<date> <name>/review.md`；`review.md` 已存在即跳过（幂等）。只对 `end_time` 已过且有提交数据的比赛生成。
-- QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**与 report 解耦**：不再由 `report.py` 串联；由 daemon 的 sync/fire 在 report 全部成功后按 `config.json` 的 `ai_tasks.share.enabled`（缺省 `false`）单独调用 `qq_share.py --links`。流程：把 `review.md` 改写成轻松随性的纯文本 `qq-share.txt`（DeepSeek 独立调用）→ 通过 NapCat（OneBot 11 正向 WebSocket，`config.json` 的 `qq` 块配置 `napcat_ws_url` / `napcat_token` / `group_id`）群发文字 + 上传 `review.md` 文件 → 发送成功后删除 `qq-share.txt`（临时产物，两个 `.gitignore` 均忽略）。文字缺失 → 跳过文字只发文件；NapCat 未配置 / 连接 / 发送失败 → 仅告警不阻断 daemon（`qq-share.txt` 保留供下次重试）。也支持 `--from-crawl` / `<folder>` / 全量扫描补发。
+- QQ 群分享（share AI task，`crawler/scripts/qq_share.py`）**与 report 解耦**：不再由 `report.py` 串联；由 daemon 的 sync/fire 在 report 全部成功后按 `config.json` 的 `ai_tasks.share.enabled`（缺省 `false`）单独调用 `qq_share.py --links`。**只发送 `review.md` 文件**（v0.3.3 起移除了文案生成 / 群发）：连接 NapCat（OneBot 11 正向 WebSocket，`config.json` 的 `qq` 块配置 `napcat_ws_url`，token / group_id 从仓库根 `.env` 读）→ `upload_group_file` 上传 `review.md`（文件名带日期与比赛名）→ 成功后在比赛文件夹写入 `qq-share.sent` 已发送标记（两个 `.gitignore` 均忽略），失败不写标记、下次重试。review.md 不存在或已有标记 → 跳过；NapCat 未配置 / 连接 / 发送失败 → 仅告警不阻断 daemon。也支持 `--from-crawl` / `<folder>` / 补发扫描（跳过已发送与无 review 的比赛）。
 
 ### 4.5 增量抓取逻辑
 
 - `last-update.json` 记录各平台最后更新时间；`_register_submission()` 遇到早于该时间的提交即停止。
 - 未匹配到已归档竞赛的提交先进入 `crawler/platforms/<platform>/staged-submissions.json`，下次运行时优先尝试回填。
 - 若题目已 AC 且旧提交非 AC，不会用旧提交覆盖；新 AC 提交更新 `solve_time`（取最早的 AC 时间）。
-- 提交抓取**完整性校验**：只有遍历完所有分页或到达 last-update 才标记完整；`finish()` 仅在此情况下推进 `last-update.json`，否则下次重跑，避免静默漏提交。
+- 提交抓取**完整性校验**：只有遍历完所有分页或到达 last-update 才标记完整；`finish()` 仅在此情况下推进 `last-update.json`，否则下次重跑，避免静默漏提交。多场比赛时若抓取中途抛异常，`fetch_submissions()` 会作废本次完整性标记（即使更早的比赛已标记完成），避免全局水位被提前推进。
+- `last-update.json` 写入的是本次抓取**开始**时间，而非结束时间：否则抓取过程中新产生、但在下次抓取开始时已早于水位（结束时间）的提交会被永久跳过；水位同时保证单调不回退。
 - **contests-only 不回填已有比赛、不推进 `last-update.json`**：新建比赛的提交以该场 `start_time` 为截止全量回填（`_deadline_for`，与默认模式首次抓取一致），已有比赛的增量由每日 `--submissions-only` 推进。
 
 **deploy 分支状态跟踪约定**：开发分支（`main`）的 `.gitignore` 忽略爬虫数据与状态文件（`contests/`、`last-update.json`、`crawler/platforms/*/contests.json`、`crawler/platforms/*/staged-submissions.json`、`config.json`、`crawler/subscriptions/`）；仓库另提交一份 **`.gitignore.deploy`**（deploy 分支专用），其中这些文件均纳入版本控制。自托管守护进程（`daemon.py`）在提交前执行 `cp .gitignore.deploy .gitignore` 后再 `git add`，因此 deploy 分支会自然跟踪竞赛数据与增量状态（增量同步跨运行生效），也支持手动上传代码。**仅 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送**（消息带 `[contests-changed]` 标记，触发部署）；仅 crawler 状态/日志变化时不提交不推送（这些文件已在本地文件系统持久化，无需同步远端）。`config.json` / `last-update.json` / 各平台 `staged-submissions.json` / `subscriptions/` 均在 deploy 分支入库跟踪，供前端 `/status` 页面展示（见 3.1）。日志、chromedriver 二进制、`new-contests.json`（临时报告列表）与 `alarms.json`（闹钟表，见 4.6）始终不提交。
@@ -301,7 +302,7 @@ contests/
 
 ## 6. 已知限制
 
-- 前端无自动化测试；目前仅靠 `pnpm lint` 与人工验收。
+- 前端与爬虫均已有单元/组件测试：前端 Vitest + React Testing Library（`pnpm test`，见 `docs/notes.md` 已选定技术栈），爬虫 pytest（`crawler/tests/`，`.venv/bin/python -m pytest crawler/tests`，CI `.github/workflows/crawler-tests.yml`）。爬虫测试只覆盖纯逻辑，不启动 Chrome、不发网络请求；平台 HTML 解析（翻页判断等）仍靠抓取 fixture / 人工验证。
 - HDU/NowCoder 爬虫默认停用（`config.json` 中 `enabled: false`），当前只有 QOJ 在运行。
 - `report.py` 提示词有长度上限（`MAX_PROMPT_CHARS`），超限时旧提交源码会被省略（元数据保留）。
 - Dashboard 复盘报告区与复盘时间轴页依赖 `review.md`；`submissions.json` 为空时统计与绿点图显示零值。

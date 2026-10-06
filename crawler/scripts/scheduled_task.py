@@ -118,10 +118,14 @@ def run_platform(platform, mode, only_links=None):
     only_links: 只抓指定订阅链接（--links，服务器闹钟/历史补抓用）。
                 为 None 时抓全部订阅。
     """
-    crawler = crawler_for(platform)
-    crawler._only_links = only_links
+    crawler = None
     ok = False
     try:
+        # 构造放在 try 内：依赖缺失 / 驱动初始化失败只影响该平台，
+        # 不会抛出中断 main 循环里的其他平台。
+        crawler = crawler_for(platform)
+        crawler._only_links = only_links
+
         # HDU 的 login 签名不同（login(link)），由其内部流程自行登录；
         # QOJ / NowCoder 需要先登录。
         if platform in ("qoj", "nowcoder"):
@@ -144,10 +148,11 @@ def run_platform(platform, mode, only_links=None):
     finally:
         # finish() 内部 deinit_driver()，且仅在提交抓取完整时推进 last-update
         # （contests-only 模式始终不推进，见 BaseCrawler.finish）
-        try:
-            crawler.finish()
-        except Exception as e:
-            print(f"[task] {platform} finish failed: {e}")
+        if crawler is not None:
+            try:
+                crawler.finish()
+            except Exception as e:
+                print(f"[task] {platform} finish failed: {e}")
     return ok, crawler
 
 
@@ -194,12 +199,14 @@ def main():
 
     ok_platforms = []
     ok_crawlers = []
+    failed_platforms = []
     for platform in enabled_platforms:
         ok, crawler = run_platform(platform, mode, only_links=only_links)
         if ok:
             ok_platforms.append(platform)
             ok_crawlers.append(crawler)
         else:
+            failed_platforms.append(platform)
             print(f"[task] Platform {platform} did not complete successfully.")
 
     if not ok_platforms:
@@ -212,6 +219,16 @@ def main():
         _write_new_contests(ok_crawlers)
 
     print(f"[task] Completed platforms: {', '.join(ok_platforms)}")
+
+    if failed_platforms:
+        # 部分平台失败也必须返回非零：daemon sync/fire 只看退出码，成功即把
+        # 本次全部链接 mark --archived；若这里返回 0，失败平台未真正抓取的
+        # 链接会被误标为已归档（不生成报告、不再重试）。
+        print(
+            f"[task] Platforms failed: {', '.join(failed_platforms)}; "
+            "exiting with error so callers do not archive failed links."
+        )
+        sys.exit(1)
 
 
 if __name__ == "__main__":

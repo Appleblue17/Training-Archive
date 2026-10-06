@@ -62,7 +62,8 @@ __pycache__/
 # 开发分支忽略爬虫数据与增量状态；deploy 分支使用 .gitignore.deploy（CI 提交前
 # 覆盖 .gitignore），将 contests/ 与状态文件纳入版本控制，保证增量同步生效。
 /contests/
-# QQ 群分享临时产物（发送成功后删除；gitignore 兜底防止误提交）
+# QQ 群分享：已发送标记（发送成功后写入；勿提交）；qq-share.txt 为旧版文案遗留
+contests/*/qq-share.sent
 contests/*/qq-share.txt
 # NapCat 本地数据库（测试时在仓库根生成，勿提交）
 /guild1.db
@@ -78,7 +79,6 @@ crawler/config.json
 crawler/subscriptions/*
 !crawler/subscriptions/subscriptions.example.json
 crawler/prompts/prompt.template.md
-crawler/prompts/qq-share.template.md
 crawler/new-contests.json
 crawler/alarms.json
 crawler/platforms/*/contests.json
@@ -96,7 +96,6 @@ crawler/quotes-cache.json
 # 但保留配置模板可提交
 !crawler/config.example.json
 !crawler/prompts/prompt.template.example.md
-!crawler/prompts/qq-share.template.example.md
 
 # test script
 *test.sh

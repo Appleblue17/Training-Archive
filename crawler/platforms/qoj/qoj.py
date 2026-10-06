@@ -14,6 +14,39 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.
 from crawler.platforms.base import BaseCrawler
 
 
+# QOJ 比赛时长展示形如 "[2 hours]"/"[2 hours 30 minutes]"/"[90 minutes]"/"[2 hour]"。
+# 不能简单 split("hours")：单数 "hour"、纯分钟（无 hours）、空串都会解析失败或
+# 抛 ValueError 中断整场抓取。用正则分别取小时/分钟，任一缺失按 0 处理。
+_QOJ_HOURS_RE = re.compile(r"(\d+)\s*hours?", re.IGNORECASE)
+_QOJ_MINUTES_RE = re.compile(r"(\d+)\s*minutes?", re.IGNORECASE)
+
+
+def _parse_qoj_duration(text):
+    """解析 QOJ 时长文本为 timedelta。无法识别任何数字时抛 ValueError。"""
+    text = (text or "").strip()
+    hours_m = _QOJ_HOURS_RE.search(text)
+    minutes_m = _QOJ_MINUTES_RE.search(text)
+    if not hours_m and not minutes_m:
+        raise ValueError(f"Unexpected QOJ duration format: {text!r}")
+    hours = int(hours_m.group(1)) if hours_m else 0
+    minutes = int(minutes_m.group(1)) if minutes_m else 0
+    return timedelta(hours=hours, minutes=minutes)
+
+
+def _extract_source_code(html):
+    """从 QOJ 提交页 HTML 提取源码文本；找不到代码块返回 None。
+
+    偶发情况下页面是 Cloudflare 挑战页（"Just a moment..."）或空白，此时没有
+    `pre.sh_sourceCode`；调用方据此重试，而不是让 AttributeError 冒泡。
+    """
+    soup = bs4(html or "", "html.parser")
+    pre = soup.find("pre", class_="sh_sourceCode")
+    if pre is None:
+        return None
+    code = pre.find("code")
+    return code.get_text() if code is not None else None
+
+
 class QOJCrawler(BaseCrawler):
     def __init__(self, local_log_path="crawler/platforms/qoj/log.json"):
         super().__init__("qoj", local_log_path)
@@ -128,14 +161,17 @@ class QOJCrawler(BaseCrawler):
             # Contest duration is in cols[2]
             # Format: [X hours] or [X hours Y minutes]
             contest_duration = cols[2].text.strip()
-            hours = contest_duration.split("hours")[0].strip()
-            minutes = (
-                contest_duration.split("hours")[1].split("minutes")[0].strip()
-                if "minutes" in contest_duration
-                else "0"
-            )
+            try:
+                duration = _parse_qoj_duration(contest_duration)
+            except ValueError as e:
+                self.log(
+                    "error",
+                    f"Failed to parse contest duration {contest_duration!r} for "
+                    f"{contest_name}: {e}. Skipping contest.",
+                )
+                continue
             # Calculate the end time
-            end_time = start_time + timedelta(hours=int(hours), minutes=int(minutes))
+            end_time = start_time + duration
 
             # Difficulty is in cols[3]
             # Format: [?] or [★★★★★] or [★★★☆]; ★=1, ☆=0.5
@@ -323,10 +359,23 @@ class QOJCrawler(BaseCrawler):
         Fetch the source code of a submission. This method is called in `_update_submission_status`.
         """
 
-        code_page = self.fetch_page_with_browser(entry["submission_link"])
-        code_soup = bs4(code_page, "html.parser")
-        code = code_soup.find("pre", class_="sh_sourceCode").find("code").get_text()
-        return code
+        link = entry["submission_link"]
+        for attempt in (1, 2):
+            code_page = self.fetch_page_with_browser(link)
+            code = _extract_source_code(code_page)
+            if code is not None:
+                return code
+            if attempt == 1:
+                # 可能是 Cloudflare 挑战页 / 偶发空白页：退避后重试一次
+                self.log(
+                    "warning",
+                    f"Source code block not found (attempt {attempt}) at {link}; retrying.",
+                )
+                self._random_sleep(2, 4)
+        raise ValueError(
+            f"Source code block not found at {link} "
+            "(possibly a Cloudflare challenge page)."
+        )
 
     def fetch_submissions_get_submissions(self):
         """
@@ -364,9 +413,17 @@ class QOJCrawler(BaseCrawler):
                 break
 
             soup = bs4(submissions_page, "html.parser")
-            current_page = (
-                soup.find("li", class_="page-item active").find("a").text.strip()
-            )
+            active_li = soup.find("li", class_="page-item active")
+            active_link = active_li.find("a") if active_li else None
+            if active_link is None:
+                # 页面结构缺失：无法判断当前页，安全停止且不推进 last-update
+                self.log(
+                    "error",
+                    f"Cannot determine current submissions page {page}; "
+                    "stopping without advancing last-update.",
+                )
+                break
+            current_page = active_link.text.strip()
             if current_page != str(page):
                 self.log(
                     "info", f"Reached the end of submissions at page {current_page}."

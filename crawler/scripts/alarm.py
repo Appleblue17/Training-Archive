@@ -136,16 +136,32 @@ def _save_alarms(alarms):
 
 
 def _load_enabled_platforms():
-    """与 scheduled_task.py 一致：config.json 中显式 enabled: true 的平台。"""
+    """config.json 中显式 enabled: true 的平台。
+
+    返回 list；配置缺失 / 解析失败时返回 None——调用方（cmd_plan）必须据此
+    中止，绝不能把 None 当空列表继续：空 enabled 会令 active_links 为空，
+    进而把所有现存闹钟（含 archived 历史）全部剪除。
+    """
     if not os.path.exists(CONFIG_PATH):
-        return []
+        print(f"[alarm] ERROR: {CONFIG_PATH} not found; cannot determine enabled platforms.")
+        return None
     try:
         with open(CONFIG_PATH, "r", encoding="utf-8") as f:
             config = json.load(f)
     except Exception as e:
-        print(f"[alarm] Failed to parse {CONFIG_PATH}: {e}; all platforms disabled.")
-        return []
-    return [p for p in PLATFORM_ORDER if config.get(p, {}).get("enabled", False)]
+        print(f"[alarm] ERROR: Failed to parse {CONFIG_PATH}: {e}")
+        return None
+    if not isinstance(config, dict):
+        print(f"[alarm] ERROR: {CONFIG_PATH} is not a JSON object.")
+        return None
+    # 平台块存在但不是对象（如 "qoj": null）视为配置损坏：否则下面 .get("enabled")
+    # 会抛 AttributeError，而当前调用方需要 None 才能受控地中止 plan。
+    for p in PLATFORM_ORDER:
+        if p in config and not isinstance(config[p], dict):
+            print(f"[alarm] ERROR: platform {p!r} in {CONFIG_PATH} is not a JSON object.")
+            return None
+    return [p for p in PLATFORM_ORDER
+            if p in config and config[p].get("enabled", False)]
 
 
 def _parse_time(s):
@@ -244,7 +260,14 @@ def cmd_plan():
       [alarm] ERROR 并**跳过该条目**（不当 HISTORY 静默处理），且本命令返回
       非零——daemon sync 检测到后中止（含 /sync 手动触发），修复后重跑。
     """
-    enabled = set(_load_enabled_platforms())
+    enabled_platforms = _load_enabled_platforms()
+    if enabled_platforms is None:
+        # 配置不可读：中止（返回非零）。若当空列表继续，active_links 为空，
+        # 下面的剪除逻辑会把全部闹钟（含 archived）删掉。
+        print("[alarm] ERROR: config.json missing/unreadable; aborting plan. "
+              "Fix crawler/config.json, then re-run sync.")
+        return 1
+    enabled = set(enabled_platforms)
     sub_log, sub_diag = _subscription_diag()
     subs = load_subscriptions_dir(
         SUBSCRIPTIONS_DIR, platform=None, log=sub_log

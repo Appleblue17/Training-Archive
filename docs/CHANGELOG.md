@@ -7,7 +7,38 @@
 > [注意] 本文档是项目历史的单一事实来源，应随项目演进保持更新。
 > [注意] 本文档不是所有变更的完整清单；只记录重要变更并保持简洁易读。完整变更见版本控制系统（如 Git）历史。
 
-## [Unreleased]
+## [0.3.3] - 2026-10-06
+
+### Added
+
+- **爬虫测试套件（pytest，`crawler/tests/`，189 条用例）**：纯逻辑单元测试覆盖时间解析（HDU / QOJ / ISO）、订阅加载与去重、报告 prompt 构建、闹钟分类与状态迁移、qq-bot 指令匹配 / `/subs add` 解析 / 同秒游标、qq-share 文本清洗与已发送标记、daemon plan 解析与调度判断、clean-log、NowCoder 登录态判断、QOJ 源码提取；新增 `crawler/requirements-dev.txt` / `crawler/pytest.ini`，运行 `.venv/bin/python -m pytest crawler/tests`
+- **爬虫测试 CI**（`.github/workflows/crawler-tests.yml`）：`crawler/**` 变更时自动安装依赖并运行 pytest
+
+### Changed
+
+- **QQ 群分享只发送 `review.md` 文件**（`qq_share.py`）：移除文案生成与群发（`qq-share.txt`、DeepSeek 简化版模板、`qq.send_mode` / `--file-only`）。发送成功后在比赛文件夹写入 `qq-share.sent` 已发送标记（两个 `.gitignore` 均忽略），补发扫描跳过已发送与无 review 的比赛；同时删除不再使用的 `crawler/prompts/qq-share.template.example.md`
+
+- **Chrome 无头模式可通过 `CHROME_HEADLESS=0` 关闭**（`platforms/base.py`）：默认仍为无头；QOJ 等站点对 headless 有 Cloudflare Turnstile 检测，在 Xvfb / 有显示器的环境用 `xvfb-run -a env CHROME_HEADLESS=0 ...` 跑非 headless 可通过（本机三平台实测即用此方式）
+
+### Fixed
+
+- **QQ 分享在 `file_only` 下永不触发 / 部分成功不回补**（`qq_share.py`）：`send_contest_shares_for_all` 依赖 `qq-share.txt` 判定未发送，而 `file_only` 模式不产生该文件 → 永不触发；且文字成功、文件失败时会删除 `qq-share.txt`，文件不再重试。随文案移除改为 `qq-share.sent` 标记
+- **qq-bot 同秒消息可能漏处理**（`qq_bot.py`）：增量游标 `time > last_time` 精度到秒，同一秒内、两次轮询之间到达的消息会被跳过；现对边界秒用 message_id 去重补足（`bot-state.json` 新增 `seen_ids`）
+- **last-update 水位改用抓取开始时间**（`platforms/base.py`）：`finish()` 原写抓取**结束**时间，会漏掉抓取期间新产生、但在下次抓取开始时已早于水位的提交；改为记录抓取开始时间，并保证水位单调不回退
+- **抓取中途异常不再推进 last-update**（`platforms/base.py`）：多场比赛时若前一场已标记完成、后一场抛异常，原逻辑仍会推进全局水位，导致失败比赛早于水位的提交被永久跳过；异常时作废本次完整性标记
+- **空 `--links` 退化为全量扫描**（`report.py` / `qq_share.py`）：`--links` 存在但解析为空时会命中"扫描全部比赛"分支，report 会静默对全部缺报告比赛调用 DeepSeek、qq_share 可能群发全部待发比赛；现返回非零并拒绝扫描
+- **空 / None 复盘输出写坏 `review.md`**（`report.py`）：模型返回空内容时写出 0 字节 `review.md`，之后因"文件已存在"被永久跳过；现判定为失败且不落盘，写入改为临时文件 + `os.replace` 原子替换
+- **配置不可读时剪除全部闹钟**（`alarm.py`）：`config.json` 缺失 / 损坏时 `_load_enabled_platforms` 返回空列表，plan 的剪除逻辑会把全部闹钟（含 archived 历史）删除；现返回 None 并中止 plan
+- **单平台构造失败中断其余平台**（`scheduled_task.py`）：`crawler_for()` 构造在 `try` 之外，缺依赖 / 驱动初始化失败会抛出中断 main 循环；现移入 `try`，失败仅影响该平台
+- **daemon 主循环健壮性**（`daemon.py`）：`_is_due` 遇到损坏的 `last_run`（非字符串）抛 `TypeError` 会杀死 daemon；现捕获所有异常，主循环每轮包裹异常处理并继续；`ensure_deploy_branch` 的 `git checkout` 失败改为中止，避免在错误分支上提交推送
+- **QOJ 比赛时长解析**（`platforms/qoj/qoj.py`）：原 `split("hours")` 无法处理 `[90 minutes]` / `[2 hour]` / 空串（`ValueError` 中断整场抓取）；改为正则解析，无法识别时记录并跳过该比赛；提交页无法定位当前页时不再抛 `AttributeError`
+- **qq-bot 自然语言关键词按最长匹配**（`qq_bot.py`）：`历史比赛` 曾先命中更早注册的短关键词 `比赛`（`/upcoming`）；现最长关键词优先
+- **NowCoder 登录态误报**（`platforms/nowcoder/nowcoder.py`）：`NOWCODER_USERNAME` 未配置时 `self.username in html` 恒为真，无效 Cookie 也被当作"登录成功"；现无昵称时改用页面特征（有「退出」入口 / 用户主页链接）校验，并在缺昵称时告警
+- **QOJ 提交源码偶发抓取失败**（`platforms/qoj/qoj.py`）：长任务中 Cloudflare 偶发返回挑战页（无 `pre.sh_sourceCode`）时原代码抛 `AttributeError`、源码静默缺失；现提取失败退避后重试一次，仍失败给出明确错误
+- **部分平台失败时仍返回 0**（`scheduled_task.py`）：构造失败改为只影响该平台后，`main` 仍会在其他平台成功时返回 0，daemon sync/fire 据此把失败平台未真正抓取的链接也 `mark --archived`（不生成报告、不再重试）；现任一平台失败即返回非零
+- **平台块畸形时 alarm plan 崩溃**（`alarm.py`）：原仅校验顶层是 JSON 对象，`{"qoj": null}` 仍会在 `.get("enabled")` 抛 `AttributeError`；现校验每个平台块，畸形时返回 None 中止 plan
+- **`last_run` 非对象时 daemon 崩溃**（`daemon.py`）：`{"last_run": 123}` 时 `.get(task)` 在 `try` 之外抛 `AttributeError`；现 `load_state` 归一化 `last_run`，且 `_is_due` 的查询也纳入 `try`
+- **已发送标记写盘失败谎报成功**（`qq_share.py`）：`_mark_sent` 吞掉 `OSError` 后 `send_contest_share` 仍返回 True，下次补发会重复上传同一份 review；现标记写入失败返回 False
 
 ## [0.3.2] - 2026-09-22
 

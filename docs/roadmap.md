@@ -219,7 +219,12 @@ v0.4.0（动态版）
 | 17 | 个人电脑模式（2026-08-12） | 支持跨平台守护进程 `daemon.py`（Win / Mac / Linux）：`run` 主循环按 config `scheduled` 块 + 闹钟到点执行、睡眠恢复只补跑一次；`install` 按 OS 注册登录自启（systemd user / launchd / schtasks ONLOGON） |
 | 18 | 服务对象（2026-08-12） | 别人 fork 自己部署自己的站；fork 需参数化 basePath / URL 常量（env 覆盖，默认保持现状） |
 | 19 | 前端测试（2026-09-22） | 采用 **Vitest + React Testing Library（jsdom）** 做组件/单元测试（T1 纯逻辑 + T2 组件，`pnpm test`）；不引入 E2E，留 v0.4.0 再评估 |
+| 20 | 爬虫测试（2026-09-23） | 采用 **pytest**（`crawler/tests/`，`requirements-dev.txt`，CI `crawler-tests.yml`）做纯逻辑单元测试；不启动 Chrome、不发网络请求。测试先行的 P0 修复随 v0.3.3 交付 |
 
 ## 11. 遗留 / 待定
 
 - [ ] Windows / macOS 守护进程端到端实测（v0.3.0 交付项；Linux 已实测通过，见 `docs/notes.md`）
+- [x] NowCoder 有效 Cookie 重测（2026-09-23）：contest/108303 → 13 题 + 13 题面、40 提交 + 40 源码；三平台抓取链路均通过（见 `docs/notes.md`）
+- [ ] 三平台翻页 / 逐场完整性深入：HDU 状态页**无分页**（第一场 cid=1229 共 20 条，`&page=2` 返回同内容；第二场 cid=1230 抓到 25 条，现有"无分页→第一页处理完即完整"逻辑正确）；QOJ 长任务下会偶发 Cloudflare 挑战页，已加一次重试，后续可考虑更长退避 / 降速
+- [x] qq_share 文案模式问题（v0.3.3 解决）：**移除文案生成 / 群发**，只发送 `review.md` 文件 + `qq-share.sent` 已发送标记（`file_only` 永不触发 / 部分成功不回补一并消除）
+- [x] qq-bot 同秒消息游标（v0.3.3 解决）：边界秒用 `time >= last_time` + message_id 去重集合
