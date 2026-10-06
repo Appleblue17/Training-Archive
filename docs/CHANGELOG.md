@@ -42,6 +42,10 @@
   （cp936）下按 locale 解码 UTF-8 的中文比赛名 / 路径会 `UnicodeDecodeError`
 - **入口脚本 stdout 切 UTF-8**（`daemon.py` / `e2e_test.py`）：Windows cp1252 控制台打印
   中文结果时 `UnicodeEncodeError` 导致进程退出
+- **`NO_PROXY` 含带括号 IPv6 导致复盘生成失败**（`crawler/llm/deepseek_client.py`）：
+  `NO_PROXY` / `no_proxy` 含 `[::1]` 时 httpx 将其当成 URL 解析，在端口处抛
+  `InvalidURL: Invalid port ':1]'`，OpenAI 客户端无法创建，`report.py` 生成失败并
+  阻断 daemon sync（不归档、不部署）；`normalize_proxy_env()` 统一去掉方括号
 
 ## [0.3.3] - 2026-10-06
 

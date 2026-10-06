@@ -325,7 +325,12 @@ systemctl --user status training-archive-daemon.service 2>&1   # 或 schtasks /Q
 | HDU | `https://acm.hdu.edu.cn/contest/problems?cid=1230` | 23s | 25 条提交（状态页无分页）；sync 退出 0；归档 + 推送 |
 | QOJ | `https://qoj.ac/contest/3588` | 635s（`xvfb-run` + `--headful`） | 13 题 PDF + 50 条提交；sync 退出 0；归档 + 推送；**部分提交源码偶发被 Cloudflare 挑战页挡住（已内建一次重试）**，属已知偶发问题，不阻断整场 |
 
-自动化统计：`offline` 20 项、`all`（check+unit+offline）28 项全部 PASS，pytest 198 条通过。
+**完整链路（含复盘）**：NowCoder `108303` 用 `live --mode full` 75s 跑通
+「抓取 → DeepSeek 生成 18.8KB `review.md` → 归档 → 推送」。首次尝试时 NowCoder 题目解析
+曾偶发 `'NoneType' object has no attribute 'find'`（疑似反爬/页面变体），重试即成功——
+与 QOJ 的 Cloudflare 偶发同类，daemon 的 `failed → 下次 sync 重试` 机制可兜底。
+
+自动化统计：`offline` 20 项、`all`（check+unit+offline）28 项全部 PASS，pytest 200 条通过。
 
 CI：`Crawler Tests` 的 `pytest` 与 `e2e-offline`（均 ubuntu-latest + windows-latest）以及
 `Frontend Tests`（lint + tsc + vitest）全绿。`e2e-offline` 在 windows runner（cp1252 控制台）上
