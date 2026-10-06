@@ -33,3 +33,27 @@ jobs:
 
       - name: Run crawler tests
         run: python -m pytest crawler/tests
+
+  e2e-offline:
+    # 在 ubuntu + windows 上跑 E2E 脚本的离线阶段（隔离沙箱、不联网、不启 Chrome），
+    # 让跨平台测试脚本本身也被 CI 覆盖，提前暴露 Windows 路径/编码/锁问题。
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: crawler/requirements-dev.txt
+
+      - name: Install dependencies
+        run: pip install -r crawler/requirements-dev.txt
+
+      - name: E2E offline (isolated sandbox)
+        run: python crawler/scripts/e2e_test.py offline
