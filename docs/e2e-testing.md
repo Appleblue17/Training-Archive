@@ -97,7 +97,7 @@ git、Chrome 与 driver、pandoc、`.env` 关键字段、`config.json` 启用平
 
 ### 4.2 `unit`
 运行 `crawler/tests` pytest。
-→ **预期**：全部通过（基线 v0.3.3 为 196 条）。
+→ **预期**：全部通过（当前 205 条）。
 
 ### 4.3 `offline`
 在沙箱内、不联网、不启 Chrome、不调 LLM，验证编排逻辑：
@@ -331,7 +331,10 @@ systemctl --user status training-archive-daemon.service 2>&1   # 或 schtasks /Q
 曾偶发 `'NoneType' object has no attribute 'find'`（疑似反爬/页面变体），重试即成功——
 与 QOJ 的 Cloudflare 偶发同类，daemon 的 `failed → 下次 sync 重试` 机制可兜底。
 
-自动化统计：`offline` 20 项、`all`（check+unit+offline）28 项全部 PASS，pytest 200 条通过。
+自动化统计：`offline` 20 项、`all`（check+unit+offline）28 项全部 PASS，pytest 205 条通过。
+
+**发布演练**：在真实 `contests/` 数据下 `pnpm build` 静态导出成功，`pnpm lint` /
+`pnpm exec tsc --noEmit` / `pnpm test` 均通过。
 
 CI：`Crawler Tests` 的 `pytest` 与 `e2e-offline`（均 ubuntu-latest + windows-latest）以及
 `Frontend Tests`（lint + tsc + vitest）全绿。`e2e-offline` 在 windows runner（cp1252 控制台）上
