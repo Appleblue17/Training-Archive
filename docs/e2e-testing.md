@@ -341,3 +341,21 @@ CI：`Crawler Tests` 的 `pytest` 与 `e2e-offline`（均 ubuntu-latest + window
 曾暴露「打印中文结果 UnicodeEncodeError」，已通过入口脚本 reconfigure stdout 为 UTF-8 修复。
 
 > **待补**：Windows 11 端的 `live` 实测记录（按第 6 节执行后填入本节与第 9 节模板）。
+
+---
+
+## 附录 B. Windows 常见问题（预判）
+
+- **控制台中文报错**：入口脚本（`daemon.py` / `e2e_test.py`）已把 stdout 切到 UTF-8；
+  若用旧版 `cmd` 仍异常，先 `chcp 65001` 或用 Windows Terminal。
+- **schtasks 自启**：`daemon.py install` 以 ONLOGON 注册，登录后触发；用
+  `schtasks /Query /TN TrainingArchiveDaemon /V /FO LIST` 查看。`pythonw` 无控制台，
+  日志只写 `crawler/daemon.log`（已确认 `sys.stdout=None` 时 `print` 为 no-op，不会崩）。
+- **Chrome / chromedriver**：大版本必须一致；放 `crawler/chrome-win64/` 与
+  `crawler/chromedriver-win64/`，或用 `CHROME_BINARY` / `CHROMEDRIVER_PATH`。
+- **QOJ**：必须非无头（`$env:CHROME_HEADLESS = "0"`）且保持桌面会话，不能作为无桌面服务。
+- **pandoc**：HDU / NowCoder 题面转换必需（`winget install --id JohnMacFarlane.Pandoc`）。
+- **路径过长（MAX_PATH）**：比赛名 + 深层 `problems/<letter>/submissions/<id>.cpp` 可能超限，
+  必要时启用系统长路径支持或缩短比赛名。
+- **代理 / NO_PROXY**：`NO_PROXY` 含 `[::1]` 曾使 DeepSeek 客户端构造失败（`Invalid port`），
+  已在 v1.0.0-beta 修复（归一化去掉方括号）。
