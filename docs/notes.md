@@ -11,7 +11,7 @@
 - **v0.3.0 已发布（2026-08-12，部署方式重构）**：静态版统一为自托管爬虫 + GitHub Pages（已删除 Actions 爬虫链路）；跨平台守护进程 `daemon.py` 替代 `server-task.sh`；fork 部署参数化（basePath / URL 常量 env 化）。服务器 + 本地 Linux 已端到端实测通过（`install` 自启 + `sync`/`fire` + 部署链路）；Windows / macOS 测试留待后续。
 - **v0.3.1 已发布（2026-08-13）QQ 群分享 + QQ 群机器人 + 赛前提醒**：`qq_share.py` 扩展为完整 share 流程（生成 `qq-share.txt` → NapCat 群发文字 + `review.md` 文件 → 删除）；与 report 解耦（daemon sync/fire 在 report 成功后按 `ai_tasks.share.enabled` 单独调用）；`report.py --links` review 失败返回非零 → sync/fire 阻断（不 mark archived）。NapCat 技术路径复用 Miniese（正向 WebSocket + Bearer token + CQ 码清洗 + 频率控制），Miniese 是私聊、本项目是群聊。`qq_bot.py` 常驻轮询 NapCat 群消息，@触发指令查询（/status /upcoming /alarms /contests /review /fortune /subs /sync /help）；增量游标用消息 `time`（NapCat `message_seq` 非全局递增）。赛前提醒：planned 闹钟开始前 `qq.remind_before_minutes` 分钟（缺省 15）发 QQ 群提醒，订阅可填 `start_time`，缺省回退 `end_time - 5h`。`/fortune` 按 user_id + 北京日期确定性选择（可配 `qq.fortune_salt`）；`/subs add` 支持 `end=`/`start=` 键值语法，且恰好一个可解析为时间的裸 token 自动作为 `end_time`（时间格式 ISO 8601 北京时间，错误终止并提示）；`/subs`（add/del，改动后自动 sync）与 `/sync` 仅在 deploy 分支工作区生效，且 `plan` 校验订阅时间格式、`sync` 遇非法时间中止。
 - **v0.3.2（已定稿，分支 `v0.3.2`）**：补 `docs/CHANGELOG.md` 的 `[Unreleased]`（logo / tab 标题 / /search 分页）；`/search` 按 `ITEMS_PER_PAGE` 分页；**资源保护已实现（静态版客户端加密）**——`contest.json` 的 `protected: true`（或 `protected-contests.json` 清单）标记，构建时用 `RESOURCE_PASSWORD` 派生 AES-256-GCM 密钥加密文件/元数据/复盘，浏览器 WebCrypto 解密并把密码记 `localStorage`；只保护文件内容（`public/contests` 不发布原始文件），比赛名 / 题目 / 统计等元数据公开，首页 / 搜索 / Dashboard 正常展示（首页带锁标记）。
-- **v0.3.3（已定稿，分支 `v0.3.3`）爬虫测试 + 修复**：新增 pytest 测试套件（`crawler/tests/`，196 条，`requirements-dev.txt` + `pytest.ini` + CI）；修复 last-update 水位（用抓取开始时间、异常不推进）、空 `--links` 退化全量扫描、空复盘输出写坏 `review.md`、config 不可读时 plan 剪除全部闹钟、单平台构造失败中断其余平台、daemon 主循环健壮性、QOJ 时长解析、qq-bot 关键词最长匹配与同秒游标；**移除 QQ 分享文案**（只发 `review.md` 文件 + `qq-share.sent` 已发送标记）。详见 `docs/CHANGELOG.md` `[0.3.3] - 2026-09-23`。
+- **v0.3.3（已定稿，分支 `v0.3.3`）爬虫测试 + 修复**：新增 pytest 测试套件（`crawler/tests/`，196 条，`requirements-dev.txt` + `pytest.ini` + CI）；修复 last-update 水位（用抓取开始时间、异常不推进）、空 `--links` 退化全量扫描、空复盘输出写坏 `review.md`、config 不可读时 plan 剪除全部闹钟、单平台构造失败中断其余平台、daemon 主循环健壮性、QOJ 时长解析、qq-bot 关键词最长匹配与同秒游标；**移除 QQ 分享文案**（只发 `review.md` 文件 + `qq-share.sent` 已发送标记）。详见 `docs/CHANGELOG.md` `[0.3.3] - 2026-10-06`。
 - HDU / NowCoder 爬虫默认停用（`crawler/config.json` 的 `enabled` 字段控制）。
 - 闹钟机制已实现（`crawler/scripts/alarm.py` + `crawler/scripts/daemon.py sync/fire`）：订阅条目可选填 `end_time`，未来比赛写闹钟表 `crawler/alarms.json`（gitignore），到点由 `fire` 爬取 + 立即生成报告；状态模型 `planned` / `pending` / `archived` / `failed`。
 - `contests/` 数据目录为空（git 忽略），本地开发需先准备数据或运行爬虫；deploy 分支跟踪数据与增量状态。
@@ -49,7 +49,7 @@
   - **NowCoder ✅**：140489 该账号无提交（0 条属正确）；换 108303 = 2025牛客暑期多校训练营6 → 13 题 + 13 题面、40 条提交 + 40 份源码。登录校验误报已修（见 CHANGELOG）
 - [x] 完整测试：爬虫 196 条 + 前端 33 条 + `pnpm lint` + `tsc --noEmit` + `pnpm build` 全部通过
 - [x] 处理 Copilot review 4 条意见（部分平台失败退出码 / alarm 平台块畸形 / daemon last_run 畸形 / 已发送标记写盘失败），均补回归测试
-- [x] 版本号 + CHANGELOG 定稿（`package.json` 0.3.3、`[0.3.3] - 2026-09-23`）
+- [x] 版本号 + CHANGELOG 定稿（`package.json` 0.3.3、`[0.3.3] - 2026-10-06`）
 
 ### v1.x.x（动态版）
 
