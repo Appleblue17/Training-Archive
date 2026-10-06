@@ -56,3 +56,13 @@ jobs:
 
       - name: Unit tests
         run: pnpm test
+
+      # 构建门禁：CI 没有真实 contests/ 数据（gitignore），建空目录让静态导出跑通，
+      # 以捕获 Next 构建 / 配置 / generateStaticParams 层面的破坏。
+      - name: Create empty contests dir
+        run: mkdir -p contests
+
+      - name: Production build
+        run: pnpm build
+        env:
+          NODE_ENV: production
