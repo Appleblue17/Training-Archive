@@ -311,3 +311,21 @@ systemctl --user status training-archive-daemon.service 2>&1   # 或 schtasks /Q
   Windows 必须保持交互式桌面，不能用无桌面的服务方式运行。
 - 自启服务 `install` 会真正注册当前用户的开机自启并立即启动服务，测试后务必 `uninstall`。
 - 全局锁文件在 `TMPDIR`；E2E 已隔离，但真实 `daemon.py` 与 E2E 同时运行互不影响。
+
+---
+
+## 附录 A. Linux 实测记录（2026-10-06）
+
+环境：Linux 7.0.0、Python 3.14.4、Node 22.23.2；均通过 `live --mode crawl`（不调 LLM）。
+
+| 平台 | 链接 | 用时 | 结果 |
+|------|------|------|------|
+| NowCoder | `https://ac.nowcoder.com/acm/contest/108303` | 52s | 13 题 + 40 条提交（20+20 分页）；sync 退出 0；闹钟 archived；本地 origin 收到 `[contests-changed]` |
+| HDU | `https://acm.hdu.edu.cn/contest/problems?cid=1230` | 23s | 25 条提交（状态页无分页）；sync 退出 0；归档 + 推送 |
+| QOJ | `https://qoj.ac/contest/3588` | 635s（`xvfb-run` + `--headful`） | 13 题 PDF + 50 条提交；sync 退出 0；归档 + 推送；**部分提交源码偶发被 Cloudflare 挑战页挡住（已内建一次重试）**，属已知偶发问题，不阻断整场 |
+
+自动化统计：`offline` 20 项、`all`（check+unit+offline）28 项全部 PASS，pytest 198 条通过。
+
+CI：`Crawler Tests`（ubuntu-latest + windows-latest）与 `Frontend Tests`（lint + tsc + vitest）均绿。
+
+> **待补**：Windows 11 端的 `live` 实测记录（按第 6 节执行后填入本节与第 9 节模板）。
