@@ -99,3 +99,6 @@ crawler/quotes-cache.json
 
 # test script
 *test.sh
+
+# E2E 测试脚本的隔离沙箱与报告（勿提交）
+/.e2e/

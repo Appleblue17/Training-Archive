@@ -185,6 +185,13 @@ v0.3.0（部署方式重构：静态版统一为自托管守护进程 + GitHub P
 ├─ 部署指引文档（Win / Mac / Linux + Chrome 环境准备）
 └─ 方式二端到端实测（`install` 自启 + `fire` 真实比赛触发 + 部署链路）
 
+v1.0.0-beta.1（静态版稳定版，分支 v1.0.0-beta）
+├─ 跨平台 E2E 测试脚本 crawler/scripts/e2e_test.py（隔离沙箱 + 本地裸 origin）
+├─ 测试手册 docs/e2e-testing.md（Linux / Windows 全链路 + 睡眠 / 重启 / 断网等特殊情况）
+├─ Windows / Linux 守护进程端到端实测（install / run / sync / fire / 部署链路）
+├─ 前端与爬虫测试 CI 补全（分支触发、Windows runner）
+└─ 预发布 v1.0.0-beta.1（CHANGELOG + tag + Release）
+
 v0.4.0（动态版）
 ├─ 同代码库 API routes / Docker 部署骨架
 ├─ GitHub OAuth + session（登录=队员）
@@ -223,7 +230,7 @@ v0.4.0（动态版）
 
 ## 11. 遗留 / 待定
 
-- [ ] Windows / macOS 守护进程端到端实测（v0.3.0 交付项；Linux 已实测通过，见 `docs/notes.md`）
+- [ ] Windows 守护进程端到端实测（v1.0.0-beta 交付项；Linux 已实测通过，见 `docs/notes.md`；macOS 暂不纳入本轮）
 - [x] NowCoder 有效 Cookie 重测（2026-09-23）：contest/108303 → 13 题 + 13 题面、40 提交 + 40 源码；三平台抓取链路均通过（见 `docs/notes.md`）
 - [ ] 三平台翻页 / 逐场完整性深入：HDU 状态页**无分页**（第一场 cid=1229 共 20 条，`&page=2` 返回同内容；第二场 cid=1230 抓到 25 条，现有"无分页→第一页处理完即完整"逻辑正确）；QOJ 长任务下会偶发 Cloudflare 挑战页，已加一次重试，后续可考虑更长退避 / 降速
 - [x] qq_share 文案模式问题（v0.3.3 解决）：**移除文案生成 / 群发**，只发送 `review.md` 文件 + `qq-share.sent` 已发送标记（`file_only` 永不触发 / 部分成功不回补一并消除）
