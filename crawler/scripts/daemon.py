@@ -169,13 +169,19 @@ def run_py(script, *args, capture=False):
     cmd = [sys.executable, os.path.join(SCRIPT_DIR, script), *args]
     env = dict(os.environ)
     env["PYTHONUNBUFFERED"] = "1"
+    # 强制子进程用 UTF-8 输出：中文比赛名 / 题面在 Windows 中文区域（cp936）下
+    # 默认按 locale 编码，父进程若按 locale 解码会抛 UnicodeDecodeError。
+    env["PYTHONIOENCODING"] = "utf-8"
     if capture:
-        return subprocess.run(cmd, text=True, capture_output=True, env=env)
+        return subprocess.run(cmd, text=True, capture_output=True, env=env,
+                              encoding="utf-8", errors="replace")
     log("$ " + " ".join(cmd))
     # stderr=STDOUT 合并为单一管道：避免双管道各自读、互等填满造成死锁
     proc = subprocess.Popen(
         cmd,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         bufsize=1,
@@ -189,7 +195,9 @@ def run_py(script, *args, capture=False):
 
 
 def git(*args, check=True):
-    return subprocess.run(["git", *args], text=True, capture_output=True, check=check)
+    # 显式按 UTF-8 解码 git 输出（Windows 中文区域默认 cp936，中文路径会解码失败）。
+    return subprocess.run(["git", *args], text=True, capture_output=True,
+                          encoding="utf-8", errors="replace", check=check)
 
 
 def setup_env():

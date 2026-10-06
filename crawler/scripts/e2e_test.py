@@ -94,6 +94,7 @@ def run(cmd, cwd=None, env=None, timeout=None):
     """text 模式运行命令，超时返回 returncode=124。"""
     try:
         return subprocess.run(cmd, cwd=cwd, env=env, text=True,
+                              encoding="utf-8", errors="replace",
                               capture_output=True, timeout=timeout)
     except subprocess.TimeoutExpired as e:
         out = e.stdout or ""
@@ -154,6 +155,7 @@ def child_env(headful=False):
     """子进程环境：隔离锁目录 + 传递 Chrome 路径 + 可选非无头。"""
     env = dict(os.environ)
     env["PYTHONUNBUFFERED"] = "1"
+    env["PYTHONIOENCODING"] = "utf-8"
     os.makedirs(TMP, exist_ok=True)
     # filelock 的锁文件在 tempfile.gettempdir()；隔离后不会和真实 daemon 抢锁
     env["TMPDIR"] = TMP

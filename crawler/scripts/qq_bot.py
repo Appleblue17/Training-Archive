@@ -375,7 +375,7 @@ def _current_branch():
     try:
         r = subprocess.run(
             ["git", "-C", REPO_ROOT, "rev-parse", "--abbrev-ref", "HEAD"],
-            capture_output=True, text=True,
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
         )
         return (r.stdout or "").strip()
     except Exception:
@@ -680,9 +680,12 @@ def _sync_summary(returncode, out):
 def _run_sync_and_report():
     """后台执行 daemon.py sync，完成后向群发送结果摘要（独立 WS 连接）。"""
     try:
+        env = dict(os.environ)
+        env["PYTHONIOENCODING"] = "utf-8"
         proc = subprocess.run(
             [sys.executable, os.path.join(SCRIPT_DIR, "daemon.py"), "sync"],
-            capture_output=True, text=True,
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+            env=env,
         )
         summary = _sync_summary(proc.returncode, (proc.stdout or "") + (proc.stderr or ""))
     except Exception as e:

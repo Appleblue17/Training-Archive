@@ -2,6 +2,7 @@
 
 import json
 import os
+import subprocess
 from datetime import datetime, timedelta
 
 import pytest
@@ -130,3 +131,32 @@ def test_load_state_normalizes_malformed_last_run(tmp_path, monkeypatch):
     f.write_text(json.dumps({"last_run": 123}), encoding="utf-8")
     monkeypatch.setattr(daemon, "STATE_FILE", str(f))
     assert daemon.load_state()["last_run"] == {}
+
+
+# ---------------------------------------------------------------------------
+# 子进程编码（Windows 中文区域默认 cp936，中文输出/路径会解码失败）
+# ---------------------------------------------------------------------------
+def test_git_forces_utf8_decoding(monkeypatch):
+    captured = {}
+
+    def fake_run(cmd, **kwargs):
+        captured.update(kwargs)
+        return subprocess.CompletedProcess(cmd, 0, "", "")
+
+    monkeypatch.setattr(daemon.subprocess, "run", fake_run)
+    daemon.git("status")
+    assert captured["encoding"] == "utf-8"
+    assert captured["errors"] == "replace"
+
+
+def test_run_py_forces_utf8_encoding(monkeypatch):
+    captured = {}
+
+    def fake_run(cmd, **kwargs):
+        captured.update(kwargs)
+        return subprocess.CompletedProcess(cmd, 0, "", "")
+
+    monkeypatch.setattr(daemon.subprocess, "run", fake_run)
+    daemon.run_py("alarm.py", "due", capture=True)
+    assert captured["encoding"] == "utf-8"
+    assert captured["env"]["PYTHONIOENCODING"] == "utf-8"
