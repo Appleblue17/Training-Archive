@@ -107,6 +107,8 @@ except ImportError as e:
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 SCRIPT_DIR = os.path.join(REPO_ROOT, "crawler", "scripts")
 LOG_FILE = os.path.join(REPO_ROOT, "crawler", "daemon.log")
+LOG_BACKUP_FILE = LOG_FILE + ".1"
+LOG_MAX_BYTES = 10 * 1024 * 1024  # daemon.log 超过此大小后轮转为 daemon.log.1
 STATE_FILE = os.path.join(REPO_ROOT, "crawler", "daemon-state.json")
 CONFIG_PATH = os.path.join(REPO_ROOT, "crawler", "config.json")
 DEPLOY_BRANCH = "deploy"
@@ -136,10 +138,20 @@ QQBOT_SCHTASKS_NAME = "TrainingArchiveQQBot"
 # ---------------------------------------------------------------------------
 # 日志
 # ---------------------------------------------------------------------------
+def _rotate_log_if_needed():
+    """daemon.log 达到上限时轮转为 daemon.log.1（只保留一份历史，避免无限增长）。"""
+    try:
+        if os.path.getsize(LOG_FILE) >= LOG_MAX_BYTES:
+            os.replace(LOG_FILE, LOG_BACKUP_FILE)
+    except OSError:
+        pass
+
+
 def log(msg):
     """带时间戳写入 daemon.log 并打印到 stdout（服务日志/终端可见）。"""
     line = f"[{datetime.now(beijing).strftime('%Y-%m-%d %H:%M:%S')}] {msg}"
     print(line, flush=True)
+    _rotate_log_if_needed()
     try:
         with open(LOG_FILE, "a", encoding="utf-8") as f:
             f.write(line + "\n")
@@ -153,6 +165,7 @@ def log_raw(text):
     if not text:
         return
     print(text, flush=True)
+    _rotate_log_if_needed()
     try:
         with open(LOG_FILE, "a", encoding="utf-8") as f:
             f.write(text + "\n")

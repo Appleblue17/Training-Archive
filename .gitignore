@@ -87,6 +87,7 @@ crawler/platforms/*/log.json
 crawler/platforms/*/input_*.json
 crawler/server-task.log
 crawler/daemon.log
+crawler/daemon.log.1
 crawler/daemon-state.json
 # 原子写入的临时文件（write_json_atomic；正常会被 os.replace 消费）
 crawler/.tmp-*.json

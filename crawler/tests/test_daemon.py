@@ -160,3 +160,30 @@ def test_run_py_forces_utf8_encoding(monkeypatch):
     daemon.run_py("alarm.py", "due", capture=True)
     assert captured["encoding"] == "utf-8"
     assert captured["env"]["PYTHONIOENCODING"] == "utf-8"
+
+
+# ---------------------------------------------------------------------------
+# daemon.log 轮转
+# ---------------------------------------------------------------------------
+def test_log_rotates_when_exceeding_max(tmp_path, monkeypatch):
+    log_file = tmp_path / "daemon.log"
+    backup = tmp_path / "daemon.log.1"
+    monkeypatch.setattr(daemon, "LOG_FILE", str(log_file))
+    monkeypatch.setattr(daemon, "LOG_BACKUP_FILE", str(backup))
+    monkeypatch.setattr(daemon, "LOG_MAX_BYTES", 100)
+    log_file.write_text("x" * 200, encoding="utf-8")
+    daemon.log("hello")
+    assert backup.exists() and backup.read_text(encoding="utf-8").startswith("x")
+    assert "hello" in log_file.read_text(encoding="utf-8")
+    assert log_file.stat().st_size < 200
+
+
+def test_log_no_rotation_below_max(tmp_path, monkeypatch):
+    log_file = tmp_path / "daemon.log"
+    backup = tmp_path / "daemon.log.1"
+    monkeypatch.setattr(daemon, "LOG_FILE", str(log_file))
+    monkeypatch.setattr(daemon, "LOG_BACKUP_FILE", str(backup))
+    monkeypatch.setattr(daemon, "LOG_MAX_BYTES", 10_000)
+    daemon.log("hi")
+    assert not backup.exists()
+    assert "hi" in log_file.read_text(encoding="utf-8")

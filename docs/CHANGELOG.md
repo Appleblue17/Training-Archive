@@ -29,6 +29,9 @@
 
 ### Changed
 
+- **`daemon.log` 大小轮转**（`daemon.py`）：日志原会无上限增长；单文件达到 10MB 时
+  轮转为 `daemon.log.1`（只保留一份历史，避免占满磁盘）。两个 `.gitignore` 均忽略
+  `daemon.log.1`
 - **CI Node 20 → 22**（`deploy.yml` / `frontend-tests.yml`）：jsdom 30 / undici 8 在
   Node 20 下 vitest forks worker 启动失败
 - **deploy 的 Next 构建缓存 key 改用 `pnpm-lock.yaml`**：原用 `package-lock.json`，
