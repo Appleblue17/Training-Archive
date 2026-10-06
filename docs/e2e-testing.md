@@ -102,9 +102,10 @@ git、Chrome 与 driver、pandoc、`.env` 关键字段、`config.json` 启用平
 ### 4.3 `offline`
 在沙箱内、不联网、不启 Chrome、不调 LLM，验证编排逻辑：
 `alarm` 分类（HISTORY/EXPIRED/future→planned）、`due` 触发、`mark` 状态机
-（archived/failed/RETRY→archived）、`daemon status`、`commit_and_push`
-（有变化才提交 `[contests-changed]`，无变化跳过）。
-→ **预期**：全部 PASS（基线 14 项）。
+（archived/failed/RETRY→archived）、赛前提醒窗口与去重、**双实例锁**、
+**daemon-state.json 损坏自愈**、**alarms.json 损坏中止**、`daemon status`、
+`commit_and_push`（有变化才提交 `[contests-changed]`，无变化跳过）。
+→ **预期**：全部 PASS（基线 20 项）。其中 7.6、7.7 已由本阶段自动覆盖。
 
 ### 4.4 `live`
 在沙箱内对真实链接执行 `daemon.py sync`：
@@ -231,7 +232,9 @@ $env:CHROME_HEADLESS = "0"
   不静默重建（避免已归档比赛重爬）。
 - **通过标准**：daemon 不崩溃；损坏的 `daemon-state.json` 自愈；
   损坏的 `alarms.json` 被识别并给出明确错误。
-- **备注**：若认为需要，可在 v1.0.0 把两处写入改为「临时文件 + 原子替换」，作为本轮可选加固项。
+- **备注**：`offline` 阶段已自动覆盖「损坏 `daemon-state.json` 自愈」与「损坏
+  `alarms.json` 中止」两项（无需手动）；本节保留人工复核断电后的完整恢复。
+  若认为需要，可在 v1.0.0 把两处写入改为「临时文件 + 原子替换」，作为本轮可选加固项。
 
 ### 7.7 双实例并发（锁）
 
@@ -239,6 +242,8 @@ $env:CHROME_HEADLESS = "0"
 - **预期**：一个正常执行，另一个立即输出 `Another task is already running, skip this run.`
   并以退出码 1 结束；不会并发抓取/提交。
 - **通过标准**：无竞态、无重复提交。
+- **备注**：`offline` 阶段已自动验证（持锁进程存在时 `sync` 立即跳过）。本节可在
+  安装自启服务后再人工复核一次。
 
 ### 7.8 系统时钟 / 时区变化
 

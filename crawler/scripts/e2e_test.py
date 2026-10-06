@@ -74,7 +74,8 @@ ICONS = {"PASS": "[PASS]", "FAIL": "[FAIL]", "WARN": "[WARN]",
 
 def record(name, status, detail=""):
     RESULTS.append({"name": name, "status": status, "detail": str(detail)[:2000]})
-    print(f"{ICONS.get(status, status)} {name}" + (f" -- {detail}" if detail else ""))
+    print(f"{ICONS.get(status, status)} {name}" + (f" -- {detail}" if detail else ""),
+          flush=True)
     return status == "PASS"
 
 
@@ -420,6 +421,26 @@ daemon.commit_and_push()
 '''
 
 
+LOCK_HOLDER_SOURCE = '''\
+import os
+import sys
+import tempfile
+import time
+
+from filelock import FileLock
+
+ready, seconds = sys.argv[1], float(sys.argv[2]) if len(sys.argv) > 2 else 60.0
+lock = FileLock(os.path.join(tempfile.gettempdir(), "training-archive-daemon.lock"))
+lock.acquire(timeout=0)
+try:
+    with open(ready, "w", encoding="utf-8") as f:
+        f.write("ready")
+    time.sleep(seconds)
+finally:
+    lock.release()
+'''
+
+
 def cmd_offline(args):
     build_sandbox(platforms={"qoj"})
     now = datetime.now(BEIJING)
@@ -491,6 +512,62 @@ def cmd_offline(args):
     ok("commit_and_push skips when unchanged",
        r.returncode == 0 and "No contest data changes" in (r.stdout or ""),
        tail(r.stdout + r.stderr))
+
+    # 5. 赛前提醒窗口（REMIND）+ 已提醒去重
+    remind_link = "https://qoj.ac/contest/904"
+    _save_alarms([{
+        "platform": "qoj", "link": remind_link, "status": "planned",
+        "end_time": (now + timedelta(hours=3)).isoformat(),
+        "fire_at": (now + timedelta(hours=3)).isoformat(),
+        "start_time": (now + timedelta(minutes=10)).isoformat(),
+        "comments": "e2e remind", "attempts": 0,
+    }])
+    r = sandbox_script("alarm.py", "remind")
+    ok("alarm remind in window", f"REMIND	{remind_link}" in (r.stdout or ""), tail(r.stdout))
+    sandbox_script("alarm.py", "mark", remind_link, "--reminded")
+    r = sandbox_script("alarm.py", "remind")
+    ok("alarm remind once", f"REMIND	{remind_link}" not in (r.stdout or ""), tail(r.stdout))
+
+    # 6. 双实例锁：另一进程持锁时 sync 立即跳过
+    holder = os.path.join(SANDBOX, "_e2e_lock_holder.py")
+    with open(holder, "w", encoding="utf-8") as f:
+        f.write(LOCK_HOLDER_SOURCE)
+    ready = os.path.join(TMP, "e2e-lock-ready")
+    if os.path.exists(ready):
+        os.remove(ready)
+    proc = subprocess.Popen([sys.executable, holder, ready, "60"], cwd=SANDBOX,
+                            env=child_env(), stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT, text=True)
+    waited = 0.0
+    while not os.path.exists(ready) and waited < 15:
+        time.sleep(0.1)
+        waited += 0.1
+    ok("lock holder acquired", os.path.exists(ready))
+    r = sandbox_script("daemon.py", "sync", timeout=60)
+    combined = (r.stdout or "") + (r.stderr or "")
+    ok("second instance skips (lock)",
+       r.returncode != 0 and "Another task is already running" in combined,
+       tail(combined, 300))
+    proc.terminate()
+    try:
+        proc.wait(timeout=10)
+    except Exception:
+        proc.kill()
+
+    # 7. daemon-state.json 损坏自愈
+    with open(os.path.join(SANDBOX, "crawler", "daemon-state.json"), "w", encoding="utf-8") as f:
+        f.write("{ this is not json")
+    r = sandbox_script("daemon.py", "status")
+    ok("corrupt state self-heals", r.returncode == 0 and "last_run" in (r.stdout or ""),
+       tail(r.stdout + r.stderr, 300))
+
+    # 8. alarms.json 损坏 → plan 中止（不静默重建）
+    with open(_alarms_path(), "w", encoding="utf-8") as f:
+        f.write("not-json")
+    r = sandbox_script("alarm.py", "plan")
+    combined = (r.stdout or "") + (r.stderr or "")
+    ok("corrupt alarms aborts plan",
+       r.returncode != 0 and "[alarm] ERROR" in combined, tail(combined, 300))
     return RESULTS
 
 
