@@ -189,6 +189,14 @@ python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 - **版本匹配**：chromedriver 需与 Chrome 主版本一致（下载：<https://googlechromelabs.github.io/chrome-for-testing/>）。
 - HDU / NowCoder 题目 HTML→Markdown 依赖 **pandoc**（Linux `apt install pandoc` / macOS `brew install pandoc` / Windows winget）。
 
+### 测试与验证
+
+- **爬虫单元测试**：`.venv/bin/python -m pytest crawler/tests`（纯逻辑，不启动浏览器）
+- **前端测试**：`pnpm test`（Vitest）+ `pnpm lint` + `pnpm exec tsc --noEmit`
+- **跨平台端到端测试**：`.venv/bin/python crawler/scripts/e2e_test.py check|unit|offline|live|service|events`——
+  在 `.e2e/` 隔离沙箱内验证「订阅 → 闹钟 → 抓取 → 复盘 → 推送」链路，不污染真实仓库、不向 GitHub 推送。
+  完整步骤与睡眠 / 重启 / 断网等特殊情况见 [docs/e2e-testing.md](docs/e2e-testing.md)，发布流程见 [docs/release-checklist.md](docs/release-checklist.md)。
+
 ### fork 部署（参数化）
 
 前端常量已 env 化，fork 后构建时设置以下变量即可不改代码部署到自己的 GitHub Pages：
