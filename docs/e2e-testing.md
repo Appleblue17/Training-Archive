@@ -106,6 +106,7 @@ git、Chrome 与 driver、pandoc、`.env` 关键字段、`config.json` 启用平
 **daemon-state.json 损坏自愈**、**alarms.json 损坏中止**、`daemon status`、
 `commit_and_push`（有变化才提交 `[contests-changed]`，无变化跳过）。
 → **预期**：全部 PASS（基线 20 项）。其中 7.6、7.7 已由本阶段自动覆盖。
+该阶段已纳入 CI（`crawler-tests.yml` 的 `e2e-offline` job，ubuntu + windows 双矩阵）。
 
 ### 4.4 `live`
 在沙箱内对真实链接执行 `daemon.py sync`：
@@ -326,6 +327,8 @@ systemctl --user status training-archive-daemon.service 2>&1   # 或 schtasks /Q
 
 自动化统计：`offline` 20 项、`all`（check+unit+offline）28 项全部 PASS，pytest 198 条通过。
 
-CI：`Crawler Tests`（ubuntu-latest + windows-latest）与 `Frontend Tests`（lint + tsc + vitest）均绿。
+CI：`Crawler Tests` 的 `pytest` 与 `e2e-offline`（均 ubuntu-latest + windows-latest）以及
+`Frontend Tests`（lint + tsc + vitest）全绿。`e2e-offline` 在 windows runner（cp1252 控制台）上
+曾暴露「打印中文结果 UnicodeEncodeError」，已通过入口脚本 reconfigure stdout 为 UTF-8 修复。
 
 > **待补**：Windows 11 端的 `live` 实测记录（按第 6 节执行后填入本节与第 9 节模板）。
