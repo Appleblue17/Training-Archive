@@ -250,3 +250,23 @@ def test_plan_platform_disabled(env, capsys):
     _write_subs(subs_dir, [{"platform": "qoj", "link": "https://qoj.ac/contest/1"}])
     assert alarm.cmd_plan() == 0
     assert "HISTORY\t" not in capsys.readouterr().out
+
+
+def test_load_enabled_platforms_malformed_block_returns_none(env):
+    """回归：平台块是 null / 非对象时不能抛 AttributeError。"""
+    _, config_path, _ = env
+    config_path.write_text(json.dumps({"qoj": None}), encoding="utf-8")
+    assert alarm._load_enabled_platforms() is None
+    config_path.write_text(json.dumps({"qoj": "yes"}), encoding="utf-8")
+    assert alarm._load_enabled_platforms() is None
+
+
+def test_plan_malformed_platform_config_aborts(env):
+    """回归：config 可读但平台块畸形时，plan 中止且不剪除闹钟。"""
+    alarms_path, config_path, subs_dir = env
+    _write_alarms(alarms_path, [{"link": "https://qoj.ac/contest/1",
+                                 "status": alarm.STATUS_ARCHIVED}])
+    _write_subs(subs_dir, [{"platform": "qoj", "link": "https://qoj.ac/contest/1"}])
+    config_path.write_text(json.dumps({"qoj": None}), encoding="utf-8")
+    assert alarm.cmd_plan() == 1
+    assert "https://qoj.ac/contest/1" in _read_alarms(alarms_path)

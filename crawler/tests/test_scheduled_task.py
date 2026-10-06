@@ -117,3 +117,19 @@ def test_run_platform_body_failure_still_finishes(monkeypatch):
     ok, crawler = st.run_platform("qoj", "full")
     assert ok is False and crawler is fake
     assert fake.finished is True
+
+
+def test_main_partial_failure_exits_nonzero(monkeypatch):
+    """回归：部分平台失败时 main 必须返回非零。
+
+    daemon sync/fire 只检查进程退出码就 mark --archived；若这里返回 0，
+    失败平台未真正抓取的链接会被误标为已归档（不生成报告、不再重试）。
+    """
+    monkeypatch.setattr(st, "_load_enabled_platforms", lambda: ["qoj", "hdu"])
+    monkeypatch.setattr(st, "run_platform",
+                        lambda p, m, only_links=None: (p == "hdu", None))
+    monkeypatch.setattr(st, "_write_new_contests", lambda crawlers: None)
+    monkeypatch.setattr(st.sys, "argv", ["scheduled_task.py"])
+    with pytest.raises(SystemExit) as ei:
+        st.main()
+    assert ei.value.code == 1

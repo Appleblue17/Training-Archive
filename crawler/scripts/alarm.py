@@ -154,7 +154,14 @@ def _load_enabled_platforms():
     if not isinstance(config, dict):
         print(f"[alarm] ERROR: {CONFIG_PATH} is not a JSON object.")
         return None
-    return [p for p in PLATFORM_ORDER if config.get(p, {}).get("enabled", False)]
+    # 平台块存在但不是对象（如 "qoj": null）视为配置损坏：否则下面 .get("enabled")
+    # 会抛 AttributeError，而当前调用方需要 None 才能受控地中止 plan。
+    for p in PLATFORM_ORDER:
+        if p in config and not isinstance(config[p], dict):
+            print(f"[alarm] ERROR: platform {p!r} in {CONFIG_PATH} is not a JSON object.")
+            return None
+    return [p for p in PLATFORM_ORDER
+            if p in config and config[p].get("enabled", False)]
 
 
 def _parse_time(s):

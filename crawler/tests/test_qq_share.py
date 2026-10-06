@@ -215,3 +215,16 @@ def test_main_single_folder(monkeypatch):
     monkeypatch.setattr(qs, "send_contest_share", lambda folder: seen.append(folder))
     assert qs.main(["contests/x"]) == 0
     assert seen == ["contests/x"]
+
+
+def test_mark_sent_returns_true_on_success(send_env):
+    folder = _make_contest(send_env)
+    assert qs._mark_sent(str(folder)) is True
+    assert qs._is_sent(str(folder))
+
+
+def test_send_contest_share_marker_failure_returns_false(send_env, monkeypatch):
+    """回归：标记写盘失败不能谎报成功（否则下次补发会重复上传）。"""
+    folder = _make_contest(send_env)
+    monkeypatch.setattr(qs, "_mark_sent", lambda f: False)
+    assert qs.send_contest_share(str(folder)) is False

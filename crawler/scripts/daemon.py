@@ -607,6 +607,9 @@ def load_state():
             state = json.load(f)
         if not isinstance(state, dict):
             return {"last_run": {}}
+        if not isinstance(state.get("last_run"), dict):
+            log(f"[run] malformed last_run in {STATE_FILE}; resetting.")
+            state["last_run"] = {}
         state.setdefault("last_run", {})
         return state
     except Exception as e:
@@ -625,7 +628,12 @@ def _is_due(task, expr, now, state):
     睡眠恢复后：从 last_run 计算下一次，若 <= now 则到期（只补跑一次，
     不追赶历史——执行后 last_run 更新为 now，下次计算自然跳到未来）。
     """
-    last = state.get("last_run", {}).get(task)
+    try:
+        last = (state.get("last_run") or {}).get(task)
+    except Exception as e:
+        # last_run 不是 dict（如 {"last_run": 123}）：视为损坏，按到期处理。
+        log(f"[run] bad state/last_run for {task}: {e}; treating as due.")
+        return True
     if not last:
         return True
     try:

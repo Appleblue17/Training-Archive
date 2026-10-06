@@ -199,12 +199,14 @@ def main():
 
     ok_platforms = []
     ok_crawlers = []
+    failed_platforms = []
     for platform in enabled_platforms:
         ok, crawler = run_platform(platform, mode, only_links=only_links)
         if ok:
             ok_platforms.append(platform)
             ok_crawlers.append(crawler)
         else:
+            failed_platforms.append(platform)
             print(f"[task] Platform {platform} did not complete successfully.")
 
     if not ok_platforms:
@@ -217,6 +219,16 @@ def main():
         _write_new_contests(ok_crawlers)
 
     print(f"[task] Completed platforms: {', '.join(ok_platforms)}")
+
+    if failed_platforms:
+        # 部分平台失败也必须返回非零：daemon sync/fire 只看退出码，成功即把
+        # 本次全部链接 mark --archived；若这里返回 0，失败平台未真正抓取的
+        # 链接会被误标为已归档（不生成报告、不再重试）。
+        print(
+            f"[task] Platforms failed: {', '.join(failed_platforms)}; "
+            "exiting with error so callers do not archive failed links."
+        )
+        sys.exit(1)
 
 
 if __name__ == "__main__":

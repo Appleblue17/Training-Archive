@@ -35,6 +35,10 @@
 - **qq-bot 自然语言关键词按最长匹配**（`qq_bot.py`）：`历史比赛` 曾先命中更早注册的短关键词 `比赛`（`/upcoming`）；现最长关键词优先
 - **NowCoder 登录态误报**（`platforms/nowcoder/nowcoder.py`）：`NOWCODER_USERNAME` 未配置时 `self.username in html` 恒为真，无效 Cookie 也被当作"登录成功"；现无昵称时改用页面特征（有「退出」入口 / 用户主页链接）校验，并在缺昵称时告警
 - **QOJ 提交源码偶发抓取失败**（`platforms/qoj/qoj.py`）：长任务中 Cloudflare 偶发返回挑战页（无 `pre.sh_sourceCode`）时原代码抛 `AttributeError`、源码静默缺失；现提取失败退避后重试一次，仍失败给出明确错误
+- **部分平台失败时仍返回 0**（`scheduled_task.py`）：构造失败改为只影响该平台后，`main` 仍会在其他平台成功时返回 0，daemon sync/fire 据此把失败平台未真正抓取的链接也 `mark --archived`（不生成报告、不再重试）；现任一平台失败即返回非零
+- **平台块畸形时 alarm plan 崩溃**（`alarm.py`）：原仅校验顶层是 JSON 对象，`{"qoj": null}` 仍会在 `.get("enabled")` 抛 `AttributeError`；现校验每个平台块，畸形时返回 None 中止 plan
+- **`last_run` 非对象时 daemon 崩溃**（`daemon.py`）：`{"last_run": 123}` 时 `.get(task)` 在 `try` 之外抛 `AttributeError`；现 `load_state` 归一化 `last_run`，且 `_is_due` 的查询也纳入 `try`
+- **已发送标记写盘失败谎报成功**（`qq_share.py`）：`_mark_sent` 吞掉 `OSError` 后 `send_contest_share` 仍返回 True，下次补发会重复上传同一份 review；现标记写入失败返回 False
 
 ## [0.3.2] - 2026-09-22
 

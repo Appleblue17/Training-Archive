@@ -1,5 +1,6 @@
 """crawler/scripts/daemon.py 单元测试：plan 解析、调度判断、分支守卫。"""
 
+import json
 import os
 from datetime import datetime, timedelta
 
@@ -116,3 +117,16 @@ def test_ensure_deploy_branch_checkout_failure_aborts(git_env):
     git_env.responses[("checkout", "deploy")] = _Result(1)
     with pytest.raises(SystemExit):
         daemon.ensure_deploy_branch()
+
+
+def test_is_due_non_dict_last_run_does_not_raise():
+    """回归：last_run 本身不是 dict 时，查询也不能抛 AttributeError。"""
+    state = {"last_run": 123}
+    assert daemon._is_due("fire", "*/5 * * * *", datetime.now(beijing), state) is True
+
+
+def test_load_state_normalizes_malformed_last_run(tmp_path, monkeypatch):
+    f = tmp_path / "daemon-state.json"
+    f.write_text(json.dumps({"last_run": 123}), encoding="utf-8")
+    monkeypatch.setattr(daemon, "STATE_FILE", str(f))
+    assert daemon.load_state()["last_run"] == {}

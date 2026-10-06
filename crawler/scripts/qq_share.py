@@ -284,12 +284,18 @@ def _is_sent(contest_folder):
 
 
 def _mark_sent(contest_folder):
-    """写入已发送标记（发送成功后调用）。写入失败只告警，不视为发送失败。"""
+    """写入已发送标记。成功返回 True；失败告警并返回 False。
+
+    返回 False 时调用方应把本次发送视为未完成：标记没落盘意味着下次补发会
+    再次上传同一份 review，不能谎报成功。
+    """
     try:
         with open(_sent_marker_path(contest_folder), "w", encoding="utf-8") as f:
             f.write(datetime.now(BEIJING).isoformat() + "\n")
+        return True
     except OSError as e:
         print(f"[qq-share] Failed to write sent marker for {contest_folder}: {e}")
+        return False
 
 
 # ---------------------------------------------------------------------------
@@ -376,7 +382,12 @@ def send_contest_share(contest_folder):
         print(f"[qq-share] 文件发送失败；{folder_name} 未标记，下次重试。")
         return False
 
-    _mark_sent(contest_folder)
+    if not _mark_sent(contest_folder):
+        print(
+            f"[qq-share] Sent {folder_name} but failed to persist the sent marker; "
+            "it may be sent again on the next 补发 run."
+        )
+        return False
     print(f"[qq-share] Sent {folder_name} to group {group_id}.")
     return True
 
