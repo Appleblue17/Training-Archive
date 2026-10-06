@@ -2,7 +2,6 @@ name: Crawler Tests
 
 on:
   push:
-    branches: [master, v0.3.3]
     paths:
       - "crawler/**"
       - ".github/workflows/crawler-tests.yml"
@@ -14,7 +13,11 @@ on:
 
 jobs:
   pytest:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
 

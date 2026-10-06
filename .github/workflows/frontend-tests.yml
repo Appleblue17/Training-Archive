@@ -1,0 +1,58 @@
+name: Frontend Tests
+
+on:
+  push:
+    paths:
+      - "src/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "tsconfig.json"
+      - "next.config.ts"
+      - "eslint.config.mjs"
+      - "postcss.config.mjs"
+      - "tailwind.config.ts"
+      - "vitest.config.ts"
+      - "vitest.setup.ts"
+      - ".github/workflows/frontend-tests.yml"
+  pull_request:
+    paths:
+      - "src/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "tsconfig.json"
+      - "next.config.ts"
+      - "eslint.config.mjs"
+      - "postcss.config.mjs"
+      - "tailwind.config.ts"
+      - "vitest.config.ts"
+      - "vitest.setup.ts"
+      - ".github/workflows/frontend-tests.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10.13.1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type check
+        run: pnpm exec tsc --noEmit
+
+      - name: Unit tests
+        run: pnpm test
