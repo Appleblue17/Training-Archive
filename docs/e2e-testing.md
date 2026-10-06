@@ -235,7 +235,8 @@ $env:CHROME_HEADLESS = "0"
   损坏的 `alarms.json` 被识别并给出明确错误。
 - **备注**：`offline` 阶段已自动覆盖「损坏 `daemon-state.json` 自愈」与「损坏
   `alarms.json` 中止」两项（无需手动）；本节保留人工复核断电后的完整恢复。
-  若认为需要，可在 v1.0.0 把两处写入改为「临时文件 + 原子替换」，作为本轮可选加固项。
+  两处写入已在 v1.0.0-beta 改为原子写入（`crawler/scripts/jsonio.py`：临时文件 + fsync +
+  `os.replace`），断电不再产生截断 JSON；本节仍可用于人工复核恢复行为。
 
 ### 7.7 双实例并发（锁）
 

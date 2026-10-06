@@ -46,6 +46,10 @@
   `NO_PROXY` / `no_proxy` 含 `[::1]` 时 httpx 将其当成 URL 解析，在端口处抛
   `InvalidURL: Invalid port ':1]'`，OpenAI 客户端无法创建，`report.py` 生成失败并
   阻断 daemon sync（不归档、不部署）；`normalize_proxy_env()` 统一去掉方括号
+- **运行时状态文件非原子写入**（`daemon.py` / `alarm.py`）：`daemon-state.json` /
+  `alarms.json` 原直接以 `"w"` 覆盖写，断电或写入中途被杀会留下截断 JSON
+  （后者会让 `alarm.py plan` 直接中止）；新增 `crawler/scripts/jsonio.py` 的
+  `write_json_atomic`（同目录临时文件 + fsync + `os.replace`）
 
 ## [0.3.3] - 2026-10-06
 
