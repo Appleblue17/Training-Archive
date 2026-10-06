@@ -62,6 +62,7 @@ from datetime import datetime, timedelta
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from crawler.platforms.base import beijing, load_subscriptions_dir
+from crawler.scripts.jsonio import write_json_atomic
 
 # 本模块在 crawler/scripts/，仓库根为 ../..
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -129,10 +130,9 @@ def _migrate_alarm(e):
 
 
 def _save_alarms(alarms):
-    """写回闹钟表（按 link 排序，便于阅读与 diff）。"""
+    """写回闹钟表（按 link 排序，便于阅读与 diff；原子写入避免断电截断）。"""
     entries = sorted(alarms.values(), key=lambda e: e.get("link", ""))
-    with open(ALARMS_PATH, "w", encoding="utf-8") as f:
-        json.dump(entries, f, ensure_ascii=False, indent=2)
+    write_json_atomic(ALARMS_PATH, entries, ensure_ascii=False, indent=2)
 
 
 def _load_enabled_platforms():

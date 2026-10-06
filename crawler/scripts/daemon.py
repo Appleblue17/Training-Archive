@@ -81,6 +81,7 @@ from dotenv import load_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from crawler.platforms.base import beijing  # noqa: E402
+from crawler.scripts.jsonio import write_json_atomic  # noqa: E402
 from crawler.scripts.qq_share import (  # noqa: E402
     QQGroupSender,
     _load_qq_config,
@@ -636,8 +637,8 @@ def load_state():
 
 
 def save_state(state):
-    with open(STATE_FILE, "w", encoding="utf-8") as f:
-        json.dump(state, f, ensure_ascii=False, indent=2)
+    # 原子写入：断电/被杀不会留下截断的 daemon-state.json。
+    write_json_atomic(STATE_FILE, state, ensure_ascii=False, indent=2)
 
 
 def _is_due(task, expr, now, state):
