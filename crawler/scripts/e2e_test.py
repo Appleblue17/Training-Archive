@@ -35,6 +35,16 @@ import tarfile
 import time
 from datetime import datetime, timedelta, timezone
 
+# Windows 控制台（CI 的 cp1252、部分 cp936）打印中文会抛 UnicodeEncodeError；
+# 进程启动即把 stdout/stderr 切到 UTF-8（pythonw 无控制台、stdout 为 None 时跳过）。
+for _stream in (sys.stdout, sys.stderr):
+    _reconfigure = getattr(_stream, "reconfigure", None)
+    if _reconfigure is not None:
+        try:
+            _reconfigure(encoding="utf-8", errors="replace")
+        except (ValueError, OSError):
+            pass
+
 BEIJING = timezone(timedelta(hours=8))
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
