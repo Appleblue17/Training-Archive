@@ -112,7 +112,7 @@ describe("computeRecentContests", () => {
 });
 
 describe("computeContribution", () => {
-  it("按本地日期聚合、跳过无效时间", () => {
+  it("按北京时间日期聚合、跳过无效时间（不随运行环境时区变化）", () => {
     const contribution = computeContribution([
       { submit_time: "2026-01-01T10:00:00+08:00" },
       { submit_time: "2026-01-01T23:30:00+08:00" },

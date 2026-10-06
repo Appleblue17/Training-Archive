@@ -42,9 +42,13 @@ function toDateKey(value: unknown): string | null {
   if (!value) return null;
   const d = value instanceof Date ? value : new Date(String(value));
   if (isNaN(d.getTime())) return null;
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
-    d.getDate(),
-  ).padStart(2, "0")}`;
+  // 项目时间统一为北京时间（UTC+8）：按 UTC+8 日期聚合，而不是运行环境
+  // 的本地时区，否则同一份数据在 UTC 服务器与 UTC+8 浏览器上会落到不同日期。
+  const beijing = new Date(d.getTime() + 8 * 60 * 60 * 1000);
+  return `${beijing.getUTCFullYear()}-${String(beijing.getUTCMonth() + 1).padStart(
+    2,
+    "0",
+  )}-${String(beijing.getUTCDate()).padStart(2, "0")}`;
 }
 
 /** 统计：比赛 / 题目 / 已解决 / 提交数、代码体积、平台分布。 */
@@ -127,7 +131,7 @@ export function computeRecentContests(
     }));
 }
 
-/** contribution：按本地日期聚合提交数。 */
+/** contribution：按北京时间（UTC+8）日期聚合提交数。 */
 export function computeContribution(
   submissions: readonly SubmissionLike[],
 ): Record<string, number> {
