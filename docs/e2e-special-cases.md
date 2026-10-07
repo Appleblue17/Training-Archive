@@ -193,6 +193,29 @@ git -C "$REAL/.e2e/origin.git" log -1 --pretty=%s deploy   # 期望出现 [conte
   恢复后 `sync` 输出 `RETRY`，成功则 `archived` 并推送。
 - **通过标准**：失败被显式标记且可恢复；数据不丢、不误标 archived。
 
+**无权限断网时的模拟**（不改动真实网卡，仅模拟抓取失败）：
+
+@@@@bash
+# 把要测平台的 base_url 指向不可达端口，制造抓取失败
+"$PY" - <<'PY'
+import json
+p = "crawler/config.json"
+cfg = json.load(open(p, encoding="utf-8"))
+cfg["nowcoder"]["base_url"] = "http://127.0.0.1:9"
+json.dump(cfg, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+PY
+"$PY" crawler/scripts/daemon.py sync; echo "exit=$?"     # 期望非 0；alarms 链接 status=failed
+# 恢复后
+"$PY" - <<'PY'
+import json
+p = "crawler/config.json"
+cfg = json.load(open(p, encoding="utf-8"))
+cfg["nowcoder"]["base_url"] = "https://ac.nowcoder.com"
+json.dump(cfg, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+PY
+"$PY" crawler/scripts/daemon.py sync; echo "exit=$?"     # 期望 RETRY 后 archived 并推送
+@@@@
+
 ---
 
 ## 6. 7.5 进程被杀（kill -9）
@@ -355,8 +378,11 @@ rm -f crawler/subscriptions/*.json
 | 7.7 双实例锁 | 另一进程持锁时跑 `sync` | 退出 1，输出 `Another task is already running, skip this run.` |
 | 7.8 时区 | `TZ=America/New_York sync` | 宿主 UTC 04 / NY 00 时，日志时间戳 `2026-10-07 12:08:52`（恰为 UTC+8），确认按北京时间 |
 | 7.9 轮转 | 临时 `LOG_MAX_BYTES=100` 记一条日志 | 生成 `daemon.log.1`，`backup_exists: True` |
+| 7.1 / 7.2 睡眠·休眠（**模拟**） | `last_run` 设为 30 分钟前（错过约 6 次 `*/5`），跑 `run` 75s | 每个任务**只补跑 1 次**，`last_run` 前进到恢复时刻 |
+| 7.4 断网（**模拟**） | `nowcoder.base_url` 指向不可达端口 | `sync` 退出 1、链接 `status=failed`（attempts=1）、origin 无新提交；恢复后 `RETRY` → `archived` + `[contests-changed]` |
 
-**仍需你实机执行**：7.1 睡眠 / 7.2 休眠 / 7.3 重启 / 7.4 断网——这些需要真实的挂起、重启或断网操作。
+**仍需你实机执行**（真实 OS 操作）：7.1 真实睡眠、7.2 真实休眠、7.3 关机重启、7.4 真实断网
+（模拟只能覆盖核心逻辑，不能覆盖 OS 挂起/重启后的进程与服务行为）。
 
 ---
 
