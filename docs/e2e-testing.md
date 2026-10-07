@@ -198,7 +198,8 @@ $env:CHROME_HEADLESS = "0"
 
 ### 7.3 关机重启（reboot）
 
-- **前置**：`daemon.py install`（Linux systemd user / Windows schtasks ONLOGON）。
+- **前置**：`daemon.py install`（Linux systemd user / Windows schtasks ONLOGON）；
+  Linux 若需服务方式抓 QOJ，用 `daemon.py install --xvfb`（以 `xvfb-run` 包裹，需装 xvfb）。
 - **操作**：重启系统并登录；等待 1~2 分钟。
 - **预期**：服务自动启动；`daemon.log` 出现新的 `=== daemon run started ===`；
   首次迭代对每个任务判定到期并各跑一次。
@@ -227,8 +228,8 @@ $env:CHROME_HEADLESS = "0"
 
 ### 7.6 断电 / 非正常退出
 
-- **背景**：`daemon-state.json` 与 `alarms.json` 目前是**非原子写入**，
-  写入过程中断电可能留下截断的 JSON。
+- **背景**：`daemon-state.json` 与 `alarms.json` 曾是非原子写入；v1.0.0-beta 已改为
+  原子写入（临时文件 + `os.replace`），正常断电不再留下截断 JSON（本节验证损坏后的恢复）。
 - **操作**：模拟——手动把 `daemon-state.json` 写成半截 JSON，再启动 daemon。
 - **预期**：`load_state` 捕获解析错误 → 视为全新状态（`last_run` 为空 →
   各任务判定到期、各跑一次）；`alarm.py` 对损坏 `alarms.json` 会**报错中止**，

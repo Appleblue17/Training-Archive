@@ -120,8 +120,9 @@ grep -E "daemon run started|task due" "$SB/crawler/daemon.log" | tail -n 20
 
 ```bash
 # 4.1 注册自启（在沙箱内，只影响当前用户的 systemd user unit）
+#     QOJ 服务方式抓取需装 xvfb 并加 --xvfb（以 xvfb-run 包裹服务命令）
 cd "$SB"
-"$PY" crawler/scripts/daemon.py install
+"$PY" crawler/scripts/daemon.py install          # 需要 QOJ 时：install --xvfb
 systemctl --user status training-archive-daemon.service --no-pager
 "$PY" crawler/scripts/daemon.py status          # autostart: systemd user unit
 
@@ -142,12 +143,11 @@ systemctl --user status training-archive-daemon.service --no-pager   # 期望 no
 - **预期**：登录后服务自动 active；`daemon.log` 出现新的 `=== daemon run started ===`；
   首次迭代对每个任务判定到期并各跑一次。
 - **通过标准**：无需人工干预即恢复；`daemon.py status` 显示 unit 已安装且活跃。
-- **⚠️ 已知缺口（发现项）**：`install` 生成的 unit 是
-  `ExecStart=<venv python> <repo>/crawler/scripts/daemon.py run`，**不含** `CHROME_BINARY` /
-  `CHROMEDRIVER_PATH` / `DISPLAY` / `xvfb-run`，也没有 `Environment=`。因此服务方式下
-  真实抓取任务需要这些环境时**可能失败**（日志会记录，daemon 不退出）。沙箱内因订阅已清空，
-  调度本身可正常验证。若要服务方式实抓，需要给 unit 加 `Environment=` 或用 wrapper；
-  这属于 v1.0.0 可选加固项，等你决定。
+- **服务环境说明（已提供 `--xvfb`）**：`install` 生成的 unit 默认是
+  `ExecStart=<venv python> <repo>/crawler/scripts/daemon.py run`。Linux 自带 Chrome 会按
+  `WorkingDirectory` 相对解析，无需额外环境变量；但 **QOJ 需要非无头 + 显示**，因此加
+  `--xvfb` 让 ExecStart 变成 `xvfb-run -a env CHROME_HEADLESS=0 ...`（需装 xvfb）。
+  若 Chrome 在非常规位置，仍可用 `Environment=` 或 wrapper 注入路径。
 - **补充验证**（可选）：`install --system`（需 sudo，写 `/etc/systemd/system`）同理，
   用 `uninstall --system` 注销。
 

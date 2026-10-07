@@ -187,3 +187,32 @@ def test_log_no_rotation_below_max(tmp_path, monkeypatch):
     daemon.log("hi")
     assert not backup.exists()
     assert "hi" in log_file.read_text(encoding="utf-8")
+
+
+# ---------------------------------------------------------------------------
+# install --xvfb 的 ExecStart 构造
+# ---------------------------------------------------------------------------
+def test_linux_exec_start_plain(monkeypatch):
+    monkeypatch.setattr(daemon, "_service_command", lambda: ["/py", "/s.py", "run"])
+    exec_start, problem = daemon._linux_exec_start(False)
+    assert exec_start == "/py /s.py run"
+    assert problem is None
+
+
+def test_linux_exec_start_xvfb_wraps(monkeypatch):
+    monkeypatch.setattr(daemon, "_service_command", lambda: ["/py", "/s.py", "run"])
+    monkeypatch.setattr(
+        daemon.shutil, "which",
+        lambda name: "/usr/bin/xvfb-run" if name == "xvfb-run" else None,
+    )
+    exec_start, problem = daemon._linux_exec_start(True)
+    assert exec_start == "/usr/bin/xvfb-run -a env CHROME_HEADLESS=0 /py /s.py run"
+    assert problem is None
+
+
+def test_linux_exec_start_xvfb_missing(monkeypatch):
+    monkeypatch.setattr(daemon, "_service_command", lambda: ["/py", "/s.py", "run"])
+    monkeypatch.setattr(daemon.shutil, "which", lambda name: None)
+    exec_start, problem = daemon._linux_exec_start(True)
+    assert exec_start == "/py /s.py run"
+    assert "xvfb-run not found" in problem

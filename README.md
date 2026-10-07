@@ -143,6 +143,7 @@ python3 crawler/scripts/daemon.py incremental     # 提交增量同步（--submi
 python3 crawler/scripts/daemon.py remind          # 赛前提醒检查（开始前向 QQ 群发提醒）
 python3 crawler/scripts/daemon.py install         # 注册开机自启（按 OS：systemd user / launchd / schtasks）
 python3 crawler/scripts/daemon.py install --system   # 仅 Linux：系统级服务（开机即启动、无需登录，需 sudo）
+python3 crawler/scripts/daemon.py install --xvfb     # 仅 Linux：服务用 xvfb-run 包裹（QOJ 非无头抓取，需装 xvfb）
 python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
 python3 crawler/scripts/daemon.py uninstall --system # 仅 Linux：注销系统级服务（需 sudo）
 python3 crawler/scripts/daemon.py install-qqbot       # 注册 QQ 群机器人独立服务（见「快速开始 → QQ 群机器人」）

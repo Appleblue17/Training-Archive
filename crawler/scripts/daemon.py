@@ -32,6 +32,7 @@ ai_tasks.share.enabled 单独调用；NapCat 未配置/发送失败仅告警不�
   python3 crawler/scripts/daemon.py remind         赛前提醒检查（一次性；发 QQ 群提醒）
   python3 crawler/scripts/daemon.py install        注册开机自启（按 OS；默认登录后启动）
   python3 crawler/scripts/daemon.py install --system   仅 Linux：注册系统级服务（开机即启动，需 sudo）
+  python3 crawler/scripts/daemon.py install --xvfb     仅 Linux：服务用 xvfb-run 包裹（QOJ 非无头抓取，需装 xvfb）
   python3 crawler/scripts/daemon.py uninstall      注销开机自启
   python3 crawler/scripts/daemon.py uninstall --system  仅 Linux：注销系统级服务（需 root）
   python3 crawler/scripts/daemon.py install-qqbot      注册 qq-bot 独立服务（QQ 群指令轮询）
@@ -742,17 +743,37 @@ def _qqbot_service_command():
     return [sys.executable, os.path.join(REPO_ROOT, "crawler", "scripts", "qq_bot.py"), "run"]
 
 
-def install_linux(system=False):
+def _linux_exec_start(xvfb=False):
+    """构造 systemd ExecStart；xvfb=True 用 xvfb-run 包裹（QOJ 非无头抓取）。
+
+    返回 (exec_start, problem)：problem 非空 = 请求了 xvfb 但主机无 xvfb-run。
+    """
+    py, script, run = _service_command()
+    base = f"{py} {script} {run}"
+    if not xvfb:
+        return base, None
+    xvfb_bin = shutil.which("xvfb-run")
+    if not xvfb_bin:
+        return base, "xvfb-run not found in PATH"
+    return f"{xvfb_bin} -a env CHROME_HEADLESS=0 {base}", None
+
+
+def install_linux(system=False, xvfb=False):
     """注册开机自启：默认 systemd user unit（登录后启动）；system=True 时注册
     系统级 systemd service（开机即启动，无需登录会话，适合无头服务器）。
-    无 systemd 时回落 cron @reboot（仅 user 模式）。"""
+    无 systemd 时回落 cron @reboot（仅 user 模式）。xvfb=True 时用 xvfb-run
+    包裹 ExecStart（QOJ 等需要非无头 + 显示，需装 xvfb；缺省行为不变）。"""
     if system:
-        return install_linux_system()
+        return install_linux_system(xvfb=xvfb)
     systemd_dir = os.path.expanduser("~/.config/systemd/user")
     if shutil.which("systemctl") and (os.path.isdir(systemd_dir) or True):
         os.makedirs(systemd_dir, exist_ok=True)
         unit = os.path.join(systemd_dir, f"{UNIT_NAME}.service")
-        py, script, run = _service_command()
+        exec_start, problem = _linux_exec_start(xvfb)
+        if problem:
+            log(f"[ERROR] {problem}; aborting. Install xvfb (sudo apt install xvfb) "
+                "or retry without --xvfb.")
+            return 1
         content = f"""[Unit]
 Description=Training Archive Crawler Daemon
 After=network-online.target
@@ -760,7 +781,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart={py} {script} {run}
+ExecStart={exec_start}
 WorkingDirectory={REPO_ROOT}
 Restart=on-failure
 RestartSec=30
@@ -787,7 +808,7 @@ WantedBy=default.target
     log("Installed cron @reboot (systemd not available).")
 
 
-def install_linux_system():
+def install_linux_system(xvfb=False):
     """注册系统级 systemd service（/etc/systemd/system，WantedBy=multi-user.target）。
 
     开机即启动、不依赖登录会话（适合无头服务器）。服务以实际用户身份运行
@@ -804,7 +825,11 @@ def install_linux_system():
         return 1
     owner = os.environ.get("SUDO_USER") or getpass.getuser()
     unit = f"/etc/systemd/system/{UNIT_NAME}.service"
-    py, script, run = _service_command()
+    exec_start, problem = _linux_exec_start(xvfb)
+    if problem:
+        log(f"[ERROR] {problem}; aborting. Install xvfb (sudo apt install xvfb) "
+            "or retry without --xvfb.")
+        return 1
     content = f"""[Unit]
 Description=Training Archive Crawler Daemon
 After=network-online.target
@@ -813,7 +838,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 User={owner}
-ExecStart={py} {script} {run}
+ExecStart={exec_start}
 WorkingDirectory={REPO_ROOT}
 Restart=on-failure
 RestartSec=30
@@ -892,16 +917,20 @@ def install_windows():
     log(f"Installed scheduled task: {SCHTASKS_NAME} (ONLOGON)")
 
 
-def cmd_install(system=False):
+def cmd_install(system=False, xvfb=False):
     """按 OS 注册开机自启。system=True：注册系统级服务（目前仅 Linux systemd，
-    开机即启动、无需登录会话，适合无头服务器）；其余平台忽略并回落默认行为。"""
+    开机即启动、无需登录会话，适合无头服务器）；其余平台忽略并回落默认行为。
+    xvfb=True：Linux 上以 xvfb-run 包裹服务命令（QOJ 等需非无头 + 显示）。"""
     s = _system()
     if system and s != "linux":
         log(f"[WARN] '--system' is only supported on Linux (current: {s}); "
             "falling back to user autostart.")
         system = False
+    if xvfb and s != "linux":
+        log("[WARN] '--xvfb' is Linux-only; ignored.")
+        xvfb = False
     if s == "linux":
-        return install_linux(system)
+        return install_linux(system, xvfb=xvfb)
     elif s == "macos":
         install_macos()
     elif s == "windows":
@@ -1328,7 +1357,7 @@ def main():
         elif cmd == "remind":
             sys.exit(cmd_remind())
         elif cmd == "install":
-            sys.exit(cmd_install("--system" in args[1:]))
+            sys.exit(cmd_install("--system" in args[1:], xvfb="--xvfb" in args[1:]))
         elif cmd == "uninstall":
             sys.exit(cmd_uninstall("--system" in args[1:]))
         elif cmd == "install-qqbot":
