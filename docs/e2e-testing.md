@@ -178,6 +178,8 @@ $env:CHROME_HEADLESS = "0"
 > 这些事件无法完全自动化。每条给出：操作 → 预期 → 验证 → 通过标准。
 > 建议在**前台运行** `.venv/bin/python crawler/scripts/daemon.py run` 观察日志，
 > 或安装服务后操作。`daemon.py status` / `daemon.py log` 随时可查。
+> **完整可复制指令**（Linux；含隔离沙箱准备与每个子项的一步步命令）见
+> [docs/e2e-special-cases.md](e2e-special-cases.md)。7.6 / 7.7 已由 `e2e_test.py offline` 自动覆盖。
 
 ### 7.1 睡眠 / 待机（suspend）
 

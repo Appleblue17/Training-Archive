@@ -701,8 +701,27 @@ def cmd_service(args):
     return RESULTS
 
 
+def cmd_sandbox(args):
+    """只构建隔离沙箱并打印路径，供第 7 节手工特殊情况测试使用。
+
+    默认订阅为 HISTORY（只抓取，不生成报告）；--expired 写过去的 end_time
+    （EXPIRED：抓取 + 复盘）。沙箱 origin 是本地裸仓库，不会推送 GitHub。
+    """
+    links = [l.strip().rstrip("/") for l in (args.links or "").split(",") if l.strip()]
+    platforms = set(args.platform.split(",")) if args.platform else set()
+    platforms.update(filter(None, (infer_platform(l) for l in links)))
+    build_sandbox(links=links or None, platforms=platforms, share=args.share,
+                  history=not args.expired)
+    record("sandbox built", "INFO", SANDBOX)
+    if args.platform:
+        record("sandbox platforms", "INFO", ", ".join(sorted(platforms)))
+    print("\n进入沙箱：")
+    print(f"  cd {SANDBOX}")
+    return RESULTS
+
+
 def cmd_events(args):
-    doc = os.path.join(REPO_ROOT, "docs", "e2e-testing.md")
+    doc = os.path.join(REPO_ROOT, "docs", "e2e-special-cases.md")
     events = [
         "睡眠 / 待机（suspend）后恢复",
         "休眠（hibernate）后恢复",
@@ -714,9 +733,10 @@ def cmd_events(args):
         "系统时钟 / 时区变化",
         "长时间运行（日志与内存）",
     ]
-    record("special events", "INFO", f"{len(events)} 项，详见 {doc}")
+    record("special events", "INFO", f"{len(events)} 项，完整指令见 {doc}")
     for e in events:
         print("  - " + e)
+    print("  已自动化：7.6 状态损坏自愈 / 7.7 双实例锁（e2e_test.py offline）")
     return RESULTS
 
 
@@ -766,6 +786,12 @@ def main(argv=None):
     p.add_argument("--headful", action="store_true",
                    help="CHROME_HEADLESS=0（QOJ 反爬需要；Linux 需配合 xvfb-run）")
     p.add_argument("--timeout", type=int, default=3600)
+    p = sub.add_parser("sandbox", help="只构建隔离沙箱（供第 7 节手工测试）")
+    p.add_argument("--links", default="", help="逗号分隔的订阅链接（缺省用内置 fixture）")
+    p.add_argument("--platform", default="", help="逗号分隔平台（缺省从链接推断）")
+    p.add_argument("--expired", action="store_true",
+                   help="订阅写过去的 end_time（EXPIRED：抓取+复盘）")
+    p.add_argument("--share", action="store_true")
     p = sub.add_parser("service", help="打印自启服务测试步骤")
     p = sub.add_parser("events", help="打印特殊事件测试清单")
     p = sub.add_parser("all", help="check + unit + offline")
@@ -782,6 +808,8 @@ def main(argv=None):
             cmd_offline(args)
         elif cmd == "live":
             cmd_live(args)
+        elif cmd == "sandbox":
+            cmd_sandbox(args)
         elif cmd == "service":
             cmd_service(args)
         elif cmd == "events":
