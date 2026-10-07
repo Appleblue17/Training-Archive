@@ -204,10 +204,10 @@ cd "$SB"
 PID=$!; echo "PID=$PID"
 sleep 3
 
-# 6.2 强杀
+# 6.2 强杀（用 ps -p "$PID" 判断，避免 pgrep -f 匹配到外层 shell 命令行）
 kill -9 "$PID"
 sleep 1
-pgrep -af "crawler/scripts/daemon.py run" || echo "已停止"
+ps -p "$PID" >/dev/null 2>&1 && echo "仍在运行(FAIL)" || echo "已停止"
 
 # 6.3 残留锁文件不会阻塞（filelock 用 OS 锁，文件存在与否无关）
 touch /tmp/training-archive-daemon.lock
@@ -341,6 +341,22 @@ rm -f crawler/subscriptions/*.json
 # 7.4：用带真实链接的 sandbox（见 §5）
 # 7.6/7.7：见 §7、§8（或直接 "$PY" crawler/scripts/e2e_test.py offline）
 ```
+
+---
+
+## 12. 实机执行结果（2026-10-07，Ubuntu / Linux）
+
+下列**非破坏性**子项已在本机隔离沙箱实际执行并通过：
+
+| 子项 | 方式 | 结果 |
+|------|------|------|
+| 7.5 进程被杀 | `kill -9` run 进程后 `ps -p $PID` | 进程消失；再 `touch` 残留锁文件后 `sync` 仍退出 0，未被 "Another task" 阻塞 |
+| 7.6 状态损坏 | 写坏 `daemon-state.json` / `alarms.json` | `status` 退出 0 自愈；`plan` 退出 1 并输出 `[alarm] ERROR` |
+| 7.7 双实例锁 | 另一进程持锁时跑 `sync` | 退出 1，输出 `Another task is already running, skip this run.` |
+| 7.8 时区 | `TZ=America/New_York sync` | 宿主 UTC 04 / NY 00 时，日志时间戳 `2026-10-07 12:08:52`（恰为 UTC+8），确认按北京时间 |
+| 7.9 轮转 | 临时 `LOG_MAX_BYTES=100` 记一条日志 | 生成 `daemon.log.1`，`backup_exists: True` |
+
+**仍需你实机执行**：7.1 睡眠 / 7.2 休眠 / 7.3 重启 / 7.4 断网——这些需要真实的挂起、重启或断网操作。
 
 ---
 
