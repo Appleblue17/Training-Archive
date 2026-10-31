@@ -8,7 +8,7 @@
 e:I[50939,[],""]
 :HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/Training-Archive/_next/static/css/338c2b79a2f4c1b0.css","style"]
-9:T69d,{
+9:T9af,{
   "hdu-2026": [
     {
       "platform": "hdu",
@@ -60,6 +60,44 @@ e:I[50939,[],""]
       "end_time": "2026-08-13T17:00:00+08:00"
     }
   ],
+  "qoj-2026fall": [
+    {
+      "platform": "qoj",
+      "link": "https://qoj.ac/contest/3588",
+      "comments": "",
+      "enabled": true
+    },
+    {
+      "platform": "qoj",
+      "link": "https://qoj.ac/contest/4126",
+      "comments": "",
+      "enabled": true
+    },
+    {
+      "platform": "qoj",
+      "link": "https://qoj.ac/contest/4565",
+      "comments": "",
+      "enabled": true
+    },
+    {
+      "platform": "qoj",
+      "link": "https://qoj.ac/contest/3384",
+      "comments": "",
+      "enabled": true
+    },
+    {
+      "platform": "qoj",
+      "link": "https://qoj.ac/contest/4582",
+      "comments": "",
+      "enabled": true
+    },
+    {
+      "platform": "qoj",
+      "link": "https://qoj.ac/contest/4593",
+      "comments": "",
+      "enabled": true
+    }
+  ],
   "qqbot": [
     {
       "platform": "hdu",
@@ -74,7 +112,7 @@ e:I[50939,[],""]
       "end_time": "2026-08-20T17:00:00+08:00"
     }
   ]
-}a:T54ac,[
+}a:T9ec1,[
   {
     "submission_id": "#1171358",
     "problem_name": "\u7edd\u5bf9\u9632\u5fa1",
@@ -790,8 +828,620 @@ e:I[50939,[],""]
     "submit_time": "2026-01-12T22:08:17+08:00",
     "problem_link": "https://qoj.ac/contest/2036/problem/11105",
     "submission_link": "https://qoj.ac/submission/1911377"
+  },
+  {
+    "submission_id": "#3321581",
+    "problem_id": "20250",
+    "problem_name": "Cost of Conflicts",
+    "status": "AC",
+    "time": "10237ms",
+    "memory": "83740kb",
+    "language": "C++14",
+    "submit_time": "2026-10-30T21:40:16+08:00",
+    "problem_link": "https://qoj.ac/contest/4126/problem/20250",
+    "submission_link": "https://qoj.ac/submission/3321581"
+  },
+  {
+    "submission_id": "#3320159",
+    "problem_id": "17167",
+    "problem_name": "Traffic Lights",
+    "status": "AC",
+    "time": "3293ms",
+    "memory": "716112kb",
+    "language": "C++14",
+    "submit_time": "2026-10-30T17:49:59+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17167",
+    "submission_link": "https://qoj.ac/submission/3320159"
+  },
+  {
+    "submission_id": "#3311924",
+    "problem_id": "20737",
+    "problem_name": "Interval MST",
+    "status": "AC",
+    "time": "643ms",
+    "memory": "115756kb",
+    "language": "C++14",
+    "submit_time": "2026-10-29T16:49:34+08:00",
+    "problem_link": "https://qoj.ac/problem/20737",
+    "submission_link": "https://qoj.ac/submission/3311924"
+  },
+  {
+    "submission_id": "#3308530",
+    "problem_id": "20056",
+    "problem_name": "False Amber",
+    "status": "AC",
+    "time": "145ms",
+    "memory": "15016kb",
+    "language": "C++17",
+    "submit_time": "2026-10-29T11:58:07+08:00",
+    "problem_link": "https://qoj.ac/contest/4593/problem/20056",
+    "submission_link": "https://qoj.ac/submission/3308530"
+  },
+  {
+    "submission_id": "#3305434",
+    "problem_id": "22915",
+    "problem_name": "\u5220\u9664",
+    "status": "AC",
+    "time": "251ms",
+    "memory": "11224kb",
+    "language": "C++14",
+    "submit_time": "2026-10-28T22:50:13+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22915",
+    "submission_link": "https://qoj.ac/submission/3305434"
+  },
+  {
+    "submission_id": "#3295872",
+    "problem_id": "20054",
+    "problem_name": "Don't Fight The Music",
+    "status": "AC",
+    "time": "22ms",
+    "memory": "8336kb",
+    "language": "C++14",
+    "submit_time": "2026-10-27T22:10:22+08:00",
+    "problem_link": "https://qoj.ac/contest/4593/problem/20054",
+    "submission_link": "https://qoj.ac/submission/3295872"
+  },
+  {
+    "submission_id": "#3293396",
+    "problem_id": "20057",
+    "problem_name": "Gungnir Fracture",
+    "status": "AC",
+    "time": "66ms",
+    "memory": "40312kb",
+    "language": "C++14",
+    "submit_time": "2026-10-27T18:32:03+08:00",
+    "problem_link": "https://qoj.ac/contest/4593/problem/20057",
+    "submission_link": "https://qoj.ac/submission/3293396"
+  },
+  {
+    "submission_id": "#3288783",
+    "problem_id": "20053",
+    "problem_name": "Cryptarithm",
+    "status": "AC",
+    "time": "55ms",
+    "memory": "81856kb",
+    "language": "C++14",
+    "submit_time": "2026-10-27T10:20:13+08:00",
+    "problem_link": "https://qoj.ac/contest/4593/problem/20053",
+    "submission_link": "https://qoj.ac/submission/3288783"
+  },
+  {
+    "submission_id": "#3289363",
+    "problem_id": "20058",
+    "problem_name": "Hydra",
+    "status": "AC",
+    "time": "212ms",
+    "memory": "37392kb",
+    "language": "C++14",
+    "submit_time": "2026-10-27T11:51:42+08:00",
+    "problem_link": "https://qoj.ac/contest/4593/problem/20058",
+    "submission_link": "https://qoj.ac/submission/3289363"
+  },
+  {
+    "submission_id": "#3289041",
+    "problem_id": "20060",
+    "problem_name": "Journey",
+    "status": "AC",
+    "time": "296ms",
+    "memory": "40720kb",
+    "language": "C++14",
+    "submit_time": "2026-10-27T11:09:41+08:00",
+    "problem_link": "https://qoj.ac/contest/4593/problem/20060",
+    "submission_link": "https://qoj.ac/submission/3289041"
+  },
+  {
+    "submission_id": "#3288673",
+    "problem_id": "20063",
+    "problem_name": "Melodiniq",
+    "status": "AC",
+    "time": "4ms",
+    "memory": "4768kb",
+    "language": "C++14",
+    "submit_time": "2026-10-27T09:53:42+08:00",
+    "problem_link": "https://qoj.ac/contest/4593/problem/20063",
+    "submission_link": "https://qoj.ac/submission/3288673"
+  },
+  {
+    "submission_id": "#3271864",
+    "problem_id": "17173",
+    "problem_name": "Construction Company",
+    "status": "AC",
+    "time": "1865ms",
+    "memory": "7044kb",
+    "language": "C++14",
+    "submit_time": "2026-10-25T13:00:29+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17173",
+    "submission_link": "https://qoj.ac/submission/3271864"
+  },
+  {
+    "submission_id": "#3249081",
+    "problem_id": "20741",
+    "problem_name": "Matching Substrings",
+    "status": "AC",
+    "time": "297ms",
+    "memory": "175416kb",
+    "language": "C++14",
+    "submit_time": "2026-10-22T21:04:06+08:00",
+    "problem_link": "https://qoj.ac/contest/4565/problem/20741",
+    "submission_link": "https://qoj.ac/submission/3249081"
+  },
+  {
+    "submission_id": "#3229069",
+    "problem_id": "22911",
+    "problem_name": "\u522b\u6837\u7684\u9009\u8bfe\u5927\u6218",
+    "status": "AC",
+    "time": "3121ms",
+    "memory": "21144kb",
+    "language": "C++14",
+    "submit_time": "2026-10-20T23:43:53+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22911",
+    "submission_link": "https://qoj.ac/submission/3229069"
+  },
+  {
+    "submission_id": "#3222368",
+    "problem_id": "22914",
+    "problem_name": "\u904d\u5386",
+    "status": "AC",
+    "time": "24ms",
+    "memory": "5128kb",
+    "language": "C++14",
+    "submit_time": "2026-10-20T13:52:16+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22914",
+    "submission_link": "https://qoj.ac/submission/3222368"
+  },
+  {
+    "submission_id": "#3222039",
+    "problem_id": "22916",
+    "problem_name": "\u5f02\u6216\u738b\u56fd",
+    "status": "AC",
+    "time": "74ms",
+    "memory": "91824kb",
+    "language": "C++14",
+    "submit_time": "2026-10-20T13:13:43+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22916",
+    "submission_link": "https://qoj.ac/submission/3222039"
+  },
+  {
+    "submission_id": "#3221166",
+    "problem_id": "22920",
+    "problem_name": "\u7eb8\u5e26\u67d3\u8272",
+    "status": "AC",
+    "time": "320ms",
+    "memory": "125416kb",
+    "language": "C++14",
+    "submit_time": "2026-10-20T11:29:04+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22920",
+    "submission_link": "https://qoj.ac/submission/3221166"
+  },
+  {
+    "submission_id": "#3220842",
+    "problem_id": "22922",
+    "problem_name": "\u4f59\u955c",
+    "status": "AC",
+    "time": "259ms",
+    "memory": "8368kb",
+    "language": "C++14",
+    "submit_time": "2026-10-20T11:00:42+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22922",
+    "submission_link": "https://qoj.ac/submission/3220842"
+  },
+  {
+    "submission_id": "#3220776",
+    "problem_id": "22918",
+    "problem_name": "\u4e8b\u4e0d\u8fc7\u4e09",
+    "status": "AC",
+    "time": "131ms",
+    "memory": "108396kb",
+    "language": "C++14",
+    "submit_time": "2026-10-20T10:53:18+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22918",
+    "submission_link": "https://qoj.ac/submission/3220776"
+  },
+  {
+    "submission_id": "#3220353",
+    "problem_id": "22919",
+    "problem_name": "\u9001\u7ed9\u597d\u53cb\u7684\u60ca\u559c",
+    "status": "AC",
+    "time": "107ms",
+    "memory": "7636kb",
+    "language": "C++14",
+    "submit_time": "2026-10-20T09:52:09+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22919",
+    "submission_link": "https://qoj.ac/submission/3220353"
+  },
+  {
+    "submission_id": "#3220212",
+    "problem_id": "22910",
+    "problem_name": "\u53c8\u4e00\u9053\u7eb8\u7b14\u95ee\u9898",
+    "status": "AC",
+    "time": "74ms",
+    "memory": "59136kb",
+    "language": "C++14",
+    "submit_time": "2026-10-20T09:32:21+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22910",
+    "submission_link": "https://qoj.ac/submission/3220212"
+  },
+  {
+    "submission_id": "#3220110",
+    "problem_id": "22912",
+    "problem_name": "\u65e0\u5fe7\u65cb\u5f8b",
+    "status": "AC",
+    "time": "10ms",
+    "memory": "5176kb",
+    "language": "C++14",
+    "submit_time": "2026-10-20T09:17:15+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22912",
+    "submission_link": "https://qoj.ac/submission/3220110"
+  },
+  {
+    "submission_id": "#3217716",
+    "problem_id": "17163",
+    "problem_name": "String Workshop",
+    "status": "AC",
+    "time": "1884ms",
+    "memory": "487472kb",
+    "language": "C++14",
+    "submit_time": "2026-10-19T21:56:49+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17163",
+    "submission_link": "https://qoj.ac/submission/3217716"
+  },
+  {
+    "submission_id": "#3169058",
+    "problem_id": "17170",
+    "problem_name": "Euler Line",
+    "status": "CE",
+    "time": "/",
+    "memory": "/",
+    "language": "C++14",
+    "submit_time": "2026-10-13T14:18:08+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17170",
+    "submission_link": "https://qoj.ac/submission/3169058"
+  },
+  {
+    "submission_id": "#3168445",
+    "problem_id": "17162",
+    "problem_name": "Missing Number",
+    "status": "AC",
+    "time": "13ms",
+    "memory": "6880kb",
+    "language": "C++14",
+    "submit_time": "2026-10-13T12:50:41+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17162",
+    "submission_link": "https://qoj.ac/submission/3168445"
+  },
+  {
+    "submission_id": "#3168083",
+    "problem_id": "17169",
+    "problem_name": "Wooden Checker",
+    "status": "AC",
+    "time": "1029ms",
+    "memory": "340244kb",
+    "language": "C++14",
+    "submit_time": "2026-10-13T11:29:27+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17169",
+    "submission_link": "https://qoj.ac/submission/3168083"
+  },
+  {
+    "submission_id": "#3167752",
+    "problem_id": "17168",
+    "problem_name": "Sweet Remainders!",
+    "status": "AC",
+    "time": "79ms",
+    "memory": "13212kb",
+    "language": "C++14",
+    "submit_time": "2026-10-13T10:08:42+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17168",
+    "submission_link": "https://qoj.ac/submission/3167752"
+  },
+  {
+    "submission_id": "#3167646",
+    "problem_id": "17171",
+    "problem_name": "Traversal of a Triangular Grid",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4192kb",
+    "language": "C++14",
+    "submit_time": "2026-10-13T09:33:52+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17171",
+    "submission_link": "https://qoj.ac/submission/3167646"
+  },
+  {
+    "submission_id": "#3111070",
+    "problem_id": "20736",
+    "problem_name": "Hamiltonian LCM",
+    "status": "AC",
+    "time": "11ms",
+    "memory": "4488kb",
+    "language": "C++14",
+    "submit_time": "2026-10-06T13:34:28+08:00",
+    "problem_link": "https://qoj.ac/contest/4565/problem/20736",
+    "submission_link": "https://qoj.ac/submission/3111070"
+  },
+  {
+    "submission_id": "#3109457",
+    "problem_id": "20734",
+    "problem_name": "Flipping Lamps",
+    "status": "AC",
+    "time": "2476ms",
+    "memory": "16548kb",
+    "language": "C++14",
+    "submit_time": "2026-10-06T10:29:34+08:00",
+    "problem_link": "https://qoj.ac/contest/4565/problem/20734",
+    "submission_link": "https://qoj.ac/submission/3109457"
+  },
+  {
+    "submission_id": "#3109351",
+    "problem_id": "20740",
+    "problem_name": "Leaf Meeting",
+    "status": "AC",
+    "time": "60ms",
+    "memory": "35520kb",
+    "language": "C++14",
+    "submit_time": "2026-10-06T10:14:33+08:00",
+    "problem_link": "https://qoj.ac/contest/4565/problem/20740",
+    "submission_link": "https://qoj.ac/submission/3109351"
+  },
+  {
+    "submission_id": "#3109223",
+    "problem_id": "20733",
+    "problem_name": "Equal Totients",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4772kb",
+    "language": "C++14",
+    "submit_time": "2026-10-06T09:48:11+08:00",
+    "problem_link": "https://qoj.ac/contest/4565/problem/20733",
+    "submission_link": "https://qoj.ac/submission/3109223"
+  },
+  {
+    "submission_id": "#3109137",
+    "problem_id": "20731",
+    "problem_name": "Circle Construction",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4368kb",
+    "language": "C++14",
+    "submit_time": "2026-10-06T09:31:37+08:00",
+    "problem_link": "https://qoj.ac/contest/4565/problem/20731",
+    "submission_link": "https://qoj.ac/submission/3109137"
+  },
+  {
+    "submission_id": "#3057776",
+    "problem_id": "7863",
+    "problem_name": "Parity Game",
+    "status": "AC",
+    "time": "22ms",
+    "memory": "4312kb",
+    "language": "C++17",
+    "submit_time": "2026-09-29T14:40:17+08:00",
+    "problem_link": "https://qoj.ac/contest/1459/problem/7863",
+    "submission_link": "https://qoj.ac/submission/3057776"
+  },
+  {
+    "submission_id": "#3057656",
+    "problem_id": "7859",
+    "problem_name": "Bladestorm",
+    "status": "WA",
+    "time": "33ms",
+    "memory": "4336kb",
+    "language": "C++14",
+    "submit_time": "2026-09-29T14:26:20+08:00",
+    "problem_link": "https://qoj.ac/contest/1459/problem/7859",
+    "submission_link": "https://qoj.ac/submission/3057656"
+  },
+  {
+    "submission_id": "#3057313",
+    "problem_id": "7858",
+    "problem_name": "Basic Equation Solving",
+    "status": "AC",
+    "time": "2440ms",
+    "memory": "4220kb",
+    "language": "C++14",
+    "submit_time": "2026-09-29T13:22:04+08:00",
+    "problem_link": "https://qoj.ac/contest/1459/problem/7858",
+    "submission_link": "https://qoj.ac/submission/3057313"
+  },
+  {
+    "submission_id": "#3056829",
+    "problem_id": "7864",
+    "problem_name": "Random Tree Parking",
+    "status": "AC",
+    "time": "61ms",
+    "memory": "53888kb",
+    "language": "C++14",
+    "submit_time": "2026-09-29T11:26:12+08:00",
+    "problem_link": "https://qoj.ac/contest/1459/problem/7864",
+    "submission_link": "https://qoj.ac/submission/3056829"
+  },
+  {
+    "submission_id": "#3056823",
+    "problem_id": "7860",
+    "problem_name": "Graph of Maximum Degree 3",
+    "status": "AC",
+    "time": "117ms",
+    "memory": "89696kb",
+    "language": "C++14",
+    "submit_time": "2026-09-29T11:25:03+08:00",
+    "problem_link": "https://qoj.ac/contest/1459/problem/7860",
+    "submission_link": "https://qoj.ac/submission/3056823"
+  },
+  {
+    "submission_id": "#3056707",
+    "problem_id": "7861",
+    "problem_name": "Inverse Topological Sort",
+    "status": "AC",
+    "time": "47ms",
+    "memory": "36912kb",
+    "language": "C++17",
+    "submit_time": "2026-09-29T11:08:31+08:00",
+    "problem_link": "https://qoj.ac/contest/1459/problem/7861",
+    "submission_link": "https://qoj.ac/submission/3056707"
+  },
+  {
+    "submission_id": "#3056453",
+    "problem_id": "7857",
+    "problem_name": "(-1,1)-Sumplete",
+    "status": "AC",
+    "time": "695ms",
+    "memory": "38852kb",
+    "language": "C++14",
+    "submit_time": "2026-09-29T10:22:17+08:00",
+    "problem_link": "https://qoj.ac/contest/1459/problem/7857",
+    "submission_link": "https://qoj.ac/submission/3056453"
+  },
+  {
+    "submission_id": "#3056372",
+    "problem_id": "7866",
+    "problem_name": "Teleportation",
+    "status": "AC",
+    "time": "15ms",
+    "memory": "35500kb",
+    "language": "C++14",
+    "submit_time": "2026-09-29T10:07:45+08:00",
+    "problem_link": "https://qoj.ac/contest/1459/problem/7866",
+    "submission_link": "https://qoj.ac/submission/3056372"
+  },
+  {
+    "submission_id": "#3056340",
+    "problem_id": "7865",
+    "problem_name": "Refresher into Midas",
+    "status": "AC",
+    "time": "20ms",
+    "memory": "4448kb",
+    "language": "C++17",
+    "submit_time": "2026-09-29T10:02:20+08:00",
+    "problem_link": "https://qoj.ac/contest/1459/problem/7865",
+    "submission_link": "https://qoj.ac/submission/3056340"
+  },
+  {
+    "submission_id": "#3027933",
+    "problem_id": "20259",
+    "problem_name": "Leave Triple & Link Tree",
+    "status": "WA",
+    "time": "11ms",
+    "memory": "16168kb",
+    "language": "C++14",
+    "submit_time": "2026-09-25T14:06:21+08:00",
+    "problem_link": "https://qoj.ac/contest/4126/problem/20259",
+    "submission_link": "https://qoj.ac/submission/3027933"
+  },
+  {
+    "submission_id": "#3027137",
+    "problem_id": "20254",
+    "problem_name": "Game Show: XOR Edition",
+    "status": "AC",
+    "time": "138ms",
+    "memory": "6152kb",
+    "language": "C++14",
+    "submit_time": "2026-09-25T11:18:43+08:00",
+    "problem_link": "https://qoj.ac/contest/4126/problem/20254",
+    "submission_link": "https://qoj.ac/submission/3027137"
+  },
+  {
+    "submission_id": "#3027097",
+    "problem_id": "20249",
+    "problem_name": "Beggar Robin",
+    "status": "AC",
+    "time": "22ms",
+    "memory": "5928kb",
+    "language": "C++14",
+    "submit_time": "2026-09-25T11:05:08+08:00",
+    "problem_link": "https://qoj.ac/contest/4126/problem/20249",
+    "submission_link": "https://qoj.ac/submission/3027097"
+  },
+  {
+    "submission_id": "#3026950",
+    "problem_id": "20257",
+    "problem_name": "Jaded Juice",
+    "status": "AC",
+    "time": "172ms",
+    "memory": "20016kb",
+    "language": "C++17",
+    "submit_time": "2026-09-25T10:13:28+08:00",
+    "problem_link": "https://qoj.ac/contest/4126/problem/20257",
+    "submission_link": "https://qoj.ac/submission/3026950"
+  },
+  {
+    "submission_id": "#3026920",
+    "problem_id": "20251",
+    "problem_name": "Digesting",
+    "status": "AC",
+    "time": "11ms",
+    "memory": "5984kb",
+    "language": "C++14",
+    "submit_time": "2026-09-25T09:55:35+08:00",
+    "problem_link": "https://qoj.ac/contest/4126/problem/20251",
+    "submission_link": "https://qoj.ac/submission/3026920"
+  },
+  {
+    "submission_id": "#3026895",
+    "problem_id": "20258",
+    "problem_name": "Kitchen Knives",
+    "status": "AC",
+    "time": "6ms",
+    "memory": "5044kb",
+    "language": "C++14",
+    "submit_time": "2026-09-25T09:42:35+08:00",
+    "problem_link": "https://qoj.ac/contest/4126/problem/20258",
+    "submission_link": "https://qoj.ac/submission/3026895"
+  },
+  {
+    "submission_id": "#3026857",
+    "problem_id": "20252",
+    "problem_name": "Easter Eggs",
+    "status": "AC",
+    "time": "1ms",
+    "memory": "4448kb",
+    "language": "C++14",
+    "submit_time": "2026-09-25T09:22:06+08:00",
+    "problem_link": "https://qoj.ac/contest/4126/problem/20252",
+    "submission_link": "https://qoj.ac/submission/3026857"
+  },
+  {
+    "submission_id": "#2970919",
+    "problem_id": "20244",
+    "problem_name": "Island",
+    "status": "AC",
+    "time": "83ms",
+    "memory": "16896kb",
+    "language": "C++14",
+    "submit_time": "2026-09-16T13:39:24+08:00",
+    "problem_link": "https://qoj.ac/contest/4113/problem/20244",
+    "submission_link": "https://qoj.ac/submission/2970919"
+  },
+  {
+    "submission_id": "#2969621",
+    "problem_id": "20243",
+    "problem_name": "Hidden Track (Easy Version)",
+    "status": "AC",
+    "time": "108ms",
+    "memory": "4400kb",
+    "language": "C++14",
+    "submit_time": "2026-09-16T09:11:44+08:00",
+    "problem_link": "https://qoj.ac/contest/4113/problem/20243",
+    "submission_link": "https://qoj.ac/submission/2969621"
   }
-]0:{"P":null,"b":"S9-7unphkdbx94bbaeBPu","p":"/Training-Archive","c":["","status"],"i":false,"f":[[["",{"children":["(main)",{"children":["status",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/338c2b79a2f4c1b0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["status",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L8",null,{"fileContentList":["{\n  \"qoj\": \"2026-01-26T11:00:32.617572+08:00\",\n  \"nowcoder\": \"2026-01-26T11:00:36.500114+08:00\",\n  \"hdu\": \"2026-08-24T04:01:06.333113+08:00\"\n}","{\n  \"scheduled\": {\n    \"fire\": \"*/5 * * * *\",\n    \"sync\": \"0 */3 * * *\",\n    \"incremental\": \"0 4 * * *\"\n  },\n  \"ai_tasks\": {\n    \"report\": {\n      \"enabled\": true\n    },\n    \"share\": {\n      \"enabled\": true\n    }\n  },\n  \"qq\": {\n    \"napcat_ws_url\": \"ws://127.0.0.1:6700\",\n    \"send_mode\": \"file_only\"\n  },\n  \"qoj\": {\n    \"enabled\": false,\n    \"base_url\": \"https://qoj.ac\",\n    \"min_wait_time\": 0.5,\n    \"max_wait_time\": 2\n  },\n  \"hdu\": {\n    \"enabled\": true,\n    \"base_url\": \"https://acm.hdu.edu.cn\",\n    \"min_wait_time\": 0,\n    \"max_wait_time\": 0.5\n  },\n  \"nowcoder\": {\n    \"enabled\": false,\n    \"base_url\": \"https://ac.nowcoder.com\",\n    \"min_wait_time\": 0,\n    \"max_wait_time\": 0.5\n  }\n}\n","$9","$a","[]",""]}],null,"$Lb"]}],{},null,false]},null,false]},null,false]},["$Lc",[],[]],false],"$Ld",false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+]0:{"P":null,"b":"FmGIYZpjyMflkMRjcbiPJ","p":"/Training-Archive","c":["","status"],"i":false,"f":[[["",{"children":["(main)",{"children":["status",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/338c2b79a2f4c1b0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["status",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L8",null,{"fileContentList":["{\n  \"qoj\": \"2026-01-26T11:00:32.617572+08:00\",\n  \"nowcoder\": \"2026-01-26T11:00:36.500114+08:00\",\n  \"hdu\": \"2026-10-31T20:19:05.792615+08:00\"\n}","{\n  \"scheduled\": {\n    \"fire\": \"*/5 * * * *\",\n    \"sync\": \"0 */3 * * *\",\n    \"incremental\": \"0 4 * * *\"\n  },\n  \"ai_tasks\": {\n    \"report\": {\n      \"enabled\": true\n    },\n    \"share\": {\n      \"enabled\": true\n    }\n  },\n  \"qq\": {\n    \"napcat_ws_url\": \"ws://127.0.0.1:6700\",\n    \"send_mode\": \"file_only\"\n  },\n  \"qoj\": {\n    \"enabled\": true,\n    \"base_url\": \"https://qoj.ac\",\n    \"min_wait_time\": 0.5,\n    \"max_wait_time\": 2\n  },\n  \"hdu\": {\n    \"enabled\": false,\n    \"base_url\": \"https://acm.hdu.edu.cn\",\n    \"min_wait_time\": 0,\n    \"max_wait_time\": 0.5\n  },\n  \"nowcoder\": {\n    \"enabled\": false,\n    \"base_url\": \"https://ac.nowcoder.com\",\n    \"min_wait_time\": 0,\n    \"max_wait_time\": 0.5\n  }\n}\n","$9","$a","[]",""]}],null,"$Lb"]}],{},null,false]},null,false]},null,false]},["$Lc",[],[]],false],"$Ld",false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
 f:I[47055,[],"OutletBoundary"]
 11:I[39909,[],"AsyncMetadataOutlet"]
 13:I[47055,[],"ViewportBoundary"]
