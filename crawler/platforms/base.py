@@ -543,11 +543,15 @@ class BaseCrawler:
         # 无头 / root 沙箱 / dev-shm 参数见 _chrome_launch_args（root 自动 --no-sandbox）。
         for arg in _chrome_launch_args():
             options.add_argument(arg)
+        # DOMContentLoaded 即返回，避免等待所有资源导致 driver.get 卡 120s+；
+        # 具体元素用显式等待保证。
+        options.page_load_strategy = "eager"
         driver_kwargs = {"options": options}
         if chromedriver_path:
             driver_kwargs["driver_executable_path"] = chromedriver_path
         try:
             self.driver = uc.Chrome(**driver_kwargs)
+            self.driver.set_page_load_timeout(30)
         except Exception as e:
             self.log("fatal", f"Failed to start Chromium: {e}")
 
@@ -570,12 +574,32 @@ class BaseCrawler:
         html = self.driver.page_source
         return html
 
-    def _wait_for_download(self, timeout=30):
+    def _wait_for_download(self, timeout=300):
+        """等待下载完成：大 PDF / 慢网络下 30s 不够。
+
+        出现非 .crdownload 的完成文件即成功；若 .crdownload 连续 60s 无增长，
+        判定卡死并提前返回 None。
+        """
+        last_size = -1
+        stalled = 0
         for _ in range(timeout):
             files = glob.glob(os.path.join(self.download_dir, "*"))
             finished = [f for f in files if not f.endswith(".crdownload")]
             if finished:
                 return finished[0]
+            partial = [f for f in files if f.endswith(".crdownload")]
+            if partial:
+                try:
+                    size = os.path.getsize(partial[0])
+                except OSError:
+                    size = -1
+                if size == last_size:
+                    stalled += 1
+                else:
+                    stalled = 0
+                    last_size = size
+                if stalled >= 60:
+                    return None
             time.sleep(1)
         return None
 
@@ -594,10 +618,6 @@ class BaseCrawler:
 
         self.driver.get(url)
         time.sleep(3)  # Wait for the download to begin
-
-        # Check if download_dir is empty
-        if not os.listdir(self.download_dir):
-            return False
 
         downloaded_path = self._wait_for_download()
         if downloaded_path:

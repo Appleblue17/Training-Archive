@@ -56,6 +56,12 @@
   `alarms.json` 原直接以 `"w"` 覆盖写，断电或写入中途被杀会留下截断 JSON
   （后者会让 `alarm.py plan` 直接中止）；新增 `crawler/scripts/jsonio.py` 的
   `write_json_atomic`（同目录临时文件 + fsync + `os.replace`）
+- **大 PDF 下载 30s 超时 / 页面加载卡死 / 源码块未等待**（`platforms/base.py` /
+  `platforms/qoj/qoj.py`）：QOJ 的 PDF 更大、服务器到站点较慢，30s 固定超时会在
+  `.crdownload` 未完成时误判失败；`driver.get` 等待全部资源会卡 120s+；源码页固定
+  sleep 在慢加载 / Cloudflare 挑战时取不到代码块。改为下载等待 300s + 60s 无增长判卡死、
+  移除「3s 后目录为空即失败」、`page_load_strategy="eager"` + `set_page_load_timeout(30)`、
+  源码抓取用 `WebDriverWait` 等 `pre.sh_sourceCode`
 - **以 root 运行时 Chrome 无法启动**（`crawler/platforms/base.py`）：root 下 Chrome 沙箱
   拒绝启动（`Running as root without --no-sandbox is not supported`），Selenium 只抛出
   空 `Message:` + 堆栈；新增 `_chrome_launch_args()`：Linux `euid==0` 时自动加
