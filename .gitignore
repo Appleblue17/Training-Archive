@@ -10,12 +10,6 @@
 # dependencies
 /node_modules
 /.pnp
-# 本机沙箱测试用的 workspace 内 pnpm store / corepack（勿提交）
-/.pnpm-home
-/.pnpm-store
-/.pnpm-cache
-/.pnpm-xdg
-/.corepack
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -65,27 +59,10 @@ next-env.d.ts
 .venv
 __pycache__/
 
-# crawler
-# 开发分支忽略爬虫数据与增量状态；deploy 分支使用 .gitignore.deploy（CI 提交前
-# 覆盖 .gitignore），将 contests/ 与状态文件纳入版本控制，保证增量同步生效。
-/contests/
-# QQ 群分享：已发送标记（发送成功后写入；勿提交）；qq-share.txt 为旧版文案遗留
-contests/*/qq-share.sent
-contests/*/qq-share.txt
-# NapCat 本地数据库（测试时在仓库根生成，勿提交）
-/guild1.db
-/guild1.db-shm
-/guild1.db-wal
+# crawler（仅忽略 log 与运行时临时文件；config / 状态 / 订阅均跟踪）
 crawler/chrome-linux64
 crawler/chromedriver-linux64
 crawler/global.log.json
-crawler/last-update.json
-crawler/config.json
-# 忽略 subscriptions 目录内容，但保留目录本身，使 ! 规则能重新纳入模板文件
-# （直接忽略 crawler/subscriptions/ 会连目录一起忽略，git 不再进入目录，! 失效）
-crawler/subscriptions/*
-!crawler/subscriptions/subscriptions.example.json
-crawler/prompts/prompt.template.md
 crawler/new-contests.json
 crawler/alarms.json
 crawler/platforms/*/log.json
@@ -101,12 +78,13 @@ crawler/qq-bot.log
 crawler/bot-state.json
 crawler/fortune-cache.json
 crawler/quotes-cache.json
-# 但保留配置模板可提交
-!crawler/config.example.json
-!crawler/prompts/prompt.template.example.md
+# QQ 群分享：已发送标记（发送成功后写入；勿提交）；qq-share.txt 为旧版文案遗留
+contests/*/qq-share.sent
+contests/*/qq-share.txt
+# NapCat 本地数据库（测试时在仓库根生成，勿提交）
+/guild1.db
+/guild1.db-shm
+/guild1.db-wal
 
 # test script
 *test.sh
-
-# E2E 测试脚本的隔离沙箱与报告（勿提交）
-/.e2e/
