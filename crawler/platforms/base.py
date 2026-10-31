@@ -511,7 +511,11 @@ class BaseCrawler:
         }
         options.add_experimental_option("prefs", prefs)
 
-        options.add_argument("--headless")  # Uncomment for headless mode
+        if os.environ.get("CHROME_HEADLESS", "1").strip().lower() not in ("0", "false", "no"):
+            options.add_argument("--headless")
+        if hasattr(os, "geteuid") and os.geteuid() == 0:
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
         driver_kwargs = {"options": options}
         if chromedriver_path:
             driver_kwargs["driver_executable_path"] = chromedriver_path
