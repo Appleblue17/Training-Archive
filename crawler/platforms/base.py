@@ -23,6 +23,30 @@ beijing = timezone(timedelta(hours=8))
 DISCARD = "discard"
 
 
+def _chrome_launch_args():
+    """Chrome 启动参数（headless / root 沙箱 / 容器 dev-shm）。
+
+    - 默认 headless；CHROME_HEADLESS=0/false/no 关闭（QOJ + xvfb 非无头）。
+    - 以 root 运行（服务器 / 容器常见）时 Chrome 沙箱会拒绝启动：
+      "Running as root without --no-sandbox is not supported."
+      此时自动加 --no-sandbox；非 root 也可用 CHROME_NO_SANDBOX=1 强制。
+    - root 下同时加 --disable-dev-shm-usage，避免容器 /dev/shm 偏小导致渲染进程崩溃。
+    """
+    args = []
+    if os.environ.get("CHROME_HEADLESS", "1").strip().lower() not in ("0", "false", "no"):
+        args.append("--headless")
+    geteuid = getattr(os, "geteuid", None)
+    is_root = bool(geteuid and geteuid() == 0)
+    no_sandbox = os.environ.get("CHROME_NO_SANDBOX", "").strip().lower() in (
+        "1", "true", "yes",
+    )
+    if no_sandbox or is_root:
+        args.append("--no-sandbox")
+    if is_root:
+        args.append("--disable-dev-shm-usage")
+    return args
+
+
 def load_subscriptions_dir(subscriptions_dir, platform=None, log=None):
     """从 crawler/subscriptions/ 目录加载订阅配置（模块级，供爬虫与 alarm.py 共用）。
 
@@ -516,11 +540,9 @@ class BaseCrawler:
         }
         options.add_experimental_option("prefs", prefs)
 
-        # 默认无头（服务器友好）。设置 CHROME_HEADLESS=0 可关闭无头——QOJ 等站点
-        # 对 headless 有 Cloudflare Turnstile 检测，在 Xvfb / 有显示器的环境用
-        # 非 headless（配合 xvfb-run）可正常通过。
-        if os.environ.get("CHROME_HEADLESS", "1").strip().lower() not in ("0", "false", "no"):
-            options.add_argument("--headless")
+        # 无头 / root 沙箱 / dev-shm 参数见 _chrome_launch_args（root 自动 --no-sandbox）。
+        for arg in _chrome_launch_args():
+            options.add_argument(arg)
         driver_kwargs = {"options": options}
         if chromedriver_path:
             driver_kwargs["driver_executable_path"] = chromedriver_path
