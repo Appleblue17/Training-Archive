@@ -712,6 +712,14 @@ class BaseCrawler:
         contest_list = self.fetch_contests_get_contest_list()
         if not contest_list:
             self.log("info", "Contest list is empty, no contests to fetch. Exiting.")
+            # --links 明确要求抓这些链接时，"列表为空"几乎都是被拦截或比赛被
+            # 删除：必须让上层判失败（mark --failed 下次重试），不能静默成功
+            # （否则 daemon 会把这些链接 mark --archived 而永远不再重试）。
+            if self._only_links:
+                raise RuntimeError(
+                    "Contest list is empty while specific links were requested "
+                    "(possible block or removed contests)."
+                )
             return
 
         for contest_info in contest_list:

@@ -60,8 +60,9 @@ def test_write_new_contests_removes_stale_file(tmp_path, monkeypatch):
 # run_platform
 # ---------------------------------------------------------------------------
 class FakeCrawler:
-    def __init__(self, *, fail=None):
+    def __init__(self, *, fail=None, submissions_complete=True):
         self.fail = fail
+        self._submissions_fetch_complete = submissions_complete
         self._only_links = None
         self._new_contests = {}
         self._new_contest_folders = []
@@ -101,6 +102,18 @@ def test_run_platform_success_full(monkeypatch):
     assert ok is True and crawler is fake
     assert fake.calls == ["login", "fetch_contests", "fetch_submissions", "finish"]
     assert fake._only_links == {"x"}
+
+
+def test_run_platform_incomplete_submissions_is_failure(monkeypatch):
+    """回归：翻页超时/挑战页 break 掉（无异常）也必须判失败。
+
+    否则 daemon 会把本次所有链接 mark --archived，失败比赛永不重试。
+    """
+    fake = FakeCrawler(submissions_complete=False)
+    monkeypatch.setattr(st, "crawler_for", lambda p: fake)
+    ok, crawler = st.run_platform("qoj", "full", only_links={"x"})
+    assert ok is False and crawler is fake
+    assert fake.calls[-1] == "finish"
 
 
 def test_run_platform_contests_only_skips_submissions_when_no_new(monkeypatch):

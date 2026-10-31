@@ -142,7 +142,20 @@ def run_platform(platform, mode, only_links=None):
                 # 没有新建比赛时完全不碰提交，保持轻量。不推进 last-update。
                 crawler._contests_only = True
                 crawler.fetch_submissions()
-        ok = True
+
+        # 失败判定不能只看"有没有抛异常"：提交翻页超时 / Cloudflare 挑战页
+        # 都是 break 后正常返回，异常为 None。若这里判成功，daemon 会把本次
+        # 全部链接 mark --archived，失败的比赛再也不会重试。
+        fetched_submissions = mode != "contests" or bool(crawler._new_contests)
+        if fetched_submissions and not getattr(
+            crawler, "_submissions_fetch_complete", False
+        ):
+            print(
+                f"[task] {platform}: submissions fetch incomplete "
+                "(timeout / challenge page); treating platform as failed."
+            )
+        else:
+            ok = True
     except Exception as e:
         print(f"[task] {platform} failed: {e}")
     finally:
