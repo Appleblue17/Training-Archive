@@ -14,6 +14,17 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.
 from crawler.platforms.base import BaseCrawler
 
 
+
+
+def _extract_source_code(html):
+    """从 QOJ 提交页 HTML 提取源码文本；找不到代码块返回 None（Cloudflare 挑战页等）。"""
+    soup = bs4(html or "", "html.parser")
+    pre = soup.find("pre", class_="sh_sourceCode")
+    if pre is None:
+        return None
+    code = pre.find("code")
+    return code.get_text() if code is not None else None
+
 class QOJCrawler(BaseCrawler):
     def __init__(self, local_log_path="crawler/platforms/qoj/log.json"):
         super().__init__("qoj", local_log_path)
@@ -323,10 +334,22 @@ class QOJCrawler(BaseCrawler):
         Fetch the source code of a submission. This method is called in `_update_submission_status`.
         """
 
-        code_page = self.fetch_page_with_browser(entry["submission_link"])
-        code_soup = bs4(code_page, "html.parser")
-        code = code_soup.find("pre", class_="sh_sourceCode").find("code").get_text()
-        return code
+        link = entry["submission_link"]
+        for attempt in (1, 2):
+            code_page = self.fetch_page_with_browser(link)
+            code = _extract_source_code(code_page)
+            if code is not None:
+                return code
+            if attempt == 1:
+                self.log(
+                    "warning",
+                    f"Source code block not found (attempt {attempt}) at {link}; retrying.",
+                )
+                self._random_sleep(2, 4)
+        raise ValueError(
+            f"Source code block not found at {link} "
+            "(possibly a Cloudflare challenge page)."
+        )
 
     def fetch_submissions_get_submissions(self):
         """
