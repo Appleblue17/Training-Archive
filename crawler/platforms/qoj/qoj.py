@@ -100,7 +100,8 @@ class QOJCrawler(BaseCrawler):
             return []
 
         soup = bs4(contest_page, "html.parser")
-        contest_elements = soup.find_all("tr", class_="table-success")
+        # QOJ 比赛表格行通常是 table-default；只按 table-success 过滤会漏掉绝大多数比赛。
+        contest_elements = soup.find_all("tr", class_=["table-default", "table-success"])
 
         contest_infos = []
         for contest in contest_elements:
