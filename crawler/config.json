@@ -19,8 +19,8 @@
   "qoj": {
     "enabled": true,
     "base_url": "https://qoj.ac",
-    "min_wait_time": 0.5,
-    "max_wait_time": 2
+    "min_wait_time": 3,
+    "max_wait_time": 5
   },
   "hdu": {
     "enabled": false,
