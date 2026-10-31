@@ -3,5 +3,7 @@
   "name": "Game",
   "time_limit": "2 s",
   "memory_limit": "256 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2026-10-06T10:01:53+08:00",
+  "solve_time": "2026-10-06T10:01:53+08:00"
 }

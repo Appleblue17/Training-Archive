@@ -141,5 +141,29 @@
     "submit_time": "2025-06-28T09:43:03",
     "problem_link": "https://qoj.ac/contest/1780/problem/8944",
     "submission_link": "https://qoj.ac/submission/1126416"
+  },
+  {
+    "submission_id": "#3167866",
+    "problem_id": "17172",
+    "problem_name": "Triangles",
+    "status": "AC",
+    "time": "18ms",
+    "memory": "9400kb",
+    "language": "C++14",
+    "submit_time": "2026-10-13T10:44:04+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17172",
+    "submission_link": "https://qoj.ac/submission/3167866"
+  },
+  {
+    "submission_id": "#3167818",
+    "problem_id": "17172",
+    "problem_name": "Triangles",
+    "status": "WA",
+    "time": "1ms",
+    "memory": "4272kb",
+    "language": "C++14",
+    "submit_time": "2026-10-13T10:34:34+08:00",
+    "problem_link": "https://qoj.ac/contest/3384/problem/17172",
+    "submission_link": "https://qoj.ac/submission/3167818"
   }
 ]
