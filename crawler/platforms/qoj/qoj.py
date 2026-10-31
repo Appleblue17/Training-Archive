@@ -389,11 +389,11 @@ class QOJCrawler(BaseCrawler):
         """
 
         link = entry["submission_link"]
-        for attempt in (1, 2):
+        for attempt in (1, 2, 3):
             code_page = self.fetch_page_with_browser(link)
-            # 等代码块真正出现：页面 / Cloudflare 挑战可能比固定 sleep 慢。
+            # 等代码块真正出现：Cloudflare 挑战页偶发，多等一会儿通常能过。
             try:
-                WebDriverWait(self.driver, 10).until(
+                WebDriverWait(self.driver, 20).until(
                     EC.presence_of_element_located(
                         (By.CSS_SELECTOR, "pre.sh_sourceCode")
                     )
@@ -404,13 +404,11 @@ class QOJCrawler(BaseCrawler):
             code = _extract_source_code(code_page)
             if code is not None:
                 return code
-            if attempt == 1:
-                # 可能是 Cloudflare 挑战页 / 偶发空白页：退避后重试一次
-                self.log(
-                    "warning",
-                    f"Source code block not found (attempt {attempt}) at {link}; retrying.",
-                )
-                self._random_sleep(2, 4)
+            self.log(
+                "warning",
+                f"Source code block not found (attempt {attempt}/3) at {link}; retrying.",
+            )
+            self._random_sleep(3, 6)
         raise ValueError(
             f"Source code block not found at {link} "
             "(possibly a Cloudflare challenge page)."
