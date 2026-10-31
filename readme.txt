@@ -1,24 +1,24 @@
 1:"$Sreact.fragment"
-2:I[48521,[],""]
-3:I[17058,["906","static/chunks/906-74bd3dc7abd85417.js","39","static/chunks/app/error-d11893d92812b6df.js"],"default"]
-4:I[31661,[],""]
-5:I[86070,["177","static/chunks/app/layout-47885cc15503d1d7.js"],"default"]
-6:I[52236,["329","static/chunks/329-3322297afe79dac4.js","343","static/chunks/343-40c27ad0030ffb6f.js","619","static/chunks/app/(main)/page-cdb3afb5c9b7538a.js"],""]
-9:I[47055,[],"OutletBoundary"]
-b:I[39909,[],"AsyncMetadataOutlet"]
-e:I[50939,[],""]
+2:I[86940,[],""]
+3:I[19564,["726","static/chunks/726-40fa02ec163cacf3.js","39","static/chunks/app/error-abfd7c97f79fe3fa.js"],"default"]
+4:I[52682,[],""]
+5:I[69652,["177","static/chunks/app/layout-58ae635126972134.js"],"default"]
+6:I[82173,["672","static/chunks/672-3fcef371aa1a9560.js","279","static/chunks/279-ae46ba79553b0e86.js","619","static/chunks/app/(main)/page-14784824b7ba0fa1.js"],""]
+9:I[47945,[],"OutletBoundary"]
+b:I[18788,[],"AsyncMetadataOutlet"]
+e:I[61336,[],""]
 :HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
-:HL["/Training-Archive/_next/static/css/338c2b79a2f4c1b0.css","style"]
-0:{"P":null,"b":"FmGIYZpjyMflkMRjcbiPJ","p":"/Training-Archive","c":["","readme"],"i":false,"f":[[["",{"children":["(main)",{"children":["readme",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/338c2b79a2f4c1b0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["readme",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L8",null,["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]]}],{},null,false]},null,false]},null,false]},[["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}],[],[]],false],"$Ld",false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
-f:I[47055,[],"ViewportBoundary"]
-11:I[47055,[],"MetadataBoundary"]
+:HL["/Training-Archive/_next/static/css/52ad6a3ee7515c8c.css","style"]
+0:{"P":null,"b":"jPmhzBoOAsVLEqPsX9dxf","p":"/Training-Archive","c":["","readme"],"i":false,"f":[[["",{"children":["(main)",{"children":["readme",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/52ad6a3ee7515c8c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,"$L7"]}],{"children":["readme",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L8",null,["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]]}],{},null,false]},null,false]},null,false]},[["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}],[],[]],false],"$Ld",false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+f:I[47945,[],"ViewportBoundary"]
+11:I[47945,[],"MetadataBoundary"]
 12:"$Sreact.suspense"
-14:I[40493,["329","static/chunks/329-3322297afe79dac4.js","309","static/chunks/309-0daaeb03f988b32b.js","76","static/chunks/app/(main)/layout-6340738e440f15bb.js"],"Image"]
-15:I[31059,["329","static/chunks/329-3322297afe79dac4.js","309","static/chunks/309-0daaeb03f988b32b.js","76","static/chunks/app/(main)/layout-6340738e440f15bb.js"],"default"]
+14:I[72754,["672","static/chunks/672-3fcef371aa1a9560.js","9","static/chunks/9-d4a695e12c584496.js","76","static/chunks/app/(main)/layout-03eb24238ca4b3b0.js"],"Image"]
+15:I[82534,["672","static/chunks/672-3fcef371aa1a9560.js","9","static/chunks/9-d4a695e12c584496.js","76","static/chunks/app/(main)/layout-03eb24238ca4b3b0.js"],"default"]
 d:["$","$1","h",{"children":[null,[["$","$Lf",null,{"children":"$L10"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L11",null,{"children":["$","div",null,{"hidden":true,"children":["$","$12",null,{"fallback":null,"children":"$L13"}]}]}]]}]
 7:["$","div",null,{"className":"mt-4 flex w-full justify-center","children":["$","div",null,{"className":"relative mx-auto w-3/5 min-w-[64rem] px-4","children":[["$","header",null,{"className":"relative w-full rounded-lg py-4 text-slate-300","children":[["$","$L14",null,{"src":"https://appleblue17.github.io/Training-Archive/archive-bot.png","alt":"","width":60,"height":60,"className":"absolute -left-14 top-1/2 h-10 w-10 -translate-y-1/2 select-none","unoptimized":true,"priority":true}],["$","h1",null,{"className":"text-3xl font-semibold tracking-wide","children":"Training Archive"}]]}],["$","$L15",null,{}],["$","main",null,{"className":"my-4","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]
-16:I[16005,["986","static/chunks/app/(main)/readme/page-7082f35ef19b9958.js"],"default"]
-17:T3b4e,# Training Archive
+16:I[97036,["986","static/chunks/app/(main)/readme/page-9b1ac632db3d1d8e.js"],"default"]
+17:T4507,# Training Archive
 
 算法竞赛训练归档站：自动抓取 QOJ / HDU / NowCoder 的参赛提交与题目，归档为静态站点，便于回溯自己的训练记录与解题代码。
 
@@ -29,6 +29,7 @@ d:["$","$1","h",{"children":[null,[["$","$Lf",null,{"children":"$L10"}],["$","me
 - **竞赛归档**：按平台（QOJ / HDU / NowCoder）归档竞赛，展示竞赛列表、题目状态与文件
 - **题目状态标记**：AC / 尝试未解决（黄色背景）等提交状态一目了然，显示提交时间与解决耗时
 - **文件查看器**：在线预览 Markdown（GFM / 数学公式 / KaTeX / 代码高亮）、PDF、源码文件，支持下载
+- **资源保护**：可把某场比赛标记为受保护（`contest.json` 的 `"protected": true` 或 `protected-contests.json` 清单），其**文件内容**（题目文件 / 源码 / PDF / 复盘）在构建时用全站密码加密、原始文件不发布；浏览器输一次密码后记住（`localStorage`）。比赛名 / 题目 / 标签 / 统计等元数据仍公开
 - **复盘报告**：每场完赛自动生成 LLM 复盘报告（DeepSeek）与 QQ 群分享文本
 - **赛前提醒**：预订的比赛开始前自动在 QQ 群发提醒
 - **状态页面**：查看爬虫配置、各平台最后更新时间、待回填提交与订阅列表（/status）
@@ -77,6 +78,10 @@ pnpm lint       # 代码检查
 ```bash
 pip install -r crawler/requirements.txt
 
+# 爬虫单元测试（纯逻辑，不启动 Chrome；需先安装 requirements-dev.txt）
+pip install -r crawler/requirements-dev.txt
+python3 -m pytest crawler/tests
+
 # 默认模式：抓订阅比赛 + 全量增量提交（手动/临时）
 python3 crawler/scripts/scheduled_task.py
 # 只查订阅/新建比赛（有新建才回填其提交；高频触发推荐）
@@ -93,7 +98,7 @@ python3 crawler/scripts/report.py --from-crawl --links "https://qoj.ac/contest/1
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
 # QQ 群分享（可选，config.json 的 ai_tasks.share.enabled 开启后 daemon 自动调用；NapCat 配置见 crawler/config.example.json 的 qq 块）
-python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456" [--file-only]
+python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456"
 python3 crawler/scripts/qq_share.py "contests/2026-08-01 xxx"
 ```
 
@@ -158,6 +163,7 @@ python3 crawler/scripts/daemon.py incremental     # 提交增量同步（--submi
 python3 crawler/scripts/daemon.py remind          # 赛前提醒检查（开始前向 QQ 群发提醒）
 python3 crawler/scripts/daemon.py install         # 注册开机自启（按 OS：systemd user / launchd / schtasks）
 python3 crawler/scripts/daemon.py install --system   # 仅 Linux：系统级服务（开机即启动、无需登录，需 sudo）
+python3 crawler/scripts/daemon.py install --xvfb     # 仅 Linux：服务用 xvfb-run 包裹（QOJ 非无头抓取，需装 xvfb）
 python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
 python3 crawler/scripts/daemon.py uninstall --system # 仅 Linux：注销系统级服务（需 sudo）
 python3 crawler/scripts/daemon.py install-qqbot       # 注册 QQ 群机器人独立服务（见「快速开始 → QQ 群机器人」）
@@ -202,7 +208,16 @@ python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 - **Linux**：仓库已带 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`，直接可用。
 - **Windows / macOS**：下载与 Chrome 大版本匹配的 chromedriver 放入对应目录，或直接用 `CHROME_BINARY` / `CHROMEDRIVER_PATH` 指向自备路径。
 - **版本匹配**：chromedriver 需与 Chrome 主版本一致（下载：<https://googlechromelabs.github.io/chrome-for-testing/>）。
+- **以 root 运行**（服务器 / 容器）：会自动加 `--no-sandbox` 与 `--disable-dev-shm-usage`（非 root 可用 `CHROME_NO_SANDBOX=1` 强制）；QOJ 仍需非无头：`xvfb-run -a env CHROME_HEADLESS=0 ...`，服务方式可用 `install --xvfb`。
 - HDU / NowCoder 题目 HTML→Markdown 依赖 **pandoc**（Linux `apt install pandoc` / macOS `brew install pandoc` / Windows winget）。
+
+### 测试与验证
+
+- **爬虫单元测试**：`.venv/bin/python -m pytest crawler/tests`（纯逻辑，不启动浏览器）
+- **前端测试**：`pnpm test`（Vitest）+ `pnpm lint` + `pnpm exec tsc --noEmit`
+- **跨平台端到端测试**：`.venv/bin/python crawler/scripts/e2e_test.py check|unit|offline|live|service|events`——
+  在 `.e2e/` 隔离沙箱内验证「订阅 → 闹钟 → 抓取 → 复盘 → 推送」链路，不污染真实仓库、不向 GitHub 推送。
+  完整步骤与睡眠 / 重启 / 断网等特殊情况见 [docs/e2e-testing.md](docs/e2e-testing.md)，发布流程见 [docs/release-checklist.md](docs/release-checklist.md)。
 
 ### fork 部署（参数化）
 
@@ -226,9 +241,21 @@ env:
 
 > `deploy.yml` 通过 `push` 到 `deploy` 分支触发；守护进程只在 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送（带 `[contests-changed]` 标记触发部署），仅 crawler 状态 / 日志变化时不发提交（已在本地持久化）。
 
-### 动态版（v0.4.0 规划中）
+### 资源保护（可选）
 
-自建服务器 / Docker 部署 Next.js 动态服务，支持账号系统、个人收藏、正式资源保护与精确到分钟的调度，详见 [docs/roadmap.md](docs/roadmap.md) §1.1 / §3 / §5。
+全站统一密码通过构建时环境变量提供（**不要**加 `NEXT_PUBLIC_` 前缀，否则会进前端产物）：
+
+```bash
+# .env（本地） / GitHub Actions secret（部署）
+RESOURCE_PASSWORD=your-password
+```
+
+标记受保护比赛（二选一，取并集）：
+
+- 在该比赛的 `contests/<文件夹>/contest.json` 中加 `"protected": true`（推荐；爬虫只在新建比赛时写 `contest.json`，之后不会覆盖）；
+- 或在仓库根 `protected-contests.json` 的 `protected` 数组里列出比赛文件夹名。
+
+`pnpm build` 会把受保护比赛的**文件内容**（题面 / 源码 / PDF / 复盘 / 附件）用 PBKDF2 + AES-GCM 加密进页面，**不**把原始文件复制到 `public/contests`。比赛名、题目名、标签、通过状态与统计等**元数据公开**（首页 / 搜索 / Dashboard 正常展示，首页仅带锁标记）；点进文件查看页或复盘页时才需要密码。浏览器验证成功后把密码记入 `localStorage`，下次自动解锁。未配置 `RESOURCE_PASSWORD` 时，受保护文件的查看页只显示提示、不渲染内容。
 
 ## 文档
 
@@ -245,7 +272,7 @@ env:
 [MIT](LICENSE) © Appleblue17
 
 本项目仅用于学习与个人归档用途。
-18:T5243,
+18:T5e9d,
 <h1>Training Archive</h1>
 <p>算法竞赛训练归档站：自动抓取 QOJ / HDU / NowCoder 的参赛提交与题目，归档为静态站点，便于回溯自己的训练记录与解题代码。</p>
 <p>在线访问：<a href="https://appleblue17.github.io/Training-Archive/">https://appleblue17.github.io/Training-Archive/</a></p>
@@ -254,6 +281,7 @@ env:
   <li><strong>竞赛归档</strong>：按平台（QOJ / HDU / NowCoder）归档竞赛，展示竞赛列表、题目状态与文件</li>
   <li><strong>题目状态标记</strong>：AC / 尝试未解决（黄色背景）等提交状态一目了然，显示提交时间与解决耗时</li>
   <li><strong>文件查看器</strong>：在线预览 Markdown（GFM / 数学公式 / KaTeX / 代码高亮）、PDF、源码文件，支持下载</li>
+  <li><strong>资源保护</strong>：可把某场比赛标记为受保护（<code>contest.json</code> 的 <code>"protected": true</code> 或 <code>protected-contests.json</code> 清单），其<strong>文件内容</strong>（题目文件 / 源码 / PDF / 复盘）在构建时用全站密码加密、原始文件不发布；浏览器输一次密码后记住（<code>localStorage</code>）。比赛名 / 题目 / 标签 / 统计等元数据仍公开</li>
   <li><strong>复盘报告</strong>：每场完赛自动生成 LLM 复盘报告（DeepSeek）与 QQ 群分享文本</li>
   <li><strong>赛前提醒</strong>：预订的比赛开始前自动在 QQ 群发提醒</li>
   <li><strong>状态页面</strong>：查看爬虫配置、各平台最后更新时间、待回填提交与订阅列表（/status）</li>
@@ -315,6 +343,10 @@ pnpm lint       <span class="hljs-comment"># 代码检查</span>
 <h3>爬虫</h3>
 <pre><code class="hljs language-bash">pip install -r crawler/requirements.txt
 
+<span class="hljs-comment"># 爬虫单元测试（纯逻辑，不启动 Chrome；需先安装 requirements-dev.txt）</span>
+pip install -r crawler/requirements-dev.txt
+python3 -m pytest crawler/tests
+
 <span class="hljs-comment"># 默认模式：抓订阅比赛 + 全量增量提交（手动/临时）</span>
 python3 crawler/scripts/scheduled_task.py
 <span class="hljs-comment"># 只查订阅/新建比赛（有新建才回填其提交；高频触发推荐）</span>
@@ -331,7 +363,7 @@ python3 crawler/scripts/report.py --from-crawl --links <span class="hljs-string"
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py <span class="hljs-string">"contests/2026-08-01 xxx"</span>
 <span class="hljs-comment"># QQ 群分享（可选，config.json 的 ai_tasks.share.enabled 开启后 daemon 自动调用；NapCat 配置见 crawler/config.example.json 的 qq 块）</span>
-python3 crawler/scripts/qq_share.py --links <span class="hljs-string">"https://qoj.ac/contest/123,https://qoj.ac/contest/456"</span> [--file-only]
+python3 crawler/scripts/qq_share.py --links <span class="hljs-string">"https://qoj.ac/contest/123,https://qoj.ac/contest/456"</span>
 python3 crawler/scripts/qq_share.py <span class="hljs-string">"contests/2026-08-01 xxx"</span>
 </code></pre>
 <p>爬虫会生成 <code>contests/</code> 数据目录与各平台日志文件（均已被 <code>.gitignore</code> 忽略）。</p>
@@ -430,6 +462,7 @@ python3 crawler/scripts/daemon.py incremental     <span class="hljs-comment"># �
 python3 crawler/scripts/daemon.py remind          <span class="hljs-comment"># 赛前提醒检查（开始前向 QQ 群发提醒）</span>
 python3 crawler/scripts/daemon.py install         <span class="hljs-comment"># 注册开机自启（按 OS：systemd user / launchd / schtasks）</span>
 python3 crawler/scripts/daemon.py install --system   <span class="hljs-comment"># 仅 Linux：系统级服务（开机即启动、无需登录，需 sudo）</span>
+python3 crawler/scripts/daemon.py install --xvfb     <span class="hljs-comment"># 仅 Linux：服务用 xvfb-run 包裹（QOJ 非无头抓取，需装 xvfb）</span>
 python3 crawler/scripts/daemon.py uninstall       <span class="hljs-comment"># 注销开机自启</span>
 python3 crawler/scripts/daemon.py uninstall --system <span class="hljs-comment"># 仅 Linux：注销系统级服务（需 sudo）</span>
 python3 crawler/scripts/daemon.py install-qqbot       <span class="hljs-comment"># 注册 QQ 群机器人独立服务（见「快速开始 → QQ 群机器人」）</span>
@@ -490,7 +523,18 @@ python3 crawler/scripts/daemon.py status          <span class="hljs-comment"># �
   <li><strong>Linux</strong>：仓库已带 <code>crawler/chrome-linux64/</code> 与 <code>crawler/chromedriver-linux64/</code>，直接可用。</li>
   <li><strong>Windows / macOS</strong>：下载与 Chrome 大版本匹配的 chromedriver 放入对应目录，或直接用 <code>CHROME_BINARY</code> / <code>CHROMEDRIVER_PATH</code> 指向自备路径。</li>
   <li><strong>版本匹配</strong>：chromedriver 需与 Chrome 主版本一致（下载：<a href="https://googlechromelabs.github.io/chrome-for-testing/">https://googlechromelabs.github.io/chrome-for-testing/</a>）。</li>
+  <li><strong>以 root 运行</strong>（服务器 / 容器）：会自动加 <code>--no-sandbox</code> 与 <code>--disable-dev-shm-usage</code>（非 root 可用 <code>CHROME_NO_SANDBOX=1</code> 强制）；QOJ 仍需非无头：<code>xvfb-run -a env CHROME_HEADLESS=0 ...</code>，服务方式可用 <code>install --xvfb</code>。</li>
   <li>HDU / NowCoder 题目 HTML→Markdown 依赖 <strong>pandoc</strong>（Linux <code>apt install pandoc</code> / macOS <code>brew install pandoc</code> / Windows winget）。</li>
+</ul>
+<h3>测试与验证</h3>
+<ul>
+  <li><strong>爬虫单元测试</strong>：<code>.venv/bin/python -m pytest crawler/tests</code>（纯逻辑，不启动浏览器）</li>
+  <li><strong>前端测试</strong>：<code>pnpm test</code>（Vitest）+ <code>pnpm lint</code> + <code>pnpm exec tsc --noEmit</code></li>
+  <li>
+    <strong>跨平台端到端测试</strong>：<code>.venv/bin/python crawler/scripts/e2e_test.py check|unit|offline|live|service|events</code>——
+    在 <code>.e2e/</code> 隔离沙箱内验证「订阅 → 闹钟 → 抓取 → 复盘 → 推送」链路，不污染真实仓库、不向 GitHub 推送。
+    完整步骤与睡眠 / 重启 / 断网等特殊情况见 <a href="docs/e2e-testing.md">docs/e2e-testing.md</a>，发布流程见 <a href="docs/release-checklist.md">docs/release-checklist.md</a>。
+  </li>
 </ul>
 <h3>fork 部署（参数化）</h3>
 <p>前端常量已 env 化，fork 后构建时设置以下变量即可不改代码部署到自己的 GitHub Pages：</p>
@@ -530,8 +574,17 @@ python3 crawler/scripts/daemon.py status          <span class="hljs-comment"># �
 <blockquote>
   <p><code>deploy.yml</code> 通过 <code>push</code> 到 <code>deploy</code> 分支触发；守护进程只在 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送（带 <code>[contests-changed]</code> 标记触发部署），仅 crawler 状态 / 日志变化时不发提交（已在本地持久化）。</p>
 </blockquote>
-<h3>动态版（v0.4.0 规划中）</h3>
-<p>自建服务器 / Docker 部署 Next.js 动态服务，支持账号系统、个人收藏、正式资源保护与精确到分钟的调度，详见 <a href="docs/roadmap.md">docs/roadmap.md</a> §1.1 / §3 / §5。</p>
+<h3>资源保护（可选）</h3>
+<p>全站统一密码通过构建时环境变量提供（<strong>不要</strong>加 <code>NEXT_PUBLIC_</code> 前缀，否则会进前端产物）：</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># .env（本地） / GitHub Actions secret（部署）</span>
+RESOURCE_PASSWORD=your-password
+</code></pre>
+<p>标记受保护比赛（二选一，取并集）：</p>
+<ul>
+  <li>在该比赛的 <code>contests/&#x3C;文件夹>/contest.json</code> 中加 <code>"protected": true</code>（推荐；爬虫只在新建比赛时写 <code>contest.json</code>，之后不会覆盖）；</li>
+  <li>或在仓库根 <code>protected-contests.json</code> 的 <code>protected</code> 数组里列出比赛文件夹名。</li>
+</ul>
+<p><code>pnpm build</code> 会把受保护比赛的<strong>文件内容</strong>（题面 / 源码 / PDF / 复盘 / 附件）用 PBKDF2 + AES-GCM 加密进页面，<strong>不</strong>把原始文件复制到 <code>public/contests</code>。比赛名、题目名、标签、通过状态与统计等<strong>元数据公开</strong>（首页 / 搜索 / Dashboard 正常展示，首页仅带锁标记）；点进文件查看页或复盘页时才需要密码。浏览器验证成功后把密码记入 <code>localStorage</code>，下次自动解锁。未配置 <code>RESOURCE_PASSWORD</code> 时，受保护文件的查看页只显示提示、不渲染内容。</p>
 <h2>文档</h2>
 <table>
   <thead>

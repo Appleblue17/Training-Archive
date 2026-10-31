@@ -1,0 +1,282 @@
+1:"$Sreact.fragment"
+2:I[86940,[],""]
+3:I[19564,["726","static/chunks/726-40fa02ec163cacf3.js","39","static/chunks/app/error-abfd7c97f79fe3fa.js"],"default"]
+4:I[52682,[],""]
+5:I[69652,["672","static/chunks/672-3fcef371aa1a9560.js","337","static/chunks/337-209c8b312020ab55.js","494","static/chunks/494-91caef3d2b8f2aee.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-4e0982375720c399.js"],"default"]
+6:I[82173,["672","static/chunks/672-3fcef371aa1a9560.js","337","static/chunks/337-209c8b312020ab55.js","494","static/chunks/494-91caef3d2b8f2aee.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-4e0982375720c399.js"],""]
+f:I[61336,[],""]
+:HL["/Training-Archive/_next/static/media/cc27cf3ff100ea21-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Training-Archive/_next/static/css/52ad6a3ee7515c8c.css","style"]
+0:{"P":null,"b":"jPmhzBoOAsVLEqPsX9dxf","p":"/Training-Archive","c":["","view","contests","2026-10-13%20The%204th%20Universal%20Cup.%20Stage%2017%3A%20Grand%20Prix%20of%20St.%20Petersburg","problems","G","submissions","%233320159.cpp"],"i":false,"f":[[["",{"children":["view",{"children":["contests",{"children":[["contest","2026-10-13%20The%204th%20Universal%20Cup.%20Stage%2017%3A%20Grand%20Prix%20of%20St.%20Petersburg","d"],{"children":["problems",{"children":[["problem","G","d"],{"children":["submissions",{"children":[["file","%233320159.cpp","d"],{"children":["__PAGE__",{}]}]}]}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Training-Archive/_next/static/css/52ad6a3ee7515c8c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"UTF-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link",null,{"rel":"icon","type":"image/png","href":"https://appleblue17.github.io/Training-Archive/archive-bot.png"}]]}],["$","body",null,{"className":"__className_e3f162 antialiased","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex min-h-[50vh] flex-col items-center justify-center gap-4 p-8 text-center","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"m13.5 8.5-5 5","key":"1cs55j"}],["path",{"d":"m8.5 8.5 5 5","key":"a8mexj"}],["circle",{"cx":"11","cy":"11","r":"8","key":"4ej97u"}],["path",{"d":"m21 21-4.3-4.3","key":"1qie3q"}]],"className":"lucide-search-x size-10 text-gray-500","aria-hidden":true}],["$","h2",null,{"className":"text-lg font-semibold text-slate-100","children":"Page not found"}],["$","p",null,{"className":"max-w-md text-sm text-gray-400","children":"The page you are looking for does not exist or has been moved."}],["$","$L6",null,{"href":"/","children":"Back to contest list","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 disabled:pointer-events-none disabled:opacity-50 bg-blue-700 text-white hover:bg-blue-600 h-9 px-4 py-2","ref":null}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"my-4","children":[["$","p",null,{"className":"mt-0 border-t border-gray-700 pt-4 text-center text-sm text-gray-400","children":["© 2025 Training Archive ·"," ",["$","a",null,{"href":"https://github.com/appleblue17/Training-Archive/","target":"_blank","rel":"noopener noreferrer","className":"hover:text-blue-300","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 3h6v6","key":"1q9fwt"}],["path",{"d":"M10 14 21 3","key":"gplh6r"}],["path",{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","key":"a6xqqp"}]],"className":"lucide-external-link mr-1 inline size-4"}],"GitHub"]}]," ","· MIT License"]}],["$","p",null,{"className":"mt-2 text-center text-sm text-gray-400","children":["Designed and developed by",["$","a",null,{"href":"https://github.com/Appleblue17","target":"_blank","rel":"noopener noreferrer","className":"px-1 text-blue-400 hover:text-blue-300","children":"Appleblue17"}]]}],["$","p",null,{"className":"mt-2 text-center text-xs text-gray-500","children":"Disclaimer: This project is for educational purposes only. Use at your own risk."}]]}]]}]]}]]}],{"children":["view",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["contests",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["contest","2026-10-13%20The%204th%20Universal%20Cup.%20Stage%2017%3A%20Grand%20Prix%20of%20St.%20Petersburg","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":"$L7","templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["problems","$L8",{"children":[["problem","G","d"],"$L9",{"children":["submissions","$La",{"children":[["file","%233320159.cpp","d"],"$Lb",{"children":["__PAGE__","$Lc",{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},null,false]},["$Ld",[],[]],false],"$Le",false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+11:I[47945,[],"OutletBoundary"]
+13:I[18788,[],"AsyncMetadataOutlet"]
+15:I[47945,[],"ViewportBoundary"]
+17:I[47945,[],"MetadataBoundary"]
+18:"$Sreact.suspense"
+7:["$","$L4",null,{}]
+8:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+a:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+b:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+c:["$","$1","c",{"children":["$L10",null,["$","$L11",null,{"children":["$L12",["$","$L13",null,{"promise":"$@14"}]]}]]}]
+d:["$","div","l",{"className":"w-full space-y-6 p-8","role":"status","aria-label":"Loading","children":[["$","span",null,{"className":"sr-only","children":"Loading..."}],["$","div",null,{"className":"h-8 w-48 animate-pulse rounded bg-gray-800"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}],["$","div",null,{"className":"h-16 animate-pulse rounded-lg border border-gray-700 bg-gray-800/60"}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}],["$","div",null,{"className":"h-9 w-24 animate-pulse rounded-md bg-gray-800"}]]}]]}]
+e:["$","$1","h",{"children":[null,[["$","$L15",null,{"children":"$L16"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L17",null,{"children":["$","div",null,{"hidden":true,"children":["$","$18",null,{"fallback":null,"children":"$L19"}]}]}]]}]
+1a:I[65524,["672","static/chunks/672-3fcef371aa1a9560.js","337","static/chunks/337-209c8b312020ab55.js","494","static/chunks/494-91caef3d2b8f2aee.js","41","static/chunks/app/view/contests/%5Bcontest%5D/problems/%5Bproblem%5D/submissions/%5Bfile%5D/page-4e0982375720c399.js"],"default"]
+1b:T1a82,#pragma GCC optimize(2)
+#pragma GCC optimize(3)
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef double dou;
+typedef pair<int,int> pii;
+#define fi first
+#define se second
+#define mapa make_pair
+typedef long double ld;
+typedef unsigned long long ull;
+#define ep emplace_back
+template <typename T>inline void read(T &x){
+	x=0;char c=getchar();bool f=0;
+	for(;c<'0'||c>'9';c=getchar()) f|=(c=='-');
+	for(;c>='0'&&c<='9';c=getchar())
+	x=(x<<1)+(x<<3)+(c^48);
+	x=(f?-x:x);
+}
+const int N=4e5+5, inf=1e9;
+int T, n, m;
+char col[N];
+vector<int> e[N];
+char qc[2];
+int dfn[N], timer, dep[N], seq[N];
+void dfs(int x, int fa){
+    dep[x]=dep[fa]+1;
+    dfn[x]=++timer; seq[timer]=x;
+    for(auto y:e[x]){
+        if(y==fa) continue;
+        dfs(y, x);
+        seq[++timer]=x;
+    }
+}
+int lg[N], st[20][N];
+void pre(){
+    for(int i=2; i<=timer; ++i) lg[i]=lg[i>>1]+1;
+    for(int i=1; i<=timer; ++i) st[0][i]=seq[i];
+    for(int i=1; i<=lg[timer]; ++i){
+        for(int j=1; j+(1<<i)-1<=timer; ++j){
+            st[i][j]=dep[st[i-1][j]]<dep[st[i-1][j+(1<<(i-1))]]?st[i-1][j]:st[i-1][j+(1<<(i-1))];
+        }
+    }
+}
+inline int lca(int x, int y){
+    x=dfn[x]; y=dfn[y];
+    if(x>y) swap(x, y);
+	int t=lg[y-x+1];
+    return dep[st[t][x]]<dep[st[t][y-(1<<t)+1]]?st[t][x]:st[t][y-(1<<t)+1];
+}
+inline int dis(int x, int y){
+    return dep[x]+dep[y]-2*dep[lca(x, y)];
+}
+vector<array<int, 4> > fr[N];
+bool ban[N];
+int sz[N], mxs[N], mxid[N];
+void dfs1(int x, int fa, int allsz, int &rt){
+    sz[x]=1; mxs[x]=0;
+    for(auto y:e[x]) {
+        if(y==fa||ban[y]) continue;
+        dfs1(y, x, allsz, rt);
+        sz[x]+=sz[y];
+        mxs[x]=max(mxs[x], sz[y]);
+    }
+    if(rt==0||max(mxs[x], allsz-sz[x])<max(mxs[rt], allsz-sz[rt])) rt=x;
+}
+void dfs2(int x, int fa, int id, int rt, int d){
+    sz[x]=1; 
+    array<int, 4> a={rt, id, ++mxid[rt], fa};
+    fr[x].ep(a);
+    for(auto y:e[x]) {
+        if(y==fa||ban[y]) continue;
+        dfs2(y, x, id, rt, d+1);
+        sz[x]+=sz[y];
+    }
+}
+void work(int x, int allsz){
+    int rt=x;
+    dfs1(x, 0, allsz, rt);
+    array<int, 4> a={rt, rt, ++mxid[rt], 0};
+    fr[rt].ep(a);
+    for(auto y:e[rt]){
+        if(!ban[y]) dfs2(y, rt, y, rt, 1);
+    }
+    ban[rt]=1;
+    for(auto y:e[rt]){
+        if(!ban[y]) work(y, sz[y]);
+    }
+}
+struct info{
+    int mn1, c1, mn2, c2;
+    info(int _mn1=inf, int _c1=0, int _mn2=inf, int _c2=0){
+        mn1=_mn1; c1=_c1; mn2=_mn2; c2=_c2; 
+    }
+};
+inline info operator +(info x, info y){
+    info ret;
+    if(x.mn1<y.mn1){
+        ret=x;
+        if(y.c1!=ret.c1&&y.mn1<ret.mn2){
+            ret.mn2=y.mn1, ret.c2=y.c1;
+        }
+        if(y.c2!=ret.c1&&y.mn2<ret.mn2){
+            ret.mn2=y.mn2, ret.c2=y.c2;
+        }
+    }
+    else{
+        ret=y;
+        if(x.c1!=ret.c1&&x.mn1<ret.mn2){
+            ret.mn2=x.mn1, ret.c2=x.c1;
+        }
+        if(x.c2!=ret.c1&&x.mn2<ret.mn2){
+            ret.mn2=x.mn2, ret.c2=x.c2;
+        }
+    }
+    return ret;
+}
+info trg[N*40], trr[N*40]; int ls[N*40], rs[N*40];
+int rt[N], idx;
+void add(int &p, int l, int r, int id, int d, int c, char tp){
+    if(!p){
+        p=++idx;
+        trr[p]=trr[0]; trg[p]=trg[0]; ls[p]=rs[p]=0;
+    }
+    if(l==r){
+        if(tp=='R') trr[p].mn1=d, trr[p].c1=c;
+        if(tp=='G') trg[p].mn1=d, trg[p].c1=c;
+        return ;
+    }
+    int mid=(l+r)>>1;
+    if(id<=mid) add(ls[p], l, mid, id, d, c, tp);
+    else add(rs[p], mid+1, r, id, d, c, tp);
+    trr[p]=trr[ls[p]]+trr[rs[p]];
+    trg[p]=trg[ls[p]]+trg[rs[p]];
+}
+void del(int &p, int l, int r, int id, char tp){
+    if(l==r){
+        if(tp=='R') trr[p]=trr[0];
+        if(tp=='G') trg[p]=trg[0];
+        return ;
+    }
+    int mid=(l+r)>>1;
+    if(id<=mid) del(ls[p], l, mid, id, tp);
+    else del(rs[p], mid+1, r, id, tp);
+    trr[p]=trr[ls[p]]+trr[rs[p]];
+    trg[p]=trg[ls[p]]+trg[rs[p]];
+}
+void solve(){
+    read(n); read(m);
+    timer=0;
+    idx=0;
+    for(int i=1; i<=n; ++i) {
+        e[i].clear(); 
+        fr[i].clear(); 
+        mxid[i]=0;
+        ban[i]=0; 
+        rt[i]=0;
+    }
+    for(int i=1, x, y; i<n; ++i){
+        read(x); read(y);
+        e[x].push_back(y); e[y].push_back(x);
+    }
+    dfs(1, 0);
+    pre();
+    work(1, n);
+    scanf("%s", col+1);
+    for(int x=1; x<=n; ++x){
+        reverse(fr[x].begin(), fr[x].end());
+        for(auto [fa, c, id, oid]:fr[x]){
+            int d=dis(fa, x);
+            if(fa==x) c=0;
+            if(col[x]=='R'){
+                add(rt[fa], 1, mxid[fa], id, d, c, 'R');
+            }
+            if(col[x]=='G'){
+                add(rt[fa], 1, mxid[fa], id, d, c, 'G');
+            }
+        }
+    }
+    for(int i=1, op, x; i<=m; ++i){
+        read(op);
+        if(op==1){
+            read(x); scanf("%s", qc+1);
+            
+            for(auto [fa, c, id, oid]:fr[x]){
+                int d=dis(fa, x);
+                if(fa==x) c=0;
+                if(col[x]=='R'){
+                    del(rt[fa], 1, mxid[fa], id, 'R');
+                }
+                if(col[x]=='G'){
+                    del(rt[fa], 1, mxid[fa], id, 'G');
+                }
+                if(qc[1]=='R'){
+                    add(rt[fa], 1, mxid[fa], id, d, c, 'R');
+                }
+                if(qc[1]=='G'){
+                    add(rt[fa], 1, mxid[fa], id, d, c, 'G');
+                }
+            }
+            col[x]=qc[1];
+        }
+        else{
+            read(x);
+            info mnr, mng;
+            for(auto [fa, c, id, oid]:fr[x]){
+                int d=dis(fa, x);
+                if(x==fa){
+                    mnr=trr[rt[x]];
+                    mng=trg[rt[x]];
+                }
+                else{
+                    if(trr[rt[fa]].c1!=c) mnr=mnr+(info){trr[rt[fa]].mn1+d, oid, inf, 0};
+                    else mnr=mnr+(info){trr[rt[fa]].mn2+d, oid, inf, 0};
+                    if(trg[rt[fa]].c1!=c) mng=mng+(info){trg[rt[fa]].mn1+d, oid, inf, 0};
+                    else mng=mng+(info){trg[rt[fa]].mn2+d, oid, inf, 0};
+                }
+            }
+            int ans=1e9;
+            // cout<<mnr.mn1<<' '<<mnr.c1<<' '<<mnr.v1<<' '<<mnr.mn2<<' '<<mnr.c2<<' '<<mnr.v2<<endl;
+            // cout<<mng.mn1<<' '<<mng.c1<<' '<<mng.v1<<' '<<mng.mn2<<' '<<mng.c2<<' '<<mng.v2<<endl;
+            if(mnr.c1!=mng.c1){
+                ans=min(ans, mnr.mn1+mng.mn1);
+            }
+            if(mnr.c2!=mng.c1){
+                ans=min(ans, mnr.mn2+mng.mn1);
+            }
+            if(mnr.c1!=mng.c2){
+                ans=min(ans, mnr.mn1+mng.mn2);
+            }
+            if(mnr.c2!=mng.c2){
+                ans=min(ans, mnr.mn2+mng.mn2);
+            }
+            if(ans==1e9) ans=-1;
+            printf("%d\n", ans);
+        }
+    }
+}
+int main(){
+	// freopen("D:\\nya\\acm\\A\\test.in","r",stdin);
+	// freopen("D:\\nya\\acm\\A\\test.out","w",stdout);
+	read(T);
+	while(T--){
+		solve();
+	}
+	return 0;
+}
+10:["$","div",null,{"className":"flex min-h-screen justify-center py-4","children":["$","div",null,{"className":"mx-auto w-4/5","children":[["$","header",null,{"className":"relative w-full rounded-lg py-2 text-slate-300","children":[["$","$L6",null,{"href":"/","children":["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8","key":"5wwlr5"}],["path",{"d":"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z","key":"r6nss1"}]],"className":"lucide-house absolute -left-10 top-3 size-6 transition-colors hover:text-gray-400"}]}],["$","h1",null,{"className":"text-2xl font-semibold tracking-wide","children":"File Viewer"}],["$","p",null,{"className":"ml-4 mt-2 text-base text-gray-400","children":[["$","span",null,{"className":"px-2 text-lg text-gray-200","children":"/"}],"2026-10-13 The 4th Universal Cup. Stage 17: Grand Prix of St. Petersburg",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"G",[["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"submissions"]],["$","span",null,{"className":"px-2 text-lg text-slate-300","children":"/"}],"#3320159.cpp"]}],["$","div",null,{"className":"absolute right-8 top-2 flex items-center gap-2","children":[["$","a",null,{"href":"/Training-Archive/contests/2026-10-13 The 4th Universal Cup. Stage 17: Grand Prix of St. Petersburg/problems/G/submissions/#3320159.cpp","download":true,"className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M12 15V3","key":"m9g1x1"}],["path",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4","key":"ih7n3h"}],["path",{"d":"m7 10 5 5 5-5","key":"brsn70"}]],"className":"lucide-download mr-2 inline-block text-base size-4"}],"Download"]}],["$","a",null,{"href":"/Training-Archive/contests/2026-10-13 The 4th Universal Cup. Stage 17: Grand Prix of St. Petersburg/problems/G/submissions/#3320159.cpp","target":"_blank","rel":"noopener noreferrer","className":"rounded bg-gray-700 px-3 py-1 text-sm text-white hover:bg-gray-600","children":[["$","$L5",null,{"ref":"$undefined","iconNode":[["path",{"d":"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z","key":"1oefj6"}],["path",{"d":"M14 2v5a1 1 0 0 0 1 1h5","key":"wfsgrz"}],["path",{"d":"M10 9H8","key":"b1mrlr"}],["path",{"d":"M16 13H8","key":"t4e002"}],["path",{"d":"M16 17H8","key":"z1uh3a"}]],"className":"lucide-file-text mr-2 inline-block text-base size-4"}],"Raw File"]}]]}]]}],["$","main",null,{"className":"mt-4 flex w-full items-start justify-center gap-4","children":[["$","div",null,{"className":"flex-grow","children":["$","$L1a",null,{"code":"$1b","ext":".cpp"}]}],"$L1c"]}]]}]}]
+1c:["$","div",null,{"className":"flex-shrink-0 basis-1/5 space-y-2 overflow-auto","children":[["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"File"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"#3320159.cpp"}]]}],["$","div","size",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Size","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"6.627 KB (6786 B)"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Problem"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"Traffic Lights"}]]}],["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/3384/problem/17167","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/3384/problem/17167"}]]}],["$","div","time_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Time Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"5.5 s"}]]}],["$","div","memory_limit",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Memory Limit","]"]}]," ",["$","span",null,{"className":"text-yellow-400","children":"1024 MB"}]]}],["$","div","solved",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solved","]"]}]," ",["$","span",null,{"className":"text-cyan-400","children":"true"}]]}],["$","div","submit_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Submit Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/10/30 17:49:59"}]]}],["$","div","solve_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Solve Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/10/30 17:49:59"}]]}]]}]]}],["$","div",null,{"className":"overflow-auto","children":[["$","h2",null,{"className":"px-1 py-1 text-sm font-medium text-gray-300","children":"Contest"}],["$","div",null,{"className":"rounded border-2 border-gray-400 bg-black/80 px-2 py-3 font-mono text-sm text-green-300","children":[["$","div","name",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Name","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"The 4th Universal Cup. Stage 17: Grand Prix of St. Petersburg"}]]}],["$","div","date",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Date","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026-10-13"}]]}],["$","div","start_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Start Time","]"]}]," ",["$","span",null,{"className":"text-pink-400","children":"2026/10/13 09:10:32"}]]}],["$","div","end_time",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":["$L1d"," ","$L1e"]}],"$L1f","$L20"]}]]}]]}]
+1d:["$","span",null,{"className":"text-blue-400","children":["[","End Time","]"]}]
+1e:["$","span",null,{"className":"text-pink-400","children":"2026/10/13 14:10:32"}]
+1f:["$","div","link",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Link","]"]}]," ",["$","a",null,{"href":"https://qoj.ac/contest/3384","target":"_blank","rel":"noopener noreferrer","className":"text-indigo-400 underline hover:text-indigo-200","children":"https://qoj.ac/contest/3384"}]]}]
+20:["$","div","difficulty",{"className":"mb-1 break-all","style":{"textIndent":"-1.2em","paddingLeft":"1.2em"},"children":[["$","span",null,{"className":"text-blue-400","children":["[","Difficulty","]"]}]," ",["$","span",null,{"className":"text-green-200","children":"null"}]]}]
+16:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+12:null
+14:{"metadata":[["$","title","0",{"children":"#3320159.cpp · Traffic Lights · The 4th Universal Cup. Stage 17: Grand Prix of St. Petersburg · Training Archive"}]],"error":null,"digest":"$undefined"}
+19:"$14:metadata"
