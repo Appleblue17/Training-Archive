@@ -67,7 +67,9 @@
   `.crdownload` 未完成时误判失败；`driver.get` 等待全部资源会卡 120s+；源码页固定
   sleep 在慢加载 / Cloudflare 挑战时取不到代码块。改为下载等待 300s + 60s 无增长判卡死、
   移除「3s 后目录为空即失败」、`page_load_strategy="eager"` + `set_page_load_timeout(30)`、
-  源码抓取用 `WebDriverWait` 等 `pre.sh_sourceCode`
+  源码抓取用 `WebDriverWait(40s)` 等 `pre.sh_sourceCode`，最多 3 次、退避 6–10s
+- **QOJ 请求间隔调大到 3–5s**（`config.example.json`）：降低 Cloudflare 自适应挑战的
+  触发率；服务器 `crawler/config.json` 同步调整
 - **以 root 运行时 Chrome 无法启动**（`crawler/platforms/base.py`）：root 下 Chrome 沙箱
   拒绝启动（`Running as root without --no-sandbox is not supported`），Selenium 只抛出
   空 `Message:` + 堆栈；新增 `_chrome_launch_args()`：Linux `euid==0` 时自动加
