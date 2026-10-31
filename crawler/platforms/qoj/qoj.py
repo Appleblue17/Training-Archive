@@ -337,6 +337,14 @@ class QOJCrawler(BaseCrawler):
         link = entry["submission_link"]
         for attempt in (1, 2):
             code_page = self.fetch_page_with_browser(link)
+            # 等代码块真正出现：页面/Cloudflare 挑战可能比固定 sleep 慢。
+            try:
+                WebDriverWait(self.driver, 10).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "pre.sh_sourceCode"))
+                )
+                code_page = self.driver.page_source
+            except Exception:
+                pass
             code = _extract_source_code(code_page)
             if code is not None:
                 return code
