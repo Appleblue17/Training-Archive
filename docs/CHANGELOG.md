@@ -59,6 +59,9 @@
 - **QOJ 比赛列表漏抓**（`platforms/qoj/qoj.py`）：比赛表格行通常是 `table-default`，
   原只解析 `table-success`，导致订阅比赛不在结果里、`sync` 输出「Contest list is empty」
   并把闹钟误标 archived；改为同时解析两种行
+- **`--links` 时列表漏抓的比赛被静默跳过**（`platforms/qoj/qoj.py`）：部分订阅比赛
+  不在 `/contests` 主表；若本地 `contests.json` 缓存有元数据且对应目录缺失，
+  改用缓存元数据按链接重建，不再依赖列表页
 - **大 PDF 下载 30s 超时 / 页面加载卡死 / 源码块未等待**（`platforms/base.py` /
   `platforms/qoj/qoj.py`）：QOJ 的 PDF 更大、服务器到站点较慢，30s 固定超时会在
   `.crdownload` 未完成时误判失败；`driver.get` 等待全部资源会卡 120s+；源码页固定

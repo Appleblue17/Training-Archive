@@ -200,6 +200,34 @@ class QOJCrawler(BaseCrawler):
 
             contest_infos.append(contest_info)
 
+        # --links 兜底：部分订阅比赛（如 Universal Cup Extra Stage）不在 /contests
+        # 主表，会被静默漏抓。若本地 contests.json 缓存有元数据、且对应目录缺失，
+        # 用缓存补上，让 fetch_contests 按链接重建（不依赖列表页）。
+        if only_links:
+            found = {i["link"].rstrip("/") for i in contest_infos}
+            cache_by_link = {
+                c.get("link", "").rstrip("/"): c for c in self.contests
+            }
+            for link in only_links:
+                if link in found:
+                    continue
+                cached = cache_by_link.get(link)
+                if not cached:
+                    continue
+                folder = os.path.join(
+                    self.repo_dir, f'{cached["date"]} {cached["name"]}'
+                )
+                if os.path.isdir(folder):
+                    continue
+                contest_infos.append({
+                    "name": cached["name"],
+                    "date": cached["date"],
+                    "platform": self.platform_name,
+                    "start_time": cached.get("start_time"),
+                    "end_time": cached.get("end_time"),
+                    "link": cached["link"],
+                })
+
         return contest_infos
 
     def fetch_contests_get_problem_list(self, contest_info, contest_folder):
