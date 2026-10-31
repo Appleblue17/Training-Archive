@@ -1,6 +1,136 @@
 # Changelog
 
-> 格式基于 [Keep a Changelog](https://keepachangelog.com/)。
+> 记录会影响用户、开发者或贡献者体验的重要变更。面向人类阅读，应随版本发布更新。
+> 格式参考 [Keep a Changelog](https://keepachangelog.com/)。
+> [备忘] 变更类型：Added（新增）、Changed（变更）、Deprecated（弃用）、Removed（移除）、Fixed（修复）、Security（安全）。
+
+> [注意] 本文档是项目历史的单一事实来源，应随项目演进保持更新。
+> [注意] 本文档不是所有变更的完整清单；只记录重要变更并保持简洁易读。完整变更见版本控制系统（如 Git）历史。
+
+## [0.3.1] - 2026-08-13
+
+> 本段为 v1.0.0-beta.1（静态版稳定版）发布准备。实测通过后改标题为
+> `[1.0.0-beta.1] - <发布日期>`，并同步 `package.json` 版本号；发布检查清单见
+> `docs/release-checklist.md`。
+
+### Added
+
+- **跨平台端到端测试脚本**（`crawler/scripts/e2e_test.py`）：`check` / `unit` / `offline` /
+  `live` / `service` / `events`；所有写操作在 `.e2e/` 隔离沙箱（本地裸 origin）内执行，
+  不污染真实仓库、不向 GitHub 推送、不改真实订阅。`offline` 覆盖编排逻辑与特殊情况
+  （锁、状态损坏自愈、赛前提醒等 20 项）；`live` 对真实链接跑完整抓取 / 复盘 / 推送
+- **端到端测试手册**（`docs/e2e-testing.md`）：Linux / Windows 全链路步骤，以及
+  睡眠 / 休眠 / 关机重启 / 断网 / 进程被杀 / 断电 / 双实例 / 时区 / 长时运行等
+  特殊情况的操作、预期、验证与通过标准
+- **前端测试 CI**（`.github/workflows/frontend-tests.yml`）：lint + `tsc --noEmit` + vitest，
+  此前前端测试只在 deploy 分支的部署流程里运行
+- **爬虫测试 CI 增强**：`crawler-tests.yml` 去掉写死的分支过滤并新增 `windows-latest`
+  矩阵与 `e2e-offline` job（测试脚本本身也在 ubuntu + windows 上运行）
+
+### Changed
+
+- **`daemon.log` 大小轮转**（`daemon.py`）：日志原会无上限增长；单文件达到 10MB 时
+  轮转为 `daemon.log.1`（只保留一份历史，避免占满磁盘）。两个 `.gitignore` 均忽略
+  `daemon.log.1`
+- **`install --xvfb`（仅 Linux，可选）**（`daemon.py`）：以
+  `xvfb-run -a env CHROME_HEADLESS=0` 包裹 systemd 服务命令，使服务方式也能抓取 QOJ 等
+  需要非无头 + 显示的反爬站点（需装 `xvfb`）；缺省行为不变
+- **CI Node 20 → 22**（`deploy.yml` / `frontend-tests.yml`）：jsdom 30 / undici 8 在
+  Node 20 下 vitest forks worker 启动失败
+- **deploy 的 Next 构建缓存 key 改用 `pnpm-lock.yaml`**：原用 `package-lock.json`，
+  缓存永不随依赖失效
+
+### Fixed
+
+- **`computeContribution` 按北京时间日期聚合**（`src/lib/dashboard.ts`）：原用运行环境
+  本地时区的日期，导致同一份数据在 UTC 的 CI 与 UTC+8 浏览器上落到不同日期
+- **子进程强制 UTF-8 编码**（`daemon.py` / `qq_bot.py` / `e2e_test.py`）：Windows 中文区域
+  （cp936）下按 locale 解码 UTF-8 的中文比赛名 / 路径会 `UnicodeDecodeError`
+- **入口脚本 stdout 切 UTF-8**（`daemon.py` / `e2e_test.py`）：Windows cp1252 控制台打印
+  中文结果时 `UnicodeEncodeError` 导致进程退出
+- **`NO_PROXY` 含带括号 IPv6 导致复盘生成失败**（`crawler/llm/deepseek_client.py`）：
+  `NO_PROXY` / `no_proxy` 含 `[::1]` 时 httpx 将其当成 URL 解析，在端口处抛
+  `InvalidURL: Invalid port ':1]'`，OpenAI 客户端无法创建，`report.py` 生成失败并
+  阻断 daemon sync（不归档、不部署）；`normalize_proxy_env()` 统一去掉方括号
+- **运行时状态文件非原子写入**（`daemon.py` / `alarm.py`）：`daemon-state.json` /
+  `alarms.json` 原直接以 `"w"` 覆盖写，断电或写入中途被杀会留下截断 JSON
+  （后者会让 `alarm.py plan` 直接中止）；新增 `crawler/scripts/jsonio.py` 的
+  `write_json_atomic`（同目录临时文件 + fsync + `os.replace`）
+- **QOJ 比赛列表漏抓**（`platforms/qoj/qoj.py`）：比赛表格行通常是 `table-default`，
+  原只解析 `table-success`，导致订阅比赛不在结果里、`sync` 输出「Contest list is empty」
+  并把闹钟误标 archived；改为同时解析两种行
+- **大 PDF 下载 30s 超时 / 页面加载卡死 / 源码块未等待**（`platforms/base.py` /
+  `platforms/qoj/qoj.py`）：QOJ 的 PDF 更大、服务器到站点较慢，30s 固定超时会在
+  `.crdownload` 未完成时误判失败；`driver.get` 等待全部资源会卡 120s+；源码页固定
+  sleep 在慢加载 / Cloudflare 挑战时取不到代码块。改为下载等待 300s + 60s 无增长判卡死、
+  移除「3s 后目录为空即失败」、`page_load_strategy="eager"` + `set_page_load_timeout(30)`、
+  源码抓取用 `WebDriverWait` 等 `pre.sh_sourceCode`
+- **以 root 运行时 Chrome 无法启动**（`crawler/platforms/base.py`）：root 下 Chrome 沙箱
+  拒绝启动（`Running as root without --no-sandbox is not supported`），Selenium 只抛出
+  空 `Message:` + 堆栈；新增 `_chrome_launch_args()`：Linux `euid==0` 时自动加
+  `--no-sandbox` 与 `--disable-dev-shm-usage`，非 root 可用 `CHROME_NO_SANDBOX=1` 强制；
+  `CHROME_HEADLESS` 开关保留
+
+## [0.3.3] - 2026-10-06
+
+### Added
+
+- **爬虫测试套件（pytest，`crawler/tests/`，189 条用例）**：纯逻辑单元测试覆盖时间解析（HDU / QOJ / ISO）、订阅加载与去重、报告 prompt 构建、闹钟分类与状态迁移、qq-bot 指令匹配 / `/subs add` 解析 / 同秒游标、qq-share 文本清洗与已发送标记、daemon plan 解析与调度判断、clean-log、NowCoder 登录态判断、QOJ 源码提取；新增 `crawler/requirements-dev.txt` / `crawler/pytest.ini`，运行 `.venv/bin/python -m pytest crawler/tests`
+- **爬虫测试 CI**（`.github/workflows/crawler-tests.yml`）：`crawler/**` 变更时自动安装依赖并运行 pytest
+
+### Changed
+
+- **QQ 群分享只发送 `review.md` 文件**（`qq_share.py`）：移除文案生成与群发（`qq-share.txt`、DeepSeek 简化版模板、`qq.send_mode` / `--file-only`）。发送成功后在比赛文件夹写入 `qq-share.sent` 已发送标记（两个 `.gitignore` 均忽略），补发扫描跳过已发送与无 review 的比赛；同时删除不再使用的 `crawler/prompts/qq-share.template.example.md`
+
+- **Chrome 无头模式可通过 `CHROME_HEADLESS=0` 关闭**（`platforms/base.py`）：默认仍为无头；QOJ 等站点对 headless 有 Cloudflare Turnstile 检测，在 Xvfb / 有显示器的环境用 `xvfb-run -a env CHROME_HEADLESS=0 ...` 跑非 headless 可通过（本机三平台实测即用此方式）
+
+### Fixed
+
+- **QQ 分享在 `file_only` 下永不触发 / 部分成功不回补**（`qq_share.py`）：`send_contest_shares_for_all` 依赖 `qq-share.txt` 判定未发送，而 `file_only` 模式不产生该文件 → 永不触发；且文字成功、文件失败时会删除 `qq-share.txt`，文件不再重试。随文案移除改为 `qq-share.sent` 标记
+- **qq-bot 同秒消息可能漏处理**（`qq_bot.py`）：增量游标 `time > last_time` 精度到秒，同一秒内、两次轮询之间到达的消息会被跳过；现对边界秒用 message_id 去重补足（`bot-state.json` 新增 `seen_ids`）
+- **last-update 水位改用抓取开始时间**（`platforms/base.py`）：`finish()` 原写抓取**结束**时间，会漏掉抓取期间新产生、但在下次抓取开始时已早于水位的提交；改为记录抓取开始时间，并保证水位单调不回退
+- **抓取中途异常不再推进 last-update**（`platforms/base.py`）：多场比赛时若前一场已标记完成、后一场抛异常，原逻辑仍会推进全局水位，导致失败比赛早于水位的提交被永久跳过；异常时作废本次完整性标记
+- **空 `--links` 退化为全量扫描**（`report.py` / `qq_share.py`）：`--links` 存在但解析为空时会命中"扫描全部比赛"分支，report 会静默对全部缺报告比赛调用 DeepSeek、qq_share 可能群发全部待发比赛；现返回非零并拒绝扫描
+- **空 / None 复盘输出写坏 `review.md`**（`report.py`）：模型返回空内容时写出 0 字节 `review.md`，之后因"文件已存在"被永久跳过；现判定为失败且不落盘，写入改为临时文件 + `os.replace` 原子替换
+- **配置不可读时剪除全部闹钟**（`alarm.py`）：`config.json` 缺失 / 损坏时 `_load_enabled_platforms` 返回空列表，plan 的剪除逻辑会把全部闹钟（含 archived 历史）删除；现返回 None 并中止 plan
+- **单平台构造失败中断其余平台**（`scheduled_task.py`）：`crawler_for()` 构造在 `try` 之外，缺依赖 / 驱动初始化失败会抛出中断 main 循环；现移入 `try`，失败仅影响该平台
+- **daemon 主循环健壮性**（`daemon.py`）：`_is_due` 遇到损坏的 `last_run`（非字符串）抛 `TypeError` 会杀死 daemon；现捕获所有异常，主循环每轮包裹异常处理并继续；`ensure_deploy_branch` 的 `git checkout` 失败改为中止，避免在错误分支上提交推送
+- **QOJ 比赛时长解析**（`platforms/qoj/qoj.py`）：原 `split("hours")` 无法处理 `[90 minutes]` / `[2 hour]` / 空串（`ValueError` 中断整场抓取）；改为正则解析，无法识别时记录并跳过该比赛；提交页无法定位当前页时不再抛 `AttributeError`
+- **qq-bot 自然语言关键词按最长匹配**（`qq_bot.py`）：`历史比赛` 曾先命中更早注册的短关键词 `比赛`（`/upcoming`）；现最长关键词优先
+- **NowCoder 登录态误报**（`platforms/nowcoder/nowcoder.py`）：`NOWCODER_USERNAME` 未配置时 `self.username in html` 恒为真，无效 Cookie 也被当作"登录成功"；现无昵称时改用页面特征（有「退出」入口 / 用户主页链接）校验，并在缺昵称时告警
+- **QOJ 提交源码偶发抓取失败**（`platforms/qoj/qoj.py`）：长任务中 Cloudflare 偶发返回挑战页（无 `pre.sh_sourceCode`）时原代码抛 `AttributeError`、源码静默缺失；现提取失败退避后重试一次，仍失败给出明确错误
+- **部分平台失败时仍返回 0**（`scheduled_task.py`）：构造失败改为只影响该平台后，`main` 仍会在其他平台成功时返回 0，daemon sync/fire 据此把失败平台未真正抓取的链接也 `mark --archived`（不生成报告、不再重试）；现任一平台失败即返回非零
+- **平台块畸形时 alarm plan 崩溃**（`alarm.py`）：原仅校验顶层是 JSON 对象，`{"qoj": null}` 仍会在 `.get("enabled")` 抛 `AttributeError`；现校验每个平台块，畸形时返回 None 中止 plan
+- **`last_run` 非对象时 daemon 崩溃**（`daemon.py`）：`{"last_run": 123}` 时 `.get(task)` 在 `try` 之外抛 `AttributeError`；现 `load_state` 归一化 `last_run`，且 `_is_due` 的查询也纳入 `try`
+- **已发送标记写盘失败谎报成功**（`qq_share.py`）：`_mark_sent` 吞掉 `OSError` 后 `send_contest_share` 仍返回 True，下次补发会重复上传同一份 review；现标记写入失败返回 False
+
+## [0.3.2] - 2026-09-22
+
+### Added
+
+- **archive-bot logo**（`(main)/layout.tsx`）：主标题左侧放置 logo（`next/image` + `unoptimized` + `priority`，适配静态导出）
+- **浏览器 tab 标题细化**（各页面 `metadata`）：根 layout 使用 `title.template`（`%s · Training Archive`）；`/pageN` → `Page N`，`/dashboard` → `Dashboard`，`/search` → `Search`，`/readme` → `README`，`/status` → `Status`，`/review/<比赛>` → `<比赛名> · Review`，文件查看页 → `<文件> · <比赛名>`（题目/提交页含题名；无数据占位页回退 `File` / `Submission`）
+- **`/search` 分页**（`search-client.tsx`）：搜索结果按 `ITEMS_PER_PAGE`（20）分页并新增页码导航；输入或标签变化时回到第 1 页（此前全部题目堆在同一页）
+- **资源保护（静态版客户端加密）**：可把某场比赛标记为受保护，其题目 / 源码 / PDF / 附件 / 复盘需要全站统一密码才能查看
+  - 标记（并集）：`contests/<文件夹>/contest.json` 的 `"protected": true`（推荐；爬虫只在新建比赛时写 `contest.json`，之后不会覆盖），或仓库根 `protected-contests.json` 的 `protected` 数组
+  - 密码取构建时环境变量 `RESOURCE_PASSWORD`（`.env` / GitHub Actions secret，**非** `NEXT_PUBLIC_`），服务端 PBKDF2-SHA256（100k）+ AES-256-GCM 加密，产物只含密文
+  - 浏览器端 WebCrypto 解密（`resource-gate.tsx`），验证成功后把密码记入 `localStorage`，下次自动解锁；密码错误重新提示
+  - 覆盖面（方案 A：只保护文件内容）：文件查看器三条路由（内容 + 元数据整体加密，Download/Raw 改 Blob）与复盘页；比赛名 / 题目 / 标签 / 统计等元数据公开，首页 / 搜索 / Dashboard 正常展示（首页带锁标记），`public/contests` 不复制受保护比赛原始文件
+  - 未配置 `RESOURCE_PASSWORD` 时受保护页面只显示提示、不渲染内容（不泄露明文）
+- **前端组件/单元测试**（Vitest + React Testing Library，jsdom）：`pnpm test` 运行 33 条用例，覆盖格式化/URL 工具、搜索过滤与分页、Dashboard 聚合、元数据面板内部字段跳过（`[ProtectedData]` 回归）、资源保护加解密往返与 `ResourceGate`、`ContestTable` 锁标记、搜索分页导航；为可测性把搜索过滤/分页抽到 `src/lib/search.ts`、Dashboard 聚合抽到 `src/lib/dashboard.ts`、元数据 banner 常量抽到 `src/lib/metadata-fields.ts`
+
+### Changed
+
+- **构建流程**：`pnpm build` / `pnpm dev` 先执行 `scripts/prepare-public-contests.mjs`（复制 `contests/ → public/contests` 时排除受保护比赛）；`deploy.yml` 不再直接 `cp -r`，构建步骤注入 `RESOURCE_PASSWORD` secret
+- **升级 Next.js**：`15.4.2-canary.5` → `15.5.25`（`eslint-config-next` 同步）。canary 的 webpack 生产构建在冷缓存下会卡死并堆溢出（`Creating an optimized production build` 阶段），稳定版可正常完成构建
+
+### Fixed
+
+- **首页受保护比赛展开详情显示 `[ProtectedData]` 字段**：加密载荷曾挂在比赛对象上、被元数据面板当普通字段渲染。方案 A 下不再把加密载荷挂到比赛对象；元数据面板同时跳过 `protected` / `protectedData` / `protectionMisconfigured` 等内部字段
+
+### Security
+
+- 受保护比赛的**文件内容**与原始文件不进入公开静态产物；元数据（比赛名 / 题目 / 标签 / 统计）仍公开。未验证者只能拿到 AES-GCM 密文。静态版客户端加密 + `localStorage` 存密码仍属过渡方案（无访问者区分 / 无法单独吊销 / XSS 风险），正式方案为 v0.4.0 动态版账号鉴权
 
 ## [0.3.1] - 2026-08-13
 

@@ -23,6 +23,30 @@ beijing = timezone(timedelta(hours=8))
 DISCARD = "discard"
 
 
+def _chrome_launch_args():
+    """Chrome 启动参数（headless / root 沙箱 / 容器 dev-shm）。
+
+    - 默认 headless；CHROME_HEADLESS=0/false/no 关闭（QOJ + xvfb 非无头）。
+    - 以 root 运行（服务器 / 容器常见）时 Chrome 沙箱会拒绝启动：
+      "Running as root without --no-sandbox is not supported."
+      此时自动加 --no-sandbox；非 root 也可用 CHROME_NO_SANDBOX=1 强制。
+    - root 下同时加 --disable-dev-shm-usage，避免容器 /dev/shm 偏小导致渲染进程崩溃。
+    """
+    args = []
+    if os.environ.get("CHROME_HEADLESS", "1").strip().lower() not in ("0", "false", "no"):
+        args.append("--headless")
+    geteuid = getattr(os, "geteuid", None)
+    is_root = bool(geteuid and geteuid() == 0)
+    no_sandbox = os.environ.get("CHROME_NO_SANDBOX", "").strip().lower() in (
+        "1", "true", "yes",
+    )
+    if no_sandbox or is_root:
+        args.append("--no-sandbox")
+    if is_root:
+        args.append("--disable-dev-shm-usage")
+    return args
+
+
 def load_subscriptions_dir(subscriptions_dir, platform=None, log=None):
     """从 crawler/subscriptions/ 目录加载订阅配置（模块级，供爬虫与 alarm.py 共用）。
 
@@ -124,6 +148,11 @@ class BaseCrawler:
 
         # 提交抓取是否完整结束（只有完整抓取才推进 last-update，避免静默丢提交）
         self._submissions_fetch_complete = False
+
+        # 本次提交抓取的开始时间：finish() 用它作为 last-update 水位。
+        # 必须用「开始时间」而非「结束时间」——否则抓取过程中新产生、但在
+        # 下次抓取开始时已早于水位（结束时间）的提交会被永久跳过。
+        self._fetch_started_at = None
 
         # 本次运行新建的比赛（contest_link -> start_time ISO 字符串）。
         # 首次抓取该比赛时（补订已完成比赛），提交抓取以比赛开始时间为截止全量回填，
@@ -514,11 +543,12 @@ class BaseCrawler:
         }
         options.add_experimental_option("prefs", prefs)
 
-        if os.environ.get("CHROME_HEADLESS", "1").strip().lower() not in ("0", "false", "no"):
-            options.add_argument("--headless")
-        if hasattr(os, "geteuid") and os.geteuid() == 0:
-            options.add_argument("--no-sandbox")
-            options.add_argument("--disable-dev-shm-usage")
+        # 无头 / root 沙箱 / dev-shm 参数见 _chrome_launch_args（root 自动 --no-sandbox）。
+        for arg in _chrome_launch_args():
+            options.add_argument(arg)
+        # DOMContentLoaded 即返回，避免等待所有资源导致 driver.get 卡 120s+；
+        # 具体元素用显式等待保证。
+        options.page_load_strategy = "eager"
         driver_kwargs = {"options": options}
         if chromedriver_path:
             driver_kwargs["driver_executable_path"] = chromedriver_path
@@ -548,10 +578,10 @@ class BaseCrawler:
         return html
 
     def _wait_for_download(self, timeout=300):
-        """等待下载完成：QOJ 的 PDF 较大、服务器到 QOJ 较慢，30s 不够。
+        """等待下载完成：大 PDF / 慢网络下 30s 不够。
 
-        出现非 .crdownload 的完成文件即成功；若 .crdownload 连续 60s 没有
-        增长，判定为卡死并提前返回 None。
+        出现非 .crdownload 的完成文件即成功；若 .crdownload 连续 60s 无增长，
+        判定卡死并提前返回 None。
         """
         last_size = -1
         stalled = 0
@@ -1010,6 +1040,11 @@ class BaseCrawler:
         return False
 
     def fetch_submissions(self):
+        # 记录抓取开始时间作为 last-update 水位（见 finish()）
+        self._fetch_started_at = datetime.now(beijing)
+        # 每次抓取从"未完成"开始；即使实例被复用也不会沿用上次的完成标记
+        self._submissions_fetch_complete = False
+
         # Load last update time and staged submissions
         self.last_update = self._load_file(self.last_update_path, default={})
         last_update_time_str = self.last_update.get(
@@ -1044,7 +1079,14 @@ class BaseCrawler:
 
         # Fetch new submissions
         self.log("info", "Start fetching new submissions...")
-        self.fetch_submissions_get_submissions()
+        try:
+            self.fetch_submissions_get_submissions()
+        except Exception:
+            # 抓取中途异常（多场比赛时会发生在某一场）：作废本次完整性标记。
+            # 否则若前一场已 _mark_submissions_complete()，finish() 仍会推进
+            # 全局 last-update，导致失败那场早于水位的提交被永久跳过。
+            self._submissions_fetch_complete = False
+            raise
 
     def _mark_submissions_complete(self):
         """标记提交抓取已完整结束（到达 last-update 或遍历完所有页）。
@@ -1073,5 +1115,17 @@ class BaseCrawler:
             )
             return
         self.last_update = self._load_file(self.last_update_path, default={})
-        self.last_update[self.platform_name] = datetime.now(beijing).isoformat()
+        watermark = self._fetch_started_at or datetime.now(beijing)
+        previous = self.last_update.get(self.platform_name)
+        if previous:
+            # 水位单调不回退：系统时钟回拨/乱序时不倒退，避免重复抓取或漏抓。
+            try:
+                prev_dt = datetime.fromisoformat(str(previous))
+                if prev_dt.tzinfo is None:
+                    prev_dt = prev_dt.replace(tzinfo=beijing)
+                if prev_dt > watermark:
+                    watermark = prev_dt
+            except (TypeError, ValueError):
+                pass
+        self.last_update[self.platform_name] = watermark.isoformat()
         self._write_file(self.last_update_path, self.last_update)

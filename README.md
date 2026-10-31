@@ -9,6 +9,7 @@
 - **竞赛归档**：按平台（QOJ / HDU / NowCoder）归档竞赛，展示竞赛列表、题目状态与文件
 - **题目状态标记**：AC / 尝试未解决（黄色背景）等提交状态一目了然，显示提交时间与解决耗时
 - **文件查看器**：在线预览 Markdown（GFM / 数学公式 / KaTeX / 代码高亮）、PDF、源码文件，支持下载
+- **资源保护**：可把某场比赛标记为受保护（`contest.json` 的 `"protected": true` 或 `protected-contests.json` 清单），其**文件内容**（题目文件 / 源码 / PDF / 复盘）在构建时用全站密码加密、原始文件不发布；浏览器输一次密码后记住（`localStorage`）。比赛名 / 题目 / 标签 / 统计等元数据仍公开
 - **复盘报告**：每场完赛自动生成 LLM 复盘报告（DeepSeek）与 QQ 群分享文本
 - **赛前提醒**：预订的比赛开始前自动在 QQ 群发提醒
 - **状态页面**：查看爬虫配置、各平台最后更新时间、待回填提交与订阅列表（/status）
@@ -57,6 +58,10 @@ pnpm lint       # 代码检查
 ```bash
 pip install -r crawler/requirements.txt
 
+# 爬虫单元测试（纯逻辑，不启动 Chrome；需先安装 requirements-dev.txt）
+pip install -r crawler/requirements-dev.txt
+python3 -m pytest crawler/tests
+
 # 默认模式：抓订阅比赛 + 全量增量提交（手动/临时）
 python3 crawler/scripts/scheduled_task.py
 # 只查订阅/新建比赛（有新建才回填其提交；高频触发推荐）
@@ -73,7 +78,7 @@ python3 crawler/scripts/report.py --from-crawl --links "https://qoj.ac/contest/1
 python3 crawler/scripts/report.py
 python3 crawler/scripts/report.py "contests/2026-08-01 xxx"
 # QQ 群分享（可选，config.json 的 ai_tasks.share.enabled 开启后 daemon 自动调用；NapCat 配置见 crawler/config.example.json 的 qq 块）
-python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456" [--file-only]
+python3 crawler/scripts/qq_share.py --links "https://qoj.ac/contest/123,https://qoj.ac/contest/456"
 python3 crawler/scripts/qq_share.py "contests/2026-08-01 xxx"
 ```
 
@@ -138,6 +143,7 @@ python3 crawler/scripts/daemon.py incremental     # 提交增量同步（--submi
 python3 crawler/scripts/daemon.py remind          # 赛前提醒检查（开始前向 QQ 群发提醒）
 python3 crawler/scripts/daemon.py install         # 注册开机自启（按 OS：systemd user / launchd / schtasks）
 python3 crawler/scripts/daemon.py install --system   # 仅 Linux：系统级服务（开机即启动、无需登录，需 sudo）
+python3 crawler/scripts/daemon.py install --xvfb     # 仅 Linux：服务用 xvfb-run 包裹（QOJ 非无头抓取，需装 xvfb）
 python3 crawler/scripts/daemon.py uninstall       # 注销开机自启
 python3 crawler/scripts/daemon.py uninstall --system # 仅 Linux：注销系统级服务（需 sudo）
 python3 crawler/scripts/daemon.py install-qqbot       # 注册 QQ 群机器人独立服务（见「快速开始 → QQ 群机器人」）
@@ -182,7 +188,16 @@ python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 - **Linux**：仓库已带 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`，直接可用。
 - **Windows / macOS**：下载与 Chrome 大版本匹配的 chromedriver 放入对应目录，或直接用 `CHROME_BINARY` / `CHROMEDRIVER_PATH` 指向自备路径。
 - **版本匹配**：chromedriver 需与 Chrome 主版本一致（下载：<https://googlechromelabs.github.io/chrome-for-testing/>）。
+- **以 root 运行**（服务器 / 容器）：会自动加 `--no-sandbox` 与 `--disable-dev-shm-usage`（非 root 可用 `CHROME_NO_SANDBOX=1` 强制）；QOJ 仍需非无头：`xvfb-run -a env CHROME_HEADLESS=0 ...`，服务方式可用 `install --xvfb`。
 - HDU / NowCoder 题目 HTML→Markdown 依赖 **pandoc**（Linux `apt install pandoc` / macOS `brew install pandoc` / Windows winget）。
+
+### 测试与验证
+
+- **爬虫单元测试**：`.venv/bin/python -m pytest crawler/tests`（纯逻辑，不启动浏览器）
+- **前端测试**：`pnpm test`（Vitest）+ `pnpm lint` + `pnpm exec tsc --noEmit`
+- **跨平台端到端测试**：`.venv/bin/python crawler/scripts/e2e_test.py check|unit|offline|live|service|events`——
+  在 `.e2e/` 隔离沙箱内验证「订阅 → 闹钟 → 抓取 → 复盘 → 推送」链路，不污染真实仓库、不向 GitHub 推送。
+  完整步骤与睡眠 / 重启 / 断网等特殊情况见 [docs/e2e-testing.md](docs/e2e-testing.md)，发布流程见 [docs/release-checklist.md](docs/release-checklist.md)。
 
 ### fork 部署（参数化）
 
@@ -206,9 +221,21 @@ env:
 
 > `deploy.yml` 通过 `push` 到 `deploy` 分支触发；守护进程只在 contests/ 有实质更新（新比赛 / 新提交 / 新报告）时才提交推送（带 `[contests-changed]` 标记触发部署），仅 crawler 状态 / 日志变化时不发提交（已在本地持久化）。
 
-### 动态版（v0.4.0 规划中）
+### 资源保护（可选）
 
-自建服务器 / Docker 部署 Next.js 动态服务，支持账号系统、个人收藏、正式资源保护与精确到分钟的调度，详见 [docs/roadmap.md](docs/roadmap.md) §1.1 / §3 / §5。
+全站统一密码通过构建时环境变量提供（**不要**加 `NEXT_PUBLIC_` 前缀，否则会进前端产物）：
+
+```bash
+# .env（本地） / GitHub Actions secret（部署）
+RESOURCE_PASSWORD=your-password
+```
+
+标记受保护比赛（二选一，取并集）：
+
+- 在该比赛的 `contests/<文件夹>/contest.json` 中加 `"protected": true`（推荐；爬虫只在新建比赛时写 `contest.json`，之后不会覆盖）；
+- 或在仓库根 `protected-contests.json` 的 `protected` 数组里列出比赛文件夹名。
+
+`pnpm build` 会把受保护比赛的**文件内容**（题面 / 源码 / PDF / 复盘 / 附件）用 PBKDF2 + AES-GCM 加密进页面，**不**把原始文件复制到 `public/contests`。比赛名、题目名、标签、通过状态与统计等**元数据公开**（首页 / 搜索 / Dashboard 正常展示，首页仅带锁标记）；点进文件查看页或复盘页时才需要密码。浏览器验证成功后把密码记入 `localStorage`，下次自动解锁。未配置 `RESOURCE_PASSWORD` 时，受保护文件的查看页只显示提示、不渲染内容。
 
 ## 文档
 

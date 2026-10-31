@@ -32,6 +32,7 @@ ai_tasks.share.enabled 单独调用；NapCat 未配置/发送失败仅告警不�
   python3 crawler/scripts/daemon.py remind         赛前提醒检查（一次性；发 QQ 群提醒）
   python3 crawler/scripts/daemon.py install        注册开机自启（按 OS；默认登录后启动）
   python3 crawler/scripts/daemon.py install --system   仅 Linux：注册系统级服务（开机即启动，需 sudo）
+  python3 crawler/scripts/daemon.py install --xvfb     仅 Linux：服务用 xvfb-run 包裹（QOJ 非无头抓取，需装 xvfb）
   python3 crawler/scripts/daemon.py uninstall      注销开机自启
   python3 crawler/scripts/daemon.py uninstall --system  仅 Linux：注销系统级服务（需 root）
   python3 crawler/scripts/daemon.py install-qqbot      注册 qq-bot 独立服务（QQ 群指令轮询）
@@ -65,12 +66,23 @@ import tempfile
 import time
 from datetime import datetime
 
+# Windows 控制台（CI 的 cp1252、部分 cp936）打印中文会抛 UnicodeEncodeError；
+# 进程启动即把 stdout/stderr 切到 UTF-8（pythonw 无控制台、stdout 为 None 时跳过）。
+for _stream in (sys.stdout, sys.stderr):
+    _reconfigure = getattr(_stream, "reconfigure", None)
+    if _reconfigure is not None:
+        try:
+            _reconfigure(encoding="utf-8", errors="replace")
+        except (ValueError, OSError):
+            pass
+
 from dotenv import load_dotenv
 
 # 让 `from crawler.platforms.base import beijing` 可用（与其他 scripts 一致）
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from crawler.platforms.base import beijing  # noqa: E402
+from crawler.scripts.jsonio import write_json_atomic  # noqa: E402
 from crawler.scripts.qq_share import (  # noqa: E402
     QQGroupSender,
     _load_qq_config,
@@ -96,6 +108,8 @@ except ImportError as e:
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 SCRIPT_DIR = os.path.join(REPO_ROOT, "crawler", "scripts")
 LOG_FILE = os.path.join(REPO_ROOT, "crawler", "daemon.log")
+LOG_BACKUP_FILE = LOG_FILE + ".1"
+LOG_MAX_BYTES = 10 * 1024 * 1024  # daemon.log 超过此大小后轮转为 daemon.log.1
 STATE_FILE = os.path.join(REPO_ROOT, "crawler", "daemon-state.json")
 CONFIG_PATH = os.path.join(REPO_ROOT, "crawler", "config.json")
 DEPLOY_BRANCH = "deploy"
@@ -125,10 +139,20 @@ QQBOT_SCHTASKS_NAME = "TrainingArchiveQQBot"
 # ---------------------------------------------------------------------------
 # 日志
 # ---------------------------------------------------------------------------
+def _rotate_log_if_needed():
+    """daemon.log 达到上限时轮转为 daemon.log.1（只保留一份历史，避免无限增长）。"""
+    try:
+        if os.path.getsize(LOG_FILE) >= LOG_MAX_BYTES:
+            os.replace(LOG_FILE, LOG_BACKUP_FILE)
+    except OSError:
+        pass
+
+
 def log(msg):
     """带时间戳写入 daemon.log 并打印到 stdout（服务日志/终端可见）。"""
     line = f"[{datetime.now(beijing).strftime('%Y-%m-%d %H:%M:%S')}] {msg}"
     print(line, flush=True)
+    _rotate_log_if_needed()
     try:
         with open(LOG_FILE, "a", encoding="utf-8") as f:
             f.write(line + "\n")
@@ -142,6 +166,7 @@ def log_raw(text):
     if not text:
         return
     print(text, flush=True)
+    _rotate_log_if_needed()
     try:
         with open(LOG_FILE, "a", encoding="utf-8") as f:
             f.write(text + "\n")
@@ -169,13 +194,19 @@ def run_py(script, *args, capture=False):
     cmd = [sys.executable, os.path.join(SCRIPT_DIR, script), *args]
     env = dict(os.environ)
     env["PYTHONUNBUFFERED"] = "1"
+    # 强制子进程用 UTF-8 输出：中文比赛名 / 题面在 Windows 中文区域（cp936）下
+    # 默认按 locale 编码，父进程若按 locale 解码会抛 UnicodeDecodeError。
+    env["PYTHONIOENCODING"] = "utf-8"
     if capture:
-        return subprocess.run(cmd, text=True, capture_output=True, env=env)
+        return subprocess.run(cmd, text=True, capture_output=True, env=env,
+                              encoding="utf-8", errors="replace")
     log("$ " + " ".join(cmd))
     # stderr=STDOUT 合并为单一管道：避免双管道各自读、互等填满造成死锁
     proc = subprocess.Popen(
         cmd,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         bufsize=1,
@@ -189,7 +220,9 @@ def run_py(script, *args, capture=False):
 
 
 def git(*args, check=True):
-    return subprocess.run(["git", *args], text=True, capture_output=True, check=check)
+    # 显式按 UTF-8 解码 git 输出（Windows 中文区域默认 cp936，中文路径会解码失败）。
+    return subprocess.run(["git", *args], text=True, capture_output=True,
+                          encoding="utf-8", errors="replace", check=check)
 
 
 def setup_env():
@@ -208,7 +241,14 @@ def ensure_deploy_branch():
     if r.returncode != 0:
         log(f"Branch '{DEPLOY_BRANCH}' not found. Create it first (e.g. from master).")
         raise SystemExit(1)
-    git("checkout", DEPLOY_BRANCH, check=False)
+    r = git("checkout", DEPLOY_BRANCH, check=False)
+    if r.returncode != 0:
+        # checkout 失败（脏工作区 / 分支冲突）时不能静默继续：后续
+        # commit_and_push 会 push origin deploy，若当前仍在别的分支上，
+        # 会把错误分支的提交推到 deploy。
+        log(f"[ERROR] git checkout {DEPLOY_BRANCH} failed (code {r.returncode}); "
+            "aborting to avoid committing on the wrong branch.")
+        raise SystemExit(1)
     git("pull", "--ff-only", "origin", DEPLOY_BRANCH, check=False)
 
 
@@ -600,6 +640,9 @@ def load_state():
             state = json.load(f)
         if not isinstance(state, dict):
             return {"last_run": {}}
+        if not isinstance(state.get("last_run"), dict):
+            log(f"[run] malformed last_run in {STATE_FILE}; resetting.")
+            state["last_run"] = {}
         state.setdefault("last_run", {})
         return state
     except Exception as e:
@@ -608,8 +651,8 @@ def load_state():
 
 
 def save_state(state):
-    with open(STATE_FILE, "w", encoding="utf-8") as f:
-        json.dump(state, f, ensure_ascii=False, indent=2)
+    # 原子写入：断电/被杀不会留下截断的 daemon-state.json。
+    write_json_atomic(STATE_FILE, state, ensure_ascii=False, indent=2)
 
 
 def _is_due(task, expr, now, state):
@@ -618,13 +661,22 @@ def _is_due(task, expr, now, state):
     睡眠恢复后：从 last_run 计算下一次，若 <= now 则到期（只补跑一次，
     不追赶历史——执行后 last_run 更新为 now，下次计算自然跳到未来）。
     """
-    last = state.get("last_run", {}).get(task)
+    try:
+        last = (state.get("last_run") or {}).get(task)
+    except Exception as e:
+        # last_run 不是 dict（如 {"last_run": 123}）：视为损坏，按到期处理。
+        log(f"[run] bad state/last_run for {task}: {e}; treating as due.")
+        return True
     if not last:
         return True
     try:
         dt = datetime.fromisoformat(last)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=beijing)
         nxt = croniter(expr, dt).get_next(datetime)
-    except (ValueError, KeyError) as e:
+    except Exception as e:
+        # 非字符串 last_run / croniter 异常等都可能出现；必须兜住，
+        # 否则异常会冒泡出主循环（外层只捕获 KeyboardInterrupt）杀死 daemon。
         log(f"[run] bad state/last_run for {task}: {e}; treating as due.")
         return True
     return nxt <= now
@@ -638,31 +690,36 @@ def cmd_run():
     log("[run] scheduled: " + ", ".join(f"{k}={v}" for k, v in scheduled.items()))
     try:
         while True:
-            now = datetime.now(beijing)
-            state = load_state()
-            for task in TASKS:
-                if not _is_due(task, scheduled[task], now, state):
-                    continue
-                log(f"[run] task due: {task}")
-                try:
-                    if task == "fire":
-                        cmd_fire()
-                    elif task == "sync":
-                        cmd_sync()
-                    elif task == "incremental":
-                        cmd_incremental()
-                    elif task == "remind":
-                        cmd_remind()
-                except SystemExit as e:
-                    # 任务失败（returncode 非零）不应杀死 daemon；记日志继续
-                    log(f"[run] task {task} exited with code {e.code}")
-                except Exception as e:
-                    log(f"[run] task {task} failed: {e}")
-                # 无论成败都推进 last_run：下次触发按 cron 排程（失败的任务
-                # 由 sync 兜底重试，与 server-task.sh 语义一致）
+            try:
+                now = datetime.now(beijing)
                 state = load_state()
-                state["last_run"][task] = now.isoformat()
-                save_state(state)
+                for task in TASKS:
+                    if not _is_due(task, scheduled[task], now, state):
+                        continue
+                    log(f"[run] task due: {task}")
+                    try:
+                        if task == "fire":
+                            cmd_fire()
+                        elif task == "sync":
+                            cmd_sync()
+                        elif task == "incremental":
+                            cmd_incremental()
+                        elif task == "remind":
+                            cmd_remind()
+                    except SystemExit as e:
+                        # 任务失败（returncode 非零）不应杀死 daemon；记日志继续
+                        log(f"[run] task {task} exited with code {e.code}")
+                    except Exception as e:
+                        log(f"[run] task {task} failed: {e}")
+                    # 无论成败都推进 last_run：下次触发按 cron 排程（失败的任务
+                    # 由 sync 兜底重试，与 server-task.sh 语义一致）
+                    state = load_state()
+                    state["last_run"][task] = now.isoformat()
+                    save_state(state)
+            except Exception as e:
+                # 单次迭代的任何意外（状态文件损坏、cron 解析等）都记日志后
+                # 继续下一轮，避免整个 daemon 因一次异常退出。
+                log(f"[run] loop iteration failed: {e}")
             time.sleep(POLL_INTERVAL)
     except KeyboardInterrupt:
         log("=== daemon stopped (Ctrl+C) ===")
@@ -686,17 +743,37 @@ def _qqbot_service_command():
     return [sys.executable, os.path.join(REPO_ROOT, "crawler", "scripts", "qq_bot.py"), "run"]
 
 
-def install_linux(system=False):
+def _linux_exec_start(xvfb=False):
+    """构造 systemd ExecStart；xvfb=True 用 xvfb-run 包裹（QOJ 非无头抓取）。
+
+    返回 (exec_start, problem)：problem 非空 = 请求了 xvfb 但主机无 xvfb-run。
+    """
+    py, script, run = _service_command()
+    base = f"{py} {script} {run}"
+    if not xvfb:
+        return base, None
+    xvfb_bin = shutil.which("xvfb-run")
+    if not xvfb_bin:
+        return base, "xvfb-run not found in PATH"
+    return f"{xvfb_bin} -a env CHROME_HEADLESS=0 {base}", None
+
+
+def install_linux(system=False, xvfb=False):
     """注册开机自启：默认 systemd user unit（登录后启动）；system=True 时注册
     系统级 systemd service（开机即启动，无需登录会话，适合无头服务器）。
-    无 systemd 时回落 cron @reboot（仅 user 模式）。"""
+    无 systemd 时回落 cron @reboot（仅 user 模式）。xvfb=True 时用 xvfb-run
+    包裹 ExecStart（QOJ 等需要非无头 + 显示，需装 xvfb；缺省行为不变）。"""
     if system:
-        return install_linux_system()
+        return install_linux_system(xvfb=xvfb)
     systemd_dir = os.path.expanduser("~/.config/systemd/user")
     if shutil.which("systemctl") and (os.path.isdir(systemd_dir) or True):
         os.makedirs(systemd_dir, exist_ok=True)
         unit = os.path.join(systemd_dir, f"{UNIT_NAME}.service")
-        py, script, run = _service_command()
+        exec_start, problem = _linux_exec_start(xvfb)
+        if problem:
+            log(f"[ERROR] {problem}; aborting. Install xvfb (sudo apt install xvfb) "
+                "or retry without --xvfb.")
+            return 1
         content = f"""[Unit]
 Description=Training Archive Crawler Daemon
 After=network-online.target
@@ -704,7 +781,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart={py} {script} {run}
+ExecStart={exec_start}
 WorkingDirectory={REPO_ROOT}
 Restart=on-failure
 RestartSec=30
@@ -731,7 +808,7 @@ WantedBy=default.target
     log("Installed cron @reboot (systemd not available).")
 
 
-def install_linux_system():
+def install_linux_system(xvfb=False):
     """注册系统级 systemd service（/etc/systemd/system，WantedBy=multi-user.target）。
 
     开机即启动、不依赖登录会话（适合无头服务器）。服务以实际用户身份运行
@@ -748,7 +825,11 @@ def install_linux_system():
         return 1
     owner = os.environ.get("SUDO_USER") or getpass.getuser()
     unit = f"/etc/systemd/system/{UNIT_NAME}.service"
-    py, script, run = _service_command()
+    exec_start, problem = _linux_exec_start(xvfb)
+    if problem:
+        log(f"[ERROR] {problem}; aborting. Install xvfb (sudo apt install xvfb) "
+            "or retry without --xvfb.")
+        return 1
     content = f"""[Unit]
 Description=Training Archive Crawler Daemon
 After=network-online.target
@@ -757,7 +838,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 User={owner}
-ExecStart={py} {script} {run}
+ExecStart={exec_start}
 WorkingDirectory={REPO_ROOT}
 Restart=on-failure
 RestartSec=30
@@ -836,16 +917,20 @@ def install_windows():
     log(f"Installed scheduled task: {SCHTASKS_NAME} (ONLOGON)")
 
 
-def cmd_install(system=False):
+def cmd_install(system=False, xvfb=False):
     """按 OS 注册开机自启。system=True：注册系统级服务（目前仅 Linux systemd，
-    开机即启动、无需登录会话，适合无头服务器）；其余平台忽略并回落默认行为。"""
+    开机即启动、无需登录会话，适合无头服务器）；其余平台忽略并回落默认行为。
+    xvfb=True：Linux 上以 xvfb-run 包裹服务命令（QOJ 等需非无头 + 显示）。"""
     s = _system()
     if system and s != "linux":
         log(f"[WARN] '--system' is only supported on Linux (current: {s}); "
             "falling back to user autostart.")
         system = False
+    if xvfb and s != "linux":
+        log("[WARN] '--xvfb' is Linux-only; ignored.")
+        xvfb = False
     if s == "linux":
-        return install_linux(system)
+        return install_linux(system, xvfb=xvfb)
     elif s == "macos":
         install_macos()
     elif s == "windows":
@@ -1272,7 +1357,7 @@ def main():
         elif cmd == "remind":
             sys.exit(cmd_remind())
         elif cmd == "install":
-            sys.exit(cmd_install("--system" in args[1:]))
+            sys.exit(cmd_install("--system" in args[1:], xvfb="--xvfb" in args[1:]))
         elif cmd == "uninstall":
             sys.exit(cmd_uninstall("--system" in args[1:]))
         elif cmd == "install-qqbot":

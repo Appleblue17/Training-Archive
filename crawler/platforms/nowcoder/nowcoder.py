@@ -12,6 +12,19 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.
 from crawler.platforms.base import BaseCrawler
 
 
+def _looks_logged_in(html, username=""):
+    """判断 NowCoder 页面是否处于登录态。
+
+    - 配置了昵称：页面包含昵称 → 已登录（原逻辑）。
+    - 未配置昵称：退化为页面特征判断（有「退出」入口或用户主页链接）。
+      不能再用 `"" in html`——那会恒为真，令无效 Cookie 被误报为登录成功。
+    """
+    html = html or ""
+    if username:
+        return username in html
+    return ("退出" in html) or ("/acm/user/" in html)
+
+
 class NOWCODERCrawler(BaseCrawler):
     def __init__(self, local_log_path="crawler/platforms/nowcoder/log.json"):
         super().__init__("nowcoder", local_log_path)
@@ -20,10 +33,7 @@ class NOWCODERCrawler(BaseCrawler):
 
     def is_logged_in(self, link):
         main_page = self.fetch_page_with_browser(link)
-
-        # Check if login was successful
-        success = self.username in main_page
-        return success
+        return _looks_logged_in(main_page, self.username)
 
     def try_login_with_cookie(self, cookies):
         link = "https://ac.nowcoder.com/"
@@ -42,6 +52,13 @@ class NOWCODERCrawler(BaseCrawler):
     def login(self):
         # 昵称用于登录态校验（is_logged_in）；cookie 用于实际登录
         self.username = os.getenv("NOWCODER_USERNAME") or ""
+        if not self.username:
+            # 无昵称时用页面特征校验登录态（见 _looks_logged_in）；建议配置以免误判
+            self.log(
+                "warning",
+                "NOWCODER_USERNAME not set; verifying login by page features. "
+                "Configure it in .env for a reliable check.",
+            )
         cookies = {
             "NOWCODERUID": os.getenv("NOWCODER_COOKIE_NOWCODERUID"),
             "t": os.getenv("NOWCODER_COOKIE_T"),

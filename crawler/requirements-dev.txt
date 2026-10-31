@@ -1,0 +1,7 @@
+# 开发/测试依赖：在 crawler/requirements.txt 之上追加测试工具。
+# 安装：
+#   python3 -m venv .venv && .venv/bin/pip install -r crawler/requirements-dev.txt
+# 运行：
+#   .venv/bin/python -m pytest crawler/tests
+-r requirements.txt
+pytest>=8,<10

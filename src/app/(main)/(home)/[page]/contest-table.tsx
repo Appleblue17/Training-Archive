@@ -1,5 +1,5 @@
 "use client";
-import { Check, ChevronRight, Code, FileText, Layers, X } from "lucide-react";
+import { Check, ChevronRight, Code, FileText, Layers, Lock, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
@@ -8,6 +8,11 @@ import MetaDataDisplay from "@/components/metadata-display";
 import { formatDate } from "@/utils/format";
 import { joinUrl } from "@/utils/url";
 import PlatformBadge from "@/components/platform-badge";
+import {
+  CONTEST_METADATA_BANNER,
+  FILE_METADATA_BANNER,
+  PROBLEM_METADATA_BANNER,
+} from "@/lib/metadata-fields";
 
 // Helper: Parse time string to Date object in Beijing time
 function parseToBeijingTime(timeStr: string | Date): Date {
@@ -331,6 +336,8 @@ function ContestRow({
     return null; // Skip rendering if contest is hidden
   }
 
+  const isProtected = !!contest.protected;
+
   const handleRowClick = () => {
     if (expandedRow === idx) {
       setShowExpandedContent(false);
@@ -358,7 +365,7 @@ function ContestRow({
         role="button"
         tabIndex={0}
         aria-expanded={expandedRow === idx}
-        aria-label={contest.name}
+        aria-label={isProtected ? `${contest.name} (受保护)` : contest.name}
         className="cursor-pointer border-b border-gray-700 bg-zinc-800/80 hover:bg-gray-700/40"
         onClick={handleRowClick}
         onKeyDown={(e) => {
@@ -398,6 +405,15 @@ function ContestRow({
           >
             {contest.name}
           </a>
+          {isProtected && (
+            <span
+              className="relative z-10 ml-2 inline-flex items-center gap-1 text-xs text-amber-300"
+              title="该比赛资源需要密码才能查看"
+            >
+              <Lock className="size-3.5" />
+              Protected
+            </span>
+          )}
         </td>
         {problemLetters.map((letter: string, pIdx: number) => {
           if (pIdx < contest.problems.length) {
@@ -490,23 +506,25 @@ export default function ContestTable({ contests }: { contests: ContestInfoType[]
       // Show file metadata
       const contest = contests[expandedRow];
       const problem = contest.problems[selectedProblemIdx];
+      if (!problem) return; // 受保护比赛详情在 ResourceGate 内自行处理
       const file = problem.files[selectedFileIdx];
       setDisplayMetadataName("File");
       setDisplayMetadata(file);
-      setDisplayMetadataBanner(["link"]);
+      setDisplayMetadataBanner(FILE_METADATA_BANNER);
     } else if (selectedProblemIdx !== null && expandedRow !== null) {
       // Show problem metadata
       const contest = contests[expandedRow];
       const problemInfo = contest.problems[selectedProblemIdx];
+      if (!problemInfo) return; // 受保护比赛详情在 ResourceGate 内自行处理
       setDisplayMetadataName("Problem");
       setDisplayMetadata(problemInfo);
-      setDisplayMetadataBanner(["rel_path", "files", "link"]);
+      setDisplayMetadataBanner(PROBLEM_METADATA_BANNER);
     } else if (expandedRow !== null) {
       // Show contest metadata
       const contestInfo = contests[expandedRow];
       setDisplayMetadataName("Contest");
       setDisplayMetadata(contestInfo);
-      setDisplayMetadataBanner(["rel_path", "problems", "files", "link"]);
+      setDisplayMetadataBanner(CONTEST_METADATA_BANNER);
     }
   }, [expandedRow, selectedProblemIdx, selectedFileIdx, contests]);
 

@@ -1,5 +1,7 @@
 # 开发规划（Roadmap）
 
+> 本文档给出分阶段目标、开发顺序、交付物与验收标准，是排期的单一事实来源。
+> 每阶段结束需同步更新本文档与 `docs/CHANGELOG.md`。
 > 本文档记录 v0.2.0 / v0.3.0 的规划讨论结论与路线图。
 
 ---
@@ -59,7 +61,7 @@
 | 功能 | 静态版 | 动态版 | 存储方案 / 说明 |
 |------|:---:|:---:|------|
 | 题目标签（队内共享） | ✅ | ✅ | 写入 `problem.json` 的 `tags` 字段，随 git 同步（不区分人、可持久化到文件跨设备同步） |
-| 个人收藏 / 稍后再做 | ⚠️ 仅 localStorage 降级 | ✅ | DB 按 user 存储（区分每个人） |
+| 个人收藏 / 稍后再做 | ❌（留待 v0.4.0） | ✅ | DB 按 user 存储（区分每个人） |
 | 题目搜索 | ✅ | ✅ | 构建时生成 `search-index.json`（标题/比赛/标签/平台/日期），前端过滤 |
 | 资源保护 | ⚠️ 仅客户端加密（过渡，非正式） | ✅ | 动态版账号鉴权为正式方案；受保护资源不进公开仓库 |
 | Dashboard 统计 / 最近动态 | ✅ | ✅ | 构建时从 `solve_time`/`submit_time` 聚合写 JSON |
@@ -122,9 +124,9 @@
 
 ## 6. 资源保护决策
 
-- **静态版**：客户端加密（口令派生密钥 PBKDF2 → AES-GCM，`.enc` 文件随仓库发布，浏览器 WebCrypto 解密）只能作为**过渡方案**，无法区分访问者、无法单独吊销；元数据（竞赛名/日期）默认仍公开。
+- **静态版**：客户端加密（口令派生密钥 PBKDF2 → AES-GCM，密文内联进页面，浏览器 WebCrypto 解密）只能作为**过渡方案**，无法区分访问者、无法单独吊销；元数据（竞赛名/日期）默认仍公开。
 - **动态版（正式）**：账号鉴权，受保护资源**不进公开仓库**。
-- **决策：v0.2.0 默认不做资源保护**，放 v0.3.0 动态版正式实现。
+- **决策：v0.2.0 默认不做资源保护**；静态版的客户端加密过渡方案已在 **v0.3.2** 实现（构建时 AES-GCM 加密、浏览器解密 + `localStorage` 记住；受保护资源文件不进 `public`，元数据仍在搜索/Dashboard 展示），正式账号鉴权仍留 **v0.4.0 动态版**。
 
 ---
 
@@ -183,6 +185,13 @@ v0.3.0（部署方式重构：静态版统一为自托管守护进程 + GitHub P
 ├─ 部署指引文档（Win / Mac / Linux + Chrome 环境准备）
 └─ 方式二端到端实测（`install` 自启 + `fire` 真实比赛触发 + 部署链路）
 
+v1.0.0-beta.1（静态版稳定版，分支 v1.0.0-beta）
+├─ 跨平台 E2E 测试脚本 crawler/scripts/e2e_test.py（隔离沙箱 + 本地裸 origin）
+├─ 测试手册 docs/e2e-testing.md（Linux / Windows 全链路 + 睡眠 / 重启 / 断网等特殊情况）
+├─ Windows / Linux 守护进程端到端实测（install / run / sync / fire / 部署链路）
+├─ 前端与爬虫测试 CI 补全（分支触发、Windows runner）
+└─ 预发布 v1.0.0-beta.1（CHANGELOG + tag + Release）
+
 v0.4.0（动态版）
 ├─ 同代码库 API routes / Docker 部署骨架
 ├─ GitHub OAuth + session（登录=队员）
@@ -216,8 +225,13 @@ v0.4.0（动态版）
 | 16 | Actions 爬虫 workflow（2026-08-12） | 彻底删除 `crawler-scheduled.yml` / `crawler.yml`；`deploy.yml` 去掉 `workflow_run` 监听，保留 `push` 触发 |
 | 17 | 个人电脑模式（2026-08-12） | 支持跨平台守护进程 `daemon.py`（Win / Mac / Linux）：`run` 主循环按 config `scheduled` 块 + 闹钟到点执行、睡眠恢复只补跑一次；`install` 按 OS 注册登录自启（systemd user / launchd / schtasks ONLOGON） |
 | 18 | 服务对象（2026-08-12） | 别人 fork 自己部署自己的站；fork 需参数化 basePath / URL 常量（env 覆盖，默认保持现状） |
+| 19 | 前端测试（2026-09-22） | 采用 **Vitest + React Testing Library（jsdom）** 做组件/单元测试（T1 纯逻辑 + T2 组件，`pnpm test`）；不引入 E2E，留 v0.4.0 再评估 |
+| 20 | 爬虫测试（2026-09-23） | 采用 **pytest**（`crawler/tests/`，`requirements-dev.txt`，CI `crawler-tests.yml`）做纯逻辑单元测试；不启动 Chrome、不发网络请求。测试先行的 P0 修复随 v0.3.3 交付 |
 
 ## 11. 遗留 / 待定
 
-- [ ] 复盘报告内容细节：是否含每道题 AC 时间线/WA 次数（数据已全量采集，倾向包含）
-- [ ] 前端测试策略评估
+- [ ] Windows 守护进程端到端实测（v1.0.0-beta 交付项；Linux 已实测通过，见 `docs/notes.md`；macOS 暂不纳入本轮）
+- [x] NowCoder 有效 Cookie 重测（2026-09-23）：contest/108303 → 13 题 + 13 题面、40 提交 + 40 源码；三平台抓取链路均通过（见 `docs/notes.md`）
+- [ ] 三平台翻页 / 逐场完整性深入：HDU 状态页**无分页**（第一场 cid=1229 共 20 条，`&page=2` 返回同内容；第二场 cid=1230 抓到 25 条，现有"无分页→第一页处理完即完整"逻辑正确）；QOJ 长任务下会偶发 Cloudflare 挑战页，已加一次重试，后续可考虑更长退避 / 降速
+- [x] qq_share 文案模式问题（v0.3.3 解决）：**移除文案生成 / 群发**，只发送 `review.md` 文件 + `qq-share.sent` 已发送标记（`file_only` 永不触发 / 部分成功不回补一并消除）
+- [x] qq-bot 同秒消息游标（v0.3.3 解决）：边界秒用 `time >= last_time` + message_id 去重集合

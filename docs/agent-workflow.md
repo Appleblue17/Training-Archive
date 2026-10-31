@@ -134,10 +134,6 @@
 - `ci`: CI 配置与脚本变更
 - `chore`: 杂项（工具配置、清理等）
 
-> 历史提交中使用过 `[update]`、`[clean]`、`[optimize]`、`[feature]` 等标签，新提交统一按上述 type 归类。
-
 **语言**：统一使用中文，除非涉及技术名词或外部依赖
 
-**示例**：`feat(article): add publish API with review option`
-
-> 提交由 AI Agent 生成时，需附带 `Generated with Continue` 的 co-author 信息。
+> 提交由 AI Agent 生成时，需附带 co-author 信息。
