@@ -56,6 +56,11 @@
   `alarms.json` 原直接以 `"w"` 覆盖写，断电或写入中途被杀会留下截断 JSON
   （后者会让 `alarm.py plan` 直接中止）；新增 `crawler/scripts/jsonio.py` 的
   `write_json_atomic`（同目录临时文件 + fsync + `os.replace`）
+- **以 root 运行时 Chrome 无法启动**（`crawler/platforms/base.py`）：root 下 Chrome 沙箱
+  拒绝启动（`Running as root without --no-sandbox is not supported`），Selenium 只抛出
+  空 `Message:` + 堆栈；新增 `_chrome_launch_args()`：Linux `euid==0` 时自动加
+  `--no-sandbox` 与 `--disable-dev-shm-usage`，非 root 可用 `CHROME_NO_SANDBOX=1` 强制；
+  `CHROME_HEADLESS` 开关保留
 
 ## [0.3.3] - 2026-10-06
 

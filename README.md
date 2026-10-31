@@ -188,6 +188,7 @@ python3 crawler/scripts/daemon.py status          # 查看状态 / 日志
 - **Linux**：仓库已带 `crawler/chrome-linux64/` 与 `crawler/chromedriver-linux64/`，直接可用。
 - **Windows / macOS**：下载与 Chrome 大版本匹配的 chromedriver 放入对应目录，或直接用 `CHROME_BINARY` / `CHROMEDRIVER_PATH` 指向自备路径。
 - **版本匹配**：chromedriver 需与 Chrome 主版本一致（下载：<https://googlechromelabs.github.io/chrome-for-testing/>）。
+- **以 root 运行**（服务器 / 容器）：会自动加 `--no-sandbox` 与 `--disable-dev-shm-usage`（非 root 可用 `CHROME_NO_SANDBOX=1` 强制）；QOJ 仍需非无头：`xvfb-run -a env CHROME_HEADLESS=0 ...`，服务方式可用 `install --xvfb`。
 - HDU / NowCoder 题目 HTML→Markdown 依赖 **pandoc**（Linux `apt install pandoc` / macOS `brew install pandoc` / Windows winget）。
 
 ### 测试与验证
