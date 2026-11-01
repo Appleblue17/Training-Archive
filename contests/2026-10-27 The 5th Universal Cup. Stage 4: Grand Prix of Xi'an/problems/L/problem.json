@@ -3,5 +3,7 @@
   "name": "Lucid Traveler",
   "time_limit": "4 s",
   "memory_limit": "1024 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2026-11-01T18:46:41+08:00",
+  "solve_time": "2026-11-01T18:46:41+08:00"
 }
