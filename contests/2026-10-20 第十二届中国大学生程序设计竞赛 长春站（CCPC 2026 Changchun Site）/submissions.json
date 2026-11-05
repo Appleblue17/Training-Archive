@@ -298,5 +298,29 @@
     "submit_time": "2026-10-20T10:50:13+08:00",
     "problem_link": "https://qoj.ac/contest/4582/problem/22918",
     "submission_link": "https://qoj.ac/submission/3220752"
+  },
+  {
+    "submission_id": "#3372726",
+    "problem_id": "22913",
+    "problem_name": "\u5e73\u5747",
+    "status": "WA",
+    "time": "1ms",
+    "memory": "4228kb",
+    "language": "C++14",
+    "submit_time": "2026-11-05T11:50:37+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22913",
+    "submission_link": "https://qoj.ac/submission/3372726"
+  },
+  {
+    "submission_id": "#3372691",
+    "problem_id": "22913",
+    "problem_name": "\u5e73\u5747",
+    "status": "RE",
+    "time": "0ms",
+    "memory": "3920kb",
+    "language": "C++14",
+    "submit_time": "2026-11-05T11:46:20+08:00",
+    "problem_link": "https://qoj.ac/contest/4582/problem/22913",
+    "submission_link": "https://qoj.ac/submission/3372691"
   }
 ]
