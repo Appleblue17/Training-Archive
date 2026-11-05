@@ -5656,5 +5656,79 @@
         "link": "https://qoj.ac/contest/3384/problem/17173"
       }
     ]
+  },
+  {
+    "name": "The 5th Universal Cup. Stage 5: Grand Prix of Chengdu",
+    "date": "2026-11-03",
+    "link": "https://qoj.ac/contest/4607",
+    "start_time": "2026-11-03T09:15:10+08:00",
+    "end_time": "2026-11-03T14:15:10+08:00",
+    "problems": [
+      {
+        "letter": "A",
+        "name": "Average of Averages",
+        "link": "https://qoj.ac/contest/4607/problem/23592"
+      },
+      {
+        "letter": "B",
+        "name": "Bouncing Particles",
+        "link": "https://qoj.ac/contest/4607/problem/23593"
+      },
+      {
+        "letter": "C",
+        "name": "Counting Arrays",
+        "link": "https://qoj.ac/contest/4607/problem/23594"
+      },
+      {
+        "letter": "D",
+        "name": "Duel of Wrath",
+        "link": "https://qoj.ac/contest/4607/problem/23595"
+      },
+      {
+        "letter": "E",
+        "name": "Enclose the Point",
+        "link": "https://qoj.ac/contest/4607/problem/23596"
+      },
+      {
+        "letter": "F",
+        "name": "First Word",
+        "link": "https://qoj.ac/contest/4607/problem/23597"
+      },
+      {
+        "letter": "G",
+        "name": "Graph Reconstruction",
+        "link": "https://qoj.ac/contest/4607/problem/23598"
+      },
+      {
+        "letter": "H",
+        "name": "Hidden Order",
+        "link": "https://qoj.ac/contest/4607/problem/23599"
+      },
+      {
+        "letter": "I",
+        "name": "Invisible Edges",
+        "link": "https://qoj.ac/contest/4607/problem/23600"
+      },
+      {
+        "letter": "J",
+        "name": "Joint Relocation",
+        "link": "https://qoj.ac/contest/4607/problem/23601"
+      },
+      {
+        "letter": "K",
+        "name": "Keep Your Distance",
+        "link": "https://qoj.ac/contest/4607/problem/23602"
+      },
+      {
+        "letter": "L",
+        "name": "Long Slides",
+        "link": "https://qoj.ac/contest/4607/problem/23603"
+      },
+      {
+        "letter": "M",
+        "name": "Minimum Records",
+        "link": "https://qoj.ac/contest/4607/problem/23604"
+      }
+    ]
   }
 ]
