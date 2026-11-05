@@ -990,5 +990,17 @@
     "submit_time": "2026-11-02T15:35:23+08:00",
     "problem_link": "https://qoj.ac/contest/845/problem/2837",
     "submission_link": "https://qoj.ac/submission/3342237"
+  },
+  {
+    "submission_id": "#3375735",
+    "problem_id": "124",
+    "problem_name": "Library",
+    "status": "AC",
+    "time": "42ms",
+    "memory": "4356kb",
+    "language": "C++14",
+    "submit_time": "2026-11-05T15:34:57+08:00",
+    "problem_link": "https://qoj.ac/problem/124",
+    "submission_link": "https://qoj.ac/submission/3375735"
   }
 ]

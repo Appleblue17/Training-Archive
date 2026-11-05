@@ -406,5 +406,29 @@
     "submit_time": "2026-11-03T09:39:11+08:00",
     "problem_link": "https://qoj.ac/contest/4607/problem/23604",
     "submission_link": "https://qoj.ac/submission/3348197"
+  },
+  {
+    "submission_id": "#3376886",
+    "problem_id": "23598",
+    "problem_name": "Graph Reconstruction",
+    "status": "AC",
+    "time": "77ms",
+    "memory": "12224kb",
+    "language": "C++14",
+    "submit_time": "2026-11-05T17:07:19+08:00",
+    "problem_link": "https://qoj.ac/contest/4607/problem/23598",
+    "submission_link": "https://qoj.ac/submission/3376886"
+  },
+  {
+    "submission_id": "#3376822",
+    "problem_id": "23598",
+    "problem_name": "Graph Reconstruction",
+    "status": "WA",
+    "time": "67ms",
+    "memory": "6080kb",
+    "language": "C++14",
+    "submit_time": "2026-11-05T17:01:52+08:00",
+    "problem_link": "https://qoj.ac/contest/4607/problem/23598",
+    "submission_link": "https://qoj.ac/submission/3376822"
   }
 ]

@@ -3,5 +3,7 @@
   "name": "Graph Reconstruction",
   "time_limit": "2 s",
   "memory_limit": "1024 MB",
-  "solved": false
+  "solved": true,
+  "submit_time": "2026-11-05T17:07:19+08:00",
+  "solve_time": "2026-11-05T17:07:19+08:00"
 }
